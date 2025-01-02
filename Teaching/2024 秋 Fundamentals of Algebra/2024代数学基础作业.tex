@@ -1,0 +1,1332 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage[top = 2.5cm, bottom = 2.5cm, left = 2.5cm, right = 2.5cm]{geometry} 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx} 
+\usepackage{setspace}
+\setlength{\parindent}{0in}
+\usepackage{float}
+\usepackage{circledsteps}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{ctex}
+\usepackage{pifont}
+\usepackage{rotating}
+\usepackage{amssymb}
+\pagestyle{fancy} 
+\fancyhf{} 
+
+
+\begin{document}
+ 
+
+\def\head{\begin{tabular}{p{15.5cm}} % This is a simple tabular environment to align your text nicely 
+{\large \bf 代数学基础作业} \\
+中国科学技术大学 \\ 2024 秋\quad 杨金榜  \\ 陈鉴 \& 王子涵 \& 辛雨 \& 张煜星\\
+\hline % \hline produces horizontal lines.
+\\
+\end{tabular} % Our tabular environment ends here.
+
+\vspace*{0.3cm}}% Now we want to add some vertical space in between the line and our title.
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第一次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   9/10 \quad  第二周/星期二} % <---- Fill in your names here!
+
+\end{center}  
+
+
+
+
+\begin{enumerate}
+
+\item {\it (习题1.1) 对任意集合X，我们用$\rm id_X$表示X到自身的恒等映射。设$f:A\rightarrow B$是集合间的映射，A是非空集合。试证：
+\begin{enumerate}
+\item f为单射当且仅当存在$g:B\rightarrow A$，使得$g\circ f=\rm id_A$;
+\item f为满射当且仅当存在$h:B\rightarrow A$，使得$f\circ h=\rm id_B$;
+\item f为双射当且仅当存在唯一的$g:B\rightarrow A$，使得$f\circ g=\rm id_B,g\circ f=\rm id_A$。
+\end{enumerate}
+这里的g称为f的逆映射，通常也记为$f^{-1}$。证明双射的逆映射也是双射，并讨论逆映射与映射的原像集合之间的关系。}
+
+\item {\it (习题1.2) 如果$f:A\rightarrow B,g:B\rightarrow C$均是一一对应，则$g\circ f:A\rightarrow C$也是一一对应，且$(g\circ f)^{-1}=f^{-1}\circ g^{-1}$。}
+
+\item {\it (习题1.5) 设X是无限集，Y是X的有限子集。证明存在双射$X-Y\rightarrow X$。}
+
+\item {\it (习题1.8) 设A，B是两个有限集合。
+\begin{enumerate}
+\item A到B的不同映射共有多少个？
+\end{enumerate}}
+
+\item {\it (习题1.9) 证明容斥原理（定理 1.24）。}
+
+\item {\it (课堂练习1) 若$|A|=|B|<\infty,\forall f:A\rightarrow B$，f单$\iff$ f双$\iff$ f满。}
+
+\item {\it (课堂练习2) 若$A\xrightarrow{f} B\xrightarrow{g} C\xrightarrow{h} D$，证明$h\circ (g\circ f)=(h\circ g)\circ f$。}
+
+\end{enumerate}
+
+\newpage
+
+\begin{tabular}{p{15.5cm}} % This is a simple tabular environment to align your text nicely 
+{\large \bf 代数学基础作业} \\
+中国科学技术大学 \\ 2024 秋\quad 杨金榜  \\ 陈鉴 \& 王子涵 \& 辛雨 \& 张煜星\\
+\hline % \hline produces horizontal lines.
+\\
+\end{tabular} % Our tabular environment ends here.
+
+\vspace*{0.3cm} % Now we want to add some vertical space in between the line and our title.
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第二次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   9/12 \quad  第二周/星期四} % <---- Fill in your names here!
+
+\end{center}  
+
+\begin{enumerate}\setcounter{enumi}{7}
+\item {\it 回顾：设 $\varphi\colon K\times K \rightarrow K$ 为集合 $K$ 上的二元运算。若对任意$x,y,z\in K$都有$\varphi(\varphi(x,y),z)=\varphi(x,\varphi(y,z))$，则称 $\varphi$满足结合律。若存在$e\in K$使得对任意 $x\in K$ 都有 $\varphi(e,x)=x=\varphi(x,e)$, 则称 $e$ 为$\varphi$的单位元。若对任意$x,y\in K$都有 $\varphi(x,y)=\varphi(y,x)$, 则称$\varphi$满足交换律。
+ 
+设 $K=\{A,B\}$ 为两个元素组成的集合, 请
+\begin{enumerate}
+\item 在集合$K$上找出所有的二元运算(用表格表示,共$16$个)  
+\item 哪几个运算存在单位元
+\item 那几个满足交换律
+\item 共有$8$个满足结合律,尽可能多的找出它们.(不需要证明)
+\end{enumerate}}
+
+
+\item {\it \ding{172}验证：$\mathbb{Q}[i]$为域（在通常复数域上的$+,\cdot$运算下）；
+ \\ \ding{173}说明$K=\mathbb{Q}+\mathbb{Q}\sqrt[3]{2}=\{ a+b\sqrt[3]{2}|a,b\in \mathbb{Q}\}$在通常$+,\times$下不为域；
+ \\ \ding{174}请试着构造$K$上两个二元运算$\oplus,\odot$，使得$(K,\oplus,\odot)$构成域（说明想法即可，无需证明）。}
+ \item {\it 回顾: 设 $(K,+,\cdot)$为域. 任意元素$a\in K$存在负元, 我们将其记为 $-a$. 并将加法$b-a$定义为 $b+(-a)$. 任意非零元$a\in K\setminus{0}$存在逆元, 我们将其记为 $a^{-1}$. 并将除法$\frac{b}{a}$定义为 $b\cdot a^{-1}$. 请从域的公理体系出发证明：
+ \[\frac{b}{a}-\frac{d}{c}=\frac{bc-ad}{ac}.\]}
+
+ \item 证明数集$R=\left\{\left.\frac{x+y\sqrt{-3}}{2}\right| x\text{与}y\text{为同奇偶的整数}\right\}$在通常的加法和乘法下构成环.
+ 
+ 
+ \item 记$\mathbb{R}[X]$为实系数多项式组成的集合,即
+ \[\mathbb{R}[X]=\{a_0+a_1x+a_2x^2+\cdots+a_nx^n\mid 其中 n\in\mathbb{N} \ \text{以及} \ a_0,a_1,\cdots,a_n\in \mathbb{R} \}.\] 
+ 在这个集合上定义通常的多项式加法与乘法. 即, 对任意多项式 $f(x)=\sum\limits_{i=0}^{n}a_i x^{i}$ 和 $g(x)=\sum\limits_{i=0}^{m}b_i x^{i}$, 
+ \[f(x)+g(x)=\sum_{i=0}^{\max\{m,n\}}(a_i+b_i) x^{i} \]
+ \[f(x)\cdot g(x)=\sum_{k=0}^{m+n} \left(\sum_{i+j=k\atop i,j\geq 0}a_i b_j\right) x^{k}\]
+ 其中,若$i>n$,记$a_i=0$;若$j>m$,记$b_j=0$.
+ 则$(\mathbb{R}[X],+,\cdot)$ 构成环,称为\textcolor{blue}{实系数多项式环},简记为$\mathbb{R}[X]$. 
+ \begin{enumerate}
+ \item 请写出实系数多项式环中的零元,幺元以及负元.
+ \item 请证明实系数多项式环是交换环.
+ \item (附加，不写不影响作业评分) 请问实系数多项式环是否为域,为什么? 如果不是，能不能将集合$\mathbf{R}[X]$扩大,使得其在通常加法和乘法下构成域.
+ \end{enumerate}
+\end{enumerate}
+
+\newpage
+\head
+
+
+
+
+
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第三次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   9/19 \quad  第三周/星期四} % <---- Fill in your names here!
+
+\end{center} 
+
+
+
+
+\begin{enumerate}\setcounter{enumi}{12}
+    \item 回顾: 实数域上的二阶矩阵组成的集合为
+ \[M_2(\mathbb R)=\left\{\left.\begin{pmatrix} a & b \\ c & d\\\end{pmatrix}\right|a,b,c,d\in\mathbb R\right\}.\]
+ 这个集合上可以定义如下加法和乘法运算:
+ \[\begin{pmatrix} a & b \\ c & d\\\end{pmatrix} + \begin{pmatrix} a' & b' \\ c' & d'\\\end{pmatrix} = \begin{pmatrix} a+a' & b+b' \\ c+c' & d+d' \\\end{pmatrix} \]
+ \[\begin{pmatrix} a & b \\ c & d\\\end{pmatrix} \cdot \begin{pmatrix} a' & b' \\ c' & d'\\\end{pmatrix} = \begin{pmatrix} aa'+bc' & ab'+bd' \\ ca'+dc' & cb'+dd' \\\end{pmatrix} \]
+ 则 $(M_2(\mathbb{R}),+,\cdot)$ 构成环,称为\textcolor{blue}{实数域上的二阶矩阵代数}. 
+ \begin{enumerate}
+ \item 证明矩阵代数上的乘法结合律.
+ \item 举例说明矩阵代数上,乘法不满足消去律. 即由$ac=bc$以及$c\neq \begin{pmatrix}0&0\\0&0\\\end{pmatrix}$ 推不出$a=b$. 提示:求$\begin{pmatrix}0&1\\0&0\\\end{pmatrix}^2$.
+ \end{enumerate}
+\item 回顾: 复数域上的二阶矩阵组成的集合为
+ \[M_2(\mathbb C)=\left\{\left.\begin{pmatrix} a & b \\ c & d\\\end{pmatrix}\right|a,b,c,d\in\mathbb C\right\}.\]
+ 这个集合上可以定义如下加法和乘法运算:
+ \[\begin{pmatrix} a & b \\ c & d\\\end{pmatrix} + \begin{pmatrix} a' & b' \\ c' & d'\\\end{pmatrix} = \begin{pmatrix} a+a' & b+b' \\ c+c' & d+d' \\\end{pmatrix} \]
+ \[\begin{pmatrix} a & b \\ c & d\\\end{pmatrix} \cdot \begin{pmatrix} a' & b' \\ c' & d'\\\end{pmatrix} = \begin{pmatrix} aa'+bc' & ab'+bd' \\ ca'+dc' & cb'+dd' \\\end{pmatrix} \]
+ 则 $(M_2(\mathbb C),+,\cdot)$ 构成环. 此外, 我们对任意 $e\in\mathbb C$ 我们定义如下记号:
+ \[e\begin{pmatrix} a & b \\ c & d\\\end{pmatrix} = \begin{pmatrix} ea & eb \\ ec & ed\\\end{pmatrix}.\]
+ 环$(M_2(\mathbb C),+,\cdot)$称为{\color{blue}{复数域上的二阶矩阵代数}}.
+ 记 
+ \[i=\begin{pmatrix} \sqrt{-1} & 0 \\ 0 & -\sqrt{-1} \\ \end{pmatrix}, \quad j=\begin{pmatrix} 0 & 1 \\ -1 & 0 \\ \end{pmatrix}, \quad \text{以及} \quad k=\begin{pmatrix} 0 & \sqrt{-1} \\ \sqrt{-1} & 0 \\ \end{pmatrix}.\]
+ 证明:
+ \begin{enumerate}
+ \item $i^2=j^2=k^2=ijk=\begin{pmatrix}-1&0\\0&-1\end{pmatrix}$;
+ \item $ij=-ji=k$; $jk=-kj=i$; $ki=-ik=j$;
+ \item $M_2(\mathbb C)$的子集 $\mathbb H =\{a+bi+cj+dk\mid a,b,c,d \in \mathbb R\}\subset M_2(\mathbb C)$(这里的$a$视为$aI_2$，其中$I_2=\begin{pmatrix}
+     1 & 0\\
+     0 & 1
+ \end{pmatrix}$) 关于乘法封闭;
+ \end{enumerate}
+ 注: 实际上, $\mathbb H$构成$M_2(\mathbb C)$的子环,且其中任意非零元都有乘法逆元. 
+ \item 给定集合$M$, 令$S_M$为$M$到自身的双射的集合. 证明若以映射的复合$\circ$作为$S_M$上的乘法, 则$\left(S_M,\circ\right)$构成一个群.
+ \item 设集合$\mathbb{Z}[\sqrt{2}]=\{a+b\sqrt{2}\mid a,b\in\mathbb{Z}\}$, 验证它在实数加法和乘法意义下构成环.
+ \item 设A为含幺非交换环，$a,b\in A$. 如果$ba=1$, 则称$b$为$a$的左逆, $a$为$b$的右逆. 如果并思考以下几个问题：
+ \begin{enumerate}
+     \item 如果$a$的左逆与右逆同时存在，则左逆等于右逆;
+     \item 如果a的左逆存在且唯一，则a有右逆; (提示: 若$b$为$a$的左逆,则$ab+b-1$也为$a$的左逆.)
+     \item 如果$a$的左逆不止一个，则必有无数个左逆. (提示:采用反证法. 考察由$a$的全体左逆组成的集合$Inv_a:=\{x\in A\mid xa=1\}$. 假若$Inv_a$有限且个数大于$1$,不妨设$x_1\in Inv_a$,则$\{1-ax+x_1\mid x\in Inv_a\}=Inv_a$). 
+     %此外验证$x_1\not\in Inv_a$,因此矛盾!).
+     \item {\color{red} (选做)} 请构造一个环$A$使得，里面存在元素$a$，其仅有左逆而没有右逆;
+ \end{enumerate}
+ \end{enumerate}
+
+ {\color{red} 注意：9.19和9.24作业应于9.26-9.30期间提交}
+
+ \newpage
+ \head
+
+ \begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第四次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   9/24 \quad  第四周/星期二} % <---- Fill in your names here!
+
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{17}
+    \item 令集合$G=\left\{A,B\right\}$. 用表格的形式列出全部$G$上的运算$\varphi$, 使得$\left(G,\varphi\right)$构成
+ \begin{itemize}
+ \item[1)] 半群;
+ \item[2)] 含幺半群;
+ \item[3)] 群;
+ \item[4)] 交换群.
+ \end{itemize}
+ \item 若$G$是群, $x,y\in G$, 定义$x,y$的换位子为
+ $$\left[x,y\right]=xyx^{-1}y^{-1}.$$
+ 证明
+ \begin{itemize}
+ \item[1)] $\left[x,y\right]^{-1}=\left[y,x\right]$;
+ \item[2)] $\left[xy,z\right]=x\left[y,z\right]x^{-1}\left[x,z\right]$;
+ \item[3)] $\left[z,xy\right]=\left[z,x\right]x\left[z,y\right]x^{-1}$.
+ \end{itemize}
+ \item 令$\mu_{\infty}$为$\mathbb{C}$里的所有单位根（即$\mu_{\infty}=\{a\in \mathbb{C}|\text{存在正整数n使得} a^n=1\}$），证明$\mu_{\infty}$在复数乘法意义下构成群.
+ \item 设A为集合，$P(A)$为$A$里的所有子集构成的集合，在$P(A)$上定义二元运算：$X\Delta Y=(X\bigcap Y^c)\bigcup (X^c \bigcap Y)$，证明$P(A)$在此运算下构成群.
+ \item 我们给定一个乘法群G和其子集M：
+ \begin{itemize}
+     \item[1)] 我们定义$N_G(M)=\{g\in G| gMg^{-1}=M\}$，请证明$N_G(M)$是G的子群
+     \item[2)] 我们定义$C_G(M)=\{g\in G| gag^{-1}=a,\forall a\in M\}$，请证明$C_G(M)$是G的子群
+ \end{itemize}
+ \item 设$G$为二元实数组构成的集合$\{(a,b)|a\neq 0\}$，我们定义$G$上的乘法为$(a,b)(c,d)=(ac,ad+b)$，求证G在此运算下是群.
+ \item[] {\color{red}以下三题至少选做一题}
+  \item 试着求出$S_3$的所有子群.\\
+ 试着求出$D_4$的所有子群.
+ \item 设G是半群，若对任意的$a,b\in G$，方程$xa=b$和$ay=b$都在G里面有解，证明$G$是群.(提示: 若$ea=a$,则$eb=b$.)
+ \item 设G是一个有限半群，如果在G内均有左右消去律成立，即由$ax=ay$或$xa=ya$都可以推得$x=y$，证明$G$是群. (提示:$G=\{ag\mid g\in G\}$.)
+ 
+\end{enumerate}
+
+{\color{red} 注意：9.19和9.24作业应于9.26-9.30期间提交}
+
+
+\newpage
+\head
+
+ \begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第五次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   9/26 \quad  第四周/星期四} % <---- Fill in your names here!
+
+\end{center} 
+
+ \begin{enumerate}\setcounter{enumi}{26}
+     \item (习题2.14) 群$G$到自身的同构称为$G$的自同构。
+     \begin{itemize}
+         \item[1)] 证明群$G$的所有自同构在复合映射作为乘法下构成群。这个群称为$G$的自同构群，记为$AutG$;
+         \item[2)] 如$\varphi:G\stackrel{\sim}{\longrightarrow}H$为群同构，证明$G$到$H$的所有同构构成集合$\varphi AutG := \{\varphi \circ f | f \in AutG\}$。
+     \end{itemize}
+     
+     \item 设$G$是群。试问映射$x \rightarrow x^2$何时是群同态？并分别举例说明：这一映射可能是单同态但不是满同态，可能是满同态但不是单同态，也可能是同构。
+     
+     \item (习题2.16) 设$G$是群。证明映射$x \rightarrow x^{-1}$是群同构当且仅当$G$为阿贝尔群。
+     
+     \item (习题2.18) 证明乘法群$\mathbb{C}^{\times} \cong \mathbb{R}^{\times}_+ \times S^1$，其中$\mathbb{R}^{\times}_+$是正实数构成的乘法群。
+     
+     \item (习题2.25) 如果$I, J$均是交换环$R$的理想，证明
+     $$ I + J = \{x + y | x \in I, y \in J\} $$
+     与$I \cap J$都是$R$的理想。举例说明$I \cup J$不一定为$R$的理想。
+     
+     \item  回顾：正交群$O_2(\mathbb{R})$为：
+      \[O_2(\mathbb R)=\left\{\left.\begin{pmatrix} cos \theta & \mp sin \theta \\ sin \theta & \pm cos \theta\\\end{pmatrix}\right|\theta\in\mathbb R\right\}.\]
+     证明：
+     \[O_2(\mathbb R)=\left\{\left.\begin{pmatrix} a & b \\ c & d\\\end{pmatrix}\right|\begin{pmatrix} a & b \\ c & d\\\end{pmatrix} \begin{pmatrix} a & c \\ b & d\\\end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1\\\end{pmatrix}, a,b,c,d\in\mathbb R\right\}.\]
+     \newpage
+     
+     \item 设$(R, +, \cdot)$为环，$\varphi:R \rightarrow T$为双射。定义$T$上的二元运算$\oplus,\odot$：
+     $$t_1 \oplus t_2 := \varphi(\varphi^{-1}(t_1) + \varphi^{-1}(t_2))$$
+     $$t_1 \odot t_2 := \varphi(\varphi^{-1}(t_1) \cdot \varphi^{-1}(t_2))$$
+     证明：
+     \begin{itemize}
+         \item[1)] $(T, \oplus, \odot)$构成环;
+         \item[2)] $\varphi$是从$(R, +, \cdot)$到$(T, \oplus, \odot)$的环同构。
+     \end{itemize}
+     
+     \item 求所有从$\mathbb{Q}[\sqrt{2}]$到$\mathbb{Q}[\sqrt{2}]$的环同态。
+     
+     \item {\color{red} (选做)}设$\varphi$是从$(\mathbb{R}, +, \cdot)$到$(\mathbb{R}, +, \cdot)$的环同构，
+     试证明：$\varphi=id_{\mathbb{R}}$
+ \end{enumerate}
+
+{\color{red} 注意：9.26和9.29作业应于9.29-10.8期间提交}
+
+
+\newpage
+\head
+
+ \begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第六次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   9/29 \quad  第四周/星期日} % <---- Fill in your names here!
+\end{center} 
+
+  \begin{enumerate}\setcounter{enumi}{35}
+     \item 证明映射$\varphi : \mathbb{C} \rightarrow M_2(\mathbb{R}), \ 
+     a+b \sqrt{-1} \mapsto \begin{pmatrix} a & -b \\ b & a\\\end{pmatrix}$是环同态。
+
+     \item 设$G_1, G_2$为群，在笛卡尔积$G_1 \times G_2$上定义乘法运算$\cdot$, 对任意$g_1,g_1'\in G_1$ 和 $g_2,g_2'\in G_2$,
+     $$(g_1, g_2) \cdot (g_1', g_2') := (g_1g_1', g_2g_2').$$
+     \begin{itemize}
+         \item[1)] 证明$(G_1 \times G_2, \cdot)$构成群，称之为群$G_1$和群$G_2$的\textbf{直积}或者\textbf{笛卡尔积};
+         \item[2)] 证明\textbf{投影映射}
+         \[Pr_1:G_1 \times G_2 \rightarrow G_1, \ (g_1, g_2) \mapsto g_1\]
+         和
+         \[Pr_2:G_1 \times G_2 \rightarrow G_2, \ (g_1, g_2) \mapsto g_2\]
+         均是群的满同态;
+         \item[3)] 证明映射
+         \[I_1:G_1 \rightarrow G_1 \times G_2, \ g_1 \mapsto (g_1, 1_{G_2})\]
+         和
+         \[I_2:G_2 \rightarrow G_1 \times G_2, \ g_2 \mapsto (1_{G_1}, g_2)\]
+         均是群的单同态。
+     \end{itemize}
+
+     \item 设$R_1, R_2$为环，在笛卡尔积$R_1 \times R_2$上定义两个二元运算$+$和$\cdot$, 对任意$r_1,r_1'\in R_1$ 和 $r_2,r_2'\in R_2$,
+     $$(r_1, r_2) + (r_1', r_2') := (r_1+r_1', r_2+r_2')$$
+     $$(r_1, r_2) \cdot (r_1', r_2') := (r_1r_1', r_2r_2')$$
+     \begin{itemize}
+         \item[1)] 证明$(R_1 \times R_2, +, \cdot)$构成环，称之为环$R_1$与环$R_2$的\textbf{直积}或者\textbf{笛卡尔积};
+         \item[2)] 证明投影映射
+         \[Pr_1:R_1 \times R_2 \rightarrow R_1, \ (r_1, r_2) \mapsto r_1\]
+         和
+         \[Pr_2:R_1 \times R_2 \rightarrow R_2, \ (r_1, r_2) \mapsto r_2\]
+         均是环的满同态;
+         \item[3)] 设$R_1$与$R_2$都不为零环，证明映射
+         \[I_1:R_1 \rightarrow R_1 \times R_2, \ r_1 \mapsto (r_1, 0_{R_2})\]
+         和
+         \[I_2:R_2 \rightarrow R_1 \times R_2, \ r_2 \mapsto (0_{R_1}, r_2)\]
+         均保持加法和乘法但不是环同态;
+         \item[4)] 证明若$R_1$与$R_2$都不为零环，则$R_1 \times R_2$一定不是整环。
+     \end{itemize}
+
+     \item 设$R$为交换环，证明：
+     \begin{itemize}
+         \item[1)] $R$为整环$\iff R[x]$为整环;
+         \item[2)] 若$R$为整环，证明$R^{\times}=R[x]^{\times}$。
+     \end{itemize}
+
+     \item 设$R$为交换环，对任意$ a \in R$，定义$\varphi_a$为：$\varphi_a: R[x] \rightarrow R, \  f(x) \mapsto f(a)$. 证明$\varphi_a$是环的满同态，称之为\textbf{赋值映射}。
+
+     \item 设$R$为交换环, $f,g \in R[x]$. 证明：
+     \begin{itemize}
+         \item[1)] $\deg(f+g) \leq \max\{\deg(f), \deg(g)\}$;
+         \item[2)] $\deg(fg) \leq \deg(f)+\deg(g)$;
+         \item[3)] 若$R$为整环，则$\deg(fg) = \deg(f)+\deg(g)$。
+     \end{itemize}
+
+     \item {\color{red} (选做)}证明：有限整环是域。
+     
+ \end{enumerate}
+
+{\color{red} 注意：9.26和9.29作业应于9.29-10.8期间提交}
+
+
+\newpage
+\head
+
+ \begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第七次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   10/8 \quad  第六周/星期二} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{42}
+        \item 设 $n$ 为正整数, 证明 $\text{gcd}(n!+1,(n+1)!+1)=1$. 这里 $n!=n(n-1)\cdots1$ 是 $n$ 的阶乘 .
+   
+        \item 设 $n$ 为正整数, $m$ 为正奇数 . 证明: $\text{gcd}(2^m-1,2^n+1)=1$. 
+   
+        \item 求 $\text{gcd}(1573,-1859),\text{gcd}(-121,-169),\text{gcd}(76501,9719)$.
+   
+        \item 设 $n$ 为正整数. 证明: $n$ 至多有 $2\lfloor\sqrt{n}\rfloor$ 个正因子. 这里$\lfloor ·\rfloor$ 表示向下取整 .
+   
+        \item 设 $n$ 为正整数 . 证明: $n^2|(n+1)^n-1$.
+   
+        \item  {\color{red} (选做)} 记 $X=\{m+\frac{n}{n+1}|n,m\in\mathbb{N}\}$. 证明: $X$ 的任意非空子集均有最小元, 即 $X$ 为良序集 . (注: 这里的序关系是继承自 $(\mathbb{R},\leq)$ 的)
+\end{enumerate}
+
+{\color{red} 注意：10.8和10.10作业应于10.10-10.15期间提交}
+
+\newpage
+\head
+
+ \begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第八次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   10/10 \quad  第六周/星期四} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{48}
+    \item 设$n$为正整数，$a,b$ 为正整数，证明：\\
+    (1) $\gcd(a^n,b^n)=\gcd(a,b)^n$;\\
+    (2) 设$a,b$是互素的正整数，$c$ 为正整数，$ab=c^n$，则$a,b$都是某个正整数的$n$次方幂。
+    \item 用欧几里得算法求$963$和$657$的最大公约数，并求出方程$963x+657y=\gcd(963,657)$的一组特解，以及所有整数解。
+    \item 设$a,b$为正整数且$\gcd(a,b)=1$。证明：当整数$n>ab-a-b$时，方程$ax+by=n$有非负的整数解；但当$n=ab-a-b$时，该方程没有非负整数解。
+    \item 求$\mathrm{lcm}(1573,-1859)$，$\mathrm{lcm}(-121,-169)$，$\mathrm{lcm}(76501,9719)$.
+
+    \item  {\color{red} (选做)} 设 $p(x)=a_0+a_1x+\cdots+a_nx^n$ 为整系数多项式, $a_0,a_n\not=0$。证明：$p(x)$ 的有理数根 $x_0=\frac{p}{q}$ 满足 $p\mid a_0,q\mid a_n$, 其中 $p,q$ 为互素的整数。
+
+    \item  {\color{red} (选做)} 求所有的正整数列 $\{a_i\}$ 满足 $\forall i\not=j, \gcd(i,j)=\gcd(a_i,a_j)$.（提示：Don't spend too much time on this question）
+\end{enumerate}
+
+
+{\color{red} 注意：10.8和10.10作业应于10.10-10.15期间提交}
+
+\newpage
+\head
+
+
+ \begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第九次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   10/15 \quad  第七周/星期二} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{54}
+
+    \item 设$\varphi:R_1 \to R_2 $为环同态，证明：\\
+    (1) 若$J\triangleleft R_2$，则$\varphi^{-1}(J):=\{r_1\in R_1|\varphi(r_1)\in J\}$为$R_1$的理想;\\
+    (2) 若$I\triangleleft R_1$且$\varphi$为满射，则$\varphi(I)\triangleleft R_2$;\\
+    (3) 给出反例说明若$\varphi$不为满射则(2)不一定成立。
+    
+    \item 设I为R的理想，证明：
+    $$M_2(I):=\left\{\left. \begin{pmatrix} a & b \\ c & d\\\end{pmatrix}\right| a,b,c,d\in I\right\}$$
+    为R上矩阵代数$M_2(R)$的理想。
+    \item 设R为环（不一定交换），证明：
+    $$(a)=\left\{\left.\sum_{i=1}^n x_iay_i\right|x_i.y_i\in R,n\in \mathbb{N}\right\},$$
+    其中左边为由$a$生成的理想,即定义为包含$a$的最小理想。
+    \item 设$R$为含幺交换环. 设$I_1,I_2\triangleleft R$是两个理想, 若$I_1+I_2=R$, 则称$I_1,I_2$\textbf{互素}.
+ \begin{itemize}
+ \item[(1)] 若$I_1,I_2$互素, 证明$I_1\cap I_2=I_1I_2$;
+ \item[(2)] 若$I_1,\cdots,I_n$两两互素, 证明:
+ \begin{itemize}
+ \item[(a)] $I_1$与$I_2\cdots I_n$互素;
+ \item[(b)] $I_1\cap\cdots\cap I_n=I_1\cdots I_n$.
+ \end{itemize}
+ \end{itemize}
+\end{enumerate}
+
+
+{\color{red} 注意：10.15和10.17作业应于10.17-10.22期间提交}
+
+\newpage
+\head
+
+ \begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第十次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   10/17 \quad  第七周/星期四} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{58}
+ \item 设$f$为$\mathbb{Z}_{>0}$上的函数
+ \begin{itemize}
+ \item[(1)] 若对所有互素的正整数$m,n$, 有$f(mn)=f(m)f(n)$, 则称$f$为积性函数;
+ \item[(2)] 若对任意的正整数$m,n$, 有$f(mn)=f(m)f(n)$, 则称$f$为完全积性函数;
+ \end{itemize}
+ 设正整数$n$的因式分解为$n=p_1^{v_{p_1}(n)}\cdots p_s^{v_{p_s}(n)}$, 定义
+ $$\sigma_k(n)=\sum_{d|n,d\geq 1}d^k$$
+ 证明:
+ \begin{itemize}
+ \item[(1)] $$\sigma_k(n)=\prod_{i=1}^s\frac{p_i^{(v_{p_i}(n)+1)k}-1}{p_i^k-1},(k\geq 1);$$
+ \item[(2)] $\sigma_k(n)$为积性函数但不是完全积性函数.
+ \end{itemize}
+ \item (习题3.7) 设$n> 1$为整数，如果对于任何整数$m$,或者$n\mid m$或者$(n,m)=$
+1,则 $n$ 必是素数.
+ \item (习题3.8) 设整数$n>2$,证明：$n$和$n!$之间必有素数.由此证明素数有无穷
+多个.
+ \item (习题3.11) 设$a,b$是整数，$a\neq b,n$是正整数.如果$n\mid(a^n-b^n)$,则$n\mid\frac{a^n-b^n}{a-b}.$
+ \item (习题3.12) 设$n\geqslant1.$证明：
+  \begin{itemize}
+\item[(1)] n为完全平方数的充要条件是$\sigma _0( n)$为奇数，
+\item[(2)] $\sigma _0( n) \leqslant 2\sqrt {n}+ 1;$
+\item[(3)] $n$的正约数之积等于$n^\frac{\sigma_0(n)}2.$
+\end{itemize}
+ \item (习题3.13) 设$m\in\mathbb{Z}_+$ 的因式分解为$m=\prod_ip_i^{\alpha_i}$.若$f$ 为积性函数，证明
+$$f(m)=\prod_if(p_i^{\alpha_i}).$$
+ \item {\color{red} (选做)} (习题3.9)
+ \begin{itemize}
+ \item[(1)]设$m$为正整数，证明：如果$2^m+1$为素数，则$m$为 2 的方幂。
+\item[(2)]对$n\geqslant0$,记$F_n=2^{2^n}+1$,这称为费马数. 证明：如果$m>n$,则
+$F_n\mid(F_m-2);$
+\item[(3)]证明：如果$m\neq n$,则$(F_m,F_n)=1.$由此证明素数有无穷多个.
+ \end{itemize}
+ 
+ \item {\color{red} (选做)} (习题3.10)
+  \begin{itemize}
+ \item[(1)]设$m,n$都是大于 1 的整数，证明：如果$m^n-1$是素数，则
+$m=2$并且$n$是素数.
+\item[(2)]设$p$是素数，记$M_p=2^p-1$,这称为梅森数. 证明：如果$p,q$是不
+同的素数，则$(M_p,M_q)=1.$
+\end{itemize}
+ \item {\color{red} (选做)} (习题3.14)对于 $n=p_1^{e_1}\cdots p_s^{e_s}\in\mathbb{Z}_+$,令
+
+
+$$\mu\left(n\right)=\begin{cases}1,&\text{如果 }n=1,\\\left(-1\right)^{s},&\text{如果 }e_{1}=\cdots=e_{s}=1,\\0,&\text{其他情况}.\end{cases}$$
+
+
+$\mu(n)$称为默比乌斯(Möbius)函数，证明:
+
+$$\left.\sum_{1\leqslant d|n}\mu\left(d\right)=\left\{\begin{matrix}1,&\text{如果 }n=1,\\0,&\text{如果 }n>1.\end{matrix}\right.\right.$$
+ \item {\color{red} (选做)} (习题3.15) 设$f(x)$和$g(x)$为两个定义在正整数集合$\mathbb{Z}_+$上的函数 (值域可以
+为任何数域).证明:
+
+\begin{itemize}
+    \item[(1)] $g(n)=\sum_{1\leqslant d\mid n} f(d)$当且仅当$f(n)=\sum_{1\leqslant d\mid n}\mu(d)g(\frac n d).$
+\item[(2)]如果$g\left(x\right)\neq0$,则$g(n)=\prod_{1\leqslant d\mid n}f(d) $当且仅当$f(n)=\prod_{1\leqslant d\mid n}g(\frac nd)^{\mu(d)}.$
+\end{itemize}
+其中$\mu$为上题的默比乌斯函数。上面两个等价关系习惯上称为 默比乌斯反演公式(Möbius inversion formula).
+
+ \item  {\color{red} (选做)} 证明ED（欧几里得整环）$\Rightarrow$ PID（主理想整环）。
+ 
+\end{enumerate}
+
+
+{\color{red} 注意：10.15和10.17作业应于10.17-10.22期间提交}
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第十一次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   10/22 \quad  第八周/星期二} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{69}
+    \item 证明：连续n个整数中恰有一个被n整除.
+ \item 
+ \begin{itemize}
+ \item[(1)] 证明：完全平方数模3同余于0或1，模4同余于0或1，模5同余于0,1或4；
+ \item[(2)] 证明：完全立方数模9同余于0或±1;整数的四次幂模16同余于0或1.
+ \end{itemize}
+ \item 设$a$是奇数，n是正整数，证明：$a^{2^n}\equiv 1\ mod\ 2^{n+2}$.
+ \item 设$m,n$都是正整数且有$m=nt$，则模n的任何一个同余类
+ \begin{equation}
+ \{x\in\mathbb{Z}|x\equiv r\ mod\ n\}\nonumber
+ \end{equation}
+ 可表示为t个模m的(两两不同的)同余类
+ \begin{equation}
+ \{x\in\mathbb{Z}|x\equiv r+in\ mod\ m\}(i=0,1,...,t-1)\nonumber
+ \end{equation}
+ 之并.
+ \item 计算如下同余方程({\color{blue} 注:需要有计算过程})：\begin{enumerate}
+     \item $5x\equiv 11 \mod 13$
+     \item $29x \equiv 7  \mod 17$
+     \item $26x \equiv 34 \mod 43$
+ \end{enumerate}
+ \item 设p为奇素数，证明：\\
+    (1)\quad $\tbinom{p-1}{i-1} \equiv (-1)^{i-1} \mod p$；\\
+    {\color{red} (选做)}(2)\quad $\sum\limits_{i=1}^{p-1} 2^i\cdot i^{p-2} \equiv \sum\limits_{i=1}^{\frac{p-1}{2}} i^{p-2} \mod p$。({\color{blue}提示:利用(1)，以及证明(2)两边在模p意义下等于$-\frac{1}{p}(2^p-2)$})
+\end{enumerate}
+
+{\color{red} 注意：10.22和10.24作业应于10.24-10.29期间提交}
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第十二次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   10/24 \quad  第八周/星期四} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{75}
+
+\item 判定如下同余方程组是否有解,如果有解求出解集:
+\begin{enumerate}
+ \item  $\begin{cases}
+ x\equiv 4321 \mod\ 440533,\\
+ x\equiv 138344 \mod\ 563137,\\ 
+ \end{cases}$
+ \item  $\begin{cases}
+ x\equiv 4321 \mod\ 266243,\\
+ x\equiv 13834 \mod\ 478997.\\ 
+ \end{cases}$
+\end{enumerate}
+{\color{red} 注: 这题的目的是让大家感受一下,当$m_i$比较大时,不同方法的效率. 课堂上有部分同学没有按照辗转相除法来求解同余方程组, 大家可以先试试用自己的方法解这一道题. 比较一下,辗转相除法和自己的方法那个更高效. 这一题允许大家用计算器做加减乘.}
+
+\item 利用中国剩余定理求解下列同余方程组：
+\[\begin{cases}
+ 2x\equiv \ 7 \mod\ 11,\\
+ 3x\equiv 12 \mod\ 17,\\
+ 5x\equiv \ 3 \mod\ 19.
+ \end{cases}\]
+ \item 求解下列同余方程组:
+\[\begin{cases}
+ x \equiv 11 \mod\ \ 40,\\
+ x \equiv 31 \mod\ 100,\\
+ x \equiv 45 \mod\ \ 98.
+ \end{cases}\]
+
+ \item (a). 设$p$为素数, $r$为正整数. 求 $\varphi(p^r)$. (其中$\varphi$为欧拉函数.) \\
+ (b). 设$p,q$为不同的素数. 求$\varphi(pq)$.
+
+ \item 证明：设p为素数，则有$(p-1)! \equiv -1 \mod p$（威尔逊定理). ({\color{blue} 提示: $1,\cdots,p-1$ 中除了$1$和$-1$外,其它元素可两两配对使得它们乘积模$p$同余于$1$.})
+\item 设p为奇素数，如果$r_1,\cdots,r_{p-1}$与$r_1^{'},\cdots,r_{p-1}^{'}$都过模p的非零同余类$\{ [1],[2],\cdots,[p-1]\}$，证明：$r_1r_1^{'},\cdots,r_{p-1}r_{p-1}^{'}$不过模p的非零同余类$\{ [1],[2],\cdots,[p-1]\}$，即证明存在$i\neq j$，使得$r_ir_i^{'} \equiv r_jr_j^{'} \mod p$. ({\color{blue}提示: 威尔逊定理.})
+
+{\color{red} 以下题目选做. 以后想学数论的同学必做.}
+ 
+ \item 证明：对于任意正整数$n$，都存在$n$个连续正整数，使得它们其中每个数都不是素数的幂次(即不为$p^{\alpha}$，其中$p$为素数，$\alpha$为正整数).
+ \item 设m为正整数，n为整数，证明：数2n可以表示为两个与m互素的整数之和（{\color{blue} 提示：我们先证明一个引理：对于m为正整数，n为整数，存在整数$a,b$且满足$(a,m)=1,(b,m)=1$，使得$2n\equiv a+b \mod m$}）
+
+%\item (1) 设$m,n$为正整数，$(m,n)=1$，证明：$m^{\varphi(n)}+n^{\varphi(m)} \equiv 1 \mod mn$;\\
+%(2) 设$a,m$为正整数，证明：$a^m\equiv a^{m-\varphi(m)} \mod m$.
+\item 给定素数$p>5$，对于$k\in\{1,\cdots,p-1\}$，我们在模$q=p^n$意义下定义$\frac{1}{k}\equiv [x_k] \mod q,\text{其中}x_k\text{满足}x_k\cdot k \equiv 1 \mod q$，证明下列式子成立：\\
+    (1)\quad$\sum \limits_{k=1}^{p-1} \frac{1}{k^4} \equiv 0 \mod p$；\\
+    (2)\quad$\sum \limits_{k=1}^{p-1} \frac{1}{k^3} \equiv 0 \mod p^2$.
+\end{enumerate}
+
+{\color{red} 注意：10.22和10.24作业应于10.24-10.29期间提交}
+
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第十三次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   10/29 \quad  第九周/星期二} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{84}
+
+    \item 计算$\varphi(360),\varphi(429)$.
+    
+    \item (1)证明: 当$n\geq 3$时, $\varphi(n)$是偶数;\\
+    (2)证明: 当$n\geq 2$ 时, 不超过n且与n互素的正整数之和是$\frac{n\varphi(n)}{2}$.
+    
+    \item (1) 求$3^{421}$十进制表示中的末两位数码.\\
+          (2) 求$18^{1001}$十进制表示中的末两位数码.
+    \item 设$\gcd(a,10)=1$，证明：$a^{20} \equiv 1 \mod 100$.
+
+    
+\item 设m,n为正整数，$\gcd(m,n)=1$.证明：$m^{\varphi(n)}+n^{\varphi(m)} \equiv 1 \mod mn$.
+
+    \item 设$a$与$m$为正整数. 记群同态 $\mathbb Z/m\mathbb Z \rightarrow \mathbb Z/m\mathbb Z, \overline{x}\mapsto \overline{ax}$ 为$\varphi_a$. 证明: 
+ 对于任意$b\in \mathbb Z$, 若$\varphi_a^{-1}(\overline{b})\neq \emptyset$, 则 $|\varphi_a^{-1}(\overline{b})|=|\ker(\varphi_a)|=\gcd(a,m)$.
+
+
+
+
+\item 设$q$为素数, $k$为域. 证明：\\
+    (1) $\varphi\colon \mathbb Z\rightarrow k, n\mapsto n\cdot 1_k$ 为环同态. (注:此处$\cdot$ 不是$k$中乘法, 是取$1_k$的倍数.)\\
+    (2) 若$\varphi$不是单同态，则理想$\ker(\varphi)$的正生成元为素数, 记为$p$. \\
+    (3) 若$k$为有限域, 则$p\mid |k|$. (提示: $k$ 可写为形如 $\{a+n\cdot 1_k\mid n\in \mathbb Z\}$ 的子集的无交并, 这些子集的元素个数均为$p$.)\\
+    (4) 若$k$为$q$元域, 则$k$与$\mathbb{F}_q:=\mathbb Z/q\mathbb Z$同构. (提示: 记 $n_k:=n\cdot 1_k$, 则 $k=\{0_k,1_k,\cdots, (q-1)_k\}$.)
+
+\end{enumerate}
+
+{\color{red} 注意：10.29和10.31作业应于10.31-11.5期间提交}
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第十四次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   10/31 \quad  第九周/星期四} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{91}
+
+    \item (习题6.1) 证明在群中\\
+    (1) 元素$x$与它的逆的阶相同.\\
+    (2) 元素$x$与它的共轭的阶相同.($x$与$y$在$G$中共轭$\iff \exists g\in G, s.t. g^{-1} x g=y$ )\\
+    (3) 元素$xy$与$yx$的阶相同.\\
+    (4) 元素$xyz$与$zyx$的阶不一定相同.
+
+    \item (习题6.2) 证明$\frac{3}{5}+\frac{4}{5} i \in \mathbb{C}^{\times}$的阶为无穷.
+
+    \item (习题6.3) 设
+    $$ A=\begin{pmatrix}0&-1\\1&0\end{pmatrix}, B=\begin{pmatrix}0&1\\-1&-1\end{pmatrix}. $$
+    试求$A$，$B$，$AB$和$BA$在$GL_2(\mathbb{R})$中的阶.
+
+    \item (习题6.4) 证明群中元素$a$的阶$\leq 2$当且仅当$a=a^{-1}$.
+
+    \item (习题6.5) 证明如果群$G$中任何元素的阶$\leq 2$，则$G$是阿贝尔群.
+
+    \item (习题6.6) 设$x$在群中的阶是$n$，求$x^k(k\in \mathbb{Z})$的阶.
+
+    \item {\color{red} (选做)} 设$p$是素数，试求$\mathbb{Z}/p\mathbb{Z} \times \mathbb{Z}/p\mathbb{Z}$ 有多少个$p$阶元？有多少个$p$阶子群？
+
+    \item {\color{red} (选做)} 给出$\mathbb{Z}/m_1\mathbb{Z} \times \mathbb{Z}/m_2\mathbb{Z} \times \dots
+    \times \mathbb{Z}/m_n\mathbb{Z}$为循环群的充要条件.
+
+\end{enumerate}
+
+{\color{red} 注意：10.29和10.31作业应于10.31-11.5期间提交}
+
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第十五次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   11/5 \quad  第十周/星期二} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{99}
+
+    \item (1) 记$G=\left\langle\begin{pmatrix} 1&1\\-1&0\\\end{pmatrix}\right\rangle\subset \mathrm{GL}_2(\mathbb Q)$. 求群$G$所有子群.\\
+          (2) 记$G=\left\langle\begin{pmatrix} 1&1\\0&1\\\end{pmatrix}\right\rangle\subset \mathrm{GL}_2(\mathbb Q)$. 求群$G$所有子群.
+
+    \item (习题6.10) 设 $p$ 为奇素数, $X$ 为2阶整系数矩阵， 而 $I=\begin{pmatrix}
+        1 & 0\\
+        0 & 1
+    \end{pmatrix}$. 如果 $I+pX\in \text{SL}_2(\mathbb{Z})$ 的阶有限, 证明 $X=0$.
+
+    \item (习题6.12) 设 $G=\langle g\rangle$ 为 $n$ 阶循环群. 证明: 元素 $g^k$ 与 $g^l$ 有相同的阶当且仅当 $\gcd(k,n)=\gcd(l,n)$. 
+    \item (习题6.13) 设 $G=\langle g \rangle$ 为100阶循环群. 试求\\
+    (1)\quad 所有满足 $a^{20}=1$ 的元素 $a$. \\
+    (2)\quad 所有阶为20的元素 $a$. 
+    \item (习题6.21) $S^1=(\{z\in \mathbb{C}\mid |z|=1\},\cdot)$ 的任意有限子群均为循环群.
+
+    \item 设 $G_1$ 和 $G_2$ 为两群. 设$\varphi_i\colon G_i\rightarrow G_i$为$G_i$的自同构($i=1,2$).  证明
+    \[\varphi_1\times\varphi_2 \colon G_1\times G_2 \rightarrow G_1\times G_2, \quad (g_1,g_2)\mapsto (\varphi_1(g_1),\varphi_2(g_2))\]
+    为群$G_1\times G_2$的自同构, 且 
+    \begin{equation*} 
+        \psi\colon \mathrm{Aut}(G_1)\times\mathrm{Aut}(G_2) \rightarrow \mathrm{Aut}(G_1\times G_2), \quad (\varphi_1,\varphi_2)\mapsto \varphi_1\times\varphi_2 \qquad \qquad (*)
+    \end{equation*}
+    为群的单同态.  
+    \item 设$p,q$为两不同的素数. 令 $G_1=\mathbb{Z}/p\mathbb{Z}$, $G_2=\mathbb{Z}/q\mathbb{Z}$. \\
+    (1)\quad 求 $G=G_1\times G_2$ 所有生成元.\\
+    (2)\quad 写出 $G$ 的所有子群.\\
+    (3)\quad 证明此时, $(*)$ 中定义的$\psi$为同构.
+   
+
+    \item {\color{red} (选做)} 设$p$为素数. 令 $G_1=G_2=\mathbb{Z}/p\mathbb{Z}$. \\
+    (1)\quad 写出 $G=G_1\times G_2$ 的所有子群.\\
+    (2)\quad 证明此时, $(*)$ 中定义的$\psi$为不是同构.
+
+    \item {\color{red} (选做)} (习题6.9) 设 $m$ 是奇正整数且不是素数幂次.\\
+    (1)\quad 求 $(\mathbb{Z}/m\mathbb{Z})^\times$ 中2阶元的个数.\\
+    (2)\quad 证明
+    $$ \prod_{g\in(\mathbb{Z}/m\mathbb{Z})^\times} g=1$$
+    ({\color{blue}提示: 习题6.7,6.8})
+    
+\end{enumerate}
+
+{\color{red} 注意：11.5和11.7作业应于11.7-11.12期间提交}
+
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第十六次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   11/7 \quad  第十周/星期四} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{108}
+
+    \item 已知 $(\mathbb{Z}/17\mathbb{Z})^*$ 为循环群, $\overline{3}$ 为其生成元: \\
+    (1) 写出对数表:\\
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    $k$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15\\ \hline
+    $3^k$ & $\overline{1}$ & $\overline{3}$ & & & & & & & & & & & & & & \\ \hline
+    \end{tabular}\\
+    (2) 利用对数表求解同余方程: $10^x\equiv5(\text{mod}\ 17)$.\\
+    (3) 利用对数表求解同余方程: $x^6\equiv2(\text{mod}\ 17)$.
+
+    \item 利用中国剩余定理将 $$(\mathbb{Z}/(2^3\times 5\times 7)\mathbb{Z})\times (\mathbb{Z}/(2\times 7^2)\mathbb{Z})\times (\mathbb{Z}/(5\times 11)\mathbb{Z})$$ 化为标准形式.  \\
+
+    {\color{red} 以下题目选做. 按如下的步骤证明有限交换群的结构定理}
+
+    \item 设 $G$ 为有限交换群. $p$ 为素数.\\
+    (1)\quad $G(p):=\{g\in G\mid \exists k\in\mathbb{N},\text{s.t. } g^{p^k}=1_{G}\}$ 为 $G$ 的子群.\\
+    (2)\quad 集合 $\{\text{素数  }\ p\mid \exists g\in G,\text{s.t. }p\mid \text{ord}(g)\}$ 为有限集. 记为 $\{p_1,p_2,\cdots,p_s\}$. \\
+    (3)\quad 映射 
+    \begin{align*}
+    \varphi: G(p_1)\times G(p_2)\times \cdots\times G(p_s)&\longrightarrow G\\
+    (g_1,g_2,\cdots,g_s)&\longmapsto g_1g_2\cdots g_s
+    \end{align*}
+    为群同态.\\
+    (4)\quad $\varphi$ 为单同态{(提示: 设 $\varphi(g_1,\cdots,g_s)=1$ , 其中 $g_i^{p_i^{\alpha_i}}=1_G$, 取 $M_i$ 满足 $M_i\equiv 1(\text{mod}\ p_i^{\alpha_i}),M_i\equiv0 (\text{mod}\  p_j^{\alpha_j})(\forall j\not=i)$,则 $1_G=\varphi((g_1\cdots g_s)^{M_i}=g_i$)}\\
+    (5)\quad $\varphi$ 为满同态. (提示: 设 $g\in G$, $n$= ord($g$)= $p_1^{\alpha_1}\cdots p_s^{\alpha_s}(\alpha_i \geq 0)$, $n_i:=n/p_i^{\alpha_i}$, 则 gcd($n_1,\cdots,n_s$)=1$\implies\exists x_1,\cdots,x_s,\text{s.t. } \sum_{i} n_ix_i=1,g=\prod_i (g^{n_i})^{x_i}$)
+
+    \item 设 $G$ 为有限交换群, $p$ 为素数,若 $G=G(p)$, 设 $g_0$ 为 $G$ 中一个阶数最大的元素, 即 $p^\alpha=\text{ord}(g_0)=\max_{g\in G} \text{ord}(g)$ . 则存在 $H_0\leq G$ 使得 映射 
+    \begin{align*}
+    \varphi: \langle g_0\rangle \times H_0&\longrightarrow G\\
+    (g_0^i,h)&\longmapsto g_0^ih
+    \end{align*}
+    为群同构. 请按如下步骤完成证明:\\
+    取$H_0$ 为 $\Sigma:=\{H\leq G\mid \langle g_0\rangle \cap H=\{1_G\}\}$ 中阶数最大的一个子群, 并如上面构造映射 $\varphi$.  \\
+    (1)\quad 验证 $\varphi$ 为群的单同态.\\
+    (2)\quad $\forall g\in G,g^{p^\alpha}=1_G$.\\
+    (3)\quad 若 $g^p\in \text{Im}\ \varphi$, 则存在 $i\in\mathbb{Z}$, s.t. $(gg_0^i)^p\in H_0$. (提示: 若$g^p=g_0^kh_0$,则 $p\mid k$ ,$(gg_0^{-\frac{k}{p}})^p=h_0\in H$)\\
+    (4)\quad 若 $((gg_0)^i)^p \in H_0$, 则 $g\in \text{Im}\varphi$.(提示: 否则 $\langle gg_0^i\rangle \cdot H_0\notin \Sigma\implies \exists h\in H_0,j,l,\text{s.t. } g_0^j=(gg_0^i)^l\cdot h\not=1_G\implies p\nmid l\implies g=g_0^{-i} (g_0^j h^{-1})^{l'}\in \text{Im}\ \varphi$, 其中 $ll'\equiv 1$(mod $p^\alpha$) )\\
+    (5)\quad 结合(2)(3)(4),说明 $\varphi$ 为满射. 
+\end{enumerate}
+
+{\color{red} 注意：11.5和11.7作业应于11.7-11.12期间提交}
+
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第十七次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   11/19 \quad  第十二周/星期二} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{112}
+    \item 证明阶$\leq5$ 的群都是阿贝尔群.
+    \item 在同构意义下确定所有的4阶群.
+    \item 设$g_1,g_2$是群 G 的元素，$H_1,H_2$是 G 的子群，证明下列两条等价：
+    \begin{enumerate}
+\item[1)]$g_1H_1\subseteq g_2H_2;$
+\item[2)]$H_1\subseteq H_2$且$g_2^{-1}g_1\in H_2$.
+\end{enumerate}
+
+\item 设$g_1,g_2$是群 G 的元素，$H_1,H_2$是 G 的子群。证明如果$g_1H_1\cap g_2H_2\neq\varnothing$,则它
+是关于子群$H_1\cap H_2$的左陪集.
+\item 如果$H$与$K$是$G$的子群且阶互素，证明$H\cap K=\{1\}$.
+\item 设$G=\bigsqcup_{i\in I} a_{i}H$,对每个$i$,取$s_{i}\in a_{i}H$.证明:$S=\{s_{i}|i\in I\}$为左陪集代表元系,即$G=\bigsqcup_{i\in I} s_{i}H$.
+\item 若$aH=Hb$,则$aH=Ha=bH=Hb$.
+\item {\color{red} (选做)} $A=\mathbb{Z}/m_{1}\mathbb{Z}\times\cdots\times \mathbb{Z}/m_{n}\mathbb{Z}$,其中$2\leq m_{1}\mid m_{2}\cdots\mid m_{n},\\
+A[d]:=\left\{a\in A|da=0\right\}$,证明：
+\begin{enumerate}
+    \item[(1)] $A[d]$为$A$的子群;
+    \item[(2)] $\# A[d]=\prod_{i=1}^{n}gcd(d,m_{i})$;
+    \item[(3)] 若$\mathbb{Z}/m_{1}\mathbb{Z}\times\cdots\times \mathbb{Z}/m_{n}\mathbb{Z}\cong \mathbb{Z}/m_{1}^{'} \mathbb{Z}\times\cdots\times \mathbb{Z}/m_{n^{'}}^{'} \mathbb{Z}$,其中$2\leq m_{1}\mid m_{2}\cdots\mid m_{n},2\leq m_{1}^{'}\mid m_{2}^{‘}\cdots\mid m_{n^{'}}^{'}$.则$n=n^{'}$且$m_i=m_i^{'}(\forall i=1,\cdots,n)$.\\
+    (\color{blue}提示: $A\cong A^{'}\Rightarrow \# A[d]=\# A^{'}[d](\forall d)$)
+\end{enumerate}
+
+\end{enumerate}
+
+{\color{red} 注意：11.19和11.21作业应于11.21-11.26期间提交} 
+
+
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第十八次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   11/21 \quad  第十二周/星期四} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{120}
+    \item 设 $\varphi:G\to G^{\prime}$ 为群同态:,若 $N^{\prime}\lhd G^{\prime}$,则 $\varphi^{-1}(N^{\prime})\lhd G$.
+    \item 设 $H\leq G,N\lhd G$,则 $HN:=\{hn|h\in H,n\in N\}$为G的子群.
+    \item 请给出 $X=\{A,B,C\}$上的所有等价关系.
+    \item 请证明等价关系中的3条公理相互独立,即
+    \begin{enumerate}
+        \item[1)] 存在关系满足自反性、对称性，但不满足传递性；
+        \item[2)] 存在关系满足自反性、传递性，但不满足对称性；
+        \item[3)] 存在关系满足对称性、传递性，但不满足自反性.
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item[(1)] 设$f:X\to Y$为集合之间的映射,则 $\mathcal{R}_f:=\{(x_1,x_2)|f(x_1)=f(x_2)\}$为$X$上的等价关系.
+        \item[(2)] 若$\mathcal{R}$为$X$上等价关系,则存在映射 $g:X\to Y$使得 $\mathcal{R}=\mathcal{R}_g$.
+    \end{enumerate}
+    \item {\color{red} (选做)} 若$H\lhd G$,则
+    \begin{enumerate}
+        \item[(a)] $(G/H,\cdot)$构成群;
+        \item[(b)] $\varphi:G\to G/H,g\mapsto gH$为群的满同态;
+        \item[(c)] $\ker \varphi =H$.
+    \end{enumerate}
+    \item {\color{red} (选做)} 若$\varphi:G\to G^{\prime}$ 为群同态，则im $\varphi \cong G/\ker \varphi$.
+    \item {\color{red} (选做)} 设$R$为环，$I\lhd R$为理想，则
+    \begin{enumerate}
+        \item[(a)] $(R/I,+,\cdot)$构成环;
+        \item[(b)] $\varphi:R\to R/I,r\mapsto r+I$为环的满同态;
+        \item[(c)] $\ker \varphi =I$.
+    \end{enumerate}
+    \item {\color{red} (选做)} 若$\varphi:R\to R^{\prime}$ 为环同态，则im $\varphi \cong R/\ker \varphi$.
+    \item {\color{red} (选做)}设$R$为整环,在
+    $$R\times R\backslash\{0\}=\{(p,q)|p\in R,q\in R\backslash\{0\}\}$$
+    上定义关系
+    $$(p,q)\sim(s.t)\overset{def}{\Leftrightarrow}pt=sq$$
+    \begin{enumerate}
+        \item[(a)] 证明"$\sim$"为$R\times R\backslash\{0\}$上的等价关系.
+        \item[(b)] 记$$\frac{p}{q}:=\{(s,t)|(s,t)\sim(p,q)\}$$
+        $$Frac(R):=\{\frac{p}{q}|p\in R,q\in R\backslash\{0\}\}$$
+        证明：$\begin{cases}\frac{p}{q}+\frac{s}{t}:=\frac{pt+sq}{qt}\\\frac{p}{q}\cdot\frac{s}{t}:=\frac{ps}{qt}\end{cases}$是良定义的.
+        \item[(c)] 证明：$(Frac(R),+,\cdot)$构成域.
+        \item[(d)] 证明：$\varphi:R\to Frac(R),r\mapsto \frac r1$为环的单同态.
+    \end{enumerate}
+\end{enumerate}
+
+{\color{red} 注意：11.19和11.21作业应于11.21-11.26期间提交} 
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第十九次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   11/26 \quad  第十三周/星期二} % <---- Fill in your names here!
+\end{center} 
+
+\paragraph{定义}若$(\mathbb{Z}/m\mathbb{Z})^\times$循环，且$g\ mod\ m$生成$(\mathbb{Z}/m\mathbb{Z})^\times$,则称$g$为模$m$的一个原根.
+
+\begin{enumerate}\setcounter{enumi}{130}
+ \item 设$p$是奇素数.证明：模$p$的任意两个原根之积不是模$p$的原根.
+ \item 设$p$是奇素数，对于任意的$0\leq i \leq p-2$，证明都有$\sum\limits_{x=1}^{p} x^i \equiv 0 \mod p$成立
+ \item 设$n,a$都是正整数且$a>1$,试求$a$在群$(\mathbb{Z}/(a^n-1)\mathbb{Z})^\times$的阶,并证明:$n\mid \varphi(a^n-1)$.
+ \item 设$m$是正整数.整数$a$和$b$对于模$m$的阶分别是$s$及$t$,且$(s,t)=1$.证明:$ab$模$m$的阶是$st$.
+ \item \begin{itemize}
+ \item[(1)]对$p=3,5,7,11,13,17,19,23$,求模$p$的最小正原根（直接给出答案即可）；
+ \item[(2)]求模11的所有原根（需要计算过程）
+ \end{itemize}
+ \item 设$\varphi :G\twoheadrightarrow H$为群的满同态.证明:若$G$为循环群,则$H$也为循环群.
+ \item 设$G$是一个n阶有限群，若对任一$n$的正因子$m$，$G$中至多只有一个$m$阶子群，证明$G$是循环群
+ \item （{\color{red} 选做}） 设$G$为有限阿贝尔群，取正整数$d$满足$d||G|$，证明$G$中有一个$d$阶子群
+\end{enumerate}
+
+{\color{red} 注意：11.26和11.28作业应于11.28-12.3期间提交}
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第二十次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   11/28 \quad  第十三周/星期四} % <---- Fill in your names here!
+\end{center} 
+
+
+\begin{enumerate}\setcounter{enumi}{138}
+ \item \begin{itemize}
+     \item[(1)] 求模$11^{101}$的一个原根（要求计算过程）
+     \item[(2)] 求模$18$的所有原根（要求计算过程）
+ \end{itemize}
+ \item 设$p$是奇素数,假设存在数$a,p\nmid a$,使得对$p-1$的所有素因子$q$,有$a^{(p-1)/q}\not\equiv 1\ (mod\ p)$,证明：$a$是模$p$的原根.
+ \item 设$p$与$q=2p+1$都是素数时.证明
+ \begin{itemize}
+ \item[(1)] 当$p\equiv1\ (mod\ 4)$时，$2$是模$q$的原根;
+ \item[(2)] 当$p\equiv3\ (mod\ 4)$时，$-2$是模$q$的原根.
+ \end{itemize}
+
+ \item 给定义奇素数$p$，求所有$\mathbb{Z}\rightarrow \mathbb{Z}$的函数$f$，满足对任意的整数$m,n$都有$f(mn)=f(m)f(n)$，以及如果$m\equiv n \mod p$，则有$f(m)=f(n)$.
+
+ \item 设$n>1$是正整数，证明下述命题等价：\begin{itemize}
+     \item[(1)] 对任意的非零自然数$a$，都有$n|(a^n-a)$
+     \item[(2)] 对$n$的任一素因子$p$，都有$p$恰好整除$n$且$(p-1)|(n-1)$ 
+ \end{itemize}
+
+ \item（{\color{red}选做}） 证明：群$G$是循环群当且仅当$G$的任一子群都形如$G^m=\{g^m|g\in G\}$，其中$m$是非负整数。\\（提示：分$G$中有无限阶元和仅有限阶元的情况讨论，并且可以知道在后者情况下$G$的所有元素的阶构成的集合是有限集）
+\end{enumerate}
+
+{\color{red} 注意：11.26和11.28作业应于11.28-12.3期间提交}
+
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第二十一次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   12/3 \quad  第十四周/星期二} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{144}
+ \item 计算$(\frac{17}{23}),(\frac{19}{37}),(\frac{60}{79}),(\frac{92}{101})$.
+
+ \item \begin{enumerate}
+    \item[(1)] 确定以$-3$为二次剩余的素数;
+    \item[(2)] 确定以$5$为二次剩余的素数.
+ \end{enumerate}
+
+ \item 设$p=4k+1$是素数，$a$是$k$的因子，证明$(\frac{a}{p})=1$.
+
+ \item 设$p$是素数，$p\equiv1\ (mod\ 4)$，证明：
+ \begin{itemize}
+ \item[(1)] $\sum\limits_{\substack{r=1\\(\frac{r}{p})=1}}^{p-1}r=\frac{p(p-1)}{4}$;
+ \item[(2)] $\sum\limits_{a=1}^{p-1}a(\frac{a}{p})=0$;
+ \item[(3)] $\sum\limits_{k=1}^{\frac{p-1}{2}}[\frac{k^2}{p}]=\frac{(p-1)(p-5)}{24}$.
+ \end{itemize}
+ (提示：$(\frac{p-r}{p})=(\frac{-1}{p})(\frac{r}{p})$，然后利用带余除法$k^2=[\frac{k^2}{p}]p+r_k$)
+ 
+ \item 设$p$是素数，$p\equiv 3\ (mod\ 4)$，且$p>3$,证明：
+ \begin{itemize}
+ \item[(1)] $\sum\limits_{\substack{r=1\\(\frac{r}{p})=1}}^{p-1}r\equiv0\ (mod\ p)$;
+ \item[(2)] $\sum\limits_{a=1}^{p-1}a(\frac{a}{p})\equiv0\ (mod\ p)$.
+ \end{itemize}
+ (提示：注意到$\sum\limits_{\substack{r=1\\(\frac{r}{p})=1}}^{p-1}r\equiv\sum\limits_{k=1}^{\frac{p-1}{2}}k^2\ (mod\ p)$)
+
+ \item 设$n>1$，$p=2^n+1$是素数。证明：模$p$的原根集合与模$p$的二次非剩余集合相同；进而证明$3,7$都是模$p$的原根.
+
+ \newpage
+ \item 设$p$是奇素数,$a$是整数.
+ \begin{itemize}
+ \item[(1)] 证明:同余方程$x^2-y^2\equiv a\ (mod\ p)$必有解;
+ \item[(2)] 若$(x,y)$和$(x',y')$均是上述同余方程的解,当$x\equiv x'$且$y\equiv y'\ (mod\ p)$时，我们将$(x,y)$和$(x',y')$看成模$p$的同一个解.证明：(1)中同余方程的解数是$p-1$(如果 $p\nmid a$)或$2p-1$(如果 $p\mid a$).
+ \end{itemize}
+ (提示：考虑集合$A=\{k^2\}\subset \mathbb{F}_p$与集合$B=\{k^2+a\}\subset \mathbb{F}_p$;第二问考虑分解$x^2-y^2=(x+y)(x-y)$并利用原根)
+
+
+\end{enumerate}
+
+{\color{red} 注意：12.3和12.5作业应于12.5-12.10期间提交}
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第二十二次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   12/5 \quad  第十四周/星期四} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{151}
+
+\item 求所有的素数$p$使得$x^2-15$在$\mathbb{F}_p[x]$中可约.
+
+ \item 设$a$是奇数，则有：\begin{enumerate}
+    \item[(1)] $x^2\equiv a \mod 2$对所有$a$都有解；
+    \item[(2)] $x^2\equiv a \mod 4$有解的充要条件是$a\equiv 1 \mod 4$，并且在此条件满足时有两个不同的解;
+    \item[(3)] $x^2\equiv a \mod 2^k(k\geq 3)$有解的充要条件是$a\equiv 1 \mod 8$，并且在此条件成立时恰有四个解：如果$x_0$是一个解，则$\pm x_0,\pm x_0+2^{k-1}$是所有解.
+\end{enumerate}
+
+\item 设$p$是奇素数,证明:$\mathbb{F}_p[x]$中形如$x^2+\alpha x+\beta$ 的二次多项式中,共有$\frac{p(p-1)}{2}$个不可约多项式.
+ (提示：$x^2+\alpha x+\beta=(x+2^{-1}\alpha)^2+\beta-4^{-1}\alpha^2$，对$(\frac{\beta}{p})$
+ 进行分类讨论并运用151题结论)
+ 
+ \item 设$p$是奇素数,$f(x)=ax^2+bx+c$且$p\nmid a$.记\begin{equation}
+ D=b^2-4ac.\nonumber
+ \end{equation}证明
+ \begin{equation}\nonumber
+ \sum_{x=0}^{p-1}(\frac{f(x)}{p})=\left\{
+ \begin{aligned}
+ -(\frac{a}{p}),如果p\nmid D,\\
+ (p-1)(\frac{a}{p}),如果p\mid D.
+ \end{aligned}
+ \right.
+ \end{equation}
+
+ \item 设$\mathbb{F}$是域，$a\in \mathbb{F}$，在多项式环$\mathbb{F}[x]$上证明：\begin{enumerate}
+    \item[(1)] 若$n$是正整数，则$x-a \mid x^n-a^n$;
+    \item[(2)] 若$n$是正奇数，则$x+a \mid x^n+a^n$.
+\end{enumerate}
+
+\end{enumerate}
+
+{\color{red} 注意：12.3和12.5作业应于12.5-12.10期间提交}
+
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第二十三次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   12/10 \quad  第十五周/星期二} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{156}
+
+\item 对于下面的情形, 用欧几里得算法求 $(f(x),g(x))$: \begin{enumerate}
+    \item[(1)] $F=\mathbb{Q},f(x)=x^3+x-1,g(x)=x^2+1$;
+    \item[(2)] $F=\mathbb{F}_2,f(x)=x^7+\overline{1},g(x)=x^6+x^5+x^4+\overline{1}$;
+    \item[(3)] $F=\mathbb{F}_3,f(x)=x^8+\overline{2}x^5+x^3+\overline{1},g(x)=\overline{2}x^6+x^5+\overline{2}x^3+\overline{2}x^2+\overline{2}$.
+\end{enumerate}
+
+\item 设 $m,n$ 是正整数, 证明: $F[x]$ 上多项式 $x^m-1$ 和 $x^n-1$ 的最大公因数是 $x^{(m,n)}-1$. 
+
+\item 设 $f(x),g(x)\in F[x]$, 且 $f(x)$ 与 $g(x)$ 互素, 则对任意正整数 $n$, $f(x^n)$ 与 $g(x^n)$ 也互素.
+
+\item (1) 求有理系数多项式 $\alpha(x),\beta(x)$ 使 $x^3\alpha(x)+(1-x)^2\beta(x)=1$;
+    \par(2) 更一般地, 对于正整数 $m,n$, 求有理系数多项式 $u(x),v(x)$ 使 $x^mu(x)+(1-x)^nv(x)=1$.
+
+\item 设 $f$ 和 $g$ 都是 $F[x]$ 中次数至少为1的多项式, 且不存在 $u\in F$, 使得 $f=ug$. 设 $d(x)$ 是 $u(x)$ 与 $V(x)$ 的最大公因子. 证明: 
+    \begin{enumerate}
+        \item[(1)] 存在多项式 $u(x),v(x)$, 使得 $\text{deg}\ u(x)<\text{deg}\ g(x)-\text{deg}\ d(x)$ 且 $d(x)=f(x)u(x)+g(x)v(x)$;
+        \item[(2)] 此时 $\text{deg}\ v(x)<\text{deg}\ f(x)-\text{deg}\ d(x)$;
+        \item[(3)] 符合 $(a)$ 中条件的多项式 $u(x),v(x)$ 是唯一确定的.
+    \end{enumerate}
+
+\item 设 $f(x),g(x)\in F[x]$ 满足 $g(x)\not=0$. 则 $\frac{f(x)}{g(x)}\in F(x)$, 其中 $F(x)$ 为 $F$ 上有理函数域. 下面对于形式分式的计算都是在分式域上进行. 则: 
+    \begin{enumerate}
+        \item[(1)] 设 $g(x)=a(x)b(x)$, 其中 $a(x)$ 与 $b(x)$ 互素且均非常数; 假设 deg$\ f<\text{deg}\ g$, 则存在唯一确定的 $r(x),s(x)\in F[x]$,  deg$\ r<\text{deg}\ a$, deg$\ s<\text{deg}\ b$, 使得 $\frac{f(x)}{g(x)}=\frac{r(x)}{a(x)}+\frac{s(x)}{b(x)}$;
+        \item[(2)] 设 \(g(x)\) 为首项系数为1, 其标准分解是 \(g(x)=\prod\limits_{i=1}^{l}p_{i}^{m_{i}}(x)\).  假设 \(\deg f<\deg g\), 则存在唯一确定的多项式 \(h_{i}(x)\in F[x],\deg h_{i}<m_{i}\deg p_{i}(1\leq i\leq l),\) 使得
+
+\(
+\frac{f(x)}{g(x)}=\frac{h_{1}(x)}{p_{1}^{m_{1}}(x)}+\cdots+\frac{h_{l}(x)}{p_{l }^{m_{l}}(x)};
+\)
+
+\item[(3)] 设 \(p(x)\in F[x]\) 是不可约多项式, m是正整数. 则对于任意 \(h(x)\in F[x],\) 若
+
+\(h(x)\neq 0\) 且 \(\deg h<m\deg p,\) 则存在唯一确定的多项式 \(\alpha_{i}(x)\in F[x](1\leq i\leq m)\) 使得 \(
+\frac{h(x)}{p^{m}(x)}=\frac{\alpha_{m}(x)}{p(x)}+\cdots+\frac{\alpha_{1}(x)}{p^ {m}(x)},
+\) 其中 \(\deg\alpha_{i}<\deg p;\)
+
+\item[(4)] 证明: 每一个分子的次数小于分母的次数, 且分母有标准分解 \(f(x)=p_{1}^{m_{1}}(x)\cdots p_{l}^{m_{l}}(x)\) 的有理分式 \(\frac{g(x)}{f(x)}\) 是部分分式的和, 每个部分分式的分母是 \(p_{i}^{k_{i}}(x)(k_{i}=1,\cdots,m_{i};i=1,\cdots,l),\)  而分子次数小于 \(\deg p_{i}\).
+    \end{enumerate}
+
+{\color{red} 注意：12.10和12.12作业应于12.12-12.17期间提交}
+
+
+\end{enumerate}
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第二十四次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   12/12 \quad  第十五周/星期四} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{162}
+
+\item 确定 \( \mathbb{F}_2[x] \) 与 \( \mathbb{F}_3[x] \) 中所有 2 次及 3 次的首项系数为 1 的不可约多项式.
+
+\item 设直线 \( y = ax + b \) 交曲线 \( y^2 = x^3 + cx + d \) 于两点 \( (x_1, y_1), (x_2, y_2) \). 试用 \( x_1, y_1, x_2, y_2 \) 表示 \( a, b, c \) 和 \( d \). 
+
+
+\item 设 \( f(x) \in \mathbb{F}_p[x], \deg f = p - 2 \). 若对所有 \( \alpha \in \mathbb{F}_p (\alpha \neq 0) \) 有 \( f(\alpha) = \alpha^{-1} \), 试确定 \( f(x) \). 
+
+\item 
+令分圆多项式 \( \Phi_n(x) = \prod_{k=1, (k,n)=1}^{n} (x - \zeta_n^k) \). 证明:\\
+(1) \( \prod_{1 \leq d | n} \Phi_d(x) = x^n - 1. \)\\
+(2) 如果 \( n \) 为大于 1 的奇数, 则 \( \Phi_{2n}(x) = \Phi_n(-x) \). \\
+(3) \( \Phi_n(x) = \prod_{1 \leq d | n} (x^d - 1)^{\mu(\frac{n}{d})}, \) 其中 \( \mu \) 为莫比乌斯函数. \\
+(注: 关于莫比乌斯函数的定义参考习题67和68, 允许不加证明地使用这两题中的结论)
+
+\item 设 \( F \) 为 \( F' \) 的子域, \( f(x), g(x) \in F[x] \). 证明
+
+1) $f$ 在 \( F[x] \) 中整除 $g$ 当且仅当 $f$ 在 \( F'[x] \) 中整除 $g$;
+
+2) $f$ 与 $g$ 在 \( F[x] \) 中互素当且仅当 $f$ 与 $g$ 在 \( F'[x] \) 中互素.\\
+
+{\color{red} 以下题目选做.}
+
+\item 设 $p$ 为素数, $n$ 为正整数, \( F \) 为 \( p^n \) 元域.
+\par (1) 证明:  \( F^{\times} \) 为 \( p^n-1 \) 循环群. (提示: 与 $n=1$ 时相似)
+    \par (2) $d$ 为正整数, \( d|n \), 则 \( E := \{\alpha \in F | \alpha^{p^d} = \alpha\} \)  构成 $F$ 的子域. (提示: 在 \( F \) 上 \( (\alpha+\beta)^p = \alpha^p+\beta^p \))
+
+\item 设 \( f \) 为 \( \mathbb{F}_p[x] \) 中 \( d \) 次首一不可约多项式, 则 $f|x^{p^n}-x\iff d|n$.
+
+(提示: (右推左) 记 \( F' = \mathbb{F}_p[x]/f\mathbb{F}_p[x] \implies \overline{x} \in F' \) 为 \(f(x) \in F'[x] \) 的根 $\implies f$ 与 \( x^{p^d}-x \) 在 \( F'[x] \) 中不互素\\
+
+(左推右) $ d' := \text{gcd}(n, d) \implies f|\text{gcd}(x^{p^n}-x, x^{p^d}-x) = x^{p^{d'}}-x \implies \overline{x}\in E:=\{\alpha\in F'|\alpha^{p^{d'}}\}\implies  F' \subset E \implies p^d\leq p^{d'}$ )
+
+{\color{red} 注意：12.10和12.12作业应于12.12-12.17期间提交}
+
+\end{enumerate}
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第二十五次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   12/17 \quad  第十六周/星期二} % <---- Fill in your names here!
+\end{center} 
+
+\begin{enumerate}\setcounter{enumi}{169}
+
+\item (习题5.8)设$f(x)$是实系数多项式，$a\in \mathbb{R}$,试决定$a$在下述多项式的零点重数：
+\begin{enumerate}
+    \item $f(x)-f(a)-f^{'}(a)(x-a)-\frac{f^{''}(a)}2(x-a)^2$;
+    \item $f(x)-f(a)-\frac{x-a}2(f^{'}(x)+f^{'}(a))$.
+\end{enumerate}
+
+\item (习题5.9)证明多项式$f(x)=\sum^n_{k=0}\frac{x^k}{k!}$无重根.
+
+\item (习题5.10)证明1是多项式$x^{2n}-nx^{n+1}+nx^{n-1}-1$的3重零点，其中$n\ge 2$.
+
+\item (习题5.11)设$f(x)\in\mathbb{Q}[x]$在$\mathbb{Q}$上不可约，证明它一定没有多重的复根.
+
+\item 请在$\mathbb{R}[x]$中分解多项式$x^5+1$和$x^5-2$.
+
+\item 设$f(x)\in \mathbb{Z}[x]$，且$f(0)\equiv f(1)\equiv 1\;(mod \;2)$，证明：$f(x)$没有整数根.
+
+\item ({\color{red}选做}) 设$\mathbb{F}=\mathbb{F}_p,n\ge 1$,
+\begin{enumerate}
+    \item 证明$$x^{p^{n}}-x=\prod_{P(x):\text{首一不可约},\deg P\mid n}P(x)$$
+    \item 证明在$\mathbb{F}[x]$中存在$n$次不可约多项式.\\({\color{blue}提示：即证明$n$次不可约多项式个数大于0})
+\end{enumerate}
+
+\end{enumerate}
+{\color{red} 注意：12.17和12.19作业应于12.19-12.24期间提交}
+
+ \newpage
+\head
+ \begin{center}
+ {\Large \bf 第二十六次作业}
+ \vspace{2mm}
+ 
+ {\bf\quad 12/19\quad 第十六周/星期四}
+ \end{center}
+ 
+ \begin{enumerate}\setcounter{enumi}{176}
+ \item 在相应的环中判定不可约性
+ \begin{itemize}
+ \item [1)]$2x^3+3x+1\in\mathbb{Z}[x]$
+ \item [2)]$2x^5+30x+90\in\mathbb{Q}[x]$
+ \item [3)]$x^4-x^3-3x^2+8x+1\in\mathbb{Z}[x]$
+ \end{itemize}
+ \item 设$f(x)=a_nx^n+\cdots+a_0\in\mathbb{Z}[x]$为本原多项式.设$p$为素数,若$p\nmid a_0,p|a_1,\cdots,p| a_{n-1},p||a_n$,证明$f$在$\mathbb{Z}[x]$中不可约.
+ \item 证明：
+ \begin{itemize}
+ \item[1)]设$f\in\mathbb{Z}[x]$为本原多项式,$p$为素数,若$f$的首项系数不被$p$整除,且$f\ mod\ p$在$\mathbb{F}_p[x]$中不可约,则$f$在$\mathbb{Z}[x]$中不可约.
+ \item[2)]$x^4+x+1$在$\mathbb{F}_2[x]$中不可约.
+ \item[3)]$x^4+3x+5$在$\mathbb{Z}[x]$中不可约. 
+ \end{itemize}
+ \item 设$n>1$是正整数,证明:如果$x^{n-1}+\cdots+x+1$在$\mathbb{Q}[x]$中不可约,则$n$是素数.
+ \item 设$a_1,\cdots,a_n$是互不相同的整数,证明:$(x-a_1)\cdots(x-a_n)-1$在$\mathbb{Q}[x]$中不可约.\\({\color{blue}提示:若$(x-a_1)\cdots(x-a_n)-1=h(x)g(x)$,则$a_1,\cdots,a_n$为$h^2-1$和$g^2-1$的根})
+ 
+ \item 对$f(x)\in \mathbb{Z}[x]$且$f(x)\neq 0$,用$c(f)$表示$f(x)$的容度.
+ \begin{itemize}
+ \item[(1)] 对任意$a\in \mathbb{Z},a\neq 0$,证明：$|c(af)|=|a\cdot c(f)|$;
+ \item[(2)] 证明$|c(fg)|=|c(f)\cdot c(g)|$.
+ \end{itemize}
+ \item 设$f(x)$是本原多项式,$g(x)\in\mathbb{Q}[x]$,且$f(x)g(x)\in\mathbb{Z}[x]$,则$g(x)\in\mathbb{Z}[x]$.
+ \item 设$p(x)\in \mathbb{Z}[x]$是本原的不可约多项式,证明:对$f
+ (x),g(x)\in\mathbb{Z}[x]$,若$p(x)|f(x)g(x)$,则$p(x)|f(x)$或$p(x)|g(x)$.
+ 
+ \end{enumerate}
+
+{\color{red} 注意：12.17和12.19作业应于12.19-12.24期间提交}
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第二十七次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   12/24 \quad  第十七周/星期二} % <---- Fill in your names here!
+\end{center} 
+
+
+\begin{enumerate}\setcounter{enumi}{184}
+ \item 把置换$\sigma=(456)(567)(761)$写成不相交轮换的积
+    \item 计算置换的乘积，并求乘积的阶：\begin{enumerate}
+        \item[(1)] $[(135)(2467)]\cdot [(147)(2356)]$
+        \item[(2)] $[(13)(57)(246)]\cdot [(135)(24)(67)]$
+    \end{enumerate}
+    \item 讨论置换$\sigma=\tbinom{1 \quad 2 \quad \cdots \quad n}{n \quad n-1 \quad \cdots \quad 1}$的奇偶性
+    \item 证明$S_n(n\geq 3)$中的偶置换均为3轮换之积
+    \item 证明$S_n$中奇置换的阶一定是偶数
+    \item 证明$S_n$中型为$1^{\lambda_1}2^{\lambda_2}\cdots n^{\lambda_n}$的置换共有$\frac{n!}{\prod\limits_{i=1}^n \lambda_i !i^{\lambda_i} }$个.由此来证明：$$\sum\limits_{\lambda_i \geq 0,\lambda_1+2\lambda_2+\cdots+n\lambda_n=n} \frac{1}{\prod\limits_{i=1}^n \lambda_i !i^{\lambda_i}}=1$$.
+    \item 当$n\geq 2$时，证明：$(12)$和$(123\cdots n)$是$S_n$的一组生成元.
+\end{enumerate}
+
+{\color{red} 注意：12.24和12.26作业应于12.26-12.31期间提交}
+
+
+\newpage
+\head
+
+\begin{center} % Everything within the center environment is centered.
+	{\Large \bf 第二十八次作业} % <---- Don't forget to put in the right number
+	\vspace{2mm}
+	
+        % YOUR NAMES GO HERE
+	{\bf\quad   12/26 \quad  第十七周/星期四} % <---- Fill in your names here!
+\end{center} 
+
+
+\begin{enumerate}\setcounter{enumi}{191}
+    \item 设置换$\tbinom{1 \quad 2 \quad \cdots \quad n}{a_1 \quad a_2 \cdots \quad a_n}$的交错数为k，求置换$\tbinom{1 \quad 2 \quad \cdots \quad n}{a_n \quad a_{n-1} \cdots \quad a_1}$的交错数.
+    \item 考虑$S_n$中置换$\sigma=\tbinom{1 \quad 2 \quad \cdots \quad n}{a_1 \quad a_2 \cdots \quad a_n}$，请问何时$\sigma$的交错数最大.
+    \item 给定四元多项式$f$，令$G_f=\{\sigma \in S_4| (\sigma f)(x_1,x_2,x_3,x_4)=f(x_1,x_2,x_3,x_4)\}$.证明$G_f$是$S_4$的子群，并求下列给定$f$的$G_f$:\begin{enumerate}
+        \item[(1)] $f=x_1x_2+x_3x_4$;
+        \item[(2)] $f=x_1x_2x_3x_4$.
+    \end{enumerate}
+    \item 将下列对称多项式写成初等对称多项式的多项式：\begin{enumerate}
+        \item[(1)] $x_1^2x_2+x_2^2x_1+x_1^2x_3+x_3^2x_1+x_2^2x_3+x_3^2x_2$;
+        \item[(2)] $x_1(x_2^3+x_3^3)+x_2(x_1^3+x_3^3)+x_3(x_1^3+x_2^3)$.
+    \end{enumerate}
+    \item 试求$s_i(1,\zeta_n,\cdots,\zeta_n^{n-1})$，其中$s_i$为关于$x_1,\cdots,x_n$的i次初等对称多项式，$\zeta_n$为n次单位根.
+    \item 取$\alpha,\beta \in S_n$，证明：\begin{enumerate}
+        \item[(1)] $\alpha\beta\alpha^{-1}\beta^{-1} \in A_n$;
+        \item[(2)] $\alpha\beta\alpha^{-1}\in A_n$当且仅当$\beta \in A_n$. 
+    \end{enumerate}
+    \item 对于正整数n，证明$x^n+x^{-n}$是关于$x+x^{-1}$的整系数多项式.
+    \item 多项式$3x^3+2x^2-1$的根在$\mathbb{C}$上有三个不同的根，设为$r_1,r_2,r_3$.求多项式$f(x) \in \mathbb{Q}[x]$，使得它的根恰为$r_1^2,r_2^2,r_3^2$.
+    \item({\color{red}选做})我们记$t_k=\sum\limits_{i=1}^{n}x_i^{k}(k\geq 1)$，特别地$t_0=n$，设$f(x)=\prod\limits_{i=1}^n(x-x_i)=x^n-s_1x^{n-1}+s_2x^{n-2}+\cdots+(-1)^ns_n$，证明下列等式：\begin{enumerate}
+        \item 若$k\leq n-1$，则$t_k-t_{k-1}s_1+t_{k-2}s_2+\cdots+(-1)^{k-1}t_1s_{k-1}+(-1)^{k}ks_k=0$；
+        \item 若$k\geq n$，则$t_k-t_{k-1}s_1+t_{k-2}s_2+\cdots+(-1)^nt_{k-n}s_n=0$
+    \end{enumerate}
+\end{enumerate}
+
+{\color{red} 注意：12.24和12.26作业应于12.26-12.31期间提交}
+ 
+\end{document}
