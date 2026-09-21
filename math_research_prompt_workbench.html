@@ -1,0 +1,1364 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>数学科研 Prompt 工作台</title>
+<style>
+  :root{
+    --bg:#f5f6f8;
+    --panel:#ffffff;
+    --panel2:#fafafa;
+    --text:#1f2328;
+    --muted:#6b7280;
+    --border:#d9dde3;
+    --accent:#2563eb;
+    --accent2:#eaf1ff;
+    --danger:#b42318;
+    --ok:#127a4a;
+    --warn:#a15c00;
+    --shadow:0 4px 18px rgba(20,25,40,.06);
+    --radius:12px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+  }
+  button,input,textarea,select{font:inherit}
+  button{cursor:pointer}
+  .topbar{
+    position:sticky;top:0;z-index:20;
+    display:flex;align-items:center;gap:12px;justify-content:space-between;
+    padding:14px 18px;background:rgba(255,255,255,.94);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .brand{display:flex;align-items:baseline;gap:10px;min-width:250px}
+  .brand h1{font-size:18px;margin:0}
+  .brand span{font-size:12px;color:var(--muted)}
+  .top-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .btn{
+    border:1px solid var(--border);background:#fff;color:var(--text);
+    padding:8px 11px;border-radius:9px;box-shadow:none;
+  }
+  .btn:hover{border-color:#b8c0cc;background:#fbfbfc}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn.danger{color:var(--danger)}
+  .btn.small{padding:5px 8px;font-size:12px}
+  .app{
+    display:grid;
+    grid-template-columns: 280px minmax(390px, 1fr) minmax(420px, 1.1fr);
+    gap:14px;padding:14px;min-height:calc(100vh - 64px);
+  }
+  .panel{
+    background:var(--panel);border:1px solid var(--border);
+    border-radius:var(--radius);box-shadow:var(--shadow);
+    min-width:0;
+  }
+  .panel .head{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:10px;padding:13px 14px;border-bottom:1px solid var(--border);
+  }
+  .panel .head h2{font-size:14px;margin:0}
+  .panel .body{padding:14px}
+  .left .body{padding:10px}
+  .section{margin-bottom:16px}
+  .section:last-child{margin-bottom:0}
+  .section-title{
+    font-size:12px;font-weight:700;letter-spacing:.02em;color:#4b5563;
+    margin:0 0 8px;
+  }
+  .hint{font-size:12px;color:var(--muted);line-height:1.55}
+  .row{display:flex;gap:8px;align-items:center}
+  .row.wrap{flex-wrap:wrap}
+  .row > *{min-width:0}
+  .grow{flex:1}
+  input[type="text"], input[type="number"], textarea, select{
+    width:100%;border:1px solid var(--border);border-radius:9px;
+    background:#fff;color:var(--text);padding:9px 10px;outline:none;
+  }
+  textarea{resize:vertical;line-height:1.5;min-height:86px}
+  input:focus,textarea:focus,select:focus{
+    border-color:#8db0ff;box-shadow:0 0 0 3px rgba(37,99,235,.09)
+  }
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{
+    border:1px solid var(--border);padding:6px 8px;border-radius:999px;
+    background:#fff;font-size:12px;
+  }
+  .chip.active{background:var(--accent2);border-color:#9db9ff;color:#1746a2}
+  .divider{height:1px;background:var(--border);margin:12px 0}
+  .search{margin-bottom:8px}
+  .category{margin-top:10px}
+  .category h3{
+    margin:10px 4px 6px;font-size:12px;color:var(--muted);font-weight:700
+  }
+  .module-item{
+    display:flex;gap:8px;align-items:flex-start;padding:8px;border-radius:9px;
+    border:1px solid transparent;
+  }
+  .module-item:hover{background:var(--panel2);border-color:#edf0f3}
+  .module-item .meta{flex:1;min-width:0}
+  .module-item .name{font-size:13px;font-weight:650}
+  .module-item .desc{
+    color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+  }
+  .module-item button{padding:4px 7px}
+  .preset{
+    display:flex;align-items:center;gap:7px;padding:7px 8px;border-radius:9px;
+  }
+  .preset:hover{background:var(--panel2)}
+  .preset .name{flex:1;font-size:13px}
+  .badge{
+    display:inline-flex;align-items:center;border-radius:999px;padding:2px 6px;
+    font-size:10px;border:1px solid var(--border);color:var(--muted)
+  }
+  .field-label{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:8px;font-size:12px;font-weight:700;margin:0 0 6px;color:#4b5563
+  }
+  .field-label .sub{font-weight:400;color:var(--muted)}
+  .project-grid{display:grid;grid-template-columns:1fr auto;gap:8px}
+  .status-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .box{
+    border:1px solid var(--border);border-radius:10px;background:#fff;padding:10px
+  }
+  .box.known{border-left:3px solid var(--ok)}
+  .box.blocked{border-left:3px solid var(--danger)}
+  .box.open{border-left:3px solid var(--warn)}
+  .compact-textarea{min-height:64px}
+  .controls-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px}
+  .check{
+    display:flex;gap:7px;align-items:flex-start;font-size:12px;line-height:1.35;
+  }
+  .check input{margin-top:2px}
+  .selected-list{display:flex;flex-direction:column;gap:8px}
+  .selected{
+    border:1px solid var(--border);border-radius:10px;background:#fff;overflow:hidden;
+  }
+  .selected.dragging{opacity:.45}
+  .selected-head{
+    display:flex;align-items:center;gap:8px;padding:8px 9px;background:#fafbfc;
+    border-bottom:1px solid var(--border);
+  }
+  .handle{cursor:grab;color:#7b8492;font-size:15px;user-select:none}
+  .selected-title{font-size:12px;font-weight:700;flex:1}
+  .selected textarea{border:0;border-radius:0;min-height:70px;box-shadow:none}
+  .selected-actions{display:flex;gap:4px}
+  .empty{
+    padding:18px;text-align:center;border:1px dashed var(--border);
+    border-radius:10px;color:var(--muted);font-size:12px
+  }
+  .final-tabs{display:flex;gap:6px}
+  .final-tabs button{
+    border:0;background:transparent;padding:6px 8px;border-radius:7px;color:var(--muted)
+  }
+  .final-tabs button.active{background:var(--accent2);color:#1746a2}
+  .final-text{
+    width:100%;min-height:540px;font-family: ui-monospace, SFMono-Regular,
+      Menlo, Consolas, "Liberation Mono", monospace;font-size:12px;
+  }
+  .token-card{
+    border:1px solid var(--border);border-radius:10px;padding:10px;background:#fbfcfe
+  }
+  .token-total{display:flex;justify-content:space-between;font-weight:700}
+  .token-list{margin-top:8px;display:grid;grid-template-columns:1fr auto;gap:5px 12px;font-size:12px;color:#4b5563}
+  .token-bar{height:7px;border-radius:999px;background:#e8ebef;overflow:hidden;margin-top:8px}
+  .token-bar > div{height:100%;background:var(--accent);width:0%}
+  .var-box{
+    border:1px dashed #aab6c5;border-radius:10px;padding:10px;background:#fcfdff
+  }
+  .var-list{display:grid;grid-template-columns:130px 1fr;gap:8px;align-items:center}
+  .var-list label{font-size:12px;color:#4b5563}
+  .history-item{
+    padding:8px;border:1px solid var(--border);border-radius:9px;margin-bottom:7px
+  }
+  .history-item .t{font-size:12px;font-weight:700}
+  .history-item .m{font-size:11px;color:var(--muted);margin-top:2px}
+  .history-item .a{margin-top:6px;display:flex;gap:5px}
+  dialog{
+    width:min(680px,92vw);border:1px solid var(--border);border-radius:14px;
+    padding:0;box-shadow:0 24px 70px rgba(0,0,0,.2)
+  }
+  dialog::backdrop{background:rgba(20,25,30,.32)}
+  .modal-head{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .modal-body{padding:16px}
+  .modal-foot{padding:12px 16px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+  .toast{
+    position:fixed;right:18px;bottom:18px;z-index:99;
+    background:#20252c;color:#fff;padding:10px 13px;border-radius:9px;
+    font-size:12px;opacity:0;transform:translateY(8px);pointer-events:none;
+    transition:.2s
+  }
+  .toast.show{opacity:1;transform:translateY(0)}
+  .structure{
+    display:grid;grid-template-columns:1fr auto;gap:7px 14px;
+    font-size:12px;padding:4px 0
+  }
+  .structure .muted{color:var(--muted)}
+  .footer-note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+  @media (max-width: 1180px){
+    .app{grid-template-columns:250px 1fr}
+    .right{grid-column:1 / -1}
+    .final-text{min-height:380px}
+  }
+  @media (max-width: 780px){
+    .app{grid-template-columns:1fr;padding:8px}
+    .right{grid-column:auto}
+    .topbar{align-items:flex-start}
+    .brand span{display:none}
+    .status-grid,.controls-grid,.checks{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <h1>数学科研 Prompt 工作台</h1>
+    <span>Research Prompt Composer · 本地版</span>
+  </div>
+  <div class="top-actions">
+    <div class="row" style="gap:6px">
+      <span style="font-size:12px;color:var(--muted)">Prompt 语言</span>
+      <select id="promptLangSelect" style="width:auto;padding:7px 9px">
+        <option value="zh">中文</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    <button class="btn" id="exportBtn">导出 JSON</button>
+    <label class="btn" for="importFile">导入 JSON</label>
+    <input id="importFile" type="file" accept=".json,application/json" hidden>
+    <button class="btn" id="saveHistoryBtn">保存到历史</button>
+    <button class="btn primary" id="copyBtn">复制最终 Prompt</button>
+  </div>
+</header>
+
+<main class="app">
+  <!-- LEFT -->
+  <section class="panel left">
+    <div class="head">
+      <h2>Prompt 库</h2>
+      <button class="btn small" id="newModuleBtn">+ 新模块</button>
+    </div>
+    <div class="body">
+      <input class="search" id="moduleSearch" type="text" placeholder="搜索模块……" />
+      <div id="moduleLibrary"></div>
+
+      <div class="divider"></div>
+
+      <div class="row">
+        <div class="section-title grow" style="margin:0">组合预设</div>
+        <button class="btn small" id="savePresetBtn">保存当前组合</button>
+      </div>
+      <div id="presetList"></div>
+
+      <div class="divider"></div>
+
+      <div class="row">
+        <div class="section-title grow" style="margin:0">最近历史</div>
+        <button class="btn small danger" id="clearHistoryBtn">清空</button>
+      </div>
+      <div id="historyList"></div>
+    </div>
+  </section>
+
+  <!-- CENTER -->
+  <section class="panel center">
+    <div class="head">
+      <h2>当前任务</h2>
+      <div class="row">
+        <button class="btn small" id="newProjectBtn">+ 项目</button>
+        <button class="btn small" id="resetTaskBtn">重置本轮</button>
+      </div>
+    </div>
+    <div class="body">
+      <div class="section">
+        <div class="field-label">
+          <span>研究项目</span>
+          <span class="sub">数据保存在浏览器 localStorage</span>
+        </div>
+        <div class="project-grid">
+          <select id="projectSelect"></select>
+          <button class="btn danger" id="deleteProjectBtn">删除</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="field-label"><span>本轮唯一目标</span><span class="sub">尽量只写一个 bottleneck</span></div>
+        <textarea id="currentGoal" placeholder="例如：只检查 Proposition 4.7 中 (2) ⇒ (3) 是否成立。"></textarea>
+      </div>
+
+      <div class="section">
+        <div class="field-label"><span>Research State / 项目背景</span></div>
+        <textarea id="researchBackground" placeholder="只保留当前任务真正需要的背景、对象和记号。"></textarea>
+        <div class="row wrap" style="margin-top:8px">
+          <span class="hint">上下文级别：</span>
+          <div class="chips" id="contextLevel">
+            <button class="chip" data-value="minimal">最小</button>
+            <button class="chip active" data-value="compressed">压缩</button>
+            <button class="chip" data-value="full">完整</button>
+          </div>
+        </div>
+        <div class="footer-note">
+          “最小”只加入目标和必要状态；“压缩”加入背景 + 已确认结果；“完整”还加入已排除路线与未解决项。
+        </div>
+      </div>
+
+      <div class="section status-grid">
+        <div class="box known">
+          <div class="field-label"><span>✓ 已确认结果</span></div>
+          <textarea class="compact-textarea" id="knownResults" placeholder="例如：[L1] Lemma 3.2 已证明。&#10;[L2] V|_H 绝对不可约。"></textarea>
+        </div>
+        <div class="box blocked">
+          <div class="field-label"><span>✗ 已排除路线</span></div>
+          <textarea class="compact-textarea" id="ruledOut" placeholder="例如：不能直接由 B_dR 标量扩张推出不可约性。"></textarea>
+        </div>
+        <div class="box open" style="grid-column:1/-1">
+          <div class="field-label"><span>? 未解决问题</span></div>
+          <textarea class="compact-textarea" id="openProblems" placeholder="只保留仍可能影响当前论证的问题。"></textarea>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="controls-grid">
+          <div>
+            <div class="field-label"><span>处理范围 Scope</span></div>
+            <select id="scopeSelect">
+              <option value="step">只处理当前一步</option>
+              <option value="lemma">当前 Lemma</option>
+              <option value="proposition">当前 Proposition</option>
+              <option value="proof">整个证明</option>
+              <option value="paper">整篇论文</option>
+            </select>
+          </div>
+          <div>
+            <div class="field-label"><span>数学严格性</span></div>
+            <select id="rigorSelect">
+              <option value="intuition">直觉讨论</option>
+              <option value="normal">普通数学讨论</option>
+              <option value="paper" selected>论文级</option>
+              <option value="referee">Referee-level</option>
+            </select>
+          </div>
+          <div>
+            <div class="field-label"><span>回答深度</span></div>
+            <select id="depthSelect">
+              <option value="minimal">极简</option>
+              <option value="concise">简洁</option>
+              <option value="standard" selected>标准</option>
+              <option value="deep">深入</option>
+              <option value="exhaustive">穷尽</option>
+            </select>
+          </div>
+          <div>
+            <div class="field-label"><span>期望回答预算</span></div>
+            <select id="budgetSelect">
+              <option value="300">≤ 300 tokens</option>
+              <option value="500">≤ 500 tokens</option>
+              <option value="1000" selected>≤ 1000 tokens</option>
+              <option value="2000">≤ 2000 tokens</option>
+              <option value="none">不限制</option>
+            </select>
+          </div>
+          <div>
+            <div class="field-label"><span>输出格式</span></div>
+            <select id="formatSelect">
+              <option value="plain">普通文本</option>
+              <option value="tex">TeX / LaTeX</option>
+              <option value="skeleton">Proof skeleton</option>
+              <option value="diagnosis">只做诊断</option>
+            </select>
+          </div>
+          <div>
+            <div class="field-label"><span>工作模式</span></div>
+            <select id="modeSelect">
+              <option value="quick">快速回答</option>
+              <option value="standard" selected>标准分析</option>
+              <option value="deep">深度研究</option>
+              <option value="attack">Referee Attack</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="field-label"><span>避免 / 禁止事项</span></div>
+        <div class="checks" id="avoidChecks"></div>
+      </div>
+
+      <div class="section">
+        <div class="field-label"><span>停止条件</span></div>
+        <div class="checks" id="stopChecks"></div>
+      </div>
+
+      <div class="section">
+        <div class="field-label">
+          <span>已选择 Prompt 模块</span>
+          <span class="sub">可拖拽排序，可临时编辑</span>
+        </div>
+        <div id="selectedModules" class="selected-list"></div>
+      </div>
+
+      <div class="section" id="variableSection" style="display:none">
+        <div class="field-label"><span>模板变量</span><span class="sub">来自 {{变量名}}</span></div>
+        <div class="var-box">
+          <div class="var-list" id="variableList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT -->
+  <section class="panel right">
+    <div class="head">
+      <div class="final-tabs">
+        <button class="active" data-tab="text">最终文本</button>
+        <button data-tab="structure">结构视图</button>
+      </div>
+      <div class="row">
+        <button class="btn small" id="savePresetBtn2">保存组合</button>
+        <button class="btn small danger" id="clearOutputBtn">清空输出</button>
+        <button class="btn small primary" id="copyBtn2">复制</button>
+      </div>
+    </div>
+    <div class="body">
+      <div id="finalTextWrap">
+        <textarea id="finalPrompt" class="final-text" spellcheck="false"></textarea>
+      </div>
+      <div id="structureWrap" style="display:none">
+        <div class="token-card">
+          <div class="token-total">
+            <span>Prompt 估算</span>
+            <span><strong id="tokenTotal">0</strong> tokens</span>
+          </div>
+          <div class="token-bar"><div id="tokenBarFill"></div></div>
+          <div class="structure" id="structureList"></div>
+        </div>
+        <div class="footer-note">
+          Token 数为本地启发式估算，用于比较各部分占比，不等同于 ChatGPT 实际 tokenizer 结果。
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="token-card">
+        <div class="token-total">
+          <span>当前 Prompt</span>
+          <span>约 <strong id="tokenTotalInline">0</strong> tokens</span>
+        </div>
+        <div class="token-list">
+          <span>最大建议值</span><span>≈ 4000</span>
+          <span>上下文占比</span><span id="contextShare">0%</span>
+          <span>模块占比</span><span id="moduleShare">0%</span>
+        </div>
+      </div>
+
+      <div class="section" style="margin-top:14px">
+        <div class="field-label"><span>使用建议</span></div>
+        <div class="hint">
+          默认把复杂问题拆成“诊断 → 找 bottleneck → 局部深挖”。如果最终 Prompt 很长，优先删减 Research State，
+          而不是把数学条件压缩成难以理解的短句。
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog id="moduleDialog">
+  <div class="modal-head">
+    <strong id="moduleDialogTitle">新建 Prompt 模块</strong>
+    <button class="btn small" onclick="moduleDialog.close()">关闭</button>
+  </div>
+  <div class="modal-body">
+    <div class="section">
+      <div class="field-label"><span>名称</span></div>
+      <input id="moduleNameInput" type="text" placeholder="例如：检查标量扩张" />
+    </div>
+    <div class="section">
+      <div class="field-label"><span>分类</span></div>
+      <input id="moduleCategoryInput" type="text" placeholder="例如：数学专项" />
+    </div>
+    <div class="section">
+      <div class="field-label"><span>英文模块名称</span><span class="sub">可选；仅用于英文 Prompt 的 [Module: ...] 标题</span></div>
+      <input id="moduleNameEnInput" type="text" placeholder="例如：Scalar-extension check" />
+    </div>
+    <div class="section">
+      <div class="field-label"><span>中文 Prompt</span><span class="sub">支持 {{变量名}}</span></div>
+      <textarea id="moduleTextInput" style="min-height:150px" placeholder="写入中文 Prompt 指令……"></textarea>
+    </div>
+    <div class="section">
+      <div class="field-label"><span>英文 Prompt</span><span class="sub">可选；留空时英文模式回退到中文</span></div>
+      <textarea id="moduleTextEnInput" style="min-height:150px" placeholder="Write the English version of this prompt..."></textarea>
+    </div>
+  </div>
+  <div class="modal-foot">
+    <button class="btn" onclick="moduleDialog.close()">取消</button>
+    <button class="btn primary" id="saveModuleBtn">保存模块</button>
+  </div>
+</dialog>
+
+<dialog id="presetDialog">
+  <div class="modal-head">
+    <strong>保存当前组合</strong>
+    <button class="btn small" onclick="presetDialog.close()">关闭</button>
+  </div>
+  <div class="modal-body">
+    <div class="field-label"><span>组合名称</span></div>
+    <input id="presetNameInput" type="text" placeholder="例如：我的严格证明" />
+  </div>
+  <div class="modal-foot">
+    <button class="btn" onclick="presetDialog.close()">取消</button>
+    <button class="btn primary" id="confirmPresetBtn">保存</button>
+  </div>
+</dialog>
+
+<dialog id="projectDialog">
+  <div class="modal-head">
+    <strong>新建研究项目</strong>
+    <button class="btn small" onclick="projectDialog.close()">关闭</button>
+  </div>
+  <div class="modal-body">
+    <div class="field-label"><span>项目名称</span></div>
+    <input id="projectNameInput" type="text" placeholder="例如：Geometric Origin" />
+  </div>
+  <div class="modal-foot">
+    <button class="btn" onclick="projectDialog.close()">取消</button>
+    <button class="btn primary" id="confirmProjectBtn">创建</button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+  const STORAGE_KEY = "mathResearchPromptWorkbench_v1";
+
+  const DEFAULT_MODULES = [
+    {id:"m-proof",category:"证明",name:"严格证明",text:"请严格处理当前数学目标。每一个非形式推论都要给出理由；不要用“显然”“标准论证”等措辞掩盖关键步骤。若调用定理，请明确说明其所需假设并检查这些假设是否满足。"},
+    {id:"m-skeleton",category:"证明",name:"Proof skeleton",text:"先只给出证明骨架，最多 6 个主要步骤。每一步用一句话说明，并明确标出真正的 bottleneck。不要在本轮展开技术细节。"},
+    {id:"m-routes",category:"证明",name:"比较证明路线",text:"给出至多 3 条可能的证明路线。对每条路线只说明：核心工具、最难的一步、最可能失败的地方。不要展开完整证明。"},
+    {id:"m-firstgap",category:"验证",name:"找第一个 gap",text:"把论证当作可能有错来检查。只寻找第一个无法严格推出的 implication；一旦找到，明确说明缺失的假设或逻辑跳步，并停止继续检查后面的论证。"},
+    {id:"m-hidden",category:"验证",name:"检查隐藏假设",text:"检查当前论证是否偷偷使用了未声明的有限性、平坦性、完备性、半单性、绝对不可约性、基变换相容性或函子精确性。只报告真正会影响论证的隐藏假设。"},
+    {id:"m-applicability",category:"验证",name:"检查定理适用条件",text:"对于论证中使用的每个非平凡定理，列出它的关键假设，并逐项核对当前对象是否满足。不要因为结论“看起来合理”就跳过适用条件。"},
+    {id:"m-counter",category:"攻击",name:"先寻找反例",text:"在尝试证明之前，先认真测试命题是否可能为假。优先检查低秩、可约、非半单、极端参数、退化情形和基变换后的行为。若找到反例，给出一个清楚的反例后停止。"},
+    {id:"m-referee",category:"攻击",name:"Referee Attack",text:"以苛刻的顶级期刊审稿人标准审查当前论证。不要主动帮作者圆证明；优先寻找致命 gap、错误引用、隐藏假设、循环论证和不合法的标量扩张/下降。只保留实质性问题。"},
+    {id:"m-weakest",category:"攻击",name:"寻找最弱附加假设",text:"如果当前命题不能按现有假设证明，请识别真正缺少的条件，并尝试给出最弱、最自然的附加假设。不要直接堆加强假设。"},
+    {id:"m-scalar",category:"数学专项",name:"标量扩张检查",text:"特别检查 scalar extension：不可约性、绝对不可约性、Hom/End、子对象、下降以及在扩张系数域后是否仍保持所需性质。不要默认“特征零扩域自动保持不可约”。"},
+    {id:"m-descent",category:"数学专项",name:"Descent 检查",text:"特别检查 descent：对象、子对象、同构或结构从扩域后下降回来是否需要额外的 Galois 不变性、有效下降数据或忠实平坦性。明确指出实际使用的下降原理。"},
+    {id:"m-exact",category:"数学专项",name:"精确性/不变量检查",text:"检查所使用的函子是否真的精确，以及 taking invariants、completion、tensor product、horizontal sections 等操作是否可交换。若只左正合或需要额外条件，请明确指出。"},
+    {id:"m-paper-map",category:"论文阅读",name:"论文地图",text:"只给论文结构地图：主要目标、核心定理、关键中间命题、真正的新思想，以及与当前问题最相关的 section。不要逐节复述背景。"},
+    {id:"m-read-key",category:"论文阅读",name:"定位关键结果",text:"围绕当前目标，只找真正相关的定义、命题和证明步骤。把背景性内容和技术性但无关的内容排除，不做全文摘要。"},
+    {id:"m-compare",category:"论文阅读",name:"比较两个构造",text:"比较 {{构造A}} 与 {{构造B}}：分别写清输入、输出、所在范畴、关键结构、相容性，并定位它们可能一致或不一致的精确环节。优先给出严格对应关系，不做泛泛类比。"},
+    {id:"m-tex",category:"写作",name:"整理成 TeX",text:"数学内容视为已经确定。不要重新寻找替代证明，也不要增加新的数学主张；只把现有论证整理为 publication-quality TeX，保持记号一致并尽量简洁。"},
+    {id:"m-polish",category:"写作",name:"论文级润色",text:"只做学术写作层面的整理：提高精确性、连贯性与术语一致性；不要改变数学结论，不要补入未经确认的新论证。"},
+    {id:"m-state",category:"写作",name:"压缩 Research State",text:"把当前讨论压缩为可供后续研究继续使用的 Research State。删除历史叙述、失败尝试的细节和解释性废话；只保留：对象与记号、已确认结果、已排除路线、未解决 bottleneck、下一步。"},
+    {id:"m-no-repeat",category:"省 Token",name:"不重复背景",text:"假设我熟悉标准背景。不要复述问题陈述、标准定义、已确认结果或长公式；不要写引言和总结。直接处理当前数学困难。"},
+    {id:"m-diagnose",category:"省 Token",name:"先诊断后展开",text:"本轮只做诊断：判断策略是否可行，定位真正 bottleneck，并说明为什么。不要给完整长证明；除非目标本身只需很短的论证。"},
+    {id:"m-one-step",category:"省 Token",name:"只处理当前一步",text:"严格限制在当前目标。不要主动解决更大的主定理，也不要扩展到相邻问题，除非当前步骤在逻辑上确实依赖它。"}
+  ];
+
+
+  const DEFAULT_MODULE_EN = {
+    "m-proof":"Handle the current mathematical goal rigorously. Justify every non-formal implication. Do not hide key steps behind phrases such as “clearly” or “by a standard argument.” If you invoke a theorem, state the hypotheses that matter and verify that they are satisfied.",
+    "m-skeleton":"First give only a proof skeleton, with at most 6 main steps. Describe each step in one sentence and explicitly mark the genuine bottleneck. Do not expand technical details in this turn.",
+    "m-routes":"Give at most 3 plausible proof strategies. For each one, state only the core tool, the hardest step, and the most likely failure point. Do not write a full proof.",
+    "m-firstgap":"Treat the argument as potentially incorrect. Find only the first implication that cannot be justified rigorously. Once found, state the missing hypothesis or logical gap clearly and stop checking later steps.",
+    "m-hidden":"Check whether the argument silently uses undeclared finiteness, flatness, completeness, semisimplicity, absolute irreducibility, base-change compatibility, or exactness assumptions. Report only hidden assumptions that materially affect the proof.",
+    "m-applicability":"For every nontrivial theorem used in the argument, list its essential hypotheses and verify them one by one for the present objects. Do not skip applicability checks merely because the conclusion looks plausible.",
+    "m-counter":"Before attempting a proof, seriously test whether the statement could be false. Prioritize low-rank, reducible, non-semisimple, extreme-parameter, degenerate, and base-change cases. If you find a counterexample, present one clear counterexample and stop.",
+    "m-referee":"Review the argument at the standard of a demanding top-journal referee. Do not try to rescue the proof. Prioritize fatal gaps, misapplied results, hidden assumptions, circular reasoning, and invalid scalar-extension/descent steps. Keep only substantive objections.",
+    "m-weakest":"If the statement cannot be proved under the current hypotheses, identify the genuinely missing condition and try to formulate the weakest natural additional hypothesis. Do not simply impose unnecessarily strong assumptions.",
+    "m-scalar":"Pay special attention to scalar extension: irreducibility, absolute irreducibility, Hom/End, subobjects, descent, and whether the needed property is preserved after extending coefficients. Do not assume that irreducibility is automatically preserved by characteristic-zero extension.",
+    "m-descent":"Pay special attention to descent: determine whether objects, subobjects, isomorphisms, or structures defined after scalar extension descend only under extra Galois invariance, effective descent data, or faithful flatness. State the descent principle actually being used.",
+    "m-exact":"Check whether every functor used is genuinely exact, and whether taking invariants, completion, tensor products, horizontal sections, and similar operations commute in the required way. If a functor is only left exact or needs extra hypotheses, say so explicitly.",
+    "m-paper-map":"Give only a structural map of the paper: main objective, core theorems, key intermediate propositions, genuinely new ideas, and the sections most relevant to the current problem. Do not summarize background section by section.",
+    "m-read-key":"Focus only on definitions, propositions, and proof steps genuinely relevant to the current goal. Exclude background and technical material that does not affect the present question. Do not produce a full-paper summary.",
+    "m-compare":"Compare {{Construction A}} and {{Construction B}} by stating their inputs, outputs, ambient categories, key structures, compatibilities, and the precise point where they may coincide or differ. Prefer a rigorous correspondence over loose analogy.",
+    "m-tex":"Treat the mathematics as settled. Do not search for alternative proofs or introduce new mathematical claims. Only rewrite the existing argument as publication-quality LaTeX/TeX, keeping notation consistent and concise.",
+    "m-polish":"Perform only scholarly writing edits: improve precision, coherence, and terminological consistency. Do not change the mathematical conclusion or add new unverified arguments.",
+    "m-state":"Compress the current discussion into a Research State suitable for continuing the project later. Remove narrative history, detailed failed attempts, and explanatory filler. Keep only: objects and notation, established results, ruled-out routes, unresolved bottleneck, and next step.",
+    "m-no-repeat":"Assume I know the standard background. Do not restate the problem, standard definitions, established results, or long formulas. Do not write an introduction or conclusion. Address the current mathematical difficulty directly.",
+    "m-diagnose":"In this turn, diagnose only: decide whether the strategy is viable, locate the real bottleneck, and explain why. Do not write a full long proof unless the target itself has a genuinely short argument.",
+    "m-one-step":"Restrict attention strictly to the current target. Do not proactively solve the larger theorem or adjacent questions unless the current step logically depends on them."
+  };
+
+
+  const DEFAULT_MODULE_NAME_EN = {
+    "m-proof":"Rigorous proof",
+    "m-skeleton":"Proof skeleton",
+    "m-routes":"Compare proof strategies",
+    "m-firstgap":"Find the first gap",
+    "m-hidden":"Check hidden assumptions",
+    "m-applicability":"Check theorem hypotheses",
+    "m-counter":"Search for counterexamples first",
+    "m-referee":"Referee Attack",
+    "m-weakest":"Find the weakest additional hypothesis",
+    "m-scalar":"Scalar-extension check",
+    "m-descent":"Descent check",
+    "m-exact":"Exactness / invariants check",
+    "m-paper-map":"Paper map",
+    "m-read-key":"Locate key results",
+    "m-compare":"Compare two constructions",
+    "m-tex":"Rewrite in TeX",
+    "m-polish":"Publication-level polish",
+    "m-state":"Compress Research State",
+    "m-no-repeat":"Do not repeat background",
+    "m-diagnose":"Diagnose before expanding",
+    "m-one-step":"Current step only"
+  };
+
+  DEFAULT_MODULES.forEach(m=>{
+    if(!m.textEn) m.textEn = DEFAULT_MODULE_EN[m.id] || "";
+    if(!m.nameEn) m.nameEn = DEFAULT_MODULE_NAME_EN[m.id] || m.name;
+  });
+
+  const DEFAULT_PRESETS = [
+    {id:"p-fast",name:"快速数学问答",moduleIds:["m-no-repeat","m-one-step"],controls:{scope:"step",rigor:"normal",depth:"concise",budget:"500",format:"plain",mode:"quick"}},
+    {id:"p-proof",name:"我的严格证明",moduleIds:["m-skeleton","m-counter","m-proof","m-hidden"],controls:{scope:"lemma",rigor:"paper",depth:"standard",budget:"1000",format:"plain",mode:"standard"}},
+    {id:"p-referee",name:"我的 Referee Attack",moduleIds:["m-firstgap","m-referee","m-applicability","m-no-repeat"],controls:{scope:"step",rigor:"referee",depth:"standard",budget:"1000",format:"diagnosis",mode:"attack"}},
+    {id:"p-read",name:"论文快速阅读",moduleIds:["m-paper-map","m-read-key","m-no-repeat"],controls:{scope:"paper",rigor:"normal",depth:"concise",budget:"1000",format:"plain",mode:"standard"}},
+    {id:"p-tex",name:"Publication TeX",moduleIds:["m-tex","m-polish"],controls:{scope:"proof",rigor:"paper",depth:"standard",budget:"2000",format:"tex",mode:"standard"}}
+  ];
+
+  const AVOIDS = [
+    ["repeat_problem","不复述问题"],
+    ["basic_defs","不解释标准定义"],
+    ["intro","不写 Introduction"],
+    ["summary","不写总结"],
+    ["known","不重复已确认结果"],
+    ["reprove","不重新证明已有 Lemma"],
+    ["background","不提供无关背景"],
+    ["formula","不重复长公式"]
+  ];
+
+  const STOPS = [
+    ["fatal_gap","找到第一个致命 gap 后停止"],
+    ["counterexample","找到一个反例后停止"],
+    ["missing_hyp","发现缺少关键假设后停止"],
+    ["no_guess","无法严格证明时明确说明，不继续猜测"]
+  ];
+
+  const defaultState = () => ({
+    version:1,
+    promptLang:"zh",
+    modules: structuredClone(DEFAULT_MODULES),
+    presets: structuredClone(DEFAULT_PRESETS),
+    projects:[
+      {
+        id:"proj-default",name:"默认项目",
+        background:"",
+        known:"",
+        ruledOut:"",
+        open:"",
+        contextLevel:"compressed"
+      }
+    ],
+    activeProjectId:"proj-default",
+    currentGoal:"",
+    selectedModules:[],
+    variables:{},
+    controls:{
+      scope:"step",rigor:"paper",depth:"standard",budget:"1000",format:"plain",mode:"standard"
+    },
+    avoids:["repeat_problem","basic_defs","intro","summary","known","background","formula"],
+    stops:["fatal_gap","missing_hyp","no_guess"],
+    history:[]
+  });
+
+  let state = load();
+  let editingModuleId = null;
+
+  const $ = s => document.querySelector(s);
+  const $$ = s => [...document.querySelectorAll(s)];
+
+  function load(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return defaultState();
+      const parsed = JSON.parse(raw);
+      const merged = {...defaultState(), ...parsed};
+      merged.modules = (merged.modules || []).map(m => ({
+        ...m,
+        textEn: m.textEn || DEFAULT_MODULE_EN[m.id] || "",
+        nameEn: m.nameEn || DEFAULT_MODULE_NAME_EN[m.id] || ""
+      }));
+      return merged;
+    }catch(e){ return defaultState(); }
+  }
+  function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+  function uid(prefix="id"){ return prefix+"-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,7); }
+  function activeProject(){ return state.projects.find(p=>p.id===state.activeProjectId) || state.projects[0]; }
+
+
+  function moduleTextForLang(m, lang=state.promptLang){
+    if(lang==="en") return (m.textEn || DEFAULT_MODULE_EN[m.id] || m.text || "");
+    return m.text || "";
+  }
+
+  function moduleNameForLang(m, lang=state.promptLang){
+    if(lang==="en") return (m.nameEn || DEFAULT_MODULE_NAME_EN[m.id] || m.name || "Module");
+    return m.name || "模块";
+  }
+
+  function escapeHtml(s=""){
+    return s.replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));
+  }
+
+  function toast(msg){
+    const el=$("#toast"); el.textContent=msg; el.classList.add("show");
+    clearTimeout(toast.t); toast.t=setTimeout(()=>el.classList.remove("show"),1500);
+  }
+
+  function approxTokens(text=""){
+    if(!text) return 0;
+    const cjk=(text.match(/[\u3400-\u9fff]/g)||[]).length;
+    const latin=(text.match(/[A-Za-z0-9_]+/g)||[]).reduce((a,w)=>a+w.length,0);
+    const other=Math.max(0,text.length-cjk-latin);
+    return Math.max(1, Math.round(cjk*1.05 + latin/3.8 + other/2.6));
+  }
+
+  function renderProjectSelect(){
+    const sel=$("#projectSelect");
+    sel.innerHTML=state.projects.map(p=>`<option value="${p.id}">${escapeHtml(p.name)}</option>`).join("");
+    sel.value=state.activeProjectId;
+    const p=activeProject();
+    $("#researchBackground").value=p.background||"";
+    $("#knownResults").value=p.known||"";
+    $("#ruledOut").value=p.ruledOut||"";
+    $("#openProblems").value=p.open||"";
+    $$("#contextLevel .chip").forEach(b=>b.classList.toggle("active",b.dataset.value===(p.contextLevel||"compressed")));
+  }
+
+  function renderLibrary(){
+    const q=$("#moduleSearch").value.trim().toLowerCase();
+    const filtered=state.modules.filter(m => !q || (m.name+" "+m.category+" "+m.text).toLowerCase().includes(q));
+    const groups={};
+    filtered.forEach(m=>(groups[m.category]??=[]).push(m));
+    const container=$("#moduleLibrary");
+    if(!filtered.length){ container.innerHTML=`<div class="empty">没有匹配的模块</div>`; return; }
+    container.innerHTML=Object.entries(groups).map(([cat,mods])=>`
+      <div class="category">
+        <h3>${escapeHtml(cat)}</h3>
+        ${mods.map(m=>`
+          <div class="module-item">
+            <div class="meta">
+              <div class="name">${escapeHtml(m.name)}</div>
+              <div class="desc">${escapeHtml(moduleTextForLang(m))}</div>
+            </div>
+            <button class="btn small add-module" data-id="${m.id}">+</button>
+            <button class="btn small edit-module" data-id="${m.id}">编辑</button>
+          </div>`).join("")}
+      </div>`).join("");
+    $$(".add-module").forEach(b=>b.onclick=()=>addModule(b.dataset.id));
+    $$(".edit-module").forEach(b=>b.onclick=()=>openModuleEditor(b.dataset.id));
+  }
+
+  function addModule(id){
+    const m=state.modules.find(x=>x.id===id); if(!m) return;
+    state.selectedModules.push({
+      instanceId:uid("inst"),moduleId:id,name:m.name,
+      nameEn:m.nameEn||DEFAULT_MODULE_NAME_EN[id]||"",
+      textZh:m.text||"", textEn:m.textEn||DEFAULT_MODULE_EN[id]||"",
+      text:moduleTextForLang(m)
+    });
+    save(); renderSelected(); rebuild();
+  }
+
+  function renderSelected(){
+    state.selectedModules = (state.selectedModules||[]).map(inst=>{
+      const base=state.modules.find(x=>x.id===inst.moduleId);
+      return {
+        ...inst,
+        nameEn: inst.nameEn || base?.nameEn || DEFAULT_MODULE_NAME_EN[inst.moduleId] || "",
+        textZh: inst.textZh || inst.text || base?.text || "",
+        textEn: inst.textEn || base?.textEn || DEFAULT_MODULE_EN[inst.moduleId] || ""
+      };
+    });
+    const wrap=$("#selectedModules");
+    if(!state.selectedModules.length){
+      wrap.innerHTML=`<div class="empty">从左侧 Prompt 库点击 “+” 添加模块</div>`; 
+      collectVariables(); return;
+    }
+    wrap.innerHTML=state.selectedModules.map((m,i)=>{
+      const currentText = state.promptLang==="en"
+        ? (m.textEn || DEFAULT_MODULE_EN[m.moduleId] || m.text || m.textZh || "")
+        : (m.textZh || m.text || "");
+      return `
+      <div class="selected" draggable="true" data-instance="${m.instanceId}">
+        <div class="selected-head">
+          <span class="handle">⋮⋮</span>
+          <span class="selected-title">${escapeHtml(m.name)}</span>
+          <span class="badge">${state.promptLang==="en"?"EN":"中"}</span>
+          <div class="selected-actions">
+            <button class="btn small reset-instance" data-i="${i}">恢复模板</button>
+            <button class="btn small danger remove-instance" data-i="${i}">×</button>
+          </div>
+        </div>
+        <textarea class="instance-text" data-i="${i}">${escapeHtml(currentText)}</textarea>
+      </div>`}).join("");
+
+    $$(".instance-text").forEach(t=>t.oninput=()=>{
+      const inst = state.selectedModules[+t.dataset.i];
+      if(state.promptLang==="en") inst.textEn=t.value;
+      else inst.textZh=t.value;
+      inst.text=t.value;
+      save(); collectVariables(); rebuild();
+    });
+    $$(".remove-instance").forEach(b=>b.onclick=()=>{
+      state.selectedModules.splice(+b.dataset.i,1); save(); renderSelected(); rebuild();
+    });
+    $$(".reset-instance").forEach(b=>b.onclick=()=>{
+      const inst=state.selectedModules[+b.dataset.i];
+      const base=state.modules.find(x=>x.id===inst.moduleId);
+      if(base){
+        inst.name=base.name;
+        inst.nameEn=base.nameEn||DEFAULT_MODULE_NAME_EN[base.id]||"";
+        inst.textZh=base.text||"";
+        inst.textEn=base.textEn||DEFAULT_MODULE_EN[base.id]||"";
+        inst.text=state.promptLang==="en"?(inst.textEn||inst.textZh):inst.textZh;
+        save(); renderSelected(); rebuild();
+      }
+    });
+    enableDrag();
+    collectVariables();
+  }
+
+  function enableDrag(){
+    let dragging=null;
+    $$(".selected").forEach(el=>{
+      el.addEventListener("dragstart",()=>{ dragging=el.dataset.instance; el.classList.add("dragging"); });
+      el.addEventListener("dragend",()=>{ el.classList.remove("dragging"); dragging=null; });
+      el.addEventListener("dragover",e=>{
+        e.preventDefault();
+        const targetId=el.dataset.instance;
+        if(!dragging || dragging===targetId) return;
+        const from=state.selectedModules.findIndex(x=>x.instanceId===dragging);
+        const to=state.selectedModules.findIndex(x=>x.instanceId===targetId);
+        const [item]=state.selectedModules.splice(from,1);
+        state.selectedModules.splice(to,0,item);
+        save(); renderSelected(); rebuild();
+      });
+    });
+  }
+
+  function collectVariables(){
+    const all=state.selectedModules.map(x=>state.promptLang==="en"
+      ? (x.textEn||DEFAULT_MODULE_EN[x.moduleId]||x.text||x.textZh||"")
+      : (x.textZh||x.text||"")).join("\n")+"\n"+state.currentGoal;
+    const vars=[...new Set([...all.matchAll(/\{\{\s*([^{}]+?)\s*\}\}/g)].map(m=>m[1].trim()))];
+    const sec=$("#variableSection"), list=$("#variableList");
+    if(!vars.length){sec.style.display="none"; return;}
+    sec.style.display="";
+    list.innerHTML=vars.map(v=>`
+      <label>${escapeHtml(v)}</label>
+      <input type="text" data-var="${escapeHtml(v)}" value="${escapeHtml(state.variables[v]||"")}" placeholder="填写 ${escapeHtml(v)}" />
+    `).join("");
+    $$("#variableList input").forEach(inp=>inp.oninput=()=>{state.variables[inp.dataset.var]=inp.value;save();rebuild();});
+  }
+
+  function renderChecks(){
+    $("#avoidChecks").innerHTML=AVOIDS.map(([id,label])=>`
+      <label class="check"><input type="checkbox" value="${id}" ${state.avoids.includes(id)?"checked":""}><span>${label}</span></label>
+    `).join("");
+    $("#stopChecks").innerHTML=STOPS.map(([id,label])=>`
+      <label class="check"><input type="checkbox" value="${id}" ${state.stops.includes(id)?"checked":""}><span>${label}</span></label>
+    `).join("");
+    $$("#avoidChecks input").forEach(c=>c.onchange=()=>{
+      state.avoids=$$("#avoidChecks input:checked").map(x=>x.value);save();rebuild();
+    });
+    $$("#stopChecks input").forEach(c=>c.onchange=()=>{
+      state.stops=$$("#stopChecks input:checked").map(x=>x.value);save();rebuild();
+    });
+  }
+
+  function renderPresets(){
+    $("#presetList").innerHTML=state.presets.map(p=>`
+      <div class="preset">
+        <span class="badge">★</span>
+        <span class="name">${escapeHtml(p.name)}</span>
+        <button class="btn small load-preset" data-id="${p.id}">载入</button>
+        ${p.id.startsWith("p-")?"":`<button class="btn small danger del-preset" data-id="${p.id}">×</button>`}
+      </div>`).join("");
+    $$(".load-preset").forEach(b=>b.onclick=()=>loadPreset(b.dataset.id));
+    $$(".del-preset").forEach(b=>b.onclick=()=>{
+      state.presets=state.presets.filter(p=>p.id!==b.dataset.id);save();renderPresets();
+    });
+  }
+
+  function loadPreset(id){
+    const p=state.presets.find(x=>x.id===id); if(!p) return;
+    if(Array.isArray(p.selectedModules) && p.selectedModules.length){
+      state.selectedModules=p.selectedModules.map(x=>({...structuredClone(x),instanceId:uid("inst")}));
+    }else{
+      state.selectedModules=(p.moduleIds||[]).map(mid=>{
+        const m=state.modules.find(x=>x.id===mid);
+        return m?{
+        instanceId:uid("inst"),moduleId:mid,name:m.name,
+        nameEn:m.nameEn||DEFAULT_MODULE_NAME_EN[mid]||"",
+        textZh:m.text||"",textEn:m.textEn||DEFAULT_MODULE_EN[mid]||"",
+        text:state.promptLang==="en"?(m.textEn||DEFAULT_MODULE_EN[mid]||m.text||""):m.text
+      }:null;
+      }).filter(Boolean);
+    }
+    state.controls={...state.controls,...(p.controls||{})};
+    if(Array.isArray(p.avoids)) state.avoids=[...p.avoids];
+    if(Array.isArray(p.stops)) state.stops=[...p.stops];
+    save(); syncControls(); renderSelected(); rebuild(); toast("已载入组合："+p.name);
+  }
+
+  function renderHistory(){
+    const wrap=$("#historyList");
+    if(!state.history.length){wrap.innerHTML=`<div class="empty">暂无历史</div>`;return;}
+    wrap.innerHTML=state.history.slice(0,10).map(h=>`
+      <div class="history-item">
+        <div class="t">${escapeHtml(h.title||"未命名任务")}</div>
+        <div class="m">${new Date(h.time).toLocaleString("zh-CN")} · 约 ${h.tokens} tokens</div>
+        <div class="a">
+          <button class="btn small restore-history" data-id="${h.id}">恢复</button>
+          <button class="btn small danger del-history" data-id="${h.id}">删除</button>
+        </div>
+      </div>`).join("");
+    $$(".restore-history").forEach(b=>b.onclick=()=>restoreHistory(b.dataset.id));
+    $$(".del-history").forEach(b=>b.onclick=()=>{
+      state.history=state.history.filter(h=>h.id!==b.dataset.id);save();renderHistory();
+    });
+  }
+
+  function snapshot(){
+    return {
+      activeProjectId:state.activeProjectId,
+      currentGoal:state.currentGoal,
+      selectedModules:structuredClone(state.selectedModules),
+      variables:structuredClone(state.variables),
+      controls:structuredClone(state.controls),
+      avoids:[...state.avoids],
+      stops:[...state.stops]
+    };
+  }
+
+  function saveHistory(){
+    const prompt=buildPrompt().text;
+    if(!prompt.trim()){toast("当前 Prompt 为空");return;}
+    state.history.unshift({
+      id:uid("hist"),
+      title:(state.currentGoal||activeProject().name||"未命名任务").slice(0,60),
+      time:Date.now(),
+      tokens:approxTokens(prompt),
+      prompt,
+      snapshot:snapshot()
+    });
+    state.history=state.history.slice(0,50);
+    save();renderHistory();toast("已保存到历史");
+  }
+
+  function restoreHistory(id){
+    const h=state.history.find(x=>x.id===id); if(!h) return;
+    Object.assign(state,h.snapshot||{});
+    save();renderAll();toast("已恢复历史状态");
+  }
+
+  function syncControls(){
+    $("#scopeSelect").value=state.controls.scope;
+    $("#rigorSelect").value=state.controls.rigor;
+    $("#depthSelect").value=state.controls.depth;
+    $("#budgetSelect").value=state.controls.budget;
+    $("#formatSelect").value=state.controls.format;
+    $("#modeSelect").value=state.controls.mode;
+  }
+
+  function controlText(){
+    const en = state.promptLang==="en";
+    const scope = en ? {
+      step:"Handle only the current step. Do not proactively solve the larger theorem.",
+      lemma:"Restrict the scope to the current lemma.",
+      proposition:"Restrict the scope to the current proposition.",
+      proof:"You may address the whole proof, but do not expand into unrelated parts of the paper.",
+      paper:"You may organize the answer at the scale of the whole paper."
+    }[state.controls.scope] : {
+      step:"只处理当前一步。不要主动解决更大的主定理。",
+      lemma:"处理范围限制在当前 Lemma。",
+      proposition:"处理范围限制在当前 Proposition。",
+      proof:"可以处理整个证明，但不要扩展到论文其他问题。",
+      paper:"可以从整篇论文范围组织答案。"
+    }[state.controls.scope];
+
+    const rigor = en ? {
+      intuition:"Focus on mathematical/geometric intuition; full technical formalization is not required.",
+      normal:"Give a reliable mathematical argument and justify the key steps.",
+      paper:"Work at publication-level rigor: every non-formal implication needs justification, and the hypotheses of cited results must be checked.",
+      referee:"Work at referee-level rigor: actively test logical jumps, hidden assumptions, and invalid base-change/descent/irreducibility arguments."
+    }[state.controls.rigor] : {
+      intuition:"以几何/数学直觉为主，不要求把每个技术细节完全形式化。",
+      normal:"给出可靠的数学论证，关键步骤要有理由。",
+      paper:"按可用于论文的严格性处理：每个非形式 implication 都应有依据，必须核对引用结果的假设。",
+      referee:"按严格审稿标准处理：主动质疑逻辑跳步、隐藏假设、错误的基变换/下降/不可约性论证。"
+    }[state.controls.rigor];
+
+    const mode = en ? {
+      quick:"Answer directly and quickly, without unnecessary expansion.",
+      standard:"Carry out standard mathematical analysis and prioritize the current target.",
+      deep:"Analyze the key technical point deeply, but avoid background unrelated to the target.",
+      attack:"Work adversarially: prioritize errors, counterexamples, missing hypotheses, and the first fatal gap."
+    }[state.controls.mode] : {
+      quick:"快速直接回答，不做不必要的展开。",
+      standard:"进行标准数学分析，优先解决当前目标。",
+      deep:"允许深入分析关键技术点，但避免与目标无关的背景扩张。",
+      attack:"以攻击论证的方式工作：优先找错误、反例、缺失假设和第一个致命 gap。"
+    }[state.controls.mode];
+
+    const depth = en ? {
+      minimal:"Keep the answer minimal: give only the conclusion and necessary justification.",
+      concise:"Be concise and keep only the core argument.",
+      standard:"Give a complete argument without excessive expansion.",
+      deep:"Explain the key technical steps in substantial detail.",
+      exhaustive:"Within the current scope, check all important issues as systematically as possible."
+    }[state.controls.depth] : {
+      minimal:"回答极简，只给结论和必要理由。",
+      concise:"保持简洁，只保留核心论证。",
+      standard:"给出完整但不过度展开的论证。",
+      deep:"对关键技术步骤做较深入解释。",
+      exhaustive:"在当前 Scope 内尽可能系统地检查所有重要问题。"
+    }[state.controls.depth];
+
+    const format = en ? {
+      plain:"Use ordinary mathematical prose.",
+      tex:"Write the final answer in LaTeX/TeX suitable for direct use in a paper or notes.",
+      skeleton:"Output only a proof skeleton; do not expand a full proof.",
+      diagnosis:"Diagnose only: assess viability and identify the bottleneck/gap; do not write a full proof."
+    }[state.controls.format] : {
+      plain:"使用普通数学文本输出。",
+      tex:"最终答案使用 LaTeX/TeX，适合直接放入论文或笔记。",
+      skeleton:"只输出 proof skeleton，不展开完整证明。",
+      diagnosis:"只做诊断：判断可行性、指出 bottleneck/gap，不输出完整证明。"
+    }[state.controls.format];
+
+    const budget=state.controls.budget==="none"?"":(
+      en
+      ? `Aim to keep the answer within about ${state.controls.budget} tokens; if rigor conflicts with length, prioritize mathematical correctness.`
+      : "期望回答尽量控制在约 "+state.controls.budget+" tokens 以内；若严格性与长度冲突，以数学正确性优先。"
+    );
+
+    return [scope,rigor,mode,depth,format,budget].filter(Boolean).join("\n");
+  }
+
+  function avoidText(){
+    const map=state.promptLang==="en" ? {
+      repeat_problem:"Do not restate the problem.",
+      basic_defs:"Assume I know the standard background; do not explain standard definitions.",
+      intro:"Do not write an introduction or generic motivation.",
+      summary:"Do not repeat the answer in a concluding summary.",
+      known:"Do not reprove or restate established results unless they directly conflict with the current target.",
+      reprove:"Do not reprove lemmas that are already established.",
+      background:"Do not provide background unrelated to the current target.",
+      formula:"Do not copy long formulas from my input unless modifying or citing them is necessary for the argument."
+    } : {
+      repeat_problem:"不要复述问题陈述。",
+      basic_defs:"假设我熟悉标准背景，不要解释标准定义。",
+      intro:"不要写引言或泛泛动机。",
+      summary:"不要在结尾重复总结已经说过的内容。",
+      known:"不要重新证明或复述已确认结果，除非发现它们与当前目标直接矛盾。",
+      reprove:"不要重新证明已有 Lemma。",
+      background:"不要提供与当前目标无关的背景。",
+      formula:"不要重复抄写我给出的长公式，除非修改或引用它是论证所必需的。"
+    };
+    return state.avoids.map(x=>map[x]).filter(Boolean).join("\n");
+  }
+
+  function stopText(){
+    const map=state.promptLang==="en" ? {
+      fatal_gap:"If you find the first fatal gap, state it clearly and stop; do not continue checking later steps.",
+      counterexample:"If you find one explicit counterexample, present it and stop.",
+      missing_hyp:"If a key hypothesis is missing, identify it explicitly; do not silently strengthen the statement.",
+      no_guess:"If the conclusion cannot be derived rigorously, say exactly where the argument stops instead of filling the gap by guesswork."
+    } : {
+      fatal_gap:"如果发现第一个致命 gap，明确指出并停止，不继续检查后续步骤。",
+      counterexample:"如果找到一个明确反例，给出该反例后停止。",
+      missing_hyp:"如果发现缺少关键假设，明确指出该假设，不要擅自补成更强命题。",
+      no_guess:"如果无法严格推出结论，请明确说出卡在哪里，不要用猜测补全证明。"
+    };
+    return state.stops.map(x=>map[x]).filter(Boolean).join("\n");
+  }
+
+  function applyVariables(text){
+    return text.replace(/\{\{\s*([^{}]+?)\s*\}\}/g,(m,k)=>{
+      const v=state.variables[k.trim()];
+      return v && v.trim() ? v.trim() : m;
+    });
+  }
+
+  function buildPrompt(){
+    const p=activeProject();
+    const parts=[];
+
+    const add=(label,text)=>{
+      text=(text||"").trim();
+      if(text) parts.push({label,text});
+    };
+
+    const en = state.promptLang==="en";
+    if(p.contextLevel==="minimal"){
+      add("Research State", p.known ? `${en?"Established results":"已确认结果"}：\n${p.known}` : "");
+    }else if(p.contextLevel==="compressed"){
+      add("Research State",
+        [
+          p.background&&`${en?"Research context":"研究背景"}：\n${p.background}`,
+          p.known&&`${en?"Established results":"已确认结果"}：\n${p.known}`
+        ].filter(Boolean).join("\n\n"));
+    }else{
+      add("Research State",
+        [
+          p.background&&`${en?"Research context":"研究背景"}：\n${p.background}`,
+          p.known&&`${en?"Established results":"已确认结果"}：\n${p.known}`,
+          p.ruledOut&&`${en?"Ruled-out approaches":"已排除路线"}：\n${p.ruledOut}`,
+          p.open&&`${en?"Open issues":"未解决问题"}：\n${p.open}`
+        ].filter(Boolean).join("\n\n"));
+    }
+
+    add("当前目标", state.currentGoal ? `${en?"[Current sole objective]":"【本轮唯一目标】"}\n${state.currentGoal}` : "");
+    add("范围与严格性", controlText());
+
+    const moduleText=state.selectedModules.map((m,i)=>{
+      const txt = en
+        ? (m.textEn || DEFAULT_MODULE_EN[m.moduleId] || m.text || m.textZh || "")
+        : (m.textZh || m.text || "");
+      const outputName = en
+        ? (m.nameEn || DEFAULT_MODULE_NAME_EN[m.moduleId] || m.name || "Module")
+        : (m.name || "模块");
+      return `[${en?"Module":"模块"} ${i+1}: ${outputName}]\n${txt}`;
+    }).join("\n\n");
+    add("Prompt 模块", moduleText);
+
+    add("禁止事项", avoidText() ? `${en?"[Avoid]":"【避免】"}\n${avoidText()}` : "");
+    add("停止条件", stopText() ? `${en?"[Stop conditions]":"【停止条件】"}\n${stopText()}` : "");
+
+    const resolved=parts.map(x=>({...x,text:applyVariables(x.text)}));
+    return {
+      parts:resolved,
+      text:resolved.map(x=>x.text).join("\n\n")
+    };
+  }
+
+  function rebuild(){
+    const built=buildPrompt();
+    $("#finalPrompt").value=built.text;
+    const total=approxTokens(built.text);
+    $("#tokenTotal").textContent=total.toLocaleString();
+    $("#tokenTotalInline").textContent=total.toLocaleString();
+    $("#tokenBarFill").style.width=Math.min(100,total/4000*100)+"%";
+    $("#structureList").innerHTML=built.parts.map(p=>`
+      <span>${escapeHtml(p.label)}</span><span>${approxTokens(p.text)} tokens</span>
+    `).join("");
+
+    const contextPart=built.parts.find(x=>x.label==="Research State");
+    const modulePart=built.parts.find(x=>x.label==="Prompt 模块");
+    const c=contextPart?approxTokens(contextPart.text):0;
+    const m=modulePart?approxTokens(modulePart.text):0;
+    $("#contextShare").textContent=total?Math.round(c/total*100)+"%":"0%";
+    $("#moduleShare").textContent=total?Math.round(m/total*100)+"%":"0%";
+    save();
+  }
+
+  function bindProjectFields(){
+    const p=activeProject();
+    p.background=$("#researchBackground").value;
+    p.known=$("#knownResults").value;
+    p.ruledOut=$("#ruledOut").value;
+    p.open=$("#openProblems").value;
+    save();rebuild();
+  }
+
+  function openModuleEditor(id=null){
+    editingModuleId=id;
+    const m=id?state.modules.find(x=>x.id===id):null;
+    $("#moduleDialogTitle").textContent=m?"编辑 Prompt 模块":"新建 Prompt 模块";
+    $("#moduleNameInput").value=m?.name||"";
+    $("#moduleCategoryInput").value=m?.category||"自定义";
+    $("#moduleNameEnInput").value=m?.nameEn||DEFAULT_MODULE_NAME_EN[m?.id]||"";
+    $("#moduleTextInput").value=m?.text||"";
+    $("#moduleTextEnInput").value=m?.textEn||DEFAULT_MODULE_EN[m?.id]||"";
+    moduleDialog.showModal();
+  }
+
+  function renderAll(){
+    $("#promptLangSelect").value=state.promptLang||"zh";
+    renderProjectSelect();
+    $("#currentGoal").value=state.currentGoal||"";
+    syncControls();
+    renderChecks();
+    renderLibrary();
+    renderSelected();
+    renderPresets();
+    renderHistory();
+    rebuild();
+  }
+
+  $("#promptLangSelect").value=state.promptLang||"zh";
+  $("#promptLangSelect").onchange=()=>{
+    state.promptLang=$("#promptLangSelect").value;
+    save();
+    renderLibrary();
+    renderSelected();
+    collectVariables();
+    rebuild();
+    toast(state.promptLang==="en"?"已切换为英文 Prompt":"已切换为中文 Prompt");
+  };
+
+  $("#moduleSearch").oninput=renderLibrary;
+  $("#newModuleBtn").onclick=()=>openModuleEditor();
+
+  $("#saveModuleBtn").onclick=()=>{
+    const name=$("#moduleNameInput").value.trim();
+    const category=$("#moduleCategoryInput").value.trim()||"自定义";
+    const nameEn=$("#moduleNameEnInput").value.trim();
+    const text=$("#moduleTextInput").value.trim();
+    const textEn=$("#moduleTextEnInput").value.trim();
+    if(!name||!text){toast("名称和中文内容不能为空");return;}
+    if(editingModuleId){
+      const m=state.modules.find(x=>x.id===editingModuleId);
+      if(m){m.name=name;m.nameEn=nameEn;m.category=category;m.text=text;m.textEn=textEn;}
+    }else{
+      state.modules.push({id:uid("m"),name,nameEn,category,text,textEn});
+    }
+    save();renderLibrary();moduleDialog.close();toast("模块已保存");
+  };
+
+  $("#projectSelect").onchange=()=>{
+    bindProjectFields();
+    state.activeProjectId=$("#projectSelect").value;
+    save();renderProjectSelect();rebuild();
+  };
+  ["researchBackground","knownResults","ruledOut","openProblems"].forEach(id=>{
+    $("#"+id).addEventListener("input",bindProjectFields);
+  });
+  $("#currentGoal").oninput=()=>{
+    state.currentGoal=$("#currentGoal").value;save();collectVariables();rebuild();
+  };
+
+  $$("#contextLevel .chip").forEach(b=>b.onclick=()=>{
+    const p=activeProject(); p.contextLevel=b.dataset.value;
+    save();renderProjectSelect();rebuild();
+  });
+
+  ["scope","rigor","depth","budget","format","mode"].forEach(k=>{
+    $("#"+k+"Select").onchange=()=>{
+      state.controls[k]=$("#"+k+"Select").value;save();rebuild();
+    }
+  });
+
+  $("#newProjectBtn").onclick=()=>{
+    $("#projectNameInput").value="";
+    projectDialog.showModal();
+  };
+  $("#confirmProjectBtn").onclick=()=>{
+    const name=$("#projectNameInput").value.trim();
+    if(!name){toast("请输入项目名称");return;}
+    const id=uid("proj");
+    state.projects.push({id,name,background:"",known:"",ruledOut:"",open:"",contextLevel:"compressed"});
+    state.activeProjectId=id;save();projectDialog.close();renderProjectSelect();rebuild();
+  };
+  $("#deleteProjectBtn").onclick=()=>{
+    if(state.projects.length<=1){toast("至少保留一个项目");return;}
+    const p=activeProject();
+    if(!confirm(`删除项目“${p.name}”？`))return;
+    state.projects=state.projects.filter(x=>x.id!==p.id);
+    state.activeProjectId=state.projects[0].id;save();renderProjectSelect();rebuild();
+  };
+
+  function openPresetDialog(){
+    $("#presetNameInput").value="";
+    presetDialog.showModal();
+  }
+  $("#savePresetBtn").onclick=openPresetDialog;
+  $("#savePresetBtn2").onclick=openPresetDialog;
+  $("#confirmPresetBtn").onclick=()=>{
+    const name=$("#presetNameInput").value.trim();
+    if(!name){toast("请输入组合名称");return;}
+    state.presets.push({
+      id:uid("preset"),name,
+      moduleIds:state.selectedModules.map(x=>x.moduleId),
+      selectedModules:structuredClone(state.selectedModules),
+      controls:structuredClone(state.controls),
+      avoids:[...state.avoids],
+      stops:[...state.stops]
+    });
+    save();renderPresets();presetDialog.close();toast("组合已保存");
+  };
+
+  $("#resetTaskBtn").onclick=()=>{
+    state.currentGoal="";
+    state.selectedModules=[];
+    state.variables={};
+    state.controls={scope:"step",rigor:"paper",depth:"standard",budget:"1000",format:"plain",mode:"standard"};
+    save();renderAll();
+  };
+
+  $("#saveHistoryBtn").onclick=saveHistory;
+  $("#clearHistoryBtn").onclick=()=>{
+    if(confirm("清空全部历史记录？")){state.history=[];save();renderHistory();}
+  };
+
+  async function copyPrompt(){
+    const txt=$("#finalPrompt").value;
+    if(!txt.trim()){toast("Prompt 为空");return;}
+    try{ await navigator.clipboard.writeText(txt); toast("已复制到剪贴板"); }
+    catch(e){
+      $("#finalPrompt").select();
+      document.execCommand("copy");
+      toast("已复制到剪贴板");
+    }
+  }
+  $("#copyBtn").onclick=copyPrompt;
+  $("#copyBtn2").onclick=copyPrompt;
+
+  $("#clearOutputBtn").onclick=()=>{
+    $("#finalPrompt").value="";
+    $("#tokenTotal").textContent="0";
+    $("#tokenTotalInline").textContent="0";
+    $("#tokenBarFill").style.width="0%";
+    toast("已清空输出窗口");
+  };
+
+  $("#finalPrompt").oninput=()=>{
+    // 允许用户最终手工修改，但不反向写回结构
+    const t=approxTokens($("#finalPrompt").value);
+    $("#tokenTotal").textContent=t.toLocaleString();
+    $("#tokenTotalInline").textContent=t.toLocaleString();
+    $("#tokenBarFill").style.width=Math.min(100,t/4000*100)+"%";
+  };
+
+  $$(".final-tabs button").forEach(b=>b.onclick=()=>{
+    $$(".final-tabs button").forEach(x=>x.classList.toggle("active",x===b));
+    const isText=b.dataset.tab==="text";
+    $("#finalTextWrap").style.display=isText?"":"none";
+    $("#structureWrap").style.display=isText?"none":"";
+  });
+
+  $("#exportBtn").onclick=()=>{
+    const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download="math-prompt-workbench-backup.json";
+    a.click();URL.revokeObjectURL(a.href);
+  };
+
+  $("#importFile").onchange=async e=>{
+    const file=e.target.files?.[0]; if(!file)return;
+    try{
+      const imported=JSON.parse(await file.text());
+      if(!imported || typeof imported!=="object") throw new Error("bad");
+      state={...defaultState(),...imported};
+      save();renderAll();toast("导入成功");
+    }catch(err){alert("无法导入：JSON 格式无效。");}
+    e.target.value="";
+  };
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
