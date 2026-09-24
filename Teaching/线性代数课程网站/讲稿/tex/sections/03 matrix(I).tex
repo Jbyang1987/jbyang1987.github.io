@@ -1,0 +1,1125 @@
+%\setcounter{framenumber}{30}
+
+\makeatletter
+\ifodd\value{page}
+\else
+\begin{frame}[plain]
+\end{frame}
+\fi
+\makeatother
+
+
+\renewcommand{\mydate}{2025年3月4号 \  第三次课}
+
+
+\section{矩阵(一)}
+
+\title{第三章 \quad 矩阵(一)}
+\author{}
+\date{}
+
+\frame{\titlepage}
+
+
+\subsection{矩阵及其线性运算}
+
+\subsubsection{矩阵的定义}
+\begin{frame}\frametitle{矩阵的定义}
+\begin{definition}[矩阵] 一个\blue{$m\times n$矩阵}为由 $m\times n$个数排成的$m$行$n$列的阵列
+\[\left(
+\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1 n}\\
+a_{21} & a_{22} & \cdots & a_{2 n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m 1} & a_{m 2} & \cdots & a_{mn}\\
+\end{array}
+\right)_.\]
+记作$A=(a_{ij})_{m\times n}$. \pp 称 $a_{ij}$为矩阵$A$的\blue{第$(i,j)$元素}; \pp 当$i=j$时,$a_{ii}$也称为$A$的\blue{对角元}.
+\end{definition}
+\pp
+若两个矩阵$A$和$B$的行数和列数相同且对应位置的元素都相同,则称$A$与$B$ \blue{相等},记为$A=B$. \pp  否则称$A$与$B$ \blue{不相等},记为 $A\neq B$． \pp 例如:
+\[
+\begin{pmatrix}1&1&1\\1&1&1\end{pmatrix}\neq\begin{pmatrix}1&1\\1&1\end{pmatrix},\quad
+\begin{pmatrix}1&2\\0&3\end{pmatrix}\neq\begin{pmatrix}1&0\\0&3\end{pmatrix}.
+\]
+\end{frame}
+
+
+
+
+
+\subsubsection{特殊矩阵命名}
+\begin{frame}\frametitle{特殊矩阵命名}
+按照矩阵行列数大小,非零元分布或元素取值范围等,我们有如下特殊矩阵命名:
+\pp
+\begin{enumerate}
+\item $n$维\blue{行向量} := $1\times n$ 矩阵; \pp
+\item $n$维\blue{列向量} := $n\times 1$ 矩阵; \pp
+\item \blue{零矩阵} $O$, 或 $0$; \pp
+\item $n$阶\blue{方阵}; \pp
+\item \blue{单位阵} $I$; \pp
+\item \blue{数量矩阵} $aI$; \pp
+\item \blue{对角矩阵} $\mathrm{diag}(a_1,\cdots,a_n)$; \pp
+\item \blue{上(下)三角矩阵}; \pp
+\item \blue{(反)对称矩阵}; \pp
+\item \blue{整数矩阵};\blue{有理数矩阵};\blue{实矩阵};\blue{复矩阵}; \pp
+\item \blue{数域$\bF$上的矩阵}; \pp
+\item \blue{多项式矩阵}.
+\end{enumerate}
+\end{frame}
+
+
+
+
+
+\subsubsection{矩阵的例子}
+\begin{frame}\frametitle{矩阵的例子}
+\begin{example}
+$\bullet$ $\begin{pmatrix}0&1\\1&0\\\end{pmatrix}$为整系数对称$2$阶方阵.\\ \pp
+$\bullet$ $\begin{pmatrix}0&\sqrt{-1}&-1\\-\sqrt{-1}&0&\pi\\1&-\pi&0\\\end{pmatrix}$为复系数反对称$3$阶方阵.
+\\ \pp
+$\bullet$ $\begin{pmatrix}e^{\frac{i\pi}{3}}&0\\0&e^{\frac{i\pi}{3}}\\\end{pmatrix}$为复系数2阶数量矩阵.
+
+
+\end{example}\end{frame}
+
+
+
+
+
+\subsubsection{应用中的一些例子}
+\begin{frame}\frametitle{应用中的一些例子}
+
+\begin{itemize}
+\item 图的邻接矩阵（更一般地，可加入箭向和长度）:
+
+\begin{tikzpicture}[scale=0.5]
+  % 定义五边形的顶点（均匀分布在圆上）
+  \foreach \i [evaluate=\i as \angle using 90+72*\i] in {0,...,4} {
+ \coordinate (V\i) at (\angle:2cm); % 顶点坐标，半径2cm
+  }
+  % 绘制五边形
+  \draw (V0) -- (V1) -- (V2) -- (V3) -- (V4) -- cycle;
+  \draw (V3) -- (V0) -- (V2);
+  % 在顶点外侧添加标签 V_1 到 V_5
+  \foreach \i [evaluate=\i as \label using int(\i+1),
+   evaluate=\i as \angle using 90+72*\i] in {0,...,4} {
+ \node[anchor=\angle+180] at (\angle:2cm) {$V_{\label}$}; % 标签向外偏移0.3cm
+  }
+\node at (8,0) {$\Rightarrow\qquad \begin{pmatrix}
+0&1&1&1&1\\1&0&1&0&0\\1&1&0&1&0\\1&0&1&0&1\\1&0&0&1&0\\
+\end{pmatrix}$};
+\end{tikzpicture}
+\item 数字图像 $3$个$m\times n$取值在$0,1,\cdots,255$的矩阵.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{DeepSeek-V4-Flash-0731}
+
+DeepSeek-V4-Flash-0731 中的\blue{词嵌入矩阵}
+\[E\in \mathbb R^{129280\times 4096}.\]
+
+
+\[
+\begin{array}{cc}
+0 & \\
+\vdots & \vdots \\
+320 & \text{。} \\
+\vdots & \vdots \\
+23775 & \text{线性} \\
+\vdots &\vdots  \\
+60147 & \text{我爱} \\
+\vdots & \vdots \\
+70889 & \text{代数} \\
+\vdots & \vdots \\
+129279 & \\
+\end{array}
+\underbrace{\left(\begin{array}{rrrrrr}
+\cdots & \cdots & \cdots & \cdots & \cdots \\
+\cdots & \cdots & \cdots & \ddots & \cdots \\
+0.0074 & -0.0134 & 0.0194 & \cdots & -0.0045 \\
+\cdots & \cdots & \cdots & \ddots & \cdots \\
+0.0410 & 0.0045 & -0.1797 & \cdots & -0.0017\\
+\cdots & \cdots & \cdots & \ddots & \cdots \\
+0.1699 & -0.0593 & 0.2314 & \cdots & 0.0219\\
+\cdots & \cdots & \cdots & \ddots & \cdots \\
+0.0938 & -0.0265 & -0.1035 & \cdots & 0.1289\\
+\cdots & \cdots & \cdots & \ddots & \cdots \\
+\cdots & \cdots & \cdots & \cdots & \cdots \\
+\end{array}\right)}_{4096}
+\]
+
+保存精度采用 BF16(保存一个实数需要：符号1位+指数8位+尾数7位=16bit=2byte), 共需要
+$\frac{129280 \times 4096 \times 2}{10^9} \approx 1.06\ \mathrm{GB}$.
+
+\end{frame}
+
+
+
+
+
+
+
+% ========== 2023年03月16号 第04次课 矩阵运算 ==========
+%\frame{\titlepage}
+
+
+
+\subsubsection{矩阵的线性运算}
+\begin{frame}\frametitle{矩阵的线性运算}
+\begin{definition}[加法与数乘] 设$\lambda$为数域$\bF$中的数. 取两个$\bF$系数的$m\times n$矩阵 $A=(a_{ij})_{m\times n}\in \bF^{m\times n}$, $B=(b_{ij})_{m\times n}\in \bF^{m\times n}$. \pp  定义
+\begin{itemize} \footnotesize
+\item \blue{加法}
+\[\blue{A + B} :=(a_{ij}+b_{ij})_{m\times n}:=\begin{pmatrix}
+a_{11}+b_{11} & a_{12}+b_{12} & \cdots & a_{1 n}+b_{1n}\\
+a_{21}+b_{21} & a_{22}+b_{22} & \cdots & a_{2 n}+b_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m 1}+b_{m1} & a_{m 2}+b_{m2} & \cdots & a_{mn}+b_{mn}
+\end{pmatrix}_,\]
+\pp
+\item \blue{数乘}
+\[\blue{\lambda A} :=(\lambda a_{ij})_{m\times n}:=\begin{pmatrix}
+\lambda a_{11} & \lambda a_{12} & \cdots & \lambda a_{1 n}\\
+\lambda a_{21} & \lambda a_{22} & \cdots & \lambda a_{2 n}\\
+\vdots & \vdots & \ddots & \vdots\\
+\lambda a_{m 1} & \lambda a_{m 2} & \cdots & \lambda a_{mn}
+\end{pmatrix}_.\]
+\end{itemize}
+\pp
+类似地定义\blue{负矩阵}和矩阵的\blue{减法}运算:
+\[\blue{-A}:=(-a_{ij})_{m\times n}, \quad \blue{A-B}:=A+(-B) = (a_{ij}-b_{ij})_{m\times n}.\]
+\end{definition}
+\textbf{注}: 只有行数和列数相同的矩阵才可以相加减. 否则无意义.
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{矩阵的线性运算}
+
+\pp
+\begin{example}
+\begin{enumerate}
+\item   $A = \left(\begin{array}{ccc}
+1 & 3 & 5\\
+- 1 & 2 & 4
+\end{array}\right)$, $B = \left(\begin{array}{ccc}
+2 & - 1 & 3\\
+7 & 3 & 1
+\end{array}\right)$，求$A+B$和$A-B$.
+\pp
+\bigskip
+
+\item   $A = \left(\begin{array}{ccc}
+1 & 3 & 5\\
+- 1 & 2 & 4
+\end{array}\right)$, 求$2A$.
+\pp
+\bigskip
+
+\item 设$A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$, $B=\begin{pmatrix}3&5\\7&6\end{pmatrix}$, $C=\begin{pmatrix}0&-1\\9&3\end{pmatrix}$.
+\begin{itemize}
+\item 求 $3A+2B-4C$.
+\item 若$5A+3X =B$. 求$X$.
+\end{itemize}
+\end{enumerate}
+\end{example}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{矩阵的线性运算}
+类似于向量的线性运算,矩阵的线性运算也满足如下八条基本性质:
+\begin{theorem}
+\begin{enumerate}
+\item 加法交换律: $A+B=B+A$;
+\item 加法结合律: $A+(B+C)=(A+B)+C$;
+\item 有零矩阵: $A+0=A=0+A$;
+\item 有负矩阵: $A+(-A)=0=(-A)+A$;
+\item 数乘单位元: $1A = A$;
+\item 数乘结合律: $\lambda(\mu A)=(\lambda \mu)A$;
+\item 左分配律: $(\lambda+\mu)A=\lambda A + \mu A$;
+\item 右分配律: $\lambda (A+B) =\lambda A + \lambda B$;
+\end{enumerate}
+其中 $A,B,C$ 为使得运算有有意义的矩阵, $\lambda,\mu$为数.
+\end{theorem}
+\end{frame}
+
+
+
+
+
+\subsubsection{基本矩阵}
+\begin{frame}\frametitle{基本矩阵}
+\begin{equation*}
+\begin{array}{lcc}
+E_{ij}:=& \left(\begin{array}{ccc}0&\cdots&0\\\vdots&1&\vdots\\0&\cdots&0\\\end{array}\right)
+& \leftarrow\text{\small 第$i$行} \\
+&{\uparrow \atop \text{第$j$列}} & \\
+\end{array}
+\end{equation*}
+\pp
+\begin{lemma}
+任意 $m\times n$矩阵$A=(a_{ij})_{m\times n}$都可以唯一的表示为基本矩阵的线性组合
+\[A=\sum_{i=1}^m\sum_{j=1}^n a_{ij}E_{ij}.\]
+\end{lemma}
+\end{frame}
+
+
+
+
+\renewcommand{\mydate}{2025年3月6号\quad 第四次课}
+
+\subsection{矩阵乘法}
+
+
+\subsubsection{数组向量空间之间的线性映射}
+\begin{frame}\frametitle{数组向量空间之间的线性映射}
+\begin{definition}[线性映射]
+给定一个数组向量空间之间的映射$\sA\colon \bF^n\rightarrow \bF^m$. \pp 若$\sA$满足
+\begin{equation}\label{equ:linearoperator}\tag{$*$}
+\begin{split}
+\blue{\text{(保持加法)\quad }} &\sA(\vec{a} + \vec{b}) = \sA(\vec{a}) + \sA(\vec{b});\\
+\blue{\text{(保持数乘)\quad }} &\sA(\lambda\vec{a}) = \lambda\sA(\vec{a})
+\end{split}
+\end{equation}
+\pp
+则$\sA$称为\blue{线性映射}.
+\end{definition}
+\pp \bigskip
+
+\yang{线性映射保持原点并将直线映为直线的映射。(选做习题)}
+
+\pp \bigskip
+
+实际上，在其他课程中有许多算子也具备这种性质。\pp 例如，积分和求导运算均保持加法和数乘性质：
+\[\int_0^x(f(t)+g(t))\mathrm{d}t =\int_0^x f(t) \mathrm{d}t + \int_0^x g(t) \mathrm{d}t, \qquad \int_0^x \lambda f(t) \mathrm{d}t = \lambda \int_0^x f(t) \mathrm{d}t;\]
+\[(f+g)'=f'+g',\qquad (\lambda f)' = \lambda f'.\]
+\pp
+为了统一研究这类对象，有必要定义\blue{一般的线性空间}及其上的\blue{线性映射}。这是线性代数课程中最核心的两个概念。
+\pp
+量子力学中，\blue{可观测量}在数学上使用一类特殊的线性映射来描述的。
+\end{frame}
+
+
+
+
+\subsubsection{矩阵与线性映射}
+\begin{frame}\frametitle{矩阵与线性映射}
+\begin{itemize}
+\item 给定线性映射 $\sA\colon \bF^n\rightarrow \bF^m$. 考虑基本向量$\vec{e}_j$在这个映射下的像
+\[\sA(\vec{e}_j)=\sA\left(\begin{pmatrix}0\\\vdots\\1\\\vdots\\0\end{pmatrix}\right)=:\begin{pmatrix}a_{1j}\\a_{2j}\\\vdots\\a_{mj}\end{pmatrix}.\]
+\pp
+因此,通过线性映射$\sA$,可以得到一个矩阵 $A=(a_{ij})_{m\times n}$.
+\pp
+\bigskip
+
+\item 根据$\sA$为线性映射,对于任意 $y_1,\cdots,y_n\in \bF$,我们有
+\begin{equation}\label{equ:linearmap} \tag{$*$}
+\sA\left(\begin{pmatrix}y_1\\y_2\\\vdots\\y_n\end{pmatrix}\right)
+=\begin{pmatrix} a_{11}y_1+a_{12}y_2+\cdots+a_{1n}y_n\\ \\ a_{21}y_1+a_{22}y_2+\cdots+a_{2n}y_n\\ \\ \vdots\\ a_{m1}y_1+a_{m2}y_2+\cdots+a_{mn}y_n\end{pmatrix}.
+\end{equation}
+
+
+\end{itemize}
+
+\pp
+\bigskip
+
+\blue{注：} 线性映射 $\mathscr{A}$ 由其在基本向量处的值唯一确定。
+
+\end{frame}
+
+
+
+
+
+\begin{frame}\frametitle{矩阵与线性映射}
+
+反之, 给定矩阵$A$我们可以通过\eqref{equ:linearmap}, 确定一个线性映射$\sA$.
+\pp
+\begin{center}
+\fbox{
+$\bF^{m\times n}$ $\quad$ $\xleftrightarrow{\quad 1:1\quad }$ \quad
+从$\bF^n$到$\bF^m$的全体线性映射.}
+\end{center}
+\pp
+\blue{注：} 一个从$\bF^m$到$\bF^n$ 的映射是线性的，当且仅当其每个分量都为一次齐次函数.
+\pp
+\bigskip
+
+\yang{思考：前面定义的各种矩阵在几何中对应哪些线性映射？}
+\pp
+例如：\blue{零矩阵}、$n$阶\blue{方阵}、\blue{单位阵}、\blue{数量矩阵}、\blue{对角矩阵}.
+\pp
+\bigskip
+
+类似于函数的加法和数乘；线性映射也可考虑加法和数乘。
+\pp
+
+\yang{思考：用矩阵的语言，线性映射的加法和数乘是如何描述的？}
+\pp
+\bigskip
+
+\begin{lemma}
+线性映射的合成仍然是线性映射.
+\end{lemma}
+\pp
+\yang{思考：用矩阵的语言，线性映射的合成是如何描述的？}
+\end{frame}
+
+
+
+
+
+\subsubsection{线性映射的合成与矩阵的乘法}
+\begin{frame}\frametitle{线性映射的合成与矩阵的乘法}
+设矩阵$A=(a_{ik})_{m\times n}\in \bF^{m\times n}$,$B=(b_{kj})_{n\times p}\in \bF^{n\times p}$ 对应线性映射$\sA$和$\sB$. \pp 即,
+{\small\[\sA\colon \bF^n \rightarrow \bF^m, \quad (y_1,\cdots,y_n)^T \mapsto \left(\sum_{k=1}^{n} a_{1k}y_k,\sum_{k=1}^{n} a_{2k}y_k,\cdots,\sum_{k=1}^{n} a_{mk}y_k\right)^T.\]
+\[\sB\colon \bF^p\rightarrow \bF^n, \quad (z_1,\cdots,z_p)^T \mapsto \left(\sum_{j=1}^{p} b_{1j}z_j,\sum_{j=1}^{p} b_{2j}z_j,\cdots,\sum_{j=1}^{p} b_{nj}z_j\right)^T.\]}
+\pp
+因此
+\[\sA\circ \sB(z_1,\cdots,z_p)^T = \left(\sum\limits_{j=1}^{p}\left(\sum\limits_{k=1}^{n}a_{1k}b_{kj}\right)z_j,\cdots,\sum\limits_{j=1}^{p}\left(\sum\limits_{k=1}^{n}a_{mk}b_{kj}\right)z_j\right)^T.\]
+\pp 记 $C=(c_{ij})_{m\times p}\in \bF^{m\times p}$, 其中 $c_{ij}=\sum_{k=1}^{n}a_{ik}b_{kj}$. 则$\sA\circ \sB$为矩阵$C$对应的线性变换.\\ \pp
+\blue{注}: 下面我们将这个矩阵$C$定义为矩阵$A$和$B$的乘积.
+\end{frame}
+
+
+
+
+
+\subsubsection{矩阵的乘法}
+\begin{frame}\frametitle{矩阵的乘法}
+\begin{definition}[矩阵乘法]设 $A=(a_{ik})_{m\times n}\in \bF^{m\times n}$,$B=(b_{kj})_{n\times p}\in \bF^{n\times p}$. 定义
+\[\blue{AB}:=\left(\sum_{k=1}^{n}a_{ik}b_{kj}\right)_{m\times p}\in \bF^{m\times p}.\]
+\end{definition}
+$ \small \begin{pmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\\hline
+a_{21}&a_{22}&\cdots&a_{2n}\\\hline
+\cdots&\cdots&\cdots&\cdots\\
+a_{m1}&a_{m2}&\cdots&a_{mn}\\\hline
+\end{pmatrix}
+\left(\begin{array}{c|c|cc|}
+b_{11}&b_{12}&\cdots&b_{1p}\\
+b_{21}&b_{22}&\cdots&b_{2p}\\
+\vdots&\vdots&\ddots&\vdots\\
+b_{n1}&b_{n2}&\cdots&b_{np}\\
+\end{array}\right) $
+\begin{equation*}
+\pp
+\footnotesize:=
+\begin{pmatrix}
+\boxed{a_{11}b_{11}+a_{12}b_{21}+\cdots +a_{1n}b_{n1}} &\cdots&\boxed{a_{11}b_{1p}+a_{12}b_{2p}+\cdots +a_{1n}b_{np}}\\
+\vdots& &\vdots\\
+\boxed{a_{m1}b_{11}+a_{m2}b_{21}+\cdots +a_{mn}b_{n1}} &\cdots&\boxed{a_{m1}b_{1p}+a_{m2}b_{2p}+\cdots +a_{mn}b_{np}}\\
+\end{pmatrix}
+\pp
+\end{equation*}
+\blue{注}: 并非任意两矩阵都可以相乘.只有在$A$的列数等$B$的行数时, $A$与$B$才可以相乘．
+\end{frame}
+
+
+
+
+
+\begin{frame}
+特别地,若$A$为方阵,我们可以定义$A$的方幂. 规定$\blue{A^0}:=I$并定义($k>0$):
+\[\blue{A^k}:=\underbrace{AA\cdots A}_{\text{$k$个$A$}}\]
+\pp
+\begin{example}
+已知$A=\begin{pmatrix}1&2&3\\4&5&6\\\end{pmatrix}$, $B=\begin{pmatrix}1&2\\3&4\\5&6\\\end{pmatrix}$, $C=\begin{pmatrix}0&1\\0&0\\\end{pmatrix}$以及$D=\begin{pmatrix}
+0&0\\1&0\\\end{pmatrix}$. 求 $AB$, $BA$, $CD$, $DC$, $C^2$, $D^2$.
+\end{example}
+\pp
+从这个例子,你发现了什么现象?
+\forppt{
+\begin{itemize}
+\item $AB\neq BA$;
+\item $AB=0 \not\Rightarrow A=0$或$B=0$.
+\end{itemize}
+}
+\pp
+
+\begin{example} 已知 $A=(a_{ij})_{m\times n}$, $B=\mathrm{diag}(b_1,\cdots,b_m)$, $C=\mathrm{diag}(c_1,\cdots,c_n)$. 求$BA$和$AC$.
+\pp
+\end{example}
+你发现了什么规律?
+\end{frame}
+
+
+
+
+
+
+
+
+
+% ========== 2023年03月21号 第05次课 逆矩阵 ==========
+%\frame{\titlepage}
+
+
+
+
+
+\subsubsection{矩阵乘法运算的基本性质}
+\begin{frame}\frametitle{矩阵乘法运算的基本性质}
+\begin{theorem}矩阵乘法运算的基本性质:
+\begin{enumerate}
+\item 乘法结合律: $(AB)C=A(BC)$; \pp
+\item 乘法单位元: $IA=A=AI$; \pp
+\item 左分配律: $(A+B)C=AC+BC$; \pp
+\item 右分配律: $A(B+C)=AB+AC$; \pp
+\item 数乘结合律: $\lambda(AB) = (\lambda A)B=A(\lambda B)$.
+\end{enumerate}
+\pp
+其中$A,B,C$是使得运算有意义的矩阵, $\lambda$为常数.
+\end{theorem}
+证明思路:计算并比较两边矩阵的相同位置的元素.
+\pp
+\bigskip
+
+\yang{第一条的几何证明：$(\mathscr A\circ \mathscr B) \circ \mathscr C = \mathscr A\circ (\mathscr B \circ \mathscr C)$.}
+\end{frame}
+
+
+
+
+
+\subsubsection{矩阵多项式}
+\begin{frame}\frametitle{矩阵多项式}
+设$A$为$\bF$上的$n$阶方阵, $f(x)=c_0+c_1x+\cdots+c_kx^k$为$\bF$系数的多项式,定义矩阵多项式
+\[f(A):=c_0I_n + c_1A+\cdots+c_kA^k.\]
+\pp
+\begin{example}
+记$n$阶方阵$J_n=\begin{pmatrix}\ 0\ &\ 1\ &\ \ \ &\ \ \ \\&0&\ddots&\\&&\ddots&1\\&&&0\end{pmatrix}$. 计算 $J_n^k$和$(aI_n+bJ_n)^k$.
+\end{example}
+\pp
+以下关系式是否成立?
+\begin{enumerate}
+\item $(A+B)^2=A^2+2AB+B^2$? \pp
+\item $(I+A)^m=\sum_{k=0}^{m}{m\choose k}A^k$? $(A+B)^m=?$ \pp
+\item $f(A)g(A)=g(A)f(A)$?
+\end{enumerate}
+\pp
+\begin{example}
+求Fibonacci数列$F_1=F_2=1$, $F_n=F_{n-1}+F_{n-2}$, $(n\geq3)$的通项公式.
+\end{example}
+\pp
+答: $F_n=\begin{pmatrix}1&0\end{pmatrix}
+\begin{pmatrix}1&1\\1&0\end{pmatrix}^{n-2}
+\begin{pmatrix}1\\1\end{pmatrix}.$
+\end{frame}
+
+
+
+
+\subsection{矩阵乘法的应用}
+
+
+
+\subsubsection{图论与矩阵乘法}
+\begin{frame}\frametitle{图论与矩阵乘法}
+\begin{tikzpicture}[scale=0.5]
+  \usetikzlibrary{decorations.markings} % 加载装饰库
+  % 定义箭头样式（在中间位置添加）
+  \tikzset{
+ midarrow/.style={
+  postaction={decorate},
+  decoration={
+ markings,
+ mark=at position 0.5 with {\arrow{>}}
+  }
+ }
+  }
+  % 定义五边形顶点
+  \foreach \i [evaluate=\i as \angle using 90+72*\i] in {0,...,4} {
+ \coordinate (V\i) at (\angle:2cm);
+  }
+  % 绘制有向边（箭头在中间）
+  \draw[midarrow] (V0) -- (V1);
+  \draw[midarrow] (V1) -- (V2);
+  \draw[midarrow] (V2) -- (V3);
+  \draw[midarrow] (V3) -- (V4);
+  \draw[midarrow] (V4) -- (V0);
+  \draw[midarrow] (V3) -- (V0);
+  \draw[midarrow] (V0) -- (V2);
+  % 顶点标签（保持不变）
+  \foreach \i [evaluate=\i as \label using int(\i+1),
+   evaluate=\i as \angle using 90+72*\i] in {0,...,4} {
+ \node[anchor=\angle+180] at (\angle:2cm) {$V_{\label}$};
+  }
+  % 邻接矩阵（保持不变）
+  \node at (8,0) {$\Rightarrow\quad A = \begin{pmatrix}
+  0&1&1&0&0\\
+  0&0&1&0&0\\
+  0&0&0&1&0\\
+  1&0&0&0&1\\
+  1&0&0&0&0\\
+  \end{pmatrix}$};
+\end{tikzpicture}
+
+\[A^2 = \begin{pmatrix}
+ 0&0&1&1&0\\
+ 0&0&0&1&0\\
+ 1&0&0&0&1\\
+ 1&1&1&0&0\\
+ 0&1&1&0&0\\
+\end{pmatrix}
+\qquad
+A^3 = \begin{pmatrix}
+ 1&0&0&1&1\\
+ 1&0&0&0&1\\
+ 1&1&1&0&0\\
+ 0&1&2&1&0\\
+ 0&0&1&1&0\\
+\end{pmatrix}\]
+
+\[A^5 = \begin{pmatrix}
+1&2&3&1&0\\
+0&1&2&1&0\\
+1&0&1&2&1\\
+3&1&1&1&2\\
+2&1&1&0&1\\
+\end{pmatrix}
+\qquad
+A^{10} = \begin{pmatrix}
+ 7& 5& 11& 10& 5\\
+ 5& 2& 5& 6& 4\\
+ 10& 5& 7& 5& 6\\
+ 11& 10& 15& 7& 5\\
+ 5& 6& 10& 5& 2\\
+\end{pmatrix}
+\]
+\end{frame}
+
+
+
+
+\renewcommand{\mydate}{2025年3月11号\quad 第五次课}
+
+
+
+
+\subsubsection{复数与二阶实数矩阵}
+\begin{frame}\frametitle{复数与二阶实数矩阵}
+我们定义如下映射
+\begin{equation*}
+\xymatrix@R=1mm{
+f\colon \mathbb C \ar[r]& \mathbb R^{2\times 2} \\
+a+bi \ar@{|->}[r] & {\left(\begin{array}{cc}a&-b\\b&a\\\end{array}\right)} \\
+}
+\end{equation*}
+\pp
+\begin{lemma} 映射$f$保持两边的加法和乘法. \pp 即, 对任意 $z_1=x_1+iy_1$, $z_2=x_2+iy_2$
+\begin{itemize}
+\item $f(z_1+z_2)=f(z_1)+f(z_2)$;
+\item $f(z_1z_2)=f(z_1)f(z_2)$.
+\end{itemize}
+\end{lemma}
+\pp
+\begin{example}
+计算 $\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}^k$ 和 $\begin{pmatrix}1&1\\-1&1\end{pmatrix}^k$.
+\end{example}
+\end{frame}
+
+
+
+
+
+\subsubsection{线性方程组与矩阵乘法}
+\begin{frame}\frametitle{线性方程组与矩阵乘法}
+通过矩阵乘法,一般线性方程组
+\begin{equation*}
+\left\{\begin{array}{ccccccccc}
+a_{11}x_1& +& a_{12}x_2 & + & \cdots & + & a_{1n}x_n &= & b_1\\
+a_{21}x_1& +& a_{22}x_2 & + & \cdots & + & a_{2n}x_n &= & b_2\\
+\vdots && 	\vdots && 	\ddots && 	\vdots && 	\vdots \\
+a_{m1}x_1& +& a_{m2}x_2 & + & \cdots & + & a_{mn}x_n &= & b_m\\
+\end{array}\right.
+\end{equation*}
+\pp
+简单地可改写为
+\begin{equation}\label{system_of_linear_equations}\tag{$*$}
+A\bf x=\bf b.
+\end{equation}
+\pp
+其中 $A=(a_{ij})_{m\times n}$ 为线性方程组的系数矩阵, $\bf x$和$\bf b$为列向量
+\[\bf x=\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix},\quad  \bf b=\begin{pmatrix}b_1\\b_2\\\vdots\\b_m\end{pmatrix}.\]
+\end{frame}
+
+
+
+
+
+\subsubsection{线性映射与矩阵乘法}
+\begin{frame}\frametitle{线性映射与矩阵乘法}
+线性映射与矩阵有如下一一对应
+\begin{center}
+\fbox{
+$\bF^{m\times n}$ $\quad$ $\xleftrightarrow{\quad 1:1\quad }$ \quad
+从$\bF^n$到$\bF^m$的全体线性映射.
+}
+\end{center}
+\pp
+\bigskip
+%\begin{itemize}
+%\item
+若线性映射$\sA$与矩阵$A$对应，则对于任意$\bf x \in \bF^n$,
+\[\sA (\bf x) = A\bf x.\]
+%\item 若对于任意 $\vec{v}_1,\vec{v_2},\cdots,\vec{v}_r\in\bF^m$ 以及 $a_1,a_2,\cdots,a_n \in \bF$, 记
+%\[(\vec{v}_1,\vec{v_2},\cdots,\vec{v}_r) \left(\begin{array}{c} a_1\\a_2\\ \vdots \\ a_r\\\end{array}\right) := a_1\vec{v}_1 + a_2\vec{v}_2 + \cdots + a_r\vec{v}_r \]
+%则线性变换$\sA$与矩阵$A$对应也可表示为
+%\[\sA(e_1,\cdots,e_n) =(e_1,\cdots,e_m) A.\]
+%\end{itemize}\end{frame}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+\subsubsection{坐标变换与矩阵乘法.}
+\begin{frame}\frametitle{坐标变换与矩阵乘法.}
+给定两个仿射坐标系 $[O;\vec{e}_1,\vec{e}_2,\vec{e}_3]$ 和 $[O';\vec{e}'_1,\vec{e}'_2,\vec{e}'_3]$. 设$O$在$[O';\vec{e}'_1,\vec{e}'_2,\vec{e}'_3]$下的坐标为
+$X_0'=\begin{pmatrix} x'_0\\y'_0\\z'_0\\ \end{pmatrix}$,以及$e_j$在基$e_1',e_2',e_3'$下的坐标为$\begin{pmatrix} a_{1j}\\a_{2j}\\a_{3j}\\\end{pmatrix}$. \pp
+若空间中的点$P$在两个坐标系下的坐标分别为 $X=\begin{pmatrix}x\\y\\z \end{pmatrix}$ 和 $X'=\begin{pmatrix}x'\\y'\\z' \end{pmatrix}$,则 $\left\{\begin{array}{l}
+x' = a_{11}x+a_{12}y+a_{13}z+x_0'\\
+y' = a_{21}x+a_{22}y+a_{23}z+y_0'\\
+z' = a_{31}x+a_{32}y+a_{33}z+z_0'\\\end{array}\right.$
+
+\pp
+用矩阵的乘法则表示:
+\[X' = AX+X'_0\]
+其中 $A=(a_{ij})_{3\times3}$.
+\end{frame}
+
+
+\subsubsection{大模型注意力机制}
+\begin{frame}\frametitle{DeepSeek-V4-Flash-0731 注意力机制*}
+以 ``我爱线性代数。'' 为例。\pp 输入嵌入 $X \in \mathbb R^{4\times 4096}$. \pp  通过注意力机制输出另一个矩阵记为 $X_1$：\pp
+\[X \mapsto \{Q,K,V\} \pp \mapsto X_1 \in \mathbb R^{4\times 4096}.\] \pp
+\begin{itemize}
+\item 计算 $Q$ 所需的内部参数矩阵 $W_{q_a}\in \mathbb R^{4096\times 1024}$, $W_{q_b}\in \mathbb R^{1024 \times 32768}$, $W_q:=W_{q_a}W_{q_b}$. \pp
+\[X      \xmapsto{W_{q_a} \text{ :压缩}}
+XW_{q_a} \pp \xmapsto{W_{q_a} \text{ :恢复}}
+Q     \pp    \xmapsto{\text{拆分}}
+(Q_1,Q_2\cdots,Q_{64}) \] \pp
+\item 计算 $K,V$ 所需的内部参数矩阵 $W_K,W_V \in \mathbb R^{4096\times 512}$ \pp
+\[ X \xmapsto{W_K} K \in \mathbb R^{4\times 512}\] \pp
+\[ X \xmapsto{W_V} V \in \mathbb R^{4\times 512}\] \pp
+\item 注意力分头归一化
+\[O_i = \mathrm{Softmax}\left(\frac{Q_iK^T}{\sqrt{512}}\right) V \in \mathbb R^{4\times 512}.\] \pp
+\item 输出所需的内部参数矩阵 $W_{o_a} \in \mathbb R^{32768 \times 1024}$,
+                       $W_{o_b} \in \mathbb R^{1024 \times 4096}$ \pp
+\[ (O_1,O_2\cdots,O_{64}) \xmapsto{\text{合并}} O \xmapsto{W_{o_a}} OW_{o_a} \pp  \xmapsto{W_{o_b}} X_1.\]
+\end{itemize}
+
+
+
+
+\end{frame}
+
+
+
+\subsection{逆矩阵}
+
+\subsubsection{需要什么样的逆}
+\begin{frame}\frametitle{逆矩阵}
+\pp
+\begin{columns}[c]
+\column{5cm}
+解一元一次方程. \pp
+\[\small \boxed{\begin{split}
+ax=b\Rightarrow & a^{-1}(ax)=a^{-1}b\\ \pp
+\xRightarrow{\text{结合律}}& (a^{-1}a)x=a^{-1}b\\ \pp
+\xRightarrow{a^{-1}a=1}& 1x=a^{-1}b\\ \pp
+\xRightarrow{1x=x} & x=a^{-1}b\\ \pp
+\text{验证:}\xRightarrow{aa^{-1}=1}& a(a^{-1}b)=b\\
+\end{split}}\] \pp
+\column{5cm}
+解一般线性方程组 \pp
+\[\small \boxed{\begin{split}
+Ax=b\Rightarrow & A^{-1}(Ax)=A^{-1}b\\ \pp
+\xRightarrow{\text{结合律}}& (A^{-1}A)x=A^{-1}b\\ \pp
+\xRightarrow{\red{A^{-1}A=I}}& Ix=A^{-1}b\\ \pp
+\xRightarrow{Ix=x} & x=A^{-1}b\\ \pp
+\text{验证:}\xRightarrow{\red{AA^{-1}=I}}& A(A^{-1}b)=b\\
+\end{split}}\]
+\end{columns}
+\bigskip
+\pp
+要让上述过程有意义, 仅需要存在矩阵$A^{-1}$满足$A^{-1}A=I=AA^{-1}$.
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\begin{example}[鸡兔同笼] \small \[\begin{pmatrix}1&1\\2&4\\\end{pmatrix}\begin{pmatrix}x\\y\\\end{pmatrix}=\begin{pmatrix}35\\94\end{pmatrix}.\]
+\end{example}
+\pp
+解:因为
+\[\begin{pmatrix}2&-\frac12\\-1&\frac12\\\end{pmatrix}\begin{pmatrix}1&1\\2&4\\\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=\begin{pmatrix}1&1\\2&4\\\end{pmatrix}\begin{pmatrix}2&-\frac12\\-1&\frac12\\\end{pmatrix},\]
+\pp
+所以
+\[\begin{pmatrix}x\\y\\\end{pmatrix}=\begin{pmatrix}2&-\frac12\\-1&\frac12\\\end{pmatrix}\begin{pmatrix}35\\94\end{pmatrix}=\begin{pmatrix}23\\12\end{pmatrix}.\]
+\end{frame}
+
+
+
+
+
+\subsubsection{逆矩阵定义}
+\begin{frame}\frametitle{逆矩阵定义}
+\begin{definition}[逆矩阵]
+设$A$为数域$\bF$上的$n$阶方阵.如果存在$n$阶方阵$X$满足
+\[XA=I=AX\]
+则称$A$ \blue{可逆},并称$X$为$A$的\blue{逆矩阵}.记做$A^{-1}$.
+\end{definition}
+
+\bigskip
+\pp
+
+\blue{奇异方阵,非奇异方阵}
+
+\bigskip
+\pp
+
+\blue{注:} 若$A\in \bF^{m\times n}$不为方阵,则一定\blue{不存在}矩阵$X\in \bF^{n\times m}$使得
+\[AX = I_m \quad \text{且}\quad  XA=I_n.\]
+这也是我们为什么不考虑非方阵的逆.
+\end{frame}
+
+
+
+
+
+\subsubsection{逆矩阵性质}
+\begin{frame}\frametitle{逆矩阵性质}
+\begin{lemma}[存在则唯一]
+若$X$和$Y$都为$A$的逆矩阵,则$X=Y$.
+\end{lemma}
+\pp
+\begin{proposition}[逆矩阵的基本性质]设$A$和$B$为同阶可逆方阵, $\lambda$为非零常数. \pp 则
+\begin{enumerate}
+\item $(A^{-1})^{-1}=A$; \pp
+\item $(\lambda A)^{-1}=\lambda^{-1}A^{-1}$; \pp
+\item $(AB)^{-1}=B^{-1}A^{-1}$(穿脱原理).
+\end{enumerate}
+\end{proposition}
+\end{frame}
+
+
+
+
+
+\subsubsection{逆矩阵（例）}
+\begin{frame}\frametitle{逆矩阵（例）}
+\begin{example}
+若 $ad\neq bc$, 则 $\begin{pmatrix}a&b\\c&d\end{pmatrix}$可逆. 此时
+\[\begin{pmatrix}a&b\\c&d\end{pmatrix}^{-1} = \frac{1}{ad-bc} \begin{pmatrix}d&-b\\-c&a\end{pmatrix}.\]
+\end{example}
+\pp
+\begin{example}
+若 $a_1,a_2,\cdots, a_n$全不为零, 则
+\[\mathrm{diag}(a_1,a_2,\cdots,a_n)^{-1} = \mathrm{diag}\left(\frac1{a_1},\frac1{a_2},\cdots,\frac1{a_n}\right).\]
+\end{example}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{逆矩阵（例）}
+\begin{example}
+\begin{enumerate}
+\item 证明若$f(A)=0$且$f(a)\neq0$,则$A-aI$可逆. \pp
+\item 证明 $I+J_n$可逆. \pp
+\item 已知 $2A^2-3A+4I=0$, 求$A$和$A-I$的逆. \pp
+\item 已知 $3A^3-2A^2+5A+I=0$, 求$A$和$A+I$的逆. \pp
+\end{enumerate}
+\end{example}
+\begin{example}
+证明若$A$, $B$和$A+B$均可逆,则$A^{-1}+B^{-1}$也可逆.
+\end{example}
+\pp
+
+\blue{问题：} 如何求一般可逆矩阵的逆？
+\end{frame}
+
+
+
+
+
+\renewcommand{\mydate}{2025年3月13号\quad 第六次课}
+
+
+
+% ========== 2023年03月23号 第06次课 转置、共轭、迹、分块矩阵 ==========
+%\frame{\titlepage}
+
+
+
+\subsection{转置,共轭与迹}
+
+\subsubsection{转置,共轭与迹}
+\begin{frame}\frametitle{转置,共轭与迹}
+\begin{definition}
+\begin{enumerate}
+\item 设$A=(a_{ij})_{m\times n}$为数域$\bF$上的矩阵. 我们称矩阵
+\[\tiny \begin{pmatrix} a_{11}& a_{21}&\cdots&a_{m1}\\a_{12}& a_{22}&\cdots&a_{m2}\\\cdots&\cdots&\cdots&\cdots\\a_{1n}& a_{2n}&\cdots&a_{mn}\\
+\end{pmatrix}\]
+为$A$的\blue{转置矩阵},记为$A^T$;
+\pp
+\item 设$A=(a_{ij})_{m\times n}$为复数域$\mathbb C$上的矩阵. 我们称矩阵
+\[\tiny \begin{pmatrix}
+\overline{a_{11}}&\overline{a_{12}}&\cdots&\overline{a_{1n}}\\
+\overline{a_{21}}&\overline{a_{22}}&\cdots&\overline{a_{2n}}\\
+\cdots&\cdots&\cdots&\cdots\\
+\overline{a_{m1}}&\overline{a_{m2}}&\cdots&\overline{a_{mn}}\\
+\end{pmatrix}\]
+为$A$的\blue{共轭矩阵},记为$\overline{A}$;
+\pp
+\item 设$A=(a_{ij})_{n\times n}$为数域$\bF$上的方阵.我们称对角线元素之和为矩阵$A$的\blue{迹}, 记为
+\[\mathrm{tr}(A):=a_{11}+\cdots+a_{nn}.\]
+\end{enumerate}
+\end{definition}
+\pp
+\begin{example}
+已知 $A=\begin{pmatrix}1+i&2-i\\3-i&4+i\\\end{pmatrix}$.求$A^T$, $\overline{A}$和$\mathrm{tr}(A)$.
+\end{example}
+\end{frame}
+
+
+
+
+
+\subsubsection{转置,共轭与迹的基本性质}
+\begin{frame}\frametitle{转置,共轭与迹的基本性质}
+\begin{lemma}[转置和共轭的基本性质]
+\begin{columns}[c]
+\column{4cm}
+\begin{itemize}
+\item $(A+B)^T=A^T+B^T$; \pp
+\item $(\lambda A)^T=\lambda A^T$; \pp
+\item  $(AB)^T=B^TA^T$; \pp
+\item $(A^{-1})^T=(A^T)^{-1}$. \pp
+\end{itemize}
+\column{4cm}
+\begin{itemize}
+\item $\overline{A+B}=\overline{A}+\overline{B}$; \pp
+\item $\overline{\lambda A}=\overline{\lambda}\,\overline{A}$; \pp
+\item $\overline{A\cdot B}=\overline{A}\cdot\overline{B}$; \pp
+\item $\overline{A^{-1}}=\overline{A}^{-1}$. \pp
+\end{itemize}
+\end{columns}
+\end{lemma}
+
+\begin{lemma}[迹的基本性质]
+\begin{itemize}
+\item $\mathrm{tr}(A+B)=\mathrm{tr}(A)+\mathrm{tr}(B)$; \pp
+\item $\mathrm{tr}(\lambda A)=\lambda\mathrm{tr}(A)$; \pp
+\item $\mathrm{tr}(A^T)=\mathrm{tr}(A)$, \quad \pp  $\mathrm{tr}(\overline{A})=\overline{\mathrm{tr}(A)}$; \pp
+\item $\mathrm{tr}(AB)=\mathrm{tr}(BA)$.
+\end{itemize}
+\end{lemma}
+\pp
+
+\begin{example}设$A$为复矩阵.证明若$\mathrm{tr}(A\overline{A}^T)=0$,则$A=0$.
+\end{example}
+\end{frame}
+
+
+
+\subsection{分块矩阵}
+
+
+
+\subsubsection{分块矩阵}
+\begin{frame}\frametitle{分块矩阵}
+\begin{definition}[分块矩阵]
+对于一个矩阵$A$，我们将它的行和列分为几个部分后得到的由小矩阵$A_{ij}$组成的矩阵
+\[ A = \left(\begin{array}{cccc}
+A_{11} & A_{12} & \cdots & A_{1 s}\\
+A_{21} & A_{22} & \cdots & A_{2 s}\\
+\vdots & \vdots & \ddots & \vdots\\
+A_{r 1} & A_{r 2} & \cdots & A_{rs}
+\end{array}\right) = (A_{ij})_{r \times s} \]
+称为\blue{分块矩阵}, 其中每个$A_{ij}$称为\blue{子块}．
+\end{definition}
+\pp
+\begin{example}
+我们将矩阵的第$i$行记为$\beta_i$第$j$列记为$\alpha_j$,则
+\[A=(\alpha_1,\cdots,\alpha_n)=\begin{pmatrix}\beta_1\\\beta_2\\\vdots\\\beta_m\end{pmatrix}.\]
+\end{example}
+\end{frame}
+
+
+
+
+
+\subsubsection{分块矩阵例子}
+\begin{frame}\frametitle{分块矩阵例子}
+
+\begin{equation*}
+A=\left(\begin{array}{cccc}
+1&4&7&10\\
+2&5&8&11\\
+3&6&9&12
+\end{array}\right)
+=
+\left(\begin{array}{ccc|c}
+1&4&7&10\\\hline
+2&5&8&11\\
+3&6&9&12
+\end{array}\right)
+=
+\left(\begin{array}{cc}
+A_{11}&A_{12}\\
+A_{21}&A_{22}
+\end{array}\right)
+\end{equation*}
+\begin{itemize}
+\item 行的分隔方式为$3=1+2$，
+\item 列的分隔方式为$4=3+1$。
+\end{itemize}
+
+\pp
+
+\begin{equation*}
+A=\left(\begin{array}{cccc}
+1&4&7&10\\
+2&5&8&11\\
+3&6&9&12
+\end{array}\right)
+=\left(\begin{array}{c|c|c|c}
+1&4&7&10\\
+2&5&8&11\\
+3&6&9&12
+\end{array}\right)
+=\left(\begin{array}{cccc}
+\beta_{1}&\beta_{2}&\beta_{3}&\beta_{4}
+\end{array}\right)
+\end{equation*}
+\begin{itemize}
+\item 行的分隔方式为$3=3$，
+\item 列的分隔方式为$4=1+1+1+1$。
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\subsubsection{几类特殊分块矩阵}
+\begin{frame}\frametitle{几类特殊分块矩阵}
+\blue{准对角矩阵}, \blue{准上三角矩阵}, \blue{准下三角矩阵}.
+
+\begin{equation*}
+\left(\begin{array}{cccc}
+*&*&&\\
+&*&&\\
+&&*&\\
+&&*&*\\
+\end{array}\right)
+\end{equation*}
+
+\pp
+注:依赖于分块方式.
+\end{frame}
+
+
+
+
+
+\subsubsection{分块矩阵基本性质}
+\begin{frame}\frametitle{分块矩阵基本性质}
+\begin{lemma}[分块矩阵基本性质]
+\begin{itemize}
+\item $(A_{ij})_{r\times s}+(B_{ij})_{r\times s}=(A_{ij}+B_{ij})_{r\times s}$; \pp
+\item $\lambda(A_{ij})_{r\times s}=(\lambda A_{ij})_{r\times s}$; \pp
+\item $\left((A_{ij})_{r\times s}\right)^T = (B_{ij})_{s\times r}$, 其中$B_{ij}=A_{ji}^T$; \pp
+\item $\overline{(A_{ij})_{r\times s}} = (\overline{A_{ij}})_{r\times s}$; \pp
+\item 若$A=(A_{ij})_{r\times r}$为方阵且行列拆分方式相同,则
+\[\mathrm{tr}(A)=\sum_{i=1}^r\mathrm{tr}(A_{ii});\] \pp
+\item 若 $A_1$, $\cdots$, $A_r$均可逆,则$\mathrm{diag}(A_1,A_2,\cdots,A_r)$也可逆,且逆矩阵为
+\[\mathrm{diag}(A_1,A_2,\cdots,A_r)^{-1}=\mathrm{diag}(A_1^{-1},A_2^{-1},\cdots,A_r^{-1}).\]
+\end{itemize}
+\end{lemma}
+\end{frame}
+
+
+
+
+\subsubsection{分块矩阵的乘法}
+\begin{frame}\frametitle{分块矩阵的乘法}
+两个分块矩阵可以分块相乘的要求是：
+\begin{enumerate}
+\item 第一个矩阵的列的数目等于第二个矩阵的行的数目；
+\item 第一个矩阵的列的分隔方式等于第二个矩阵的行的分隔方式．
+\end{enumerate}
+\pp
+分块相乘的方法与矩阵的乘法法则一致.
+\begin{theorem}若$A = (A_{ij})_{r\times s}$的列拆分方式与$B = (B_{jk})_{s\times t}$的行拆分方式相同,则
+\[AB = \left(\sum\limits_{j=1}^s A_{ij}B_{jk}\right)_{r\times t}.\]
+\end{theorem}
+\pp
+{\tiny
+证明: 任取不大于$A$行数的正整数$p$和不大于$B$列数的正整数$q$. 不妨设$A$的$(p,1)$元素处在$A_{i1}$的第$(u,1)$位置, $B$的$(1,q)$元素处在第$B_{1k}$的第$(1,w)$位置. 我们需要验证: $(AB)_{(pq)}=\left(\sum\limits_{j=1}^s A_{ij}B_{jk}\right)_{(uw)}$.
+设$A$的列数拆分方式为 $n=n_1+n_2+\cdots+n_s$. 则
+\[\left(\sum_{j=1}^s A_{ij}B_{jk}\right)_{(uw)}=\sum_{j=1}^s \left(A_{ij}B_{jk}\right)_{(uw)}=\sum_{j=1}^s\sum_{v=1}^{n_j}\left(A_{ij}\right)_{(uv)}\left(B_{jk}\right)_{(vw)}=(AB)_{(pq)}.\]
+}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{分块矩阵的乘法}
+\begin{example}
+选择矩阵 $A$ 和 $B$ 的合适分块并计算它们的乘积 $AB$，其中
+\[A = \left(\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+1 & 3 & 2 & 0\\
+5 & 2 & 0 & 2
+\end{array}\right),\ B = \left(\begin{array}{cccc}
+- 1 & 0 & 2 & 1\\
+0 & - 1 & 3 & 4\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{array}\right).\]
+\end{example}
+\pp
+\begin{example}
+已知 $A = \left(\begin{array}{cccc}
+1 & 1 & 1 & 0\\
+0 & 1 & 0 & 1\\
+0 & 0 & 1 & 1\\
+0 & 0 & 0 & 1\\
+\end{array}\right)$. 求$A^k$.
+\end{example}
+\pp
+\yang{解: 归纳$\Rightarrow A^k=\left(\begin{array}{cc}
+B^k & kB^{k-1}\\0 & B^k\\\end{array}\right)$, $B^k=\left(\begin{array}{cc}
+1 & k\\0 & 1\\\end{array}\right)$.}
+\begin{example}
+若 $A$与$B$可逆,求 $\begin{pmatrix}A & C \\ O & B\\\end{pmatrix}$ 和 $\begin{pmatrix}A & 0  \\ D & B\end{pmatrix}$ 的逆.
+\end{example}
+\end{frame}
+
+
+

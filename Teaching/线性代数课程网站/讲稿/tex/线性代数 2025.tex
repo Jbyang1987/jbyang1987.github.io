@@ -1,0 +1,62 @@
+
+\documentclass{beamer}
+% 关键设置：显示subsubsection的编号和目录
+
+
+
+\input{common/theme.sty}
+
+% 设置当前模式（修改此处切换模式）
+\setmode{handout} % 可改为 ppt 或 handout
+
+
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+
+\usepackage{bookmark}
+\bookmarksetup{depth=4}
+
+
+
+\begin{document}
+
+
+
+
+
+%\renewcommand{\mydate}{2026年03月03日}
+\title{线性代数 \quad 中国科学技术大学 2026春}
+\author{主讲:杨金榜 \\ 数院新楼610 \\ \ \\ 助教：华逸文(PB22000105)、钟文杰(PB23000210)}
+\date{\mydate}
+
+
+%\AtBeginSubsection[]
+%{
+%\begin{frame}[shrink]
+%\begin{multicols}{3}
+%\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+%\end{multicols}
+%\end{frame}
+%}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\include{sections/00 introduction}
+\include{sections/01 vectors}
+\include{sections/02 linear equations}
+\include{sections/03 matrix(I)}
+\include{sections/04 determinant}
+\include{sections/05 matrix(II)}
+\include{sections/06 vector spaces}
+\include{sections/07 linear maps}
+\include{sections/08 spaces with inner products}
+\include{sections/09 quadratic forms}
+\include{sections/10 tensors}
+%\include{sections/11 applications}
+
+\end{document}
+

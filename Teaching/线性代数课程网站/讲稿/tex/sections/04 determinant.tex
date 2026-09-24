@@ -1,0 +1,851 @@
+%\setcounter{framenumber}{30}
+
+
+\renewcommand{\mydate}{2025年03月18号\quad 第七次课}
+
+\makeatletter
+\ifodd\value{page}
+\else
+\begin{frame}[plain]
+\end{frame}
+\fi
+\makeatother
+
+
+\section{行列式}
+
+
+\title{第四章 \quad 行列式}
+\author{}
+\date{}
+
+
+\frame{\titlepage}
+
+
+\subsection{行列式定义}
+
+
+
+\subsubsection{行列式的引入-解线性方程组}
+\begin{frame}\frametitle{行列式的引入}
+考察线性方程组
+\begin{equation} \tag{$*$}
+\left\{\begin{array}{ccccccccc}
+a_{11}x_1& +& a_{12}x_2 & + & \cdots & + & a_{1n}x_n &= & b_1\\
+a_{21}x_1& +& a_{22}x_2 & + & \cdots & + & a_{2n}x_n &= & b_2\\
+\vdots &&  \vdots &&  \ddots &&  \vdots &&  \vdots \\
+a_{m1}x_1& +& a_{m2}x_2 & + & \cdots & + & a_{mn}x_n &= & b_m\\
+\end{array}\right.
+\end{equation}
+\pp
+\bigskip
+
+当$n=2$时,若$a_{11}a_{22}-a_{12}a_{21}\neq0$, 则通过消元法可证明方程组有唯一解
+\begin{equation*}
+\left\{\begin{array}{ccccccccc}
+x_1 &=& \frac{b_1a_{22}-b_2a_{12}}{a_{11}a_{22}-a_{12}a_{21}} \\
+x_2 &=& \frac{b_2a_{11}-b_1a_{21}}{a_{11}a_{22}-a_{12}a_{21}} \\
+\end{array}\right.
+\end{equation*}
+\pp
+
+对任意四个数 $a,b,c,d$, 引入记号
+\[\det\begin{pmatrix}a&b\\c&d\\\end{pmatrix} := \begin{vmatrix}a&b\\c&d\\\end{vmatrix} := ad - bc,\]
+则方程的公式解可简洁地表示为
+\[x_1 = \frac{\begin{vmatrix}b_1&a_{12}\\b_2&a_{22}\\\end{vmatrix}}{\begin{vmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\\\end{vmatrix}}, \quad x_2 = \frac{\begin{vmatrix}a_{11}&b_{1}\\a_{21}&b_{2}\\\end{vmatrix}}{\begin{vmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\\\end{vmatrix}}.\]
+\end{frame}
+
+
+
+
+
+\begin{frame}\frametitle{}
+当$n=3$时, 方程组为
+\begin{equation*}
+\left\{\begin{array}{ccccccc}
+a_{11}x_1& +& a_{12}x_2 & +  & a_{13}x_3 &= & b_1\\
+a_{21}x_1& +& a_{22}x_2 & +  & a_{23}x_3 &= & b_2\\
+a_{31}x_1& +& a_{32}x_2 & +  & a_{33}x_3 &= & b_3\\
+\end{array}\right.
+\end{equation*}
+\pp
+\bigskip
+
+若方程组有唯一解,通过消元法(见课本p64-65)可得
+
+\begin{equation*}\left\{
+\begin{aligned}
+x_1 &= \frac{
+b_1\begin{vmatrix}a_{22}&a_{23}\\a_{32}&a_{33}\\\end{vmatrix}
+-b_2\begin{vmatrix}a_{12}&a_{13}\\a_{32}&a_{33}\\\end{vmatrix}
++b_3\begin{vmatrix}a_{12}&a_{13}\\a_{22}&a_{23}\\\end{vmatrix}
+}{
+a_{11}\begin{vmatrix}a_{22}&a_{23}\\a_{32}&a_{33}\\\end{vmatrix}
+-a_{21}\begin{vmatrix}a_{12}&a_{13}\\a_{32}&a_{33}\\\end{vmatrix}
++a_{31}\begin{vmatrix}a_{12}&a_{13}\\a_{22}&a_{23}\\\end{vmatrix}} \\[1mm]
+x_2 &= \frac{
+-b_1\begin{vmatrix}a_{21}&a_{23}\\a_{31}&a_{33}\\\end{vmatrix}
++b_2\begin{vmatrix}a_{11}&a_{13}\\a_{31}&a_{33}\\\end{vmatrix}
+-b_3\begin{vmatrix}a_{11}&a_{13}\\a_{21}&a_{23}\\\end{vmatrix}
+}{
+a_{11}\begin{vmatrix}a_{22}&a_{23}\\a_{32}&a_{33}\\\end{vmatrix}
+-a_{21}\begin{vmatrix}a_{12}&a_{13}\\a_{32}&a_{33}\\\end{vmatrix}
++a_{31}\begin{vmatrix}a_{12}&a_{13}\\a_{22}&a_{23}\\\end{vmatrix}} \\[1mm]
+x_3 &= \frac{
+b_1\begin{vmatrix}a_{21}&a_{22}\\a_{31}&a_{32}\\\end{vmatrix}
+-b_2\begin{vmatrix}a_{11}&a_{12}\\a_{31}&a_{32}\\\end{vmatrix}
++b_3\begin{vmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\\\end{vmatrix}
+}{
+a_{11}\begin{vmatrix}a_{22}&a_{23}\\a_{32}&a_{33}\\\end{vmatrix}
+-a_{21}\begin{vmatrix}a_{12}&a_{13}\\a_{32}&a_{33}\\\end{vmatrix}
++a_{31}\begin{vmatrix}a_{12}&a_{13}\\a_{22}&a_{23}\\\end{vmatrix}}
+\end{aligned}\right.
+\end{equation*}
+\end{frame}
+
+
+
+
+\begin{frame}\frametitle{}
+ 引入记号
+\begin{equation*}
+\begin{aligned}
+\det&\begin{pmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\\\end{pmatrix}
+   := \begin{vmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\\\end{vmatrix}\\
+ & := a_{11}\begin{vmatrix}a_{22}&a_{23}\\a_{32}&a_{33}\\\end{vmatrix}
+     -a_{21}\begin{vmatrix}a_{12}&a_{13}\\a_{32}&a_{33}\\\end{vmatrix}
+     +a_{31}\begin{vmatrix}a_{12}&a_{13}\\a_{22}&a_{23}\\\end{vmatrix}.\\
+\end{aligned}
+\end{equation*}
+\pp
+\bigskip
+
+则方程的公式解可简化为
+\begin{equation*}
+x_1 = \frac{
+\begin{vmatrix}b_{1}&a_{12}&a_{13}\\b_{2}&a_{22}&a_{23}\\b_{3}&a_{32}&a_{33}\\\end{vmatrix}
+}{
+\begin{vmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\\\end{vmatrix}}
+\quad x_2 = \frac{
+\begin{vmatrix}a_{11}&b_{1}&a_{13}\\a_{21}&b_{2}&a_{23}\\a_{31}&b_{3}&a_{33}\\\end{vmatrix}
+}{
+\begin{vmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\\\end{vmatrix}}
+\quad x_3 = \frac{
+\begin{vmatrix}a_{11}&a_{12}&b_{1}\\a_{21}&a_{22}&b_{2}\\a_{31}&a_{32}&b_{3}\\\end{vmatrix}
+}{
+\begin{vmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\\\end{vmatrix}}
+\end{equation*}
+\pp
+\bigskip
+
+利用归纳法, 我们可以引入$n$-阶行列式, 将其定义为$n$个$n-1$行列式的某个组合. 从而将一般的$n$-元线性方程组的公式解表示为两个 $n$-阶行列式的比值.
+\end{frame}
+
+\subsubsection{行列式的引入-体积}
+\begin{frame}\frametitle{行列式的引入}
+\begin{equation*}
+\begin{tikzpicture}[scale=0.5]
+\tikzmath{\r=8;};
+\coordinate (O) at (0,0);
+\coordinate (A) at (1,2);
+\coordinate (B) at (1.5,-0.5);
+\coordinate (C) at (2.5,1.5);
+\draw[->,thick,blue](O)--(A);
+\node [above] at (A) {$(c,d)$};
+\draw[->,thick,blue](O)--(B);
+\node [right] at (B) {$(a,b)$};
+\draw[dotted](A)--(C);
+\draw[dotted](B)--(C);
+\coordinate (o) at (\r+0,0);
+\coordinate (a) at (\r+1,-1);
+\coordinate (b) at (\r+1,1);
+\coordinate (c) at (\r+1,2);
+\coordinate (ab) at (\r+2,0);
+\coordinate (ac) at (\r+2,1);
+\coordinate (bc) at (\r+2,3);
+\coordinate (abc) at (\r+3,2);
+\draw[->,thick,blue](o)--(a);\node [below] at (a) {\tiny $(a_{11},a_{12},a_{13})$};
+\draw[->,dotted,thick,blue](o)--(b);\node [left] at (b) {\tiny $(a_{21},a_{22},a_{23})$};
+\draw[->,thick,blue](o)--(c);\node [above left] at (c) {\tiny $(a_{31},a_{32},a_{33})$};
+\draw[thick,blue](a)--(ab);
+\draw[thick,blue](a)--(ac);
+\draw[dotted,thick,blue](b)--(ab);
+\draw[dotted,thick,blue](b)--(bc);
+\draw[thick,blue](c)--(ac);
+\draw[thick,blue](c)--(bc);
+\draw[thick,blue](ab)--(abc);
+\draw[thick,blue](ac)--(abc);
+\draw[thick,blue](bc)--(abc);
+\end{tikzpicture}
+\end{equation*}
+\pp
+\begin{itemize}
+\item 给定两个二维数组向量$(a,b)$和$(c,d)$.如图我们有平行四边形. \pp
+这时平行四边形的(有向)面积为 $S=ad-bc=:\begin{vmatrix} a & b\\ c & d \\\end{vmatrix}$.
+\pp
+\item 给定三个三维数组向量$(a_{11},a_{12},a_{13})$,$(a_{21},a_{22},a_{23})$和$(a_{31},a_{32},a_{33})$.如图我们可构造一个平行六面体. \pp 其(有向)体积正好为
+\[\Delta= a_{11}\begin{vmatrix} a_{22} & a_{23} \\ a_{32} & a_{33} \end{vmatrix}
+- a_{12}\begin{vmatrix} a_{21} & a_{23} \\ a_{31} & a_{33} \end{vmatrix}
++ a_{13}\begin{vmatrix} a_{21} & a_{22} \\ a_{31} & a_{32} \end{vmatrix}.
+\]
+\item 若给定$n$个$n$维数组向量呢？
+\end{itemize}
+
+\end{frame}
+
+% ========== 2023年03月28号 第07次课 行列式 ==========
+%\frame{\titlepage}
+
+
+
+
+
+\subsubsection{行列式的定义}
+\begin{frame}\frametitle{行列式的定义(高维平行多面体的有向体积)}
+
+\begin{definition}[行列式]
+方阵$A=(a_{ij})_{n\times n}$的\blue{行列式}记为
+\[\det(A) \quad \text{或} \quad
+\begin{vmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\cdots&\cdots&\cdots&\cdots\\
+a_{n1}&a_{n2}&\cdots&a_{nn}\\
+\end{vmatrix}_.\]
+\pp
+当$n=1$时,
+\[\det(A):=a_{11}.\]
+\pp
+当$n\geq2$时, $\det(A)$递归地定义为
+\[\det(A):=\sum_{k=1}^n(-1)^{k+1}a_{k1}\cdot
+\begin{vmatrix}
+a_{12}&a_{13}&\cdots&a_{1n}\\
+\cdots&\cdots&\cdots&\cdots\\
+a_{k-1,2}&a_{k-1,3}&\cdots&a_{k-1,n}\\
+a_{k+1,2}&a_{k+1,3}&\cdots&a_{k+1,n}\\
+\cdots&\cdots&\cdots&\cdots\\
+a_{n2}&a_{n,3}&\cdots&a_{nn}\\
+\end{vmatrix} \]
+\end{definition}
+\end{frame}
+
+
+
+
+
+\subsubsection{从定义出发计算行列式的可行性分析}
+\begin{frame}\frametitle{行列式}
+\begin{example}
+$\begin{vmatrix}a&b\\c&d\end{vmatrix}=ad-bc$,
+\pp
+$\begin{vmatrix}a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3\end{vmatrix}=a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_1b_3c_2-a_2b_1c_3-a_3b_2c_1$.
+\end{example}
+\pp
+\begin{question} 用定义计算$n$阶行列式需要计算多少个乘法?
+\end{question}
+\pp
+\[10 \text{ 阶行列式} \ \rightsquigarrow \ 10!\times 9 \text{ 个乘法} \ \rightsquigarrow \ \frac{10!\times 9}{24\times60\times60}=378\text{天}.\]
+\end{frame}
+
+
+
+
+
+\subsubsection{子矩阵}
+\begin{frame}\frametitle{子矩阵}
+\pp
+\begin{definition}
+由矩阵$A=(a_{ij})_{m\times n}$的第$i_1,i_2,\cdots,i_r$行和第$j_1,j_2,\cdots,j_s$列上的元素依次排列组成的$r\times s$矩阵称为$A$的\blue{子矩阵},记作
+\[A\left({i_1i_2\cdots i_r\atop j_1j_2\cdots j_s}\right) = \begin{pmatrix}
+a_{i_1j_1}&a_{i_1j_2}&\cdots&a_{i_1j_s}\\
+a_{i_2j_1}&a_{i_2j_2}&\cdots&a_{i_2j_s}\\
+\cdots&\cdots&\cdots&\cdots\\
+a_{i_rj_1}&a_{i_rj_2}&\cdots&a_{i_rj_s}\\
+\end{pmatrix}\]
+\end{definition}
+\pp
+\begin{example}
+若 $A=\left(\begin{array}{cccc}
+11 & 12 & 13 & 14\\
+21 & 22 & 23 & 24\\
+31 & 32 & 33 & 34\\
+41 & 42 & 43 & 44\\
+\end{array}\right)$,
+\pp
+则 $A\left({{1 3}\atop {1 3}}\right)  = \pp \left(\begin{array}{cccc}
+11 & 13 \\
+31 & 33 \\
+\end{array}\right)$;
+\pp
+$A\left({{412}\atop {13}}\right) = \pp \left(\begin{array}{cccc}
+41 & 43\\
+11 & 13\\
+21 & 23\\
+\end{array}\right)$;
+\end{example}
+\end{frame}
+
+
+
+
+
+\subsubsection{代数余子式}
+\begin{frame}\frametitle{代数余子式}
+\begin{definition}
+给定一个$n$阶矩阵$A=(a_{ij})_{n\times n}$.
+\pp
+\begin{enumerate}
+\item 称 $M_{ij}:=\det\left(A\left({{1,\cdots,i-1,i+1,\cdots,n}\atop{1,\cdots,j-1,j+1,\cdots,n}}\right)\right)$为元素$a_{ij}$的\blue{余子式}.
+\pp
+\item 称$A_{ij}:=(-1)^{i+j}M_{ij}$为$a_{ij}$的\blue{代数余子式}.
+\pp
+\item 更一般地,称$A$的某个$k$阶子矩阵的行列式为$A$的\blue{$k$阶子式},删去子式所在的行列所得的矩阵的行列式称为该子式的\blue{余子式}.
+\pp
+\item 特别地,我们称$\det\left(A\left({{1,2,\cdots,k}\atop{1,2,\cdots,k}}\right)\right)$为$A$的\blue{$k$阶主子式}.
+\end{enumerate}
+\end{definition}
+\pp
+根据这个定义,我们可以将行列式的定义式简写为
+\[\boxed{\det(A) := \sum_{i=1}^na_{i1}A_{i1} = \sum_{i=1}^{n}(-1)^{i+1}a_{i1}M_{i1}.}\]
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{行列式例子}
+\begin{example}
+\[\begin{vmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+  &a_{22}&\ddots&\vdots\\
+  &      &\ddots&a_{n2}\\
+  &      &      &a_{nn}\\
+\end{vmatrix}=a_{11}a_{22}\cdots a_{nn}.\]
+\end{example}
+\begin{example}
+\[\begin{vmatrix}
+  &      &      &a_{1n}\\
+  &      &\iddots&a_{2n}\\
+  & a_{n-1,2}&\iddots&\vdots\\
+a_{n1} & a_{n2} & \cdots & a_{nn}\\
+\end{vmatrix}=(-1)^{\frac{n(n-1)}{2}}a_{n1}a_{n-1,2}\cdots a_{1n}.\]
+\end{example}
+\end{frame}
+
+
+\subsection{行列式性质}
+
+
+\subsubsection{行列式列展开}
+\begin{frame}\frametitle{行列式列展开}
+\begin{theorem}[行列式列展开]
+设$A=(a_{ij})_{n\times n}$为$n$阶方阵.则对任意$1\leq j \leq n$
+\[\boxed{\det(A)=\sum_{i=1}^na_{ij}A_{ij} = \sum_{i=1}^{n}(-1)^{i+j}a_{ij}M_{ij}.}\]
+\end{theorem}
+\yang{思路: 根据对行列式阶数的归纳, 将行列式
+\[\det(A):=\sum_{i'=1}^{n}(-1)^{i'+1}a_{i'1}M_{i'1}\]
+中的$M_{i'1}$ 按第 $j-1$列(即,原行列式的第$j$行)再次展开. 同时右式
+\[\sum_{i=1}^{n}(-1)^{i+j}a_{ij}M_{ij}\]
+中的 $M_{ij}$ 按第一列展开. 然后比较两式是否相等即可.}
+\end{frame}
+
+
+
+
+
+\begin{frame}\frametitle{证明细节}
+{\tiny 记 $M\left[{{i_1i_2}\atop {j_1j_2}}\right]$ 为矩阵$A$去掉第$i_1,i_2$行和$j_1,j_2$列后的行列式。即
+\[ M\left[{{i_1i_2}\atop {j_1j_2}}\right]:=\det\left(A\left({1,\cdots,i_1-1,i_1+1,\cdots,i_2-1,i_2+1,\cdots,n} \atop {1,\cdots,j_1-1,j_1+1,\cdots,j_2-1,j_2+1,\cdots,n}\right)\right).\]
+\pp
+对行列式的阶数$n$进行归纳。当$n=1$,结论显然成立。假设结论对n-1阶行列式成立。
+\pp
+则}
+\begin{equation*} \tiny
+\begin{split}
+\det(A)
+& = \sum_{i' =1}^{n} (-1)^{i' +1}a_{i' 1}M_{i' 1} \\ \pp
+& = \sum_{i' =1}^{n} (-1)^{i' +1}a_{i' 1} \left(\sum_{i =1}^{i' -1} (-1)^{(j-1)+i } a_{i j}  \cdot M\left[{i' ,i }\atop{1,j}\right] + \sum_{i =i' +1}^{n}(-1)^{(i -1)+(j-1)} a_{i j} \cdot M\left[{i' ,i }\atop{1,j}\right] \right)\\ \pp
+& = \sum_{i =1}^{n} (-1)^{i +j}a_{i j}\left(\sum_{i' =1}^{i -1} (-1)^{i' +1} a_{i' 1} M\left[{i' ,i }\atop{1,j}\right] + \sum_{i' =i +1}^{n}(-1)^{(i' -1)+1} a_{i' 1}  \cdot  M\left[{i' ,i }\atop{1,j}\right] \right)\\ \pp
+& = \sum_{i =1}^{n} (-1)^{i +j}a_{i j} M_{i j} \\  \pp
+& = \sum_{i=1}^{n} a_{ij}A_{ij} \\ \pp
+\end{split}
+\end{equation*}
+\pp
+{\tiny 其中第二个等式为对$n-1$阶行列式$M_{i'1}$的第$j-1$列进行展开，第三个等式为交换求和号，第四个等式为对$n-1$阶行列式$M_{ij}$的第$1$列进行展开。
+}
+\end{frame}
+
+
+
+\begin{frame}\frametitle{行列式例子}
+\begin{example}
+\[\begin{vmatrix}
+a_{11}&&&\\
+ a_{21} &a_{22}&&\\
+ \vdots &    \ddots  &\ddots&\\
+  a_{n1}&    \cdots   & a_{n,n-1}    &a_{nn}\\
+\end{vmatrix}=a_{11}a_{22}\cdots a_{nn}.\]
+\end{example}
+\pp
+
+\begin{example}
+\[\begin{vmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}& \iddots &\iddots&\\
+\vdots&a_{n-1,2}& & \\
+a_{n1}& & &\\
+\end{vmatrix}=(-1)^{\frac{n(n-1)}{2}}a_{n1}a_{n-1,2}\cdots a_{1n}.\]
+\end{example}
+\end{frame}
+
+\subsubsection{行列式行展开}
+\begin{frame}\frametitle{行列式行展开}
+\begin{theorem}[行列式行展开]
+设$A=(a_{ij})_{n\times n}$为$n$阶方阵.则对任意$1\leq k \leq n$
+\[\boxed{\det(A)=\sum_{j=1}^na_{kj}A_{kj} = \sum_{j=1}^{n}(-1)^{k+j}a_{kj}M_{kj}.}\]
+\end{theorem}
+\pp
+\bigskip
+
+\yang{思路: 不妨设$k=1$. 根据对行列式阶数的归纳, 将行列式
+\[\det(A):=\sum_{i=1}^{n}(-1)^{i+1}a_{i1}M_{i1}\]
+中除$M_{11}$以外的$M_{i1}$按第一行展开. \pp 同时右式
+\[\sum_{i=1}^{n}(-1)^{i+j}a_{ij}M_{ij}\]
+中除$M_{11}$以外的 $M_{1j}$ 按第一列展开. 然后比较两式是否相等即可.}
+\end{frame}
+
+
+
+\subsubsection{证明细节}
+\begin{frame}\frametitle{证明细节}
+\[ M\left[{{i_1i_2}\atop {j_1j_2}}\right]:=\det\left(A\left({1,\cdots,i_1-1,i_1+1,\cdots,i_2-1,i_2+1,\cdots,n} \atop {1,\cdots,j_1-1,j_1+1,\cdots,j_2-1,j_2+1,\cdots,n}\right)\right).\]
+\pp
+对行列式的阶数$n$进行归纳。当$n=1$,结论显然成立。假设结论对n-1阶行列式成立。\pp 则
+\begin{equation*}
+\begin{split}
+\det(A)
+& = \sum_{i=1}^{n}(-1)^{i+1}a_{i1}M_{i1} \\ \pp
+& = a_{11}M_{11} + \sum_{i=2}^{n}(-1)^{i+1}a_{i1} \left(\sum_{j=2}^{n} (-1)^{1+(j-1)} a_{1j}\cdot M\left[{1i}\atop{1j}\right]\right)\\ \pp
+& = a_{11}M_{11} + \sum_{j=2}^{n}(-1)^{1+j} a_{1j} \left(\sum_{i=2}^{n} (-1)^{(i-1)+1} a_{i1}\cdot M\left[{1i}\atop{1j}\right]\right)\\ \pp
+& = \sum_{j=1}^{n} (-1)^{1+j}a_{1j} M_{1j}  \pp = \sum_{j=1}^{n} a_{1j}A_{1j} \\ \pp
+\end{split}
+\end{equation*}
+\pp
+其中第二个等式为对$n-1$阶行列式$M_{i1}$的第$1$行展开，第三个等式为交换求和号，第四个等式为对$n-1$阶行列式$M_{1j}$的第$1$列展开。
+\end{frame}
+
+
+
+\renewcommand{\mydate}{2025年03月20号\quad 第八次课}
+
+
+
+\subsubsection{行列式基本性质}
+\begin{frame}\frametitle{行列式基本性质}
+\begin{theorem}
+方阵$A$的行列式具有下列性质:
+\begin{enumerate}
+\item 交换$A$某两行(列)得$B$,则$\det(B)=-\det(A)$.\pp
+\item 将$A$的某一行(列)乘$\lambda$得$B$,则$\det(B)=\lambda\det(A)$. \pp
+\item 若$A$的某一行(列)是两个向量之和,则$\det(A)$可拆成两个行列式之和. \pp
+\end{enumerate}
+\end{theorem}
+证明思路：将$\det(A)$按第$p，q$两行展开得
+\[\det(A) = \sum_{i=1}^n \sum_{j=1}^{i-1} (-1)^{p+q+i+j-1}(a_{pi}a_{qj}-a_{pj}a_{qi}) M\left[{p,q}\atop{i,j}\right].\]
+
+\pp
+
+\yang{几何解释？}
+\end{frame}
+
+
+
+
+
+
+
+
+
+% ========== 2023年03月30号 第08次课 行列式 ==========
+%\frame{\titlepage}
+
+
+
+
+
+
+\begin{frame}\frametitle{行列式基本性质}
+\begin{corollary}
+\begin{enumerate}\setcounter{enumi}{3}
+\item 若$A$的某两行(列)成比例,则$\det(A)=0$. \pp
+\item 将$A$的某一行(列)$\lambda$倍加到另一行(列)得$B$,则$\det(B)=\det(A)$.
+\end{enumerate}
+\end{corollary}
+\pp
+\yang{几何解释？}
+\pp
+
+设 $A=(a_{ij})_{n\times n} = \begin{pmatrix}\alpha_1\\\alpha_2\\\vdots\\\alpha_n\end{pmatrix}$.则$\det$可以看成$\alpha_1,\cdots,\alpha_n$的函数. \pp  这一函数满足如下性质:
+{\small
+\begin{enumerate}
+\item 反对称性: $\det(\cdots,\alpha_i,\cdots,\alpha_j\cdots)=-\det(\cdots,\alpha_j,\cdots,\alpha_i\cdots)$; \pp
+\item 多重线性:  \\
+$\det(\cdots,\lambda\alpha_i+\mu\beta_i,\cdots) = \lambda\det(\cdots,\alpha_i,\cdots) + \mu\det(\cdots,\beta_i,\cdots)$;
+\pp
+\item 规范性: $\det(\vec{e}_1,\vec{e}_2,\cdots,\vec{e}_n)=1$.
+\end{enumerate}
+}
+\pp
+\blue{注:} 这三条性质唯一地确定了函数$\det$. (几何意义！！)
+\pp
+
+\blue{例:} $\det(\alpha+\beta,\beta+\gamma,\gamma+\alpha)=2\det(\alpha,\beta,\gamma)$.
+\end{frame}
+
+
+
+
+
+\subsubsection{行列式显示表示}
+\begin{frame}\frametitle{行列式显示表示}
+\begin{equation*}
+\begin{split}
+\det(A)
+& = \det\left(
+\sum_{j_1=1}^{n}a_{1j_1}\vec{e}_{j_1}, \sum_{j_2=1}^{n}a_{2j_2}\vec{e}_{j_2},\cdots, \sum_{j_n=1}^{n}a_{nj_n}\vec{e}_{j_n}
+\right)\\ \pp
+& =\sum_{j_1=1}^{n}\sum_{j_2=1}^{n}\cdots \sum_{j_n=1}^{n} a_{1j_1}a_{2j_2}\cdots a_{nj_n}
+\det\left(\vec{e}_{j_1}, \vec{e}_{j_2},\cdots, \vec{e}_{j_n}\right)\\ \pp
+& =\sum_{(j_1j_2\cdots j_n)\in S_n} a_{1j_1}a_{2j_2}\cdots a_{nj_n}
+\underbrace{\red{\boxed{\det\left(\vec{e}_{j_1}, \vec{e}_{j_2},\cdots, \vec{e}_{j_n}\right)}}}_{=??}\\
+\end{split}
+\end{equation*}
+\pp
+其中$S_n$为集合$\{1,\cdots,n\}$的全体排列集.
+\end{frame}
+
+
+
+
+
+\begin{frame}\frametitle{行列式显示表示}
+\begin{definition}
+\begin{enumerate}
+\item 由$n$个两两不同的正整数组成的有序数组$(j_1,j_2,\cdots,j_n)$称为一个\blue{$n$元排列}. \pp  由$1,2,\cdots,n$组成的排列总数为$n!$. \pp
+\item 称$(1,2,\cdots,n)$为\blue{标准排列}. \pp
+\item 给定排列$(j_1,j_2,\cdots,j_n)$.若$1\leq p<q\leq n$且$j_p>j_q$,则称二元组$(j_p,j_q)$为排列$(j_1,j_2,\cdots,j_n)$的一个\blue{逆序}. \pp 例如: $(1,4,3,2)$的有三个逆序$(4,3),(4,2),(3,2)$. \pp
+\item 排列$(j_1,j_2,\cdots,j_n)$的\blue{逆序总数}记为$\tau(j_1,j_2,\cdots,j_n)$. \pp  例如: $\tau(1,4,3,2)=3$. \pp
+\item 若$\tau(j_1,j_2,\cdots,j_n)$为奇数,则称$(j_1,j_2,\cdots,j_n)$为\blue{奇排列}.否则称之为\blue{偶排列}. \pp
+\item 将一个排列中的两个元素互换位置,其余元素位置不变.这个过程称为一个\blue{对换}.
+\end{enumerate}
+\end{definition}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{排列与逆序}
+\begin{lemma}
+\begin{enumerate}
+\item 对换改变奇偶性.\pp
+\item 排列$(j_1,j_2,\cdots,j_n)$可经过$\tau(j_1,j_2,\cdots,j_n)$次相邻位置的对换变为标准排列.
+\end{enumerate}
+\end{lemma}
+\pp
+\begin{theorem}[行列式显示表示]
+设$A=(a_{ij})_{n\times n}$为$n$阶方阵.则
+\begin{equation*}
+\det(A) = \sum_{(j_1j_2\cdots j_n)\in S_n}(-1)^{\tau(j_1,j_2,\cdots,j_n)} a_{1j_1}a_{2j_2}\cdots a_{nj_n}
+\end{equation*}
+\end{theorem}
+\end{frame}
+
+
+
+
+
+\subsubsection{二三阶行列式示意图}
+\begin{frame}\frametitle{二三阶行列式示意图}
+\begin{example}
+\begin{enumerate}
+\item $S_2=\{(12),(21)\}$, \pp $\tau(12)=0$, $\tau(21)=1$ \pp
+\[\Rightarrow \begin{vmatrix}a&b\\c&d\end{vmatrix}=ad-bc.\]
+\pp
+\item $S_3=\{(123),(231),(312),(132),(213),(321)\}$,\pp  $\tau(123)=0$, $\tau(231)=\tau(312)=2$, $\tau(213)=\tau(132)=1$, $\tau(321)=3$,
+\pp
+\begin{itemize}
+\item $\begin{vmatrix}
+\red{a_{11}}&\blue{a_{12}}&\green{a_{13}}\\
+\green{a_{21}}&\red{a_{22}}&\blue{a_{23}}\\
+\blue{a_{31}}&\green{a_{32}}&\red{a_{33}}\\
+\end{vmatrix}
+{=\red{+a_{11}a_{22}a_{33}} \blue{+a_{12}a_{23}a_{31}} \green{+a_{13}a_{21}a_{32}} \atop \qquad -a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}-a_{13}a_{22}a_{31}}$
+\pp
+\item $\begin{vmatrix}
+\red{a_{11}}&\blue{a_{12}}&\green{a_{13}}\\
+\blue{a_{21}}&\green{a_{22}}&\red{a_{23}}\\
+\green{a_{31}}&\red{a_{32}}&\blue{a_{33}}\\
+\end{vmatrix}
+{=+a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}\atop \qquad \red{-a_{11}a_{23}a_{32}} \blue{-a_{12}a_{21}a_{33}} \green{-a_{13}a_{22}a_{31}}}$
+\end{itemize}
+\end{enumerate}
+\end{example}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\begin{example} \footnotesize
+\[\begin{vmatrix}
+& & &a_{1}\\
+& &\iddots&\\
+&a_{n-1}& & \\
+a_{n}& & &\\
+\end{vmatrix}=(-1)^{\frac{(n)(n-1)}{2}}a_{1}a_{2}\cdots a_{n}.\]
+\end{example}
+
+\pp
+\begin{example}
+求下列三阶行列式: $\begin{vmatrix}
+1 & 2 & 3\\
+8 & 0 & 4\\
+7 & 6 & 5
+\end{vmatrix} \quad
+\text{和}\quad \begin{vmatrix}
+1 & 2 & 0\\
+0 & 1 & 3\\
+2 & 7 & 8
+\end{vmatrix}$.
+\end{example}
+\end{frame}
+
+
+
+
+
+\subsubsection{三角分块矩阵行列式}
+\begin{frame}\frametitle{三角分块矩阵行列式}
+\begin{proposition}
+设$\small A=
+\begin{pmatrix}
+A_{11}&A_{12}&\cdots&A_{1k}\\
+  &A_{22}&\cdots&A_{2k}\\
+  &      &\ddots&\vdots\\
+  &      &      &A_{kk}\\
+\end{pmatrix}$为分块矩阵,其中$A_{ii}$均为方阵.则
+\[\det(A)=\prod_{i=1}^k \det(A_{ii}).\]
+\end{proposition}
+\pp
+{\small
+证明思路：只需考虑$k=2$. 此时，不妨设拆分方式为 $n=r+(n-r)$.\pp 则}
+\begin{equation*} \tiny
+\begin{split}
+\det(A) &= \sum_{(j_1,j_2,\cdots,j_n)\in S_n} (-1)^{\tau(j_1,\cdots,j_n)}a_{1j_1}a_{2j_2}\cdots a_{nj_n}\\ \pp
+&=\sum_{(j_1,j_2,\cdots,j_r)\in S_r \leq r \atop(j_{r+1},\cdots,j_n)\in S_{n-r}(r+1,\cdots,n)} \left((-1)^{\tau(j_1,\cdots,j_r)}a_{1j_1}\cdots a_{r,j_r}\right) \cdot \left( (-1)^{\tau(j_{r+1},\cdots,j_n)}a_{r+1,j_{r+1}}\cdots a_{nj_n}\right)\\ \pp
+%&=\left(\sum_{1\leq j_1,j_2,\cdots,j_r\leq r} (-1)^{\tau(j_1,\cdots,j_r)}a_{1j_1}\cdots a_{r,j_r}\right) \cdot \left(\sum_{r+1\leq j_{r+1},\cdots,j_n\leq n} (-1)^{\tau(j_{r+1},\cdots,j_n)}a_{r+1,j_{r+1}}\cdots a_{nj_n}\right) \\
+&=\det(A_{11})\det(A_{22})\\
+\end{split}
+\end{equation*}
+\end{frame}
+
+
+
+\renewcommand{\mydate}{2025年03月25号\ 第九次课}
+
+\subsubsection{行列式基本性质}
+\begin{frame}\frametitle{行列式基本性质}
+\begin{theorem}
+\[\det(A)=\det(A^T).\]
+\end{theorem}
+\pp
+证明：比较两边显示展开.(或，对阶数归纳，并利用展开式。)
+\pp
+\begin{theorem}
+\[\det(AB)=\det(A)\det(B).\]
+\end{theorem}
+\pp
+几何解释？
+\pp
+\begin{example}
+设$m>n$, $A\in F^{m\times n}$, $B\in F^{n\times m}$. 则
+\[\det(AB)=0.\]
+\end{example}
+\pp
+\begin{example}
+设$A\in F^{n\times n}$, $B\in F^{n\times m}$, $C\in F^{m\times n}$, $D\in F^{m\times m}$. 若$A$可逆,则
+\[\det\begin{pmatrix} A&B\\C&D\\\end{pmatrix}=\det(A)\cdot\det(D-CA^{-1}B).\]
+\end{example}
+\end{frame}
+
+
+
+
+\begin{frame}\frametitle{例}
+\begin{example} 求
+$\begin{vmatrix}
+3& x + y + z & x^2 + y^2 + z^2 \\
+x + y + z & x^2 + y^2 + z^2 & x^3 + y^3 + z^3 \\
+x^2 + y^2 + z^2 & x^3 + y^3 + z^3 & x^4 + y^4 + z^4 \\
+\end{vmatrix}$
+\end{example}
+
+
+\yang{
+\[\begin{pmatrix}
+3& x + y + z & x^2 + y^2 + z^2 \\
+x + y + z & x^2 + y^2 + z^2 & x^3 + y^3 + z^3 \\
+x^2 + y^2 + z^2 & x^3 + y^3 + z^3 & x^4 + y^4 + z^4 \\
+\end{pmatrix} =
+\begin{pmatrix}
+1 & 1 & 1 \\
+x & y & z \\
+x^2 & y^2 & z^2 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & x & x^2 \\
+1 & y & y^2 \\
+1 & z & z^2 \\
+\end{pmatrix}\]}
+\end{frame}
+
+\subsection{可逆判定}
+
+
+\subsubsection{伴随矩阵}
+\begin{frame}\frametitle{伴随矩阵}
+\pp
+\begin{definition}[伴随矩阵]
+设$A=(a_{ij})_{n\times n}$为$n$阶方阵.称矩阵
+\[\small A^*:=\begin{pmatrix}
+A_{11}&A_{21}&\cdots&A_{n1}\\
+A_{12}&A_{22}&\cdots&A_{n2}\\
+\cdots&\cdots&\cdots&\cdots\\
+A_{1n}&A_{2n}&\cdots&A_{nn}\\
+\end{pmatrix}=(A_{ij})_{n\times n}^T\]
+为$A$的\blue{伴随矩阵}.
+\end{definition}
+\pp
+\begin{theorem}
+设$A=(a_{ij})_{n\times n}$为$n$阶方阵. 则
+\[A^*A=AA^*=\det(A)I_n.\]
+\end{theorem}
+\pp
+注：定理等价于 $\sum\limits_{k=1}^{n}a_{ik}A_{jk}=\det(A)\delta_{ij}$ 以及 $\sum\limits_{k=1}^{n}a_{ki}A_{kj}=\det(A)\delta_{ij}$, 其中$\delta_{ij}$为Kronecker记号,满足 $(\delta_{ij})_{n\times n}=I_n$.
+
+\end{frame}
+
+
+
+
+
+\subsubsection{矩阵可逆的判定条件}
+\begin{frame}\frametitle{矩阵可逆的判定条件}
+\begin{theorem}
+设$A$为$n$阶方阵. 则以下几条等价 \pp
+\begin{enumerate}
+\item $A$可逆(i.e. 存在$X$使得$AX=I=XA$.); \pp
+\item $\det(A)\neq0$; \pp
+\item 存在$X$使得$I=XA$; \pp
+\item 存在$X$使得$AX=I$.
+\end{enumerate}
+\pp
+若以上几条成立,则$A^{-1}=\frac1{\det(A)}A^*$.
+\end{theorem}
+\end{frame}
+
+
+
+\subsection{Cramer 法则}
+
+\begin{frame}
+\begin{theorem}[Cramer法则] \small
+若$n$阶方阵$A=(a_{ij})_{n\times n}=(\alpha_1,\cdots,\alpha_n)$可逆.则一般线性方程组
+\[AX=b\]
+有唯一解
+\[(x_1,\cdots,x_n)=\left(\frac{\Delta_1}{\Delta},\frac{\Delta_2}{\Delta},\cdots,\frac{\Delta_n}{\Delta}\right),\]
+其中$\Delta=\det(A)$, $\Delta_i=\det(\alpha_1\cdots,\alpha_{i-1},b,\alpha_{i+1},\cdots,\alpha_n)$.
+\end{theorem}
+\pp
+证明思路：$X=A^{-1}b=\frac{1}{\det(A)} A^*b$. \pp 几何解释？
+\pp
+
+理论层面上，这种方法既有用又美观，但在实际应用中，由于效率过低，通常不会被采用来解方程。
+\pp
+\begin{example}
+使用Cramer法则求解线性方程组:
+\[\footnotesize \left\{\begin{array}{rrrrr}
+& + x_2 & + x_3 & + x_4 & = 1\\
+x_1 &       & + x_3 & + x_4 & = 2\\
+x_1 & + x_2 &       & + x_4 & = 3\\
+x_1 & + x_2 & + x_3 &       & = 4\\
+\end{array}\right. \pp \Rightarrow (x_1,x_2,x_3,x_4)=(7/3,4/3,1/3,-2/3).\]
+\end{example}
+\end{frame}
+
+
+\renewcommand{\mydate}{2025年03月27号\ 第十次课}
+
+\subsection{行列式的计算}
+
+
+\subsubsection{行列式的计算}
+\begin{frame}\frametitle{行列式的计算}
+\begin{example}
+$\begin{vmatrix}
+0& 5&-4& 5\\
+-3&-1&-5& 3\\
+3& 1&-2&-3\\
+-1& 4&-5&-1\\
+\end{vmatrix}=665$.
+\end{example}
+\pp
+\begin{example}
+$\begin{vmatrix}
+x&     1&\cdots& 1\\
+1&     x&\ddots&\vdots\\
+\vdots&\ddots&     x& 1\\
+1&\cdots&     1& x\\
+\end{vmatrix}=(x+n-1)(x-1)^{n-1}$.
+\end{example}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\begin{example} \small
+$\begin{vmatrix}
+x&      &      &      a_0\\
+-1&\ddots&      &   \vdots\\
+&\ddots&     x&  a_{n-2}\\
+&      &    -1&x+a_{n-1}\\
+\end{vmatrix}=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$.
+\end{example}
+\pp
+\begin{example} \small
+$\begin{vmatrix}
+1&     a_1&  \cdots&  a_1^{n-1}\\
+1&     a_2&  \cdots&  a_2^{n-1}\\
+\cdots&  \cdots&  \cdots&     \cdots\\
+1&     a_n&  \cdots&  a_n^{n-1}\\
+\end{vmatrix}=\prod\limits_{1\leq i<j\leq n} (a_j-a_i)$.
+\end{example}
+\pp
+\begin{example} \small
+$\Delta_n:=\begin{vmatrix}
+2&     1&      &  \\
+1&     2&\ddots&  \\
+&\ddots&\ddots& 1\\
+&      &     1& 2\\
+\end{vmatrix}=n+1$.
+\end{example}
+\end{frame}
+
+

@@ -1,0 +1,646 @@
+%\setcounter{framenumber}{30}
+\renewcommand{\mydate}{2025年03月27号\ 第十次课}
+
+\makeatletter
+\ifodd\value{page}
+\else
+\begin{frame}[plain]
+\end{frame}
+\fi
+\makeatother
+
+
+\section{矩阵(二)}
+
+
+\title{第五章 \quad 矩阵(二)}
+\author{}
+\date{}
+
+\frame{\titlepage}
+
+
+\subsection{初等变换}
+
+
+\subsubsection{初等矩阵}
+\begin{frame}\frametitle{初等矩阵}
+\begin{itemize}
+\item 初等行变换
+\pp
+\begin{itemize}
+\item 交换两行
+\item 某行乘以一个非零常数
+\item 某行乘以一个常数加到另一行上
+\end{itemize}
+\pp
+\item 初等列变换
+\pp
+\begin{itemize}
+\item 交换两列
+\item 某列乘以一个非零常数
+\item 某列乘以一个常数加到另一列上
+\end{itemize}
+\end{itemize}
+\pp
+
+\blue{初等变换}(6个) = \blue{初等行变换}(3个) + \blue{初等列变换}(3个)
+
+\bigskip
+
+\blue{问题:} 对单位矩阵做初等变换,我们会得到什么矩阵?
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}\frametitle{初等矩阵}
+\begin{definition}[初等矩阵]
+\begin{enumerate}
+\item 交换单位阵的第$i,j$行(或$i,j$列)得
+\[\tiny \blue{S_{ij}} := \begin{pmatrix}
+1\quad&\qquad&\qquad&\qquad&\qquad&\qquad&\qquad\\
+  &\ddots&      &      &      &      &     \\
+  &      &  0   &      &  1   &      &     \\
+  &      &      &\ddots&      &      &     \\
+  &      &  1   &      &  0   &      &     \\
+  &      &      &      &      &\ddots&     \\
+  &      &      &      &      &      &  1  \\
+
+\end{pmatrix}\]
+\pp
+\item 将单位阵第$i$行(或$i$列)乘以非零常数$\lambda$得
+\[\tiny \blue{D_i(\lambda)} :=\begin{pmatrix}
+1\quad&\qquad&\qquad&\qquad&\qquad&\qquad&\qquad\\
+&\ddots&      &       &      &      &     \\
+&      &  1   &       &      &      &     \\
+&      &      &\lambda&      &      &     \\
+&      &      &       &  1   &      &     \\
+&      &      &       &      &\ddots&     \\
+&      &      &       &      &      &  1  \\
+\end{pmatrix}\]
+\end{enumerate}
+\end{definition}
+\end{frame}
+
+
+
+
+
+\begin{frame}\frametitle{初等矩阵}
+\begin{definition}[初等矩阵]
+\begin{enumerate}\setcounter{enumi}{2}
+\item 将单位阵的第$j$行的$\lambda$倍加到第$i$行(或第$i$列的$\lambda$倍加到第$j$列)得
+\[\tiny \blue{T_{ij}(\lambda)} := \begin{pmatrix}
+1\quad&\qquad&\qquad&\qquad&\qquad&\qquad&\qquad\\
+&\ddots&      &      &       &      &     \\
+&      &  1   &      &\lambda&      &     \\
+&      &      &\ddots&       &      &     \\
+&      &      &      &  1    &      &     \\
+&      &      &      &       &\ddots&     \\
+&      &      &      &       &      &  1  \\
+\end{pmatrix}\]
+\end{enumerate}
+\pp
+我们称上面定义的三类矩阵为\blue{初等矩阵}.
+\end{definition}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+% ========== 2023年04月06号 第10次课 初等矩阵 ==========
+%\frame{\titlepage}
+
+
+
+
+
+\subsubsection{初等矩阵基本性质}
+\begin{frame}\frametitle{初等矩阵基本性质}
+
+\begin{theorem}
+\begin{enumerate}
+\item 对矩阵做初等\blue{行}变换相当于矩阵\blue{左}乘一个相应的初等矩阵.
+\pp
+\item 对矩阵做初等\blue{列}变换相当于矩阵\blue{右}乘一个相应的初等矩阵.
+\end{enumerate}
+\end{theorem}
+\pp
+证明思路:将矩阵写成由向量组成的分块矩阵,然后直接验证.
+\pp
+
+\begin{proposition}[初等矩阵总是可逆的，且其逆仍然是初等矩阵]
+\begin{enumerate}
+\item $S_{ij}$对称且$S_{ij}^{-1}=S_{ij}$; \pp
+\item $D_i(\lambda)$为对角阵且$D_i(\lambda)^{-1}=D_i(\lambda^{-1})$; \pp
+\item $T_{ij}(\lambda)$为三角阵,且$T_{ij}(\lambda)^{-1}=T_{ij}(-\lambda)$;
+\end{enumerate}
+\end{proposition}
+\pp
+特别地，由于可逆矩阵的乘积仍然可逆，我们有任意有限多个初等矩阵的乘积也是可逆的.
+\end{frame}
+
+
+
+\subsection{初等矩阵的应用}
+
+\subsubsection{高斯消元法与可逆阵的$LU$分解.}
+\begin{frame}\frametitle{高斯消元法与可逆阵的$LU$分解.}
+由高斯消元法,对任意矩阵$A$可通过初等行变换将其变为阶梯矩阵.
+\pp
+用初等矩阵,这过程可描述为: 存在初等方阵$P_1,P_2,\cdots,P_s$使得
+\[P_s\cdots P_2P_1A =: J\]
+为阶梯矩阵.
+\pp
+\bigskip
+\begin{itemize}
+\item 若 $A$ 可逆，则$J$为可逆上三角矩阵.
+\pp
+\bigskip
+\item 若 $P_1$, $P_2$, $\cdots$, $P_s$ 仅出现下三角初等矩阵 $T_{ij}(\lambda)$($j<i$). 则记 $L:=P_1^{-1}P_2^{-1}\cdots P_s^{-1}$ 以及 $U:=J$, 称 $A=LU$\footnote{注：$L$的$(i,j)$元素正好为依次将$A$的$(i,j)$元素化为$0$所需减去的$(j,j)$元素的倍数.}为$A$的\blue{$LU$分解}.
+\pp
+
+
+\pp
+\bigskip
+
+
+
+\item 若可逆阵$A$的$LU$分解存在，则将解方程组 $Ax=b$可转化为两个简单方程组$Ly=b$, $Ux=y$ (这两个方程都可通过带入法求解).
+\end{itemize}
+\end{frame}
+
+
+
+
+\subsubsection{用LU分解求解线性方程组}
+\begin{frame}\frametitle{用LU分解求解线性方程组}
+\begin{example}[用LU分解求解线性方程组]
+\[\begin{cases}
+2x_1 + 3x_2 + 4x_3 = 1 \\
+4x_1 + 11x_2 + 14x_3 = 3 \\
+6x_1 + 19x_2 + 26x_3 = 5.
+\end{cases}\]
+\end{example}
+\begin{itemize}
+\item 第一步：对系数矩阵进行LU分解得（Gauss消元法）：
+\[L = \begin{pmatrix}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+3 & 2 & 1
+\end{pmatrix}, \quad
+U = \begin{pmatrix}
+2 & 3 & 4 \\
+0 & 5 & 6 \\
+0 & 0 & 2
+\end{pmatrix}.\]
+\pp
+
+\item 第二步：求解 $Ly = b$. 这一步通过自上而下带入完成.
+\[\begin{pmatrix}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+3 & 2 & 1
+\end{pmatrix}
+\begin{pmatrix}y_1 \\y_2 \\y_3\end{pmatrix}
+=
+\begin{pmatrix}1 \\3 \\5\end{pmatrix}
+\Rightarrow y = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}.\]
+\pp
+
+\item 第三步：求解 $Ux = y$. 通过回代（back substitution）
+\[\begin{pmatrix}
+2 & 3 & 4 \\
+0 & 5 & 6 \\
+0 & 0 & 2
+\end{pmatrix}
+\begin{pmatrix}x_1 \\x_2 \\x_3\end{pmatrix}
+=
+\begin{pmatrix}1 \\1 \\0\end{pmatrix}
+\Rightarrow x = \begin{pmatrix} \frac{1}{5} \\ \frac{1}{5} \\ 0 \end{pmatrix}.\]
+\end{itemize}
+\end{frame}
+
+
+
+
+\subsubsection{初等矩阵与高斯消元法}
+\begin{frame}\frametitle{初等矩阵与高斯消元法}
+\begin{theorem}对于任意矩阵$A\in F^{m\times n}$,存在$m$阶初等方阵$P_1,P_2,\cdots,P_s$和$n$阶初等方阵$Q_1,Q_2,\cdots,Q_t$，以及非负整数$r$，使得
+\[P_s\cdots P_2P_1AQ_1Q_2\cdots Q_t=\begin{pmatrix}I_r&0\\0&0\end{pmatrix}.\]
+\end{theorem}
+\pp
+\begin{corollary}
+\begin{enumerate}
+\item 对任意矩阵$A\in \mathbb F^{m\times n}$,存在$m$阶可逆阵$P$和$n$阶可逆阵$Q$使得
+\[PAQ=\begin{pmatrix}I_r&0\\0&0\end{pmatrix}.\]
+\pp
+\item 设$A$为$n$阶方阵.则$A$可逆当且仅当$A$可分解为初等方阵的乘积.
+\end{enumerate}
+\end{corollary}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+\renewcommand{\mydate}{2025年04月01号\ 第十一次课}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{初等变换求逆}
+\begin{frame}\frametitle{初等变换求逆}
+
+\begin{corollary}设$A$为$n$阶可逆方阵.则
+\pp
+\begin{enumerate}
+\item 可对$A$做一系列初等行变换变为最简形式 $I$.
+\pp
+\item 可对$A$做一系列初等列变换变为最简形式 $I$.
+\end{enumerate}
+\end{corollary}
+\pp
+\bigskip
+
+\blue{问题:} 如何求逆矩阵?
+
+\pp
+\bigskip
+
+
+\begin{itemize}
+\item \blue{算法原理:} 通过初等变换我们可以找到初等矩阵 $P_1,P_2,\cdots,P_s$使得
+$P_s\cdots P_2P_1A=I$. \pp 从而,我们有
+\[A^{-1} =  P_s\cdots P_2P_1.\]
+ \pp
+
+\item \blue{具体实现过程:} 对矩阵$(A,I)$做\blue{行}初等变换,将第一个子矩阵变为单位阵.则第二个子矩阵自动变为$A$的逆. \pp
+\[(A,I)\xrightarrow{\text{行初等变换}} P_s\cdots P_2P_1(A,I)=(I,A^{-1}).\]
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}\frametitle{初等变换求逆}
+\begin{example}
+求矩阵$\tiny\begin{pmatrix}2&1&0\\1&2&1\\0&1&2\end{pmatrix}$的逆. \pp \qquad \qquad \qquad  \yang{$\tiny\frac14\begin{pmatrix}3&-2&1\\-2&4&-2\\1&-2&3\end{pmatrix}$.}
+\end{example}
+\pp
+
+思考: 若$A$可逆,如何求解 $AX=B$? \pp
+\[(A,B)\xrightarrow{\text{行初等变换}} P_s\cdots P_2P_1(A,B)=(I,A^{-1}B).\]
+\pp
+
+\begin{example}
+若 $\tiny\begin{pmatrix}2&1&0\\1&2&1\\0&1&2\end{pmatrix}X = \begin{pmatrix} 3& 1\\ 4& 0\\ 3& 1\\ \end{pmatrix}$, 求 $X$. \pp \qquad \qquad \qquad   \yang{$\tiny\begin{pmatrix}1&1\\1&-1\\1&1\\\end{pmatrix}$.}
+\end{example}
+
+思考: 若$A$可逆,如何求解 $XA=B$? \pp
+\[\begin{pmatrix}A\\B\\\end{pmatrix} \xrightarrow{\text{列初等变换}} \begin{pmatrix}A\\B\\\end{pmatrix}Q_1Q_2\cdots Q_t=\begin{pmatrix}I\\BA^{-1}\\\end{pmatrix}.\]
+\pp
+
+\begin{example}
+若 $\tiny X\begin{pmatrix}2&1&0\\1&2&1\\0&1&2\end{pmatrix} = \begin{pmatrix} 3&4&3\\1&0&1\\\end{pmatrix}$, 求 $X$. \pp \qquad \qquad \qquad   \yang{$\tiny\begin{pmatrix}1&1&1\\1&-1&1\\\end{pmatrix}$.}
+\end{example}
+
+\end{frame}
+
+
+\subsection{分块矩阵的初等变换及应用}
+
+\subsubsection{分块矩阵的行列变换}
+\begin{frame}\frametitle{分块矩阵的行列变换}
+设$A$为$m\times n$矩阵. 我们将其按$m=m_1+m_2+\cdots+m_r$和$n=n_1+n_2+\cdots+n_s$的拆分方式,得到如下分块形式
+\[ A = \left(\begin{array}{cccc}
+A_{11} & A_{12} & \cdots & A_{1 s}\\
+A_{21} & A_{22} & \cdots & A_{2 s}\\
+\vdots & \vdots & \ddots & \vdots\\
+A_{r 1} & A_{r 2} & \cdots & A_{rs}
+\end{array}\right) = (A_{ij})_{r \times s}.\]
+\pp
+类似于矩阵的初等变换,我们可以对分块矩阵$A$做相似的操作:\pp
+\begin{enumerate}
+\item 交换分块矩阵的第$i,j$行(或$i,j$列). \pp
+\item 将分块矩阵的第$i$行左乘一个$m_i$阶(或,第$i$列右乘一个$n_i$阶)可逆矩阵. \pp
+\item 将分块矩阵的第$i$行左乘一个$m_j\times m_i$矩阵加到第$j$行(或,第$i$列右乘一个$n_i\times n_j$矩阵加到第$j$列).
+\end{enumerate}
+\end{frame}
+
+
+
+
+
+\subsubsection{初等分块矩阵}
+\begin{frame}\frametitle{初等分块矩阵}
+\begin{example}若$A$可逆,则
+\begin{equation*} \footnotesize
+\begin{split}
+&
+\begin{pmatrix}I&0\\-CA^{-1}&I\end{pmatrix} \begin{pmatrix}A&B\\C&D\end{pmatrix} =\begin{pmatrix}A&B\\0&D-CA^{-1}B\end{pmatrix}\\ \pp
+&\\
+&
+\begin{pmatrix}A&B\\C&D\end{pmatrix} \begin{pmatrix}I&-A^{-1}B\\0&I\end{pmatrix} =\begin{pmatrix}A&0\\C&D-CA^{-1}B\end{pmatrix}\\ \pp
+&\\
+&
+\begin{pmatrix}I&0\\-CA^{-1}&I\end{pmatrix}\begin{pmatrix}A&B\\C&D\end{pmatrix} \begin{pmatrix}I&-A^{-1}B\\0&I\end{pmatrix} =\begin{pmatrix}A&0\\0&D-CA^{-1}B\end{pmatrix}\\
+\end{split}
+\end{equation*}
+\end{example}
+\end{frame}
+
+
+
+
+
+\subsubsection{分块矩阵求逆}
+\begin{frame}\frametitle{分块矩阵求逆}
+
+\begin{example}设$A,B,I$为$n$阶方阵满足$BA=0$.则
+\[\small \begin{pmatrix}I&A\\B&I\end{pmatrix}^{-1}=\begin{pmatrix}I+AB&-A\\-B&I\end{pmatrix}\]
+\end{example}
+\pp
+\begin{equation*}
+\begin{split}
+\begin{pmatrix}I&A&I&0\\B&I&0&I\end{pmatrix}
+& \xrightarrow[\text{第一行左乘$B$}]{\text{第二行减去}}
+\begin{pmatrix}I&A&I&0\\0&I&-B&I\end{pmatrix} \\ \pp
+&\\
+& \xrightarrow[\text{第二行左乘$A$}]{\text{第一行减去}}
+\begin{pmatrix}I&0&I+AB&-A\\0&I&-B&I\end{pmatrix} \\
+\end{split}
+\end{equation*}
+\end{frame}
+
+
+
+
+
+\subsection{秩与相抵}
+
+
+\subsubsection{秩与相抵}
+\begin{frame}\frametitle{秩与相抵}
+\begin{definition}[相抵] 称两矩阵$A,B$ \blue{相抵},若存在可逆矩阵$P$和$Q$使得
+\[B=PAQ.\]
+\end{definition}
+\pp
+注:因可逆矩阵为方阵,因此要使$B=PAQ$成立, $B$和$A$的行列数必须一致.
+\pp
+
+\begin{proposition}[相抵的基本性质]
+\begin{enumerate}
+\item  任意矩阵与自身相抵; \pp
+\item  若$A$与$B$相抵,则$B$与$A$也相抵; \pp
+\item  若$A$与$B$相抵且$B$与$C$相抵,则$A$与$C$相抵.
+\end{enumerate}
+\end{proposition}
+满足上述三条性质的关系称为\blue{等价关系}。换句话说，上述性质表明相抵为等价关系.
+\end{frame}
+
+
+
+
+
+\subsubsection{等价关系在集合论中的严谨定义}
+\begin{frame}\frametitle{等价关系在集合论中的严谨定义}
+\begin{definition}[等价关系严谨定义]
+给定集合$X$,我们称$X\times X$的一个子集为$X$上的一个\blue{关系}. \pp 设 $R$ 为 $X$ 上的一个关系, 即
+\[R\subseteq X\times X.\] \pp
+我们称 $R$是\blue{等价关系}, 若 $R$ 满足如下三条性质
+\begin{itemize}
+\item (\blue{自反性}) 对任意 $x\in X$, 我们有 $(x,x)\in R$;
+\item (\blue{对称性}) 对任意 $x,y\in X$, $(x,y)\in R$ 当且仅当 $(y,x)\in R$;
+\item (\blue{传递性}) 对任意 $x,y,z\in X$, 若 $(x,y)\in R$, $(y,z)\in R$ 则 $(x,z)\in R$.
+\end{itemize}
+\pp
+此时,对任意$x,y\in X$, 若$(x,y)\in R$, 则称\blue{$x$等价于$y$}; 否则,称\blue{$x$不等价于$y$}.
+\end{definition}
+
+\begin{example}
+例子：老乡；同号；同余等价关系；
+
+反例：朋友；父子；异号
+\end{example}
+
+\end{frame}
+
+
+
+
+\subsubsection{集合上等价关系与拆分}
+\begin{frame}\frametitle{集合上等价关系与拆分}
+对等价关系,我们有如下通俗理解:
+\begin{theorem}
+给定集合某上的一个等价关系等价于给定这集合上的一个拆分.
+\end{theorem}
+\pp 证明思路：
+\begin{itemize}
+\item 给定$X$上一个等价关系 $R$. 我们称$X$的子集
+\[[x]:=\{y\in X\mid (x,y)\in R\} \subseteq X\]
+为$x$在等价关系$R$下的\blue{等价类}. \pp
+\begin{itemize}
+\item 对任意$x,y\in X$, $[x]\cap[y]\neq\emptyset$ 当且仅当 $[x]=[y]$. \pp
+\item 集合$X$ 为一些等价类的无交并. \pp
+\end{itemize}
+\item 反之, 给定集合$X$的一个拆分 $X$. 我们如下定义一个等价关系$R$: 对于任意$x,y\in X$, $(x,y)\in R$当且仅当$x,y$落入同一个拆分子集中.
+\end{itemize}
+\end{frame}
+
+
+
+\subsubsection{相抵等价关系中的两个基本问题}
+\begin{frame}\frametitle{秩与相抵}
+
+\pp
+按照相抵关系,我们将全体$m\times n$矩阵分成若干个两两不交的等价类. \pp
+
+\blue{基本问题:}
+\begin{enumerate}
+\item 如何判定两个矩阵是否相抵? \pp
+\item 在每个等价类中有没有最简单的表达形式?
+\end{enumerate}
+
+\end{frame}
+
+
+
+
+\begin{frame}\frametitle{秩与相抵}
+\begin{theorem}
+对于任意矩阵$A\in F^{m\times n}$,存在$m$阶可逆矩阵$P$和$n$阶可逆矩阵$Q$使得
+\[PAQ=\begin{pmatrix}I_r&0\\0&0\end{pmatrix}.\]
+其中非负整数$r$\blue{不依赖}于$P$和$Q$的选取.
+\end{theorem}
+\pp
+\bigskip
+
+\yang{假若不唯一，不妨设$s>r$ 且 $P\begin{pmatrix}I_r&0\\0&0\end{pmatrix}Q = \begin{pmatrix}I_s&0\\0&0\end{pmatrix}$. 对$P$和$Q$进行分块：
+\[P = \begin{pmatrix}(P_{11})_{s\times r}
+& (P_{12})_{s\times(m-r)}\\
+(P_{21})_{(m-s)\times r}
+& (P_{22})_{(m-s)\times(m-r)}\\ \end{pmatrix}_{m\times m}\]
+\[Q = \begin{pmatrix}(Q_{11})_{r\times s}
+& (Q_{12})_{r\times(n-s)}\\
+(Q_{21})_{(n-r)\times s}
+& (Q_{22})_{(n-r)\times(n-s)}\\ \end{pmatrix}_{n\times n}.\]
+则
+$P_{11}Q_{11}=I_s$(矛盾！).}
+\end{frame}
+
+
+
+
+
+
+
+
+
+% ========== 2023年04月11号 第11次课 秩与相抵 ==========
+%\frame{\titlepage}
+
+
+
+
+
+\subsubsection{相抵判定}
+\begin{frame}\frametitle{相抵判定}
+
+\begin{definition}
+定理中的$\begin{pmatrix}I_r&0\\0&0\end{pmatrix}$称为$A$的\blue{相抵标准形}.\pp 非负整数$r$称为$A$的\blue{秩},\pp 记为\blue{$\rank(A)$}或\blue{$r(A)$}.\pp 若$r=m$,则称$A$为\blue{行满秩}.\pp
+若$r=n$,则称$A$为\blue{列满秩}.
+\end{definition}
+
+\begin{corollary}[相抵判定]
+给定两矩阵$A,B\in F^{m\times n}$,则$A$与$B$相抵当且仅当$\rank(A)=\rank(B)$.
+\end{corollary}
+\pp
+\begin{corollary}若$P,Q$可逆,则$\rank(PAQ)=\rank(A)$.
+\end{corollary}
+\pp
+\begin{example}
+\[\rank(A^T)=\rank(A).\]
+\pp
+\[\rank\begin{pmatrix}A&0\\0&B\end{pmatrix}=\rank(A)+\rank(B).\]
+\end{example}
+\end{frame}
+
+\renewcommand{\mydate}{2025年04月03号\ 第十二次课}
+
+
+
+\subsubsection{通过子式定义秩}
+\begin{frame}\frametitle{通过子式定义秩}
+\begin{proposition}
+设$A\in F^{m\times n}$, $P$, $Q$分别为$m$, $n$阶初等方阵.若$A$的$k$阶子式全为零,则$PA$和$AQ$的所有$k$阶子式全为零.
+\end{proposition}
+\pp
+
+\begin{proposition}[通过子式定义秩]
+若矩阵$A$至少有一个$r$阶非零子式,且$A$的所有$r+1$阶子式都为零,则$\rank(A)=r$.
+\end{proposition}
+\end{frame}
+
+
+
+
+\subsection{相关例题}
+
+\begin{frame}\frametitle{例题}
+\begin{example}
+求$n$阶方阵$\begin{pmatrix}
+x&     1&\cdots& 1\\
+1&     x&\ddots&\vdots\\
+\vdots&\ddots&     x& 1\\
+1&\cdots&     1& x\\
+\end{pmatrix}$的秩.
+\end{example}
+\pp
+\begin{example}
+求$n$阶方阵$\begin{pmatrix}
+1&     1&      &     \\
+ &     1&\ddots&     \\
+ &      &\ddots&    1\\
+1&      &      &    1\\
+\end{pmatrix}$的秩.
+\end{example}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{例题}
+\begin{example}
+每个非零矩阵都为一个列满秩矩阵和一个行满秩矩阵的乘积.
+\end{example}
+\pp
+
+\begin{example}
+每个秩为$r$的矩阵都可以写成$r$个秩为$1$的矩阵的和.
+\end{example}
+\pp
+
+\begin{example}
+若$A$为列满秩$m\times n$矩阵,则$A$为某个$m$阶可逆阵的前$n$列.\\
+若$A$为行满秩$m\times n$矩阵,则$A$为某个$n$阶可逆阵的前$m$行.
+\end{example}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{例题}
+\begin{example}\frametitle{例题}
+设矩阵$A$的列数和矩阵$B$的行数为$n$,则
+\[\rank(A)+\rank(B)-n\leq \rank(AB)\leq \min\Big(\rank(A),\rank(B)\Big).\]
+\end{example}
+\pp
+
+\begin{example}若$A$为$n$阶方阵满足$A^2=A$,则$\rank(A)+\rank(I-A)=n$.
+\end{example}
+\pp
+\begin{example}
+设$A\in F^{m\times n}$, $B\in F^{n\times m}$. 则
+\[m+\rank(I_n-BA) = \rank\begin{pmatrix}I_m&A\\B&I_n\end{pmatrix} =n+\rank(I_m-AB).\]
+\end{example}
+\end{frame}
+
+
+
+
+
+
+

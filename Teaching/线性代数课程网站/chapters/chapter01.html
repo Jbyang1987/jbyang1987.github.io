@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="按课程讲稿学习向量及其运算、线性相关性、仿射坐标系与坐标变换、复数与数域，以及高维数组向量。">
+  <title>第一章 · 向量 | 线性代数</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/chapter01.css">
+  <script defer src="../js/course.js"></script>
+  <script defer src="../js/progress.js"></script>
+  <script defer src="../js/main.js"></script>
+  <script defer src="../js/mathjax-config.js"></script>
+  <script defer src="../assets/vendor/mathjax/tex-svg.js"></script>
+</head>
+<body data-page="chapter" data-chapter="chapter01">
+  <!-- 内容来源：讲稿/tex/sections/01 vectors.tex。五个 lesson 对应原稿五个 subsection。
+       网页补充了过渡说明、自测与简短推导；讲稿原文件保持不变。
+       保留旧版主要锚点，方便已经收藏了某个小节的读者继续访问。 -->
+  <a class="skip-link" href="#main">跳到本章正文</a>
+  <header class="site-header page-width">
+    <a class="brand" href="../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a>
+    <nav class="header-nav" aria-label="课程导航"><a href="../index.html">← 返回课程首页</a></nav>
+  </header>
+  <div class="chapter-layout page-width">
+    <aside class="chapter-sidebar" aria-label="本章目录">
+      <p class="eyebrow sidebar-title">第一章 · 向量</p>
+      <nav aria-label="小节导航">
+        <ol class="section-list">
+          <li><a href="#vector-operations" data-section-link aria-current="location"><span>1.1</span>向量及其运算</a></li>
+          <li><a href="#vector-dependence" data-section-link><span>1.2</span>向量线性相关性</a></li>
+          <li><a href="#coordinates" data-section-link><span>1.3</span>坐标系、坐标与坐标变换</a></li>
+          <li><a href="#complex-and-fields" data-section-link><span>1.4</span>复数与数域</a></li>
+          <li><a href="#array-vectors" data-section-link><span>1.5</span>数组向量</a></li>
+        </ol>
+      </nav>
+      <div class="sidebar-footer"><p data-chapter-status>学习中</p><p>5 节 · 从空间向量到高维数组</p></div>
+    </aside>
+
+    <main id="main" class="chapter-content">
+      <header class="chapter-intro">
+        <p class="eyebrow">从几何走向坐标</p>
+        <h1>第一章 · 向量</h1>
+        <p>速度、位移和力有什么共同之处？本章先从三维空间中的几何向量出发，建立线性运算与线性相关性的语言，再借助坐标、复数和数域，把向量推广到高维数组。</p>
+        <div class="chapter-meta"><span>01 / 课程起点</span><span>5 节</span><span>空间向量 → 坐标 → 数组向量</span></div>
+      </header>
+      <p class="storage-notice" data-storage-notice role="status" hidden></p>
+      <noscript><p class="notice">正文与自测答案仍可阅读。公式排版和进度保存需要在浏览器中允许脚本运行。</p></noscript>
+
+      <!-- 1.1 对应讲稿：向量及其运算 -->
+      <section class="lesson" id="vector-operations" aria-labelledby="title-operations">
+        <div class="lesson-heading"><span class="lesson-number">1.1</span><h2 id="title-operations">向量及其运算</h2></div>
+        <nav class="lecture-jump-links" aria-label="向量运算知识点"><a href="#what-is-a-vector">什么是向量</a><a href="#vector-addition">加法</a><a href="#vector-subtraction">减法</a><a href="#scalar-multiplication">数乘</a><a href="#linear-operation-laws">八条性质</a></nav>
+        <div class="teaching-block" id="what-is-a-vector">
+          <h3>思考 · 什么是向量？</h3>
+          <p>我们熟悉的速度、位移和力，都既有大小，又有方向。把这些共同特征抽象出来，就得到本章首先讨论的<strong>几何向量</strong>。向量可以写成 \(\overrightarrow{AB}\) 或 \(\vec a\)，其模长记作 \(|\vec a|\)。</p>
+          <div class="source-figures" aria-label="讲稿中的三张向量实例原图">
+            <figure><img src="../assets/chapter01/velocity.jpg" width="316" height="159" alt="讲稿原图：行星周围的飞行物沿轨迹运动，标示逃逸速度。"><figcaption>速度</figcaption></figure>
+            <figure><img src="../assets/chapter01/displacement.png" width="330" height="131" alt="讲稿原图：从起点 A 指向终点 B 的蓝色位移箭头。"><figcaption>位移</figcaption></figure>
+            <figure><img src="../assets/chapter01/force.png" width="373" height="111" alt="讲稿原图：小车的拉力和推力分别沿斜向上、斜向下方向作用。"><figcaption>力</figcaption></figure>
+          </div>
+          <p>具有相同大小与方向的有向线段表示相等的向量。平移箭头不改变向量；大小相同、方向相反的向量记为 \(-\vec a\)。模长为 1 的向量叫作单位向量。</p>
+          <p class="lecture-note">零向量 \(\vec0\) 的模长为 0。按讲稿约定，任意方向都视为零向量的方向，因此它与任意向量平行；它本身没有唯一确定的方向。</p>
+        </div>
+        <div class="teaching-block">
+          <h3>几何 · 从合成速度、合成力理解加法</h3>
+          <div class="lecture-topic" id="vector-addition">
+            <h4>向量加法：平行四边形法则与三角形法则</h4>
+            <p>让两个向量共用起点，所构成的平行四边形的对角线给出 \(\vec a+\vec b\)。也可以把 \(\vec b\) 的起点接到 \(\vec a\) 的终点：从最初起点到最终终点的箭头，就是它们的和。</p>
+            <figure class="lecture-figure" tabindex="0" role="region" aria-label="向量加法的两种作图，可横向滚动"><img src="../assets/vector-operations.svg" width="720" height="300" alt="同一对向量 a 与 b 的两种相加作图。左图为平行四边形，对角线是 a+b；右图把 b 平移到 a 的终点，得到相同的和向量。"><figcaption>两种作图表达同一条规则：连续的两次位移可以合成为一次位移。</figcaption></figure>
+          </div>
+          <div class="lecture-topic" id="vector-subtraction">
+            <h4>向量减法：先取负向量，再做加法</h4>
+            <div class="formula">\[\vec a-\vec b:=\vec a+(-\vec b).\]</div>
+            <p>若 \(\vec a=\overrightarrow{OA}\)、\(\vec b=\overrightarrow{OB}\)，那么 \(\vec a-\vec b=\overrightarrow{BA}\)。注意箭头从 \(B\) 指向 \(A\)。</p>
+            <figure class="lecture-figure" tabindex="0" role="region" aria-label="向量减法示意图，可横向滚动"><img src="../assets/chapter01/vector-subtraction.svg" width="720" height="300" alt="讲稿减法图：a 与 b 共用起点 O；从 b 的终点 B 指向 a 的终点 A 的箭头是 a-b，同时 a-b=a+(-b)。"><figcaption>讲稿中的减法作图：\(\vec a-\vec b\) 也是 \(\overrightarrow{BA}\)。</figcaption></figure>
+          </div>
+        </div>
+        <div class="teaching-block definition">
+          <h3>定义 · 数乘与线性运算</h3>
+          <div class="lecture-topic" id="scalar-multiplication">
+            <h4>向量的数乘</h4>
+            <figure class="lecture-figure" tabindex="0" role="region" aria-label="向量数乘示意图，可横向滚动"><img src="../assets/chapter01/scalar-multiplication.svg" width="800" height="350" alt="讲稿数乘图：0.5a 与 a 同向且一半长，2a 与 a 同向且两倍长；-a 与 -1.5a 反向。-πb 与 b 反向，e b 与 b 同向。"><figcaption>按讲稿绘制的数乘比较图。左侧分行摆放向量，以免箭头重叠。</figcaption></figure>
+            <p>设 \(\lambda\in\mathbb R\)。向量 \(\lambda\vec a\) 的长度是 \(|\lambda|\,|\vec a|\)。当 \(\vec a\ne\vec0\) 时，\(\lambda&gt;0\) 保持方向，\(\lambda&lt;0\) 反转方向；当 \(\lambda=0\) 或 \(\vec a=\vec0\) 时，结果是零向量。</p>
+            <p>若 \(\vec a\ne\vec0\)，讲稿用下面的记号表示与它同向的单位向量：</p>
+            <div class="formula">\[\vec a^{\,0}:=\frac{1}{|\vec a|}\vec a.\]</div>
+          </div>
+          <div class="lecture-topic"><h4>线性运算</h4><p>向量的<strong>加法</strong>和<strong>数乘</strong>统称为向量的线性运算。它们的八条基本性质，是以后公理化定义线性空间的出发点。</p></div>
+        </div>
+        <div class="teaching-block lecture-topic" id="linear-operation-laws">
+          <h3>性质 · 线性运算的八条基本性质</h3>
+          <p>对任意空间向量 \(\vec a,\vec b,\vec c\) 和实数 \(\lambda,\mu\)，有：</p>
+          <ol class="lecture-list">
+            <li>加法交换律：<div class="formula">\[\vec a+\vec b=\vec b+\vec a\]</div></li>
+            <li>加法结合律：<div class="formula">\[\vec a+(\vec b+\vec c)=(\vec a+\vec b)+\vec c\]</div></li>
+            <li>存在零元：<div class="formula">\[\vec a+\vec0=\vec a=\vec0+\vec a\]</div></li>
+            <li>存在负元：<div class="formula">\[\vec a+(-\vec a)=\vec0=(-\vec a)+\vec a\]</div></li>
+            <li>数乘单位元：<div class="formula">\[1\vec a=\vec a\]</div></li>
+            <li>数乘结合律：<div class="formula">\[\lambda(\mu\vec a)=(\lambda\mu)\vec a\]</div></li>
+            <li>左分配律：<div class="formula">\[(\lambda+\mu)\vec a=\lambda\vec a+\mu\vec a\]</div></li>
+            <li>右分配律：<div class="formula">\[\lambda(\vec a+\vec b)=\lambda\vec a+\lambda\vec b\]</div></li>
+          </ol>
+          <p class="lecture-note">这里的性质先来自几何向量。第六章“线性空间”将把这八条性质作为一般定义的基础。</p>
+        </div>
+        <div class="teaching-block"><h3>例题 · 缩放一个箭头</h3><p>讲稿中的 \(0.5\vec a\)、\(2\vec a\) 分别把箭头缩短一半、放大两倍；\(-\vec a\)、\(-1.5\vec a\) 还会反转方向。对于非零向量 \(\vec b\)，\(-\pi\vec b\) 反向且长度变为 \(\pi\) 倍，\(e\vec b\) 则同向且长度变为 \(e\) 倍。</p></div>
+        <div class="demo-placeholder"><div class="demo-header"><h3>探索 · 比较两种加法作图</h3><span class="demo-label">演示即将加入</span></div><p>先在纸上画出同一对向量的平行四边形法则与三角形法则，再交换相加顺序。未来这里可拖动箭头并调节数乘系数。</p></div>
+        <div class="check"><h3>即时自测</h3><p>已知 \(\vec a=\overrightarrow{OA}\)、\(\vec b=\overrightarrow{OB}\)。\(\overrightarrow{AB}\) 等于什么？若 \(|\vec a|=2\)，\(-\tfrac32\vec a\) 的长度和方向是什么？</p><details><summary>查看答案与解释</summary><p>\(\overrightarrow{AB}=\vec b-\vec a\)。\(-\tfrac32\vec a\) 的长度为 3，方向与 \(\vec a\) 相反。减法与数乘都要区分“长度”和“方向”。</p></details></div>
+        <nav class="lesson-navigation" aria-label="第 1.1 节前后导航"><a href="../index.html">← 返回课程首页</a><a href="#vector-dependence">下一节 · 1.2 →</a></nav>
+      </section>
+
+      <!-- 1.2 对应讲稿：向量线性相关性 -->
+      <section class="lesson" id="vector-dependence" aria-labelledby="title-dependence">
+        <div class="lesson-heading"><span class="lesson-number">1.2</span><h2 id="title-dependence">向量线性相关性</h2></div>
+        <nav class="lecture-jump-links" aria-label="线性相关性知识点"><a href="#linear-combinations">线性组合</a><a href="#span">几何解释</a><a href="#linear-independence">相关与无关</a><a href="#dependence-example">讲稿例题</a></nav>
+        <div class="teaching-block"><h3>思考 · 用少数几个向量，描述哪些位置？</h3><p>从给定的一组向量出发，只使用加法和数乘，可以得到什么？这些向量中，是否有某个方向其实是多余的？这分别引出线性组合与线性相关性。</p></div>
+        <div class="teaching-block definition lecture-topic" id="linear-combinations"><h3>定义 · 线性组合</h3><p>设 \(\vec a_1,\ldots,\vec a_m\) 是一组向量，\(\lambda_1,\ldots,\lambda_m\in\mathbb R\)。向量</p><div class="formula">\[\lambda_1\vec a_1+\lambda_2\vec a_2+\cdots+\lambda_m\vec a_m\]</div><p>叫作这组向量的一个<strong>线性组合</strong>。也就是说，它是从这组向量出发，通过线性运算得到的向量。</p><figure class="lecture-figure" tabindex="0" role="region" aria-label="三个线性组合的几何图，可横向滚动"><img src="../assets/chapter01/linear-combinations.svg" width="720" height="340" alt="讲稿示意图：从 a 与 b 出发，取三组不同系数，分别得到 0.8a+2b、-1.5a+0.6b、-0.2a-b，终点都在同一个平面上。"><figcaption>同样两个起始向量，改变系数就得到平面中的不同终点。</figcaption></figure></div>
+        <div class="teaching-block lecture-topic" id="span">
+          <h3>几何 · 线性组合的几何解释</h3>
+          <p>固定原点 \(O\)，空间中的点 \(P\) 与向量 \(\overrightarrow{OP}\) 一一对应。于是，可以把向量的集合看成终点组成的几何图形：</p>
+          <figure class="lecture-figure" tabindex="0" role="region" aria-label="空间中的点与向量对应图，可横向滚动"><img src="../assets/chapter01/space-vector-correspondence.svg" width="720" height="170" alt="讲稿中的对应关系：固定原点 O 后，空间中的点 P 与向量 OP 一一对应。"><figcaption>固定原点后，点的位置可以由从原点出发的向量描述。</figcaption></figure>
+          <ul class="lecture-list"><li>一个非零向量 \(\vec a\) 的全体线性组合，构成过原点且与 \(\vec a\) 平行的直线。</li><li>两个不共线的向量 \(\vec a,\vec b\) 的全体线性组合，构成过原点且平行于这两个方向的平面。</li></ul>
+          <p>例如，\(0.8\vec a+2\vec b\)、\(-1.5\vec a+0.6\vec b\)、\(-0.2\vec a-\vec b\)，都落在同一个平面内。全体线性组合组成的集合，后续也会称为这些向量的张成空间。</p>
+        </div>
+        <div class="teaching-block definition lecture-topic" id="linear-independence">
+          <h3>定义 · 线性相关与线性无关</h3>
+          <p>若存在<strong>不全为零</strong>的实数 \(\lambda_1,\ldots,\lambda_m\)，使得</p><div class="formula">\[\lambda_1\vec a_1+\cdots+\lambda_m\vec a_m=\vec0,\]</div>
+          <p>则称向量组<strong>线性相关</strong>。否则称为<strong>线性无关</strong>：任意不全为零的系数都不能使组合等于零向量。等价地，组合等于零向量时，只能有 \(\lambda_1=\cdots=\lambda_m=0\)。</p>
+          <p class="lecture-note">“不全为零”是至少有一个系数非零，不是要求每一个系数都非零。</p>
+        </div>
+        <div class="teaching-block lecture-topic" id="dependence-example">
+          <h3>例题 · 讲稿中的线性相关例题</h3>
+          <p>给定任意空间向量 \(\vec a,\vec b,\vec c\)，证明下面三个向量线性相关：</p>
+          <div class="formula">\[\begin{aligned}\vec e_1&amp;=\vec a+\vec b+\vec c,\\\vec e_2&amp;=\vec a-\vec b-\vec c,\\\vec e_3&amp;=\vec a+2\vec b+2\vec c.\end{aligned}\]</div>
+          <details class="lecture-proof"><summary>展开讲稿解法与计算</summary><p>取系数 \(3,-1,-2\)。它们不全为零，而且</p><div class="formula">\[\begin{aligned}3\vec e_1-\vec e_2-2\vec e_3&amp;=(3-1-2)\vec a\\&amp;\quad +(3+1-4)\vec b\\&amp;\quad +(3+1-4)\vec c=\vec0.\end{aligned}\]</div><p>所以三个向量线性相关。也可以写成 \(\vec e_2=3\vec e_1-2\vec e_3\)：第二个向量可以由另外两个表示。</p></details>
+        </div>
+        <div class="teaching-block"><h3>几何 · 线性相关的几何解释</h3><p>以下结论针对<strong>三维空间中的几何向量</strong>，并把箭头平移到同一起点：</p><ol class="lecture-list"><li>一个向量线性相关，当且仅当它是零向量。</li><li>两个向量线性相关，当且仅当它们共线。</li><li>三个向量线性相关，当且仅当它们共面。</li><li>四个及四个以上的空间向量一定线性相关。</li></ol><p class="lecture-note">最后一条依赖“三维空间”这个前提，不能直接套用到后面的一般高维数组向量。</p></div>
+        <div class="demo-placeholder"><div class="demo-header"><h3>探索 · 什么时候增加了一个新方向？</h3><span class="demo-label">演示即将加入</span></div><p>固定两个不共线向量，把第三个向量放到它们所在的平面内，再移出平面。预测这组三个向量何时线性相关，何时线性无关。</p></div>
+        <div class="check"><h3>即时自测</h3><p>若 \(\vec a\ne\vec0\)，向量组 \(\vec a,2\vec a,\vec0\) 是否线性相关？请给出一组符合定义的系数。</p><details><summary>查看答案与解释</summary><p>线性相关。例如取 \(2,-1,0\)，有 \(2\vec a-2\vec a+0\vec0=\vec0\)。也可以取 \(0,0,1\)。系数允许部分为零。</p></details></div>
+        <nav class="lesson-navigation" aria-label="第 1.2 节前后导航"><a href="#vector-operations">← 上一节 · 1.1</a><a href="#coordinates">下一节 · 1.3 →</a></nav>
+      </section>
+
+      <!-- 1.3 对应讲稿：坐标系、坐标与坐标变换 -->
+      <section class="lesson" id="coordinates" aria-labelledby="title-coordinates">
+        <div class="lesson-heading"><span class="lesson-number">1.3</span><h2 id="title-coordinates">坐标系、坐标与坐标变换</h2></div>
+        <nav class="lecture-jump-links" aria-label="坐标知识点"><a href="#basis">仿射坐标系</a><a href="#coordinate-operations">坐标运算</a><a href="#coordinate-change">坐标变换</a></nav>
+        <div class="teaching-block"><h3>思考 · 坐标轴一定要互相垂直吗？</h3><p>笛卡尔坐标系中，坐标轴互相垂直。为了允许斜交的坐标轴，需要先回答：什么样的三个向量，能唯一表示空间中的每个向量？</p></div>
+        <div class="teaching-block"><h3>几何 · 三个不共面的方向</h3><p>两个不共线的方向只覆盖一个平面。加入第三个不在该平面内的方向，就能走出这个平面。三个方向不需要正交，长度也不需要等于 1。</p><figure class="lecture-figure" tabindex="0" role="region" aria-label="正交轴与仿射基比较图，可横向滚动"><img src="../assets/chapter01/affine-coordinates.svg" width="720" height="320" alt="讲稿示意图：左侧画出三维正交坐标轴，右侧画出三个不相互垂直的基向量 e1、e2、e3，它们都从原点 O 出发。"><figcaption>按讲稿绘制的两套三维坐标方向。斜交的三根轴也可以作为一组基。</figcaption></figure></div>
+        <div class="teaching-block definition lecture-topic" id="basis">
+          <h3>定理 · 向量的基本定理</h3><p>设 \(\vec e_1,\vec e_2,\vec e_3\) 是三维空间中的三个不共面的向量。对于每个向量 \(\vec a\)，<strong>存在唯一</strong>的有序实数组 \((x_1,x_2,x_3)\)，使得</p><div class="formula">\[\vec a=x_1\vec e_1+x_2\vec e_2+x_3\vec e_3.\]</div>
+          <div class="lecture-topic"><h4>基、坐标与仿射坐标系</h4><p>这三个向量构成一组<strong>基</strong>。固定它们的顺序后，系数 \((x_1,x_2,x_3)\) 就是 \(\vec a\) 在该基下的坐标。再指定一个原点 \(O\)，就得到仿射坐标系：</p><div class="formula">\[[O;\vec e_1,\vec e_2,\vec e_3].\]</div><p>点 \(P\) 的坐标定义为 \(\overrightarrow{OP}\) 的坐标。因此，固定坐标系后，“空间中的点”“空间向量”和“\(\mathbb R^3\) 中的有序数组”三者一一对应。</p></div>
+          <figure class="lecture-figure" tabindex="0" role="region" aria-label="点向量与坐标对应图，可横向滚动"><img src="../assets/chapter01/coordinate-correspondence.svg" width="720" height="170" alt="讲稿中的一一对应关系：固定原点 O，把空间中的点 P 对应到向量 OP；再固定一组基，把该向量对应到坐标 (x1,x2,x3)。"><figcaption>固定原点，再固定基，便能用有序实数组描述空间中的点。</figcaption></figure>
+        </div>
+        <details class="lecture-proof"><summary>理解“存在”与“唯一”</summary><p>存在性可以从平行投影理解：把 \(\vec a\) 沿 \(\vec e_3\) 的方向投影到 \(\vec e_1,\vec e_2\) 所在的平面，平面内的部分由前两个向量表示，剩余部分是 \(\vec e_3\) 的倍数。</p><p>若同一个向量有两种表示，作差就得到三个基向量的一个零线性组合。它们不共面，因而线性无关，所以各个系数之差都为零。这就说明坐标唯一。</p></details>
+        <div class="teaching-block lecture-topic" id="coordinate-operations"><h3>定义 · 向量的坐标运算</h3><p>在<strong>同一组基</strong>下，加法与数乘转化为逐分量运算：</p><div class="formula">\[\begin{aligned}(x_1,x_2,x_3)+(y_1,y_2,y_3)&amp;=(x_1+y_1,x_2+y_2,x_3+y_3),\\\lambda(x_1,x_2,x_3)&amp;=(\lambda x_1,\lambda x_2,\lambda x_3).\end{aligned}\]</div><p>理由是把每个向量展开为基向量的线性组合，再使用分配律合并同一基向量的系数。这个结论不要求基是正交的。</p></div>
+        <div class="teaching-block lecture-topic" id="coordinate-change">
+          <h3>定义 · 坐标变换</h3><p>给定两个坐标系 \([O;\vec e_1,\vec e_2,\vec e_3]\) 和 \([O';\vec e'_1,\vec e'_2,\vec e'_3]\)。设点 \(P\) 的坐标分别为 \((x,y,z)\) 与 \((x',y',z')\)。按讲稿的记号，先给出：</p>
+          <ul class="lecture-list"><li>旧原点 \(O\) 在新坐标系中的坐标 \((x'_0,y'_0,z'_0)\)，即<div class="formula">\[\overrightarrow{O'O}=x'_0\vec e'_1+y'_0\vec e'_2+z'_0\vec e'_3\]</div></li><li>旧基向量在新基下的表示：<div class="formula">\[\vec e_j=a_{1j}\vec e'_1+a_{2j}\vec e'_2+a_{3j}\vec e'_3,\quad j=1,2,3.\]</div></li></ul>
+          <p>那么两个坐标之间的关系是：</p><div class="formula">\[\boxed{\begin{aligned}x'&amp;=a_{11}x+a_{12}y+a_{13}z+x'_0,\\y'&amp;=a_{21}x+a_{22}y+a_{23}z+y'_0,\\z'&amp;=a_{31}x+a_{32}y+a_{33}z+z'_0.\end{aligned}}\]</div>
+          <details class="lecture-proof"><summary>展开坐标变换的推导</summary><p>关键是三角形法则：</p><div class="formula">\[\overrightarrow{O'P}=\overrightarrow{O'O}+\overrightarrow{OP}.\]</div><p>把右侧的 \(\overrightarrow{OP}=x\vec e_1+y\vec e_2+z\vec e_3\) 展开，再把每个 \(\vec e_j\) 换成新基的线性组合。收集 \(\vec e'_1,\vec e'_2,\vec e'_3\) 的系数，便得到上面三条式子。</p><p>学习矩阵乘法后，可以把它简写为 \(X'=AX+X'_0\)，其中 \(A=(a_{ij})\) 的第 \(j\) 列正是旧基向量 \(\vec e_j\) 在新基下的坐标。</p></details>
+          <p class="lecture-note">这里变换的是<strong>点的坐标</strong>，所以包含原点平移项。对于同一个自由向量在两组基下的坐标，关系是 \(X'=AX\)，没有平移项。</p>
+        </div>
+        <div class="teaching-block"><h3>例题 · 原点和基一起改变</h3><p>设 \(\overrightarrow{O'O}=\vec e'_1\)，并且 \(\vec e_1=2\vec e'_1\)、\(\vec e_2=\vec e'_1+\vec e'_2\)、\(\vec e_3=\vec e'_3\)。则</p><div class="formula">\[x'=2x+y+1,\qquad y'=y,\qquad z'=z.\]</div><p>旧坐标为 \((1,2,3)\) 的点，在新坐标系下是 \((5,2,3)\)。点没有移动，改变的是描述它所用的坐标系。</p></div>
+        <div class="demo-placeholder"><div class="demo-header"><h3>探索 · 同一个点，不同的坐标</h3><span class="demo-label">演示即将加入</span></div><p>未来这里可以分别移动原点、改变基向量。先想一想：只平移原点，会改变自由向量的坐标吗？会改变点的坐标吗？</p></div>
+        <div class="check"><h3>即时自测</h3><p>在上面的例子中，若自由向量 \(\vec v\) 在旧基下的坐标为 \((1,2,3)\)，它在新基下的坐标是什么？</p><details><summary>查看答案与解释</summary><p>是 \((4,2,3)\)，因为</p><div class="formula">\[\vec v=\vec e_1+2\vec e_2+3\vec e_3=4\vec e'_1+2\vec e'_2+3\vec e'_3\]</div><p>向量的换基不加原点平移项，区别于上面点的坐标 \((5,2,3)\)。</p></details></div>
+        <nav class="lesson-navigation" aria-label="第 1.3 节前后导航"><a href="#vector-dependence">← 上一节 · 1.2</a><a href="#complex-and-fields">下一节 · 1.4 →</a></nav>
+      </section>
+
+      <!-- 1.4 对应讲稿：复数与数域 -->
+      <section class="lesson" id="complex-and-fields" aria-labelledby="title-fields">
+        <div class="lesson-heading"><span class="lesson-number">1.4</span><h2 id="title-fields">复数与数域</h2></div>
+        <nav class="lecture-jump-links" aria-label="复数与数域知识点"><a href="#complex-numbers">复数</a><a href="#number-fields">数域</a></nav>
+        <div class="teaching-block"><h3>思考 · 向量的分量一定是实数吗？</h3><p>前三节使用实数描述坐标。后面还会遇到复数分量的向量。为了统一讨论这些对象，需要先说明：允许作为坐标和系数的数，组成怎样的集合？</p></div>
+        <div class="teaching-block lecture-topic" id="complex-numbers">
+          <h3>几何 · 复数与复平面</h3><p>复数的代数表示为 \(z=x+iy\)，其中 \(x,y\in\mathbb R\)、\(i^2=-1\)。\(x=\operatorname{Re}z\) 是实部，\(y=\operatorname{Im}z\) 是虚部。在复平面上，\(z\) 对应点 \(P(x,y)\)，也对应从原点出发的箭头 \(\overrightarrow{OP}\)。</p>
+          <figure class="lecture-figure" tabindex="0" role="region" aria-label="复数代数表示示意图，可横向滚动"><img src="../assets/chapter01/complex-algebra.svg" width="720" height="170" alt="讲稿中的复数代数关系图：z 等于实部 x 加上虚部 iy，且 i 的平方等于负一。"><figcaption>代数式中的实部与虚部，与下图的水平、竖直坐标相对应。</figcaption></figure>
+          <figure class="lecture-figure" tabindex="0" role="region" aria-label="复平面示意图，可横向滚动"><img src="../assets/chapter01/complex-plane.svg" width="720" height="350" alt="讲稿复平面图：点 P(x,y) 对应复数 z=x+iy，原点 O 到 P 的箭头长度 r 是模长，与正实轴的角 θ 是辐角。"><figcaption>实部给出水平位置，虚部给出竖直位置；从原点出发的箭头把数与几何联系起来。</figcaption></figure>
+          <ul class="lecture-list"><li><strong>模长：</strong>\(|z|=\sqrt{x^2+y^2}\)。</li><li><strong>辐角：</strong>对于 \(z\ne0\)，从正实轴沿逆时针方向转到 \(\overrightarrow{OP}\) 的角度 \(\theta\)，相差 \(2\pi\) 的整数倍表示同一方向。</li><li><strong>共轭：</strong>\(\overline z=x-iy\)，对应关于实轴的镜像。</li><li><strong>三角表示：</strong>\(z=r(\cos\theta+i\sin\theta)\)，其中 \(r=|z|\)。</li></ul><p class="lecture-note">零复数的模长为 0，但没有确定的辐角。</p>
+        </div>
+        <div class="teaching-block definition lecture-topic" id="number-fields">
+          <h3>定义 · 数域</h3><p>本课程把 \(\mathbb C\) 的子集称为数集。如果数集 \(\mathbb F\) 至少包含两个元素，并且对加、减、乘、除运算封闭，就称为<strong>数域</strong>。这里“除法封闭”始终要求除数不为零。</p>
+          <p>更具体地，对任意 \(a,b\in\mathbb F\)，都有</p><div class="formula">\[a+b,\ a-b,\ ab\in\mathbb F;\qquad b\ne0\Longrightarrow a/b\in\mathbb F.\]</div><p>“封闭”是说：运算结果仍然留在这个数集里。</p>
+        </div>
+        <div class="teaching-block"><h3>例题 · 哪些集合是数域？</h3><p>讲稿中最常用的数域是有理数域 \(\mathbb Q\)、实数域 \(\mathbb R\) 和复数域 \(\mathbb C\)。自然数集 \(\mathbb N\) 与整数集 \(\mathbb Z\) 都不是数域：例如 \(1/2\) 不在这两个集合中。</p><p>引入数域后，实向量和复向量可以使用同一套记号与理论。后面的线性空间理论也将在数域上统一展开。</p>
+          <details class="lecture-proof"><summary>选读 · 讲稿中的两个补充说明</summary><p>数集</p><div class="formula">\[\mathbb Q[\sqrt2]=\{a+b\sqrt2:a,b\in\mathbb Q\}\]</div><p>也是数域，本课程不作要求。非零元素的倒数仍在这个集合中：</p><div class="formula">\[\frac1{a+b\sqrt2}=\frac{a-b\sqrt2}{a^2-2b^2}.\]</div><p>因为 \(a,b\) 为有理数且不同时为零，分母不为零。加、减、乘的封闭性也可直接验证。</p><p>在本课程“数域是复数子集”的约定下，\(\mathbb Q\) 是最小的数域。任何数域先由 \(a-a\)、\(a/a\)（取 \(a\ne0\)）得到 0 和 1，再由四则运算得到所有有理数。</p></details>
+        </div>
+        <div class="demo-placeholder"><div class="demo-header"><h3>探索 · 在复平面上观察共轭</h3><span class="demo-label">演示即将加入</span></div><p>在纸上标出 \(1+i\)、\(1-i\) 与 \(-1-i\)，比较它们的模长与方向。未来这里可以拖动复数点，同时观察代数表示、模长、辐角和共轭。</p></div>
+        <div class="check"><h3>即时自测</h3><p>设 \(z=1+i\)，求 \(|z|\)、\(\overline z\) 和一个辐角。再说明 \(\mathbb Z\) 为什么不是数域。</p><details><summary>查看答案与解释</summary><p>\(|z|=\sqrt2\)，\(\overline z=1-i\)，可以取 \(\theta=\pi/4\)。整数集含有 1 和 2，却不含 \(1/2\)，不满足除法封闭性。</p></details></div>
+        <nav class="lesson-navigation" aria-label="第 1.4 节前后导航"><a href="#coordinates">← 上一节 · 1.3</a><a href="#array-vectors">下一节 · 1.5 →</a></nav>
+      </section>
+
+      <!-- 1.5 对应讲稿：数组向量；本章主要内容放在最后的复习区。 -->
+      <section class="lesson" id="array-vectors" aria-labelledby="title-arrays">
+        <div class="lesson-heading"><span class="lesson-number">1.5</span><h2 id="title-arrays">数组向量</h2></div>
+        <nav class="lecture-jump-links" aria-label="数组向量知识点"><a href="#array-definition">定义与记号</a><a href="#high-dimensional-examples">高维实例</a><a href="#array-operations">线性运算</a><a href="#array-dependence">线性相关性</a><a href="#standard-vectors">基本向量</a></nav>
+        <div class="teaching-block"><h3>思考 · 从三个坐标走向任意多个分量</h3><p>三维空间向量可以用三个数描述。若一条记录需要四个、一百个，甚至几千个数，虽然无法把它画成普通空间中的箭头，仍然可以把它看作数组向量，并定义同样的线性运算。</p></div>
+        <div class="teaching-block definition lecture-topic" id="array-definition">
+          <h3>定义 · 数域上的 n 维数组向量</h3><p>设 \(\mathbb F\) 为数域，\(n\) 为正整数。由 \(n\) 个 \(\mathbb F\) 中的数构成的有序数组</p><div class="formula">\[\vec a=(a_1,\ldots,a_n),\qquad a_i\in\mathbb F,\]</div><p>称为<strong>数域 \(\mathbb F\) 上的 n 维数组向量</strong>。\(a_i\) 叫作第 \(i\) 个分量，所有这样的数组组成的集合记作 \(\mathbb F^n\)。分量的顺序不能随意交换。</p><div class="formula">\[\text{行向量： }(a_1,\ldots,a_n),\qquad\text{列向量： }\begin{pmatrix}a_1\\a_2\\\vdots\\a_n\end{pmatrix}.\]</div><p>本章这两种形式都用于记录同一组有序分量；进入矩阵运算后，还需要区分行与列的形状。</p>
+        </div>
+        <div class="teaching-block lecture-topic" id="high-dimensional-examples">
+          <h3>几何与例题 · 从三维到高维</h3><p>先看讲稿中几种熟悉的表示方法。高维的直觉，可以从“每个分量分别描述什么”建立起来。</p>
+          <div class="lecture-table-scroll" tabindex="0" role="region" aria-label="数组向量应用实例表，可横向滚动"><table class="lecture-table"><caption>讲稿中的数组向量实例</caption><thead><tr><th scope="col">对象</th><th scope="col">数组表示</th><th scope="col">分量个数</th></tr></thead><tbody>
+            <tr><th scope="row">时空事件</th><td>\((t,x,y,z)\)：时间与空间位置</td><td>4</td></tr>
+            <tr><th scope="row">RGB / RGBA 颜色</th><td>\((R,G,B)\) / \((R,G,B,A)\)：颜色通道与透明度</td><td>3 / 4</td></tr>
+            <tr><th scope="row">课程成绩</th><td>按固定课程顺序记录的成绩数组</td><td>课程数 \(n\)</td></tr>
+            <tr><th scope="row">电影评分</th><td>\((r_1,\ldots,r_n)\)：按电影顺序记录评分</td><td>电影数 \(n\)</td></tr>
+          </tbody></table></div>
+          <span class="legacy-anchor" id="dimension" aria-hidden="true"></span><p class="lecture-note">n 维数组指它有 n 个分量。只有当这些参数能独立变化时，才能直接把参数个数看作自由度；有约束的数据，其自由度可能更小。例如 \((t,2t,3t)\) 有三个分量，却只由一个自由参数决定。一般空间的维数将在第六章讨论。</p>
+          <div class="lecture-topic"><h4>机器学习中的特征向量</h4><p>讲稿以图像识别为例：把 256 维颜色直方图、128 维边缘特征和 64 维纹理特征拼接起来，得到一个 \(256+128+64=448\) 维的向量。继续加入其他特征，可以得到更高维、甚至数千维的表示。</p><p>这些只是表示数据的例子。合法颜色或有效评分通常有取值限制，它们的集合不必对任意线性运算封闭；包含它们的数组空间才是后续研究的数学对象。</p></div>
+          <div class="lecture-topic" id="language-model-vectors"><h4>大模型中的高维向量：讲稿的 DeepSeek-V3 例子</h4><p>把 token 理解为模型词表中的一个文本单位。设其词表为 \(T\)，\(|T|=129280\)。词嵌入给每个 token 分配一个 7168 维实向量：</p><div class="formula">\[E:T\longrightarrow\mathbb R^{7168}.\]</div><p>存储这张词嵌入表，需要的参数个数是：</p><div class="formula">\[129280\times7168=926679040.\]</div><p>也就是约 9.27 亿个参数。这是词嵌入表的大小，并非整个模型的参数量。向量的具体数值通过训练学习得到，不是人为逐项规定的。</p><p class="lecture-note">该例对应 DeepSeek-V3 的词表大小与隐藏维度，参见<a href="https://huggingface.co/deepseek-ai/DeepSeek-V3/blob/main/config.json" rel="noreferrer">模型官方配置</a>。</p></div>
+        </div>
+        <div class="teaching-block lecture-topic" id="array-operations"><h3>定义 · 高维数组向量的线性运算</h3><p>设 \(\vec a,\vec b\in\mathbb F^n\)、\(\lambda\in\mathbb F\)，逐分量定义：</p><div class="formula">\[\begin{aligned}\vec a+\vec b&amp;=(a_1+b_1,\ldots,a_n+b_n),\\\lambda\vec a&amp;=(\lambda a_1,\ldots,\lambda a_n),\\\vec0&amp;=(0,\ldots,0),\\-\vec a&amp;=(-a_1,\ldots,-a_n).\end{aligned}\]</div><p>两个数组相等，当且仅当对应的每一个分量都相等：</p><div class="formula">\[\vec a=\vec b\iff a_i=b_i\ (i=1,\ldots,n)\]</div><p>由于数域中的运算满足相应规律，数组向量也满足<a href="#linear-operation-laws">前面的八条基本性质</a>，此时标量取自 \(\mathbb F\)。</p></div>
+        <div class="teaching-block definition lecture-topic" id="array-dependence"><h3>定义 · 高维数组向量的线性相关性</h3><p>给定 \(\vec a_1,\ldots,\vec a_m\in\mathbb F^n\)，它们的线性组合仍写成 \(\lambda_1\vec a_1+\cdots+\lambda_m\vec a_m\)，但现在要求 \(\lambda_i\in\mathbb F\)。</p><p>若存在 \(\mathbb F\) 中不全为零的系数，使这个组合等于零向量，则向量组在 \(\mathbb F\) 上线性相关；否则线性无关。定义沿用同一形式，系数所属的数域必须明确。</p></div>
+        <div class="teaching-block lecture-topic" id="standard-vectors"><h3>例题 · 基本向量</h3><p>在 \(\mathbb F^n\) 中，令 \(\vec e_i\) 的第 \(i\) 个分量是 1，其余分量是 0：</p><div class="formula">\[\vec e_1=(1,0,\ldots,0),\quad\ldots,\quad\vec e_n=(0,\ldots,0,1).\]</div><p>讲稿称它们为<strong>基本向量</strong>。它们线性无关，且任意数组向量都可以表示成它们的线性组合：</p><div class="formula">\[\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}=x_1\vec e_1+x_2\vec e_2+\cdots+x_n\vec e_n.\]</div><details class="lecture-proof"><summary>为什么基本向量线性无关？</summary><p>组合 \(\lambda_1\vec e_1+\cdots+\lambda_n\vec e_n\) 的第 \(i\) 个分量就是 \(\lambda_i\)。若组合等于零向量，逐个比较分量，就得到所有 \(\lambda_i=0\)。这也说明上面的表示是唯一的。</p></details></div>
+        <div class="demo-placeholder"><div class="demo-header"><h3>探索 · 看不见的维度，也可以计算</h3><span class="demo-label">演示即将加入</span></div><p>用一个四维数组依次表示四个特征，尝试只改变其中一个分量。未来这里可以切换 RGB、特征向量等实例，把高维数组的分量与实际含义对应起来。</p></div>
+        <div class="check"><h3>即时自测</h3><p>在 \(\mathbb C^3\) 中，设 \(\vec a=(1,i,0)\)、\(\vec b=(0,1,1)\)。求 \(\vec a+i\vec b\)，并用基本向量表示结果。</p><details><summary>查看答案与解释</summary><div class="formula">\[\vec a+i\vec b=(1,2i,i)=\vec e_1+2i\vec e_2+i\vec e_3.\]</div><p>规则仍是逐分量相加与数乘；这次系数来自复数域。</p></details></div>
+        <nav class="lesson-navigation" aria-label="第 1.5 节前后导航"><a href="#complex-and-fields">← 上一节 · 1.4</a><a href="#chapter-review">本章回顾 →</a></nav>
+      </section>
+
+      <section class="chapter-completion" id="chapter-review" aria-labelledby="review-title">
+        <p class="eyebrow">串联本章知识</p>
+        <h2 id="review-title">本章主要内容</h2>
+        <p>从几何对象出发，用线性运算组织它们，再通过坐标进入可以计算的数组世界。</p>
+        <ol class="lecture-review"><li><a href="#vector-operations">空间向量 → 线性运算</a>：加法、数乘与八条基本性质。</li><li><a href="#vector-dependence">线性组合 → 线性相关性</a>：描述可到达的范围，判断方向是否冗余。</li><li><a href="#coordinates">仿射坐标系 → 坐标 → 坐标变换</a>：用一组基表示向量，用原点与基表示点。</li><li><a href="#complex-and-fields">复数 → 数域</a>：明确分量与系数的取值范围。</li><li><a href="#array-vectors">数组向量 → 线性运算与相关性 → 基本向量</a>：把三维中的思路推广到 \(\mathbb F^n\)。</li></ol>
+        <figure class="lecture-figure" tabindex="0" role="region" aria-label="第一章知识关系图，可横向滚动"><img src="../assets/chapter01/chapter-overview.svg" width="720" height="390" alt="第一章概念图：空间向量经过线性运算形成线性组合，进而讨论线性相关性；选择原点和基建立仿射坐标与坐标变换；复数与数域引出数组向量，再研究数组向量的线性运算、相关性和基本向量。"><figcaption>按讲稿末页的概念关系整理。上方从空间向量进入坐标，下方通往数域与高维数组。</figcaption></figure>
+        <p>进入第二章前，请确认：你能按分量进行线性运算，理解“不全为零”的含义，并能区分一个几何向量与它在某组基下的坐标。</p>
+        <div class="completion-actions"><button class="button button-primary" type="button" data-complete-button disabled>标记为已完成</button><a href="../index.html">返回课程首页 ↗</a></div>
+        <p class="completion-message" data-completion-message role="status" aria-live="polite"></p>
+        <div class="chapter-next"><a href="#vector-operations">↑ 回顾本章</a><span>下一章 · 线性方程组 — 即将开放</span></div>
+      </section>
+    </main>
+  </div>
+  <footer class="site-footer page-width"><span>线性代数 <span class="footer-separator">/</span> 第一章</span><span>学习记录仅保存在你的浏览器中 · 版本 0.1</span></footer>
+</body>
+</html>

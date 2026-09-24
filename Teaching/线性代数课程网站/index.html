@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="从几何直觉出发，探索线性代数的结构、计算与应用。一个开放的互动式大学数学课程。">
+  <title>线性代数 — 结构、几何与计算</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/course.js"></script>
+  <script defer src="js/progress.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header page-width">
+    <a class="brand" href="index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a>
+    <nav class="header-nav" aria-label="主导航"><a href="#course-map">课程目录</a><a href="chapters/chapter01.html">第一章 <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main" class="page-width">
+    <section class="hero" aria-labelledby="course-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="small-rule" aria-hidden="true"></span> 线性代数学习课程</p>
+        <h1 id="course-title">线性代数</h1>
+        <p class="hero-subtitle">结构、几何与计算</p>
+        <p class="hero-description">从一个向量开始，理解空间的结构。<br>让几何直觉与严谨推理，在探索中相遇。</p>
+        <a class="button button-primary" href="chapters/chapter01.html">开始学习 <span aria-hidden="true">↗</span></a>
+        <p class="hero-note">从第一章「向量」开始</p>
+      </div>
+      <figure class="hero-figure">
+        <div class="figure-topline"><span>向量加法的几何意义</span><span>图 01</span></div>
+        <img src="assets/vector-plane.svg" width="600" height="460" alt="平面上的向量加法：向量 u=(3,1) 与 v=(1,3) 从原点出发，虚线构成平行四边形，对角线为 u+v=(4,4)。">
+        <figcaption><span>两个向量，合成一个新方向。</span><span class="math-caption">u + v</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="learning-strip" aria-labelledby="learning-title">
+      <div class="progress-overview">
+        <p class="eyebrow" id="learning-title">学习进度</p>
+        <div class="progress-heading"><strong data-progress-percent>0%</strong><span data-progress-count>0 / 1 章已完成</span></div>
+        <progress data-course-progress max="100" value="0" aria-label="已开放课程的完成进度">0%</progress>
+        <p class="fine-print">仅计算已开放章节</p>
+      </div>
+      <div class="continue-overview">
+        <div><p class="eyebrow">继续学习</p><h2 data-continue-title>第 1 章 · 向量</h2><p data-continue-description>从空间向量出发，逐步走向坐标与高维数组。</p></div>
+        <a class="round-link" data-continue-link href="chapters/chapter01.html" aria-label="继续学习第 1 章 · 向量">↗</a>
+      </div>
+    </section>
+    <p class="storage-notice" data-storage-notice role="status" hidden></p>
+    <noscript><p class="notice">浏览器未启用脚本；仍可阅读第一章，进度保存需要在浏览器中允许脚本运行。</p></noscript>
+
+    <section class="course-map" id="course-map" aria-labelledby="map-title">
+      <div class="section-heading"><div><p class="eyebrow">学习路径</p><h2 id="map-title">课程目录</h2></div><p>从几何直觉，到数学结构。</p></div>
+      <ol class="chapter-list" data-chapter-list></ol>
+      <noscript><p><a href="chapters/chapter01.html">01 · 向量 — 阅读第一章</a></p><p>02 · 线性方程组 / 03 · 矩阵(一) / 04 · 行列式 / 05 · 矩阵(二) / 06 · 线性空间 / 07 · 线性映射 / 08 · 内积空间及变换 / 09 · 实二次型 / 10 · 张量简介* / 11 · 应用*：即将开放。</p></noscript>
+      <p class="map-note">按课程讲稿顺序编排 · * 为选学章节。第一章已开放，其余章节将陆续加入。</p>
+    </section>
+  </main>
+  <footer class="site-footer page-width"><span>线性代数 <span class="footer-separator">/</span> 在学习中发现联系。</span><span>学习记录仅保存在你的浏览器中 · 版本 0.1</span></footer>
+</body>
+</html>

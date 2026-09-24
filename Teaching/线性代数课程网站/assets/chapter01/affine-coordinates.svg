@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" fill="none">
+  <title>正交坐标与斜交的仿射坐标系</title>
+  <desc>左侧为相互垂直的坐标轴在纸上的三维示意，右侧为从原点 O 出发但并不相互垂直的三个基向量 e1、e2、e3。</desc>
+  <defs><marker id="green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#24594b"/></marker><marker id="blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#667b91"/></marker><marker id="dark" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#23352f"/></marker></defs>
+  <rect width="720" height="320" rx="8" fill="#f0f4ef"/><path d="M360 28V292" stroke="#dce3db"/>
+  <circle cx="170" cy="215" r="3.5" fill="#23352f"/><path d="M170 215 94 270" stroke="#24594b" stroke-width="2.5" marker-end="url(#green)"/><path d="M170 215 295 215" stroke="#667b91" stroke-width="2.5" marker-end="url(#blue)"/><path d="M170 215 170 57" stroke="#23352f" stroke-width="2.5" marker-end="url(#dark)"/>
+  <circle cx="495" cy="215" r="3.5" fill="#23352f"/><path d="M495 215 655 275" stroke="#24594b" stroke-width="2.5" marker-end="url(#green)"/><path d="M495 215 610 125" stroke="#667b91" stroke-width="2.5" marker-end="url(#blue)"/><path d="M495 215 455 52" stroke="#23352f" stroke-width="2.5" marker-end="url(#dark)"/>
+  <g font-family="Georgia,serif" font-size="25" font-style="italic"><text x="72" y="285" fill="#24594b">x</text><text x="302" y="222" fill="#667b91">y</text><text x="176" y="56" fill="#23352f">z</text><text x="655" y="284" fill="#24594b">e₁</text><text x="615" y="123" fill="#667b91">e₂</text><text x="430" y="85" fill="#23352f">e₃</text></g>
+  <g font-family="Microsoft YaHei,PingFang SC,sans-serif" font-size="25" fill="#647168"><text x="151" y="238">O</text><text x="476" y="238">O</text><text x="32" y="42">正交坐标轴</text><text x="510" y="32" font-size="22">仿射坐标系</text></g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="170" viewBox="0 0 720 170" fill="none">
+  <title>复数的代数表示</title>
+  <desc>复数 z 等于实部 x 加上虚部 iy，其中 i 的平方等于负一。</desc>
+  <rect width="720" height="170" rx="8" fill="#f0f4ef"/>
+  <text x="360" y="34" text-anchor="middle" font-family="Segoe UI,PingFang SC,Microsoft YaHei,sans-serif" font-size="22" fill="#23352f">复数的代数表示</text>
+  <g font-family="Georgia,serif" font-size="39" fill="#24594b" text-anchor="middle"><text x="252" y="94">z =</text><text x="344" y="94">x</text><text x="404" y="94">+</text><text x="480" y="94">iy</text></g>
+  <g font-family="Segoe UI,PingFang SC,Microsoft YaHei,sans-serif" font-size="22" fill="#596860" text-anchor="middle"><text x="344" y="143">实部 Re z</text><text x="480" y="143">虚部 Im z</text></g>
+  <text x="607" y="93" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#596860">i² = −1</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" fill="none">
+  <title>向量加法的平行四边形法则与三角形法则</title>
+  <desc>两幅图使用讲稿中的 a=(1,2)、b=(1.5,-0.5)，因此 a+b=(2.5,1.5)。图形按相同尺度绘制。</desc>
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#24594b"/></marker>
+    <marker id="b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#667b91"/></marker>
+    <marker id="sum" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#23352f"/></marker>
+  </defs>
+  <rect width="720" height="300" rx="8" fill="#f0f4ef"/>
+  <path d="M360 32V268" stroke="#dce3db"/>
+  <path d="M65 210 125 90 215 120 155 240Z" fill="#24594b" fill-opacity=".06"/>
+  <path d="M125 90 215 120 155 240" stroke="#839b8d" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <path d="M65 210 125 90" stroke="#24594b" stroke-width="2.5" marker-end="url(#a)"/>
+  <path d="M65 210 155 240" stroke="#667b91" stroke-width="2.5" marker-end="url(#b)"/>
+  <path d="M65 210 215 120" stroke="#23352f" stroke-width="2.5" marker-end="url(#sum)"/>
+  <path d="M425 210 485 90" stroke="#24594b" stroke-width="2.5" marker-end="url(#a)"/>
+  <path d="M485 90 575 120" stroke="#667b91" stroke-width="2.5" marker-end="url(#b)"/>
+  <path d="M425 210 575 120" stroke="#23352f" stroke-width="2.5" marker-end="url(#sum)"/>
+  <circle cx="65" cy="210" r="3" fill="#23352f"/><circle cx="425" cy="210" r="3" fill="#23352f"/>
+  <g font-family="Georgia,serif" font-size="26" font-style="italic">
+    <text x="80" y="140" fill="#24594b">a</text><text x="111" y="254" fill="#667b91">b</text><text x="208" y="155" fill="#23352f">a + b</text>
+    <text x="440" y="140" fill="#24594b">a</text><text x="530" y="89" fill="#667b91">b</text><text x="568" y="155" fill="#23352f">a + b</text>
+  </g>
+  <g font-family="Microsoft YaHei,PingFang SC,sans-serif" font-size="25" fill="#647168"><text x="30" y="40">01 / 平行四边形法则</text><text x="390" y="40">02 / 三角形法则</text></g>
+</svg>

@@ -1,0 +1,302 @@
+% ========================================================================
+% ===== 中文相关 =====
+\usepackage[UTF8,noindent]{ctex}     %  引入 ctex 宏包，支持中文排版
+\usepackage{xeCJKfntef,xcolor}       %  引入 xeCJKfntef 宏包用于处理 CJK 字体，xcolor 用于颜色支持
+\xeCJKsetup{underdot/symbol=^^b7}    %  设置下划点符号为中点（·）
+\newfontfamily\kaisu{STKaiti}        %  定义新字体命令 \kaisu，使用 STKaiti 字体（楷书）
+\setCJKsansfont{simkai.ttf}          %  设置 CJK 无衬线字体为 simkai.ttf（仿宋）
+\setCJKmonofont{STKaiti}             %  设置 CJK 等宽字体为 STKaiti（楷书）
+% ===== 西文字体 =====
+\setsansfont{TeX Gyre Termes}        %  设置无衬线字体为 TeX Gyre Termes
+\setmonofont{TeX Gyre Termes}        %  设置等宽字体为 TeX Gyre Termes
+% ========================================================================
+
+\usepackage{graphics}
+\usepackage{graphicx}
+%%%%%% H-N %%%%%%
+\usepackage{mathdots}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{multicol}
+%%%%%% O-T %%%%%%
+\usepackage{pstricks}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+%%%%%% U-Z %%%%%%
+\usepackage[all,poly,knot]{xy}
+\usepackage{ifthen}
+
+% ========================================================================
+\usetikzlibrary{math,shapes.geometric,quotes,angles,calc,decorations.pathreplacing}
+
+% ========================================================================
+\newcommand{\nc}{\newcommand}
+\newcommand{\on}[1]{\operatorname{#1}}
+
+% ========================================================================
+% ========== list of symbols ===========
+\nc{\fraka}{{\mathfrak a}}
+\nc{\frakb}{{\mathfrak b}}
+\nc{\frakc}{{\mathfrak c}}
+\nc{\frakd}{{\mathfrak d}}
+\nc{\frake}{{\mathfrak e}}
+\nc{\frakf}{{\mathfrak f}}
+\nc{\frakg}{{\mathfrak g}}
+\nc{\frakh}{{\mathfrak h}}
+\nc{\fraki}{{\mathfrak i}}
+\nc{\frakj}{{\mathfrak j}}
+\nc{\frakk}{{\mathfrak k}}
+\nc{\frakl}{{\mathfrak l}}
+\nc{\frakm}{{\mathfrak m}}
+\nc{\frakn}{{\mathfrak n}}
+\nc{\frako}{{\mathfrak o}}
+\nc{\frakp}{{\mathfrak p}}
+\nc{\frakq}{{\mathfrak q}}
+\nc{\frakr}{{\mathfrak r}}
+\nc{\fraks}{{\mathfrak s}}
+\nc{\frakt}{{\mathfrak t}}
+\nc{\fraku}{{\mathfrak u}}
+\nc{\frakv}{{\mathfrak v}}
+\nc{\frakw}{{\mathfrak w}}
+\nc{\frakx}{{\mathfrak x}}
+\nc{\fraky}{{\mathfrak y}}
+\nc{\frakz}{{\mathfrak z}}
+
+\nc{\frakA}{{\mathfrak A}}
+\nc{\frakB}{{\mathfrak B}}
+\nc{\frakC}{{\mathfrak C}}
+\nc{\frakD}{{\mathfrak D}}
+\nc{\frakE}{{\mathfrak E}}
+\nc{\frakF}{{\mathfrak F}}
+\nc{\frakG}{{\mathfrak G}}
+\nc{\frakH}{{\mathfrak H}}
+\nc{\frakI}{{\mathfrak I}}
+\nc{\frakJ}{{\mathfrak J}}
+\nc{\frakK}{{\mathfrak K}}
+\nc{\frakL}{{\mathfrak L}}
+\nc{\frakM}{{\mathfrak V}}
+\nc{\frakN}{{\mathfrak N}}
+\nc{\frakO}{{\mathfrak O}}
+\nc{\frakP}{{\mathfrak P}}
+\nc{\frakQ}{{\mathfrak Q}}
+\nc{\frakR}{{\mathfrak R}}
+\nc{\frakS}{{\mathfrak S}}
+\nc{\frakT}{{\mathfrak T}}
+\nc{\frakU}{{\mathfrak U}}
+\nc{\frakV}{{\mathfrak V}}
+\nc{\frakW}{{\mathfrak W}}
+\nc{\frakX}{{\mathfrak X}}
+\nc{\frakY}{{\mathfrak Y}}
+\nc{\frakZ}{{\mathfrak Z}}
+
+\nc{\bA}{{\mathbb A}}
+\nc{\bB}{{\mathbb B}}
+\nc{\bC}{{\mathbb C}}
+\nc{\bD}{{\mathbb D}}
+\nc{\bE}{{\mathbb E}}
+\nc{\bF}{{\mathbb F}}
+\nc{\bG}{{\mathbb G}}
+\nc{\bH}{{\mathbb H}}
+\nc{\bI}{{\mathbb I}}
+\nc{\bJ}{{\mathbb J}}
+\nc{\bK}{{\mathbb K}}
+\nc{\bL}{{\mathbb L}}
+\nc{\bM}{{\mathbb M}}
+\nc{\bN}{{\mathbb N}}
+\nc{\bO}{{\mathbb O}}
+\nc{\bP}{{\mathbb P}}
+\nc{\bQ}{{\mathbb Q}}
+\nc{\bR}{{\mathbb R}}
+\nc{\bS}{{\mathbb S}}
+\nc{\bT}{{\mathbb T}}
+\nc{\bU}{{\mathbb U}}
+\nc{\bV}{{\mathbb V}}
+\nc{\bW}{{\mathbb W}}
+\nc{\bX}{{\mathbb X}}
+\nc{\bY}{{\mathbb Y}}
+\nc{\bZ}{{\mathbb Z}}
+
+\nc{\mA}{{\mathcal A}}
+\nc{\mB}{{\mathcal B}}
+\nc{\mC}{{\mathcal C}}
+\nc{\mD}{{\mathcal D}}
+\nc{\mE}{{\mathcal E}}
+\nc{\mF}{{\mathcal F}}
+\nc{\mG}{{\mathcal G}}
+\nc{\mH}{{\mathcal H}}
+\nc{\mI}{{\mathcal I}}
+\nc{\mJ}{{\mathcal J}}
+\nc{\mK}{{\mathcal K}}
+\nc{\mL}{{\mathcal L}}
+\nc{\mM}{{\mathcal V}}
+\nc{\mN}{{\mathcal N}}
+\nc{\mO}{{\mathcal O}}
+\nc{\mP}{{\mathcal P}}
+\nc{\mQ}{{\mathcal Q}}
+\nc{\mR}{{\mathcal R}}
+\nc{\mS}{{\mathcal S}}
+\nc{\mT}{{\mathcal T}}
+\nc{\mU}{{\mathcal U}}
+\nc{\mV}{{\mathcal V}}
+\nc{\mW}{{\mathcal W}}
+\nc{\mX}{{\mathcal X}}
+\nc{\mY}{{\mathcal Y}}
+\nc{\mZ}{{\mathcal Z}}
+
+\nc{\sA}{{\mathscr A}}
+\nc{\sB}{{\mathscr B}}
+\nc{\sC}{{\mathscr C}}
+\nc{\sD}{{\mathscr D}}
+\nc{\sE}{{\mathscr E}}
+\nc{\sF}{{\mathscr F}}
+\nc{\sG}{{\mathscr G}}
+\nc{\sH}{{\mathscr H}}
+\nc{\sI}{{\mathscr I}}
+\nc{\sJ}{{\mathscr J}}
+\nc{\sK}{{\mathscr K}}
+\nc{\sL}{{\mathscr L}}
+\nc{\sM}{{\mathscr V}}
+\nc{\sN}{{\mathscr N}}
+\nc{\sO}{{\mathscr O}}
+\nc{\sP}{{\mathscr P}}
+\nc{\sQ}{{\mathscr Q}}
+\nc{\sR}{{\mathscr R}}
+\nc{\sS}{{\mathscr S}}
+\nc{\sT}{{\mathscr T}}
+\nc{\sU}{{\mathscr U}}
+\nc{\sV}{{\mathscr V}}
+\nc{\sW}{{\mathscr W}}
+\nc{\sX}{{\mathscr X}}
+\nc{\sY}{{\mathscr Y}}
+\nc{\sZ}{{\mathscr Z}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ===== 数学运算符 =====
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\rmd}{d}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Fil}{Fil}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\rank}{rank}
+% =============================
+\nc{\cech} {{\check{\mathrm{C}}\mathrm{ech}}}
+\nc{\mEnd} {{\on{\mathcal{E}\mathrm{nd}}}}
+\nc{\gl}   {{\on{\mathfrak  {gl}}}}
+\nc{\mHom} {{\on{\mathcal{H}\mathrm{om}}}}
+\nc{\id}   {{\on{\mathrm  {id}}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newtheorem{proposition}[theorem]{性质}
+\newtheorem{question}[theorem]{问题}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ===== 颜色系统 =====
+\nc{\yang }[1]{{\color{cyan}{#1}}}
+\nc{\rev  }[1]{{\color{magenta}{#1}}}
+\renewcommand{\green}[1]{{\textcolor[rgb]{0,1,0}{#1}}}
+\renewcommand{\red  }[1]{{\textcolor[rgb]{1,0,0}{#1}}}
+\renewcommand{\blue }[1]{{\textcolor[rgb]{0,0,1}{#1}}}
+%\def\red{ }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------ beamer相关 -----------------------------
+\usepackage{beamerthemeshadow}
+\setbeamerfont{frametitle}{family=\ttfamily}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{headline}{}
+%----------------------------------------------------------
+\makeatletter
+\renewrobustcmd{\beamer@@pause}[1][]{
+  \unless\ifmeasuring@
+  \ifblank{#1}
+    {\stepcounter{beamerpauses}}
+    {\setcounter{beamerpauses}{#1}}
+  \onslide<\value{beamerpauses}->\relax
+  \fi
+}
+\makeatother
+%----------------------------------------------------------
+%\newcommand{\mydate}{2026年03月03日}
+\newcommand{\mydate}{}
+%-------------页眉页脚--------------------------------------------------
+% 定义颜色
+\definecolor{bluefootlinecolor}{RGB}{50,50,200} % 蓝色
+\definecolor{blackfootlinecolor}{RGB}{0,0,0} % 青色
+% 设置颜色
+\setbeamercolor{author in footline}{bg=blackfootlinecolor, fg=white}
+\setbeamercolor{title in footline}{bg=bluefootlinecolor, fg=white}
+\setbeamercolor{date in footline}{bg=blackfootlinecolor, fg=white}
+\setbeamercolor{page number in footline}{bg=blackfootlinecolor, fg=white}
+% 设置 headline 模板
+\setbeamertemplate{headline}{}
+% 设置 footline 模板
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{author in footline}%
+    \usebeamerfont{author in footline} 线性代数 \qquad 中国科学技术大学 \qquad 2026 秋
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in footline}%
+    \usebeamerfont{title in footline} 主讲: 杨金榜 \qquad 数院新楼610
+  \end{beamercolorbox}%
+%  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{date in footline}%
+%    \usebeamerfont{date in footline} \mydate
+%  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.25ex,dp=1ex,center]{page number in footline}%
+    \usebeamerfont{page number in footline} \insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}%
+  \vskip0pt%
+}
+%-------------页眉页脚--------------------------------------------------
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 定义模式选项（教师、学生、课堂）
+% 使用 'ppt', 'handout', 'summary' 作为全局选项
+\newif\ifppt
+\newif\ifhandout
+
+% 通过选项切换模式
+\newcommand{\setmode}[1]{%
+  \ifthenelse{\equal{#1}{ppt}}{%
+    \ppttrue\handoutfalse
+    \newcommand{\pp}{\pause}%
+  }{%
+    \newcommand{\pp}{}%
+    \ifthenelse{\equal{#1}{handout}}{%
+      \pptfalse\handouttrue
+    }{%
+      \PackageError{Invalid mode: #1}{Use 'ppt', or 'handout'.}{}%
+     }%
+    }%
+  }%
+% 常用命令
+\newcommand{\onlyppt}[1]{\ifppt#1\fi}  % 仅教师模式显示
+\newcommand{\onlyhandout}[1]{\ifhandout#1\fi}  % 仅学生模式显示
+\newcommand{\onlysummary}[1]{\ifsummary#1\fi} % 仅课堂模式显示
+\newcommand{\forhandout}[1]{\ifhandout\green{#1}\fi}  % 学生模式显示
+\newcommand{\forsummary}[1]{\ifsummary#1\fi} % 课堂模式显示
+\newcommand{\forppt}[1]{\ifppt#1\fi}    % 教师模式显示
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\renewcommand\normalsize{%
+\@setfontsize\normalsize\@xpt\@xiipt
+\abovedisplayskip 3\p@ \@plus2\p@ \@minus5\p@
+\abovedisplayshortskip \z@ \@plus3\p@
+\belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+\belowdisplayskip \abovedisplayskip
+\let\@listi\@listI}
+\makeatother
+
+\usetikzlibrary{angles, calc}
+\setcounter{tocdepth}{3}

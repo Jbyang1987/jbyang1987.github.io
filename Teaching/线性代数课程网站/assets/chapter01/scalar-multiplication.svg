@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="350" viewBox="0 0 800 350" fill="none">
+  <title>向量的正、负数乘</title>
+  <desc>左侧比较 a、0.5a、2a、-a、-1.5a；右侧比较 b、-πb 和 e b。正数保持方向，负数反向。</desc>
+  <defs><marker id="green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#24594b"/></marker><marker id="blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#667b91"/></marker><marker id="dark" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#23352f"/></marker></defs>
+  <rect width="800" height="350" rx="8" fill="#f0f4ef"/><path d="M405 35V315" stroke="#dce3db"/>
+  <path d="M205 94 275 94M205 133 240 133M205 172 345 172M205 211 135 211M205 250 100 250" stroke="#dce3db" stroke-width="1"/>
+  <g fill="#23352f"><circle cx="205" cy="94" r="3"/><circle cx="205" cy="133" r="3"/><circle cx="205" cy="172" r="3"/><circle cx="205" cy="211" r="3"/><circle cx="205" cy="250" r="3"/></g>
+  <path d="M205 94 275 94" stroke="#24594b" stroke-width="2.5" marker-end="url(#green)"/><path d="M205 133 240 133" stroke="#667b91" stroke-width="2" marker-end="url(#blue)"/><path d="M205 172 345 172" stroke="#23352f" stroke-width="2.5" marker-end="url(#dark)"/><path d="M205 211 135 211" stroke="#24594b" stroke-width="2" marker-end="url(#green)"/><path d="M205 250 100 250" stroke="#23352f" stroke-width="2" marker-end="url(#dark)"/>
+  <circle cx="610" cy="176" r="4" fill="#23352f"/><path d="M610 176 560 126" stroke="#667b91" stroke-width="2.5" marker-end="url(#blue)"/><path d="M610 176 767 333" stroke="#23352f" stroke-width="2.5" marker-end="url(#dark)"/><path d="M610 176 474 40" stroke="#24594b" stroke-width="2.5" marker-end="url(#green)"/>
+  <g font-family="Georgia,serif" font-size="23" font-style="italic"><text x="282" y="101" fill="#24594b">a</text><text x="248" y="139" fill="#667b91">0.5a</text><text x="349" y="179" fill="#23352f">2a</text><text x="106" y="199" fill="#24594b">−a</text><text x="51" y="276" fill="#23352f">−1.5a</text><text x="529" y="112" fill="#667b91">b</text><text x="706" y="316" fill="#23352f">−πb</text><text x="444" y="39" fill="#24594b">e b</text></g>
+  <g font-family="Georgia,serif" font-size="22" fill="#647168"><text x="182" y="294">O</text><text x="592" y="198">O</text></g>
+</svg>

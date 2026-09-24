@@ -1,0 +1,919 @@
+\renewcommand{\mydate}{2025年06月12日\ 二十九次课}
+\makeatletter
+\ifodd\value{page}
+\else
+\begin{frame}[plain]
+\end{frame}
+\fi
+\makeatother
+
+\section{实二次型}
+
+
+\title{第九章 \quad 实二次型}
+\author{}
+\date{}
+
+\frame{\titlepage}
+
+
+\subsection{正交相合标准形与相合规范形}
+
+
+\subsubsection{实对称矩阵的正交相合标准形}
+\begin{frame}\frametitle{实对称矩阵的正交相合标准形}
+
+遗留问题:相合等价关系的标准形.
+\pp
+
+
+下面我们仅考虑实对称矩阵的相合标准形\footnote{注:若矩阵$A,B$相合,则$A$对称当且仅当$B$对称.}.
+\pp
+
+\bigskip
+
+由于任意实对称矩阵正交相似于对角阵,因此我们有如下结论.
+\begin{proposition}[正交相合标准形]
+设$n$阶实对称矩阵$A$的全体特征值为$\lambda_1,\cdots,\lambda_n$.则存在正交矩阵$P$使得
+\[P^TAP=\mathrm{diag}(\lambda_1,\cdots,\lambda_n).\]
+从而矩阵$A$相合于对角矩阵$\mathrm{diag}(\lambda_1,\cdots,\lambda_n)$.
+\pp
+称这个对角阵为$A$的\blue{正交相合标准形}.
+\end{proposition}
+\end{frame}
+
+
+
+
+
+
+
+\subsubsection{实对称矩阵的相合规范形}
+\begin{frame}\frametitle{实对称矩阵的相合规范形}
+实对称矩阵的特征值分为三类:正,负,零.
+\pp
+\begin{theorem}[相合规范形]
+设$A$为实对称矩阵,则存在可逆阵$P$使得
+\[P^TAP = \mathrm{diag}(I_r,-I_s,0). \qquad \text{($A$的\blue{相合规范形})}\]
+其中$r,s$由$A$唯一确定不依赖于$P$的选取,且满足
+\[r+s=\rank(A)\leq n.\]
+\pp
+称$r$为$A$的\blue{正惯性指数},称$s$为$A$的\blue{负惯性指数},称$r-s$为$A$的\blue{符号差}.
+\end{theorem}
+\pp
+\yang{\tiny 证明思路:存在性,显然.
+\pp 反证唯一性:若$\mathrm{diag}(I_r,-I_s,0)$与$\mathrm{diag}(I_{r'},-I_{s'},0)$相合,设$P^T\mathrm{diag}(I_{r'},-I_{s'},0)P = \mathrm{diag}(I_{r},-I_{s},0)$,则$r+s=r'+s'$.
+\pp
+不妨设$r<r'$(则$s>s'$). 记$y=Px$. 则齐次方程组
+$x_1=\cdots=x_r=y_{r'+1}=\cdots=y_{n}=0$ 有非零解$x_0=(0,\cdots,0,a_{r+1},\cdots,a_n)^T\neq0$.
+\pp
+令$y_0=Px_0=(b_1,\cdots,b_{r'},0,\cdots,0)^T$.则
+\begin{equation*}
+\begin{split}
+0 < b_1^2+\cdots+b_{r'}^2 & =(Px_0)^T\mathrm{diag}(I_{r'},-I_{s'},0)(Px_0) \\ & =x_0^T\mathrm{diag}(I_{r},-I_{s},0)x_0=-a_{r+1}^2-\cdots-a_{r+s}^2\leq0. \\
+\end{split}
+\end{equation*}
+}
+\pp
+注:规范形唯一.其中$r$, $s$分别为$A$的正特征值和负特征值的个数.
+\pp
+\begin{corollary}
+$n$阶实对称矩阵$A$正定当且仅当其正惯性指数为$n$.
+\end{corollary}
+\end{frame}
+
+
+
+
+\subsection{二次型}
+
+
+\subsubsection{二次型的定义}
+\begin{frame}\frametitle{二次型的定义}
+在各个领域我们会碰到很多二次齐次多项式.
+\pp
+例如,三维空间和四维时空中点到原点的距离.
+\pp
+\begin{example}
+\begin{enumerate}
+\item 空间距离公式 \[d^2=x^2+y^2+z^2=(x,y,z)\begin{pmatrix}x\\y\\z\end{pmatrix};\]
+\pp
+\item 时空(\blue{Lorentz空间})中的距离公式 $d^2=x^2+y^2+z^2-c^2t^2=(x,y,z,t)\begin{pmatrix}1&&&\\&1&&\\&&1&\\&&&-c^2\end{pmatrix}\begin{pmatrix}x\\y\\z\\t\end{pmatrix}$;
+\end{enumerate}
+\end{example}
+\pp
+注:保持时空距离(Lorentz内积)的变换称为\blue{Lorentz变换}.
+\end{frame}
+
+
+
+
+
+\begin{frame}\frametitle{二次型的定义}
+\begin{definition}[(实)二次型]
+称实数域\footnote{这门课程仅考虑实数域上的二次型.更一般地,可类似的定义任意数域上的二次型.}上的二次齐次多项式为\blue{(实)二次型}.
+\end{definition}
+\pp
+\begin{example}
+\begin{enumerate}
+\item $Q(x_1,x_2,x_3)=x_1x_2+x_2x_3+x_3x_1$;
+\pp
+\item $Q(x_1,x_2,\cdots,x_n)=\lambda_1x_1^2+\lambda_2x_2^2+\cdots+\lambda_nx_n^2$;
+\pp
+\item 欧氏度量 $Q(x,y,z)=x^2+y^2+z^2$;
+\pp
+\item 时空度量 $Q(x,y,z,t)=x^2+y^2+z^2-c^2t^2$.
+\end{enumerate}
+\end{example}
+\end{frame}
+
+
+
+
+
+\subsubsection{二次型的矩阵}
+\begin{frame}\frametitle{二次型的矩阵}
+由于$n$个变元$x_1,x_2,\cdots,x_n$的二次单项式全体集为
+\[x_1^2,x_1x_2,\cdots,x_1x_n,\quad x_2^2,\cdots,x_2x_n,\quad x_3^2, \cdots, \quad x_n^2,\]
+\pp
+因此一般的二次型可表示为
+\begin{equation*}\small
+\begin{array}{rrrrrrrr}
+Q(x_1,\cdots,x_n)=
+&a_{11}x_1^2 &+& \red{2a_{12}x_1x_2} &+& \cdots &+& \blue{2a_{1n}x_1x_n}\\
+&            &+& a_{22}x_2^2  &+& \cdots &+& \green{2a_{2n}x_2x_n}\\
+&            & &               & & \ddots & & \vdots\quad \\
+&            & &               & &        &+& a_{nn}x_n^2\\
+\end{array}
+\end{equation*}
+其中$a_{ij}$全部为实数.
+\pp
+根据$x_ix_j=x_jx_i$,我们也可将上式改写为
+\begin{equation*}\small
+\begin{array}{rrrrrrrr}
+Q(x_1,\cdots,x_n)=
+&  a_{11}x_1x_1 &+&  \red{a_{12}x_1x_2} &+& \cdots &+& \blue{a_{1n}x_1x_n}\\
+& +\red{a_{12}x_2x_1} &+&  a_{22}x_2x_2 &+& \cdots &+& \green{a_{2n}x_2x_n}\\
+&   \vdots\quad & &   \vdots\quad & & \ddots & &   \vdots\quad\\
+& +\blue{a_{1n}x_nx_1} & &  \green{a_{2n}x_nx_2} &+& \cdots &+& a_{nn}x_nx_n\\
+\end{array}
+\end{equation*}
+\end{frame}
+
+
+
+
+
+\begin{frame}\frametitle{二次型的矩阵}
+利用矩阵的乘法,可进一步的将二次型改写为
+\begin{equation} \label{QuadFormSymMatr}
+Q(x_1,\cdots,x_n)=x^TAx,
+\end{equation}
+\pp
+其中$A=(a_{ij})_{n\times n}$\CJKunderdot{实对称}, $x=(x_1,x_2,\cdots,x_n)^T$为变元组成的列向量.
+\pp
+\begin{proposition}[二次型的矩阵]
+\begin{enumerate}
+\item 式\eqref{QuadFormSymMatr}中的实对称矩阵$A$由二次型$Q(x_1,\cdots,x_n)$唯一确定,称$A$为\blue{二次型$Q$的矩阵}.
+\pp
+此外,称$A$的秩为\blue{二次型$Q$的秩},
+\pp
+称$A$的特征值为\blue{二次型$Q$的特征值}.
+\pp
+\item 反之,对于任意实对称矩阵,通过式\eqref{QuadFormSymMatr},可以构造一个二次型.
+\end{enumerate}
+\end{proposition}
+\pp
+简言之,我们有如下一一对应:
+\begin{center}
+\blue{二次型 $\xleftrightarrow[1:1]{\qquad Q=x^TAx\qquad}$ 实对称矩阵}\footnote{若我们不要求式\eqref{QuadFormSymMatr}中的矩阵$A$对称,则$A$的选取不唯一.\\例如,给定任意反对称矩阵$A$,二次型$x^TAx$都为零二次型.}
+\end{center}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{例}
+
+\begin{example}求下列二次型对应的矩阵.
+\begin{enumerate}
+\item $Q(x_1,x_2,x_3)=x_1x_2+x_2x_3+x_3x_1$;
+\pp
+\item $Q(x_1,x_2,\cdots,x_n)=\lambda_1x_1^2+\lambda_2x_2^2+\cdots+\lambda_nx_n^2$;
+\pp
+\item 欧氏度量 $Q(x,y,z)=x^2+y^2+z^2$;
+\pp
+\item 时空度量 $Q(x,y,z,t)=x^2+y^2+z^2-c^2t^2$;
+\pp
+\item $Q(x_1,\cdots,x_n)=x^TAx$,其中$A$为$n$阶实方阵.
+\end{enumerate}
+\end{example}
+
+\end{frame}
+
+
+
+
+\subsection{二次型的标准形}
+
+
+\subsubsection{二次型变元的可逆线性替换}
+\begin{frame}\frametitle{二次型变元的可逆线性替换}
+给定二次型
+\[Q=Q(x_1,\cdots,x_n) = x^TAx. \qquad(A^T=A),\]
+\pp
+\bigskip
+
+对变量$x_1,\cdots,x_n$做一个可逆(非退化)的线性变换
+\[\left\{\begin{array}{c}
+x_1=p_{11}y_1 + p_{12}y_2 + \cdots + p_{1n}y_n,\\
+x_2=p_{21}y_1 + p_{22}y_2 + \cdots + p_{2n}y_n,\\
+\cdots\cdots\cdots\\
+x_n=p_{n1}y_1 + p_{n2}y_2 + \cdots + p_{nn}y_n,\\
+\end{array}\right.\]
+其中系数矩阵$P=(p_{ij})_{n\times n}$可逆.
+\pp
+则
+\[Q=x^TAx = (y^TP^T)A(Py) = y^T(P^TAP)y,\]
+其中$x=(x_1,\cdots,x_n)^T$,$y=(y_1,\cdots,y_n)^T$.
+\pp
+因此,二次型$Q$关于新变元$y_1,\cdots,y_n$的矩阵为$P^TAP$.
+\end{frame}
+
+
+
+\subsubsection{二次型的标准形}
+\begin{frame}\frametitle{二次型的标准形}
+通过变元的线性替换,实对称矩阵的相合标准形可以用来化简二次型.
+\pp
+\begin{definition}[(有理)标准形]
+若二次型经过非退化的线性变换$x=Py$化为
+\[\widetilde{Q}(y_1,\cdots,y_n) = \lambda_1y_1^2+\cdots+\lambda_ny^2_n,\]
+则称$\widetilde{Q}$为$Q$的一个\blue{(有理)标准形}.
+\end{definition}
+\pp
+下面通过对称矩阵的正交合同标准形和规范形,给出两个特殊的(有理)标准形:
+\pp
+\begin{theorem}[正交标准形]
+任意给定实二次型$Q=x^TAx$,存在正交变换$x=Py$将$Q$化为
+\[\widetilde{Q}(y_1,\cdots,y_n) = \lambda_1y_1^2+\cdots+\lambda_ny_n^2,\]
+这里的$\lambda_1,\cdots,\lambda_n$为$A$的特征值.称$\widetilde{Q}$为$Q$的\blue{正交标准形}.
+\end{theorem}
+\end{frame}
+
+
+
+
+
+\subsubsection{规范形(实标准形)}
+\begin{frame}\frametitle{规范形(实标准形)}
+\begin{theorem}[规范形(实标准形)]
+任意给定二次型$Q$,存在线性变换$x=Py$使得
+\[Q=y_1^2+\cdots+y_r^2-y_{r+1}^2-\cdots-y_{r+s}^2,\]
+其中$r$和$s$不依赖于$P$的选取. 我们称
+\begin{itemize}
+\item $y_1^2+\cdots+y_r^2-y_{r+1}^2-\cdots-y_{r+s}^2$为$Q$的\blue{规范形}(或\blue{实标准形});
+\item $r$和$s$为$Q$的\blue{正负惯性指数}.
+\end{itemize}
+\end{theorem}
+\pp
+问题:\begin{enumerate}
+\item 如何寻找二次型的标准形?
+\pp
+\item 如何寻找二次型的规范形?
+\pp
+\item 如何寻找二次型的正交标准形?
+\end{enumerate}
+\end{frame}
+
+
+
+
+
+\subsubsection{配方法(求标准形)}
+\begin{frame}\frametitle{配方法(求标准形)}
+
+\begin{example}[含平方项]
+$Q(x_1,x_2,x_3)=2x_1^2+x_1x_2+x_3^2$.
+\end{example}
+\pp
+\begin{example}[无平方项]
+$Q(x_1,x_2,x_3)=2x_1x_2-6x_2x_3+2x_1x_3$.
+\end{example}
+\pp
+\begin{theorem}
+任意二次型都可由配方法化为标准形.
+\end{theorem}
+\pp
+\yang{ \tiny
+证明思路:
+情形一: $a_{11}\neq0$;
+\pp
+情形二: $a_{11}=0$ 但对某个指标$i$有$a_{ii}\neq0$;
+\pp
+情形三: 对角元$a_{ii}$全为零, 但$a_{ij}\neq0$;
+\pp
+情形四: $A=0$.
+}
+
+类似于求解线性方程组的Gauss消元法可以用矩阵的初等变换表示,在这里二次型的配方法也可以用矩阵的初等变换来表示.
+\pp
+\begin{theorem}[配方法能用矩阵实现的理论依据]
+对于任意给定的实对称矩阵$A$都存在初等矩阵$P_1,\cdots,P_r$使得
+\[P_r^T\cdots P_1^TAP_1\cdots P_r=\mathrm{diag}(\mu_1,\mu_2,\cdots,\mu_n).\]
+\end{theorem}
+\end{frame}
+
+
+
+
+
+\subsubsection{初等变换法(具体算法步骤)}
+\begin{frame}\frametitle{初等变换法(具体算法步骤)}
+\begin{enumerate}
+\item[第一步:]
+\pp
+\begin{enumerate}
+\item 若 $a_{11}\neq 0$,
+\begin{itemize}
+\item 将第$1$列的$-a_{i1}a_{11}^{-1}$倍加到第$i$列;
+\item 将第$1$行的$-a_{1i}a_{11}^{-1}$倍加到第$i$行.
+\end{itemize}
+$\Rightarrow$可逆阵$P_1$使得 $P_1^TAP_1=\begin{pmatrix}a_{11}&\\&A_{n-1}\end{pmatrix}$.
+\pp
+\item 若$a_{11}=0$,且存在对角元$a_{ii}\neq0$.
+\begin{itemize}
+\item 交换第$1$列与第$i$列;
+\item 交换第$1$行与第$i$行;
+\item 回到第一步.
+\end{itemize}
+\pp
+\item 若对角线全为零且第一行(第一列)不为零.即,存在$i=2,\cdots,n$使得$a_{i1}=a_{1i}\neq0$.
+\begin{itemize}
+\item 将第$i$行加到第一行;
+\item 将第$i$列加到第一列;
+\item 回到第一步.
+\end{itemize}
+\pp
+\item 若对角线全为零且第一行和第一列全为零.则 $A=\begin{pmatrix}0&\\&A_{n-1}\end{pmatrix}$.
+\end{enumerate}
+\pp
+\item[第二步:] 递归下去,对$n-1$阶矩阵$A_{n-1}$重复第一步.
+\end{enumerate}
+\end{frame}
+
+
+
+
+
+
+
+
+
+% ========== 2023年06月20号 第31次课 标准形,正定判定 ==========
+%\frame{\titlepage}
+
+
+
+
+
+
+\begin{frame}\frametitle{初等变换法(具体算法步骤)}
+\begin{enumerate}
+\item[第一步:]
+\pp
+\begin{enumerate}
+\item 若 $a_{11}\neq 0$,
+\begin{itemize}
+\item 将第$1$列的$-a_{i1}a_{11}^{-1}$倍加到第$i$列;
+\item 将第$1$行的$-a_{1i}a_{11}^{-1}$倍加到第$i$行.
+\end{itemize}
+$\Rightarrow$可逆阵$P_1$使得 $P_1^TAP_1=\begin{pmatrix}a_{11}&\\&A_{n-1}\end{pmatrix}$.
+\pp
+\item 若$a_{11}=0$,且存在对角元$a_{ii}\neq0$.
+\begin{itemize}
+\item 交换第$1$列与第$i$列;
+\item 交换第$1$行与第$i$行;
+\item 回到第一步.
+\end{itemize}
+\pp
+\item 若对角线全为零且第一行(第一列)不为零.即,存在$i=2,\cdots,n$使得$a_{i1}=a_{1i}\neq0$.
+\begin{itemize}
+\item 将第$i$行加到第一行;
+\item 将第$i$列加到第一列;
+\item 回到第一步.
+\end{itemize}
+\pp
+\item 若对角线全为零且第一行和第一列全为零.则 $A=\begin{pmatrix}0&\\&A_{n-1}\end{pmatrix}$.
+\end{enumerate}
+\pp
+\item[第二步:] 递归下去,对$n-1$阶矩阵$A_{n-1}$重复第一步.
+\end{enumerate}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{具体实现方法}
+\begin{equation*}
+{A \choose I} \xrightarrow[\text{对$I$做初等\blue{列}变换}]{\text{对$A$做\blue{成对}的\blue{行列}初等变换}} {P^TAP\choose P}
+\end{equation*}
+类似的
+\begin{equation*}
+(A,I) \xrightarrow[\text{对$I$做初等\blue{行}变换}]{\text{对$A$做\blue{成对}的\blue{行列}初等变换}} (P^TAP,P^T)
+\end{equation*}
+\pp
+\begin{example}
+$Q(x_1,x_2,x_3)=x_1^2-x_2^2+x_3^2+4x_1x_3+2x_2x_3$.
+\end{example}
+\yang{解：
+\tiny {
+$\setlength{\arraycolsep}{2pt} \left(A\atop I\right) = \left(\begin{array}{rrr}\blue{1}&\blue{0}&\blue{2}\\\blue{0}&\blue{-1}&\blue{1}\\\blue{2}&\blue{1}&\blue{1}\\1&0&0\\0&1&0\\0&0&1\\\end{array}\right)$\pp
+$\red{\xrightarrow{-2C_1\rightarrow C_3}}$
+$\setlength{\arraycolsep}{2pt} \left(\begin{array}{rrr}1&0&0\\0&-1&1\\2&1&-3\\1&0&-2\\0&1&0\\0&0&1\\\end{array}\right)$\pp
+$\red{\xrightarrow{-2r_1\rightarrow r_3}}$
+$\setlength{\arraycolsep}{2pt} \left(\begin{array}{rrr}\blue{1}&\blue{0}&\blue{0}\\\blue{0}&\blue{-1}&\blue{1}\\\blue{0}&\blue{1}&\blue{-3}\\1&0&-2\\0&1&0\\0&0&1\\\end{array}\right)$\pp
+
+\makebox[3cm]{ } $\red{\xrightarrow{C_2\rightarrow C_3}}$
+$\setlength{\arraycolsep}{2pt} \left(\begin{array}{rrr}1&0&0\\0&-1&0\\0&1&-2\\1&0&-2\\0&1&1\\0&0&1\\\end{array}\right)$
+$\red{\xrightarrow{r_2\rightarrow r_3}}$
+$\setlength{\arraycolsep}{2pt} \left(\begin{array}{rrr}\blue{1}&\blue{0}&\blue{0}\\\blue{0}&\blue{-1}&\blue{0}\\\blue{0}&\blue{0}&\blue{-2}\\1&0&-2\\0&1&1\\0&0&1\\\end{array}\right)$ \pp
+
+从而得标准形$\widetilde{Q}(y_1,y_2,y_3)=y_1^2-y_2^2-2y_3^2$, 其中
+$P = \left(\begin{array}{rrr}1&0&-2\\0&1&1\\0&0&1\\\end{array}\right)$.
+}}
+\end{frame}
+
+
+
+
+
+\subsubsection{}
+\begin{frame}\frametitle{}
+
+\begin{example}
+$Q(x_1,x_2,x_3)=2x_1x_2+4x_1x_3$.
+\end{example}
+\yang{解：\tiny {
+$\left(A,I\right) = \left(\begin{array}{rrrrrr}
+\blue{0}&\blue{1}&\blue{2}&1&0&0\\
+\blue{1}&\blue{0}&\blue{0}&0&1&0\\
+\blue{2}&\blue{0}&\blue{0}&0&0&1\\
+\end{array}\right)$ \pp
+
+$\red{\xrightarrow{r_2\rightarrow r_1}}$
+$\left(\begin{array}{rrrrrr}
+1&1&2&1&1&0\\
+1&0&0&0&1&0\\
+2&0&0&0&0&1\\
+\end{array}\right)$
+$\red{\xrightarrow{C_2\rightarrow C_1}}$
+$\left(\begin{array}{rrrrrr}
+\blue{2}&\blue{1}&\blue{2}&1&1&0\\
+\blue{1}&\blue{0}&\blue{0}&0&1&0\\
+\blue{2}&\blue{0}&\blue{0}&0&0&1\\
+\end{array}\right)$ \pp
+
+$\red{\xrightarrow[-C_1\rightarrow C_3]{-\frac12C_1\rightarrow C_2}}$
+$\left(\begin{array}{rrrrrr}
+2&0&0&1&1&0\\
+1&-\frac12&-1&0&1&0\\
+2&-1&-2&0&0&1\\
+\end{array}\right)$
+$\red{\xrightarrow[-r_1\rightarrow r_3]{-\frac12r_1\rightarrow r_2}}$
+$\left(\begin{array}{rrrrrr}
+\blue{2}&\blue{0}&\blue{0}&1&1&0\\
+\blue{0}&\blue{-\frac12}&\blue{-1}&-\frac12&\frac12&0\\
+\blue{0}&\blue{-1}&\blue{-2}&-1&-1&1\\
+\end{array}\right)$ \pp
+
+$\red{\xrightarrow{-2r_1\rightarrow r_3}}$
+$\setlength{\arraycolsep}{2pt}\left(\begin{array}{rrrrrr}
+2&0&0&1&1&0\\
+1&-\frac12&-1&-\frac12&\frac12&0\\
+0&0&0&0&-2&1\\
+\end{array}\right)$
+$\setlength{\arraycolsep}{2pt}\red{\xrightarrow{-2C_1\rightarrow C_3}}$
+$\left(\begin{array}{rrrrrr}
+\blue{2}&\blue{0}&\blue{0}&1&1&0\\
+\blue{0}&\blue{-\frac12}&\blue{0}&-\frac12&\frac12&0\\
+\blue{0}&\blue{0}&\blue{0}&0&-2&1\\
+\end{array}\right)$ \pp
+
+从而得到标准形
+\[\widetilde{Q}(y_1,y_2,y_3)=2y_1^2-\frac12y_2^2.\]
+其中
+\[P = \left(\begin{array}{rrr} 1&1&0\\-\frac12&\frac12&0\\ 0&-2&1\\
+\end{array}\right)^T = \left(\begin{array}{rrr} 1&-\frac12&0\\1&\frac12&-2\\ 0&0&1\\
+\end{array}\right).\]
+}}
+\end{frame}
+
+\renewcommand{\mydate}{2025年06月17日\ 三十次课}
+
+\subsection{正定二次型}
+
+\subsubsection{正定二次型}
+\begin{frame}\frametitle{正定二次型}
+\begin{definition}[正定二次型]
+称一个$n$元二次型$Q(x_1,\cdots,x_n)=x^TAx$($A^T=A$)为\blue{正定二次型},如果对于任意向量$x\in\bR^n\setminus\{0\}$都有$Q(x_1,\cdots,x_n)>0$成立.
+\end{definition}
+\pp
+\begin{theorem}
+\begin{equation*}
+\begin{split}
+\text{$Q$正定}
+\pp
+& \Leftrightarrow \text{$A$正定} \pp \Leftrightarrow \text{$A$相合于单位阵} \\
+\pp
+& \Leftrightarrow \text{$Q$的(或$A$的)正惯性指数为$n$} \\
+\end{split}
+\end{equation*}
+\end{theorem}
+\end{frame}
+
+
+
+
+
+\subsubsection{正定性判定}
+\begin{frame}\frametitle{正定性判定}
+\begin{proposition}
+设$A$为$n$阶实对称方阵.
+\pp
+\begin{enumerate}
+\item 若$P$可逆,则$P^TAP>0$当且仅当$A>0$.\qquad \blue{相合不变性}
+\pp
+\item $A>0$ 当且仅当存在可逆阵$P$使得 $A=P^TP$. \quad\blue{相合标准形}
+\pp
+\item 若$A>0$,则$\det(A)>0$.
+\item $A>0$ 当且仅当$A$的特征值全为正.
+\end{enumerate}
+\end{proposition}
+\pp
+
+\begin{theorem}
+设$A=(a_{ij})_{n\times n}$为$n$阶实对称方阵.
+\pp
+则$A$正定当且仅当$A$的各阶顺序主子式均大于零.
+\pp
+即, $A$正定当且仅当
+\[a_{11}>0,\quad \begin{vmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{vmatrix}>0,\cdots,\begin{vmatrix}a_{11}&\cdots&a_{1n}\\\cdots&\cdots&\cdots&\\a_{n1}&\cdots&a_{nn}\end{vmatrix}=\det{A}>0,\]
+\end{theorem}
+\yang{\footnotesize 证明思路:对阶数归纳.
+\pp
+由归纳假设$A$可写为$A=\begin{pmatrix} (P^{-1})^TP^{-1} & C\\ C^T & a_{nn}\\\end{pmatrix}$.
+\pp
+记 $R=\begin{pmatrix} P & -PP^TC\\ 0& 1\\\end{pmatrix}$.
+\pp
+则
+$R^TAR = \begin{pmatrix} I_{n-1} &\\ & a_{nn}-C^TPP^TC\\\end{pmatrix}$.}
+\pp
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{正定性判定}
+\begin{example}
+\begin{itemize}
+\item 证明: 对任意实数 $x, y$, $f(x, y) = x^2 + 2xy + 2y^2 + 2x + 6y + 6 > 0$.
+\pp
+\bigskip
+
+\item 给定实二次型 $Q(x, y, z) = \lambda (x^2 + y^2 + z^2) - 2xy - 2yz - 2zx$.
+ $\lambda$ 为何值时，$Q(x, y, z)$ 正定？
+\pp
+\bigskip
+
+\item 设向量组 $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_m \in \mathbb{R}^n$. 则方阵 $G = ((\mathbf{a}_i, \mathbf{a}_j)_{m \times m})$ 正定当且仅当 $\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_m$ 线性无关.
+\end{itemize}
+\end{example}
+\end{frame}
+
+
+
+
+
+\begin{frame}[t]\frametitle{半正定}
+设 $A$为实对称矩阵，记$Q(x_1,\cdots,x_n)=x^TAx$为$A$对应的二次型.
+\bigskip
+\begin{definition}[半正定二次型]
+称$Q(x_1,\cdots,x_n)$为\blue{半正定二次型},如果对于任意向量$x\in\bR^n\setminus\{0\}$ 都有 $Q(x_1,\cdots,x_n)\geq0$成立. 此时, 称矩阵$A$为\blue{半正定矩阵}，简记为\blue{$A\geq0$}.
+\end{definition}
+\pp
+\bigskip
+
+\begin{proposition}
+\begin{equation*}
+\begin{split}
+\text{$Q$半正定}
+& \Leftrightarrow \text{$A$半正定} \\
+& \pp \Leftrightarrow \text{$A$相合于$\mathrm{diag}(I_r,0)$} \quad \blue{\text{(相合不变性)}} \\
+& \pp \Leftrightarrow \text{存在实矩阵$P$使得$A=P^TP$} \\
+& \pp \Leftrightarrow \text{$A$的负惯性指数为$0$} \\
+& \pp \Leftrightarrow \text{$A$的特征值均非负} \quad (\Rightarrow \det(A)\geq 0)\\
+& \pp \Leftrightarrow \text{$A$的\blue{各阶}主子式均非负} \\
+\end{split}
+\end{equation*}
+\end{proposition}
+
+\end{frame}
+
+
+
+
+
+\subsubsection{半定性}
+\begin{frame}\frametitle{半定性}
+\begin{example}
+\begin{itemize}
+\item 设$A, B, C$为三角形$ABC$的三个内角. 证明: 对任意实数$x, y, z$,
+\[x^2 + y^2 + z^2 \geq 2xy\cos(A) + 2yz\cos(B) + 2zx\cos(C).\]
+\pp
+\yang{提示：$\det=0$.}
+\pp
+\bigskip
+
+\item 三维欧氏空间$\mathbb{R}^3$中，是否存在向量$\mathbf{a}_1$, $\mathbf{a}_2$, $\mathbf{a}_3$满足
+\begin{align*}
+(\mathbf{a}_1, \mathbf{a}_1) &= 4, & (\mathbf{a}_2, \mathbf{a}_2) &= 9, & (\mathbf{a}_3, \mathbf{a}_3) &= 4, \\
+(\mathbf{a}_1, \mathbf{a}_2) &= \frac{9}{2}, & (\mathbf{a}_1, \mathbf{a}_3) &= -\frac{1}{2}, & (\mathbf{a}_2, \mathbf{a}_3) &= \frac{9}{2}.
+\end{align*}
+\pp
+\yang{提示：$\det=-81/2$.}
+\end{itemize}
+\end{example}
+\end{frame}
+
+
+\renewcommand{\mydate}{2025年06月19日\ 三十一次课}
+
+
+\subsubsection{应用}
+\begin{frame}\frametitle{应用}
+\begin{theorem}[矩阵的奇异值分解] 设 $A \in \mathbb{R}^{m \times n}$，则存在 $m$ 阶正交阵 $U$ 及 $n$ 阶正交阵 $V$ 使得
+\begin{equation*}
+A = U \begin{pmatrix}\Lambda & O \\O & O\end{pmatrix} V^T
+\end{equation*}
+其中 $\Lambda = \text{diag}(\sigma_1, \ldots, \sigma_r)$，$\sigma_1 \geq \ldots \geq \sigma_r > 0$ 称为矩阵 $A$ 的\blue{奇异值}.
+\end{theorem}
+\pp \yang{取正交阵$U$使得$AA^T=U\mathrm{diag}(\sigma_1^2,\cdots,\sigma_r^2,0,\cdots,0)U^T$. 再将$B=U^{-1}A$的非零行向量施密特正交化后扩充得正交矩阵$V$的转置.}
+\pp
+\begin{theorem}[多元函数的极值] 设 $\Omega \subset \mathbb{R}^n$ 是有界区域, $\mathbf{x}^0 $ 是 $\Omega$ 内一点, $f(\mathbf{x}) \in C^2(\Omega)$, 且 $\dfrac{\partial f}{\partial x_i}(\mathbf{x}^0) = 0$, $i = 1, \ldots, n$, $H(\mathbf{x}^0) = \left( \dfrac{\partial^2 f}{\partial x_i \partial x_j}(\mathbf{x}^0) \right)_{n \times n} > 0$. 则 $f(\mathbf{x})$ 在 $\mathbf{x}^0$ 取极小值.
+\end{theorem}
+\pp
+\yang{ 设$\lambda>0$为$H(x^0)$的最小特征值. 则
+\begin{equation*}
+\begin{split}
+ f(x) & = f(x^0)+\frac12(x-x^0)^TH(x^0)(x-x^0)+o(||x-x^0||^2)\\
+& \geq f(x^0)+\frac{\lambda}2||x-x^0||^2+o(||x-x^0||^2)
+\end{split}
+\end{equation*}
+}
+\end{frame}
+
+
+
+
+
+\subsubsection{根据正负惯性指数命名二次型}
+\begin{frame}\frametitle{根据正负惯性指数命名二次型}
+\begin{enumerate}
+\item 正\quad 定 $\Leftrightarrow$ $r=n$ ($\Rightarrow s=0$);
+\pp
+\item 半正定 $\Leftrightarrow$ $s=0$;
+\pp
+\item 负\quad 定 $\Leftrightarrow$ $s=n$ ($\Rightarrow r=0$);
+\pp
+\item 半负定 $\Leftrightarrow$ $r=0$;
+\pp
+\item 不\quad 定 $\Leftrightarrow$ $r\geq1$且$s\geq1$.
+\end{enumerate}
+\pp
+部分关于正定的结论可以平移到半正定,负定,半负定的二次型上.
+\end{frame}
+
+
+
+\subsection{二次曲线与二次曲面的分类}
+
+\subsubsection{二次曲线与二次曲面的分类}
+\begin{frame}\frametitle{二次曲线与二次曲面的分类}
+二次曲线的标准形式
+\begin{equation*}
+\left\{
+\begin{array}{ll}
+\text{椭\quad 圆:}   & \frac{x^2}{a^2}+\frac{y^2}{b^2}=1 \\
+\text{双曲线:} & \frac{x^2}{a^2}-\frac{y^2}{b^2}=1 \\
+\text{抛物线:} & y=ax^2 \\
+\text{退\quad 化:} & x^2=\frac{y^2}{a^2} \text{ 或 } \frac{x^2}{a^2}=1 \text{ 或 } x^2=0\\
+\end{array}
+\right.
+\end{equation*}
+\pp
+平面二次曲线方程:
+\[a_{11}x^2+2a_{12}xy+a_{22}y^2+2b_1x+2b_2y+c=0.\]
+\pp
+\begin{theorem}
+任意平面二次曲线均可经过选定合适的直角坐标系变为标准形式.
+\end{theorem}
+\pp
+\yang{证明思路: 通过正交变换化简为(其中$\lambda_1,\lambda_2$不全为零) \[\lambda_1x'^2+\lambda_2y'^2+2b_1x'+2b_2'y'+c'=0.\]
+\pp
+\begin{enumerate}
+\item $\lambda_1\lambda_2>0$ 椭圆型
+\pp
+\item $\lambda_1\lambda_2<0$ 双曲型 或 退化
+\pp
+\item $\lambda_1\lambda_2=0$ 抛物型 或 退化
+\end{enumerate}
+}
+\end{frame}
+
+
+
+
+
+
+
+
+
+% ========== 2023年06月27号 第32次课 二次曲面分类 ==========
+%\frame{\titlepage}
+
+
+
+
+
+\subsubsection{二次曲面标准形式}
+\begin{frame}\frametitle{二次曲面标准形式}
+\begin{enumerate}
+\item 椭圆面
+\[\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1;\]
+\pp
+\item 单叶双曲面
+\[\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=1;\]
+\pp
+\item 双叶双曲面
+\[\frac{x^2}{a^2}-\frac{y^2}{b^2}-\frac{z^2}{c^2}=1;\]
+\pp
+\item 二次锥面
+\[\frac{x^2}{a^2}+\frac{y^2}{b^2}=\frac{z^2}{c^2};\]
+\end{enumerate}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{}
+\begin{enumerate}\setcounter{enumi}{4}
+\item 椭圆抛物面
+\[z=\frac{x^2}{a^2}+\frac{y^2}{b^2};\]
+\pp
+\item 双曲抛物面(马鞍面)
+\[z=\frac{x^2}{a^2}-\frac{y^2}{b^2};\]
+\pp
+\item 二次柱面(方程中不含第三个变量)
+\pp
+\begin{itemize}
+\item 椭圆柱面   $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$;
+\pp
+\item 双曲柱面   $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$;
+\pp
+\item 抛物柱面   $y=ax^2$;
+\end{itemize}
+\pp
+\item 退化二次曲面
+\pp
+\begin{itemize}
+\item 两个相交平面 $x^2=\frac{y^2}{a^2}$;
+\pp
+\item 两个平行平面 $\frac{x^2}{a^2}=1$;
+\pp
+\item 两个重合平面 $x^2=0$.
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{}
+二次曲面方程:
+\begin{equation*}
+\begin{split}
+a_{11}x^2+a_{22}y^2+a_{33}z^2+& 2a_{12}xy+2a_{13}xz+2a_{23}yz\\
+&+2b_1x+2b_2y+2b_3z+c=0
+\end{split}
+\end{equation*}
+\pp
+\begin{theorem}
+任意二次曲面可经过选择合适的直角坐标系变为标准形式.
+\end{theorem}
+\pp
+\yang{证明思路: 二次曲面通过正交变换可化简为(其中$\lambda_1,\lambda_2,\lambda_3$不全为零) \[\lambda_1x'^2+\lambda_2y'^2+\lambda_3z'^2+2b'_1x'+2b'_2y'+2b'_3z'+c'=0.\]
+\pp
+\begin{enumerate}
+\item $\lambda_1\lambda_2\lambda_3\neq 0$ $\xRightarrow{\text{化简}}$ $\lambda_1\widetilde{x}^2+\lambda_2\widetilde{y}^2+\lambda_3\widetilde{z}^2=\lambda_4$
+\pp
+\begin{itemize}
+\item $\lambda_4\neq 0$ $\Rightarrow$ 椭圆型或双曲型
+\pp
+\item $\lambda_4 = 0$ $\Rightarrow$ 二次锥面
+\end{itemize}
+\pp
+\item $\lambda_1,\lambda_2,\lambda_3$中两个非零(不妨设$\lambda_1\lambda_2\neq0$且$\lambda_3=0$) $\xRightarrow{\text{化简}}$ $\lambda_1\widetilde{x}^2+\lambda_2\widetilde{y}^2=\widetilde{b}_3\widetilde{z}+\widetilde{c}$.
+\pp
+\begin{itemize}
+\item $\widetilde{b}_3\neq0$ (可设$\widetilde{c}=0$) $\Rightarrow$ 抛物面
+\pp
+\item $\widetilde{b}_3=0$ 且 $\widetilde{c}\neq0$ $\Rightarrow$ 椭圆柱面 或 双曲柱面
+\pp
+\item $\widetilde{b}_3=0=\widetilde{c}$ $\Rightarrow$ 两相交平面
+\end{itemize}
+\end{enumerate}
+}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}\frametitle{}
+\begin{enumerate}\setcounter{enumi}{2}
+\item $\lambda_1,\lambda_2,\lambda_3$中仅一个非零(不妨设$\lambda_1\neq0$且$\lambda_2=0=\lambda_3$) $\xRightarrow{\text{化简}}$ $\lambda_1\widetilde{x}^2 = \widetilde{b}_2\widetilde{y}+\widetilde{c}$.
+\pp
+\begin{itemize}
+\item  $\widetilde{b}_2\neq0$ (可设$\widetilde{c}=0$) $\Rightarrow$
+\pp
+\item $\widetilde{b}_2=0$且$\widetilde{c}\neq0$ $\Rightarrow$ 两平行的平面
+\pp
+\item $\widetilde{b}_2=0=\widetilde{c}$ $\Rightarrow$ 两重合的平面
+\end{itemize}
+\end{enumerate}
+\pp
+\begin{example}
+$x^2+4y^2+z^2-4xy-8xz-4yz-1$.
+\end{example}
+\pp
+\yang{
+答: 正交方阵 $P=\begin{pmatrix}
+\frac{\sqrt{5}}{5}&\frac{4\sqrt{5}}{15}&\frac{2}{3}\\
+-\frac{2\sqrt{5}}{5}&\frac{2\sqrt{5}}{15}&\frac{1}{3}\\
+0&-\frac{\sqrt{5}}{3}&\frac{2}{3}\\
+\end{pmatrix}$
+\[P^TAP=\mathrm{diag}(5,5,-4).\]
+\pp
+$(x,y,z)^T=P(x',y',z')^T$ $\Rightarrow$ $5x'^2+5y'^2-4z'^2=1$
+\pp
+$\Rightarrow$ 单叶双曲面.
+
+\bigskip
+方法二(配方):
+\pp
+
+$\Rightarrow$ $(x-2y-4z)^2-15z^2-20yz-1=0$
+\pp
+
+$\Rightarrow$ $(x-2y-4z)^2-15(z+\frac23y)^2+\frac{20}3y^2=1$
+\pp
+
+$\Rightarrow$ $\widetilde{x}^2+\widetilde{y}^2-\widetilde{z}^2=1$
+\pp
+
+$\Rightarrow$ 单叶双曲面.
+}
+\end{frame}
+
+
+
+
+
+
+
+
+
+% ========== 2023年06月27号 第32次课 酉空间 ==========
+%\frame{\titlepage}
+
+
+
+
+
+
+
+
+
