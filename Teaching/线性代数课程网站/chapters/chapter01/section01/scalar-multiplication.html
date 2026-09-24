@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="一个数乘向量意味着什么？；1.1 向量及其运算，线性代数课程。">
+  <title>一个数乘向量意味着什么？ | 1.1 向量及其运算 | 线性代数</title>
+  <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/chapter01.css"><link rel="stylesheet" href="../../../css/lessons.css">
+  <script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script>
+  <script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script>
+</head><body data-page="knowledge" data-root="../../../" data-chapter="chapter01" data-section="chapter01-section01" data-unit="chapter01-section01-scalar-multiplication">
+  <!-- 由 scripts/build-lessons.js 生成；正文请修改 content/chapter01/section01 中对应的片段。 -->
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header page-width"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><nav class="header-nav" aria-label="课程导航"><a href="../../chapter01.html">第一章目录</a> <a href="../../../index.html">课程首页</a></nav></header>
+  <div class="chapter-layout page-width"><aside class="chapter-sidebar knowledge-sidebar" aria-label="本节目录">
+    <details class="knowledge-menu" open><summary>本节目录 · 共 9 页</summary>
+    <nav aria-label="知识页导航"><ol class="knowledge-list"><li><a href="what-is-a-vector.html"><span class="knowledge-index">01</span><span>什么是向量？<span class="knowledge-status" data-unit-status="chapter01-section01-what-is-a-vector">未标记</span></span></a></li>
+<li><a href="equal-vectors.html"><span class="knowledge-index">02</span><span>什么时候两个向量相等？<span class="knowledge-status" data-unit-status="chapter01-section01-equal-vectors">未标记</span></span></a></li>
+<li><a href="special-vectors.html"><span class="knowledge-index">03</span><span>几种特殊的向量<span class="knowledge-status" data-unit-status="chapter01-section01-special-vectors">未标记</span></span></a></li>
+<li><a href="vector-addition.html"><span class="knowledge-index">04</span><span>向量怎样相加？<span class="knowledge-status" data-unit-status="chapter01-section01-vector-addition">未标记</span></span></a></li>
+<li><a href="vector-subtraction.html"><span class="knowledge-index">05</span><span>向量怎样相减？<span class="knowledge-status" data-unit-status="chapter01-section01-vector-subtraction">未标记</span></span></a></li>
+<li><a href="scalar-multiplication.html" aria-current="page"><span class="knowledge-index">06</span><span>一个数乘向量意味着什么？<span class="knowledge-status" data-unit-status="chapter01-section01-scalar-multiplication">未标记</span></span></a></li>
+<li><a href="addition-laws.html"><span class="knowledge-index">07</span><span>向量加法满足什么规律？<span class="knowledge-status" data-unit-status="chapter01-section01-addition-laws">未标记</span></span></a></li>
+<li><a href="scalar-laws.html"><span class="knowledge-index">08</span><span>数乘满足什么规律？<span class="knowledge-status" data-unit-status="chapter01-section01-scalar-laws">未标记</span></span></a></li>
+<li><a href="review.html"><span class="knowledge-index">09</span><span>本节回顾与自测<span class="knowledge-status" data-unit-status="chapter01-section01-review">未标记</span></span></a></li></ol></nav></details>
+    <div class="sidebar-footer"><p data-section-progress="chapter01-section01">已学会 0 / 9 页</p><progress data-section-meter="chapter01-section01" max="9" value="0" aria-label="本节学习进度"></progress><p><a href="index.html">本节概览</a> · <a href="all.html">整节阅读</a></p></div>
+  </aside><main id="main" class="chapter-content">
+    <nav class="breadcrumbs" aria-label="当前位置"><a href="../../chapter01.html">第一章 · 向量</a><span aria-hidden="true">/</span><a href="index.html">1.1 向量及其运算</a></nav>
+    <p class="storage-notice" data-storage-notice role="status" hidden></p>
+    <noscript><p class="notice">正文、目录和翻页仍可使用。公式排版和学习记录需要在浏览器中允许脚本运行。</p></noscript>
+    <header class="knowledge-intro"><p class="eyebrow">第 6 / 9 页</p><h1>一个数乘向量意味着什么？</h1><p class="knowledge-goal">判断长度与方向的变化，认识线性运算。</p></header>
+    <article class="lesson knowledge-lesson"><div class="lecture-topic" id="scalar-multiplication">
+            <h4>向量的数乘</h4>
+            <figure class="lecture-figure" tabindex="0" role="region" aria-label="向量数乘示意图，可横向滚动"><img src="../../../assets/chapter01/scalar-multiplication.svg" width="800" height="350" alt="讲稿数乘图：0.5a 与 a 同向且一半长，2a 与 a 同向且两倍长；-a 与 -1.5a 反向。-πb 与 b 反向，e b 与 b 同向。"><figcaption>按讲稿绘制的数乘比较图。左侧分行摆放向量，以免箭头重叠。</figcaption></figure>
+            <p>设 \(\lambda\in\mathbb R\)。向量 \(\lambda\vec a\) 的长度是 \(|\lambda|\,|\vec a|\)。当 \(\vec a\ne\vec0\) 时，\(\lambda&gt;0\) 保持方向，\(\lambda&lt;0\) 反转方向；当 \(\lambda=0\) 或 \(\vec a=\vec0\) 时，结果是零向量。</p>
+            <p>若 \(\vec a\ne\vec0\)，讲稿用下面的记号表示与它同向的单位向量：</p>
+            <div class="formula">\[\vec a^{\,0}:=\frac{1}{|\vec a|}\vec a.\]</div>
+          </div><div class="teaching-block"><h3>线性运算</h3><p>向量的<strong>加法</strong>和<strong>数乘</strong>统称为向量的线性运算。它们的八条基本性质，是以后公理化定义线性空间的出发点。</p></div><div class="teaching-block"><h3>例题 · 缩放一个箭头</h3><p>讲稿中的 \(0.5\vec a\)、\(2\vec a\) 分别把箭头缩短一半、放大两倍；\(-\vec a\)、\(-1.5\vec a\) 还会反转方向。对于非零向量 \(\vec b\)，\(-\pi\vec b\) 反向且长度变为 \(\pi\) 倍，\(e\vec b\) 则同向且长度变为 \(e\) 倍。</p></div>
+</article>
+    <div class="unit-completion"><button class="button button-primary" type="button" data-unit-complete="chapter01-section01-scalar-multiplication" data-unit-label="本页" disabled>标记本页为已学会</button><p class="completion-message" data-unit-message="chapter01-section01-scalar-multiplication" role="status" aria-live="polite"></p></div><nav class="page-navigation" aria-label="前后翻页"><a href="vector-subtraction.html"><span>← 上一页</span><strong>向量怎样相减？</strong></a><a href="addition-laws.html" rel="next"><span>下一页 →</span><strong>向量加法满足什么规律？</strong></a></nav><div class="reading-options"><a href="index.html">返回本节目录</a><a href="all.html#part-scalar-multiplication">整节阅读</a></div>
+  </main></div>
+  <footer class="site-footer page-width"><span>线性代数 · 第一章 · 1.1</span><span>学习记录仅保存在你的浏览器中</span></footer>
+</body></html>

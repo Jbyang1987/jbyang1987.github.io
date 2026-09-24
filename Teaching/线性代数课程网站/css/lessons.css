@@ -1,0 +1,54 @@
+/* 分页学习与整节阅读共用。延续正文 22px、辅助文字至少 18px。 */
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: .35rem .75rem; margin-bottom: 1.5rem; font-size: var(--text-xs); color: var(--color-muted); }
+.knowledge-intro { padding-bottom: 2rem; border-bottom: var(--border); }
+.knowledge-intro h1 { font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.4; margin-block: .75rem 1rem; text-wrap: balance; }
+.knowledge-goal { color: var(--color-muted); }
+.knowledge-lesson { padding-block: 2rem; border: 0; }
+.knowledge-lesson > p { margin-bottom: 1rem; }
+.knowledge-menu summary { min-height: 44px; padding-block: .5rem; font-size: var(--text-sm); font-weight: 600; color: var(--color-primary); }
+.knowledge-list { padding: 0; margin: 1rem 0 0; list-style: none; }
+.knowledge-list a { display: flex; gap: .75rem; padding: .7rem .5rem; text-decoration: none; line-height: 1.6; font-size: var(--text-sm); border-left: 2px solid transparent; }
+.knowledge-list a[aria-current] { background: var(--color-soft); border-color: var(--color-primary); }
+.knowledge-list a:hover, .knowledge-cards a:hover { background: var(--color-panel); }
+.knowledge-index { flex-shrink: 0; color: var(--color-muted); font: var(--text-xs)/1.8 var(--font-mono); }
+.knowledge-status { display: block; font-size: var(--text-xs); color: var(--color-muted); font-weight: 400; }
+.knowledge-status.is-complete { color: var(--color-primary); }
+.knowledge-sidebar .sidebar-footer p { margin-block: .7rem; }
+.unit-completion { margin-top: 1.5rem; }
+.unit-completion .completion-message:empty { min-height: 0; margin: 0; }
+.page-navigation { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 1rem; margin-top: 2rem; border-top: var(--border); padding-top: 1.5rem; }
+.page-navigation a { display: flex; flex-direction: column; gap: .35rem; padding: 1rem; border: var(--border); border-radius: var(--radius); text-decoration: none; font-size: var(--text-sm); }
+.page-navigation a:last-child { background: var(--color-panel); }
+.page-navigation a:hover { border-color: var(--color-primary); }
+.page-navigation span { color: var(--color-muted); font-size: var(--text-xs); }
+.page-navigation strong { font-weight: 500; }
+.reading-options, .section-start { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-top: 1.5rem; font-size: var(--text-sm); }
+.knowledge-cards { padding: 0; margin-block: 2rem; list-style: none; }
+.knowledge-cards a { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 1rem; padding: 1.5rem 0; border-bottom: var(--border); text-decoration: none; }
+.knowledge-cards strong { font-size: var(--text-lg); font-weight: 500; }
+.card-description { display: block; font-size: var(--text-sm); color: var(--color-muted); margin-block: .4rem; }
+.section-entry { padding: 1.5rem; margin-block: 1.5rem; border: var(--border); background: var(--color-panel); border-radius: var(--radius); }
+.section-entry p { margin-bottom: 1rem; }
+.section-entry > a { margin: .25rem .75rem .75rem 0; font-size: var(--text-sm); }
+.part-link { font-size: var(--text-sm); margin-top: 1rem; }
+.chapter-outline { margin-block: 2rem; }
+.chapter-outline ol { padding-left: 1.5rem; }
+.chapter-outline li { margin-block: .6rem; }
+@media (max-width: 1050px) {
+  .knowledge-sidebar { padding-bottom: 1rem; }
+  .knowledge-sidebar .sidebar-footer { display: none; }
+  .knowledge-menu[open] + .sidebar-footer { display: block; }
+}
+@media (max-width: 540px) {
+  .page-navigation { grid-template-columns: 1fr; }
+  .knowledge-intro h1 { font-size: 2rem; }
+  .knowledge-cards a { gap: .65rem; }
+  .knowledge-part .lesson-heading { flex-direction: column; gap: .5rem; }
+}
+@media print {
+  .breadcrumbs, .knowledge-sidebar, .unit-completion, .page-navigation, .reading-options, .section-start, .section-entry, .part-link, .notice, .storage-notice { display: none !important; }
+  .knowledge-intro, .knowledge-part { padding-block: 1rem; }
+  .lecture-figure { overflow: visible; }
+  .lecture-figure img, .lecture-figure img[width="800"] { min-width: 0; width: 100%; }
+  .formula { overflow: visible; }
+}

@@ -17,3 +17,47 @@ window.Course = {
     { id: "chapter11", number: "11", title: "应用*", description: "选学：桁架静力分析、电网络分析与层次分析法。", path: null }
   ]
 };
+
+/* 三级目录：稳定的 id 用于学习记录，slug 用于网址。 */
+(function (course) {
+  const base = "chapters/chapter01/section01/";
+  course.chapters[0].lessons = [
+    { id: "chapter01-section01", number: "1.1", title: "向量及其运算", path: base + "index.html", readingPath: base + "all.html", anchor: "vector-operations",
+      pages: [
+        { slug: "what-is-a-vector", title: "什么是向量？", description: "从速度、位移和力认识大小、方向与向量记号。" },
+        { slug: "equal-vectors", title: "什么时候两个向量相等？", description: "理解向量相等，以及为什么平移不改变向量。" },
+        { slug: "special-vectors", title: "几种特殊的向量", description: "认识零向量、单位向量和负向量。" },
+        { slug: "vector-addition", title: "向量怎样相加？", description: "用平行四边形法则与三角形法则作图。" },
+        { slug: "vector-subtraction", title: "向量怎样相减？", description: "先取负向量，再做加法，注意箭头方向。" },
+        { slug: "scalar-multiplication", title: "一个数乘向量意味着什么？", description: "判断长度与方向的变化，认识线性运算。" },
+        { slug: "addition-laws", title: "向量加法满足什么规律？", description: "理解交换律、结合律、零元与负元。" },
+        { slug: "scalar-laws", title: "数乘满足什么规律？", description: "理解单位元、结合律与两条分配律。" },
+        { slug: "review", title: "本节回顾与自测", description: "串联概念，用两道题检查是否理解。" }
+      ] },
+    { id: "chapter01-section02", number: "1.2", title: "向量线性相关性", path: "chapters/chapter01.html#vector-dependence", anchor: "vector-dependence" },
+    { id: "chapter01-section03", number: "1.3", title: "坐标系、坐标与坐标变换", path: "chapters/chapter01.html#coordinates", anchor: "coordinates" },
+    { id: "chapter01-section04", number: "1.4", title: "复数与数域", path: "chapters/chapter01.html#complex-and-fields", anchor: "complex-and-fields" },
+    { id: "chapter01-section05", number: "1.5", title: "数组向量", path: "chapters/chapter01.html#array-vectors", anchor: "array-vectors" }
+  ];
+  course.chapters.forEach(function (chapter) {
+    (chapter.lessons || []).forEach(function (section) {
+      section.chapterId = chapter.id;
+      (section.pages || []).forEach(function (page, index) {
+        page.id = section.id + "-" + page.slug;
+        page.chapterId = chapter.id;
+        page.sectionId = section.id;
+        page.sectionNumber = section.number;
+        page.number = index + 1;
+        page.path = section.path.replace(/index\.html$/, page.slug + ".html");
+      });
+    });
+  });
+  course.getSections = function () { return course.chapters.flatMap(function (chapter) { return chapter.lessons || []; }); };
+  course.getSection = function (id) { return course.getSections().find(function (section) { return section.id === id; }); };
+  course.getUnits = function (chapterId) {
+    return course.chapters.filter(function (chapter) { return chapter.path && (!chapterId || chapter.id === chapterId); }).flatMap(function (chapter) {
+      return chapter.lessons ? chapter.lessons.flatMap(function (section) { return section.pages || [section]; }) : [chapter];
+    });
+  };
+  course.getUnit = function (id) { return course.getUnits().find(function (unit) { return unit.id === id; }); };
+}(window.Course));
