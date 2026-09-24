@@ -20,28 +20,28 @@ test('标记、撤销以及小节与章节汇总',()=>{
  const {p,c}=app(),s=c.getSections()[0];
  for(const page of s.pages)p.setUnitCompleted(page.id,true);
  assert.equal(p.getSectionSummary(s.id).percent,100);
- assert.equal(p.getSummary().completed,9);assert.equal(p.isCompleted('chapter01'),false);
- for(const unit of c.getUnits().slice(9))p.setUnitCompleted(unit.id,true);
+ assert.equal(p.getSummary().completed,s.pages.length);assert.equal(p.isCompleted('chapter01'),false);
+ for(const unit of c.getUnits().slice(s.pages.length))p.setUnitCompleted(unit.id,true);
  assert.equal(p.getSummary().percent,100);assert.equal(p.isCompleted('chapter01'),true);
  p.setUnitCompleted(s.pages[2].id,false);
- assert.equal(p.getSectionSummary(s.id).completed,8);assert.equal(p.getChapterSummary('chapter01').completed,12);
+ assert.equal(p.getSectionSummary(s.id).completed,s.pages.length-1);assert.equal(p.getChapterSummary('chapter01').completed,c.getUnits().length-1);
 });
 test('旧整章已完成记录迁移，原键与完成时间保留',()=>{
  const old=JSON.stringify({version:1,chapters:{chapter01:{completed:true,completedAt:'2026-01-01'}}});
  const saved=new Map([[V1,old]]),{p,c}=app(saved);
- assert.equal(p.getSummary().completed,13);assert.equal(p.isCompleted('chapter01'),true);
+ assert.equal(p.getSummary().completed,c.getUnits().length);assert.equal(p.isCompleted('chapter01'),true);
  p.setVisited(c.getUnits()[0].id);
  assert.equal(saved.get(V1),old);
  assert.equal(JSON.parse(saved.get(V2)).units[c.getUnits()[0].id].completedAt,'2026-01-01');
  p.setUnitCompleted(c.getUnits()[0].id,false);
- assert.equal(app(saved).p.getSummary().completed,12);
+ assert.equal(app(saved).p.getSummary().completed,c.getUnits().length-1);
 });
 test('旧未完成记录不会自动产生已学会的知识页',()=>{
  const saved=new Map([[V1,JSON.stringify({version:1,chapters:{chapter01:{completed:false}}})]]);
  assert.equal(app(saved).p.getSummary().completed,0);
 });
-test('整章批量标记和撤销作用于全部十三项',()=>{
- const {p}=app();p.setCompleted('chapter01',true);assert.equal(p.getSummary().completed,13);
+test('整章批量标记和撤销作用于全部知识页',()=>{
+ const {p,c}=app();p.setCompleted('chapter01',true);assert.equal(p.getSummary().completed,c.getUnits().length);
  p.setCompleted('chapter01',false);assert.equal(p.getSummary().completed,0);
  assert.equal(p.setCompleted('chapter99',true),false);
 });
@@ -70,4 +70,14 @@ test('过滤无效布尔值、未知阅读位置，不使用记录中的网址',
  const a=app(),id=a.c.getUnits()[0].id;
  const saved=new Map([[V2,JSON.stringify({version:2,chapters:{},units:{[id]:{completed:'true'}},lastVisited:{unitId:'javascript:bad'}})]]);
  const {p}=app(saved);assert.equal(p.getSummary().completed,0);assert.equal(p.getResumeUnit().id,id);
+});
+test('备份可恢复学习标记与阅读位置，错误文件不会改动当前记录',()=>{
+ const source=app(),id=source.c.getUnits()[1].id;
+ source.p.setUnitCompleted(id,true);source.p.setVisited(id);
+ const backup=source.p.exportRecords(),target=app();
+ assert.equal(target.p.importRecords(backup).success,true);
+ assert.equal(target.p.isUnitCompleted(id),true);assert.equal(target.p.getLastVisitedUnit().id,id);
+ const before=target.saved.get(V2);
+ assert.equal(target.p.importRecords('{bad json').success,false);
+ assert.equal(target.saved.get(V2),before);
 });

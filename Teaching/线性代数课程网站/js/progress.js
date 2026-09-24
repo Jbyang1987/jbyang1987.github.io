@@ -97,6 +97,56 @@ window.CourseProgress = (function () {
     const recent = readState().lastVisited;
     return recent ? course.getUnit(recent.unitId) : undefined;
   }
+  function clearRecords() {
+    memoryState = emptyState();
+    if (memoryOnly) return false;
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(LEGACY_KEY);
+      storageIssue = "";
+      return true;
+    } catch (error) {
+      memoryOnly = true;
+      storageIssue = "无法清除浏览器中已保存的学习记录。";
+      return false;
+    }
+  }
+  function exportRecords() {
+    return JSON.stringify({
+      format: "linear-algebra-learning-records",
+      formatVersion: 1,
+      exportedAt: new Date().toISOString(),
+      records: readState()
+    }, null, 2);
+  }
+  function importRecords(text) {
+    if (memoryOnly) return { success: false, message: "浏览器存储不可用，无法恢复记录。" };
+    let backup;
+    try { backup = JSON.parse(text); }
+    catch (error) { return { success: false, message: "文件不是有效的 JSON 备份。" }; }
+    if (!isObject(backup) || backup.format !== "linear-algebra-learning-records" || backup.formatVersion !== 1 ||
+        !isObject(backup.records) || backup.records.version !== 2 || !isObject(backup.records.chapters) || !isObject(backup.records.units)) {
+      return { success: false, message: "备份格式不正确或版本不受支持。" };
+    }
+    const state = emptyState(), chapterIds = new Set(course.chapters.map(function (chapter) { return chapter.id; }));
+    const units = new Set(course.getUnits().map(function (unit) { return unit.id; }));
+    for (const id of Object.keys(backup.records.units)) {
+      const record = backup.records.units[id];
+      if (!isObject(record) || typeof record.completed !== "boolean") return { success: false, message: "备份中的学习标记内容有误，未恢复任何记录。" };
+      if (units.has(id)) state.units[id] = cleanRecord(record);
+    }
+    for (const id of Object.keys(backup.records.chapters)) {
+      const record = backup.records.chapters[id];
+      if (!isObject(record) || typeof record.completed !== "boolean") return { success: false, message: "备份中的章节记录内容有误，未恢复任何记录。" };
+      if (chapterIds.has(id)) state.chapters[id] = cleanRecord(record);
+    }
+    const lastVisited = backup.records.lastVisited;
+    if (isObject(lastVisited) && units.has(lastVisited.unitId)) {
+      state.lastVisited = { unitId: lastVisited.unitId, visitedAt: typeof lastVisited.visitedAt === "string" ? lastVisited.visitedAt : null };
+    }
+    const saved = saveState(state);
+    return saved ? { success: true, message: "学习记录已恢复。" } : { success: false, message: storageIssue || "学习记录未能保存到浏览器。" };
+  }
   function getSummary() {
     const state = readState(), summary = summaryFor(course.getUnits(), state);
     const available = course.chapters.filter(function (chapter) { return chapter.path; });
@@ -108,5 +158,6 @@ window.CourseProgress = (function () {
   }
   return { isCompleted: isCompleted, setCompleted: setCompleted, isUnitCompleted: isUnitCompleted, setUnitCompleted: setUnitCompleted,
     getSectionSummary: getSectionSummary, getChapterSummary: getChapterSummary, setVisited: setVisited, getResumeUnit: getResumeUnit, getLastVisitedUnit: getLastVisitedUnit,
-    getSummary: getSummary, getStorageIssue: function () { return storageIssue; } };
+    getSummary: getSummary, clearRecords: clearRecords, exportRecords: exportRecords, importRecords: importRecords,
+    getStorageIssue: function () { return storageIssue; } };
 }());

@@ -1,0 +1,8 @@
+<div class="teaching-block lecture-topic" id="coordinate-change">
+          <h3>定义 · 坐标变换</h3><p>给定两个坐标系 \([O;\vec e_1,\vec e_2,\vec e_3]\) 和 \([O';\vec e'_1,\vec e'_2,\vec e'_3]\)。设点 \(P\) 的坐标分别为 \((x,y,z)\) 与 \((x',y',z')\)。按讲稿的记号，先给出：</p>
+          <ul class="lecture-list"><li>旧原点 \(O\) 在新坐标系中的坐标 \((x'_0,y'_0,z'_0)\)，即<div class="formula">\[\overrightarrow{O'O}=x'_0\vec e'_1+y'_0\vec e'_2+z'_0\vec e'_3\]</div></li><li>旧基向量在新基下的表示：<div class="formula">\[\vec e_j=a_{1j}\vec e'_1+a_{2j}\vec e'_2+a_{3j}\vec e'_3,\quad j=1,2,3.\]</div></li></ul>
+          <p>那么两个坐标之间的关系是：</p><div class="formula">\[\boxed{\begin{aligned}x'&amp;=a_{11}x+a_{12}y+a_{13}z+x'_0,\\y'&amp;=a_{21}x+a_{22}y+a_{23}z+y'_0,\\z'&amp;=a_{31}x+a_{32}y+a_{33}z+z'_0.\end{aligned}}\]</div>
+          <details class="lecture-proof"><summary>展开坐标变换的推导</summary><p>关键是三角形法则：</p><div class="formula">\[\overrightarrow{O'P}=\overrightarrow{O'O}+\overrightarrow{OP}.\]</div><p>把右侧的 \(\overrightarrow{OP}=x\vec e_1+y\vec e_2+z\vec e_3\) 展开，再把每个 \(\vec e_j\) 换成新基的线性组合。收集 \(\vec e'_1,\vec e'_2,\vec e'_3\) 的系数，便得到上面三条式子。</p><p>学习矩阵乘法后，可以把它简写为 \(X'=AX+X'_0\)，其中 \(A=(a_{ij})\) 的第 \(j\) 列正是旧基向量 \(\vec e_j\) 在新基下的坐标。</p></details>
+          <p class="lecture-note">这里变换的是<strong>点的坐标</strong>，所以包含原点平移项。对于同一个自由向量在两组基下的坐标，关系是 \(X'=AX\)，没有平移项。</p>
+        </div>
+<div class="teaching-block"><h3>例题 · 原点和基一起改变</h3><p>设 \(\overrightarrow{O'O}=\vec e'_1\)，并且 \(\vec e_1=2\vec e'_1\)、\(\vec e_2=\vec e'_1+\vec e'_2\)、\(\vec e_3=\vec e'_3\)。则</p><div class="formula">\[x'=2x+y+1,\qquad y'=y,\qquad z'=z.\]</div><p>旧坐标为 \((1,2,3)\) 的点，在新坐标系下是 \((5,2,3)\)。点没有移动，改变的是描述它所用的坐标系。</p></div>
