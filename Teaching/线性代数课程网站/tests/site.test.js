@@ -10,7 +10,8 @@ test('目录与正文生成的页面均已更新',()=>{
 test('所有页面的站内链接、图片、脚本和锚点有效，页面内 id 唯一',()=>{
  for(const file of pages){
   const html=fs.readFileSync(file,'utf8'),ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
-  if(file!==path.join(root,'index.html'))assert.ok(html.includes('data-print-page'),'页面缺少保存 PDF 按钮：'+file);
+  if (html.includes('data-page="knowledge"')) assert.ok(!html.includes('data-print-page'),'知识页不应显示 PDF 按钮：'+file);
+  else if(file!==path.join(root,'index.html'))assert.ok(html.includes('data-print-page'),'页面缺少保存 PDF 按钮：'+file);
   assert.ok(!html.includes('版权所有 © 2026'),'版权文字仍显示年份：'+file);
   assert.equal(new Set(ids).size,ids.length,'重复 id: '+file);
   for(const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)){

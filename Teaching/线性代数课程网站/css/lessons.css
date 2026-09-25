@@ -16,20 +16,19 @@
 .knowledge-status { display: block; font-size: var(--text-xs); color: var(--color-muted); font-weight: 400; }
 .knowledge-status.is-complete { color: var(--color-primary); }
 .knowledge-sidebar .sidebar-footer p { margin-block: .7rem; }
-.unit-completion { margin-top: 1.5rem; }
-.unit-action-row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
-.knowledge-step-actions { display: flex; flex-wrap: wrap; gap: .4rem; }
+.unit-completion { margin-top: .75rem; }
+.unit-action-row { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: .5rem; }
+.knowledge-step-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .4rem; margin-top: .45rem; }
 .knowledge-action-button { white-space: nowrap; }
-.previous-knowledge-button, .next-knowledge-button { border-color: #c5d8e8; background: #edf4fa; color: #315b79; }
-.previous-knowledge-button:hover, .next-knowledge-button:hover { background: #dcebf6; color: #254a67; }
+.knowledge-step-actions .knowledge-action-button { min-height: 0; padding: .25rem .65rem; border: var(--border); border-radius: 999px; background: transparent; color: var(--color-muted); font-size: var(--text-xs); font-weight: 400; line-height: 1.5; }
+.knowledge-step-actions .knowledge-action-button:hover { border-color: var(--color-primary); background: var(--color-soft); color: var(--color-primary); }
 .complete-knowledge-button { background: #317aac; }
 .complete-knowledge-button:hover { background: #256791; }
 .complete-knowledge-button.button-secondary { border-color: #8467b6; background: #9a7dcc; color: #fff; }
 .complete-knowledge-button.button-secondary:hover { border-color: #7055a1; background: #8062b2; color: #fff; }
 .continue-learning { background: #1f4f78; }
 .continue-learning:hover { background: #183e60; }
-.unit-action-row > [data-unit-complete] { margin-left: auto; }
-.unit-difficulty { position: relative; left: clamp(-8.75rem, -14vw, -7.5rem); display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: .5rem .75rem; margin: 0 0 .3rem; }
+.unit-difficulty { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: .5rem .75rem; margin: 0 0 .3rem; }
 .unit-difficulty-label { color: var(--color-muted); font-size: var(--text-xs); }
 .unit-difficulty-options { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .4rem; }
 .difficulty-button { border: var(--border); border-radius: 999px; padding: .25rem .65rem; background: transparent; color: var(--color-muted); font: inherit; font-size: var(--text-xs); line-height: 1.5; }

@@ -4,6 +4,7 @@
   const course = window.Course, chapters = course.chapters, progress = window.CourseProgress;
   const root = document.body.dataset.root || "./";
   const url = path => root + path;
+  const chapterOrdinal = number => "第" + ["", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一"][Number(number)] + "章";
   function textElement(tag, className, text) {
     const element = document.createElement(tag); element.className = className; element.textContent = text; return element;
   }
@@ -75,7 +76,7 @@
       if (chapter.path) row.href = url(chapter.path);
       const content = textElement("div", "chapter-row-content", "");
       const heading = textElement("div", "chapter-heading", "");
-      heading.append(textElement("span", "chapter-number", "§" + chapter.number), textElement("h3", "", chapter.title));
+      heading.append(textElement("span", "chapter-number", chapterOrdinal(chapter.number)), textElement("h3", "", chapter.title));
       content.append(heading, textElement("p", "", chapter.description)); row.append(content);
       const summary = chapter.path ? progress.getChapterSummary(chapter.id) : null;
       const status = completed ? "✓ 已完成" : summary ? "已学会 " + summary.completed + " / " + summary.total + " 页" : "即将开放";
@@ -220,14 +221,10 @@
           });
           return;
         }
-        const next = nextUnlearnedUnit(id);
-        document.querySelectorAll("[data-unit-message]").forEach(function (message) {
-          if (message.dataset.unitMessage === id) message.textContent = next ? "已标记为已学会" : "所有已开放页面都已学会";
-        });
         return;
       }
       document.querySelectorAll("[data-unit-message]").forEach(function (message) {
-        if (message.dataset.unitMessage === id) message.textContent = saved ? (done ? "已保存。可以继续下一页，也可以随时撤销标记。" : "已撤销标记，可以继续复习") : "标记仅保留在当前页面，尚未保存到浏览器。";
+        if (message.dataset.unitMessage === id) message.textContent = saved ? "" : "标记仅保留在当前页面，尚未保存到浏览器。";
       });
     });
   });
