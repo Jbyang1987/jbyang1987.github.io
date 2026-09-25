@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="350" viewBox="0 0 720 350" fill="none">
   <title>复数在复平面上的几何表示</title>
   <desc>复数 z=x+iy 对应点 P(x,y) 和从原点 O 到 P 的向量；图中标出实轴、虚轴、模长 r 与辐角 θ。</desc>
-  <defs><marker id="dark" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#23352f"/></marker></defs>
-  <rect width="720" height="350" rx="8" fill="#f0f4ef"/>
-  <path d="M70 246H648M160 305V38" stroke="#718577" stroke-width="1.5"/>
-  <path d="m644 241 5 5-5 5m-495-207 5-6 5 6" stroke="#718577" stroke-width="1.5"/>
-  <path d="M432 104 432 246M432 104 160 104" stroke="#819b8a" stroke-width="1.4" stroke-dasharray="5 6"/>
-  <path d="M160 246 432 104" stroke="#23352f" stroke-width="2.7" marker-end="url(#dark)"/>
-  <path d="M220 246A60 60 0 0 0 213 218" stroke="#24594b" stroke-width="1.8"/>
-  <circle cx="160" cy="246" r="3.5" fill="#23352f"/><circle cx="432" cy="104" r="4" fill="#24594b"/>
-  <g font-family="Georgia,serif" font-size="25" font-style="italic" fill="#23352f"><text x="435" y="84">P(x, y)</text><text x="292" y="156">r = |z|</text><text x="225" y="226" fill="#24594b">θ</text><text x="425" y="274">x</text><text x="137" y="105">y</text><text x="138" y="273">O</text></g>
-  <g font-family="Segoe UI,PingFang SC,Microsoft YaHei,sans-serif" font-size="22" fill="#647168"><text x="648" y="253">实轴</text><text x="117" y="38">虚轴</text><text x="475" y="120">z = x + iy</text></g>
+  <defs><marker id="dark" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#26364a"/></marker></defs>
+  <rect width="720" height="350" rx="8" fill="#eef4fb"/>
+  <path d="M70 246H648M160 305V38" stroke="#718ba6" stroke-width="1.5"/>
+  <path d="m644 241 5 5-5 5m-495-207 5-6 5 6" stroke="#718ba6" stroke-width="1.5"/>
+  <path d="M432 104 432 246M432 104 160 104" stroke="#8da7c0" stroke-width="1.4" stroke-dasharray="5 6"/>
+  <path d="M160 246 432 104" stroke="#26364a" stroke-width="2.7" marker-end="url(#dark)"/>
+  <path d="M220 246A60 60 0 0 0 213 218" stroke="#2f5f8f" stroke-width="1.8"/>
+  <circle cx="160" cy="246" r="3.5" fill="#26364a"/><circle cx="432" cy="104" r="4" fill="#2f5f8f"/>
+  <g font-family="Georgia,serif" font-size="25" font-style="italic" fill="#26364a"><text x="435" y="84">P(x, y)</text><text x="292" y="156">r = |z|</text><text x="225" y="226" fill="#2f5f8f">θ</text><text x="425" y="274">x</text><text x="137" y="105">y</text><text x="138" y="273">O</text></g>
+  <g font-family="Segoe UI,PingFang SC,Microsoft YaHei,sans-serif" font-size="22" fill="#60758d"><text x="648" y="253">实轴</text><text x="117" y="38">虚轴</text><text x="475" y="120">z = x + iy</text></g>
 </svg>

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="170" viewBox="0 0 720 170" fill="none">
   <title>空间中的点、向量和坐标一一对应</title>
   <desc>固定原点 O 后，点 P 对应向量 OP；再固定一组基，该向量对应有序数组 (x1,x2,x3)。</desc>
-  <rect width="720" height="170" rx="8" fill="#f0f4ef"/>
-  <g fill="#fff" stroke="#dce3db"><rect x="24" y="62" width="158" height="74" rx="7"/><rect x="277" y="62" width="166" height="74" rx="7"/><rect x="538" y="62" width="158" height="74" rx="7"/></g>
-  <g font-family="Segoe UI,PingFang SC,Microsoft YaHei,sans-serif" fill="#23352f" text-anchor="middle"><text x="103" y="88" font-size="22">空间中的点</text><text x="360" y="88" font-size="22">空间向量</text><text x="617" y="88" font-size="22">有序实数组</text></g>
-  <g font-family="Georgia,serif" font-size="22" font-style="italic" fill="#24594b" text-anchor="middle"><text x="103" y="124">P</text><text x="360" y="124">OP →</text><text x="617" y="124">(x₁, x₂, x₃)</text></g>
-  <g fill="#24594b" font-family="Segoe UI,PingFang SC,Microsoft YaHei,sans-serif" text-anchor="middle"><text x="230" y="42" font-size="22">固定原点 O</text><text x="490" y="42" font-size="22">固定一组基</text><text x="230" y="109" font-size="28">↔</text><text x="490" y="109" font-size="28">↔</text></g>
+  <rect width="720" height="170" rx="8" fill="#eef4fb"/>
+  <g fill="#fff" stroke="#d6e1ee"><rect x="24" y="62" width="158" height="74" rx="7"/><rect x="277" y="62" width="166" height="74" rx="7"/><rect x="538" y="62" width="158" height="74" rx="7"/></g>
+  <g font-family="Segoe UI,PingFang SC,Microsoft YaHei,sans-serif" fill="#26364a" text-anchor="middle"><text x="103" y="88" font-size="22">空间中的点</text><text x="360" y="88" font-size="22">空间向量</text><text x="617" y="88" font-size="22">有序实数组</text></g>
+  <g font-family="Georgia,serif" font-size="22" font-style="italic" fill="#2f5f8f" text-anchor="middle"><text x="103" y="124">P</text><text x="360" y="124">OP →</text><text x="617" y="124">(x₁, x₂, x₃)</text></g>
+  <g fill="#2f5f8f" font-family="Segoe UI,PingFang SC,Microsoft YaHei,sans-serif" text-anchor="middle"><text x="230" y="42" font-size="22">固定原点 O</text><text x="490" y="42" font-size="22">固定一组基</text><text x="230" y="109" font-size="28">↔</text><text x="490" y="109" font-size="28">↔</text></g>
 </svg>

@@ -8,9 +8,11 @@
 线性代数课程网站/
 ├─ index.html                 首页
 ├─ chapters/
-│  ├─ chapter01.html          第一章目录与整章阅读，旧锚点保留
+│  ├─ chapter01.html          第一章目录与整章阅读（生成文件）
 │  └─ chapter01/section0X/    第一章各小节的知识页、目录及整节阅读
-├─ content/chapter01/chapter01-section0X/  分页正文片段；1.1 手写维护，其余由整章内容生成
+├─ content/chapter01/
+│  ├─ chapter01.template.html 第一章页面模板
+│  └─ section0X/              各知识页的唯一正文源文件
 ├─ scripts/build-lessons.js   根据目录和正文生成静态网页
 ├─ tests/progress.test.js     学习记录与旧版本迁移的测试
 ├─ css/
@@ -34,7 +36,7 @@
 └─ README.md                  你正在阅读的维护说明
 ```
 
-首页文字在 `index.html`，第一章整章内容和旧锚点在 `chapters/chapter01.html`。1.1 的文字请修改 `content/chapter01/section01/` 中的片段；1.2–1.5 的分页片段保存在 `content/chapter01/chapter01-section0X/`，由生成脚本从整章页面按 `sourceRanges` 生成。不要直接修改生成的知识页或整章页面内的分页内容。不要手工修改 `assets/vendor` 里的工具文件。网站使用电脑自带字体，不请求在线字体。
+首页文字在 `index.html`。第一章所有知识页正文统一保存在 `content/chapter01/section0X/`；第一章的页面骨架、旧锚点和章节级说明保存在 `content/chapter01/chapter01.template.html`。`chapters/` 内的第一章页面均由生成脚本写出，不要直接修改。不要手工修改 `assets/vendor` 里的工具文件。网站使用电脑自带字体，不请求在线字体。
 
 ## 2. 如何打开网站？
 
@@ -54,7 +56,7 @@
 
 ## 4. 如何修改第一章某节的文字？
 
-1.2–1.5：打开 `chapters/chapter01.html`，搜索小节标题，例如“复数与数域”。五节分别对应原稿的五个 `subsection`，每节被包在一个 `<section class="lesson" ...>` 中，并有中文注释标明编号。
+打开 `content/chapter01/section0X/` 中对应知识页的文件；例如 1.4.2“怎样在复平面上表示复数？”位于 `content/chapter01/section04/complex-plane.html`。若需要调整第一章页面骨架、旧锚点或章节级说明，再修改 `content/chapter01/chapter01.template.html`。
 
 - `<p>这里是文字</p>`：一个段落。
 - `<h2>`：一节的标题；`<h3>`：思考、几何等教学环节的标题；`<h4>`：环节内的具体知识点。
@@ -66,18 +68,18 @@
 
 ### 第一章分页内容如何维护？
 
-第一章五个小节都已拆成知识页：1.1 为 9 页，1.2 为 5 页，1.3 为 5 页，1.4 为 4 页，1.5 为 6 页。每个 `chapters/chapter01/section0X/` 目录中，`index.html` 是本节目录，`all.html` 是整节阅读及打印入口。
+第一章五个小节都已拆成知识页：1.1 为 9 页，1.2 为 5 页，1.3 为 5 页，1.4 为 4 页，1.5 为 6 页。每个 `chapters/chapter01/section0X/` 目录中的 `index.html` 同时包含本节目录、整节阅读和打印入口。
 
 知识页使用层级编号：1.1 的页面依次为 1.1.1–1.1.9，其他小节按相同规则编号。点击“标记本页为已学会”后会自动进入下一页。
 
-- **正文**：1.1 修改 `content/chapter01/section01/` 下对应的 HTML 片段；1.2–1.5 修改 `chapters/chapter01.html` 中对应的整节内容，再由生成器提取分页片段。图片路径会由生成器按页面深度修正。
+- **正文**：统一修改 `content/chapter01/section0X/` 下对应的 HTML 片段。图片路径会由生成器按页面深度修正。
 - **标题、次序和说明**：修改 `js/course.js` 中第一章的 `lessons[0].pages`。`slug` 和学习记录编号已用于网址与存储，发布后应保持稳定。
-- **生成**：在网站目录执行 `node scripts/build-lessons.js`。无需安装依赖。脚本会更新全部知识页、各节目录、整节阅读和原整章页面中的 1.1 入口。
+- **生成**：在网站目录执行 `node scripts/build-lessons.js`。无需安装依赖。脚本会更新全部知识页、各节目录、整节阅读和完整第一章页面。
 - **检验**：执行 `node --test tests/progress.test.js tests/site.test.js`，再打开预览检查字号、公式和翻页。
 
 正文始终保存在静态网页中，关闭脚本仍能阅读和翻页。手机目录默认折叠，电脑目录默认展开。整节页可使用浏览器打印；打印内容由相同正文生成。
 
-每页都有独立“已学会”按钮；完成一个小节的全部知识页后，该小节才算完成。1.2–1.5 的整节阅读保留原有内容和锚点，分页页与整节页使用同一组生成片段。以后扩展其他章节时沿用同一层级与学习记录接口，并在 `js/course.js` 登记页面目录。
+每页都有独立“已学会”按钮；完成一个小节的全部知识页后，该小节才算完成。整节阅读、知识页和完整第一章页面均使用同一组正文片段，并保留既有锚点。以后扩展其他章节时沿用同一层级与学习记录接口，并在 `js/course.js` 登记页面目录。
 
 ### 与讲稿的对应关系
 

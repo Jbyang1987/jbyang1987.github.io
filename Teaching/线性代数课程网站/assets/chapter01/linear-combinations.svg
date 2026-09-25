@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" fill="none">
   <title>两个向量的三个线性组合</title>
   <desc>讲稿示例中 a=(1,-0.3)，b=(0.5,0.5)。图中显示 0.8a+2b、-1.5a+0.6b 与 -0.2a-b，所有终点落在同一平面。</desc>
-  <defs><marker id="green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#24594b"/></marker><marker id="blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#667b91"/></marker><marker id="dark" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#23352f"/></marker></defs>
-  <rect width="720" height="340" rx="8" fill="#f0f4ef"/><path d="M112 273 166 61 619 61 565 273Z" fill="#24594b" fill-opacity=".045" stroke="#dce3db"/>
-  <path d="M350 178 430 202" stroke="#24594b" stroke-width="2.5" marker-end="url(#green)"/><path d="M350 178 390 138" stroke="#667b91" stroke-width="2.5" marker-end="url(#blue)"/>
-  <path d="M350 178 494 117" stroke="#23352f" stroke-width="2.5" marker-end="url(#dark)"/><path d="M350 178 254 118" stroke="#24594b" stroke-width="2.2" marker-end="url(#green)"/><path d="M350 178 294 213" stroke="#667b91" stroke-width="2.2" marker-end="url(#blue)"/>
-  <path d="M414 197 494 117 390 138M230 214 254 118 374 154M334 183 294 213" stroke="#93a99b" stroke-width="1.2" stroke-dasharray="4 5"/>
-  <circle cx="350" cy="178" r="3.5" fill="#23352f"/>
-  <g font-family="Georgia,serif" font-size="23" font-style="italic"><text x="431" y="225" fill="#24594b">a</text><text x="395" y="136" fill="#667b91">b</text><text x="497" y="104" fill="#23352f">0.8a + 2b</text><text x="128" y="100" fill="#24594b">−1.5a + 0.6b</text><text x="124" y="237" fill="#667b91">−0.2a − b</text></g>
-  <text x="326" y="202" font-family="Georgia,serif" font-size="22" fill="#647168">O</text>
+  <defs><marker id="green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#2f5f8f"/></marker><marker id="blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#667b91"/></marker><marker id="dark" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#26364a"/></marker></defs>
+  <rect width="720" height="340" rx="8" fill="#eef4fb"/><path d="M112 273 166 61 619 61 565 273Z" fill="#2f5f8f" fill-opacity=".045" stroke="#d6e1ee"/>
+  <path d="M350 178 430 202" stroke="#2f5f8f" stroke-width="2.5" marker-end="url(#green)"/><path d="M350 178 390 138" stroke="#667b91" stroke-width="2.5" marker-end="url(#blue)"/>
+  <path d="M350 178 494 117" stroke="#26364a" stroke-width="2.5" marker-end="url(#dark)"/><path d="M350 178 254 118" stroke="#2f5f8f" stroke-width="2.2" marker-end="url(#green)"/><path d="M350 178 294 213" stroke="#667b91" stroke-width="2.2" marker-end="url(#blue)"/>
+  <path d="M414 197 494 117 390 138M230 214 254 118 374 154M334 183 294 213" stroke="#9db4cc" stroke-width="1.2" stroke-dasharray="4 5"/>
+  <circle cx="350" cy="178" r="3.5" fill="#26364a"/>
+  <g font-family="Georgia,serif" font-size="23" font-style="italic"><text x="431" y="225" fill="#2f5f8f">a</text><text x="395" y="136" fill="#667b91">b</text><text x="497" y="104" fill="#26364a">0.8a + 2b</text><text x="128" y="100" fill="#2f5f8f">−1.5a + 0.6b</text><text x="124" y="237" fill="#667b91">−0.2a − b</text></g>
+  <text x="326" y="202" font-family="Georgia,serif" font-size="22" fill="#60758d">O</text>
 </svg>

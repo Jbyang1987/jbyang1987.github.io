@@ -21,17 +21,20 @@ test('所有页面的站内链接、图片、脚本和锚点有效，页面内 i
   }
  }
 });
-test('知识页正文与子节首页中的整节阅读来自相同片段',()=>{
-  for(const page of section.pages){
-  const fragment=fs.readFileSync(path.join(root,'content/chapter01/section01',page.slug+'.html'),'utf8');
-  for(const file of [page.path,section.readingPath,'chapters/chapter01.html']){
-   const prefix='../'.repeat(file.split('/').length-1),html=fs.readFileSync(path.join(root,file),'utf8');
-   assert.ok(html.includes(fragment.replaceAll('{{root}}',prefix)),file+' 正文不一致');
-   if(file===page.path) {
-    assert.ok(!html.includes('knowledge-sidebar'),'知识页仍显示左侧目录栏：'+file);
-    assert.ok(!html.includes('已学会 9 / 9 页'));
-    assert.ok(!html.includes('本节概览 · 整节阅读'));
-    assert.ok(!html.includes('class="breadcrumbs"'));
+test('所有知识页、整节阅读和章节页均使用 content 中的同一正文片段',()=>{
+ for(const info of sections){
+  const sourceFolder='section'+info.number.split('.')[1].padStart(2,'0');
+  for(const page of info.pages){
+   const source=fs.readFileSync(path.join(root,'content','chapter01',sourceFolder,page.slug+'.html'),'utf8');
+   for(const file of [page.path,info.readingPath,'chapters/chapter01.html']){
+    const prefix='../'.repeat(file.split('/').length-1),html=fs.readFileSync(path.join(root,file),'utf8');
+    const chapterHref=path.posix.relative(path.posix.dirname(file),'chapters/chapter01.html')+'#linear-operation-laws';
+    const fragment=source.replaceAll('{{root}}',prefix).replaceAll('src="../assets/',`src="${prefix}assets/`).replaceAll('href="#linear-operation-laws"',`href="${chapterHref}"`);
+    assert.ok(html.includes(fragment),file+' 正文不一致：'+page.id);
+    if(file===page.path) {
+     assert.ok(!html.includes('knowledge-sidebar'),'知识页仍显示左侧目录栏：'+file);
+     assert.ok(!html.includes('class="breadcrumbs"'));
+    }
    }
   }
  }
@@ -74,8 +77,9 @@ test('1.2–1.5 的知识页、整节阅读和目录合并在子节首页',()=>{
   } else assert.ok(indexHtml.includes('返回第一章目录'),'最后一节未提供章节目录入口');
   assert.ok(indexHtml.includes('href="index.html#main">回顾本节</a>'),'回顾本节未返回子节页顶部：'+info.id);
   assert.ok(!fs.existsSync(path.join(root,info.path.replace('index.html','all.html'))),'仍生成独立整节页面：'+info.id);
-  assert.equal(info.pages.length,info.sourceRanges.length);
   for(const page of info.pages){
+   const sourceFolder='section'+info.number.split('.')[1].padStart(2,'0');
+   assert.ok(fs.existsSync(path.join(root,'content','chapter01',sourceFolder,page.slug+'.html')),'缺少正文源文件：'+page.id);
    const file=path.join(root,page.path),html=fs.readFileSync(file,'utf8');
    assert.ok(html.includes('<span class="knowledge-page-number">§'+info.number+'.'+page.number+'</span>'));
    assert.ok(html.includes('data-unit-complete="'+page.id+'"'));

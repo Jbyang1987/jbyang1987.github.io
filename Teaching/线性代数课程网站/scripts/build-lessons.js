@@ -16,7 +16,12 @@ const relative = (from, to) => path.posix.relative(path.posix.dirname(from), to.
 const prefix = file => '../'.repeat(file.split('/').length - 1);
 const link = (file, target, text, attrs = '') => `<a href="${relative(file, target)}"${attrs}>${String(text).replace(/<span aria-hidden="true">[↗→←↑]<\/span>/g, '').replace(/[↗→←↑]/g, '')}</a>`;
 const pageNumber = (info, page) => `${info.number}.${page.number}`;
-const content = (page, file) => fs.readFileSync(path.join(root, 'content/chapter01/section01', page.slug + '.html'), 'utf8').replaceAll('{{root}}', prefix(file));
+const sectionFolder = info => `section${info.number.split('.')[1].padStart(2, '0')}`;
+const fragmentPath = (info, page) => path.join(root, 'content/chapter01', sectionFolder(info), page.slug + '.html');
+const content = (info, page, file) => fs.readFileSync(fragmentPath(info, page), 'utf8')
+  .replaceAll('{{root}}', prefix(file))
+  .replaceAll('src="../assets/', `src="${prefix(file)}assets/`)
+  .replaceAll('href="#linear-operation-laws"', `href="${relative(file, 'chapters/chapter01.html#linear-operation-laws')}"`);
 const completion = (page, label = '本页', includeNext = true) => `<div class="unit-completion"><button class="button button-primary" type="button" data-unit-complete="${page.id}" data-unit-label="${label}" disabled>标记${label}为已学会</button><p class="completion-message" data-unit-message="${page.id}" role="status" aria-live="polite"></p>${includeNext ? `<p class="completion-next" data-next-unlearned="${page.id}" aria-live="polite"></p>` : ''}</div>`;
 function sidebar(file, current) {
   return `<aside class="chapter-sidebar knowledge-sidebar" aria-label="本节目录">
@@ -26,8 +31,8 @@ function sidebar(file, current) {
   </aside>`;
 }
 function sectionPathNav(file, info, includeSection = true) {
-  const sectionCrumb = includeSection ? `<span aria-hidden="true">/</span>${link(file,info.path,`${info.number} ${escape(info.title)}`)}` : '';
-  return `<nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-path">${link(file,'index.html','线性代数')}<span aria-hidden="true">/</span>${link(file,chapter.path,'第一章 · 向量')}${sectionCrumb}</span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">保存 PDF</button></nav>`;
+  const sectionCrumb = includeSection ? `<span class="header-separator" aria-hidden="true">/</span><span class="header-section">${link(file,info.path,`${info.number}节`)}</span>` : '';
+  return `<nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-path"><span class="header-home">${link(file,'index.html','首页')}</span><span class="header-separator" aria-hidden="true">/</span><span class="header-chapter">${link(file,chapter.path,'1章')}</span>${sectionCrumb}</span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button></nav>`;
 }
 function shell(file, title, body, current = '', kind = 'knowledge') {
   const p = prefix(file);
@@ -67,7 +72,7 @@ function write(file, html) {
   }
 }
 function parts(file, includeCompletion = true, includeNext = true) {
-  return section.pages.map(page => `<section class="lesson knowledge-part" id="part-${page.slug}" data-reading-unit="${page.id}"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§${pageNumber(section,page)}</span><h2><a class="heading-link" href="${relative(file,page.path)}">${escape(page.title)}</a></h2></div>${content(page,file)}${includeCompletion ? completion(page, '本页', includeNext) : ''}</section>`).join('\n');
+  return section.pages.map(page => `<section class="lesson knowledge-part" id="part-${page.slug}" data-reading-unit="${page.id}"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§${pageNumber(section,page)}</span><h2><a class="heading-link" href="${relative(file,page.path)}">${escape(page.title)}</a></h2></div>${content(section,page,file)}${includeCompletion ? completion(page, '本页', includeNext) : ''}</section>`).join('\n');
 }
 function sectionIndexBody(info, file) {
   const first = info.pages[0];
@@ -76,7 +81,7 @@ function sectionIndexBody(info, file) {
 }
 function fullReadingBody(info, file) {
   const partsHtml = info.pages.map(page => {
-    const fragment = info === section ? content(page,file) : additionalContent(page,file);
+    const fragment = content(info,page,file);
     return `<section class="lesson knowledge-part" id="part-${page.slug}" data-reading-unit="${page.id}"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§${pageNumber(info,page)}</span><h2><a class="heading-link" href="${relative(file,page.path)}">${escape(page.title)}</a></h2></div>${fragment}${info === section ? completion(page,'本页',false) : additionalCompletion(page,false)}</section>`;
   }).join('');
   const sectionIndex = chapter.lessons.indexOf(info), previousSection = chapter.lessons[sectionIndex - 1], nextSection = chapter.lessons[sectionIndex + 1];
@@ -93,14 +98,14 @@ section.pages.forEach((page,index) => {
   const prev = section.pages[index-1], next = section.pages[index+1];
   const nav = `<nav class="page-navigation" aria-label="前后翻页">${prev ? link(page.path,prev.path,`<span>← 上一页</span><strong>${escape(prev.title)}</strong>`) : link(page.path,section.path,'<span>← 返回本节目录</span><strong>1.1 向量及其运算</strong>')}${next ? link(page.path,next.path,`<span>下一页 →</span><strong>${escape(next.title)}</strong>`,' rel="next"') : link(page.path,chapter.lessons[1].path,'<span>下一节 →</span><strong>1.2 向量线性相关性</strong>',' rel="next"')}</nav>`;
   const body = `<header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§${pageNumber(section,page)}</span><span>${escape(page.title)}</span></h1><p class="knowledge-goal">${escape(page.description)}</p></header>
-    <article class="lesson knowledge-lesson">${content(page,page.path)}</article>
-    ${completion(page)}${nav}<div class="reading-options">${index > 0 ? link(page.path,section.path,'返回本节目录') : ''}${link(page.path,section.readingPath+'#part-'+page.slug,'整节阅读')}</div>`;
+    <article class="lesson knowledge-lesson">${content(section,page,page.path)}</article>
+    ${completion(page)}${nav}<div class="reading-options">${index > 0 ? link(page.path,section.path,'返回本节目录') : ''}${link(page.path,section.readingPath+'#part-'+page.slug,'整节阅读')}${link(page.path,chapter.path,'整章阅读')}</div>`;
   write(page.path,shell(page.path,page.title,body,page.id));
 });
 write(section.path,shell(section.path,`${section.number} ${section.title}`,sectionIndexBody(section,section.path)+fullReadingBody(section,section.path),'','section-index'));
 // 旧的整章页面保留全部锚点；1.1 同样由上述正文生成，避免维护重复内容。
-const chapterFile=path.join(root,chapter.path);
-let chapterHtml=fs.readFileSync(chapterFile,'utf8');
+const chapterTemplate=path.join(root,'content/chapter01/chapter01.template.html');
+let chapterHtml=fs.readFileSync(chapterTemplate,'utf8');
 const start='      <!-- 1.1 对应讲稿：向量及其运算 -->';
 const end='      <!-- 1.2 对应讲稿：向量线性相关性 -->';
 if(!chapterHtml.includes(start)||!chapterHtml.includes(end))throw new Error('找不到原章的 1.1 / 1.2 边界');
@@ -120,35 +125,7 @@ if (outlineStart >= 0 && outlineEnd >= 0) {
   });
   chapterHtml = chapterHtml.slice(0, outlineStart) + outline + chapterHtml.slice(outlineEnd);
 }
-/* 1.2–1.5 使用原整节页面作为内容来源，按 sourceRanges 拆成知识页。
-   这样旧的整节阅读和锚点继续存在，同时新页面不复制另一份手写正文。 */
-function directBlocks(inner) {
-  const token = /<\/?[A-Za-z][^>]*>/g;
-  const voidTags = /^(img|br|hr|input|meta|link)$/i;
-  let depth = 0, start = -1, match, blocks = [];
-  while ((match = token.exec(inner))) {
-    const tag = match[0];
-    if (/^<\//.test(tag)) {
-      if (depth > 0) { depth -= 1; if (depth === 0) { blocks.push(inner.slice(start, token.lastIndex)); start = -1; } }
-      continue;
-    }
-    const name = (tag.match(/^<([A-Za-z][\w-]*)/) || [])[1];
-    if (!name || voidTags.test(name) || /\/\s*>$/.test(tag)) continue;
-    if (depth === 0) start = match.index;
-    depth += 1;
-  }
-  return blocks;
-}
-function sourceBlocks(sectionInfo) {
-  const html = fs.readFileSync(path.join(root, chapter.path), 'utf8');
-  const start = html.indexOf(`<section class="lesson" id="${sectionInfo.anchor}"`);
-  const end = html.indexOf('\n      </section>', start);
-  if (start < 0 || end < 0) throw new Error(`找不到 ${sectionInfo.anchor}`);
-  const sectionHtml = html.slice(start, end);
-  const bodyStart = sectionHtml.indexOf('>') + 1;
-  const body = sectionHtml.slice(bodyStart);
-  return directBlocks(body).filter(block => !/class="lesson-heading"/.test(block));
-}
+/* 所有可编辑正文均位于 content/chapter01/section0X；章节页从这些片段生成。 */
 function writeAdditional(file, html) {
   html = html.replaceAll('开始本节学习 →', '开始本节学习');
   const target = path.join(root, file);
@@ -167,34 +144,18 @@ function additionalShell(file, info, title, body, current = '', kind = 'knowledg
   const breadcrumbs = '';
   return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escape(title)}；${info.number} ${escape(info.title)}，线性代数课程。"><title>${escape(title)}${indexPage ? "" : " | " + info.number + " " + escape(info.title)} | 线性代数</title><link rel="icon" href="${p}assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${p}css/style.css"><link rel="stylesheet" href="${p}css/chapter01.css"><link rel="stylesheet" href="${p}css/lessons.css"><script defer src="${p}js/course.js"></script><script defer src="${p}js/progress.js"></script><script defer src="${p}js/main.js"></script><script defer src="${p}js/mathjax-config.js"></script><script defer src="${p}assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="${kind}" data-root="${p}" data-chapter="${chapter.id}" data-section="${info.id}"${current ? ` data-unit="${current}"` : ''}><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><a class="brand" href="${p}index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="${p}assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a>${sectionPathNav(file,info,kind !== 'section-index')}</header><div class="${layoutClass} page-width">${sidebarHtml}<main id="main" class="chapter-content">${breadcrumbs}<p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页仍可使用。公式排版和学习记录需要在浏览器中允许脚本运行。</p></noscript>${body}</main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>\n`;
 }
-function additionalContent(page, file) {
-  return fs.readFileSync(path.join(root, 'content/chapter01', page.sectionId, page.slug + '.html'), 'utf8')
-    .replaceAll('{{root}}', prefix(file)).replaceAll('src="../assets/', `src="${prefix(file)}assets/`)
-    .replaceAll('href="#linear-operation-laws"', `href="${relative(file, 'chapters/chapter01.html#linear-operation-laws')}"`);
-}
 function additionalCompletion(page, includeNext = true) { return `<div class="unit-completion"><button class="button button-primary" type="button" data-unit-complete="${page.id}" data-unit-label="本页" disabled>标记本页为已学会</button><p class="completion-message" data-unit-message="${page.id}" role="status" aria-live="polite"></p>${includeNext ? `<p class="completion-next" data-next-unlearned="${page.id}" aria-live="polite"></p>` : ''}</div>`; }
 function generateAdditional(info) {
-  let blocks; const sectionFolder = info.path.replace(/index\.html$/, '');
+  const outputFolder = info.path.replace(/index\.html$/, '');
   info.pages.forEach((page, index) => {
-    page.sectionId = info.id; page.chapterId = chapter.id; page.sectionNumber = info.number; page.number = index + 1; page.path = sectionFolder + page.slug + '.html';
-    const fragmentPath = `content/chapter01/${info.id}/${page.slug}.html`;
-    let fragment;
-    if (fs.existsSync(path.join(root, fragmentPath))) {
-      fragment = fs.readFileSync(path.join(root, fragmentPath), 'utf8');
-    } else {
-      if (!blocks) blocks = sourceBlocks(info);
-      const range = info.sourceRanges[index];
-      if (!range) throw new Error(`${info.id} 缺少第 ${index + 1} 页的 sourceRanges`);
-      fragment = blocks.slice(range[0], range[1] + 1).join('\n');
-      if (!checkOnly) { fs.mkdirSync(path.dirname(path.join(root, fragmentPath)), { recursive: true }); fs.writeFileSync(path.join(root, fragmentPath), fragment); }
-      else stale.push(fragmentPath);
-    }
+    page.sectionId = info.id; page.chapterId = chapter.id; page.sectionNumber = info.number; page.number = index + 1; page.path = outputFolder + page.slug + '.html';
+    if (!fs.existsSync(fragmentPath(info, page))) throw new Error(`缺少正文源文件：content/chapter01/${sectionFolder(info)}/${page.slug}.html`);
     const prev = info.pages[index - 1], next = info.pages[index + 1];
     const previousLink = prev ? link(page.path, prev.path, `<span>← 上一页</span><strong>${escape(prev.title)}</strong>`) : link(page.path, info.path, `<span>← 返回本节目录</span><strong>${info.number} ${escape(info.title)}</strong>`);
     const followingSection = chapter.lessons[chapter.lessons.indexOf(info) + 1];
     const nextLink = next ? link(page.path, next.path, `<span>下一页</span><strong>${escape(next.title)}</strong>`, ' rel="next"') : followingSection ? link(page.path, followingSection.path, `<span>下一节</span><strong>${followingSection.number} ${escape(followingSection.title)}</strong>`, ' rel="next"') : link(page.path, chapter.path, '<span>返回本章目录</span><strong>第一章 · 向量</strong>');
-    const pageFragment = fragment.replaceAll('{{root}}', prefix(page.path)).replaceAll('src="../assets/', `src="${prefix(page.path)}assets/`).replaceAll('href="#linear-operation-laws"', `href="${relative(page.path, 'chapters/chapter01.html#linear-operation-laws')}"`);
-    const body = `<header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§${pageNumber(info,page)}</span><span>${escape(page.title)}</span></h1><p class="knowledge-goal">${escape(page.description)}</p></header><article class="lesson knowledge-lesson">${pageFragment}</article>${additionalCompletion(page)}<nav class="page-navigation" aria-label="前后翻页">${previousLink}${nextLink}</nav><div class="reading-options">${index > 0 ? link(page.path,info.path,'返回本节目录') : ''}${link(page.path,info.readingPath+'#part-'+page.slug,'整节阅读')}</div>`;
+    const pageFragment = content(info,page,page.path);
+    const body = `<header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§${pageNumber(info,page)}</span><span>${escape(page.title)}</span></h1><p class="knowledge-goal">${escape(page.description)}</p></header><article class="lesson knowledge-lesson">${pageFragment}</article>${additionalCompletion(page)}<nav class="page-navigation" aria-label="前后翻页">${previousLink}${nextLink}</nav><div class="reading-options">${index > 0 ? link(page.path,info.path,'返回本节目录') : ''}${link(page.path,info.readingPath+'#part-'+page.slug,'整节阅读')}${link(page.path,chapter.path,'整章阅读')}</div>`;
     writeAdditional(page.path, additionalShell(page.path, info, page.title, body, page.id));
   });
   writeAdditional(info.path, additionalShell(info.path, info, `${info.number} ${info.title}`, sectionIndexBody(info,info.path)+fullReadingBody(info,info.path), '', 'section-index'));
@@ -203,9 +164,7 @@ chapter.lessons.slice(1).forEach(generateAdditional);
 // 在原章页面中也按知识页展示 1.2–1.5，每页对应独立的学习标记。
 function embeddedAdditionalParts(info, file) {
   return info.pages.map(page => {
-    const fragment = fs.readFileSync(path.join(root, 'content/chapter01', info.id, page.slug + '.html'), 'utf8')
-      .replaceAll('{{root}}', prefix(file)).replaceAll('src="../assets/', `src="${prefix(file)}assets/`)
-      .replaceAll('href="#linear-operation-laws"', `href="${relative(file, 'chapters/chapter01.html#linear-operation-laws')}"`);
+    const fragment = content(info,page,file);
     return `<section class="lesson knowledge-part" id="part-${info.id}-${page.slug}" data-reading-unit="${page.id}"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§${pageNumber(info,page)}</span><h2><a class="heading-link" href="${relative(file,page.path)}">${escape(page.title)}</a></h2></div>${fragment}${completion(page,'本页',false)}</section>`;
   }).join('\n');
 }

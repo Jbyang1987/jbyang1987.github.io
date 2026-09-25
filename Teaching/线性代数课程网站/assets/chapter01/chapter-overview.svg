@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="390" viewBox="0 0 720 390" fill="none">
   <title>第一章知识关系图</title>
   <desc>空间向量经线性运算产生线性组合，进而研究相关性与坐标。复数引出数域，再引出高维数组向量及其线性运算和基本向量。</desc>
-  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 9 4 0 8" fill="#7b9886"/></marker></defs>
-  <rect width="720" height="390" rx="8" fill="#f0f4ef"/>
-  <g fill="#fff" stroke="#dce3db" stroke-width="1.2">
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 9 4 0 8" fill="#7899b9"/></marker></defs>
+  <rect width="720" height="390" rx="8" fill="#eef4fb"/>
+  <g fill="#fff" stroke="#d6e1ee" stroke-width="1.2">
     <rect x="30" y="31" width="127" height="48" rx="5"/><rect x="202" y="31" width="127" height="48" rx="5"/><rect x="374" y="31" width="127" height="48" rx="5"/><rect x="546" y="31" width="144" height="48" rx="5"/>
     <rect x="30" y="130" width="127" height="48" rx="5"/><rect x="202" y="130" width="127" height="48" rx="5"/><rect x="374" y="130" width="127" height="48" rx="5"/><rect x="546" y="130" width="144" height="48" rx="5"/>
     <rect x="30" y="229" width="127" height="48" rx="5"/><rect x="202" y="229" width="127" height="48" rx="5"/><rect x="374" y="229" width="127" height="48" rx="5"/><rect x="546" y="229" width="144" height="48" rx="5"/>
     <rect x="30" y="326" width="127" height="40" rx="5"/><rect x="202" y="326" width="127" height="40" rx="5"/>
   </g>
-  <g stroke="#7b9886" stroke-width="1.6" marker-end="url(#arrow)">
+  <g stroke="#7899b9" stroke-width="1.6" marker-end="url(#arrow)">
     <path d="M157 55H200M329 55H372M501 55H544"/>
     <path d="M437 79V127M618 79V127"/>
     <path d="M157 154H200M329 154H372M501 154H544"/>
@@ -17,7 +17,7 @@
     <path d="M157 253H200M329 253H372M501 253H544"/>
     <path d="M618 277V321M437 277V323M329 346H371"/>
   </g>
-  <g font-family="Segoe UI,PingFang SC,Microsoft YaHei,sans-serif" font-size="22" fill="#23352f" text-anchor="middle">
+  <g font-family="Segoe UI,PingFang SC,Microsoft YaHei,sans-serif" font-size="22" fill="#26364a" text-anchor="middle">
     <text x="93" y="61">空间向量</text><text x="265" y="61">线性运算</text><text x="437" y="61">线性组合</text><text x="618" y="61">线性相关性</text>
     <text x="93" y="160">仿射坐标系</text><text x="265" y="160">坐标</text><text x="437" y="160">坐标变换</text><text x="618" y="160">基本向量</text>
     <text x="93" y="259">复数</text><text x="265" y="259">数域</text><text x="437" y="259">数组向量</text><text x="618" y="259">数组线性运算</text>

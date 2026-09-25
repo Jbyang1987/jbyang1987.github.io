@@ -2,19 +2,19 @@
   <title>向量减法：a 减 b</title>
   <desc>按讲稿中的端点关系绘制。共用起点 O 时，从 b 的终点 B 指向 a 的终点 A 的向量是 a-b。</desc>
   <defs>
-    <marker id="green" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 9 4 0 8" fill="#24594b"/></marker>
+    <marker id="green" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 9 4 0 8" fill="#2f5f8f"/></marker>
     <marker id="blue" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 9 4 0 8" fill="#667b91"/></marker>
-    <marker id="dark" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 9 4 0 8" fill="#23352f"/></marker>
+    <marker id="dark" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 9 4 0 8" fill="#26364a"/></marker>
   </defs>
-  <rect width="720" height="300" rx="8" fill="#f0f4ef"/>
-  <path d="M290 190 380 70 245 25 155 145Z" fill="#24594b" fill-opacity=".05"/>
-  <path d="M380 70 245 25 155 145" stroke="#819b8a" stroke-width="1.5" stroke-dasharray="5 6"/>
-  <path d="M290 190 380 70" stroke="#24594b" stroke-width="2.5" marker-end="url(#green)"/>
+  <rect width="720" height="300" rx="8" fill="#eef4fb"/>
+  <path d="M290 190 380 70 245 25 155 145Z" fill="#2f5f8f" fill-opacity=".05"/>
+  <path d="M380 70 245 25 155 145" stroke="#8da7c0" stroke-width="1.5" stroke-dasharray="5 6"/>
+  <path d="M290 190 380 70" stroke="#2f5f8f" stroke-width="2.5" marker-end="url(#green)"/>
   <path d="M290 190 425 235" stroke="#667b91" stroke-width="2.5" marker-end="url(#blue)"/>
   <path d="M290 190 155 145" stroke="#667b91" stroke-width="2.5" marker-end="url(#blue)"/>
-  <path d="M290 190 245 25" stroke="#23352f" stroke-width="2.5" marker-end="url(#dark)"/>
-  <path d="M425 235 380 70" stroke="#23352f" stroke-width="2.5" marker-end="url(#dark)"/>
-  <circle cx="290" cy="190" r="3.5" fill="#23352f"/>
-  <g font-family="Georgia,serif" font-size="24" font-style="italic"><text x="330" y="105" fill="#24594b">a</text><text x="363" y="236" fill="#667b91">b</text><text x="182" y="165" fill="#667b91">−b</text><text x="210" y="75" fill="#23352f">a − b</text><text x="431" y="155" fill="#23352f">a − b</text></g>
-  <g font-family="Georgia,serif" font-size="22" fill="#647168"><text x="271" y="212">O</text><text x="385" y="63">A</text><text x="433" y="251">B</text></g>
+  <path d="M290 190 245 25" stroke="#26364a" stroke-width="2.5" marker-end="url(#dark)"/>
+  <path d="M425 235 380 70" stroke="#26364a" stroke-width="2.5" marker-end="url(#dark)"/>
+  <circle cx="290" cy="190" r="3.5" fill="#26364a"/>
+  <g font-family="Georgia,serif" font-size="24" font-style="italic"><text x="330" y="105" fill="#2f5f8f">a</text><text x="363" y="236" fill="#667b91">b</text><text x="182" y="165" fill="#667b91">−b</text><text x="210" y="75" fill="#26364a">a − b</text><text x="431" y="155" fill="#26364a">a − b</text></g>
+  <g font-family="Georgia,serif" font-size="22" fill="#60758d"><text x="271" y="212">O</text><text x="385" y="63">A</text><text x="433" y="251">B</text></g>
 </svg>
