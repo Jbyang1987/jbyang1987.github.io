@@ -45,7 +45,7 @@ test('九页顺序和边界翻页完整，末页通向 1.2',()=>{
  for(let i=0;i<section.pages.length;i++){
   const page=section.pages[i],html=fs.readFileSync(path.join(root,page.path),'utf8');
   assert.ok(html.includes('<span class="knowledge-page-number">§1.1.'+(i+1)+'</span>'));
-  assert.ok(html.includes('>标记本页为已学会</button>'),'知识页缺少完成标记按钮：'+page.id);
+  assert.ok(html.includes('>标记为已学会</button>'),'知识页缺少完成标记按钮：'+page.id);
   assert.ok(html.includes('class="knowledge-step-actions"'),'知识页缺少知识点翻页按钮：'+page.id);
   assert.ok(html.includes('>上一知识点</a>') || i===0,'知识页缺少上一知识点按钮：'+page.id);
   assert.ok(html.includes('>下一知识点</a>'),'知识页缺少下一知识点按钮：'+page.id);
@@ -61,6 +61,8 @@ test('1.2–1.5 的知识页、整节阅读和目录合并在子节首页',()=>{
   const chapterHtml=fs.readFileSync(path.join(root,'chapters/chapter01.html'),'utf8');
   assert.ok(chapterHtml.includes('href="#main">回顾本章'),'本章回顾应返回顶部');
   assert.ok(!chapterHtml.includes('knowledge-step-actions">false'),'章节页不应显示 false');
+  assert.ok(!chapterHtml.includes('continue-learning'),'章节页不应显示继续学习卡片');
+  assert.ok(!chapterHtml.includes('data-complete-button'),'章节页不应显示整章完成按钮');
   for(const info of sections.slice(1)){
   assert.ok(fs.existsSync(path.join(root,info.path)));
   const indexHtml=fs.readFileSync(path.join(root,info.path),'utf8');
@@ -74,6 +76,7 @@ test('1.2–1.5 的知识页、整节阅读和目录合并在子节首页',()=>{
   assert.ok(!indexHtml.includes('整节阅读 · 共'));
   assert.ok(!indexHtml.includes('完整阅读本节，或使用浏览器的打印功能保存。'));
   assert.ok(!indexHtml.includes('data-next-unlearned='));
+  assert.ok(!indexHtml.includes('continue-learning'),'子节页不应显示继续学习卡片：'+info.id);
   assert.ok(indexHtml.includes('返回课程首页'),'缺少底部课程主页导航：'+info.id);
   const sectionIndex=sections.indexOf(info);
   if (sectionIndex > 0) {

@@ -32,6 +32,10 @@
     document.body.append(burst);
     window.setTimeout(function () { burst.remove(); }, large ? 5300 : 1100);
   }
+  function unitLabel(unit) {
+    const number = unit.sectionNumber ? `${unit.sectionNumber}.${unit.number}` : unit.number;
+    return number + " · " + unit.title;
+  }
   function nextUnlearnedUnit(currentId) {
     const units = course.getUnits(), currentIndex = units.findIndex(function (unit) { return unit.id === currentId; });
     if (!units.length) return null;
@@ -40,10 +44,6 @@
       if (unit.id !== currentId && !progress.isUnitCompleted(unit.id)) return unit;
     }
     return null;
-  }
-  function unitLabel(unit) {
-    const number = unit.sectionNumber ? `${unit.sectionNumber}.${unit.number}` : unit.number;
-    return number + " · " + unit.title;
   }
   function showDifficultyReminder(unitId) {
     document.querySelectorAll(".difficulty-toast").forEach(function (notice) { notice.remove(); });
@@ -79,7 +79,7 @@
       heading.append(textElement("span", "chapter-number", chapterOrdinal(chapter.number)), textElement("h3", "", chapter.title));
       content.append(heading, textElement("p", "", chapter.description)); row.append(content);
       const summary = chapter.path ? progress.getChapterSummary(chapter.id) : null;
-      const status = completed ? "✓ 已完成" : summary ? "已学会 " + summary.completed + " / " + summary.total + " 页" : "即将开放";
+      const status = completed ? "✓ 已完成" : summary ? "掌握 " + summary.completed + " / " + summary.total : "即将开放";
       row.append(textElement("span", "chapter-status" + (completed ? " is-complete" : ""), status));
       item.append(row); list.append(item);
     });
@@ -88,7 +88,7 @@
     if (document.body.dataset.page !== "home") return;
     const summary = progress.getSummary();
     document.querySelector("[data-progress-percent]").textContent = summary.percent + "%";
-    document.querySelector("[data-progress-count]").textContent = "已学会 " + summary.completed + " / " + summary.total + " 页";
+    document.querySelector("[data-progress-count]").textContent = "掌握 " + summary.completed + " / " + summary.total;
     const meter = document.querySelector("[data-course-progress]"); meter.value = summary.percent; meter.textContent = summary.percent + "%";
     const lastVisited = progress.getLastVisitedUnit();
     const hasLearningRecord = Boolean(lastVisited) || summary.completed > 0;
@@ -101,8 +101,6 @@
     if (target) {
       const targetLabel = target.sectionNumber ? `${target.sectionNumber}.${target.number}` : target.number;
       const label = targetLabel + " · " + target.title;
-      document.querySelector("[data-continue-title]").textContent = label;
-      document.querySelector("[data-continue-description]").textContent = lastVisited ? "上次阅读位置" : "还没有阅读记录";
       const link = document.querySelector("[data-continue-link]"); link.href = url(target.path); link.setAttribute("aria-label", "继续学习 " + label);
     }
     renderCourseMap();
@@ -112,22 +110,18 @@
     if (chapterId) {
       const done = progress.isCompleted(chapterId), summary = progress.getChapterSummary(chapterId);
       document.querySelectorAll("[data-chapter-progress-percent]").forEach(function (label) { label.textContent = summary.percent + "%"; });
-      document.querySelectorAll("[data-chapter-progress-count]").forEach(function (label) { label.textContent = "已学会 " + summary.completed + " / " + summary.total + " 页"; });
+      document.querySelectorAll("[data-chapter-progress-count]").forEach(function (label) { label.textContent = "掌握 " + summary.completed + " / " + summary.total; });
       document.querySelectorAll("[data-chapter-progress]").forEach(function (meter) { meter.max = summary.total; meter.value = summary.completed; meter.textContent = summary.percent + "%"; });
       updateChapterResume();
       document.querySelectorAll("[data-chapter-status]").forEach(function (label) {
-        label.textContent = done ? "✓ 本章已完成" : "已学会 " + summary.completed + " / " + summary.total + " 页";
+        label.textContent = done ? "✓ 本章已完成" : "掌握 " + summary.completed + " / " + summary.total;
         label.classList.toggle("is-complete", done);
-      });
-      document.querySelectorAll("[data-complete-button]").forEach(function (button) {
-        button.disabled = false; button.textContent = done ? "撤销整章的已学会标记" : "标记整章为已学会";
-        button.classList.toggle("button-secondary", done); button.setAttribute("aria-pressed", String(done));
       });
     }
     document.querySelectorAll("[data-unit-complete]").forEach(function (button) {
       const done = progress.isUnitCompleted(button.dataset.unitComplete), label = button.dataset.unitLabel || "本页";
       const hasDifficulty = Boolean(progress.getUnitDifficulty(button.dataset.unitComplete));
-      button.disabled = false; button.textContent = done ? "撤销" + label + "的已学会标记" : "标记本页为已学会";
+      button.disabled = false; button.textContent = done ? "撤销学会标记" : "标记为已学会";
       button.title = !done && !hasDifficulty ? "请先选择本页难度" : "";
       button.classList.toggle("button-secondary", done); button.setAttribute("aria-pressed", String(done));
     });
@@ -144,14 +138,12 @@
       link.hidden = !next;
       if (!next) { link.removeAttribute("href"); return; }
       link.href = url(next.path);
-      const title = link.querySelector("[data-next-unlearned-title]");
-      if (title) title.textContent = unitLabel(next);
     });
     document.querySelectorAll("[data-section-progress]").forEach(function (label) {
-      const summary = progress.getSectionSummary(label.dataset.sectionProgress); label.textContent = "已学会 " + summary.completed + " / " + summary.total + " 页";
+      const summary = progress.getSectionSummary(label.dataset.sectionProgress); label.textContent = "掌握 " + summary.completed + " / " + summary.total;
     });
     document.querySelectorAll("[data-section-progress-count]").forEach(function (label) {
-      const summary = progress.getSectionSummary(document.body.dataset.section); label.textContent = "已学会 " + summary.completed + " / " + summary.total + " 页";
+      const summary = progress.getSectionSummary(document.body.dataset.section); label.textContent = "掌握 " + summary.completed + " / " + summary.total;
     });
     document.querySelectorAll("[data-section-progress-percent]").forEach(function (label) {
       label.textContent = progress.getSectionSummary(document.body.dataset.section).percent + "%";
@@ -163,16 +155,10 @@
       const section = course.getSection(link.dataset.sectionResume); if (!section || !section.pages) return;
       const recent = progress.getLastVisitedUnit();
       const target = recent && recent.sectionId === section.id ? recent : section.pages.find(page => !progress.isUnitCompleted(page.id)) || section.pages[0];
-      const targetLabel = target.sectionNumber ? `${target.sectionNumber}.${target.number}` : target.number;
       const summary = progress.getSectionSummary(section.id);
       const action = summary.percent === 0 ? "开始学习" : summary.percent === 100 ? "学习完成" : "继续学习";
       const actionLabel = link.querySelector("[data-section-resume-action]");
       if (actionLabel) actionLabel.textContent = action;
-      const location = document.querySelector("[data-section-resume-title]");
-      if (location) {
-        location.textContent = targetLabel + " · " + target.title;
-        location.hidden = summary.percent === 100;
-      }
       if (summary.percent === 100) {
         link.removeAttribute("href");
         link.setAttribute("aria-disabled", "true");
@@ -197,10 +183,6 @@
         link.href = url(target.path);
         link.removeAttribute("aria-disabled");
       }
-    });
-    document.querySelectorAll("[data-chapter-resume-title]").forEach(function (label) {
-      label.hidden = summary.percent === 100;
-      if (target) label.textContent = unitLabel(target);
     });
   }
   document.querySelectorAll("[data-unit-complete]").forEach(function (button) {
@@ -232,16 +214,6 @@
     button.addEventListener("click", function () {
     progress.setUnitDifficulty(button.dataset.difficultyUnit, button.dataset.unitDifficulty);
       refreshProgress();
-    });
-  });
-  document.querySelectorAll("[data-complete-button]").forEach(function (button) {
-    button.addEventListener("click", function () {
-      const id = document.body.dataset.chapter, done = !progress.isCompleted(id);
-      if (done && !window.confirm("确定将本章全部知识页标记为已学会吗？")) return;
-      const saved = progress.setCompleted(id, done);
-      refreshProgress(); const message = document.querySelector("[data-completion-message]");
-      if (saved && done) celebrate(button, true);
-      if (message) message.textContent = saved ? (done ? "已将本章所有知识页和小节标记为已学会。" : "已撤销本章所有知识页和小节的标记。") : "标记仅保留在当前页面，尚未保存到浏览器。";
     });
   });
   document.querySelectorAll("[data-print-page]").forEach(function (button) {
@@ -282,7 +254,7 @@
   document.querySelectorAll("[data-view-records]").forEach(function (button) {
     button.addEventListener("click", function () {
       const summary = progress.getSummary();
-      document.querySelector("[data-records-summary]").textContent = "总进度：已学会 " + summary.completed + " / " + summary.total + " 页（" + summary.percent + "%）";
+      document.querySelector("[data-records-summary]").textContent = "总进度：掌握 " + summary.completed + " / " + summary.total + "（" + summary.percent + "%）";
       const lastVisited = progress.getLastVisitedUnit();
       const lastLabel = lastVisited ? (lastVisited.sectionNumber ? `${lastVisited.sectionNumber}.${lastVisited.number}` : lastVisited.number) + " · " + lastVisited.title : "尚无阅读记录";
       document.querySelector("[data-records-last-visited]").textContent = "上次阅读：" + lastLabel;
@@ -290,7 +262,7 @@
       list.replaceChildren();
       course.getSections().forEach(function (section) {
         const sectionSummary = progress.getSectionSummary(section.id);
-        list.append(textElement("li", "", section.number + " · " + section.title + "：已学会 " + sectionSummary.completed + " / " + sectionSummary.total + " 页"));
+        list.append(textElement("li", "", section.number + " · " + section.title + "：掌握 " + sectionSummary.completed + " / " + sectionSummary.total));
       });
       recordsDialog.showModal();
     });
