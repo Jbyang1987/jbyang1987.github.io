@@ -10,7 +10,13 @@ window.CourseProgress = (function () {
   let memoryOnly = false;
   function emptyState() { return { version: 2, chapters: {}, units: {}, lastVisited: null }; }
   function isObject(value) { return value && typeof value === "object" && !Array.isArray(value); }
-  function cleanRecord(record) { return { completed: record.completed, completedAt: typeof record.completedAt === "string" ? record.completedAt : null }; }
+  function cleanRecord(record) {
+    return {
+      completed: record.completed,
+      completedAt: typeof record.completedAt === "string" ? record.completedAt : null,
+      difficulty: ["hard", "okay", "easy"].includes(record.difficulty) ? record.difficulty : null
+    };
+  }
   function readState() {
     if (memoryOnly) return memoryState;
     try {
@@ -68,7 +74,10 @@ window.CourseProgress = (function () {
   }
   function setRecords(units, completed) {
     const state = readState(), stamp = completed ? new Date().toISOString() : null;
-    units.forEach(function (unit) { state.units[unit.id] = { completed: Boolean(completed), completedAt: stamp }; });
+    units.forEach(function (unit) {
+      const previous = state.units[unit.id] || {};
+      state.units[unit.id] = { completed: Boolean(completed), completedAt: stamp, difficulty: previous.difficulty || null };
+    });
     course.chapters.forEach(function (chapter) {
       if (!units.some(function (unit) { return (unit.chapterId || unit.id) === chapter.id; })) return;
       const summary = summaryFor(course.getUnits(chapter.id), state);
@@ -78,6 +87,20 @@ window.CourseProgress = (function () {
     return saveState(state);
   }
   function setUnitCompleted(id, completed) { const unit = course.getUnit(id); return unit ? setRecords([unit], completed) : false; }
+  function getUnitDifficulty(id) {
+    const record = readState().units[id];
+    return record && ["hard", "okay", "easy"].includes(record.difficulty) ? record.difficulty : null;
+  }
+  function setUnitDifficulty(id, difficulty) {
+    if (!course.getUnit(id) || !["hard", "okay", "easy"].includes(difficulty)) return false;
+    const state = readState(), previous = state.units[id] || {};
+    state.units[id] = {
+      completed: Boolean(previous.completed),
+      completedAt: typeof previous.completedAt === "string" ? previous.completedAt : null,
+      difficulty: difficulty
+    };
+    return saveState(state);
+  }
   function setCompleted(id, completed) {
     const chapter = course.chapters.find(function (entry) { return entry.id === id && entry.path; });
     return chapter ? setRecords(course.getUnits(id), completed) : false;
@@ -156,7 +179,7 @@ window.CourseProgress = (function () {
     summary.chaptersTotal = available.length;
     return summary;
   }
-  return { isCompleted: isCompleted, setCompleted: setCompleted, isUnitCompleted: isUnitCompleted, setUnitCompleted: setUnitCompleted,
+  return { isCompleted: isCompleted, setCompleted: setCompleted, isUnitCompleted: isUnitCompleted, setUnitCompleted: setUnitCompleted, getUnitDifficulty: getUnitDifficulty, setUnitDifficulty: setUnitDifficulty,
     getSectionSummary: getSectionSummary, getChapterSummary: getChapterSummary, setVisited: setVisited, getResumeUnit: getResumeUnit, getLastVisitedUnit: getLastVisitedUnit,
     getSummary: getSummary, clearRecords: clearRecords, exportRecords: exportRecords, importRecords: importRecords,
     getStorageIssue: function () { return storageIssue; } };

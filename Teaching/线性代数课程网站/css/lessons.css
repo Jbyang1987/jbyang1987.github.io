@@ -17,17 +17,28 @@
 .knowledge-status.is-complete { color: var(--color-primary); }
 .knowledge-sidebar .sidebar-footer p { margin-block: .7rem; }
 .unit-completion { margin-top: 1.5rem; }
-.unit-completion > .button { display: block; margin-left: auto; }
+.unit-action-row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.knowledge-step-actions { display: flex; flex-wrap: wrap; gap: .4rem; }
+.knowledge-action-button { white-space: nowrap; }
+.previous-knowledge-button, .next-knowledge-button { border-color: #c5d8e8; background: #edf4fa; color: #315b79; }
+.previous-knowledge-button:hover, .next-knowledge-button:hover { background: #dcebf6; color: #254a67; }
+.complete-knowledge-button { background: #317aac; }
+.complete-knowledge-button:hover { background: #256791; }
+.complete-knowledge-button.button-secondary { border-color: #8467b6; background: #9a7dcc; color: #fff; }
+.complete-knowledge-button.button-secondary:hover { border-color: #7055a1; background: #8062b2; color: #fff; }
+.continue-learning { background: #1f4f78; }
+.continue-learning:hover { background: #183e60; }
+.unit-action-row > [data-unit-complete] { margin-left: auto; }
+.unit-difficulty { position: relative; left: clamp(-8.75rem, -14vw, -7.5rem); display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: .5rem .75rem; margin: 0 0 .3rem; }
+.unit-difficulty-label { color: var(--color-muted); font-size: var(--text-xs); }
+.unit-difficulty-options { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .4rem; }
+.difficulty-button { border: var(--border); border-radius: 999px; padding: .25rem .65rem; background: transparent; color: var(--color-muted); font: inherit; font-size: var(--text-xs); line-height: 1.5; }
+.difficulty-button:hover, .difficulty-button.is-selected { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-soft); }
+.unit-difficulty.is-reminder .unit-difficulty-label { color: #c23d3d; font-weight: 700; }
+.unit-difficulty.is-reminder .difficulty-button { border-color: #e6a0a0; background: #fff3f3; color: #c23d3d; }
 .unit-completion .completion-message { width: 100%; text-align: right; }
 .unit-completion .completion-message:empty { min-height: 0; margin: 0; }
-.completion-next { width: 100%; margin-top: .35rem; color: var(--color-muted); font-size: var(--text-xs); text-align: right; }
-.completion-next:empty { display: none; }
-.page-navigation { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 1rem; margin-top: 2rem; border-top: var(--border); padding-top: 1.5rem; }
-.page-navigation a { display: flex; flex-direction: column; gap: .35rem; padding: 1rem; border: var(--border); border-radius: var(--radius); text-decoration: none; font-size: var(--text-sm); }
-.page-navigation a:last-child { background: var(--color-panel); }
-.page-navigation a:hover { border-color: var(--color-primary); }
-.page-navigation span { color: var(--color-muted); font-size: var(--text-xs); }
-.page-navigation strong { font-weight: 500; }
+.difficulty-toast { position: fixed; z-index: 20; top: 50%; left: 50%; max-width: min(88vw, 34rem); margin: 0; padding: .7rem 1.1rem; border: 1px solid #efb5b5; border-radius: var(--radius); background: rgba(255, 255, 255, .96); box-shadow: 0 .4rem 1.5rem rgba(92, 36, 36, .16); color: #c23d3d; font-size: clamp(1.2rem, 3vw, 1.7rem); font-weight: 700; text-align: center; transform: translate(-50%, -50%); pointer-events: none; }
 .reading-options, .section-start { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-top: 1.5rem; font-size: var(--text-sm); }
 .knowledge-cards { padding: 0; margin-block: 2rem; list-style: none; }
 .knowledge-cards a { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 1rem; padding: 1.5rem 0; border-bottom: var(--border); text-decoration: none; }
@@ -46,7 +57,7 @@
   .knowledge-menu[open] + .sidebar-footer { display: block; }
 }
 @media (max-width: 540px) {
-  .page-navigation { grid-template-columns: 1fr; }
+  .unit-action-row { gap: .4rem; }
   .knowledge-intro h1 { font-size: 2rem; }
   .knowledge-cards a { gap: .65rem; }
   .knowledge-part .lesson-heading { flex-direction: row; flex-wrap: nowrap; gap: .5rem; }

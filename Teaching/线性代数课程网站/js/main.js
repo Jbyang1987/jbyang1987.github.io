@@ -44,6 +44,24 @@
     const number = unit.sectionNumber ? `${unit.sectionNumber}.${unit.number}` : unit.number;
     return number + " · " + unit.title;
   }
+  function showDifficultyReminder(unitId) {
+    document.querySelectorAll(".difficulty-toast").forEach(function (notice) { notice.remove(); });
+    const rows = new Set();
+    const reminderToken = String(Date.now());
+    document.querySelectorAll("[data-difficulty-unit]").forEach(function (button) {
+      if (button.dataset.difficultyUnit === unitId) rows.add(button.closest(".unit-difficulty"));
+    });
+    rows.forEach(function (row) { if (row) { row.dataset.reminderToken = reminderToken; row.classList.add("is-reminder"); } });
+    const notice = document.createElement("p");
+    notice.className = "difficulty-toast";
+    notice.textContent = "请先选择本页难度";
+    notice.setAttribute("role", "status");
+    document.body.append(notice);
+    window.setTimeout(function () {
+      notice.remove();
+      rows.forEach(function (row) { if (row && row.dataset.reminderToken === reminderToken) row.classList.remove("is-reminder"); });
+    }, 1800);
+  }
   function showStorageNotice() {
     document.querySelectorAll("[data-storage-notice]").forEach(function (notice) { notice.textContent = progress.getStorageIssue(); notice.hidden = !notice.textContent; });
   }
@@ -107,15 +125,26 @@
     }
     document.querySelectorAll("[data-unit-complete]").forEach(function (button) {
       const done = progress.isUnitCompleted(button.dataset.unitComplete), label = button.dataset.unitLabel || "本页";
-      button.disabled = false; button.textContent = done ? "撤销" + label + "的已学会标记" : "标记" + label + "为已学会";
+      const hasDifficulty = Boolean(progress.getUnitDifficulty(button.dataset.unitComplete));
+      button.disabled = false; button.textContent = done ? "撤销" + label + "的已学会标记" : "标记本页为已学会";
+      button.title = !done && !hasDifficulty ? "请先选择本页难度" : "";
       button.classList.toggle("button-secondary", done); button.setAttribute("aria-pressed", String(done));
+    });
+    document.querySelectorAll("[data-unit-difficulty]").forEach(function (button) {
+  const selected = progress.getUnitDifficulty(button.dataset.difficultyUnit) === button.dataset.unitDifficulty;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
     });
     document.querySelectorAll("[data-unit-status]").forEach(function (label) {
       const done = progress.isUnitCompleted(label.dataset.unitStatus); label.textContent = done ? "✓ 已学会" : "未标记"; label.classList.toggle("is-complete", done);
     });
-    document.querySelectorAll("[data-next-unlearned]").forEach(function (label) {
-      const next = nextUnlearnedUnit(label.dataset.nextUnlearned);
-      label.textContent = next ? "下一未学会：" + unitLabel(next) : "其余页面均已学会";
+    document.querySelectorAll("[data-next-unlearned-link]").forEach(function (link) {
+      const next = nextUnlearnedUnit(link.dataset.nextUnlearnedLink);
+      link.hidden = !next;
+      if (!next) { link.removeAttribute("href"); return; }
+      link.href = url(next.path);
+      const title = link.querySelector("[data-next-unlearned-title]");
+      if (title) title.textContent = unitLabel(next);
     });
     document.querySelectorAll("[data-section-progress]").forEach(function (label) {
       const summary = progress.getSectionSummary(label.dataset.sectionProgress); label.textContent = "已学会 " + summary.completed + " / " + summary.total + " 页";
@@ -176,6 +205,10 @@
   document.querySelectorAll("[data-unit-complete]").forEach(function (button) {
     button.addEventListener("click", function () {
       const id = button.dataset.unitComplete, done = !progress.isUnitCompleted(id);
+      if (done && !progress.getUnitDifficulty(id)) {
+        showDifficultyReminder(id);
+        return;
+      }
       const saved = progress.setUnitCompleted(id, done); refreshProgress();
       if (saved && done) {
         const chapterFinished = Boolean(document.body.dataset.chapter)
@@ -188,10 +221,6 @@
           return;
         }
         const next = nextUnlearnedUnit(id);
-        if (next && document.body.dataset.page !== "chapter") {
-          window.setTimeout(function () { window.location.href = url(next.path); }, 700);
-          return;
-        }
         document.querySelectorAll("[data-unit-message]").forEach(function (message) {
           if (message.dataset.unitMessage === id) message.textContent = next ? "已标记为已学会" : "所有已开放页面都已学会";
         });
@@ -200,6 +229,12 @@
       document.querySelectorAll("[data-unit-message]").forEach(function (message) {
         if (message.dataset.unitMessage === id) message.textContent = saved ? (done ? "已保存。可以继续下一页，也可以随时撤销标记。" : "已撤销标记，可以继续复习") : "标记仅保留在当前页面，尚未保存到浏览器。";
       });
+    });
+  });
+  document.querySelectorAll("[data-unit-difficulty]").forEach(function (button) {
+    button.addEventListener("click", function () {
+    progress.setUnitDifficulty(button.dataset.difficultyUnit, button.dataset.unitDifficulty);
+      refreshProgress();
     });
   });
   document.querySelectorAll("[data-complete-button]").forEach(function (button) {

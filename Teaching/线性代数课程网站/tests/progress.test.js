@@ -73,11 +73,20 @@ test('过滤无效布尔值、未知阅读位置，不使用记录中的网址',
 });
 test('备份可恢复学习标记与阅读位置，错误文件不会改动当前记录',()=>{
  const source=app(),id=source.c.getUnits()[1].id;
- source.p.setUnitCompleted(id,true);source.p.setVisited(id);
+ source.p.setUnitCompleted(id,true);source.p.setUnitDifficulty(id,'easy');source.p.setVisited(id);
  const backup=source.p.exportRecords(),target=app();
  assert.equal(target.p.importRecords(backup).success,true);
- assert.equal(target.p.isUnitCompleted(id),true);assert.equal(target.p.getLastVisitedUnit().id,id);
+ assert.equal(target.p.isUnitCompleted(id),true);assert.equal(target.p.getUnitDifficulty(id),'easy');assert.equal(target.p.getLastVisitedUnit().id,id);
  const before=target.saved.get(V2);
  assert.equal(target.p.importRecords('{bad json').success,false);
  assert.equal(target.saved.get(V2),before);
+});
+test('难度评价独立保存，可在完成前后修改',()=>{
+ const {p,c,saved}=app(),id=c.getUnits()[0].id;
+ assert.equal(p.setUnitDifficulty(id,'hard'),true);assert.equal(p.getUnitDifficulty(id),'hard');
+ assert.equal(p.isUnitCompleted(id),false);
+ p.setUnitCompleted(id,true);assert.equal(p.getUnitDifficulty(id),'hard');
+ assert.equal(p.setUnitDifficulty(id,'okay'),true);assert.equal(p.getUnitDifficulty(id),'okay');
+ assert.equal(app(saved).p.getUnitDifficulty(id),'okay');
+ assert.equal(p.setUnitDifficulty(id,'unknown'),false);assert.equal(p.setUnitDifficulty('unknown','easy'),false);
 });
