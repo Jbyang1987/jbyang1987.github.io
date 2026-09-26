@@ -219,6 +219,26 @@
   document.querySelectorAll("[data-print-page]").forEach(function (button) {
     button.addEventListener("click", function () { window.print(); });
   });
+  const themeKey = "linear-algebra-theme";
+  const applyTheme = function (theme) {
+    const dark = theme === "dark";
+    document.documentElement.dataset.theme = dark ? "dark" : "light";
+    document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
+      button.textContent = dark ? "明亮" : "暗色";
+      button.setAttribute("aria-pressed", String(dark));
+      button.title = dark ? "切换为明亮主题" : "切换为暗色主题";
+    });
+  };
+  let savedTheme = "light";
+  try { savedTheme = window.localStorage.getItem(themeKey) === "dark" ? "dark" : "light"; } catch (error) { /* 使用明亮主题 */ }
+  applyTheme(savedTheme);
+  document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      applyTheme(next);
+      try { window.localStorage.setItem(themeKey, next); } catch (error) { /* 当前页面仍可切换 */ }
+    });
+  });
   document.querySelectorAll("[data-clear-records]").forEach(function (button) {
     button.addEventListener("click", function () {
       if (!window.confirm("确定清除本浏览器保存的全部学习记录吗？此操作无法撤销。")) return;

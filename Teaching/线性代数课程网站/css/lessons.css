@@ -18,7 +18,8 @@
 .knowledge-sidebar .sidebar-footer p { margin-block: .7rem; }
 .unit-completion { margin-top: .75rem; }
 .unit-action-row { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: .5rem; }
-.knowledge-step-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .4rem; margin-top: .45rem; }
+.knowledge-completion-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; }
+.knowledge-step-actions { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: .4rem; }
 .knowledge-action-button { white-space: nowrap; }
 .knowledge-step-actions .knowledge-action-button { min-height: 0; padding: .25rem .65rem; border: var(--border); border-radius: 999px; background: transparent; color: var(--color-muted); font-size: var(--text-xs); font-weight: 400; line-height: 1.5; }
 .knowledge-step-actions .knowledge-action-button:hover { border-color: var(--color-primary); background: var(--color-soft); color: var(--color-primary); }
@@ -28,6 +29,10 @@
 .complete-knowledge-button.button-secondary:hover { border-color: #7055a1; background: #8062b2; color: #fff; }
 .continue-learning { background: #1f4f78; }
 .continue-learning:hover { background: #183e60; }
+html[data-theme="dark"] .complete-knowledge-button { background: #527d73; }
+html[data-theme="dark"] .complete-knowledge-button:hover { background: #67968a; }
+html[data-theme="dark"] .continue-learning { background: #45665f; }
+html[data-theme="dark"] .continue-learning:hover { background: #598076; }
 .unit-difficulty { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: .5rem .75rem; margin: 0 0 .3rem; }
 .unit-difficulty-label { color: var(--color-muted); font-size: var(--text-xs); }
 .unit-difficulty-options { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .4rem; }
@@ -73,6 +78,13 @@
 /* 编号与标题共用字号，长标题自然延续，不单独折下整个标题。 */
 .knowledge-intro h1 { font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.5; text-wrap: pretty; }
 .knowledge-part .lesson-heading h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+@media (max-width: 600px) {
+  .knowledge-intro h1 { font-size: 1.2rem; }
+  .knowledge-part .lesson-heading h2 { font-size: clamp(1.2rem, 2.08vw, 1.6rem); }
+  .knowledge-completion-row { flex-direction: column; align-items: stretch; gap: .35rem; }
+  .knowledge-completion-row .unit-action-row { order: 1; justify-content: flex-end; }
+  .knowledge-completion-row .knowledge-step-actions { order: 2; justify-content: flex-end; }
+}
 @media print {
   .chapter-hero-actions, .confetti-burst { display: none !important; }
   .chapter-home-layout .chapter-content > :is(.lesson, .section-full-reading, .chapter-completion), .chapter-knowledge-layout .chapter-content { width: 100%; }
