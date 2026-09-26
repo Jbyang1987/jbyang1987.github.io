@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TeX → 知识页 · 线性代数转换工作台</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="converter.css">
+  <script defer src="core.js"></script><script defer src="zip.js"></script><script defer src="app.js"></script>
+  <script defer src="../../js/mathjax-config.js"></script><script defer src="../../assets/vendor/mathjax/tex-svg.js"></script>
+</head>
+<body>
+  <header class="app-header"><a class="brand" href="../../index.html"><span class="brand-icon">T<span>↗</span></span><span>TeX <b>→</b> 知识页</span></a><div class="header-actions"><span class="local-badge"><i></i> 本地处理</span><a href="README.md" target="_blank">使用说明</a><button id="save-plan">保存方案</button><button id="import-plan">导入方案</button><button class="primary" id="export-zip">导出 ZIP <span>↗</span></button></div></header>
+  <main class="workspace">
+    <section class="panel input-panel" aria-labelledby="input-heading"><div class="panel-title"><h2 id="input-heading">TeX 输入</h2><div class="input-title-actions"><button id="import-tex">＋ 导入 .tex</button><button id="import-sty">＋ 导入 .sty</button><button id="import-images">＋ 导入图片</button></div></div>
+      <div class="file-line"><label for="file-select">当前文件</label><select id="file-select"></select></div>
+      <div class="source-frame-row"><div class="lecture-source"><div class="field"><select id="lecture-tex-select" aria-label="选择讲稿 TeX 文件"><option value="">选 tex 文件</option></select></div></div><details class="frame-picker"><summary id="lecture-frame-summary">选择 frames</summary><div class="frame-picker-body"><div id="lecture-frames"><p class="muted">选 tex 文件</p></div></div></details><button class="primary source-convert" id="convert-all">转换</button></div>
+      <div class="lecture-code-preview" data-code-theme="light"><div class="lecture-code-title"><span>TeX 代码</span><div class="code-theme-toggle" aria-label="TeX 代码主题"><button type="button" data-code-theme="light" aria-pressed="true">浅色</button><button type="button" data-code-theme="dark" aria-pressed="false">深色</button><button type="button" data-code-theme="sepia" aria-pressed="false">护眼</button></div></div><pre id="lecture-tex-preview">选 tex 文件</pre></div>
+      <div class="search-line"><input id="source-search" type="search" placeholder="搜索正文或 \\命令" aria-label="输入内容搜索"><button id="find-source">查找</button></div>
+      <div class="editor"><pre id="line-numbers" aria-hidden="true">1</pre><textarea id="tex-input" aria-label="TeX 源代码" spellcheck="false" wrap="off"></textarea></div>
+      <div class="editor-footer"><span id="source-info">UTF-8</span><div><button id="paste-tex" class="quiet">粘贴 TeX</button><button id="clear-tex" class="quiet">清空</button></div></div>
+      <div class="source-actions"><button id="insert-break">插入分页分隔线</button><button id="selection-page">选中内容独立成页</button></div>
+      <details class="file-details"><summary>已导入文件与最近记录 <span id="file-count"></span></summary><div id="file-list"></div><div id="recent-files"></div></details>
+    </section>
+    <section class="panel rules-panel rules-panel-collapsed" aria-labelledby="rules-heading"><div class="panel-title"><h2 id="rules-heading">转换规则</h2><div class="rules-title-actions"><button id="toggle-rules" class="quiet" type="button" aria-expanded="false">展开</button><button id="reset-rules" class="quiet">重置</button></div></div>
+      <div class="rule-tabs"><button class="active" data-rule-tab="rules">规则</button><button data-rule-tab="macros">自定义命令</button><button data-rule-tab="styles">样式</button></div>
+      <div class="rule-body" id="rules-content"></div><div class="convert-footer"><label class="check"><input id="auto-preview" type="checkbox" checked> 修改后自动转换</label></div>
+    </section>
+    <section class="panel output-panel" aria-labelledby="output-heading"><div class="panel-title"><h2 id="output-heading">结果预览</h2><div class="output-title-tools"><div class="stats"><span><b id="stat-frames">0</b>frames</span><span><b id="stat-pages">0</b>知识页</span><span><b id="stat-warnings">0</b>待检查</span></div><div class="theme-toggle" aria-label="预览主题"><button id="theme-light" aria-pressed="true">明亮</button><button id="theme-dark" aria-pressed="false">暗色</button></div></div></div>
+      <div class="page-toolbar"><select id="page-select" aria-label="选择知识页面"></select><button id="all-pages">全部预览</button><button id="undo" title="撤销最近的编辑">撤销</button></div>
+      <details class="page-organizer"><summary>页面目录 · 合并、排序与编辑</summary><div id="page-list"></div><div class="inline-actions"><button id="merge-pages">合并选中页面</button><label class="check"><input id="keep-titles" type="checkbox">保留原标题</label></div></details>
+      <div class="output-tabs" role="tablist" aria-label="结果类型"><button class="active" data-view="preview" role="tab" aria-selected="true">页面</button><button data-view="html" role="tab" aria-selected="false">HTML</button><button data-view="css" role="tab" aria-selected="false">CSS</button><button data-view="json" role="tab" aria-selected="false">JSON</button><button data-view="svg" role="tab" aria-selected="false">图形</button><button data-view="warnings" role="tab" aria-selected="false">警告 <span id="warning-badge">0</span></button><button data-view="log" role="tab" aria-selected="false">日志</button></div>
+      <div id="output" class="output-content" aria-live="polite"></div>
+      <div class="output-footer"><button id="edit-page">编辑本页</button><button id="reconvert-page">重新转换本页</button><button id="copy-page">复制 HTML</button><button id="download-page">下载本页</button><select id="export-type" aria-label="更多导出"><option value="">更多导出…</option value="html">全部 HTML（ZIP）</option><option value="json">转换 JSON</option><option value="svg">全部 SVG（ZIP）</option><option value="report">警告报告</option><option value="config">转换配置</option><option value="import-config">导入配置</option><option value="directory">选择目录并写入</option></select></div>
+    </section>
+  </main>
+  <footer class="app-footer"><span id="status" role="status">准备就绪</span><span>第一阶段 · 正文转换 / 可追溯来源</span></footer>
+  <dialog id="edit-dialog"><form method="dialog"><div class="dialog-heading"><h2 id="dialog-title">编辑</h2><button value="cancel" aria-label="关闭">×</button></div><div id="dialog-body"></div><div class="dialog-actions"><button value="cancel">取消</button><button id="dialog-save" class="primary" value="save">保存</button></div></form></dialog>
+  <input id="file-picker" type="file" hidden><input id="config-picker" type="file" accept="application/json,.json" hidden>
+  <noscript><p>转换器需要启用 JavaScript。课程正文网站仍可独立访问。</p></noscript>
+</body></html>
