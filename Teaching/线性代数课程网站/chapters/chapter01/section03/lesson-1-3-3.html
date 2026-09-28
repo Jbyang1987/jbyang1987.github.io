@@ -1,0 +1,55 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="坐标变换；向量，线性代数课程。"><title>坐标变换 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><link rel="stylesheet" href="../../../css/chapter01.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter01" data-section="chapter01-section03" data-unit="chapter01-section03-lesson-1-3-3"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter01.html">第一章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第3节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第3小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页仍可使用；公式排版和学习记录需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§1.3.3</span><span>坐标变换</span></h1><p class="knowledge-goal">坐标变换</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-1-3-3-lesson-1-3-3" data-chapter="1" data-chapter-id="00 introduction.tex::section1">
+  <p class="tex-hierarchy">向量 / 坐标系、坐标与坐标变换</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">给定两个仿射坐标系 \([O;\vec{e}_1,\vec{e}_2,\vec{e}_3]\) 和 \([O&#39;;\vec{e}&#39;_1,\vec{e}&#39;_2,\vec{e}&#39;_3]\).</div>
+
+  <!-- TeX block: question -->
+  <fieldset class="math-block math-block-question math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">思考</span></span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设空间中的点\(P\)在两个坐标系下的坐标分别为 \((x,y,z)\) 和 \((x&#39;,y&#39;,z&#39;)\). 求两个坐标之间的关系式？</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">为了回答这一问题，我们需要给出两个坐标系之间的位置关系:</div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(O\)在\([O&#39;;\vec{e}&#39;_1,\vec{e}&#39;_2,\vec{e}&#39;_3]\)下的坐标为\((x_0&#39;,y_0&#39;,z_0&#39;)\). 即</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\overset{\longrightarrow}{O&#39;O} = x&#39;_0\vec{e}&#39;_1+ y&#39;_0\vec{e}&#39;_2 + z&#39;_0\vec{e}&#39;_3.\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\vec{e}_j\)在基\(\vec{e}&#39;_1,\vec{e}&#39;_2,\vec{e}&#39;_3\)下的坐标为\((a_{1j},a_{2j},a_{3j})\).即</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[ \vec{e}_j = a_{1j}\vec{e}&#39;_1+ a_{2j}\vec{e}&#39;_2 + a_{3j}\vec{e}&#39;_3.\]</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">然后\(P\)在两个坐标系下的坐标之间的关系式可写为<small class="tex-footnote">后续,通过矩阵乘法可简化为 <span class="tex-color-blue">\(X&#39;=AX+X_0&#39;\)</span>.</small>：</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  {\textcolor[rgb]{0,0,1}{\boxed{
+  \begin{split}
+  x&#39; &amp;= a_{11}x+a_{12}y+a_{13}z+x_0&#39;\\
+  y&#39; &amp;= a_{21}x+a_{22}y+a_{23}z+y_0&#39;\\
+  z&#39; &amp;= a_{31}x+a_{32}y+a_{33}z+z_0&#39;\\
+  \end{split}
+  }}}\qquad
+    {\textcolor[rgb]{1,0,0}{pf: \overset{\longrightarrow}{O&#39;P} = \overset{\longrightarrow}{O&#39;O}+\overset{\longrightarrow}{OP}.}}
+  \]</div>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="坐标变换的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter01-section03-lesson-1-3-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter01-section03-lesson-1-3-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter01-section03-lesson-1-3-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-1-3-2.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="../section04/index.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter01-section03-lesson-1-3-3" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter01-section03-lesson-1-3-3" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter01-section03-lesson-1-3-3" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

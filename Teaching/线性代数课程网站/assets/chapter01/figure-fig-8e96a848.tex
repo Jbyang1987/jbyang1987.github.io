@@ -1,0 +1,23 @@
+\[
+\begin{tikzpicture}[scale=1]
+\coordinate (o) at (0,0);
+\coordinate (y) at (1,0);
+\coordinate (x) at (-0.5,-0.5);
+\coordinate (z) at (0,1);
+\draw[->,thick,black](o)--(x) node[pos=1,below] {$x$};
+\draw[->,thick,black](o)--(y) node[pos=1,right] {$y$};
+\draw[->,thick,black](o)--(z) node[pos=1,above] {$z$};
+\tkzMarkRightAngle(x,o,y)
+\tkzMarkRightAngle(y,o,z)
+\tkzMarkRightAngle(z,o,x)
+
+\coordinate (O) at (4,0);
+\node [below left] at (O) {$O$};
+\coordinate (X) at (6,-1);
+\coordinate (Y) at (5,0.5);
+\coordinate (Z) at (3.5,1);
+\draw[->,thick,black](O)--(X) node[pos=1,right] {$\vec{e}_1$};
+\draw[->,thick,black](O)--(Y) node[pos=1,right] {$\vec{e}_2$};
+\draw[->,thick,black](O)--(Z) node[pos=1,above] {$\vec{e}_3$};
+\end{tikzpicture}
+\]

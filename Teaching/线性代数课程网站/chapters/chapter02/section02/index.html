@@ -1,10 +1,10 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="2.2 Gauss 消元法；线性方程组，线性代数课程。"><title>2.2 Gauss 消元法 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter02" data-section="chapter02-section02"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter02.html">第二章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第2节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="Gauss 消元法简介、进度与目录"><header class="chapter-intro"><h1>2.2 Gauss 消元法</h1><p>用初等变换逐步化简并求解方程组。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter02-section02" href="lesson-2-2-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 2</span></div><progress data-section-meter="chapter02-section02" max="2" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="Gauss 消元法知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-2-2-1.html">2.2.1 Gauss消元法</a><span data-unit-status="chapter02-section02-lesson-2-2-1">未标记</span></li><li><a href="lesson-2-2-2.html">2.2.2 方程的三种初等变换</a><span data-unit-status="chapter02-section02-lesson-2-2-2">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-2-2-1" data-reading-unit="chapter02-section02-lesson-2-2-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§2.2.1</span><h2><a class="heading-link" href="lesson-2-2-1.html">Gauss消元法</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-2-2-1-lesson-2-2-1">
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="2.2 Gauss 消元法；线性方程组，线性代数课程。"><title>2.2 Gauss 消元法 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter02" data-section="chapter02-section02"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter02.html">第二章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第2节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页仍可使用；公式排版和学习记录需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="Gauss 消元法简介、进度与目录"><header class="chapter-intro"><h1>2.2 Gauss 消元法</h1><p>用初等变换逐步化简并求解方程组。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter02-section02" href="lesson-2-2-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 2</span></div><progress data-section-meter="chapter02-section02" max="2" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="Gauss 消元法知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-2-2-1.html">2.2.1 Gauss消元法</a><span data-unit-status="chapter02-section02-lesson-2-2-1">未标记</span></li><li><a href="lesson-2-2-2.html">2.2.2 方程的三种初等变换</a><span data-unit-status="chapter02-section02-lesson-2-2-2">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-2-2-1" data-reading-unit="chapter02-section02-lesson-2-2-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§2.2.1</span><h2><a class="heading-link" href="lesson-2-2-1.html">Gauss消元法</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-2-2-1-lesson-2-2-1" data-chapter="2" data-chapter-id="00 introduction.tex::section2">
   <p class="tex-hierarchy">线性方程组 / Gauss 消元法</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.3</span> <span class="math-block-title">鸡兔同笼</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（鸡兔同笼）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">求解 \(\left\{\begin{array}{rrrrrrr}
@@ -12,39 +12,44 @@
       2x&amp; + &amp; 4y&amp; = &amp; 94 &amp;&amp; (2)\\
       \end{array}\right.\).</div>
     </div>
-  </section>
+  </fieldset>
 
-  <!-- TeX block: text -->
-  <div class="tex-paragraph">解：
-  第一步, 方程(2)减去两倍的方程(1)得</div>
+  <!-- TeX block: proof -->
+  <details class="math-block math-block-proof math-block-proof-style lecture-proof">
+    <summary class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">解</span></span></summary>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">第一步, 方程(2)减去两倍的方程(1)得</div>
 
-  <!-- TeX block: formula -->
-  <div class="tex-display">\[\xrightarrow{{\textcolor[rgb]{0,0,1}{-2(1)\rightarrow(2)}}} \left\{\begin{array}{rrrrrrr}
-  x&amp; +&amp; y &amp;= &amp; 35 &amp;&amp; (3) \\
-  &amp;  &amp; {\textcolor[rgb]{1,0,0}{2}}y&amp; = &amp; 24 &amp;&amp; (4)\\
-  \end{array}\right.\]</div>
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\xrightarrow{{\textcolor[rgb]{0,0,1}{-2(1)\rightarrow(2)}}} \left\{\begin{array}{rrrrrrr}
+      x&amp; +&amp; y &amp;= &amp; 35 &amp;&amp; (3) \\
+      &amp;  &amp; {\textcolor[rgb]{1,0,0}{2}}y&amp; = &amp; 24 &amp;&amp; (4)\\
+      \end{array}\right.\]</div>
 
-  <!-- TeX block: text -->
-  <div class="tex-paragraph">第二步, 方程(4)除以\(2\)</div>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">第二步, 方程(4)除以\(2\)</div>
 
-  <!-- TeX block: formula -->
-  <div class="tex-display">\[\xrightarrow{{\textcolor[rgb]{0,0,1}{\frac12(4)}}}\left\{\begin{array}{rrrrrrr}
-  x&amp; {\textcolor[rgb]{1,0,0}{+}}&amp; y &amp;= &amp; 35 &amp;&amp; (5) \\
-  &amp;  &amp; y&amp; = &amp; 12 &amp;&amp; (6)\\
-  \end{array}\right.\]</div>
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\xrightarrow{{\textcolor[rgb]{0,0,1}{\frac12(4)}}}\left\{\begin{array}{rrrrrrr}
+      x&amp; {\textcolor[rgb]{1,0,0}{+}}&amp; y &amp;= &amp; 35 &amp;&amp; (5) \\
+      &amp;  &amp; y&amp; = &amp; 12 &amp;&amp; (6)\\
+      \end{array}\right.\]</div>
 
-  <!-- TeX block: text -->
-  <div class="tex-paragraph">第三步. 方程(5)减去方程(6)</div>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">第三步. 方程(5)减去方程(6)</div>
 
-  <!-- TeX block: formula -->
-  <div class="tex-display">\[\xrightarrow{-(6)\rightarrow(5)}\left\{\begin{array}{rrrrrrr}
-  x&amp; &amp; &amp;= &amp; 23 &amp;&amp; \\
-  &amp;  &amp; y&amp; = &amp; 12 &amp;&amp;\\
-  \end{array}\right.\]</div>
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\xrightarrow{-(6)\rightarrow(5)}\left\{\begin{array}{rrrrrrr}
+      x&amp; &amp; &amp;= &amp; 23 &amp;&amp; \\
+      &amp;  &amp; y&amp; = &amp; 12 &amp;&amp;\\
+      \end{array}\right.\]</div>
+    </div>
+  </details>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.4</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">求解 \(\left\{\begin{array}{rrrrrrrrr}
@@ -53,55 +58,62 @@
       2x_1 &amp; - &amp; x_2 &amp; + &amp; 3x_3 &amp; = &amp; 3 &amp;&amp; (3)\\
       \end{array}\right.\).</div>
     </div>
-  </section>
+  </fieldset>
 
-  <!-- TeX block: text -->
-  <div class="tex-paragraph">解：交换前两个方程的顺序<br> <br>
+  <!-- TeX block: proof -->
+  <details class="math-block math-block-proof math-block-proof-style lecture-proof">
+    <summary class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">解</span></span></summary>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">交换前两个方程的顺序<br> <br>
 
-   \(\xrightarrow[-2(4)\rightarrow (6)]{-3(4)\rightarrow(5)}\left\{\begin{array}{rrrrrr}
-  x_1 &amp; +3x_2 &amp; +2x_3 &amp; =&amp; 9 &amp; (7)\\
-  &amp; -7x_2 &amp; -7x_3 &amp; =&amp; -21 &amp; (8)\\
-  &amp; {\textcolor[rgb]{1,0,0}{-7}}x_2 &amp;  -x_3 &amp; =&amp; -15 &amp; (9)\\
-  \end{array}\right. \)<br>
+       \(\xrightarrow[-2(4)\rightarrow (6)]{-3(4)\rightarrow(5)}\left\{\begin{array}{rrrrrr}
+      x_1 &amp; +3x_2 &amp; +2x_3 &amp; =&amp; 9 &amp; (7)\\
+      &amp; -7x_2 &amp; -7x_3 &amp; =&amp; -21 &amp; (8)\\
+      &amp; {\textcolor[rgb]{1,0,0}{-7}}x_2 &amp;  -x_3 &amp; =&amp; -15 &amp; (9)\\
+      \end{array}\right. \)<br>
 
-   \(\xrightarrow{-(8)\rightarrow(9)}\left\{\begin{array}{rrrrrr}
-  x_1 &amp; +3x_2 &amp; +2x_3 &amp; =&amp; 9 &amp; (10)\\
-  &amp; -7x_2 &amp; -7x_3 &amp; =&amp; -21 &amp; (11)\\
-  &amp;       &amp;  {\textcolor[rgb]{1,0,0}{6}}x_3 &amp; =&amp;   6 &amp; (12)\\
-  \end{array}\right. \)</div>
+       \(\xrightarrow{-(8)\rightarrow(9)}\left\{\begin{array}{rrrrrr}
+      x_1 &amp; +3x_2 &amp; +2x_3 &amp; =&amp; 9 &amp; (10)\\
+      &amp; -7x_2 &amp; -7x_3 &amp; =&amp; -21 &amp; (11)\\
+      &amp;       &amp;  {\textcolor[rgb]{1,0,0}{6}}x_3 &amp; =&amp;   6 &amp; (12)\\
+      \end{array}\right. \) \(\xrightarrow{\frac16(12)}\left\{\begin{array}{rrrrrr}
+      x_1 &amp; +3x_2 &amp; +2x_3 &amp; =&amp;   9 &amp; (13)\\
+      &amp; -7x_2 &amp; {\textcolor[rgb]{1,0,0}{-7}}x_3 &amp; =&amp; -21 &amp; (14)\\
+      &amp;       &amp;  x_3 &amp; =&amp;   1 &amp; (15)\\
+      \end{array}\right. \)<br>
 
-  <!-- TeX block: text -->
-  <div class="tex-paragraph"><br>
+       \(\xrightarrow{7(15)\rightarrow(14)}\left\{\begin{array}{rrrrrr}
+      x_1 &amp; +3x_2 &amp; +2x_3 &amp; =&amp;   9 &amp; (16)\\
+      &amp; {\textcolor[rgb]{1,0,0}{-7}}x_2 &amp;      &amp; =&amp; -14 &amp; (17)\\
+      &amp;       &amp;  x_3 &amp; =&amp;   1 &amp; (18)\\
+      \end{array}\right. \) <br>
 
-   \(\xrightarrow{7(15)\rightarrow(14)}\left\{\begin{array}{rrrrrr}
-  x_1 &amp; +3x_2 &amp; +2x_3 &amp; =&amp;   9 &amp; (16)\\
-  &amp; {\textcolor[rgb]{1,0,0}{-7}}x_2 &amp;      &amp; =&amp; -14 &amp; (17)\\
-  &amp;       &amp;  x_3 &amp; =&amp;   1 &amp; (18)\\
-  \end{array}\right. \) <br>
+       \(\xrightarrow{-\frac17(14)}\left\{\begin{array}{rrrrrr}
+      x_1 &amp; {\textcolor[rgb]{1,0,0}{+3}}x_2 &amp; {\textcolor[rgb]{1,0,0}{+2}}x_3  &amp; =&amp;   9 &amp; (19)\\
+      &amp; x_2 &amp;         &amp;   =&amp; 2 &amp; (20)\\
+      &amp;       &amp;  x_3 &amp; =&amp;   1 &amp; (21)\\
+      \end{array}\right. \)<br>
 
-   \(\xrightarrow{-\frac17(14)}\left\{\begin{array}{rrrrrr}
-  x_1 &amp; {\textcolor[rgb]{1,0,0}{+3}}x_2 &amp; {\textcolor[rgb]{1,0,0}{+2}}x_3  &amp; =&amp;   9 &amp; (19)\\
-  &amp; x_2 &amp;         &amp;   =&amp; 2 &amp; (20)\\
-  &amp;       &amp;  x_3 &amp; =&amp;   1 &amp; (21)\\
-  \end{array}\right. \)<br>
-
-  \(\xrightarrow[-2(21)\rightarrow (19)]{-3(20)\rightarrow (19)}\left\{\begin{array}{rr}
-  x_1 =&amp;   1\\
-  x_2 =&amp; 2 \\
-  x_3 =&amp;   1\\
-  \end{array}\right. \) 
-  (代回验证，成立） \(\Rightarrow\) 解集为\(\{(1,2,1)\}\).</div>
+      \(\xrightarrow[-2(21)\rightarrow (19)]{-3(20)\rightarrow (19)}\left\{\begin{array}{rr}
+      x_1 =&amp;   1\\
+      x_2 =&amp; 2 \\
+      x_3 =&amp;   1\\
+      \end{array}\right. \) 
+      (代回验证，成立） \(\Rightarrow\) 解集为\(\{(1,2,1)\}\).</div>
+    </div>
+  </details>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="Gauss消元法的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter02-section02-lesson-2-2-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter02-section02-lesson-2-2-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter02-section02-lesson-2-2-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter02-section02-lesson-2-2-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter02-section02-lesson-2-2-1" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-2-2-2" data-reading-unit="chapter02-section02-lesson-2-2-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§2.2.2</span><h2><a class="heading-link" href="lesson-2-2-2.html">方程的三种初等变换</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-2-2-2-lesson-2-2-2">
+<div class="tex-converted tex-page-2-2-2-lesson-2-2-2" data-chapter="2" data-chapter-id="00 introduction.tex::section2">
   <p class="tex-hierarchy">线性方程组 / Gauss 消元法</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
-  <!-- TeX block: table -->
-  <table class="tex-table tex-table-hline tex-table-double-hline"><tbody><tr><td></td><td><div class="tex-paragraph">初等变换</div></td><td><div class="tex-paragraph">记号</div></td></tr><tr><td><div class="tex-paragraph">(1)</div></td><td><div class="tex-paragraph">交换两个方程</div></td><td><div class="tex-paragraph">\((i)\leftrightarrow(j)\)</div></td></tr><tr><td><div class="tex-paragraph">(2)</div></td><td><div class="tex-paragraph">某个方程乘以一个非零常数</div></td><td><div class="tex-paragraph">\(\lambda(i)\)</div></td></tr><tr><td><div class="tex-paragraph">(3)</div></td><td><div class="tex-paragraph">某个方程乘一个常数加到另一个方程上</div></td><td><div class="tex-paragraph">\(\lambda(i)\rightarrow (j)\)</div></td></tr></tbody></table>
+  <!-- TeX block: figure -->
+  <figure class="tex-figure"><img src="../../../assets/chapter02/figure-fig-e0782969.svg" class="tex-figure-light" alt="LaTeX 表格" width="640"><img class="tex-figure-dark" src="../../../assets/chapter02/figure-fig-e0782969-dark.svg" alt="LaTeX 表格" width="640"><figcaption>LaTeX 表格</figcaption></figure>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.5</span> <span class="math-block-title">存在不唯一</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（存在不唯一）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">求解 \(\left\{\begin{array}{rrrrrrr}
@@ -111,11 +123,67 @@
       3x_1 &amp; +6x_2 &amp; -3x_3 &amp; -24x_4 &amp; = &amp;  7 &amp;  \qquad (4)\\
       \end{array}\right.\)</div>
     </div>
-  </section>
+  </fieldset>
+
+  <!-- TeX block: proof -->
+  <details class="math-block math-block-proof math-block-proof-style lecture-proof">
+    <summary class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">解</span></span></summary>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\xrightarrow[-3(1)\rightarrow(4)]{- 1(1)\rightarrow(2) \atop -2(1)\rightarrow(3)}
+      \left\{\begin{array}{rrrrrrr}
+      x_1 &amp; +2x_2 &amp; {\textcolor[rgb]{1,0,0}{+3}}x_3 &amp;  +4x_4 &amp; = &amp;  -3 &amp;    (5)\\
+      &amp;       &amp; -3x_3 &amp;  -9x_4 &amp; = &amp;   4 &amp;    (6)\\
+      &amp;       &amp; {\textcolor[rgb]{1,0,0}{-9}}x_3 &amp; -27x_4 &amp; = &amp;  12 &amp;    (7)\\
+      &amp;       &amp;{\textcolor[rgb]{1,0,0}{-12}}x_3 &amp; -36x_4 &amp; = &amp;  16 &amp;    (8)\\
+      \end{array}\right.
+      \)</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\xrightarrow[-4(6)\rightarrow(8)]{(6)\rightarrow(5)\atop -3(6)\rightarrow(7)}
+      \left\{\begin{array}{rrrrrrr}
+      x_1 &amp; +2x_2 &amp;  &amp;  -5x_4 &amp; = &amp;  1 &amp;    (9)\\
+      &amp;       &amp; {\textcolor[rgb]{1,0,0}{-3}}x_3 &amp;  -9x_4 &amp; = &amp;   4 &amp;    (10)\\
+      &amp;       &amp;       &amp;      0 &amp; = &amp;  0 &amp;    (11)\\
+      &amp;       &amp;       &amp;      0 &amp; = &amp;  0 &amp;    (12)\\
+      \end{array}\right.
+      \)</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\xrightarrow{-\frac13(10)}
+      \left\{\begin{array}{rrrrrrr}
+      x_1 &amp; +2x_2 &amp;  &amp;  -5x_4 &amp; = &amp;  1 &amp;    (13)\\
+      &amp;       &amp; x_3 &amp;  +3x_4 &amp; = &amp;   -\frac43 &amp;    (14)\\
+      &amp;       &amp;       &amp;      0 &amp; = &amp;  0 &amp;    (15)\\
+      &amp;       &amp;       &amp;      0 &amp; = &amp;  0 &amp;    (16)\\
+      \end{array}\right.
+      \) 
+      \(\Rightarrow \left\{
+      \begin{array}{rl}
+      x_1 &amp;= 1-2x_2+5x_4\\
+      x_3 &amp;= -\frac43 - 3x_4\\
+      \end{array}
+      \right.\)
+      <br></div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">因此\(x_2\)和\(x_4\)可取任意值，\(x_1\)和\(x_3\)由\(x_2\)和\(x_4\)的取值唯一确定。 即，</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\left\{
+      \begin{array}{rl}
+      x_1 &amp;= 1-2t_1+5t_2\\
+      x_2 &amp;= t_1 \\
+      x_3 &amp;= -\frac43 - 3t_2\\
+      x_4 &amp;= t_2 \\
+      \end{array}
+      \right. \qquad \text{其中} t_1,t_2\in {\mathbb F}.\]</div>
+    </div>
+  </details>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.6</span> <span class="math-block-title">解存在且唯一</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（解存在且唯一）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">求解 \(\left\{\begin{array}{rrrrrrr}
@@ -123,7 +191,7 @@
       2x&amp; + &amp; 4y&amp; = &amp; 94 &amp;&amp; (2)\\
       \end{array}\right.\).</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: formula -->
   <div class="tex-display">\[\Rightarrow \left\{\begin{array}{rrrrrrr}
@@ -132,8 +200,8 @@
   \end{array}\right.\]</div>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.7</span> <span class="math-block-title">解存在但不唯一</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（解存在但不唯一）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">求解 \(\left\{\begin{array}{rrrrrrr}
@@ -143,7 +211,7 @@
       3x_1 &amp; +6x_2 &amp; -3x_3 &amp; -24x_4 &amp; = &amp;  7 &amp;  \qquad (4)\\
       \end{array}\right.\)</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: formula -->
   <div class="tex-display">\[\Rightarrow \left\{
@@ -156,8 +224,8 @@
   \right. \qquad \text{其中} t_1,t_2\in \mathbb F.\]</div>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.8</span> <span class="math-block-title">无解</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（无解）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">求解 \(\left\{\begin{array}{rrrrrrr}
@@ -166,31 +234,55 @@
       2x_1 &amp; -2x_2 &amp; -x_3 &amp; = &amp; 3 &amp;  \qquad (3)\\
       \end{array}\right.\)</div>
     </div>
-  </section>
+  </fieldset>
+
+  <!-- TeX block: proof -->
+  <details class="math-block math-block-proof math-block-proof-style lecture-proof">
+    <summary class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">解</span></span></summary>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\xrightarrow[-2(1)\rightarrow(3)]{-1(1)\rightarrow(2)}
+      \left\{\begin{array}{rrrrrrr}
+      x_1 &amp;  -x_2 &amp; +x_3 &amp; = &amp; 1 &amp;   (4)\\
+      &amp;  &amp; -2x_3 &amp; = &amp; 2 &amp; (5)\\
+      &amp;  &amp; -3x_3 &amp; = &amp; 1 &amp; (6)\\
+      \end{array}\right.\)</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\xrightarrow[-\frac32(5)\rightarrow(6)]{\frac12(5)\rightarrow(4)}
+      \left\{\begin{array}{rrrrrrr}
+      x_1 &amp;  -x_2 &amp;  &amp; = &amp; 2 &amp; \\
+      &amp;  &amp; -2x_3 &amp; = &amp; 2 &amp; \\
+      &amp;  &amp; {\textcolor[rgb]{1,0,0}{0}} &amp; {\textcolor[rgb]{1,0,0}{=}} &amp; {\textcolor[rgb]{1,0,0}{-2}} &amp; \\
+      \end{array}\right.\)</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\Rightarrow \textbf{无解！！}\]</div>
+    </div>
+  </details>
 
   <!-- TeX block: text -->
   <div class="tex-paragraph">我们称有相同的解集的两个线性方程组互为对方的<span class="tex-color-blue">同解方程组</span>.</div>
 
   <!-- TeX block: theorem -->
-  <section class="math-block math-block-theorem">
-    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">2.1.1</span></div>
+  <fieldset class="math-block math-block-theorem math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定理</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">三种初等变换将线性方程组变为同解线性方程组.</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: proof -->
-  <details class="math-block math-block-proof lecture-proof">
-    <summary class="math-block-heading"><span class="math-block-label">证明</span></summary>
+  <details class="math-block math-block-proof math-block-proof-style lecture-proof">
+    <summary class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">证明</span></span></summary>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph"><span class="tex-size-tiny"></span>
       这里只给出第三种初等变换的证明，其他两种情形证明类似。</div>
 
       <!-- TeX block: formula -->
-      <div class="tex-display"><span class="tex-math-warning" title="存在未解析数学命令">⚠</span>\[
-      \setlength{\arraycolsep}{0.5pt}
+      <div class="tex-display">\[
       \left\{\begin{array}{ccccccccc}
       a_{11}x_1&amp; + &amp; \cdots &amp; + &amp; a_{1n}x_n &amp;= &amp; b_1\\
       \vdots &amp; &amp; 	\ddots &amp;&amp; 	\vdots &amp;&amp; 	\vdots \\

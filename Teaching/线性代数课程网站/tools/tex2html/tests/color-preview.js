@@ -18,7 +18,9 @@
       { title: '行内公式、蓝色范围和普通正文', tex: String.raw`普通正文 \blue{蓝色文字}。$A+\blue{x}+z$`, colors: ['#0000ff'], uncolored: 'z', textColor: true },
       { title: '嵌套红、蓝颜色与作用范围', tex: String.raw`\[\blue{x+\red{y}+w}+z\]`, colors: ['#0000ff', '#ff0000'], uncolored: 'z' },
       { title: '任意 RGB 数值', tex: String.raw`\[\textcolor[rgb]{0.2,0.4,0.6}{x}+\textcolor[RGB]{255,128,0}{y}+z\]`, colors: ['#336699', '#ff8000'], uncolored: 'z' },
-      { title: '命名颜色与 HTML 颜色模型', tex: String.raw`\[\textcolor{blue}{x}+\textcolor[HTML]{336699}{y}+z\]`, colors: ['blue', '#336699'], uncolored: 'z' }
+      { title: '命名颜色与 HTML 颜色模型', tex: String.raw`\[\textcolor{blue}{x}+\textcolor[HTML]{336699}{y}+z\]`, colors: ['blue', '#336699'], uncolored: 'z' },
+      { title: 'text 内嵌套蓝色和红色，包含中文与数学', tex: String.raw`\[\text{前面 \blue{蓝色 \red{红色} 后蓝 $x$} 后面}+z\]`, colors: ['#0000ff', '#ff0000'], uncolored: 'z' },
+      { title: 'text 内的颜色声明与分组', tex: String.raw`\[\text{前面 {\color[HTML]{336699}中文} 后面}+z\]`, colors: ['#336699'], uncolored: 'z' }
     ];
     const sheet = document.createElement('style');
     sheet.textContent = Tex2HTML.pageCSS(Tex2HTML.defaults());

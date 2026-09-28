@@ -1,40 +1,40 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="需要什么样的逆；矩阵(一)，线性代数课程。"><title>需要什么样的逆 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter03" data-section="chapter03-section04" data-unit="chapter03-section04-lesson-3-4-1"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter03.html">第三章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第4节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第1小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§3.4.1</span><span>需要什么样的逆</span></h1><p class="knowledge-goal">需要什么样的逆</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-3-4-1-lesson-3-4-1">
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="需要什么样的逆；矩阵(一)，线性代数课程。"><title>需要什么样的逆 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter03" data-section="chapter03-section04" data-unit="chapter03-section04-lesson-3-4-1"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter03.html">第三章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第4节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第1小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页仍可使用；公式排版和学习记录需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§3.4.1</span><span>需要什么样的逆</span></h1><p class="knowledge-goal">需要什么样的逆</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-4-1-lesson-3-4-1" data-chapter="3" data-chapter-id="00 introduction.tex::section3">
   <p class="tex-hierarchy">矩阵(一) / 逆矩阵</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
-  <!-- TeX block: container -->
-  <div class="tex-container">
-    <!-- TeX block: text -->
-    <div class="tex-paragraph">解一元一次方程.</div>
+  <!-- TeX block: columns -->
+  <div class="tex-columns" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center"><!-- TeX block: column -->
+  <div class="tex-column" style="flex:5 1 0;min-width:min(100%,18rem);max-width:100%"><!-- TeX block: text -->
+  <div class="tex-paragraph">解一元一次方程.</div>
 
-    <!-- TeX block: formula -->
-    <div class="tex-display">\[\small \boxed{\begin{split}
-    ax=b\Rightarrow &amp; a^{-1}(ax)=a^{-1}b\\ 
-    \overset{\text{结合律}}{\Longrightarrow}&amp; (a^{-1}a)x=a^{-1}b\\ 
-    \overset{a^{-1}a=1}{\Longrightarrow}&amp; 1x=a^{-1}b\\ 
-    \overset{1x=x}{\Longrightarrow} &amp; x=a^{-1}b\\ 
-    \text{验证:}\overset{aa^{-1}=1}{\Longrightarrow}&amp; a(a^{-1}b)=b\\
-    \end{split}}\]</div>
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\small \boxed{\begin{split}
+  ax=b\Rightarrow &amp; a^{-1}(ax)=a^{-1}b\\ 
+  \overset{\text{结合律}}{\Longrightarrow}&amp; (a^{-1}a)x=a^{-1}b\\ 
+  \overset{a^{-1}a=1}{\Longrightarrow}&amp; 1x=a^{-1}b\\ 
+  \overset{1x=x}{\Longrightarrow} &amp; x=a^{-1}b\\ 
+  \text{验证:}\overset{aa^{-1}=1}{\Longrightarrow}&amp; a(a^{-1}b)=b\\
+  \end{split}}\]</div></div>
 
-    <!-- TeX block: text -->
-    <div class="tex-paragraph">解一般线性方程组</div>
+  <!-- TeX block: column -->
+  <div class="tex-column" style="flex:5 1 0;min-width:min(100%,18rem);max-width:100%"><!-- TeX block: text -->
+  <div class="tex-paragraph">解一般线性方程组</div>
 
-    <!-- TeX block: formula -->
-    <div class="tex-display">\[\small \boxed{\begin{split}
-    Ax=b\Rightarrow &amp; A^{-1}(Ax)=A^{-1}b\\ 
-    \overset{\text{结合律}}{\Longrightarrow}&amp; (A^{-1}A)x=A^{-1}b\\ 
-    \overset{{\textcolor[rgb]{1,0,0}{A^{-1}A=I}}}{\Longrightarrow}&amp; Ix=A^{-1}b\\ 
-    \overset{Ix=x}{\Longrightarrow} &amp; x=A^{-1}b\\ 
-    \text{验证:}\overset{{\textcolor[rgb]{1,0,0}{AA^{-1}=I}}}{\Longrightarrow}&amp; A(A^{-1}b)=b\\
-    \end{split}}\]</div>
-  </div>
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\small \boxed{\begin{split}
+  Ax=b\Rightarrow &amp; A^{-1}(Ax)=A^{-1}b\\ 
+  \overset{\text{结合律}}{\Longrightarrow}&amp; (A^{-1}A)x=A^{-1}b\\ 
+  \overset{{\textcolor[rgb]{1,0,0}{A^{-1}A=I}}}{\Longrightarrow}&amp; Ix=A^{-1}b\\ 
+  \overset{Ix=x}{\Longrightarrow} &amp; x=A^{-1}b\\ 
+  \text{验证:}\overset{{\textcolor[rgb]{1,0,0}{AA^{-1}=I}}}{\Longrightarrow}&amp; A(A^{-1}b)=b\\
+  \end{split}}\]</div></div></div>
 
   <!-- TeX block: text -->
   <div class="tex-paragraph">要让上述过程有意义, 仅需要存在矩阵\(A^{-1}\)满足\(A^{-1}A=I=AA^{-1}\).</div>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.8</span> <span class="math-block-title">鸡兔同笼</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（鸡兔同笼）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph"><span class="tex-size-small"></span></div>
@@ -42,7 +42,7 @@
       <!-- TeX block: formula -->
       <div class="tex-display">\[\begin{pmatrix}1&amp;1\\2&amp;4\\\end{pmatrix}\begin{pmatrix}x\\y\\\end{pmatrix}=\begin{pmatrix}35\\94\end{pmatrix}.\]</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: text -->
   <div class="tex-paragraph">解:因为</div>

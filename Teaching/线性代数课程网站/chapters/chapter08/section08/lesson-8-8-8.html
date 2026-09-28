@@ -1,0 +1,79 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="酉空间* · 第8页；内积空间及变换，线性代数课程。"><title>酉空间* · 第8页 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter08" data-section="chapter08-section08" data-unit="chapter08-section08-lesson-8-8-8"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter08.html">第八章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第8节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第8小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页仍可使用；公式排版和学习记录需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§8.8.8</span><span>酉空间* · 第8页</span></h1><p class="knowledge-goal">酉空间* · 第8页</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-8-8-8-lesson-8-8-8" data-chapter="8" data-chapter-id="00 introduction.tex::section8">
+  <p class="tex-hierarchy">内积空间及变换 / 酉空间*</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\({\mathscr A}\)为酉空间\(V\)上的线性变换\({\mathscr A}\).</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  \text{${\mathscr A}$为{\textcolor[rgb]{0,0,1}{规范变换}}} &amp;\overset{\text{定义}}{\Leftrightarrow} \text{${\mathscr A}^*{\mathscr A}={\mathscr A}{\mathscr A}^*$}\\
+
+  &amp;\Leftrightarrow A\text{酉相似于对角阵}\\
+
+  &amp;\Leftrightarrow \text{$A$在某组标准正交基下为对角阵.}\\
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: corollary -->
+  <fieldset class="math-block math-block-corollary math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">推论</span></span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr U}\)为酉变换.
+
+      则</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr U}\)的特征值\(\lambda\)模为\(1\).即,存在\(\theta\in[0,2\pi)\)使得\(\lambda=e^{i\theta}\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr U}\)在某组标准正交基下矩阵为对角阵\(\mathrm{diag}(e^{i\theta_1},e^{i\theta_2},\cdots,e^{i\theta_n})\).</div>
+        </li>
+      </ol>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路:\(D^HD=I\) \(\Rightarrow\) \(|\lambda_i|=1\).</span></div>
+
+  <!-- TeX block: corollary -->
+  <fieldset class="math-block math-block-corollary math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">推论</span></span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\)为Hermite变换.
+
+      则</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\)的特征值全为实数;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\)在某组标准正交基下的矩阵为实对角矩阵.</div>
+        </li>
+      </ol>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路:\(D^H=D\) \(\Rightarrow\) \(\lambda_i\in{\mathbb R}\).</span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">问题:</span> 反Hermite变换?</div>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="酉空间* · 第8页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter08-section08-lesson-8-8-8" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter08-section08-lesson-8-8-8" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter08-section08-lesson-8-8-8" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-8-8-7.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="../../chapter08.html" class="button button-primary knowledge-action-button next-knowledge-button">返回章节目录</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter08-section08-lesson-8-8-8" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter08-section08-lesson-8-8-8" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter08-section08-lesson-8-8-8" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

@@ -10,6 +10,12 @@ window.CourseProgress = (function () {
   let memoryOnly = false;
   function emptyState() { return { version: 2, chapters: {}, units: {}, lastVisited: null }; }
   function isObject(value) { return value && typeof value === "object" && !Array.isArray(value); }
+  function resolveVisitedId(id) {
+    if (course.getUnit(id)) return id;
+    const legacy = (course.legacyUnits || []).find(function (unit) { return unit.id === id; });
+    const target = legacy && course.getAllUnits().find(function (unit) { return unit.path === legacy.target; });
+    return target ? target.id : null;
+  }
   function cleanRecord(record) {
     return {
       completed: record.completed,
@@ -41,8 +47,8 @@ window.CourseProgress = (function () {
           const record = parsed.units[id];
           if (/^chapter\d+(?:-[a-z0-9]+)*$/.test(id) && isObject(record) && typeof record.completed === "boolean") state.units[id] = cleanRecord(record);
         });
-        if (isObject(parsed.lastVisited) && course.getUnit(parsed.lastVisited.unitId)) {
-          state.lastVisited = { unitId: parsed.lastVisited.unitId, visitedAt: typeof parsed.lastVisited.visitedAt === "string" ? parsed.lastVisited.visitedAt : null };
+        if (isObject(parsed.lastVisited) && resolveVisitedId(parsed.lastVisited.unitId)) {
+          state.lastVisited = { unitId: resolveVisitedId(parsed.lastVisited.unitId), visitedAt: typeof parsed.lastVisited.visitedAt === "string" ? parsed.lastVisited.visitedAt : null };
         }
       }
       storageIssue = "";
@@ -154,6 +160,7 @@ window.CourseProgress = (function () {
     }
     const state = emptyState(), chapterIds = new Set(course.chapters.map(function (chapter) { return chapter.id; }));
     const units = new Set((course.getAllUnits ? course.getAllUnits() : course.getUnits()).map(function (unit) { return unit.id; }));
+    (course.legacyUnits || []).forEach(function (unit) { units.add(unit.id); });
     for (const id of Object.keys(backup.records.units)) {
       const record = backup.records.units[id];
       if (!isObject(record) || typeof record.completed !== "boolean") return { success: false, message: "备份中的学习标记内容有误，未恢复任何记录。" };
@@ -165,8 +172,8 @@ window.CourseProgress = (function () {
       if (chapterIds.has(id)) state.chapters[id] = cleanRecord(record);
     }
     const lastVisited = backup.records.lastVisited;
-    if (isObject(lastVisited) && units.has(lastVisited.unitId)) {
-      state.lastVisited = { unitId: lastVisited.unitId, visitedAt: typeof lastVisited.visitedAt === "string" ? lastVisited.visitedAt : null };
+    if (isObject(lastVisited) && resolveVisitedId(lastVisited.unitId)) {
+      state.lastVisited = { unitId: resolveVisitedId(lastVisited.unitId), visitedAt: typeof lastVisited.visitedAt === "string" ? lastVisited.visitedAt : null };
     }
     const saved = saveState(state);
     return saved ? { success: true, message: "学习记录已恢复。" } : { success: false, message: storageIssue || "学习记录未能保存到浏览器。" };

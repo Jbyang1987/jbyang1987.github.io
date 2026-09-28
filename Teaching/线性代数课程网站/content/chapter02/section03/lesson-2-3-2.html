@@ -1,10 +1,10 @@
 <!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-2-3-2-lesson-2-3-2">
+<div class="tex-converted tex-page-2-3-2-lesson-2-3-2" data-chapter="2" data-chapter-id="00 introduction.tex::section2">
   <p class="tex-hierarchy">线性方程组 / Gauss消元法的矩阵表示</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.9</span> <span class="math-block-title">非齐次线性方程组</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（非齐次线性方程组）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">求解 \(\left\{\begin{array}{rrrrrrrrr}
@@ -13,11 +13,43 @@
       2x_1 &amp; - &amp; x_2 &amp; + &amp; 3x_3 &amp; = &amp; 3\\
       \end{array}\right.\).</div>
     </div>
-  </section>
+  </fieldset>
+
+  <!-- TeX block: proof -->
+  <details class="math-block math-block-proof math-block-proof-style lecture-proof">
+    <summary class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">解</span></span></summary>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\left(\begin{array}{rrrr}3&amp;2&amp;-1&amp;6\\1&amp;3&amp;2&amp;9\\2&amp;-1&amp;3&amp;3\\\end{array}\right)\) 
+      \(\xrightarrow{r_1\leftrightarrow r_2}\)
+      \(\left(\begin{array}{rrrr}1&amp;3&amp;2&amp;9\\3&amp;2&amp;-1&amp;6\\2&amp;-1&amp;3&amp;3\\\end{array}\right)\)</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\xrightarrow[-2r_1\rightarrow r_3]{-3r_1\rightarrow r_2}\)
+      \(\left(\begin{array}{rrrr}1&amp;3&amp;2&amp;9\\0&amp;-7&amp;-7&amp;-21\\0&amp;-7&amp;-1&amp;-15\\\end{array}\right)\) 
+      \(\xrightarrow{-r_2\rightarrow r_3}\)
+      \(\left(\begin{array}{rrrr}1&amp;3&amp;2&amp;9\\0&amp;-7&amp;-7&amp;-21\\0&amp;0&amp;6&amp;6\\\end{array}\right)\)</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\xrightarrow{\frac16r_3}\)
+      \(\left(\begin{array}{rrrr}1&amp;3&amp;2&amp;9\\0&amp;-7&amp;-7&amp;-21\\0&amp;0&amp;1&amp;1\\\end{array}\right)\) 
+      \(\xrightarrow[-2r_3\rightarrow r_1]{7r_3\rightarrow r_2}\)
+      \(\left(\begin{array}{rrrr}1&amp;3&amp;0&amp;7\\0&amp;-7&amp;0&amp;-14\\0&amp;0&amp;1&amp;1\\\end{array}\right)\)</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\xrightarrow[\frac37r_2\rightarrow r_1]{-\frac17r_2}\)
+      \(\left(\begin{array}{rrrr}1&amp;0&amp;0&amp;1\\0&amp;1&amp;0&amp;2\\0&amp;0&amp;1&amp;1\\\end{array}\right)\) 
+      \(\Rightarrow \left\{\begin{array}{rr}
+      x_1 =&amp;   1\\
+      x_2 =&amp; 2 \\
+      x_3 =&amp;   1\\
+      \end{array}\right.\)</div>
+    </div>
+  </details>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.10</span> <span class="math-block-title">齐次线性方程组</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（齐次线性方程组）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">求解 \(\left\{\begin{array}{rrrrrrrrrrrrrr}
@@ -27,34 +59,39 @@
       5x_1 &amp; + &amp;4x_2 &amp; + &amp;3x_3 &amp; + &amp;3x_4 &amp; - &amp; x_5 &amp; = &amp; 0 &amp;&amp; \\
       \end{array}\right.\).</div>
     </div>
-  </section>
+  </fieldset>
 
-  <!-- TeX block: text -->
-  <div class="tex-paragraph">解：
-  \(\left(\begin{array}{rrrrr}1&amp;1&amp;1&amp;1&amp;1\\3&amp;2&amp;1&amp;1&amp;-3\\0&amp;1&amp;2&amp;2&amp;6\\5&amp;4&amp;3&amp;3&amp;-1\\\end{array}\right)\)	
-  \(\xrightarrow[-5r_1\rightarrow r_4]{-3r_1\rightarrow r_2}\)
-  \(\left(\begin{array}{rrrrr}1&amp;1&amp;1&amp;1&amp;1\\0&amp;-1&amp;-2&amp;-2&amp;-6\\0&amp;1&amp;2&amp;2&amp;6\\0&amp;-1&amp;-2&amp;-2&amp;-6\\\end{array}\right)\)</div>
+  <!-- TeX block: proof -->
+  <details class="math-block math-block-proof math-block-proof-style lecture-proof">
+    <summary class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">解</span></span></summary>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\left(\begin{array}{rrrrr}1&amp;1&amp;1&amp;1&amp;1\\3&amp;2&amp;1&amp;1&amp;-3\\0&amp;1&amp;2&amp;2&amp;6\\5&amp;4&amp;3&amp;3&amp;-1\\\end{array}\right)\)	
+      \(\xrightarrow[-5r_1\rightarrow r_4]{-3r_1\rightarrow r_2}\)
+      \(\left(\begin{array}{rrrrr}1&amp;1&amp;1&amp;1&amp;1\\0&amp;-1&amp;-2&amp;-2&amp;-6\\0&amp;1&amp;2&amp;2&amp;6\\0&amp;-1&amp;-2&amp;-2&amp;-6\\\end{array}\right)\)</div>
 
-  <!-- TeX block: text -->
-  <div class="tex-paragraph">\(\xrightarrow[r_2\rightarrow r_3 \atop -r_2 \rightarrow r_4]{r_2\rightarrow r_1 \atop -r_2}\)
-  \(\left(\begin{array}{rrrrr}1&amp;0&amp;-1&amp;-1&amp;-5\\0&amp;1&amp;2&amp;2&amp;6\\0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0\\\end{array}\right)\)	
-  \(\Rightarrow \left\{\begin{array}{rl}
-  x_1 &amp;= t_1 + t_2 + 5t_3 \\
-  x_2&amp;=-2t_1-2t_2-6t_3 \\
-  x_3 &amp;= t_1\\
-  x_4 &amp;= t_2\\
-  x_5 &amp;= t_3\\
-  \end{array}\right.\)<br></div>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\xrightarrow[r_2\rightarrow r_3 \atop -r_2 \rightarrow r_4]{r_2\rightarrow r_1 \atop -r_2}\)
+      \(\left(\begin{array}{rrrrr}1&amp;0&amp;-1&amp;-1&amp;-5\\0&amp;1&amp;2&amp;2&amp;6\\0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0\\\end{array}\right)\)	
+      \(\Rightarrow \left\{\begin{array}{rl}
+      x_1 &amp;= t_1 + t_2 + 5t_3 \\
+      x_2&amp;=-2t_1-2t_2-6t_3 \\
+      x_3 &amp;= t_1\\
+      x_4 &amp;= t_2\\
+      x_5 &amp;= t_3\\
+      \end{array}\right.\)<br></div>
 
-  <!-- TeX block: container -->
-  <div class="tex-container">
-    <!-- TeX block: text -->
-    <div class="tex-paragraph">其中 \(t_1,t_2,t_3\) 为参变量.</div>
-  </div>
+      <!-- TeX block: container -->
+      <div class="tex-container">
+        <!-- TeX block: text -->
+        <div class="tex-paragraph">其中 \(t_1,t_2,t_3\) 为参变量.</div>
+      </div>
+    </div>
+  </details>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.11</span> <span class="math-block-title">无解</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（无解）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">求解\(\left\{\begin{array}{rrrrrrrrr}
@@ -63,20 +100,26 @@
       9x_1 &amp; - &amp; 9x_2 &amp; + &amp; 9x_3 &amp; + &amp; 7x_4 &amp; = &amp; -1 \\
       \end{array}\right.\).</div>
     </div>
-  </section>
+  </fieldset>
 
-  <!-- TeX block: text -->
-  <div class="tex-paragraph">解：\(\left(\begin{array}{rrrrr}3&amp;-2&amp;5&amp;4&amp;2\\6&amp;-7&amp;4&amp;3&amp;3\\9&amp;-9&amp;9&amp;7&amp;-1\\\end{array}\right)\)	
-  \(\xrightarrow[-3r_1\rightarrow r_3]{-2r_1\rightarrow r_2}\)
-  \(\left(\begin{array}{rrrrr}3&amp;-2&amp;5&amp;4&amp;2\\0&amp;-3&amp;-6&amp;-5&amp;-1\\0&amp;-3&amp;-6&amp;-5&amp;-7\\\end{array}\right)\)</div>
+  <!-- TeX block: proof -->
+  <details class="math-block math-block-proof math-block-proof-style lecture-proof">
+    <summary class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">解</span></span></summary>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\left(\begin{array}{rrrrr}3&amp;-2&amp;5&amp;4&amp;2\\6&amp;-7&amp;4&amp;3&amp;3\\9&amp;-9&amp;9&amp;7&amp;-1\\\end{array}\right)\)	
+      \(\xrightarrow[-3r_1\rightarrow r_3]{-2r_1\rightarrow r_2}\)
+      \(\left(\begin{array}{rrrrr}3&amp;-2&amp;5&amp;4&amp;2\\0&amp;-3&amp;-6&amp;-5&amp;-1\\0&amp;-3&amp;-6&amp;-5&amp;-7\\\end{array}\right)\)</div>
 
-  <!-- TeX block: text -->
-  <div class="tex-paragraph">\(\xrightarrow{-r_2\rightarrow r_3}\)
-  \(\left(\begin{array}{rrrrr}3&amp;-2&amp;5&amp;4&amp;2\\0&amp;-3&amp;-6&amp;-5&amp;-1\\0&amp;0&amp;0&amp;0&amp;{\textcolor[rgb]{1,0,0}{-6}}\\\end{array}\right)\)  	\(\Rightarrow\) 原方程组无解！！</div>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\xrightarrow{-r_2\rightarrow r_3}\)
+      \(\left(\begin{array}{rrrrr}3&amp;-2&amp;5&amp;4&amp;2\\0&amp;-3&amp;-6&amp;-5&amp;-1\\0&amp;0&amp;0&amp;0&amp;{\textcolor[rgb]{1,0,0}{-6}}\\\end{array}\right)\)  	\(\Rightarrow\) 原方程组无解！！</div>
+    </div>
+  </details>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.12</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">求解下列方程组</div>
@@ -96,5 +139,5 @@
       2x_1 + 4x_2 - 2x_3 + 4x_4 - 7x_5 = 0
       \end{array}\right.\]</div>
     </div>
-  </section>
+  </fieldset>
 </div>

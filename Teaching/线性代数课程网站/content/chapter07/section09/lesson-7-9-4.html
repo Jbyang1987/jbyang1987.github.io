@@ -1,0 +1,50 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-9-4-lesson-7-9-4" data-chapter="7" data-chapter-id="00 introduction.tex::section7">
+  <p class="tex-hierarchy">线性映射 / 相似上三角化与若当标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">利用若当标准形, 可完全解决常系数线性微分方程组的求解问题.</div>
+
+  <!-- TeX block: example -->
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(x,y,z\)都是\(t\)的函数，求解常微分方程组</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[
+      \begin{cases}
+      \frac{\mathrm{d}x}{\mathrm{d}t}  = 3x - 2y + \ z\\
+      \frac{\mathrm{d}y}{\mathrm{d}t}  = 2x - 2y + 2z\\
+      \frac{\mathrm{d}z}{\mathrm{d}t}  = 3x - 6y + 5z\\
+      \end{cases}
+      \]</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">改写原方程组为 \(\frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t} = A\mathbf{x}\). 作线性代换 \(\mathbf{x} = T\mathbf{x}^*\), 则</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\frac{\mathrm{d}\mathbf{x}^*}{\mathrm{d}t} = T^{-1}AT\mathbf{x}^*. \quad \text{ 即, } \quad
+  \begin{cases}
+  \frac{\mathrm{d}x^*}{\mathrm{d}t} = 2x^* + y^* \\
+  \frac{\mathrm{d}y^*}{\mathrm{d}t} = 2y^* \\
+  \frac{\mathrm{d}z^*}{\mathrm{d}t} = 2z^*
+  \end{cases}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">解此方程组得 \(z^* = c_1e^{2t},\ y^* = c_2e^{2t},\ x^* = (c_2t + c_3)e^{2t}.\)
+  再利用 \(\mathbf{x} = T\mathbf{x}^*\), 即得到通解是</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{cases}
+  x(t) = (c_2t + c_2 + c_3 - c_1)e^{2t} \\
+  y(t) = (2c_2t + 2c_3)e^{2t}  \qquad \text{其中 $c_1, c_2, c_3$ 为任意常数.}\\
+  z(t) = (3c_2t + 3c_3 + c_1)e^{2t}
+  \end{cases}
+  \]</div>
+</div>

@@ -20,49 +20,321 @@ window.Course = {
 
 /* 三级目录：稳定的 id 用于学习记录，slug 用于网址。 */
 (function (course) {
-  const base = "chapters/chapter01/section01/";
   course.chapters[0].lessons = [
-    { id: "chapter01-section01", number: "1.1", title: "向量及其运算", description: "从认识向量开始，逐步理解加法、减法、数乘及其基本性质。", path: base + "index.html", readingPath: base + "index.html", anchor: "vector-operations",
-      pages: [
-        { slug: "what-is-a-vector", title: "什么是向量？", description: "从速度、位移和力认识大小、方向与向量记号。" },
-        { slug: "equal-vectors", title: "什么时候两个向量相等？", description: "理解向量相等，以及为什么平移不改变向量。" },
-        { slug: "special-vectors", title: "几种特殊的向量", description: "认识零向量、单位向量和负向量。" },
-        { slug: "vector-addition", title: "向量怎样相加？", description: "用平行四边形法则与三角形法则作图。" },
-        { slug: "vector-subtraction", title: "向量怎样相减？", description: "先取负向量，再做加法，注意箭头方向。" },
-        { slug: "scalar-multiplication", title: "一个数乘向量意味着什么？", description: "判断长度与方向的变化，认识线性运算。" },
-        { slug: "addition-laws", title: "向量加法满足什么规律？", description: "理解交换律、结合律、零元与负元。" },
-        { slug: "scalar-laws", title: "数乘满足什么规律？", description: "理解单位元、结合律与两条分配律。" },
-        { slug: "review", title: "本节回顾与自测", description: "串联概念，用两道题检查是否理解。" }
-      ] },
-    { id: "chapter01-section02", number: "1.2", title: "向量线性相关性", description: "从线性组合与张成空间出发，理解向量组中方向是否冗余。", path: "chapters/chapter01/section02/index.html", readingPath: "chapters/chapter01/section02/index.html", legacyPath: "chapters/chapter01.html#vector-dependence", anchor: "vector-dependence", pages: [
-      { slug: "linear-combinations", title: "什么是线性组合？", description: "用加法和数乘，从一组向量得到新的向量。" },
-      { slug: "span", title: "线性组合能到达哪些位置？", description: "从直线、平面理解向量组的张成。" },
-      { slug: "linear-independence", title: "什么叫线性相关？", description: "理解“不全为零”的系数条件。" },
-      { slug: "dependence-example", title: "怎样证明向量组线性相关？", description: "跟随讲稿例题，找出一组不全为零的系数。" },
-      { slug: "review", title: "线性相关性的几何判断", description: "联系三维几何与即时自测。" }
-    ] },
-    { id: "chapter01-section03", number: "1.3", title: "坐标系、坐标与坐标变换", description: "从仿射坐标系出发，理解向量坐标运算与基变换。", path: "chapters/chapter01/section03/index.html", readingPath: "chapters/chapter01/section03/index.html", legacyPath: "chapters/chapter01.html#coordinates", anchor: "coordinates", pages: [
-      { slug: "coordinate-intuition", title: "坐标轴一定要互相垂直吗？", description: "从空间中的点、向量和仿射坐标系开始。" },
-      { slug: "affine-basis", title: "什么是仿射坐标系？", description: "理解原点与一组基如何描述空间中的点。" },
-      { slug: "coordinate-operations", title: "坐标怎样进行线性运算？", description: "在坐标中逐分量计算向量的和与数乘。" },
-      { slug: "coordinate-change", title: "坐标怎样变换？", description: "推导原点和平移、基改变时的坐标关系。" },
-      { slug: "review", title: "坐标与坐标变换回顾", description: "区分点的坐标与自由向量的坐标。" }
-    ] },
-    { id: "chapter01-section04", number: "1.4", title: "复数与数域", description: "从实数坐标推广到复数，认识复平面与数域。", path: "chapters/chapter01/section04/index.html", readingPath: "chapters/chapter01/section04/index.html", legacyPath: "chapters/chapter01.html#complex-and-fields", anchor: "complex-and-fields", pages: [
-      { slug: "complex-intuition", title: "向量的分量一定是实数吗？", description: "为什么需要复数与更一般的数域？" },
-      { slug: "complex-plane", title: "怎样在复平面上表示复数？", description: "连接代数表示、模长、辐角和共轭。" },
-      { slug: "number-fields", title: "什么是数域？", description: "明确允许作为坐标和系数的数集。" },
-      { slug: "review", title: "复数与数域回顾", description: "用一个复数例子检查模长、共轭与数域。" }
-    ] },
-    { id: "chapter01-section05", number: "1.5", title: "数组向量", description: "把三维几何向量推广为任意维数组，掌握分量运算与基本向量。", path: "chapters/chapter01/section05/index.html", readingPath: "chapters/chapter01/section05/index.html", legacyPath: "chapters/chapter01.html#array-vectors", anchor: "array-vectors", pages: [
-      { slug: "array-intuition", title: "怎样从三个坐标走向任意多个分量？", description: "认识数组向量以及高维表示。" },
-      { slug: "array-definition", title: "什么是 n 维数组向量？", description: "学习数域、分量、行向量和列向量的记号。" },
-      { slug: "high-dimensional-examples", title: "高维数组可以表示什么？", description: "从时空事件、颜色、成绩和特征向量建立直觉。" },
-      { slug: "array-operations", title: "数组向量怎样进行线性运算？", description: "逐分量定义加法、数乘、零向量和相等。" },
-      { slug: "standard-vectors", title: "什么是基本向量？", description: "用基本向量表示任意数组向量。" },
-      { slug: "review", title: "数组向量回顾与自测", description: "联系高维线性运算、相关性与基本向量。" }
-    ] }
-  ];
+  {
+    "id": "chapter01-section01",
+    "number": "1.1",
+    "title": "向量及其运算",
+    "description": "从认识向量开始，逐步理解加法、减法、数乘及其基本性质。",
+    "path": "chapters/chapter01/section01/index.html",
+    "readingPath": "chapters/chapter01/section01/index.html",
+    "anchor": "vector-operations",
+    "pages": [
+      {
+        "slug": "lesson-1-1-1",
+        "title": "向量的概念与表示",
+        "description": "向量的概念与表示"
+      },
+      {
+        "slug": "lesson-1-1-2",
+        "title": "向量的加法",
+        "description": "向量的加法"
+      },
+      {
+        "slug": "lesson-1-1-3",
+        "title": "向量加法的基本性质",
+        "description": "向量加法的基本性质"
+      },
+      {
+        "slug": "lesson-1-1-4",
+        "title": "向量的减法",
+        "description": "向量的减法"
+      },
+      {
+        "slug": "lesson-1-1-5",
+        "title": "向量的数乘",
+        "description": "向量的数乘"
+      },
+      {
+        "slug": "lesson-1-1-6",
+        "title": "向量数乘的基本性质",
+        "description": "向量数乘的基本性质"
+      },
+      {
+        "slug": "lesson-1-1-7",
+        "title": "线性运算与八条基本性质",
+        "description": "线性运算与八条基本性质"
+      }
+    ]
+  },
+  {
+    "id": "chapter01-section02",
+    "number": "1.2",
+    "title": "向量线性相关性",
+    "description": "从线性组合与张成空间出发，理解向量组中方向是否冗余。",
+    "path": "chapters/chapter01/section02/index.html",
+    "readingPath": "chapters/chapter01/section02/index.html",
+    "anchor": "vector-dependence",
+    "pages": [
+      {
+        "slug": "lesson-1-2-1",
+        "title": "线性组合",
+        "description": "线性组合"
+      },
+      {
+        "slug": "lesson-1-2-2",
+        "title": "线性组合的几何意义",
+        "description": "线性组合的几何意义"
+      },
+      {
+        "slug": "lesson-1-2-3",
+        "title": "线性相关与线性无关",
+        "description": "线性相关与线性无关"
+      },
+      {
+        "slug": "lesson-1-2-4",
+        "title": "线性相关性的几何判断",
+        "description": "线性相关性的几何判断"
+      }
+    ]
+  },
+  {
+    "id": "chapter01-section03",
+    "number": "1.3",
+    "title": "坐标系、坐标与坐标变换",
+    "description": "从仿射坐标系出发，理解向量坐标运算与基变换。",
+    "path": "chapters/chapter01/section03/index.html",
+    "readingPath": "chapters/chapter01/section03/index.html",
+    "anchor": "coordinates",
+    "pages": [
+      {
+        "slug": "lesson-1-3-1",
+        "title": "基、坐标与仿射坐标系",
+        "description": "基、坐标与仿射坐标系"
+      },
+      {
+        "slug": "lesson-1-3-2",
+        "title": "坐标中的线性运算",
+        "description": "坐标中的线性运算"
+      },
+      {
+        "slug": "lesson-1-3-3",
+        "title": "坐标变换",
+        "description": "坐标变换"
+      }
+    ]
+  },
+  {
+    "id": "chapter01-section04",
+    "number": "1.4",
+    "title": "复数与数域",
+    "description": "从实数坐标推广到复数，认识复平面与数域。",
+    "path": "chapters/chapter01/section04/index.html",
+    "readingPath": "chapters/chapter01/section04/index.html",
+    "anchor": "complex-and-fields",
+    "pages": [
+      {
+        "slug": "lesson-1-4-1",
+        "title": "复数",
+        "description": "复数"
+      },
+      {
+        "slug": "lesson-1-4-2",
+        "title": "数域",
+        "description": "数域"
+      }
+    ]
+  },
+  {
+    "id": "chapter01-section05",
+    "number": "1.5",
+    "title": "数组向量",
+    "description": "把三维几何向量推广为任意维数组，掌握分量运算与基本向量。",
+    "path": "chapters/chapter01/section05/index.html",
+    "readingPath": "chapters/chapter01/section05/index.html",
+    "anchor": "array-vectors",
+    "pages": [
+      {
+        "slug": "lesson-1-5-1",
+        "title": "数组向量的定义",
+        "description": "数组向量的定义"
+      },
+      {
+        "slug": "lesson-1-5-2",
+        "title": "高维数组的例子",
+        "description": "高维数组的例子"
+      },
+      {
+        "slug": "lesson-1-5-3",
+        "title": "特征向量与应用",
+        "description": "特征向量与应用"
+      },
+      {
+        "slug": "lesson-1-5-4",
+        "title": "数组向量的线性运算",
+        "description": "数组向量的线性运算"
+      },
+      {
+        "slug": "lesson-1-5-5",
+        "title": "数组向量的线性相关性与基本向量",
+        "description": "数组向量的线性相关性与基本向量"
+      },
+      {
+        "slug": "lesson-1-5-6",
+        "title": "本章概念图",
+        "description": "本章概念图"
+      }
+    ]
+  }
+];
+  // 旧网址与记录编号保留；新版正文重新评价，不将旧完成状态按页码套用。
+  course.legacyUnits = [
+  {
+    "id": "chapter01-section01-what-is-a-vector",
+    "path": "chapters/chapter01/section01/what-is-a-vector.html",
+    "target": "chapters/chapter01/section01/lesson-1-1-1.html"
+  },
+  {
+    "id": "chapter01-section01-equal-vectors",
+    "path": "chapters/chapter01/section01/equal-vectors.html",
+    "target": "chapters/chapter01/section01/lesson-1-1-1.html"
+  },
+  {
+    "id": "chapter01-section01-special-vectors",
+    "path": "chapters/chapter01/section01/special-vectors.html",
+    "target": "chapters/chapter01/section01/lesson-1-1-1.html"
+  },
+  {
+    "id": "chapter01-section01-vector-addition",
+    "path": "chapters/chapter01/section01/vector-addition.html",
+    "target": "chapters/chapter01/section01/lesson-1-1-2.html"
+  },
+  {
+    "id": "chapter01-section01-vector-subtraction",
+    "path": "chapters/chapter01/section01/vector-subtraction.html",
+    "target": "chapters/chapter01/section01/lesson-1-1-4.html"
+  },
+  {
+    "id": "chapter01-section01-scalar-multiplication",
+    "path": "chapters/chapter01/section01/scalar-multiplication.html",
+    "target": "chapters/chapter01/section01/lesson-1-1-5.html"
+  },
+  {
+    "id": "chapter01-section01-addition-laws",
+    "path": "chapters/chapter01/section01/addition-laws.html",
+    "target": "chapters/chapter01/section01/lesson-1-1-3.html"
+  },
+  {
+    "id": "chapter01-section01-scalar-laws",
+    "path": "chapters/chapter01/section01/scalar-laws.html",
+    "target": "chapters/chapter01/section01/lesson-1-1-6.html"
+  },
+  {
+    "id": "chapter01-section01-review",
+    "path": "chapters/chapter01/section01/review.html",
+    "target": "chapters/chapter01/section01/lesson-1-1-7.html"
+  },
+  {
+    "id": "chapter01-section02-linear-combinations",
+    "path": "chapters/chapter01/section02/linear-combinations.html",
+    "target": "chapters/chapter01/section02/lesson-1-2-1.html"
+  },
+  {
+    "id": "chapter01-section02-span",
+    "path": "chapters/chapter01/section02/span.html",
+    "target": "chapters/chapter01/section02/lesson-1-2-2.html"
+  },
+  {
+    "id": "chapter01-section02-linear-independence",
+    "path": "chapters/chapter01/section02/linear-independence.html",
+    "target": "chapters/chapter01/section02/lesson-1-2-3.html"
+  },
+  {
+    "id": "chapter01-section02-dependence-example",
+    "path": "chapters/chapter01/section02/dependence-example.html",
+    "target": "chapters/chapter01/section02/lesson-1-2-3.html"
+  },
+  {
+    "id": "chapter01-section02-review",
+    "path": "chapters/chapter01/section02/review.html",
+    "target": "chapters/chapter01/section02/lesson-1-2-4.html"
+  },
+  {
+    "id": "chapter01-section03-coordinate-intuition",
+    "path": "chapters/chapter01/section03/coordinate-intuition.html",
+    "target": "chapters/chapter01/section03/lesson-1-3-1.html"
+  },
+  {
+    "id": "chapter01-section03-affine-basis",
+    "path": "chapters/chapter01/section03/affine-basis.html",
+    "target": "chapters/chapter01/section03/lesson-1-3-1.html"
+  },
+  {
+    "id": "chapter01-section03-coordinate-operations",
+    "path": "chapters/chapter01/section03/coordinate-operations.html",
+    "target": "chapters/chapter01/section03/lesson-1-3-2.html"
+  },
+  {
+    "id": "chapter01-section03-coordinate-change",
+    "path": "chapters/chapter01/section03/coordinate-change.html",
+    "target": "chapters/chapter01/section03/lesson-1-3-3.html"
+  },
+  {
+    "id": "chapter01-section03-review",
+    "path": "chapters/chapter01/section03/review.html",
+    "target": "chapters/chapter01/section03/lesson-1-3-3.html"
+  },
+  {
+    "id": "chapter01-section04-complex-intuition",
+    "path": "chapters/chapter01/section04/complex-intuition.html",
+    "target": "chapters/chapter01/section04/lesson-1-4-1.html"
+  },
+  {
+    "id": "chapter01-section04-complex-plane",
+    "path": "chapters/chapter01/section04/complex-plane.html",
+    "target": "chapters/chapter01/section04/lesson-1-4-1.html"
+  },
+  {
+    "id": "chapter01-section04-number-fields",
+    "path": "chapters/chapter01/section04/number-fields.html",
+    "target": "chapters/chapter01/section04/lesson-1-4-2.html"
+  },
+  {
+    "id": "chapter01-section04-review",
+    "path": "chapters/chapter01/section04/review.html",
+    "target": "chapters/chapter01/section04/lesson-1-4-1.html"
+  },
+  {
+    "id": "chapter01-section05-array-intuition",
+    "path": "chapters/chapter01/section05/array-intuition.html",
+    "target": "chapters/chapter01/section05/lesson-1-5-1.html"
+  },
+  {
+    "id": "chapter01-section05-array-definition",
+    "path": "chapters/chapter01/section05/array-definition.html",
+    "target": "chapters/chapter01/section05/lesson-1-5-1.html"
+  },
+  {
+    "id": "chapter01-section05-high-dimensional-examples",
+    "path": "chapters/chapter01/section05/high-dimensional-examples.html",
+    "target": "chapters/chapter01/section05/lesson-1-5-3.html"
+  },
+  {
+    "id": "chapter01-section05-array-operations",
+    "path": "chapters/chapter01/section05/array-operations.html",
+    "target": "chapters/chapter01/section05/lesson-1-5-4.html"
+  },
+  {
+    "id": "chapter01-section05-standard-vectors",
+    "path": "chapters/chapter01/section05/standard-vectors.html",
+    "target": "chapters/chapter01/section05/lesson-1-5-5.html"
+  },
+  {
+    "id": "chapter01-section05-review",
+    "path": "chapters/chapter01/section05/review.html",
+    "target": "chapters/chapter01/section05/lesson-1-5-6.html"
+  }
+];
   const additionalSections = {
     chapter02: [
       { number: "2.1", title: "概念和基本问题", description: "认识线性方程组、解与解集。", pages: ["研究对象", "线性方程组", "线性方程组的解", "关于线性方程组的几个基本问题"] },
@@ -83,10 +355,10 @@ window.Course = {
   /* 第四至第九章的网页正文已放入 content/chapterXX；这里登记其子节和知识页数量，页面标题按原稿层级生成。 */
   const preparedChapters = {
     chapter04: { sections: [["行列式定义", 6], ["行列式性质", 7], ["可逆判定", 2], ["Cramer 法则", 1], ["行列式的计算", 1]] },
-    chapter05: { sections: [["初等变换", 2], ["初等矩阵的应用", 4], ["分块矩阵的初等变换及应用", 3], ["秩与相抵", 6], ["相关例题", 2]] },
+    chapter05: { sections: [["初等变换", 2], ["初等矩阵的应用", 4], ["分块矩阵的初等变换及应用", 3], ["秩与相抵", 6], ["相关例题", 3]] },
     chapter06: { sections: [["数组空间", 4], ["线性相关性", 3], ["极大无关组", 3], ["秩", 5], ["基与维数", 2], ["坐标与坐标变换", 2], ["线性方程组解集的结构", 5], ["一般线性空间的定义", 7], ["一般线性空间的理论", 5], ["子空间*", 3]] },
-    chapter07: { sections: [["线性映射", 3], ["线性映射与矩阵的对应", 3], ["线性变换与方阵的对应", 5], ["线性函数与对偶空间*", 3], ["不同基下的矩阵与相抵（相似）关系", 3], ["特征值与特征向量", 5], ["相似不变量", 2], ["相似对角化", 4], ["相似上三角化与若当标准形", 3]] },
-    chapter08: { sections: [["欧氏空间的定义", 5], ["度量矩阵（内积的矩阵表示）", 2], ["标准正交基", 2], ["正交变换", 4], ["伴随变换", 3], ["实对称矩阵的对角化", 1], ["欧氏空间的子空间", 2], ["酉空间*", 7]] },
+    chapter07: { sections: [["线性映射", 3], ["线性映射与矩阵的对应", 3], ["线性变换与方阵的对应", 5], ["线性函数与对偶空间*", 3], ["不同基下的矩阵与相抵（相似）关系", 3], ["特征值与特征向量", 5], ["相似不变量", 2], ["相似对角化", 4], ["相似上三角化与若当标准形", 4]] },
+    chapter08: { sections: [["欧氏空间的定义", 5], ["度量矩阵（内积的矩阵表示）", 2], ["标准正交基", 2], ["正交变换", 4], ["伴随变换", 3], ["实对称矩阵的对角化", 1], ["欧氏空间的子空间", 2], ["酉空间*", 8]] },
     chapter09: { sections: [["正交相合标准形与相合规范形", 2], ["二次型", 2], ["二次型的标准形", 6], ["正定二次型", 5], ["二次曲线与二次曲面的分类", 2]] }
   };
   Object.keys(preparedChapters).forEach(function (chapterId) {

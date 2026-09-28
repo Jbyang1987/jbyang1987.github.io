@@ -1,0 +1,84 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="特征向量与应用；向量，线性代数课程。"><title>特征向量与应用 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><link rel="stylesheet" href="../../../css/chapter01.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter01" data-section="chapter01-section05" data-unit="chapter01-section05-lesson-1-5-3"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter01.html">第一章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第5节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第3小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页仍可使用；公式排版和学习记录需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§1.5.3</span><span>特征向量与应用</span></h1><p class="knowledge-goal">特征向量与应用</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-1-5-3-lesson-1-5-3" data-chapter="1" data-chapter-id="00 introduction.tex::section1">
+  <p class="tex-hierarchy">向量 / 数组向量</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（机器学习中的特征向量）</span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">要识别一张图片是否包含猫,需要提取图片的特征:</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">颜色直方图(256维)</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">边缘特征(128维)</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">纹理特征(64维)</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\cdots\)</div>
+        </li>
+      </ul>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">最终得到一个<span class="tex-color-blue">几千维的向量</span>来表示这张图片!</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: example -->
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（推荐系统中的用户向量）</span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">一个用户对\(n\)部电影的评分可以表示为一个\(n\)维向量:</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[(r_1,r_2,\cdots,r_n)\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中\(r_i\)是用户对第\(i\)部电影的评分。</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: example -->
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（DeepSeek-V3）</span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设 \(T\) 是 DeepSeek-V3 的 token 词表,  \(|T|=129280\).  词嵌入给每个 token 分配一个 7168 维向量：</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[E \colon  T \longrightarrow \mathbb R^{7168}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">为了储存映射 \(E\), 我们需要</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[129208 \times 7168 = 926679040\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">个参数。
+
+      这约 9.27 亿个参数最初随机初始化, 之后与整个模型一起训练; 这些向量不是人工规定的,而是从大量语言数据中学习出来的.</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-red">高维向量在现代科学和工程中无处不在!</span></div>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="特征向量与应用的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter01-section05-lesson-1-5-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter01-section05-lesson-1-5-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter01-section05-lesson-1-5-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-1-5-2.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="lesson-1-5-4.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter01-section05-lesson-1-5-3" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter01-section05-lesson-1-5-3" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter01-section05-lesson-1-5-3" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

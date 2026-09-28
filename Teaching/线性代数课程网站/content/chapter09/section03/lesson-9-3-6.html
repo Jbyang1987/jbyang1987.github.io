@@ -1,68 +1,82 @@
 <!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-9-3-6-lesson-9-3-6">
+<div class="tex-converted tex-page-9-3-6-lesson-9-3-6" data-chapter="9" data-chapter-id="00 introduction.tex::section9">
   <p class="tex-hierarchy">实二次型 / 二次型的标准形</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">9.1.7</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">\(Q(x_1,x_2,x_3)=2x_1x_2+4x_1x_3\).</div>
     </div>
-  </section>
+  </fieldset>
 
-  <!-- TeX block: text -->
-  <div class="tex-paragraph"><span class="tex-color-yang">解：<span class="tex-size-tiny">
-  \(\left(A,I\right) = \left(\begin{array}{rrrrrr}
-  {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{2}}&amp;1&amp;0&amp;0\\
-  {\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;1&amp;0\\
-  {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;0&amp;1\\
-  \end{array}\right)\) 
+  <!-- TeX block: proof -->
+  <details class="math-block math-block-proof math-block-proof-style lecture-proof">
+    <summary class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">解</span></span></summary>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\left(A,I\right) = \left(\begin{array}{rrrrrr}
+      {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{2}}&amp;1&amp;0&amp;0\\
+      {\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;1&amp;0\\
+      {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;0&amp;1\\
+      \end{array}\right)\)</div>
 
-  \({\textcolor[rgb]{1,0,0}{\xrightarrow{r_2\rightarrow r_1}}}\)
-  \(\left(\begin{array}{rrrrrr}
-  1&amp;1&amp;2&amp;1&amp;1&amp;0\\
-  1&amp;0&amp;0&amp;0&amp;1&amp;0\\
-  2&amp;0&amp;0&amp;0&amp;0&amp;1\\
-  \end{array}\right)\)
-  \({\textcolor[rgb]{1,0,0}{\xrightarrow{C_2\rightarrow C_1}}}\)
-  \(\left(\begin{array}{rrrrrr}
-  {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{2}}&amp;1&amp;1&amp;0\\
-  {\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;1&amp;0\\
-  {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;0&amp;1\\
-  \end{array}\right)\) 
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\({\textcolor[rgb]{1,0,0}{\xrightarrow{r_2\rightarrow r_1}}}\)
+      \(\left(\begin{array}{rrrrrr}
+      1&amp;1&amp;2&amp;1&amp;1&amp;0\\
+      1&amp;0&amp;0&amp;0&amp;1&amp;0\\
+      2&amp;0&amp;0&amp;0&amp;0&amp;1\\
+      \end{array}\right)\)
+      \({\textcolor[rgb]{1,0,0}{\xrightarrow{C_2\rightarrow C_1}}}\)
+      \(\left(\begin{array}{rrrrrr}
+      {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{2}}&amp;1&amp;1&amp;0\\
+      {\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;1&amp;0\\
+      {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;0&amp;1\\
+      \end{array}\right)\)</div>
 
-  \({\textcolor[rgb]{1,0,0}{\xrightarrow[-C_1\rightarrow C_3]{-\frac12C_1\rightarrow C_2}}}\)
-  \(\left(\begin{array}{rrrrrr}
-  2&amp;0&amp;0&amp;1&amp;1&amp;0\\
-  1&amp;-\frac12&amp;-1&amp;0&amp;1&amp;0\\
-  2&amp;-1&amp;-2&amp;0&amp;0&amp;1\\
-  \end{array}\right)\)
-  \({\textcolor[rgb]{1,0,0}{\xrightarrow[-r_1\rightarrow r_3]{-\frac12r_1\rightarrow r_2}}}\)
-  \(\left(\begin{array}{rrrrrr}
-  {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;1&amp;1&amp;0\\
-  {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-\frac12}}&amp;{\textcolor[rgb]{0,0,1}{-1}}&amp;-\frac12&amp;\frac12&amp;0\\
-  {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-1}}&amp;{\textcolor[rgb]{0,0,1}{-2}}&amp;-1&amp;-1&amp;1\\
-  \end{array}\right)\) 
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\({\textcolor[rgb]{1,0,0}{\xrightarrow[-C_1\rightarrow C_3]{-\frac12C_1\rightarrow C_2}}}\)
+      \(\left(\begin{array}{rrrrrr}
+      2&amp;0&amp;0&amp;1&amp;1&amp;0\\
+      1&amp;-\frac12&amp;-1&amp;0&amp;1&amp;0\\
+      2&amp;-1&amp;-2&amp;0&amp;0&amp;1\\
+      \end{array}\right)\)
+      \({\textcolor[rgb]{1,0,0}{\xrightarrow[-r_1\rightarrow r_3]{-\frac12r_1\rightarrow r_2}}}\)
+      \(\left(\begin{array}{rrrrrr}
+      {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;1&amp;1&amp;0\\
+      {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-\frac12}}&amp;{\textcolor[rgb]{0,0,1}{-1}}&amp;-\frac12&amp;\frac12&amp;0\\
+      {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-1}}&amp;{\textcolor[rgb]{0,0,1}{-2}}&amp;-1&amp;-1&amp;1\\
+      \end{array}\right)\)</div>
 
-  \({\textcolor[rgb]{1,0,0}{\xrightarrow{-2r_1\rightarrow r_3}}}\)
-  \(\setlength{\arraycolsep}{2pt}\left(\begin{array}{rrrrrr}
-  2&amp;0&amp;0&amp;1&amp;1&amp;0\\
-  1&amp;-\frac12&amp;-1&amp;-\frac12&amp;\frac12&amp;0\\
-  0&amp;0&amp;0&amp;0&amp;-2&amp;1\\
-  \end{array}\right)\)
-  \(\setlength{\arraycolsep}{2pt}{\textcolor[rgb]{1,0,0}{\xrightarrow{-2C_1\rightarrow C_3}}}\)
-  \(\left(\begin{array}{rrrrrr}
-  {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;1&amp;1&amp;0\\
-  {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-\frac12}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;-\frac12&amp;\frac12&amp;0\\
-  {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;-2&amp;1\\
-  \end{array}\right)\) 
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\({\textcolor[rgb]{1,0,0}{\xrightarrow{-2r_1\rightarrow r_3}}}\)
+      \(\left(\begin{array}{rrrrrr}
+      2&amp;0&amp;0&amp;1&amp;1&amp;0\\
+      1&amp;-\frac12&amp;-1&amp;-\frac12&amp;\frac12&amp;0\\
+      0&amp;0&amp;0&amp;0&amp;-2&amp;1\\
+      \end{array}\right)\)
+      \({\textcolor[rgb]{1,0,0}{\xrightarrow{-2C_1\rightarrow C_3}}}\)
+      \(\left(\begin{array}{rrrrrr}
+      {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;1&amp;1&amp;0\\
+      {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-\frac12}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;-\frac12&amp;\frac12&amp;0\\
+      {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;-2&amp;1\\
+      \end{array}\right)\)</div>
 
-  从而得到标准形
-  \[\widetilde{Q}(y_1,y_2,y_3)=2y_1^2-\frac12y_2^2.\]
-  其中
-  \[P = \left(\begin{array}{rrr} 1&amp;1&amp;0\\-\frac12&amp;\frac12&amp;0\\ 0&amp;-2&amp;1\\
-  \end{array}\right)^T = \left(\begin{array}{rrr} 1&amp;-\frac12&amp;0\\1&amp;\frac12&amp;-2\\ 0&amp;0&amp;1\\
-  \end{array}\right).\]
-  </span></span></div>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">从而得到标准形</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\widetilde{Q}(y_1,y_2,y_3)=2y_1^2-\frac12y_2^2.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[P = \left(\begin{array}{rrr} 1&amp;1&amp;0\\-\frac12&amp;\frac12&amp;0\\ 0&amp;-2&amp;1\\
+      \end{array}\right)^T = \left(\begin{array}{rrr} 1&amp;-\frac12&amp;0\\1&amp;\frac12&amp;-2\\ 0&amp;0&amp;1\\
+      \end{array}\right).\]</div>
+    </div>
+  </details>
 </div>

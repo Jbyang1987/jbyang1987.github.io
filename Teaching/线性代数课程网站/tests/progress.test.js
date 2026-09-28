@@ -22,7 +22,8 @@ test('标记、撤销以及小节与章节汇总',()=>{
  assert.equal(p.getSectionSummary(s.id).percent,100);
  assert.equal(p.getSummary().completed,s.pages.length);assert.equal(p.isCompleted('chapter01'),false);
  for(const unit of c.getUnits().slice(s.pages.length))p.setUnitCompleted(unit.id,true);
- assert.equal(p.getSummary().percent,100);assert.equal(p.isCompleted('chapter01'),true);
+ assert.equal(p.getChapterSummary('chapter01').percent,100);assert.equal(p.isCompleted('chapter01'),true);
+ assert.equal(p.getSummary().percent,Math.round(c.getUnits().length/c.getAllUnits().length*100));
  p.setUnitCompleted(s.pages[2].id,false);
  assert.equal(p.getSectionSummary(s.id).completed,s.pages.length-1);assert.equal(p.getChapterSummary('chapter01').completed,c.getUnits().length-1);
 });
@@ -89,4 +90,19 @@ test('难度评价独立保存，可在完成前后修改',()=>{
  assert.equal(p.setUnitDifficulty(id,'okay'),true);assert.equal(p.getUnitDifficulty(id),'okay');
  assert.equal(app(saved).p.getUnitDifficulty(id),'okay');
  assert.equal(p.setUnitDifficulty(id,'unknown'),false);assert.equal(p.setUnitDifficulty('unknown','easy'),false);
+});
+
+test('新版第一章保留旧记录和备份，阅读位置转到对应内容，不误套完成状态',()=>{
+ const initial=app(),old=initial.c.legacyUnits.find(unit=>unit.path.endsWith('/vector-addition.html'));
+ const record={completed:true,completedAt:'2026-09-01',difficulty:'easy'};
+ const saved=new Map([[V2,JSON.stringify({version:2,chapters:{},units:{[old.id]:record},lastVisited:{unitId:old.id,visitedAt:'2026-09-01'}})]]);
+ const {p,c}=app(saved),target=c.getAllUnits().find(unit=>unit.path===old.target);
+ assert.equal(p.getResumeUnit().id,target.id);
+ assert.equal(p.isUnitCompleted(target.id),false);
+ p.setVisited(target.id);
+ assert.deepEqual(JSON.parse(saved.get(V2)).units[old.id],record);
+ const restored=app();
+ assert.equal(restored.p.importRecords(p.exportRecords()).success,true);
+ assert.deepEqual(JSON.parse(restored.saved.get(V2)).units[old.id],record);
+ assert.equal(restored.p.getResumeUnit().id,target.id);
 });

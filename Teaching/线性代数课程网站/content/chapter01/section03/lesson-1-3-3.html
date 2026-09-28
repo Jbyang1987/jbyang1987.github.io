@@ -1,0 +1,55 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-1-3-3-lesson-1-3-3" data-chapter="1" data-chapter-id="00 introduction.tex::section1">
+  <p class="tex-hierarchy">向量 / 坐标系、坐标与坐标变换</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">给定两个仿射坐标系 \([O;\vec{e}_1,\vec{e}_2,\vec{e}_3]\) 和 \([O&#39;;\vec{e}&#39;_1,\vec{e}&#39;_2,\vec{e}&#39;_3]\).</div>
+
+  <!-- TeX block: question -->
+  <fieldset class="math-block math-block-question math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">思考</span></span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设空间中的点\(P\)在两个坐标系下的坐标分别为 \((x,y,z)\) 和 \((x&#39;,y&#39;,z&#39;)\). 求两个坐标之间的关系式？</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">为了回答这一问题，我们需要给出两个坐标系之间的位置关系:</div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(O\)在\([O&#39;;\vec{e}&#39;_1,\vec{e}&#39;_2,\vec{e}&#39;_3]\)下的坐标为\((x_0&#39;,y_0&#39;,z_0&#39;)\). 即</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\overset{\longrightarrow}{O&#39;O} = x&#39;_0\vec{e}&#39;_1+ y&#39;_0\vec{e}&#39;_2 + z&#39;_0\vec{e}&#39;_3.\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\vec{e}_j\)在基\(\vec{e}&#39;_1,\vec{e}&#39;_2,\vec{e}&#39;_3\)下的坐标为\((a_{1j},a_{2j},a_{3j})\).即</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[ \vec{e}_j = a_{1j}\vec{e}&#39;_1+ a_{2j}\vec{e}&#39;_2 + a_{3j}\vec{e}&#39;_3.\]</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">然后\(P\)在两个坐标系下的坐标之间的关系式可写为<small class="tex-footnote">后续,通过矩阵乘法可简化为 <span class="tex-color-blue">\(X&#39;=AX+X_0&#39;\)</span>.</small>：</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  {\textcolor[rgb]{0,0,1}{\boxed{
+  \begin{split}
+  x&#39; &amp;= a_{11}x+a_{12}y+a_{13}z+x_0&#39;\\
+  y&#39; &amp;= a_{21}x+a_{22}y+a_{23}z+y_0&#39;\\
+  z&#39; &amp;= a_{31}x+a_{32}y+a_{33}z+z_0&#39;\\
+  \end{split}
+  }}}\qquad
+    {\textcolor[rgb]{1,0,0}{pf: \overset{\longrightarrow}{O&#39;P} = \overset{\longrightarrow}{O&#39;O}+\overset{\longrightarrow}{OP}.}}
+  \]</div>
+</div>

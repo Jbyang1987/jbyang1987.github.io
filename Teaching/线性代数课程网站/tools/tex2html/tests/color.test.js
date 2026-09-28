@@ -40,6 +40,12 @@ test('text color models distinguish RGB from rgb and reject unsafe CSS values',(
   assert.equal(model.pages[0].warnings.length,1);
 });
 
+test('colors inside math text retain text mode, nested scopes and embedded mathematics',()=>{
+ const model=convert(String.raw`\[\text{前面 \blue{蓝色 \red{红色} 后蓝 $x$} 后面}+z\]`),html=model.pages[0].html;
+ assert.match(html,/\\text\{前面/);assert.match(html,/\\textcolor\[rgb\]\{0,0,1\}/);assert.match(html,/\\textcolor\[rgb\]\{1,0,0\}/);
+ assert.match(html,/\$x\$/);assert.doesNotMatch(html,/tex-color-blue|\\blue\b|\\red\b/);assert.equal(model.pages[0].warnings.length,0);
+});
+
 test('shared MathJax config loads pinned local color and boldsymbol extensions at nested site paths',()=>{
   const source=fs.readFileSync(path.join(root,'js/mathjax-config.js'),'utf8');
   const context={window:{},document:{currentScript:{src:'https://example.test/Teaching/course/js/mathjax-config.js'}},URL};
@@ -48,9 +54,11 @@ test('shared MathJax config loads pinned local color and boldsymbol extensions a
   assert.ok(config.tex.packages.includes('color'));
   assert.ok(config.tex.packages.includes('boldsymbol'));
   assert.ok(config.tex.packages.includes('mathtools'));
+  assert.ok(config.tex.packages.includes('textmacros'));
   assert.ok(config.loader.load.includes('[tex]/color'));
   assert.ok(config.loader.load.includes('[tex]/boldsymbol'));
   assert.ok(config.loader.load.includes('[tex]/mathtools'));
+  assert.ok(config.loader.load.includes('[tex]/textmacros'));
   assert.equal(config.loader.paths.mathjax,'https://example.test/Teaching/course/assets/vendor/mathjax');
   const extension=fs.readFileSync(path.join(root,'assets/vendor/mathjax/input/tex/extensions/color.js'),'utf8');
   assert.match(extension,/3\.2\.2/);
@@ -58,4 +66,6 @@ test('shared MathJax config loads pinned local color and boldsymbol extensions a
   assert.match(boldsymbol,/3\.2\.2/);
   const mathtools=fs.readFileSync(path.join(root,'assets/vendor/mathjax/input/tex/extensions/mathtools.js'),'utf8');
   assert.match(mathtools,/3\.2\.2/);
+  const textmacros=fs.readFileSync(path.join(root,'assets/vendor/mathjax/input/tex/extensions/textmacros.js'),'utf8');
+  assert.match(textmacros,/3\.2\.2/);
 });

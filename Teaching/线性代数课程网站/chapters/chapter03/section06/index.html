@@ -1,10 +1,10 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="3.6 分块矩阵；矩阵(一)，线性代数课程。"><title>3.6 分块矩阵 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter03" data-section="chapter03-section06"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter03.html">第三章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第6节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="分块矩阵简介、进度与目录"><header class="chapter-intro"><h1>3.6 分块矩阵</h1><p>用分块结构理解矩阵的表示与运算。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter03-section06" href="lesson-3-6-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 5</span></div><progress data-section-meter="chapter03-section06" max="5" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="分块矩阵知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-3-6-1.html">3.6.1 分块矩阵</a><span data-unit-status="chapter03-section06-lesson-3-6-1">未标记</span></li><li><a href="lesson-3-6-2.html">3.6.2 分块矩阵例子</a><span data-unit-status="chapter03-section06-lesson-3-6-2">未标记</span></li><li><a href="lesson-3-6-3.html">3.6.3 几类特殊分块矩阵</a><span data-unit-status="chapter03-section06-lesson-3-6-3">未标记</span></li><li><a href="lesson-3-6-4.html">3.6.4 分块矩阵基本性质</a><span data-unit-status="chapter03-section06-lesson-3-6-4">未标记</span></li><li><a href="lesson-3-6-5.html">3.6.5 分块矩阵的乘法</a><span data-unit-status="chapter03-section06-lesson-3-6-5">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-3-6-1" data-reading-unit="chapter03-section06-lesson-3-6-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.6.1</span><h2><a class="heading-link" href="lesson-3-6-1.html">分块矩阵</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-3-6-1-lesson-3-6-1">
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="3.6 分块矩阵；矩阵(一)，线性代数课程。"><title>3.6 分块矩阵 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter03" data-section="chapter03-section06"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter03.html">第三章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第6节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页仍可使用；公式排版和学习记录需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="分块矩阵简介、进度与目录"><header class="chapter-intro"><h1>3.6 分块矩阵</h1><p>用分块结构理解矩阵的表示与运算。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter03-section06" href="lesson-3-6-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 5</span></div><progress data-section-meter="chapter03-section06" max="5" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="分块矩阵知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-3-6-1.html">3.6.1 分块矩阵</a><span data-unit-status="chapter03-section06-lesson-3-6-1">未标记</span></li><li><a href="lesson-3-6-2.html">3.6.2 分块矩阵例子</a><span data-unit-status="chapter03-section06-lesson-3-6-2">未标记</span></li><li><a href="lesson-3-6-3.html">3.6.3 几类特殊分块矩阵</a><span data-unit-status="chapter03-section06-lesson-3-6-3">未标记</span></li><li><a href="lesson-3-6-4.html">3.6.4 分块矩阵基本性质</a><span data-unit-status="chapter03-section06-lesson-3-6-4">未标记</span></li><li><a href="lesson-3-6-5.html">3.6.5 分块矩阵的乘法</a><span data-unit-status="chapter03-section06-lesson-3-6-5">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-3-6-1" data-reading-unit="chapter03-section06-lesson-3-6-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.6.1</span><h2><a class="heading-link" href="lesson-3-6-1.html">分块矩阵</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-6-1-lesson-3-6-1" data-chapter="3" data-chapter-id="00 introduction.tex::section3">
   <p class="tex-hierarchy">矩阵(一) / 分块矩阵</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: definition -->
-  <section class="math-block math-block-definition">
-    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">3.1.7</span> <span class="math-block-title">分块矩阵</span></div>
+  <fieldset class="math-block math-block-definition math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定义</span></span> <span class="math-block-title">（分块矩阵）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">对于一个矩阵\(A\)，我们将它的行和列分为几个部分后得到的由小矩阵\(A_{ij}\)组成的矩阵</div>
@@ -20,11 +20,11 @@
       <!-- TeX block: text -->
       <div class="tex-paragraph">称为<span class="tex-color-blue">分块矩阵</span>, 其中每个\(A_{ij}\)称为<span class="tex-color-blue">子块</span>．</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.15</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">我们将矩阵的第\(i\)行记为\(\beta_i\)第\(j\)列记为\(\alpha_j\),则</div>
@@ -32,10 +32,10 @@
       <!-- TeX block: formula -->
       <div class="tex-display">\[A=(\alpha_1,\cdots,\alpha_n)=\begin{pmatrix}\beta_1\\\beta_2\\\vdots\\\beta_m\end{pmatrix}.\]</div>
     </div>
-  </section>
+  </fieldset>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="分块矩阵的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section06-lesson-3-6-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section06-lesson-3-6-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section06-lesson-3-6-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section06-lesson-3-6-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter03-section06-lesson-3-6-1" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-3-6-2" data-reading-unit="chapter03-section06-lesson-3-6-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.6.2</span><h2><a class="heading-link" href="lesson-3-6-2.html">分块矩阵例子</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-3-6-2-lesson-3-6-2">
+<div class="tex-converted tex-page-3-6-2-lesson-3-6-2" data-chapter="3" data-chapter-id="00 introduction.tex::section3">
   <p class="tex-hierarchy">矩阵(一) / 分块矩阵</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: formula -->
@@ -106,7 +106,7 @@
   </ul>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="分块矩阵例子的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section06-lesson-3-6-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section06-lesson-3-6-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section06-lesson-3-6-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section06-lesson-3-6-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter03-section06-lesson-3-6-2" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-3-6-3" data-reading-unit="chapter03-section06-lesson-3-6-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.6.3</span><h2><a class="heading-link" href="lesson-3-6-3.html">几类特殊分块矩阵</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-3-6-3-lesson-3-6-3">
+<div class="tex-converted tex-page-3-6-3-lesson-3-6-3" data-chapter="3" data-chapter-id="00 introduction.tex::section3">
   <p class="tex-hierarchy">矩阵(一) / 分块矩阵</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: text -->
@@ -126,12 +126,12 @@
   <div class="tex-paragraph">注:依赖于分块方式.</div>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="几类特殊分块矩阵的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section06-lesson-3-6-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section06-lesson-3-6-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section06-lesson-3-6-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section06-lesson-3-6-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter03-section06-lesson-3-6-3" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-3-6-4" data-reading-unit="chapter03-section06-lesson-3-6-4"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.6.4</span><h2><a class="heading-link" href="lesson-3-6-4.html">分块矩阵基本性质</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-3-6-4-lesson-3-6-4">
+<div class="tex-converted tex-page-3-6-4-lesson-3-6-4" data-chapter="3" data-chapter-id="00 introduction.tex::section3">
   <p class="tex-hierarchy">矩阵(一) / 分块矩阵</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: lemma -->
-  <section class="math-block math-block-lemma">
-    <div class="math-block-heading"><span class="math-block-label">引理</span> <span class="math-block-number">3.1.7</span> <span class="math-block-title">分块矩阵基本性质</span></div>
+  <fieldset class="math-block math-block-lemma math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">引理</span></span> <span class="math-block-title">（分块矩阵基本性质）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: list -->
       <ul>
@@ -178,10 +178,10 @@
         </li>
       </ul>
     </div>
-  </section>
+  </fieldset>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="分块矩阵基本性质的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section06-lesson-3-6-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section06-lesson-3-6-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section06-lesson-3-6-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section06-lesson-3-6-4" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter03-section06-lesson-3-6-4" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-3-6-5" data-reading-unit="chapter03-section06-lesson-3-6-5"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.6.5</span><h2><a class="heading-link" href="lesson-3-6-5.html">分块矩阵的乘法</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-3-6-5-lesson-3-6-5">
+<div class="tex-converted tex-page-3-6-5-lesson-3-6-5" data-chapter="3" data-chapter-id="00 introduction.tex::section3">
   <p class="tex-hierarchy">矩阵(一) / 分块矩阵</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: text -->
@@ -206,8 +206,8 @@
   <div class="tex-paragraph">分块相乘的方法与矩阵的乘法法则一致.</div>
 
   <!-- TeX block: theorem -->
-  <section class="math-block math-block-theorem">
-    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">3.1.3</span></div>
+  <fieldset class="math-block math-block-theorem math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定理</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">若\(A = (A_{ij})_{r\times s}\)的列拆分方式与\(B = (B_{jk})_{s\times t}\)的行拆分方式相同,则</div>
@@ -215,5 +215,55 @@
       <!-- TeX block: formula -->
       <div class="tex-display">\[AB = \left(\sum\limits_{j=1}^s A_{ij}B_{jk}\right)_{r\times t}.\]</div>
     </div>
-  </section>
+  </fieldset>
+
+  <!-- TeX block: example -->
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">选择矩阵 \(A\) 和 \(B\) 的合适分块并计算它们的乘积 \(AB\)，其中</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[A = \left(\begin{array}{cccc}
+      1 &amp; 0 &amp; 0 &amp; 0\\
+      0 &amp; 1 &amp; 0 &amp; 0\\
+      1 &amp; 3 &amp; 2 &amp; 0\\
+      5 &amp; 2 &amp; 0 &amp; 2
+      \end{array}\right),\ B = \left(\begin{array}{cccc}
+      - 1 &amp; 0 &amp; 2 &amp; 1\\
+      0 &amp; - 1 &amp; 3 &amp; 4\\
+      0 &amp; 0 &amp; 1 &amp; 0\\
+      0 &amp; 0 &amp; 0 &amp; 1
+      \end{array}\right).\]</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: example -->
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">已知 \(A = \left(\begin{array}{cccc}
+      1 &amp; 1 &amp; 1 &amp; 0\\
+      0 &amp; 1 &amp; 0 &amp; 1\\
+      0 &amp; 0 &amp; 1 &amp; 1\\
+      0 &amp; 0 &amp; 0 &amp; 1\\
+      \end{array}\right)\). 求\(A^k\).</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">解: 归纳\(\Rightarrow A^k=\left(\begin{array}{cc}
+  B^k &amp; kB^{k-1}\\0 &amp; B^k\\\end{array}\right)\), \(B^k=\left(\begin{array}{cc}
+  1 &amp; k\\0 &amp; 1\\\end{array}\right)\).</span></div>
+
+  <!-- TeX block: example -->
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若 \(A\)与\(B\)可逆,求 \(\begin{pmatrix}A &amp; C \\ O &amp; B\\\end{pmatrix}\) 和 \(\begin{pmatrix}A &amp; 0  \\ D &amp; B\end{pmatrix}\) 的逆.</div>
+    </div>
+  </fieldset>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="分块矩阵的乘法的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section06-lesson-3-6-5" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section06-lesson-3-6-5" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section06-lesson-3-6-5" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section06-lesson-3-6-5" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter03-section06-lesson-3-6-5" role="status" aria-live="polite"></p></div></section><nav class="lesson-navigation" aria-label="子节导航"><a href="../../../index.html">返回课程首页</a><a href="../section05/index.html">上一节 · 3.5 转置、共轭与迹</a><a href="index.html#main">回顾本节</a><a href="../../chapter03.html">返回章节目录</a></nav></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

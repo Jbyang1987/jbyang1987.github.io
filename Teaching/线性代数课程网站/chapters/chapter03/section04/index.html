@@ -1,40 +1,40 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="3.4 逆矩阵；矩阵(一)，线性代数课程。"><title>3.4 逆矩阵 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter03" data-section="chapter03-section04"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter03.html">第三章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第4节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="逆矩阵简介、进度与目录"><header class="chapter-intro"><h1>3.4 逆矩阵</h1><p>理解逆矩阵的定义、性质和计算。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter03-section04" href="lesson-3-4-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 4</span></div><progress data-section-meter="chapter03-section04" max="4" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="逆矩阵知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-3-4-1.html">3.4.1 需要什么样的逆</a><span data-unit-status="chapter03-section04-lesson-3-4-1">未标记</span></li><li><a href="lesson-3-4-2.html">3.4.2 逆矩阵定义</a><span data-unit-status="chapter03-section04-lesson-3-4-2">未标记</span></li><li><a href="lesson-3-4-3.html">3.4.3 逆矩阵性质</a><span data-unit-status="chapter03-section04-lesson-3-4-3">未标记</span></li><li><a href="lesson-3-4-4.html">3.4.4 逆矩阵（例）</a><span data-unit-status="chapter03-section04-lesson-3-4-4">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-3-4-1" data-reading-unit="chapter03-section04-lesson-3-4-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.4.1</span><h2><a class="heading-link" href="lesson-3-4-1.html">需要什么样的逆</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-3-4-1-lesson-3-4-1">
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="3.4 逆矩阵；矩阵(一)，线性代数课程。"><title>3.4 逆矩阵 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter03" data-section="chapter03-section04"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter03.html">第三章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第4节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页仍可使用；公式排版和学习记录需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="逆矩阵简介、进度与目录"><header class="chapter-intro"><h1>3.4 逆矩阵</h1><p>理解逆矩阵的定义、性质和计算。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter03-section04" href="lesson-3-4-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 4</span></div><progress data-section-meter="chapter03-section04" max="4" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="逆矩阵知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-3-4-1.html">3.4.1 需要什么样的逆</a><span data-unit-status="chapter03-section04-lesson-3-4-1">未标记</span></li><li><a href="lesson-3-4-2.html">3.4.2 逆矩阵定义</a><span data-unit-status="chapter03-section04-lesson-3-4-2">未标记</span></li><li><a href="lesson-3-4-3.html">3.4.3 逆矩阵性质</a><span data-unit-status="chapter03-section04-lesson-3-4-3">未标记</span></li><li><a href="lesson-3-4-4.html">3.4.4 逆矩阵（例）</a><span data-unit-status="chapter03-section04-lesson-3-4-4">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-3-4-1" data-reading-unit="chapter03-section04-lesson-3-4-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.4.1</span><h2><a class="heading-link" href="lesson-3-4-1.html">需要什么样的逆</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-4-1-lesson-3-4-1" data-chapter="3" data-chapter-id="00 introduction.tex::section3">
   <p class="tex-hierarchy">矩阵(一) / 逆矩阵</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
-  <!-- TeX block: container -->
-  <div class="tex-container">
-    <!-- TeX block: text -->
-    <div class="tex-paragraph">解一元一次方程.</div>
+  <!-- TeX block: columns -->
+  <div class="tex-columns" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center"><!-- TeX block: column -->
+  <div class="tex-column" style="flex:5 1 0;min-width:min(100%,18rem);max-width:100%"><!-- TeX block: text -->
+  <div class="tex-paragraph">解一元一次方程.</div>
 
-    <!-- TeX block: formula -->
-    <div class="tex-display">\[\small \boxed{\begin{split}
-    ax=b\Rightarrow &amp; a^{-1}(ax)=a^{-1}b\\ 
-    \overset{\text{结合律}}{\Longrightarrow}&amp; (a^{-1}a)x=a^{-1}b\\ 
-    \overset{a^{-1}a=1}{\Longrightarrow}&amp; 1x=a^{-1}b\\ 
-    \overset{1x=x}{\Longrightarrow} &amp; x=a^{-1}b\\ 
-    \text{验证:}\overset{aa^{-1}=1}{\Longrightarrow}&amp; a(a^{-1}b)=b\\
-    \end{split}}\]</div>
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\small \boxed{\begin{split}
+  ax=b\Rightarrow &amp; a^{-1}(ax)=a^{-1}b\\ 
+  \overset{\text{结合律}}{\Longrightarrow}&amp; (a^{-1}a)x=a^{-1}b\\ 
+  \overset{a^{-1}a=1}{\Longrightarrow}&amp; 1x=a^{-1}b\\ 
+  \overset{1x=x}{\Longrightarrow} &amp; x=a^{-1}b\\ 
+  \text{验证:}\overset{aa^{-1}=1}{\Longrightarrow}&amp; a(a^{-1}b)=b\\
+  \end{split}}\]</div></div>
 
-    <!-- TeX block: text -->
-    <div class="tex-paragraph">解一般线性方程组</div>
+  <!-- TeX block: column -->
+  <div class="tex-column" style="flex:5 1 0;min-width:min(100%,18rem);max-width:100%"><!-- TeX block: text -->
+  <div class="tex-paragraph">解一般线性方程组</div>
 
-    <!-- TeX block: formula -->
-    <div class="tex-display">\[\small \boxed{\begin{split}
-    Ax=b\Rightarrow &amp; A^{-1}(Ax)=A^{-1}b\\ 
-    \overset{\text{结合律}}{\Longrightarrow}&amp; (A^{-1}A)x=A^{-1}b\\ 
-    \overset{{\textcolor[rgb]{1,0,0}{A^{-1}A=I}}}{\Longrightarrow}&amp; Ix=A^{-1}b\\ 
-    \overset{Ix=x}{\Longrightarrow} &amp; x=A^{-1}b\\ 
-    \text{验证:}\overset{{\textcolor[rgb]{1,0,0}{AA^{-1}=I}}}{\Longrightarrow}&amp; A(A^{-1}b)=b\\
-    \end{split}}\]</div>
-  </div>
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\small \boxed{\begin{split}
+  Ax=b\Rightarrow &amp; A^{-1}(Ax)=A^{-1}b\\ 
+  \overset{\text{结合律}}{\Longrightarrow}&amp; (A^{-1}A)x=A^{-1}b\\ 
+  \overset{{\textcolor[rgb]{1,0,0}{A^{-1}A=I}}}{\Longrightarrow}&amp; Ix=A^{-1}b\\ 
+  \overset{Ix=x}{\Longrightarrow} &amp; x=A^{-1}b\\ 
+  \text{验证:}\overset{{\textcolor[rgb]{1,0,0}{AA^{-1}=I}}}{\Longrightarrow}&amp; A(A^{-1}b)=b\\
+  \end{split}}\]</div></div></div>
 
   <!-- TeX block: text -->
   <div class="tex-paragraph">要让上述过程有意义, 仅需要存在矩阵\(A^{-1}\)满足\(A^{-1}A=I=AA^{-1}\).</div>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.8</span> <span class="math-block-title">鸡兔同笼</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（鸡兔同笼）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph"><span class="tex-size-small"></span></div>
@@ -42,7 +42,7 @@
       <!-- TeX block: formula -->
       <div class="tex-display">\[\begin{pmatrix}1&amp;1\\2&amp;4\\\end{pmatrix}\begin{pmatrix}x\\y\\\end{pmatrix}=\begin{pmatrix}35\\94\end{pmatrix}.\]</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: text -->
   <div class="tex-paragraph">解:因为</div>
@@ -57,12 +57,12 @@
   <div class="tex-display">\[\begin{pmatrix}x\\y\\\end{pmatrix}=\begin{pmatrix}2&amp;-\frac12\\-1&amp;\frac12\\\end{pmatrix}\begin{pmatrix}35\\94\end{pmatrix}=\begin{pmatrix}23\\12\end{pmatrix}.\]</div>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="需要什么样的逆的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section04-lesson-3-4-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section04-lesson-3-4-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section04-lesson-3-4-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section04-lesson-3-4-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter03-section04-lesson-3-4-1" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-3-4-2" data-reading-unit="chapter03-section04-lesson-3-4-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.4.2</span><h2><a class="heading-link" href="lesson-3-4-2.html">逆矩阵定义</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-3-4-2-lesson-3-4-2">
+<div class="tex-converted tex-page-3-4-2-lesson-3-4-2" data-chapter="3" data-chapter-id="00 introduction.tex::section3">
   <p class="tex-hierarchy">矩阵(一) / 逆矩阵</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: definition -->
-  <section class="math-block math-block-definition">
-    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">3.1.5</span> <span class="math-block-title">逆矩阵</span></div>
+  <fieldset class="math-block math-block-definition math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定义</span></span> <span class="math-block-title">（逆矩阵）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">设\(A\)为数域\({\mathbb F}\)上的\(n\)阶方阵.如果存在\(n\)阶方阵\(X\)满足</div>
@@ -73,7 +73,7 @@
       <!-- TeX block: text -->
       <div class="tex-paragraph">则称\(A\) <span class="tex-color-blue">可逆</span>,并称\(X\)为\(A\)的<span class="tex-color-blue">逆矩阵</span>.记做\(A^{-1}\).</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: text -->
   <div class="tex-paragraph"><span class="tex-color-blue">奇异方阵,非奇异方阵</span></div>
@@ -88,21 +88,21 @@
   <div class="tex-paragraph">这也是我们为什么不考虑非方阵的逆.</div>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="逆矩阵定义的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section04-lesson-3-4-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section04-lesson-3-4-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section04-lesson-3-4-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section04-lesson-3-4-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter03-section04-lesson-3-4-2" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-3-4-3" data-reading-unit="chapter03-section04-lesson-3-4-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.4.3</span><h2><a class="heading-link" href="lesson-3-4-3.html">逆矩阵性质</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-3-4-3-lesson-3-4-3">
+<div class="tex-converted tex-page-3-4-3-lesson-3-4-3" data-chapter="3" data-chapter-id="00 introduction.tex::section3">
   <p class="tex-hierarchy">矩阵(一) / 逆矩阵</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: lemma -->
-  <section class="math-block math-block-lemma">
-    <div class="math-block-heading"><span class="math-block-label">引理</span> <span class="math-block-number">3.1.4</span> <span class="math-block-title">存在则唯一</span></div>
+  <fieldset class="math-block math-block-lemma math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">引理</span></span> <span class="math-block-title">（存在则唯一）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">若\(X\)和\(Y\)都为\(A\)的逆矩阵,则\(X=Y\).</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: proposition -->
-  <section class="math-block math-block-proposition">
-    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">3.1.1</span> <span class="math-block-title">逆矩阵的基本性质</span></div>
+  <fieldset class="math-block math-block-proposition math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">性质</span></span> <span class="math-block-title">（逆矩阵的基本性质）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">设\(A\)和\(B\)为同阶可逆方阵, \(\lambda\)为非零常数.  则</div>
@@ -128,15 +128,15 @@
         </li>
       </ol>
     </div>
-  </section>
+  </fieldset>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="逆矩阵性质的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section04-lesson-3-4-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section04-lesson-3-4-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section04-lesson-3-4-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section04-lesson-3-4-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter03-section04-lesson-3-4-3" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-3-4-4" data-reading-unit="chapter03-section04-lesson-3-4-4"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.4.4</span><h2><a class="heading-link" href="lesson-3-4-4.html">逆矩阵（例）</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-3-4-4-lesson-3-4-4">
+<div class="tex-converted tex-page-3-4-4-lesson-3-4-4" data-chapter="3" data-chapter-id="00 introduction.tex::section3">
   <p class="tex-hierarchy">矩阵(一) / 逆矩阵</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.9</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">若 \(ad\neq bc\), 则 \(\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)可逆. 此时</div>
@@ -144,11 +144,11 @@
       <!-- TeX block: formula -->
       <div class="tex-display">\[\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}^{-1} = \frac{1}{ad-bc} \begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}.\]</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.10</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">若 \(a_1,a_2,\cdots, a_n\)全不为零, 则</div>
@@ -156,11 +156,11 @@
       <!-- TeX block: formula -->
       <div class="tex-display">\[\mathrm{diag}(a_1,a_2,\cdots,a_n)^{-1} = \mathrm{diag}\left(\frac1{a_1},\frac1{a_2},\cdots,\frac1{a_n}\right).\]</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.11</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: list -->
       <ol>
@@ -189,16 +189,16 @@
         </li>
       </ol>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.12</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">证明若\(A\), \(B\)和\(A+B\)均可逆,则\(A^{-1}+B^{-1}\)也可逆.</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: text -->
   <div class="tex-paragraph"><span class="tex-color-blue">问题：</span> 如何求一般可逆矩阵的逆？</div>

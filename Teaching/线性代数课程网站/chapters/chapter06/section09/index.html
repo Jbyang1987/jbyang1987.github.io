@@ -1,5 +1,5 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="6.9 一般线性空间的理论；线性空间，线性代数课程。"><title>6.9 一般线性空间的理论 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter06" data-section="chapter06-section09"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter06.html">第六章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第9节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="一般线性空间的理论简介、进度与目录"><header class="chapter-intro"><h1>6.9 一般线性空间的理论</h1><p>围绕一般线性空间的理论展开定义、性质、计算与应用。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter06-section09" href="lesson-6-9-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 5</span></div><progress data-section-meter="chapter06-section09" max="5" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="一般线性空间的理论知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-6-9-1.html">6.9.1 一般线性空间的理论 · 第1页</a><span data-unit-status="chapter06-section09-lesson-6-9-1">未标记</span></li><li><a href="lesson-6-9-2.html">6.9.2 一般线性空间的理论 · 第2页</a><span data-unit-status="chapter06-section09-lesson-6-9-2">未标记</span></li><li><a href="lesson-6-9-3.html">6.9.3 一般线性空间的理论 · 第3页</a><span data-unit-status="chapter06-section09-lesson-6-9-3">未标记</span></li><li><a href="lesson-6-9-4.html">6.9.4 一般线性空间的理论 · 第4页</a><span data-unit-status="chapter06-section09-lesson-6-9-4">未标记</span></li><li><a href="lesson-6-9-5.html">6.9.5 一般线性空间的理论 · 第5页</a><span data-unit-status="chapter06-section09-lesson-6-9-5">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-6-9-1" data-reading-unit="chapter06-section09-lesson-6-9-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§6.9.1</span><h2><a class="heading-link" href="lesson-6-9-1.html">一般线性空间的理论 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-6-9-1-lesson-6-9-1">
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="6.9 一般线性空间的理论；线性空间，线性代数课程。"><title>6.9 一般线性空间的理论 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter06" data-section="chapter06-section09"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter06.html">第六章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第9节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页仍可使用；公式排版和学习记录需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="一般线性空间的理论简介、进度与目录"><header class="chapter-intro"><h1>6.9 一般线性空间的理论</h1><p>围绕一般线性空间的理论展开定义、性质、计算与应用。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter06-section09" href="lesson-6-9-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 5</span></div><progress data-section-meter="chapter06-section09" max="5" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="一般线性空间的理论知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-6-9-1.html">6.9.1 一般线性空间的理论 · 第1页</a><span data-unit-status="chapter06-section09-lesson-6-9-1">未标记</span></li><li><a href="lesson-6-9-2.html">6.9.2 一般线性空间的理论 · 第2页</a><span data-unit-status="chapter06-section09-lesson-6-9-2">未标记</span></li><li><a href="lesson-6-9-3.html">6.9.3 一般线性空间的理论 · 第3页</a><span data-unit-status="chapter06-section09-lesson-6-9-3">未标记</span></li><li><a href="lesson-6-9-4.html">6.9.4 一般线性空间的理论 · 第4页</a><span data-unit-status="chapter06-section09-lesson-6-9-4">未标记</span></li><li><a href="lesson-6-9-5.html">6.9.5 一般线性空间的理论 · 第5页</a><span data-unit-status="chapter06-section09-lesson-6-9-5">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-6-9-1" data-reading-unit="chapter06-section09-lesson-6-9-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§6.9.1</span><h2><a class="heading-link" href="lesson-6-9-1.html">一般线性空间的理论 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-6-9-1-lesson-6-9-1" data-chapter="6" data-chapter-id="00 introduction.tex::section6">
   <p class="tex-hierarchy">线性空间 / 一般线性空间的理论</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: text -->
@@ -9,12 +9,12 @@
   <figure class="tex-figure"><img src="../../../assets/chapter06/figure-fig-a554d751.svg" class="tex-figure-light" alt="XY-pic 图形" width="640"><img class="tex-figure-dark" src="../../../assets/chapter06/figure-fig-a554d751-dark.svg" alt="XY-pic 图形" width="640"><figcaption>XY-pic 图形</figcaption></figure>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="一般线性空间的理论 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter06-section09-lesson-6-9-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter06-section09-lesson-6-9-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter06-section09-lesson-6-9-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter06-section09-lesson-6-9-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter06-section09-lesson-6-9-1" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-6-9-2" data-reading-unit="chapter06-section09-lesson-6-9-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§6.9.2</span><h2><a class="heading-link" href="lesson-6-9-2.html">一般线性空间的理论 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-6-9-2-lesson-6-9-2">
+<div class="tex-converted tex-page-6-9-2-lesson-6-9-2" data-chapter="6" data-chapter-id="00 introduction.tex::section6">
   <p class="tex-hierarchy">线性空间 / 一般线性空间的理论</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: theorem -->
-  <section class="math-block math-block-theorem">
-    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">6.1.11</span> <span class="math-block-title">线性相关等价刻画</span></div>
+  <fieldset class="math-block math-block-theorem math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定理</span></span> <span class="math-block-title">（线性相关等价刻画）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph"><span class="tex-size-small"></span>
@@ -50,14 +50,14 @@
         </li>
       </ol>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: text -->
   <div class="tex-paragraph"><span class="tex-color-yang">注: 这时候没有与``\(AX=0\)有非零解&#39;&#39;的等价形式.</span></div>
 
   <!-- TeX block: theorem -->
-  <section class="math-block math-block-theorem">
-    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">6.1.12</span></div>
+  <fieldset class="math-block math-block-theorem math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定理</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">若\(S_1\subseteq S\subseteq V\), 则</div>
@@ -77,15 +77,15 @@
         </li>
       </ol>
     </div>
-  </section>
+  </fieldset>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="一般线性空间的理论 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter06-section09-lesson-6-9-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter06-section09-lesson-6-9-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter06-section09-lesson-6-9-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter06-section09-lesson-6-9-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter06-section09-lesson-6-9-2" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-6-9-3" data-reading-unit="chapter06-section09-lesson-6-9-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§6.9.3</span><h2><a class="heading-link" href="lesson-6-9-3.html">一般线性空间的理论 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-6-9-3-lesson-6-9-3">
+<div class="tex-converted tex-page-6-9-3-lesson-6-9-3" data-chapter="6" data-chapter-id="00 introduction.tex::section6">
   <p class="tex-hierarchy">线性空间 / 一般线性空间的理论</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: definition -->
-  <section class="math-block math-block-definition">
-    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">6.1.9</span> <span class="math-block-title">极大线性无关组</span></div>
+  <fieldset class="math-block math-block-definition math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定义</span></span> <span class="math-block-title">（极大线性无关组）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">设\(\alpha_1\), \(\alpha_2\), \(\cdots\), \(\alpha_m\)为向量空间\(v\)上的一组向量. 若</div>
@@ -108,11 +108,11 @@
       <!-- TeX block: text -->
       <div class="tex-paragraph">则称\(\alpha_{i_1}\), \(\alpha_{i_2}\), \(\cdots\), \(\alpha_{i_r}\)为\(\alpha_1\), \(\alpha_2\), \(\cdots\), \(\alpha_m\)的<span class="tex-color-blue">极大无关组</span>.</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: theorem -->
-  <section class="math-block math-block-theorem">
-    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">6.1.13</span></div>
+  <fieldset class="math-block math-block-theorem math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定理</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">若\(S_1\subseteq S\subseteq V\), 则以下几条等价:</div>
@@ -153,42 +153,42 @@
         </li>
       </ol>
     </div>
-  </section>
+  </fieldset>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="一般线性空间的理论 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter06-section09-lesson-6-9-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter06-section09-lesson-6-9-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter06-section09-lesson-6-9-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter06-section09-lesson-6-9-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter06-section09-lesson-6-9-3" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-6-9-4" data-reading-unit="chapter06-section09-lesson-6-9-4"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§6.9.4</span><h2><a class="heading-link" href="lesson-6-9-4.html">一般线性空间的理论 · 第4页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-6-9-4-lesson-6-9-4">
+<div class="tex-converted tex-page-6-9-4-lesson-6-9-4" data-chapter="6" data-chapter-id="00 introduction.tex::section6">
   <p class="tex-hierarchy">线性空间 / 一般线性空间的理论</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: definition -->
-  <section class="math-block math-block-definition">
-    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">6.1.10</span> <span class="math-block-title">向量组等价</span></div>
+  <fieldset class="math-block math-block-definition math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定义</span></span> <span class="math-block-title">（向量组等价）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">两个向量组称为<span class="tex-color-blue">等价</span>,若它们可以相互线性表示.</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: theorem -->
-  <section class="math-block math-block-theorem">
-    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">6.1.14</span></div>
+  <fieldset class="math-block math-block-theorem math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定理</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">两个等价线性无关的向量组个数相同.</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: definition -->
-  <section class="math-block math-block-definition">
-    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">6.1.11</span> <span class="math-block-title">秩</span></div>
+  <fieldset class="math-block math-block-definition math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定义</span></span> <span class="math-block-title">（秩）</span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">一个向量组的<span class="tex-color-blue">秩</span>定义为其某个极大无关组中向量的个数.</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: theorem -->
-  <section class="math-block math-block-theorem">
-    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">6.1.15</span></div>
+  <fieldset class="math-block math-block-theorem math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定理</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">设\(S,T\subseteq V\). 则</div>
@@ -227,15 +227,15 @@
         </li>
       </ol>
     </div>
-  </section>
+  </fieldset>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="一般线性空间的理论 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter06-section09-lesson-6-9-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter06-section09-lesson-6-9-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter06-section09-lesson-6-9-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter06-section09-lesson-6-9-4" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter06-section09-lesson-6-9-4" role="status" aria-live="polite"></p></div></section>
 <section class="lesson knowledge-part" id="part-lesson-6-9-5" data-reading-unit="chapter06-section09-lesson-6-9-5"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§6.9.5</span><h2><a class="heading-link" href="lesson-6-9-5.html">一般线性空间的理论 · 第5页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
-<div class="tex-converted tex-page-6-9-5-lesson-6-9-5">
+<div class="tex-converted tex-page-6-9-5-lesson-6-9-5" data-chapter="6" data-chapter-id="00 introduction.tex::section6">
   <p class="tex-hierarchy">线性空间 / 一般线性空间的理论</p>
   <!-- 以下内容由所选 TeX frame 转换而来。 -->
   <!-- TeX block: definition -->
-  <section class="math-block math-block-definition">
-    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">6.1.12</span></div>
+  <fieldset class="math-block math-block-definition math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定义</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: list -->
       <ol>
@@ -260,11 +260,11 @@
         </li>
       </ol>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: theorem -->
-  <section class="math-block math-block-theorem">
-    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">6.1.16</span></div>
+  <fieldset class="math-block math-block-theorem math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定理</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: list -->
       <ol>
@@ -287,20 +287,20 @@
         </li>
       </ol>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.27</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">\(\{1,\cos\theta,\sin\theta,\cos(2\theta),\sin(2\theta)\}\)为\(\{1,\cos\theta,\sin\theta,\cos^2(x),\sin^2(x),\cos(2\theta),\sin(2\theta)\}\)的一个极大无关组.</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.28</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">设 \(T\subseteq S\subseteq V\). 则</div>
@@ -308,15 +308,15 @@
       <!-- TeX block: formula -->
       <div class="tex-display">\[\operatorname{rank}(S)-\operatorname{rank}(T) \leq \#S- \#T.\]</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: text -->
   <div class="tex-paragraph"><span class="tex-color-yang">证明: 设\(S_1\)为\(S\)的极大无关组,则\(S_1\cap T\)线性无关. 因此
   \[\operatorname{rank}(T) \geq \operatorname{rank}(S_1\cap T) =\#S_1+\#T-\#(S_1\cup T)\geq \operatorname{rank}(S)+\#T-\#S.\]</span></div>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.29</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: list -->
       <ol>
@@ -333,20 +333,20 @@
         </li>
       </ol>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.30</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">求线性空间\({\mathbb F}_{n-1}[x]\)从基\(\{1,x,\cdots,x^{n-1}\}\)到基\(\{1,x+1,\cdots,(x+1)^{n-1}\}\)的过渡矩阵.</div>
     </div>
-  </section>
+  </fieldset>
 
   <!-- TeX block: example -->
-  <section class="math-block math-block-example">
-    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.31</span></div>
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span></legend>
     <div class="math-block-body">
       <!-- TeX block: text -->
       <div class="tex-paragraph">矩阵
@@ -355,5 +355,5 @@
       \(\begin{pmatrix}1&amp;2\\3&amp;0\\\end{pmatrix}\),
       \(\begin{pmatrix}1&amp;2\\3&amp;4\\\end{pmatrix}\)构成线性空间\({\mathbb F}^{2\times2}\)的一组基. 这组基到\({\mathbb F}^{2\times2}\)的自然基\(E_{11},E_{12},E_{21},E_{22}\)的过渡矩阵为<u>   </u>.</div>
     </div>
-  </section>
+  </fieldset>
 </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="一般线性空间的理论 · 第5页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter06-section09-lesson-6-9-5" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter06-section09-lesson-6-9-5" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter06-section09-lesson-6-9-5" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter06-section09-lesson-6-9-5" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter06-section09-lesson-6-9-5" role="status" aria-live="polite"></p></div></section><nav class="lesson-navigation" aria-label="子节导航"><a href="../../../index.html">返回课程首页</a><a href="../section08/index.html">上一节 · 6.8 一般线性空间的定义</a><a href="index.html#main">回顾本节</a><a href="../section10/index.html">下一节 · 6.10 子空间*</a></nav></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

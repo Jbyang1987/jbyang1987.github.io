@@ -1,0 +1,84 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-1-5-3-lesson-1-5-3" data-chapter="1" data-chapter-id="00 introduction.tex::section1">
+  <p class="tex-hierarchy">向量 / 数组向量</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（机器学习中的特征向量）</span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">要识别一张图片是否包含猫,需要提取图片的特征:</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">颜色直方图(256维)</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">边缘特征(128维)</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">纹理特征(64维)</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\cdots\)</div>
+        </li>
+      </ul>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">最终得到一个<span class="tex-color-blue">几千维的向量</span>来表示这张图片!</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: example -->
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（推荐系统中的用户向量）</span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">一个用户对\(n\)部电影的评分可以表示为一个\(n\)维向量:</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[(r_1,r_2,\cdots,r_n)\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中\(r_i\)是用户对第\(i\)部电影的评分。</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: example -->
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（DeepSeek-V3）</span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设 \(T\) 是 DeepSeek-V3 的 token 词表,  \(|T|=129280\).  词嵌入给每个 token 分配一个 7168 维向量：</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[E \colon  T \longrightarrow \mathbb R^{7168}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">为了储存映射 \(E\), 我们需要</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[129208 \times 7168 = 926679040\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">个参数。
+
+      这约 9.27 亿个参数最初随机初始化, 之后与整个模型一起训练; 这些向量不是人工规定的,而是从大量语言数据中学习出来的.</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-red">高维向量在现代科学和工程中无处不在!</span></div>
+</div>

@@ -12,12 +12,12 @@
 <g stroke-width="0.4">
 <g stroke-width="0.8">
 <g fill="#00f" stroke="#00f">
-<path d="M 0.0 0.0 L 27.65276 0.0" fill="none"/>
+<path d="M0 0H27.65276" fill="none"/>
 <g transform="translate(28.05275,0.0)">
 <g stroke-dasharray="none" stroke-dashoffset="0.0">
  <g stroke-linecap="round">
  <g stroke-linejoin="round">
- <path d=" M -2.56 3.12257 C -2.0923 1.24901 -1.05006 0.3643 0.0 0.0 C -1.05006 -0.3643 -2.0923 -1.24901 -2.56 -3.12257  " fill="none"/>
+ <path d="M-2.56 3.12257C-2.0923 1.24901-1.05006 .3643 0 0C-1.05006-.3643-2.0923-1.24901-2.56-3.12257" fill="none"/>
  </g>
  </g>
  </g>
@@ -39,12 +39,12 @@
 </g>
 <g stroke-width="0.8">
 <g fill="#f00" stroke="#f00">
-<path d="M 0.0 0.0 L 0.0 27.65276" fill="none"/>
+<path d="M0 0V27.65276" fill="none"/>
 <g transform="matrix(0.0,1.0,-1.0,0.0,0.0,28.05275)">
 <g stroke-dasharray="none" stroke-dashoffset="0.0">
  <g stroke-linecap="round">
  <g stroke-linejoin="round">
- <path d=" M -2.56 3.12257 C -2.0923 1.24901 -1.05006 0.3643 0.0 0.0 C -1.05006 -0.3643 -2.0923 -1.24901 -2.56 -3.12257  " fill="none"/>
+ <path d="M-2.56 3.12257C-2.0923 1.24901-1.05006 .3643 0 0C-1.05006-.3643-2.0923-1.24901-2.56-3.12257" fill="none"/>
  </g>
  </g>
  </g>
@@ -66,12 +66,12 @@
 </g>
 <g stroke-width="0.8">
 <g fill="#00f" stroke="#00f">
-<path d="M 0.0 0.0 L 19.55043 19.55043" fill="none"/>
+<path d="M0 0L19.55043 19.55043" fill="none"/>
 <g transform="matrix(0.7071,0.7071,-0.7071,0.7071,19.83325,19.83325)">
 <g stroke-dasharray="none" stroke-dashoffset="0.0">
  <g stroke-linecap="round">
  <g stroke-linejoin="round">
- <path d=" M -2.56 3.12257 C -2.0923 1.24901 -1.05006 0.3643 0.0 0.0 C -1.05006 -0.3643 -2.0923 -1.24901 -2.56 -3.12257  " fill="none"/>
+ <path d="M-2.56 3.12257C-2.0923 1.24901-1.05006 .3643 0 0C-1.05006-.3643-2.0923-1.24901-2.56-3.12257" fill="none"/>
  </g>
  </g>
  </g>
@@ -94,12 +94,12 @@
 </g>
 <g stroke-width="0.8">
 <g fill="#f00" stroke="#f00">
-<path d="M 0.0 0.0 L -19.55043 19.55043" fill="none"/>
+<path d="M0 0L-19.55043 19.55043" fill="none"/>
 <g transform="matrix(-0.7071,0.7071,-0.7071,-0.7071,-19.83325,19.83325)">
 <g stroke-dasharray="none" stroke-dashoffset="0.0">
  <g stroke-linecap="round">
  <g stroke-linejoin="round">
- <path d=" M -2.56 3.12257 C -2.0923 1.24901 -1.05006 0.3643 0.0 0.0 C -1.05006 -0.3643 -2.0923 -1.24901 -2.56 -3.12257  " fill="none"/>
+ <path d="M-2.56 3.12257C-2.0923 1.24901-1.05006 .3643 0 0C-1.05006-.3643-2.0923-1.24901-2.56-3.12257" fill="none"/>
  </g>
  </g>
  </g>

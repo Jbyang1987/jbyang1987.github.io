@@ -1,13 +1,110 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="1.4 复数与数域；1.4 复数与数域，线性代数课程。"><title>1.4 复数与数域 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/chapter01.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter01" data-section="chapter01-section04"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter01.html">第一章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第4节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页仍可使用。公式排版和学习记录需要在浏览器中允许脚本运行。</p></noscript><section class="chapter-top-card section-top-card" aria-label="1.4 复数与数域简介、进度与目录"><header class="chapter-intro"><h1>1.4 复数与数域</h1><p>从实数坐标推广到复数，认识复平面与数域。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter01-section04" href="complex-intuition.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 4</span></div><progress data-section-meter="chapter01-section04" max="4" value="0" aria-label="1.4掌握进度">0%</progress></div></div></header><nav class="chapter-outline" aria-label="1.4知识页目录"><h2>本节目录</h2><ul><li><a href="complex-intuition.html">1.4.1 向量的分量一定是实数吗？</a><span data-unit-status="chapter01-section04-complex-intuition">未标记</span></li><li><a href="complex-plane.html">1.4.2 怎样在复平面上表示复数？</a><span data-unit-status="chapter01-section04-complex-plane">未标记</span></li><li><a href="number-fields.html">1.4.3 什么是数域？</a><span data-unit-status="chapter01-section04-number-fields">未标记</span></li><li><a href="review.html">1.4.4 复数与数域回顾</a><span data-unit-status="chapter01-section04-review">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading" aria-label="本节正文"><section class="lesson knowledge-part" id="part-complex-intuition" data-reading-unit="chapter01-section04-complex-intuition"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§1.4.1</span><h2><a class="heading-link" href="complex-intuition.html">向量的分量一定是实数吗？</a></h2></div><div class="teaching-block"><h3>思考 · 向量的分量一定是实数吗？</h3><p>前三节使用实数描述坐标。后面还会遇到复数分量的向量。为了统一讨论这些对象，需要先说明：允许作为坐标和系数的数，组成怎样的集合？</p></div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="向量的分量一定是实数吗？的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter01-section04-complex-intuition" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter01-section04-complex-intuition" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter01-section04-complex-intuition" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter01-section04-complex-intuition" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter01-section04-complex-intuition" role="status" aria-live="polite"></p></div></section><section class="lesson knowledge-part" id="part-complex-plane" data-reading-unit="chapter01-section04-complex-plane"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§1.4.2</span><h2><a class="heading-link" href="complex-plane.html">怎样在复平面上表示复数？</a></h2></div><div class="teaching-block lecture-topic" id="complex-numbers">
-          <h3>几何 · 复数与复平面</h3><p>复数的代数表示为 \(z=x+iy\)，其中 \(x,y\in\mathbb R\)、\(i^2=-1\)。\(x=\operatorname{Re}z\) 是实部，\(y=\operatorname{Im}z\) 是虚部。在复平面上，\(z\) 对应点 \(P(x,y)\)，也对应从原点出发的箭头 \(\overrightarrow{OP}\)。</p>
-          <figure class="lecture-figure" tabindex="0" role="region" aria-label="复数代数表示示意图，可横向滚动"><img src="../../../assets/chapter01/complex-algebra.svg" width="720" height="170" alt="讲稿中的复数代数关系图：z 等于实部 x 加上虚部 iy，且 i 的平方等于负一。"><figcaption>代数式中的实部与虚部，与下图的水平、竖直坐标相对应。</figcaption></figure>
-          <figure class="lecture-figure" tabindex="0" role="region" aria-label="复平面示意图，可横向滚动"><img src="../../../assets/chapter01/complex-plane.svg" width="720" height="350" alt="讲稿复平面图：点 P(x,y) 对应复数 z=x+iy，原点 O 到 P 的箭头长度 r 是模长，与正实轴的角 θ 是辐角。"><figcaption>实部给出水平位置，虚部给出竖直位置；从原点出发的箭头把数与几何联系起来。</figcaption></figure>
-          <ul class="lecture-list"><li><strong>模长：</strong>\(|z|=\sqrt{x^2+y^2}\)。</li><li><strong>辐角：</strong>对于 \(z\ne0\)，从正实轴沿逆时针方向转到 \(\overrightarrow{OP}\) 的角度 \(\theta\)，相差 \(2\pi\) 的整数倍表示同一方向。</li><li><strong>共轭：</strong>\(\overline z=x-iy\)，对应关于实轴的镜像。</li><li><strong>三角表示：</strong>\(z=r(\cos\theta+i\sin\theta)\)，其中 \(r=|z|\)。</li></ul><p class="lecture-note">零复数的模长为 0，但没有确定的辐角。</p>
-        </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="怎样在复平面上表示复数？的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter01-section04-complex-plane" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter01-section04-complex-plane" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter01-section04-complex-plane" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter01-section04-complex-plane" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter01-section04-complex-plane" role="status" aria-live="polite"></p></div></section><section class="lesson knowledge-part" id="part-number-fields" data-reading-unit="chapter01-section04-number-fields"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§1.4.3</span><h2><a class="heading-link" href="number-fields.html">什么是数域？</a></h2></div><div class="teaching-block definition lecture-topic" id="number-fields">
-          <h3>定义 · 数域</h3><p>本课程把 \(\mathbb C\) 的子集称为数集。如果数集 \(\mathbb F\) 至少包含两个元素，并且对加、减、乘、除运算封闭，就称为<strong>数域</strong>。这里“除法封闭”始终要求除数不为零。</p>
-          <p>更具体地，对任意 \(a,b\in\mathbb F\)，都有</p><div class="formula">\[a+b,\ a-b,\ ab\in\mathbb F;\qquad b\ne0\Longrightarrow a/b\in\mathbb F.\]</div><p>“封闭”是说：运算结果仍然留在这个数集里。</p>
-        </div>
-<div class="teaching-block"><h3>例题 · 哪些集合是数域？</h3><p>讲稿中最常用的数域是有理数域 \(\mathbb Q\)、实数域 \(\mathbb R\) 和复数域 \(\mathbb C\)。自然数集 \(\mathbb N\) 与整数集 \(\mathbb Z\) 都不是数域：例如 \(1/2\) 不在这两个集合中。</p><p>引入数域后，实向量和复向量可以使用同一套记号与理论。后面的线性空间理论也将在数域上统一展开。</p>
-          <details class="lecture-proof"><summary>选读 · 讲稿中的两个补充说明</summary><p>数集</p><div class="formula">\[\mathbb Q[\sqrt2]=\{a+b\sqrt2:a,b\in\mathbb Q\}\]</div><p>也是数域，本课程不作要求。非零元素的倒数仍在这个集合中：</p><div class="formula">\[\frac1{a+b\sqrt2}=\frac{a-b\sqrt2}{a^2-2b^2}.\]</div><p>因为 \(a,b\) 为有理数且不同时为零，分母不为零。加、减、乘的封闭性也可直接验证。</p><p>在本课程“数域是复数子集”的约定下，\(\mathbb Q\) 是最小的数域。任何数域先由 \(a-a\)、\(a/a\)（取 \(a\ne0\)）得到 0 和 1，再由四则运算得到所有有理数。</p></details>
-        </div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="什么是数域？的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter01-section04-number-fields" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter01-section04-number-fields" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter01-section04-number-fields" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter01-section04-number-fields" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter01-section04-number-fields" role="status" aria-live="polite"></p></div></section><section class="lesson knowledge-part" id="part-review" data-reading-unit="chapter01-section04-review"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§1.4.4</span><h2><a class="heading-link" href="review.html">复数与数域回顾</a></h2></div><div class="demo-placeholder"><div class="demo-header"><h3>探索 · 在复平面上观察共轭</h3><span class="demo-label">演示即将加入</span></div><p>在纸上标出 \(1+i\)、\(1-i\) 与 \(-1-i\)，比较它们的模长与方向。未来这里可以拖动复数点，同时观察代数表示、模长、辐角和共轭。</p></div>
-<div class="check"><h3>即时自测</h3><p>设 \(z=1+i\)，求 \(|z|\)、\(\overline z\) 和一个辐角。再说明 \(\mathbb Z\) 为什么不是数域。</p><details><summary>查看答案与解释</summary><p>\(|z|=\sqrt2\)，\(\overline z=1-i\)，可以取 \(\theta=\pi/4\)。整数集含有 1 和 2，却不含 \(1/2\)，不满足除法封闭性。</p></details></div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="复数与数域回顾的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter01-section04-review" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter01-section04-review" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter01-section04-review" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter01-section04-review" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter01-section04-review" role="status" aria-live="polite"></p></div></section><nav class="lesson-navigation" aria-label="子节导航"><a href="../../../index.html">返回课程首页</a><a href="../section03/index.html">上一节 · 1.3 坐标系、坐标与坐标变换</a><a href="index.html#main">回顾本节</a><a href="../section05/index.html">下一节 · 1.5 数组向量</a></nav></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="1.4 复数与数域；向量，线性代数课程。"><title>1.4 复数与数域 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><link rel="stylesheet" href="../../../css/chapter01.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter01" data-section="chapter01-section04"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter01.html">第一章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第4节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页仍可使用；公式排版和学习记录需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="复数与数域简介、进度与目录"><header class="chapter-intro"><h1>1.4 复数与数域</h1><p>从实数坐标推广到复数，认识复平面与数域。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter01-section04" href="lesson-1-4-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 2</span></div><progress data-section-meter="chapter01-section04" max="2" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="复数与数域知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-1-4-1.html">1.4.1 复数</a><span data-unit-status="chapter01-section04-lesson-1-4-1">未标记</span></li><li><a href="lesson-1-4-2.html">1.4.2 数域</a><span data-unit-status="chapter01-section04-lesson-1-4-2">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-1-4-1" data-reading-unit="chapter01-section04-lesson-1-4-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§1.4.1</span><h2><a class="heading-link" href="lesson-1-4-1.html">复数</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-1-4-1-lesson-1-4-1" data-chapter="1" data-chapter-id="00 introduction.tex::section1">
+  <p class="tex-hierarchy">向量 / 复数与数域</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: figure -->
+  <figure class="tex-figure"><img src="../../../assets/chapter01/figure-fig-e8107024.svg" class="tex-figure-light" alt="XY-pic 图形" width="640"><img class="tex-figure-dark" src="../../../assets/chapter01/figure-fig-e8107024-dark.svg" alt="XY-pic 图形" width="640"><figcaption>XY-pic 图形</figcaption></figure>
+
+  <!-- TeX block: columns -->
+  <div class="tex-columns" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center"><!-- TeX block: column -->
+  <div class="tex-column" style="flex:5 1 0;min-width:min(100%,18rem);max-width:100%"><!-- TeX block: text -->
+  <div class="tex-paragraph"><figure class="tex-figure"><img src="../../../assets/chapter01/figure-fig-afa9d23b.svg" class="tex-figure-light" alt="TikZ 图形" width="640"><img class="tex-figure-dark" src="../../../assets/chapter01/figure-fig-afa9d23b-dark.svg" alt="TikZ 图形" width="640"><figcaption>TikZ 图形</figcaption></figure></div></div>
+
+  <!-- TeX block: column -->
+  <div class="tex-column" style="flex:5 1 0;min-width:min(100%,18rem);max-width:100%"><!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">模长</span>:  \(|z|:=|\overset{\longrightarrow}{OP}|=\sqrt{x^2+y^2}\);</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">辐角</span>: 实轴沿逆时针方向旋转到\(\overset{\longrightarrow}{OP}\)的角度.</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">共轭</span>: \(\overline{z}:=x-iy\).</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">三角表示</span>:<br> \(z=r(\cos\theta+i\sin\theta)\).</div>
+    </li>
+  </ul></div></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="复数的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter01-section04-lesson-1-4-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter01-section04-lesson-1-4-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter01-section04-lesson-1-4-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter01-section04-lesson-1-4-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter01-section04-lesson-1-4-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-1-4-2" data-reading-unit="chapter01-section04-lesson-1-4-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§1.4.2</span><h2><a class="heading-link" href="lesson-1-4-2.html">数域</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-1-4-2-lesson-1-4-2" data-chapter="1" data-chapter-id="00 introduction.tex::section1">
+  <p class="tex-hierarchy">向量 / 复数与数域</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">复数域的任意子集称为<span class="tex-color-blue">数集</span>. 例如: \(\mathbb N\), \(\mathbb Z\), \(\mathbb Q\), \(\mathbb R\),\(\mathbb C\), \(\cdots\).</div>
+
+  <!-- TeX block: definition -->
+  <fieldset class="math-block math-block-definition math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">定义</span></span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若数集\(\mathbb F\)至少包含两元素,且关于数的\(\bf\) 加减乘除封闭,则称\(\mathbb F\)为<span class="tex-color-blue">数域</span>.</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: example -->
+  <fieldset class="math-block math-block-example math-block-framed">
+    <legend class="math-block-heading"><span class="math-block-heading-name"><span class="math-block-label">例题</span></span> <span class="math-block-title">（本课程中最常用的域）</span></legend>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">有理数集\(\mathbb Q\),实数集\(\mathbb R\),和复数集\(\mathbb C\)均为数域.</div>
+    </div>
+  </fieldset>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">注:\(\mathbb N\), \(\mathbb Z\)不为数域.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">为什么需要数域概念?</span></div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">向量的坐标可以是实数,也可以是复数;</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">统一的数域概念让我们可以同时处理实向量和复向量;</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">后面的线性空间理论建立在任意数域上.</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">注:</span></div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\mathbb Q[\sqrt{2}]=\{a+b\sqrt2\mid a,b\in\mathbb Q\}\)也是数域,但本课程不作要求.</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\mathbb Q\) 为最小的数域. 即,若\(\mathbb F\)为数域,则\(\mathbb Q\subseteq \mathbb F\).</div>
+    </li>
+  </ol>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="数域的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter01-section04-lesson-1-4-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter01-section04-lesson-1-4-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter01-section04-lesson-1-4-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter01-section04-lesson-1-4-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter01-section04-lesson-1-4-2" role="status" aria-live="polite"></p></div></section><nav class="lesson-navigation" aria-label="子节导航"><a href="../../../index.html">返回课程首页</a><a href="../section03/index.html">上一节 · 1.3 坐标系、坐标与坐标变换</a><a href="index.html#main">回顾本节</a><a href="../section05/index.html">下一节 · 1.5 数组向量</a></nav></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

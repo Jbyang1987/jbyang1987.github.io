@@ -8,27 +8,54 @@ function lecturePath(relative){const clean=String(relative||'').replaceAll('\\',
 function run(command,args,cwd,timeout=35000){return new Promise((resolve,reject)=>{const child=spawn(command,args,{cwd,windowsHide:true,shell:false,env:{...process.env,openin_any:'p',openout_any:'p',shell_escape:'f',max_print_line:'120'}});let log='',settled=false;const timer=setTimeout(()=>{child.kill();finish(Error(`${command} 超时（${timeout/1000} 秒）`));},timeout);function finish(error){if(settled)return;settled=true;clearTimeout(timer);if(error){error.log=log.slice(-18000);reject(error);}else resolve(log);}const output=data=>{log+=data.toString();if(log.length>1500000){child.kill();finish(Error('编译日志超过限制'));}};child.stdout.on('data',output);child.stderr.on('data',output);child.on('error',finish);child.on('close',code=>finish(code===0?null:Error(`${command} 退出码 ${code}`)));});}
 function validate(source,options){if(typeof source!=='string'||source.length>180000)throw Error('图形代码必须是文本且小于 180 KB');const text=source+'\n'+(options.preamble||'');const banned=new Set(['input','include','includegraphics','openin','openout','read','write','immediate','catcode','csname','endcsname','special','directlua','luaexec','shellescape','documentclass']);if(/\^\^|\\(?:begin|end)\s*\{document\}|\\usepackage(?:\[[^\]]*\])?\s*\{(?:shellesc|catchfile)/i.test(text)||[...text.matchAll(/\\([A-Za-z@]+)/g)].some(m=>banned.has(m[1].toLowerCase())))throw Error('图形接口不接受文件操作、动态控制序列、原始 special 或完整文档；请使用独立图形代码');if((options.preamble||'').length>20000)throw Error('前导代码过长');if(!/^[\w., -]*$/.test(options.libraries||''))throw Error('TikZ library 名称无效');}
 function hex(value,fallback){return /^#[a-f\d]{6}$/i.test(value||'')?value.slice(1):fallback;}
-function wrap(source,kind,options,dark){const libraries=options.libraries||'math,shapes.geometric,quotes,angles,calc,decorations.pathreplacing,arrows.meta';const colors=dark?'\\definecolor{blue}{HTML}{93C5FD}\n\\definecolor{red}{HTML}{FCA5A5}\n\\definecolor{green}{HTML}{86EFAC}\n\\definecolor{purple}{HTML}{D8B4FE}\n\\definecolor{black}{HTML}{E2E8F0}':'';let body=source.trim();if(kind==='xypic'){if(!/^\s*(?:\$|\\\[|\\\()/.test(body))body='$'+body+'$';}return String.raw`\documentclass[border=4pt]{standalone}
+function wrap(source,kind,options,dark,format='xdv'){const libraries=options.libraries||'math,shapes.geometric,quotes,angles,calc,decorations.pathreplacing,arrows.meta';const colors=dark?'\\definecolor{blue}{HTML}{93C5FD}\n\\definecolor{red}{HTML}{FCA5A5}\n\\definecolor{green}{HTML}{86EFAC}\n\\definecolor{purple}{HTML}{D8B4FE}\n\\definecolor{black}{HTML}{E2E8F0}':'';let body=source.trim();if(kind==='table'){const float=/^\\begin\{table\*?\}\s*(?:\[[^\]]*\])?([\s\S]*)\\end\{table\*?\}$/.exec(body);if(float)body=float[1].trim();}if(body.startsWith('\\[')&&body.endsWith('\\]'))body='$\\displaystyle '+body.slice(2,-2)+'$';else if(body.startsWith('$$')&&body.endsWith('$$'))body='$\\displaystyle '+body.slice(2,-2)+'$';if(kind==='xypic'){if(!/^\s*(?:\$|\\\[|\\\(|\\begin\{(?:align|gather|multline|equation|displaymath|math|eqnarray)\*?\})/.test(body))body='$'+body+'$';}return String.raw`\documentclass[border=4pt]{standalone}
 \usepackage[UTF8,fontset=fandol]{ctex}
-\usepackage{amsmath,amssymb,mathrsfs}
-\usepackage[dvisvgm]{graphicx}
-\usepackage[dvisvgm]{xcolor}
-\def\pgfsysdriver{pgfsys-dvisvgm.def}
+\usepackage{amsmath,amssymb,mathrsfs,mathtools}
+${kind==='table'?'\\usepackage{array,multirow,booktabs,caption}':''}
+\usepackage[${format==='pdf'?'xetex':'dvisvgm'}]{graphicx}
+\usepackage[${format==='pdf'?'xetex':'dvisvgm'}]{xcolor}
+\def\pgfsysdriver{pgfsys-${format==='pdf'?'xetex':'dvisvgm'}.def}
 \usepackage{tikz}
 \usetikzlibrary{${libraries}}
 \usepackage{tkz-euclide}
 \usepackage[all]{xy}
 \newcommand{\pp}{}
 \providecommand{\pause}{}
+\providecommand{\iddots}{\mathinner{\mkern1mu\raise1pt\hbox{.}\mkern2mu\raise4pt\hbox{.}\mkern2mu\raise7pt\hbox{.}\mkern1mu}}
 ${options.preamble||''}
 ${colors}
 \begin{document}
+${kind==='table'?'\\captionsetup{type=table}':''}
 ${dark?'\\color{black}':''}
 ${body}
 \end{document}
 `;}
 function adjustSVG(svg,options,dark){const view=/viewBox=['"]([^'"]+)['"]/.exec(svg);if(!view)throw Error('dvisvgm 未输出有效 viewBox');let [x,y,w,h]=view[1].split(/\s+/).map(Number);if(![x,y,w,h].every(Number.isFinite)||w<=0||h<=0)throw Error('SVG 边界无效');if(options.crop===false){x-=16;y-=16;w+=32;h+=32;svg=svg.replace(view[0],`viewBox="${x} ${y} ${w} ${h}"`);}const width=Math.min(3000,Math.max(80,+options.width||640));svg=svg.replace(/<svg\b([^>]*)>/,(_,attrs)=>`<svg${attrs.replace(/\s(?:width|height)=['"][^'"]*['"]/g,'')} width="${width}" height="${Math.round(width*h/w)}">${options.transparent===false?`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#${hex(dark?options.darkBackground:options.background,dark?'182131':'FFFFFF')}"/>`:''}`);return svg;}
-async function compile(source,kind,options={}){validate(source,options);await fs.mkdir(TEMP_ROOT,{recursive:true});const dir=await fs.mkdtemp(path.join(TEMP_ROOT,'job-'));let log='';try{const variants=options.dark===false?[false]:[false,true],result={svg:null,darkSvg:null,warnings:[]};for(const dark of variants){const name=dark?'dark':'light';await fs.writeFile(path.join(dir,name+'.tex'),wrap(source,kind,options,dark));log+=await run('xelatex',['-no-pdf','-no-shell-escape','-halt-on-error','-interaction=nonstopmode',name+'.tex'],dir);const args=['--bbox=min','--exact-bbox','--output='+name+'.svg'];if(options.textMode!=='text')args.push('--no-fonts');args.push(name+'.xdv');log+=await run('dvisvgm',args,dir);const svg=adjustSVG(await fs.readFile(path.join(dir,name+'.svg'),'utf8'),options,dark);result[dark?'darkSvg':'svg']=svg;}if(options.textMode==='text')result.warnings.push('SVG 文本模式可能依赖阅读设备字体；跨设备发布建议使用文字转路径。');result.log=log.slice(-12000);return result;}catch(e){e.log=(log+'\n'+(e.log||'')).slice(-18000);throw e;}finally{const resolved=path.resolve(dir),parent=path.resolve(TEMP_ROOT)+path.sep;if(!resolved.startsWith(parent))throw Error('临时目录边界检查失败');await fs.rm(resolved,{recursive:true,force:true});}}
+// dvisvgm < 3.1 misplaces horizontal CJK glyphs from XDV (upstream #235).
+// Convert the correctly positioned PDF instead; never guess a glyph y-offset.
+function compilerFormat(version){const v=/\bdvisvgm\s+(\d+)\.(\d+)/i.exec(version);if(!v)throw Error('无法识别 dvisvgm 版本');return +v[1]<3||(+v[1]===3&&+v[2]<1)?'pdf':'xdv';}
+async function compilerInfo(){const output=await run('dvisvgm',['--version'],ROOT,4000);return {version:output.match(/dvisvgm\s+[\d.]+/i)?.[0]||output.trim(),format:compilerFormat(output)};}
+async function compile(source,kind,options={}){
+  validate(source,options);const compiler=await compilerInfo();
+  await fs.mkdir(TEMP_ROOT,{recursive:true});const dir=await fs.mkdtemp(path.join(TEMP_ROOT,'job-'));let log='';
+  try{
+    const variants=options.dark===false?[false]:[false,true],result={svg:null,darkSvg:null,warnings:[],compiler};
+    for(const dark of variants){
+      const name=dark?'dark':'light',pdf=compiler.format==='pdf';
+      await fs.writeFile(path.join(dir,name+'.tex'),wrap(source,kind,options,dark,compiler.format));
+      log+=await run('xelatex',[...(pdf?[]:['-no-pdf']),'-no-shell-escape','-halt-on-error','-interaction=nonstopmode',name+'.tex'],dir);
+      const args=[...(pdf?['--pdf']:['--bbox=min','--exact-bbox']),'--output='+name+'.svg'];
+      if(pdf||options.textMode!=='text')args.push('--no-fonts');
+      args.push(name+(pdf?'.pdf':'.xdv'));log+=await run('dvisvgm',args,dir);
+      const svg=adjustSVG(await fs.readFile(path.join(dir,name+'.svg'),'utf8'),options,dark).replace('<svg ',`<svg data-tex2html-format="${compiler.format}" data-tex2html-version="${compiler.version}" `);
+      result[dark?'darkSvg':'svg']=svg;
+    }
+    if(compiler.format==='pdf')result.warnings.push(`${compiler.version} 使用 PDF 兼容编译以修复中文基线；文字以路径保存。`);
+    else if(options.textMode==='text')result.warnings.push('SVG 文本模式可能依赖阅读设备字体；跨设备发布建议使用文字转路径。');
+    result.log=log.slice(-12000);return result;
+  }catch(e){e.log=(log+'\n'+(e.log||'')).slice(-18000);throw e;}
+  finally{const resolved=path.resolve(dir),parent=path.resolve(TEMP_ROOT)+path.sep;if(!resolved.startsWith(parent))throw Error('临时目录边界检查失败');await fs.rm(resolved,{recursive:true,force:true});}
+}
 async function available(name){try{await run(name,['--version'],ROOT,4000);return true;}catch{return false;}}
 function createServer(){const token=crypto.randomBytes(24).toString('hex');let busy=false;return http.createServer(async(req,res)=>{const host=req.headers.host||'',origin=req.headers.origin;const send=(code,value)=>{res.writeHead(code,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(value));};try{if(!/^(?:127\.0\.0\.1|localhost):\d+$/.test(host)){send(403,{error:'仅允许 loopback Host'});return;}const allowedOrigin=!origin||origin==='null'||origin===`http://${host}`;if(!allowedOrigin){send(403,{error:'拒绝外部来源'});return;}if(origin){res.setHeader('Access-Control-Allow-Origin',origin);res.setHeader('Vary','Origin');res.setHeader('Access-Control-Allow-Headers','Content-Type, X-Tex2HTML-Token');res.setHeader('Access-Control-Allow-Methods','GET, POST, OPTIONS');}if(req.method==='OPTIONS'){res.writeHead(204);res.end();return;}const url=new URL(req.url,'http://'+host);
     const apiPath=url.pathname.replace(/^\/tools\/tex2html/,'');
@@ -41,9 +68,9 @@ function createServer(){const token=crypto.randomBytes(24).toString('hex');let b
       const relative=url.searchParams.get('path');const file=lecturePath(relative);const stat=await fs.stat(file);if(stat.size>1200000)throw Error('讲稿文件超过 1.2 MB');const ext=path.extname(file).toLowerCase();const image=/\.(png|jpe?g|gif|webp|svg)$/i.test(ext);if(image){const types={'.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.gif':'image/gif','.webp':'image/webp','.svg':'image/svg+xml'};res.writeHead(200,{'Content-Type':types[ext]||'application/octet-stream','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(await fs.readFile(file));}else{res.writeHead(200,{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(await fs.readFile(file,'utf8'));}return;
     }
     if(req.method==='GET'&&url.pathname==='/health'){const [latex,dvisvgm]=await Promise.all([available('xelatex'),available('dvisvgm')]);send(200,{ok:latex&&dvisvgm,engine:latex?'xelatex':'xelatex 缺失',dvisvgm,token});return;}
-    if(req.method==='POST'&&/^\/convert\/(tikz|xypic)$/.test(url.pathname)){if(req.headers['x-tex2html-token']!==token){send(403,{error:'缺少本地会话令牌，请先检查服务'});return;}if(busy){send(429,{error:'本地编译器正在处理另一幅图，请稍后重试'});return;}if(!req.headers['content-type']?.startsWith('application/json')){send(415,{error:'需要 application/json'});return;}let body='',size=0;for await(const chunk of req){size+=chunk.length;if(size>260000){send(413,{error:'请求超过 260 KB'});return;}body+=chunk;}const input=JSON.parse(body);busy=true;try{send(200,await compile(input.source,url.pathname.endsWith('tikz')?'tikz':'xypic',input.options||{}));}catch(e){send(422,{error:e.message,log:e.log||''});}finally{busy=false;}return;}
+    if(req.method==='POST'&&/^\/convert\/(tikz|xypic|table)$/.test(url.pathname)){if(req.headers['x-tex2html-token']!==token){send(403,{error:'缺少本地会话令牌，请先检查服务'});return;}if(busy){send(429,{error:'本地编译器正在处理另一幅图，请稍后重试'});return;}if(!req.headers['content-type']?.startsWith('application/json')){send(415,{error:'需要 application/json'});return;}let body='',size=0;for await(const chunk of req){size+=chunk.length;if(size>260000){send(413,{error:'请求超过 260 KB'});return;}body+=chunk;}const input=JSON.parse(body);busy=true;try{send(200,await compile(input.source,url.pathname.split('/').pop(),input.options||{}));}catch(e){send(422,{error:e.message,log:e.log||''});}finally{busy=false;}return;}
     if(req.method!=='GET'&&req.method!=='HEAD'){send(405,{error:'不支持的方法'});return;}
     const requestPath=decodeURIComponent(url.pathname==='/'?'/tools/tex2html/index.html':url.pathname);if(requestPath.includes('\0')||requestPath.split('/').some(p=>p.startsWith('.'))){send(403,{error:'禁止此路径'});return;}let file=path.resolve(ROOT,'.'+requestPath);if(!file.startsWith(ROOT+path.sep)){send(403,{error:'路径超出项目'});return;}if((await fs.stat(file)).isDirectory())file=path.join(file,'index.html');file=await fs.realpath(file);const realRoot=await fs.realpath(ROOT);if(!file.startsWith(realRoot+path.sep)){send(403,{error:'路径超出项目'});return;}const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.md':'text/plain; charset=utf-8','.tex':'text/plain; charset=utf-8','.sty':'text/plain; charset=utf-8'};res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream','X-Content-Type-Options':'nosniff','Cache-Control':'no-cache'});res.end(req.method==='HEAD'?undefined:await fs.readFile(file));
   }catch(e){if(!res.headersSent)send(e.code==='ENOENT'?404:400,{error:e.message});else res.end();}});}
 if(require.main===module){const port=Number(process.env.TEX2HTML_PORT||4174),server=createServer();server.listen(port,'127.0.0.1',()=>console.log(`TeX 转换器：http://127.0.0.1:${port}/tools/tex2html/\n仅接受本机请求；关闭此终端即可停止服务。`));server.on('error',e=>{console.error(e.message);process.exitCode=1;});}
-module.exports={createServer,compile,validate,wrap,adjustSVG};
+module.exports={createServer,compile,validate,wrap,adjustSVG,compilerFormat};

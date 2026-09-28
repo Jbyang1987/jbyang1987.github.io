@@ -6,6 +6,19 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
   const labels = {theorem:'定理',proposition:'性质',lemma:'引理',corollary:'推论',definition:'定义',example:'例题',problem:'习题',question:'思考',fact:'事实',proof:'证明',remark:'注'};
+  const environmentPalettes = {
+    theorem:{light:'#1d4ed8',dark:'#93c5fd',background:'#eff6ff',darkBackground:'#17253b',border:'#3b82f6',darkBorder:'#60a5fa'},
+    proposition:{light:'#c2410c',dark:'#fdba74',background:'#fff7ed',darkBackground:'#352319',border:'#ea580c',darkBorder:'#fb923c'},
+    lemma:{light:'#7e22ce',dark:'#d8b4fe',background:'#faf5ff',darkBackground:'#2c203b',border:'#a855f7',darkBorder:'#c084fc'},
+    corollary:{light:'#0e7490',dark:'#67e8f9',background:'#ecfeff',darkBackground:'#133039',border:'#06b6d4',darkBorder:'#22d3ee'},
+    definition:{light:'#15803d',dark:'#86efac',background:'#f0fdf4',darkBackground:'#193026',border:'#22c55e',darkBorder:'#4ade80'},
+    example:{light:'#be185d',dark:'#f9a8d4',background:'#fdf2f8',darkBackground:'#361e2d',border:'#ec4899',darkBorder:'#f472b6'},
+    problem:{light:'#4338ca',dark:'#a5b4fc',background:'#eef2ff',darkBackground:'#22263f',border:'#6366f1',darkBorder:'#818cf8'},
+    question:{light:'#a16207',dark:'#fde047',background:'#fefce8',darkBackground:'#332e17',border:'#ca8a04',darkBorder:'#facc15'},
+    fact:{light:'#4d7c0f',dark:'#bef264',background:'#f7fee7',darkBackground:'#27321b',border:'#65a30d',darkBorder:'#a3e635'},
+    proof:{light:'#475569',dark:'#cbd5e1',background:'#f8fafc',darkBackground:'#1e293b',border:'#94a3b8',darkBorder:'#64748b'},
+    remark:{light:'#78716c',dark:'#d6d3d1',background:'#fafaf9',darkBackground:'#2c2927',border:'#a8a29e',darkBorder:'#a8a29e'}
+  };
   const clone = value => JSON.parse(JSON.stringify(value));
   const esc = value => String(value ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   const safeName = value => String(value || '').normalize('NFKC').replace(/[^\p{L}\p{N}_-]+/gu,'-').replace(/^-+|-+$/g,'').slice(0,100) || 'page';
@@ -16,13 +29,26 @@
   const mathEnvs = new Set(['equation','equation*','align','align*','aligned','gather','gather*','gathered','multline','multline*','displaymath','math','eqnarray','eqnarray*']);
   const modes = ['onlyppt','onlyhandout','onlysummary','forppt','forhandout','forsummary'];
   const standardMath = new Set(('begin end frac dfrac tfrac cfrac sqrt vec overrightarrow overleftarrow overline underline widehat hat bar tilde widetilde dot ddot dots ldots cdots vdots ddots mathbb mathcal mathrm mathbf mathit mathsf mathtt mathfrak mathscr boldsymbol pmb operatorname text textrm textbf textit mbox left right middle big Big bigg Bigg bigl bigr Bigl Bigr biggl biggr Biggl Biggr alpha beta gamma delta epsilon varepsilon zeta eta theta vartheta iota kappa lambda mu nu xi pi varpi rho varrho sigma varsigma tau upsilon phi varphi chi psi omega Gamma Delta Theta Lambda Xi Pi Sigma Upsilon Phi Psi Omega sum prod coprod int iint iiint oint lim limsup liminf min max inf sup det dim ker hom log ln exp sin cos tan cot sec csc arcsin arccos arctan sinh cosh tanh gcd lcm Pr deg arg to mapsto longmapsto rightarrow leftarrow leftrightarrow Rightarrow Leftarrow Leftrightarrow longrightarrow longleftarrow longleftrightarrow Longrightarrow Longleftarrow Longleftrightarrow xrightarrow xleftarrow implies iff in notin ni subset supset subseteq supseteq subsetneq supsetneq cup cap bigcup bigcap setminus emptyset varnothing forall exists nexists neg land lor wedge vee oplus otimes bigoplus bigotimes times cdot div pm mp ast star circ bullet le leq ge geq neq ne equiv sim simeq approx cong propto ll gg prec succ preceq succeq parallel perp mid nmid infty partial nabla ell hbar imath jmath Re Im aleph angle triangle triangleleft triangleright prime top bot vert Vert lvert rvert lVert rVert langle rangle lceil rceil lfloor rfloor lbrace rbrace backslash colon quad qquad enspace thinspace hspace vspace smallskip medskip bigskip limits nolimits displaystyle textstyle scriptstyle scriptscriptstyle overset underset stackrel underbrace overbrace phantom hphantom vphantom smash rule strut boxed tag tag* notag nonumber label ref eqref substack cases matrix pmatrix bmatrix Bmatrix vmatrix Vmatrix array hline cline cr color textcolor bf rm cal it sf tt char unicode space').split(/\s+/));
-  ['xleftrightarrow','xLeftrightarrow','xRightarrow','xmapsto','xrightleftharpoons','bigwedge','odot','downarrow','uparrow','nparallel','iddots','rightsquigarrow','choose','atop','makebox','fbox','arraycolsep','setlength','setcounter','footnote','tiny','small','footnotesize','multicolumn','not'].forEach(name=>standardMath.add(name));
+  ['rightleftharpoons','xleftrightarrow','xLeftrightarrow','xRightarrow','xmapsto','xrightleftharpoons','bigwedge','odot','downarrow','uparrow','nparallel','iddots','rightsquigarrow','choose','atop','makebox','fbox','arraycolsep','setlength','setcounter','footnote','tiny','small','footnotesize','multicolumn','not'].forEach(name=>standardMath.add(name));
   function defaults() {
-    return {chapter:1,section:1,start:1,autoNumber:true,sectionSign:true,bodyNumber:false,bodyTitle:false,htmlTitleNumber:false,slugMode:'number',cleanTitle:true,subtitle:'framesubtitle',description:'empty',pp:'ignore',pause:'ignore',splitEnvironment:'none',separator:'\\lessonbreak',keepFrameTitles:false,warningLevel:'all',pretty:true,theme:'light',macros:{},environments:Object.fromEntries(Object.entries(labels).map(([key,label])=>[key,{label,light:'#2563eb',dark:'#93c5fd',background:'#eff6ff',darkBackground:'#17253b',border:'#3b82f6',darkBorder:'#60a5fa',numbered:!['proof','remark'].includes(key),collapsed:key==='proof',icon:false,headingSize:17,bodySize:16,padding:16,radius:10,printBackground:false}])),colors:Object.fromEntries(Object.entries({blue:['#2563eb','#93c5fd'],red:['#dc2626','#fca5a5'],green:['#15803d','#86efac'],yang:['#0e7490','#67e8f9'],rev:['#a21caf','#f0abfc']}).map(([k,v])=>[k,{light:v[0],dark:v[1],mode:'color'}])),beamer:Object.fromEntries(['frame','frametitle','framesubtitle','title','author','institute','date','titlepage','section','subsection','subsubsection','columns','column','only','uncover','visible','alt','onslide',...modes].map(k=>[k,['author','institute','date','section','subsection','subsubsection'].includes(k)?'hide':'show'])),figure:{tikz:true,xypic:true,engine:'browser',directory:'assets/generated',prefix:'figure',width:640,maxWidth:100,transparent:true,background:'#ffffff',darkBackground:'#182131',crop:true,textMode:'path',light:true,dark:true,caption:true,scroll:true,aspect:true,service:'http://127.0.0.1:4174',preamble:'',libraries:'math,shapes.geometric,quotes,angles,calc,decorations.pathreplacing,arrows.meta',replacements:{}},image:{maxWidth:100,caption:true},unknown:{}};
+    return {chapter:1,section:1,start:1,autoNumber:true,sectionSign:true,bodyNumber:false,bodyTitle:false,htmlTitleNumber:false,slugMode:'number',cleanTitle:true,subtitle:'framesubtitle',description:'empty',pp:'ignore',pause:'ignore',splitEnvironment:'none',separator:'\\lessonbreak',keepFrameTitles:false,warningLevel:'all',pretty:true,theme:'light',macros:{},environments:Object.fromEntries(Object.entries(labels).map(([key,label])=>[key,{label,...(environmentPalettes[key]||environmentPalettes.theorem),presentation:key==='proof'?'proof':'framed',numbered:false,collapsed:key==='proof',icon:false,headingSize:17,bodySize:16,padding:16,radius:10,printBackground:false}])),colors:Object.fromEntries(Object.entries({blue:['#2563eb','#93c5fd'],red:['#dc2626','#fca5a5'],green:['#15803d','#86efac'],yang:['#0e7490','#67e8f9'],rev:['#a21caf','#f0abfc']}).map(([k,v])=>[k,{light:v[0],dark:v[1],mode:'color'}])),beamer:Object.fromEntries(['frame','frametitle','framesubtitle','title','author','institute','date','titlepage','section','subsection','subsubsection','columns','column','only','uncover','visible','alt','onslide',...modes].map(k=>[k,['author','institute','date','section','subsection','subsubsection'].includes(k)?'hide':'show'])),figure:{tikz:true,xypic:true,table:true,engine:'browser',directory:'assets/generated',prefix:'figure',width:640,maxWidth:100,transparent:true,background:'#ffffff',darkBackground:'#182131',crop:true,textMode:'path',light:true,dark:true,caption:true,scroll:true,aspect:true,service:'http://127.0.0.1:4174',preamble:'',libraries:'math,shapes.geometric,quotes,angles,calc,decorations.pathreplacing,arrows.meta',replacements:{}},image:{maxWidth:100,caption:true},unknown:{}};
   }
   function mergeConfig(input={}) {
     function merge(a,b) {for(const [k,v] of Object.entries(b || {})) {if(['__proto__','constructor','prototype'].includes(k))continue; a[k]=v && typeof v==='object' && !Array.isArray(v)?merge(a[k] && typeof a[k]==='object'?a[k]:{},v):v;}return a;}
-    return merge(defaults(),input);
+    const config=merge(defaults(),input);
+    for(const env of Object.values(config.environments))env.numbered=false;
+    return config;
+  }
+  function applyEnvironmentStyleDefaults(input={}) {
+    const config=mergeConfig(input),base=defaults().environments,styleKeys=['light','dark','background','darkBackground','border','darkBorder','presentation','headingSize','bodySize','padding','radius','printBackground'];
+    for(const [name,environment] of Object.entries(config.environments)){const preset=base[name]||base.theorem;for(const key of styleKeys)environment[key]=preset[key];}
+    return config;
+  }
+  function applyEnvironmentPaletteDefaults(input={}) {
+    const config=mergeConfig(input);
+    for(const [name,env] of Object.entries(config.environments))Object.assign(env,environmentPalettes[name]||environmentPalettes.theorem);
+    config.environmentPaletteVersion=1;
+    return config;
   }
   // Preserve offsets while erasing TeX comments, including escaped percent signs.
   function uncomment(source) {
@@ -38,7 +64,7 @@
       if(s[i]===close){level--;if(!level)return {value:s.slice(p+1,i),start:p,inner:p+1,end:i+1,closed:true};}}
     return {value:s.slice(p+1),start:p,inner:p+1,end:s.length,closed:false};
   }
-  function command(s,p) {const m=/^\\([A-Za-z@]+|[^\r\n])/.exec(s.slice(p));return m?{name:m[1],start:p,end:p+m[0].length}:null;}
+  function command(s,p) {const m=/^\\(xymatrix(?=[^A-Za-z]|$)|[A-Za-z@]+|[^\r\n])/.exec(s.slice(p));return m?{name:m[1],start:p,end:p+m[0].length}:null;}
   // Scan commands with the same tokenization used by the parser. A global
   // /\\([A-Za-z@]+)/ expression would start at the second slash of `\\a`
   // and falsely report `a` as an unknown command; in TeX that sequence is a
@@ -148,7 +174,7 @@
       const start=i;
       if(s[i]==='$'||s.startsWith('\\[',i)||s.startsWith('\\(',i)) {
         const open=s[i]==='$'?(s[i+1]==='$'?'$$':'$'):s.slice(i,i+2),close=open==='\\['?'\\]':open==='\\('?'\\)':open;
-        let p=i+open.length;while(p<s.length){if(s.startsWith(close,p))break;if(s[p]==='\\'&&s.startsWith('\\text',p)){const textGroup=group(s,p+5);if(textGroup){p=textGroup.end;continue;}}if(s[p]==='\\')p+=2;else p++;}const closed=p<s.length;
+        let p=i+open.length;while(p<s.length){if(s[p]==='{'){const nestedGroup=group(s,p);if(nestedGroup?.closed){p=nestedGroup.end;continue;}}if(s.startsWith(close,p))break;if(s[p]==='\\'&&s.startsWith('\\text',p)){const textGroup=group(s,p+5);if(textGroup){p=textGroup.end;continue;}}if(s[p]==='\\')p+=2;else p++;}const closed=p<s.length;
         i=closed?p+close.length:s.length;add('formula',start,i,{tex:s.slice(start+open.length,p),display:['$$','\\['].includes(open),closed});
         if(!closed)issues.push(warning(file,fullSource,base+start,open,source.slice(start,i),'数学公式未闭合'));continue;
       }
@@ -163,6 +189,12 @@
           if(!ending)issues.push(warning(file,fullSource,base+start,name.value,source.slice(start,i),'环境未闭合'));continue;
         }
         if(c.name==='xy') {const end=s.indexOf('\\endxy',i);i=end<0?s.length:end+6;add('diagram',start,i,{name:'xypic'});if(end<0)issues.push(warning(file,fullSource,base+start,'xy',source.slice(start,i),'XY-pic 未闭合'));continue;}
+        if(c.name==='xymatrix') {
+          // XY spacing options precede the balanced body, e.g. @R=4mm@C=1cm.
+          let p=i;while(p<s.length&&!/[{}\\\n]/.test(s[p]))p++;
+          const body=group(s,p);
+          if(body){i=body.end;add('diagram',start,i,{name:'xypic'});if(!body.closed)issues.push(warning(file,fullSource,base+start,'xymatrix',source.slice(start,i),'XY-pic 大括号未闭合'));continue;}
+        }
         let overlay=null,opt=null,args=[],frameboxSize=null;
         if(s[i]==='*')i++;
         if(s[skip(s,i)]==='<'){const g=group(s,i,'<','>');overlay=g?.value;i=g?.end||i;}
@@ -193,7 +225,36 @@
     }return result;
   }
   function titleText(tex) {return tex.replace(/\\(?:textbf|textit|emph|blue|red|green|yang|rev)\s*\{([^{}]*)\}/g,'$1').replace(/\\(?:quad|qquad|small|large|Large|LARGE)\b/g,' ').replace(/[{}]/g,'').replace(/\s+/g,' ').trim();}
+  function figureNeedsBaselineRepair(figure) {
+    if(figure.origin==='upload'||figure.path||!figure.svg||!/[\u3400-\u9fff]/.test(figure.raw||''))return false;
+    if(figure.compiler?.format==='pdf')return false;
+    const version=/\b(?:dvisvgm\s+)?(\d+)\.(\d+)/.exec(figure.compiler?.version||'');
+    if(version&&(+version[1]>3||+version[1]===3&&+version[2]>=1))return false;
+    // Legacy sanitized caches lost the generator comment. Only recognize the
+    // characteristic dvisvgm XDV glyph definitions, never shift SVG coordinates.
+    return [figure.svg,figure.darkSvg].filter(Boolean).some(svg=>{
+      if(/data-tex2html-format=["']pdf["']/.test(svg))return false;
+      const v=/data-tex2html-version=["'](?:dvisvgm\s+)?(\d+)\.(\d+)/.exec(svg);
+      if(v&&(+v[1]>3||+v[1]===3&&+v[2]>=1))return false;
+      return /<defs\b/.test(svg)&&/\bid=["']g\d+-\d+["']/.test(svg)&&/<use\b/.test(svg);
+    });
+  }
   function figureKey(raw) {let hash=2166136261;for(let i=0;i<raw.length;i++){hash^=raw.charCodeAt(i);hash=Math.imul(hash,16777619);}return 'fig-'+(hash>>>0).toString(16);}
+  // A math wrapper around one diagram must not invalidate its saved SVG.
+  // Preserve wrappers containing other math/boxed content: those affect the image.
+  function figureCacheKeys(raw) {
+    let canonical=raw;
+    const parsed=parse(raw),nodes=parsed.nodes.filter(n=>n.type!=='text'||n.value.trim());
+    if(!parsed.warnings.length&&nodes.length===1){
+      const n=nodes[0],inner=n.type==='formula'?n.tex:n.type==='environment'&&mathEnvs.has(n.name)?n.inner:null;
+      if(n.type==='diagram'||(n.type==='environment'&&['tikzpicture','xy'].includes(n.name)))canonical=n.raw;
+      if(inner!==null){const content=parse(inner),items=content.nodes.filter(n=>n.type!=='text'||n.value.trim());
+        if(!content.warnings.length&&items.length===1&&(items[0].type==='diagram'||(items[0].type==='environment'&&['tikzpicture','xy'].includes(items[0].name))))canonical=items[0].raw;
+      }
+    }
+    const variants=[canonical.replace(/\r\n/g,'\n'),canonical,canonical.replace(/\r?\n/g,'\r\n'),raw,raw.replace(/\r\n/g,'\n'),raw.replace(/\r?\n/g,'\r\n')];
+    return [...new Set(variants.map(figureKey))];
+  }
   // Intentionally strict: never returns a partial picture for unsupported TikZ.
   function simpleTikz(raw,options={},dark=false) {
     let source=uncomment(raw).trim().replace(/^\\begin\{tikzpicture\}\s*/,'').replace(/\\end\{tikzpicture\}\s*$/,'').trim();
@@ -206,14 +267,61 @@
     if(options.crop===false){x-=40;y-=40;w+=80;h+=80;}const palette=dark?{red:'#fca5a5',blue:'#93c5fd',green:'#86efac',purple:'#d8b4fe',black:'#e2e8f0'}:{red:'#dc2626',blue:'#2563eb',green:'#15803d',purple:'#9333ea',black:'#172033'};
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${x} ${y} ${w} ${h}" width="${num(options.width,80,3000,640)}" height="${Math.round(num(options.width,80,3000,640)*h/w)}" role="img" aria-label="TikZ 图形"><defs>${paths.map((p,i)=>`<marker id="a${i}" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto-start-reverse"><path d="M0,0 L7,3 L0,6 Z" fill="${palette[p.opts.find(o=>palette[o])]||palette.black}"/></marker>`).join('')}</defs>${options.transparent===false?`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${color(dark?options.darkBackground:options.background)}"/>`:''}${paths.map((p,i)=>`<polyline points="${p.pts.map(a=>a.join(',')).join(' ')}" fill="none" stroke="${palette[p.opts.find(o=>palette[o])]||palette.black}" stroke-width="${p.opts.includes('very thick')?3:p.opts.includes('thick')?2:1.4}"${p.opts.some(o=>o==='dashed'||o==='dotted')?' stroke-dasharray="4 4"':''}${p.opts.some(o=>o==='->'||o==='<->')?` marker-end="url(#a${i})"`:''}${p.opts.some(o=>o==='<-'||o==='<->')?` marker-start="url(#a${i})"`:''}/>`).join('')}</svg>`;
   }
+  function lectureChapter(name) {const match=String(name).split(/[\\/]/).pop().match(/^(\d{2})(?=\s|[-_.]|$)/);return match?Number(match[1]):null;}
+  // Use the structural parser so headings in comments, macros, frames and math
+  // cannot accidentally become chapter boundaries. Starred headings count too.
+  function chapterSections(files,config={}) {
+    const chapters=[];let ordinal=0;
+    for(const file of files){
+      const source=file.text||'',headings=[];
+      const scan=nodes=>{for(const node of nodes){
+        if(node.type==='environment'&&node.name==='document')scan(parse(node.inner,file.name,node.innerStart,source).nodes);
+        else if(node.type==='command'&&node.name==='section'&&node.args[0]?.closed)headings.push(node);
+      }};
+      scan(parse(source,file.name).nodes);
+      const numbered=lectureChapter(file.name);
+      if(!headings.length){chapters.push({id:file.name+'::section0',file:file.name,chapter:numbered??config.chapter??1,title:'未设置 section',start:0,end:source.length,sectionStart:null});continue;}
+      headings.forEach((node,index)=>{
+        const chapter=numbered===null?ordinal:numbered+index;
+        chapters.push({id:file.name+'::section'+index,file:file.name,chapter,title:titleText(node.args[0].value),start:index===0?0:node.start,end:headings[index+1]?.start??source.length,sectionStart:node.start});
+        ordinal=chapter+1;
+      });
+    }
+    return chapters;
+  }
+  function toggleLectureSelection(selected,name,checked) {
+    // An empty stored list represents the default 00–09 selection. The first
+    // click selects that chapter alone, even though its checkbox was checked.
+    if(!selected?.length)return [name];
+    const next=new Set(selected);
+    if(checked)next.add(name);else next.delete(name);
+    return [...next];
+  }
+  function toggleFrameSelection(selection={},name,index,checked) {
+    if(!Object.values(selection).some(indices=>indices.length))return {[name]:[index]};
+    const next=new Set(selection[name]||[]);
+    if(checked)next.add(index);else next.delete(index);
+    return {...selection,[name]:[...next]};
+  }
+  function selectLectureFiles(files,config={}) {
+    const selected=config.lectureSelection||[];
+    const scope=selected.length?files.filter(file=>selected.includes(file.name)):files.filter(file=>{const chapter=lectureChapter(file.name);return chapter!==null&&chapter<=9;});
+    const restricted=scope.some(file=>config.frameSelection?.[file.name]?.length);
+    return restricted?scope.filter(file=>config.frameSelection?.[file.name]?.length):scope;
+  }
   function convert(files,styleFiles=[],inputConfig={},assets={}) {
-    const config=mergeConfig(inputConfig),registry=parseStyles([...styleFiles,...files]);
+    const baseConfig=mergeConfig(inputConfig);
+    if(baseConfig.lectureBatch)files=selectLectureFiles(files,baseConfig);
+    let config=baseConfig;const registry=parseStyles([...styleFiles,...files]);
     const macros=Object.assign(Object.create(null),registry.macros,config.macros);
     for(const [k,v] of Object.entries(registry.environments))if(!config.environments[k])config.environments[k]={...clone(config.environments.theorem),...v};
     for(const [k,v] of Object.entries(registry.colors))if(!config.colors[k])config.colors[k]=v;
-    const model={version:1,section:`${config.chapter}.${config.section}`,pages:[],globalWarnings:[...registry.warnings],frames:[],log:[],config,registry,files:files.map(f=>({name:f.name})),assets:[]};
-    let frameCount=0,blockCount=0;const envCounts={};
+    const model={version:1,section:`${config.chapter}.${config.section}`,chapters:chapterSections(files,baseConfig),pages:[],globalWarnings:[...registry.warnings],frames:[],log:[],config,registry,files:files.map(f=>({name:f.name})),assets:[]};
+    let frameCount=0,blockCount=0;
     for(const file of files) {
+      config=baseConfig.lectureBatch?{...baseConfig,chapter:lectureChapter(file.name)??baseConfig.chapter}:baseConfig;
+      const fileChapters=model.chapters.filter(chapter=>chapter.file===file.name);
+
       const source=file.text || '';let masked=source;
       const defs=registry.definitions.filter(d=>d.file===file.name);
       for(const d of defs)masked=masked.slice(0,d.start)+masked.slice(d.start,d.end).replace(/[^\r\n]/g,' ')+masked.slice(d.end);
@@ -229,15 +337,18 @@
           const body=parsed.nodes.filter(node=>{if(node.type==='command'&&['frametitle','framesubtitle'].includes(node.name)){if(node.name==='frametitle')title=node.args[0]?.value||title;else subtitle=node.args[0]?.value||subtitle;return config.beamer[node.name]==='preserve';}return true;});
           frames.push({nodes:body,title:metadata.subsubsection||title||metadata.subsection||metadata.title||'未命名页面',frameTitle:title,subtitle,sectionTitle:metadata.section||'',subsectionTitle:metadata.subsection||'',subsectionIndex:metadata.subsectionIndex||0,subsubsectionTitle:metadata.subsubsection||'',start:n.start,raw:n.raw});continue;
         }
-        if(n.type==='command'&&['title','author','institute','date','section','subsection','subsubsection'].includes(n.name)) {metadata[n.name]=n.args.at(-1)?.value||'';if(n.name==='subsection'){metadata.subsectionIndex=++subsectionCounter;metadata.subsubsection='';}if(['section','subsection','subsubsection'].includes(n.name)&&config.beamer[n.name]!=='hide')outside.push(n);continue;}
+        if(n.type==='command'&&['title','author','institute','date','section','subsection','subsubsection'].includes(n.name)) {if(n.name==='section'){if(hasRenderableOutside(outside))frames.push({nodes:outside,title:metadata.subsubsection||metadata.subsection||metadata.section||'未分帧内容',sectionTitle:metadata.section||'',subsectionTitle:metadata.subsection||'',subsectionIndex:metadata.subsectionIndex||0,subsubsectionTitle:metadata.subsubsection||'',start:outside[0].start});outside=[];subsectionCounter=0;metadata.subsection='';metadata.subsectionIndex=0;metadata.subsubsection='';}metadata[n.name]=n.args[0]?.value||'';if(n.name==='subsection'){metadata.subsectionIndex=++subsectionCounter;metadata.subsubsection='';}if(['section','subsection','subsubsection'].includes(n.name)&&config.beamer[n.name]!=='hide')outside.push(n);continue;}
         if(n.type==='command'&&['documentclass','usepackage','RequirePackage','ProvidesPackage','usetikzlibrary','setbeamertemplate','usetheme','setmode'].includes(n.name)){model.globalWarnings.push(warning(file.name,source,n.start,n.name,n.raw,'此设置不在正文执行；已保留在转换报告中。','图形依赖可填入本地编译前导代码。','info'));continue;}
         outside.push(n);
-      }};scan(top.nodes);if(hasRenderableOutside(outside))frames.push({nodes:outside,title:metadata.title||'未分帧内容',start:outside[0]?.start||0});
+      }};scan(top.nodes);if(hasRenderableOutside(outside))frames.push({nodes:outside,title:metadata.subsubsection||metadata.subsection||metadata.section||metadata.title||'未分帧内容',sectionTitle:metadata.section||'',subsectionTitle:metadata.subsection||'',subsectionIndex:metadata.subsectionIndex||0,subsubsectionTitle:metadata.subsubsection||'',start:outside[0]?.start||0});
        if(!frames.length&&source.trim())frames=[{nodes:[],title:metadata.title||'空白页面',start:0}];
        const selectedFrames=config.frameSelection?.[file.name];
-       if(Array.isArray(selectedFrames))frames=frames.filter((_,index)=>selectedFrames.includes(index));
        if(frames.some(frame=>frame.title!=='未分帧内容'))frames=frames.filter(frame=>frame.title!=='未分帧内容');
+       if(Array.isArray(selectedFrames)&&(!baseConfig.lectureBatch||selectedFrames.length))frames=frames.filter((_,index)=>selectedFrames.includes(index));
       for(const frame of frames) {
+        const chapter=fileChapters.find(ch=>frame.start>=ch.start&&frame.start<ch.end)||fileChapters[0];
+        config={...config,chapter:chapter?.chapter??config.chapter};
+        const fileSection=`${config.chapter}.${config.section}`;
         const frameId=++frameCount,warnings=[];
         const warn=(n,reason,suggestion,severity)=>{const w=warning(file.name,source,n.start,n.name||n.type,n.raw,reason,suggestion,severity);warnings.push(w);return w;};
          const nested=(text,base)=>{const p=parse(text,file.name,base,source);warnings.push(...p.warnings);return p.nodes;};
@@ -273,16 +384,18 @@
           if(n.type==='text')return esc(n.value).replace(/~/g,'&nbsp;');
           if(n.type==='group')return inlineNodes(nested(n.inner,n.innerStart));
           if(n.type==='formula') {
-            if(/\\(?:begin\{tikzpicture\}|xymatrix|xy\b)/.test(n.tex))return inlineAsset(makeFigure(n,/tikzpicture/.test(n.tex)?'tikz':'xypic',n.tex));
+            if(/\\(?:begin\{tikzpicture\}|xymatrix|xy\b)/.test(n.tex))return inlineAsset(makeFigure(n,/tikzpicture/.test(n.tex)?'tikz':'xypic',/tikzpicture/.test(n.tex)?n.raw:n.tex));
             return math(n.tex,n,n.display);
           }
           if(n.type==='environment'||n.type==='diagram')return blocks([n]).map(inlineAsset).join('');
           if(n.type!=='command')return unknown(n);
           const a=n.args||[],arg=index=>a[index]?inlineNodes(nested(a[index].value,a[index].inner)):'',name=n.name;
+          if(name==='boxed'&&/\\(?:begin\{tikzpicture\}|xymatrix|xy\b)/.test(n.raw))return inlineAsset(makeFigure(n,/tikzpicture/.test(n.raw)?'tikz':'xypic',`\\(${n.raw}\\)`));
+          if(name==='rightline')return a.length?`<div style="text-align:right">${arg(0)}</div>`+a.slice(1).map((_,i)=>arg(i+1)).join(''):unknown(n,'rightline 缺少文字参数');
           if(name==='pp'||name==='pause') {if(config[name]==='ignore')return '';if(config[name]==='preserve')return unknown(n,'用户选择保留停顿命令');warn(n,'嵌套内容中的停顿不能安全分页，请在外层插入分隔线。','顶层停顿可按当前规则拆分。');return '<span class="tex-break-note">〔内容分界〕</span>';}
           if(macros[name]&&!reserved.has(name)&&macros[name].enabled!==false&&macros[name].scope!=='math'&&macros[name].scope!=='preserve') {let failed=false;const expanded=expand(n.raw,macros,'text',(name,raw,reason)=>{failed=true;warn({...n,name,raw},reason);});if(failed||expanded===n.raw)return unknown(n,'宏不能安全展开，保留原文');return inlineNodes(nested(expanded,n.start));}
            if(name==='textcolor'&&n.optional){const hex=explicitColor(n.optional,a[0]?.value||'');if(hex)return `<span style="color:${hex}">${arg(1)}</span>`;warn(n,'textcolor 的颜色模型或数值无法识别','使用 \\textcolor[rgb]{0,0,1}{文字} 或颜色管理器中的命名颜色。');return arg(1);}
-           if(config.colors[name]||name==='textcolor') {const key=name==='textcolor'?a[0]?.value:name,rule=config.colors[key]||{mode:'color'},content=arg(name==='textcolor'?1:0);if(!config.colors[key])warn(n,'颜色未定义，正文已保留','在颜色管理器中添加此名称。');const tag=rule.mode==='bold'?'strong':rule.mode==='mark'?'mark':'span';return rule.mode==='plain'?content:`<${tag} class="tex-color-${safeName(key)}">${content}</${tag}>`;}
+           if(name==='textcolor'||config.colors[name]) {const requested=name==='textcolor'?a[0]?.value:name,raw=String(requested||'').trim(),key=config.colors[raw]?raw:(colorAliases[raw.toLowerCase()]||raw),content=arg(name==='textcolor'?1:0);if(name==='textcolor'&&!config.colors[key])return colorSpan(raw,content,n);const rule=config.colors[key]||{mode:'color'},tag=rule.mode==='bold'?'strong':rule.mode==='mark'?'mark':'span';return rule.mode==='plain'?content:`<${tag} class="tex-color-${safeName(key)}">${content}</${tag}>`;}
            if(name==='framebox'){const content=arg(0),size=String(n.frameboxSize||n.optional||'').split(',').map(v=>v.trim()),width=/^\d+(?:\.\d+)?$/.test(size[0]||'')?`${Number(size[0])}px`:'';return `<span class="tex-framebox"${width?` style="width:${width}"`:''}>${content}</span>`;}
            if(name==='makebox'){const width=String(n.optional||'').match(/^\s*([\d.]+)\s*(cm|mm|pt|em)?/i),style=width?` style="min-width:${width[1]}${width[2]||'px'};display:inline-block"`:'';return `<span class="tex-makebox"${style}>${arg(0)}</span>`;}
           const tags={textbf:'strong',emph:'em',textit:'em',underline:'u',alert:'strong',texttt:'code',textrm:'span',textnormal:'span',mbox:'span',fbox:'span',footnote:'small'};
@@ -309,46 +422,74 @@
           if(standardMath.has(name))return math(n.raw,n);
           return unknown(n);
         }
-        function inlineNodes(nodes){return nodes.map(inline).join('');}
+        const colorAliases={cyan:'yang',magenta:'rev'};
+        const cssColorNames=new Set(('aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond blue blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow lime limegreen linen magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive olivedrab orange orangered orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue purple rebeccapurple red rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna silver skyblue slateblue slategray slategrey snow springgreen steelblue tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen').split(/\s+/));
+        function colorSpan(name,html,n){const original=String(name||'').trim(),raw=original.toLowerCase(),alias=colorAliases[raw]||raw,key=config.colors[original]?original:alias,rule=config.colors[key];if(rule){const tag=rule.mode==='bold'?'strong':rule.mode==='mark'?'mark':'span';return rule.mode==='plain'?html:`<${tag} class="tex-color-${safeName(key)}">${html}</${tag}>`;}if(/^#(?:[0-9a-f]{3}|[0-9a-f]{4}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(raw)||cssColorNames.has(raw))return `<span style="color:${raw}">${html}</span>`;warn(n,'颜色未定义，正文已保留','在颜色管理器中添加此名称，或使用 CSS 颜色名称。');return html;}
+        function inlineNodes(nodes,colorState){const state=colorState||{name:''};let active=state.name||'',plain='',colored='',last=nodes.at(-1)||{start:0,name:'color',raw:''};const append=value=>{if(active)colored+=value;else plain+=value;};for(const n of nodes){last=n;if(n.type==='command'&&n.name==='color'){if(colored){plain+=colorSpan(active,colored,n);colored='';}const spec=n.args?.[0]?.value,colorArg=n.optional?explicitColor(n.optional,spec||''):spec;if(colorArg){active=colorArg;state.name=active;}else warn(n,'color 的颜色模型或数值无法识别','使用 \\color{red} 或 \\color[HTML]{FF0000}。');for(const extra of (n.args||[]).slice(1))append(inlineNodes(nested(extra.value,extra.inner)));continue;}append(inline(n));}state.name=active;return plain+(colored?colorSpan(active,colored,last):'');}
         const create=(type,n,extra={})=>({id:'b'+(++blockCount),type,file:file.name,sourceStart:n.start,sourceEnd:n.end,sourceStartLine:lineAt(source,n.start),sourceEndLine:lineAt(source,Math.max(n.start,n.end-1)),raw:n.raw,...extra});
         function makeFigure(n,kind,raw=n.raw) {
-          const id=figureKey(raw),replacement=config.figure.replacements[id];let svg=null,darkSvg=null,error='';
+          const figureAliases=[...new Set([...figureCacheKeys(raw),...figureCacheKeys(n.raw)])],id=figureAliases[0],replacement=figureAliases.map(key=>config.figure.replacements[key]).find(Boolean);let svg=null,darkSvg=null,error='';
           if(replacement){svg=replacement.svg||null;darkSvg=replacement.darkSvg||null;}
           else if(!config.figure[kind])error='已关闭图形转换；原始代码保留';
           else if(kind==='tikz'&&config.figure.engine==='browser'){try {svg=simpleTikz(raw,config.figure,false);if(config.figure.dark)darkSvg=simpleTikz(raw,config.figure,true);}catch(e){error=e.message;}}
+          else if(kind==='table')error='表格等待本地 LaTeX 编译';
           else error=config.figure.engine==='local'?'等待本地编译；点击“编译待处理图形”':'XY-pic 需要本地编译或上传 SVG';
           if(error)warn(n,error,'在图形面板中执行本地编译、上传 SVG 或指定站内 SVG 路径。');
-          return create('figure',n,{figureId:id,kind,raw,svg,darkSvg,error,path:replacement?.path||'',caption:replacement?.caption||`${kind==='tikz'?'TikZ':'XY-pic'} 图形`,width:replacement?.width||config.figure.width});
+          return create('figure',n,{figureId:id,figureAliases,kind,raw,svg,darkSvg,error,compiler:replacement?.compiler||null,origin:replacement?.origin||'',path:replacement?.path||'',caption:replacement?.caption||`${kind==='table'?'LaTeX 表格':kind==='tikz'?'TikZ 图形':'XY-pic 图形'}`,width:replacement?.width||config.figure.width});
         }
         function makeImage(n){const path=n.args?.[0]?.value||'',base=path.replace(/\\/g,'/').split('/').pop();const asset=assets[path]||assets[base]||Object.values(assets).find(a=>a.name?.replace(/\.[^.]+$/,'')===base);if(!asset)warn(n,'图片路径不存在或图片未导入','导入此图片，或在内容块编辑器指定站内路径。');return create('image',n,{imagePath:path,asset:asset?{name:asset.name,data:asset.data}:null,caption:base,error:asset?'':'图片未导入'});}
         let blockDepth=0;
         function blocks(nodes) {
           blockDepth++;
-          const result=[];let pending=[];
-          const flush=()=>{if(!pending.length)return;const first=pending[0],last=pending.at(-1),attachmentStart=inlineAssets.length,html=inlineNodes(pending),attachments=inlineAssets.splice(attachmentStart);if(html.trim())result.push(create('text',{...first,end:last.end,raw:source.slice(first.start,last.end)},{html:`<div class="tex-paragraph">${html.trim()}</div>`,...(attachments.length?{attachments}:{})}));pending=[];};
+          const result=[];let pending=[],textColorState={name:''};
+          const flush=()=>{if(!pending.length)return;const first=pending[0],last=pending.at(-1),attachmentStart=inlineAssets.length,html=inlineNodes(pending,textColorState),attachments=inlineAssets.splice(attachmentStart);if(html.trim())result.push(create('text',{...first,end:last.end,raw:source.slice(first.start,last.end)},{html:`<div class="tex-paragraph">${html.trim()}</div>`,...(attachments.length?{attachments}:{})}));pending=[];};
           for(const n of nodes) {
             if(n.type==='command'&&['pp','pause',config.separator.replace(/^\\/,'')].includes(n.name)) {let policy=n.name==='pp'?config.pp:n.name==='pause'?config.pause:'page';if(policy==='ignore')continue;if(policy==='preserve'){pending.push(n);continue;}if(policy==='page'&&blockDepth>1){warn(n,'分隔线位于嵌套环境内，已保留为知识块边界','将分隔线移到环境外即可安全分页。');policy='block';}flush();result.push(create('boundary',n,{policy}));continue;}
             if(n.type==='text'&&/\n\s*\n/.test(n.value)) {const parts=n.value.split(/(\n\s*\n)/);let offset=n.start;for(const p of parts){if(/^\n\s*\n$/.test(p))flush();else if(p)pending.push({...n,start:offset,end:offset+p.length,raw:p,value:p});offset+=p.length;}continue;}
-          if(n.type==='formula'&&(n.display||/\\(?:begin\{tikzpicture\}|xymatrix|xy\b)/.test(n.tex))) {flush();if(/\\(?:begin\{tikzpicture\}|xymatrix|xy\b)/.test(n.tex))result.push(makeFigure(n,/tikzpicture/.test(n.tex)?'tikz':'xypic',n.tex));else result.push(create('formula',n,{tex:n.tex,html:`<div class="tex-display">${math(n.tex,n,true)}</div>`}));continue;}
+          if(n.type==='formula'&&(n.display||/\\(?:begin\{tikzpicture\}|xymatrix|xy\b)/.test(n.tex))) {flush();if(/\\(?:begin\{tikzpicture\}|xymatrix|xy\b)/.test(n.tex))result.push(makeFigure(n,/tikzpicture/.test(n.tex)?'tikz':'xypic',/tikzpicture/.test(n.tex)?n.raw:n.tex));else result.push(create('formula',n,{tex:n.tex,html:`<div class="tex-display">${math(n.tex,n,true)}</div>`}));continue;}
             if(n.type==='diagram'||(n.type==='command'&&['includegraphics','xymatrix'].includes(n.name))) {flush();result.push(n.name==='includegraphics'?makeImage(n):makeFigure(n,'xypic'));continue;}
             if(n.type!=='environment'){pending.push(n);continue;}flush();const name=n.name;
             if(name==='tikzpicture'||name==='xy'){result.push(makeFigure(n,name==='tikzpicture'?'tikz':'xypic'));continue;}
-            if(mathEnvs.has(name)) {if(/\\(?:begin\{tikzpicture\}|xymatrix|xy\b)/.test(n.inner)){result.push(...blocks(nested(n.inner,n.innerStart)));}else {const tex=['equation','equation*','displaymath','math'].includes(name)?n.inner:`\\begin{${name}}${n.inner}\\end{${name}}`;result.push(create('formula',n,{tex,html:`<div class="tex-display">${math(tex,n,true)}</div>`}));}continue;}
+            if(mathEnvs.has(name)) {if(/\\(?:begin\{tikzpicture\}|xymatrix|xy\b)/.test(n.inner)){const raw=['equation','equation*','displaymath','math'].includes(name)?`\\[${n.inner}\\]`:n.raw;result.push(makeFigure(n,/tikzpicture/.test(n.inner)?'tikz':'xypic',raw));}else {const tex=['equation','equation*','displaymath','math'].includes(name)?n.inner:`\\begin{${name}}${n.inner}\\end{${name}}`;result.push(create('formula',n,{tex,html:`<div class="tex-display">${math(tex,n,true)}</div>`}));}continue;}
              if(Object.hasOwn(config.environments,name)||['block','alertblock','exampleblock'].includes(name)) {
-              let title='',p=0;const option=group(n.inner,0,['block','alertblock','exampleblock'].includes(name)?'{':'[',['block','alertblock','exampleblock'].includes(name)?'}':']');if(option){title=titleText(option.value);p=option.end;}
-              const environment=config.environments[name]?name:name==='exampleblock'?'example':'remark',style=config.environments[environment];envCounts[environment]=(envCounts[environment]||0)+1;
-               const children=blocks(nested(n.inner.slice(p),n.innerStart+p));result.push(create(environment,n,{environment,title,label:style.label,number:`${model.section}.${envCounts[environment]}`,children}));continue;
+              let title='',titleHtml='',p=0;const option=group(n.inner,0,['block','alertblock','exampleblock'].includes(name)?'{':'[',['block','alertblock','exampleblock'].includes(name)?'}':']');if(option){title=titleText(option.value);titleHtml=inlineNodes(nested(option.value,n.innerStart+option.inner));p=option.end;}
+              const environment=config.environments[name]?name:name==='exampleblock'?'example':'remark',style=config.environments[environment];
+               const children=blocks(nested(n.inner.slice(p),n.innerStart+p));result.push(create(environment,n,{environment,title,titleHtml,label:style.label,children}));continue;
              }
+             if(name==='table'||name==='table*'||((name==='tabular'||name==='tabular*')&&(/\\(?:cline|multicolumn|multirow)\b/.test(n.inner)||/\|/.test(group(n.inner,0)?.value||'')||name==='tabular*'))){result.push(makeFigure(n,'table'));continue;}
              if(name==='tabular'){result.push(create('table',n,{html:renderTabular(n)}));continue;}
-             if(name==='table') {let tableInner=n.inner,tableBase=n.innerStart;const tableOption=group(tableInner,0,'[',']');if(tableOption){tableInner=tableInner.slice(tableOption.end);tableBase+=tableOption.end;}const children=blocks(nested(tableInner,tableBase));result.push(create('container',n,{center:true,children}));continue;}
             if(['itemize','enumerate','description'].includes(name)) {
               const children=nested(n.inner,n.innerStart);const items=[];let curr=[];for(const child of children){if(child.type==='command'&&child.name==='item'){if(curr.length)items.push(curr);curr=[];if(child.optional)curr.push({type:'text',value:child.optional+'：',raw:child.optional,start:child.start,end:child.end});for(const a of child.args)curr.push(...nested(a.value,a.inner));}else curr.push(child);}if(curr.length)items.push(curr);
               const tag=name==='enumerate'?'ol':'ul';result.push(create('list',n,{tag,children:items.filter(list=>list.some(n=>n.type!=='text'||n.value.trim())).map(list=>create('list-item',list[0],{children:blocks(list)}))}));continue;
             }
             if(modes.includes(name)){const children=blocks(nested(n.inner,n.innerStart));if(['hide','delete','preserve'].includes(config.beamer[name]))result.push(create('mode',n,{html:modeWrap(n,children.map(b=>renderBlock(b,config)).join(''))}));else result.push(create('container',n,{mode:config.beamer[name],children}));continue;}
-            if(['center','flushleft','flushright','quote','quotation','figure','columns','column','multicols'].includes(name)) {
+            if(name==='columns') {
+              const option=group(n.inner,0,'[',']'),start=option?.end||0,parts=nested(n.inner.slice(start),n.innerStart+start),columns=[];let current=null;
+              const addColumn=(node,width,content=[])=>{current={node,width,nodes:content};columns.push(current);};
+              for(const child of parts){
+                if(child.type==='command'&&child.name==='column'){
+                  addColumn(child,child.args[0]?.value||'');
+                  for(const extra of child.args.slice(1))current.nodes.push(...nested(extra.value,extra.inner));
+                }else if(child.type==='environment'&&child.name==='column'){
+                  const opt=group(child.inner,0,'[',']'),width=group(child.inner,opt?.end||0),pos=width?.end||opt?.end||0;
+                  addColumn(child,width?.value||'',nested(child.inner.slice(pos),child.innerStart+pos));current=null;
+                }else if(child.type!=='text'||child.value.trim()||current){
+                  if(!current)addColumn(child,'');current.nodes.push(child);
+                }
+              }
+              const children=columns.map(col=>{
+                const width=/^\s*([\d.]+)\s*(cm|mm|pt|em|\\(?:textwidth|linewidth|columnwidth))\s*$/.exec(col.width);
+                if(col.width&&!width)warn(col.node,'无法识别 column 宽度，已使用弹性等宽列','使用 cm、mm、pt、em 或 textwidth / linewidth 比例。','info');
+                const weight=width?Number(width[1])*({cm:1,mm:0.1,pt:0.03528,em:0.42}[width[2]]||16):1;
+                const content=blocks(col.nodes);if(['hide','delete','preserve'].includes(config.beamer.column))return create('container',col.node,{html:modeWrap({...col.node,name:'column'},content.map(b=>renderBlock(b,config)).join(''))});return create('column',col.node,{weight:num(weight,0.01,100,1),children:content});
+              });
+              if(['hide','delete','preserve'].includes(config.beamer.columns))result.push(create('container',n,{html:modeWrap(n,children.map(b=>renderBlock(b,config)).join(''))}));
+              else result.push(create('columns',n,{mode:config.beamer.columns,align:option?.value==='c'?'center':option?.value==='b'?'flex-end':'flex-start',children}));
+              continue;
+            }
+            if(['center','flushleft','flushright','quote','quotation','figure','column','multicols'].includes(name)) {
               let text=n.inner,base=n.innerStart;if(['column','multicols'].includes(name)){const a=group(text,0);if(a){base+=a.end;text=text.slice(a.end);}}else {const a=group(text,0,'[',']');if(a){base+=a.end;text=text.slice(a.end);}}
-              let children=nested(text,base);if(name==='columns'){children=children.map(c=>c.type==='command'&&c.name==='column'?{...c,type:'text',value:'\n\n',raw:c.raw}:c);warn(n,'columns 已按原始顺序转为单栏','第一阶段保留阅读顺序；精确多栏布局暂未实现。','info');}
+              const children=nested(text,base);
               const childBlocks=blocks(children);if(['columns','column'].includes(name)&&['hide','delete','preserve'].includes(config.beamer[name]))result.push(create('container',n,{html:modeWrap(n,childBlocks.map(b=>renderBlock(b,config)).join(''))}));else result.push(create('container',n,{center:name==='center',mode:config.beamer[name],children:childBlocks}));continue;
             }
             result.push(create('unresolved',n,{html:`<pre class="tex-unresolved">${unknown(n)}</pre>`}));
@@ -358,9 +499,9 @@
         if(config.beamer.frame==='hide'||config.beamer.frame==='delete'){model.globalWarnings.push(warning(file.name,source,frame.start,'frame',frame.raw,'用户规则已隐藏整个 frame','将 frame 规则改为显示即可恢复。','info'));continue;}
         if(config.beamer.frame==='preserve')bs=[create('unresolved',{start:frame.start,end:frame.start+(frame.raw||'').length,raw:frame.raw||''},{html:`<pre class="tex-unresolved">${esc(frame.raw)}</pre>`})];
         const title=config.cleanTitle?titleText(frame.title):frame.title,subtitle=config.subtitle==='none'?'':titleText(frame.subtitle||'');
-        const record={id:frameId,file:file.name,line:lineAt(source,frame.start),title,sectionTitle:frame.sectionTitle||'',subsectionTitle:frame.subsectionTitle||'',subsectionIndex:frame.subsectionIndex||0,subsubsectionTitle:frame.subsubsectionTitle||'',blocks:clone(bs)};model.frames.push(record);if(frame.nodes.length&&frame.nodes.every(n=>(n.type==='text'&&!n.value.trim())||(n.type==='command'&&n.name==='titlepage')))continue;
+        const record={id:frameId,file:file.name,chapter:config.chapter,chapterId:chapter?.id,line:lineAt(source,frame.start),title,sectionTitle:frame.sectionTitle||'',subsectionTitle:frame.subsectionTitle||'',subsectionIndex:frame.subsectionIndex||0,subsubsectionTitle:frame.subsubsectionTitle||'',blocks:clone(bs)};model.frames.push(record);if(frame.nodes.length&&frame.nodes.every(n=>(n.type==='text'&&!n.value.trim())||(n.type==='command'&&n.name==='titlepage')))continue;
         const groups=[[]];for(const b of bs){if(b.type==='boundary'&&b.policy==='page'){if(groups.at(-1).length)groups.push([]);}else if(b.environment===config.splitEnvironment&&groups.at(-1).length){groups.push([b]);}else groups.at(-1).push(b);}
-        for(const [part,blocks] of groups.filter(g=>g.length).entries()){const knowledgeKey=frame.subsubsectionTitle?`${file.name}::${frame.sectionTitle||''}::${frame.subsectionTitle||''}::${frame.subsubsectionTitle}`:'';const existing=knowledgeKey&&part===0?model.pages.find(p=>p.knowledgeKey===knowledgeKey):null;if(existing){existing.blocks.push(...blocks);existing.sourceFrames.push(frameId);existing.warnings.push(...clone(warnings));continue;}const index=model.pages.length+Number(config.start),subsectionNo=frame.subsectionIndex||0,pageOrdinal=subsectionNo?model.pages.filter(p=>p.subsectionIndex===subsectionNo).length+1:index,number=subsectionNo?`${config.chapter}.${subsectionNo}.${pageOrdinal}`:`${model.section}.${index}`,pageTitle=frame.subsubsectionTitle||title+(part?' · '+(part+1):'');model.pages.push({id:'p'+frameId+'-'+part,knowledgeKey,number,subsectionIndex:subsectionNo,slug:config.slugMode==='chinese'?safeName(pageTitle):`lesson-${number.replace(/\./g,'-')}`,title:pageTitle,subtitle,sectionTitle:frame.sectionTitle||'',subsectionTitle:frame.subsectionTitle||'',knowledgeTitle:frame.subsubsectionTitle||title,description:config.description==='title'?pageTitle:'',sourceFrames:[frameId],blocks,figures:[],warnings:clone(warnings),rules:{}});}
+        for(const [part,blocks] of groups.filter(g=>g.length).entries()){const knowledgeKey=frame.subsubsectionTitle?`${chapter?.id}::${frame.subsectionIndex}::${frame.subsubsectionTitle}`:'';const existing=knowledgeKey&&part===0?model.pages.find(p=>p.knowledgeKey===knowledgeKey):null;if(existing){existing.blocks.push(...blocks);existing.sourceFrames.push(frameId);existing.warnings.push(...clone(warnings));continue;}const filePages=model.pages.filter(p=>p.chapterId===chapter?.id);const index=filePages.length+Number(config.start),subsectionNo=frame.subsectionIndex||0,pageOrdinal=subsectionNo?filePages.filter(p=>p.subsectionIndex===subsectionNo).length+1:index,number=subsectionNo?`${config.chapter}.${subsectionNo}.${pageOrdinal}`:`${fileSection}.${index}`,pageTitle=frame.subsubsectionTitle||title+(part?' · '+(part+1):'');model.pages.push({id:(baseConfig.lectureBatch?safeName(file.name)+'-':'')+'p'+frameId+'-'+part,chapter:config.chapter,chapterId:chapter?.id,sourceFile:file.name,knowledgeKey,number,subsectionIndex:subsectionNo,slug:config.slugMode==='chinese'?safeName(pageTitle):`lesson-${number.replace(/\./g,'-')}`,title:pageTitle,subtitle,sectionTitle:frame.sectionTitle||'',subsectionTitle:frame.subsectionTitle||'',knowledgeTitle:frame.subsubsectionTitle||title,description:config.description==='title'?pageTitle:'',sourceFrames:[frameId],blocks,figures:[],warnings:clone(warnings),rules:{}});}
       }
     }
     model.globalWarnings=model.globalWarnings.filter(isIgnoredWarning);
@@ -372,35 +513,54 @@
   function renderBlock(b,config) {
     if(b.deleted)return '';
     if(b.type==='boundary')return '';
+    if(b.type==='columns'&&b.children){const body=`<div class="tex-columns" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:${['center','flex-end'].includes(b.align)?b.align:'flex-start'}">${renderBlocks(b.children,config)}</div>`;return b.mode==='collapse'?`<details><summary>显示补充内容</summary>${body}</details>`:body;}
+    if(b.type==='column'&&b.children)return `<div class="tex-column" style="flex:${num(b.weight,0.01,100,1)} 1 0;min-width:min(100%,18rem);max-width:100%">${renderBlocks(b.children,config)}</div>`;
     if(b.children&&!b.environment){const body=indentHTML(renderBlocks(b.children,config));if(b.type==='list')return `<${b.tag==='ol'?'ol':'ul'}>\n${body}\n</${b.tag==='ol'?'ol':'ul'}>`;if(b.type==='list-item')return `<li>\n${body}\n</li>`;if(b.mode==='collapse')return `<details>\n  <summary>显示补充内容</summary>\n${body}\n</details>`;return `<div class="tex-container${b.center?' tex-center':''}${b.mode==='supplement'?' tex-supplement':''}">\n${body}\n</div>`;}
     if(b.type==='figure') {
-      const opts=config.figure,directory='assets/chapter'+String(num(config.chapter,1,99,1)).padStart(2,'0'),stem=safeName(opts.prefix)+'-'+b.figureId;
+      const opts=config.figure,directory='assets/chapter'+String(num(config.chapter,0,99,1)).padStart(2,'0'),stem=safeName(opts.prefix)+'-'+b.figureId;
       const light=b.svg&&opts.light!==false,dark=b.darkSvg&&opts.dark!==false,path=b.path||((light||dark)?`{{root}}${directory}/${stem}${!light&&dark?'-dark':''}.svg`:'');
       const image=path?`<img src="${esc(path)}"${dark&&light?` class="tex-figure-light"`:''} alt="${esc(b.caption)}" width="${num(b.width,80,3000,640)}">${dark&&light?`<img class="tex-figure-dark" src="{{root}}${directory}/${stem}-dark.svg" alt="${esc(b.caption)}" width="${num(b.width,80,3000,640)}">`:''}`:`<div class="tex-figure-placeholder"><strong>${esc(b.kind)} 图形待处理</strong><p>${esc(b.error||'未提供 SVG')}</p><details><summary>原始图形代码</summary><pre>${esc(b.raw)}</pre></details></div>`;
       return `<figure class="tex-figure">${image}${opts.caption?`<figcaption>${esc(b.caption)}</figcaption>`:''}</figure>`;
     }
-    if(b.type==='image'){const name=b.asset?.name||String(b.imagePath||'').replace(/\\/g,'/').split('/').pop(),sitePath=name?`{{root}}assets/chapter${String(num(config.chapter,1,99,1)).padStart(2,'0')}/${assetURLName(name)}`:'',path=b.path||sitePath;return `<figure class="tex-image">${path?`<img src="${esc(path)}" alt="${esc(b.caption)}">`:`<div class="tex-figure-placeholder">图片未找到：<code>${esc(b.imagePath)}</code></div>`}${config.image.caption?`<figcaption>${esc(b.caption)}</figcaption>`:''}</figure>`;}
-    if(b.environment){const style=config.environments[b.environment]||config.environments.theorem,collapsed=b.collapsed??style.collapsed;const heading=`${style.icon?'◆ ':''}<span class="math-block-label">${esc(style.label)}</span>${style.numbered?` <span class="math-block-number">${esc(b.number)}</span>`:''}${b.title?` <span class="math-block-title">${esc(b.title)}</span>`:''}`;const body=renderBlocks(b.children||[],config),cls=`math-block math-block-${safeName(b.environment)}`;
+    if(b.type==='image'){const name=b.asset?.name||String(b.imagePath||'').replace(/\\/g,'/').split('/').pop(),sitePath=name?`{{root}}assets/chapter${String(num(config.chapter,0,99,1)).padStart(2,'0')}/${assetURLName(name)}`:'',path=b.path||sitePath;return `<figure class="tex-image">${path?`<img src="${esc(path)}" alt="${esc(b.caption)}">`:`<div class="tex-figure-placeholder">图片未找到：<code>${esc(b.imagePath)}</code></div>`}${config.image.caption?`<figcaption>${esc(b.caption)}</figcaption>`:''}</figure>`;}
+    if(b.environment){const style=config.environments[b.environment]||config.environments.theorem,collapsed=b.collapsed??style.collapsed,proof=b.environment!=='example'&&(style.presentation==='proof'||b.environment==='proof');const customProofTitle=b.environment==='proof'&&!!b.title;const heading=`<span class="math-block-heading-name">${style.icon?'◆ ':''}<span class="math-block-label">${customProofTitle?(b.titleHtml||esc(b.title)):esc(style.label)}</span></span>${b.title&&!customProofTitle?` <span class="math-block-title">（${b.titleHtml||esc(b.title)}）</span>`:''}`;const body=renderBlocks(b.children||[],config),cls=`math-block math-block-${safeName(b.environment)}${proof?' math-block-proof-style':' math-block-framed'}`;
       const nested=indentHTML(body,'    ');
-      if(collapsed||b.environment==='proof')return `<details class="${cls}${b.environment==='proof'?' lecture-proof':''}"${!collapsed?' open':''}>\n  <summary class="math-block-heading">${heading}</summary>\n  <div class="math-block-body">\n${nested}\n  </div>\n</details>`;
-      return `<section class="${cls}">\n  <div class="math-block-heading">${heading}</div>\n  <div class="math-block-body">\n${nested}\n  </div>\n</section>`;
+      if(collapsed||proof)return `<details class="${cls}${proof?' lecture-proof':''}"${!collapsed?' open':''}>\n  <summary class="math-block-heading">${heading}</summary>\n  <div class="math-block-body">\n${nested}\n  </div>\n</details>`;
+      return `<fieldset class="${cls}">\n  <legend class="math-block-heading">${heading}</legend>\n  <div class="math-block-body">\n${nested}\n  </div>\n</fieldset>`;
     }
     let html=b.html||'';for(const item of b.attachments||[])html=html.replace(`<!--tex2html-slot:${item.id}-->`,renderBlock(item,config));return html;
   }
   function renderBlocks(blocks,config){let html='',pending='',policy=blocks.some(b=>b.type==='boundary'&&b.policy==='block')?'block':null;const blockComment=b=>String(b.type||'TeX block').replace(/--+/g,'-');const flush=()=>{if(pending){const wrapped=policy==='collapse'?`<details class="lesson-step"><summary>显示补充内容</summary>${pending}</details>`:policy==='block'?`<div class="lesson-step">${pending}</div>`:pending;html+=(html?'\n\n':'')+wrapped;pending='';}};for(const b of blocks){if(b.type==='boundary'){flush();policy=b.policy;}else{const rendered=renderBlock(b,config);if(rendered)pending+=(pending?'\n\n':'')+`<!-- TeX block: ${blockComment(b)} -->\n${rendered}`;}}flush();return html;}
   function pageCSS(config,scope='.tex-converted') {
     const formatCSS=source=>{let out='',depth=0,quote='';for(const ch of source){if(quote){out+=ch;if(ch===quote)quote='';continue;}if(ch==='"'||ch==="'"){quote=ch;out+=ch;continue;}if(ch==='{'){out=out.trimEnd()+' {\n'+'  '.repeat(++depth);continue;}if(ch==='}'){out=out.trimEnd()+'\n'+'  '.repeat(Math.max(0,--depth))+'}\n'+'  '.repeat(depth);continue;}if(ch===';'){out=out.trimEnd()+';\n'+'  '.repeat(depth);continue;}out+=ch;}return out.replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();};
-    const base=`${scope}{line-height:1.8;overflow-wrap:anywhere}${scope} .tex-paragraph{margin:.8em 0;white-space:pre-line}${scope} .tex-display{overflow-x:auto;margin:1em 0}${scope} .tex-unresolved{white-space:pre-wrap;overflow-wrap:anywhere;background:#fff1ce;color:#7c3400;padding:3px 6px;border-radius:4px}${scope} .tex-math-warning{color:#b45309}${scope} .tex-framebox{display:inline-block;box-sizing:border-box;border:1px solid currentColor;padding:.25em .5em;vertical-align:middle;min-width:2em;text-align:center}${scope} .tex-size-tiny{font-size:.7em}${scope} .tex-size-scriptsize{font-size:.78em}${scope} .tex-size-footnotesize{font-size:.85em}${scope} .tex-size-small{font-size:.9em}${scope} .tex-size-normalsize{font-size:1em}${scope} .tex-size-large{font-size:1.15em}${scope} .tex-size-Large{font-size:1.3em}${scope} .tex-size-LARGE{font-size:1.5em}${scope} .tex-size-huge{font-size:1.8em}${scope} .tex-size-Huge{font-size:2.1em}${scope} .math-block{margin:1.1em 0;border-left:4px solid}${scope} .math-block-heading{font-weight:700;cursor:pointer}${scope} .math-block-body>:last-child{margin-bottom:0}${scope} .tex-figure,${scope} .tex-image{margin:1em 0;text-align:center;${config.figure.scroll?'overflow-x:auto;':''}}${scope} img{height:${config.figure.aspect?'auto':'300px'};max-width:${num(config.figure.maxWidth,10,200,100)}%}${scope} .tex-image img{max-width:${num(config.image.maxWidth,10,100,100)}%}${scope} .tex-figure-dark{display:none}${scope} .tex-center{text-align:center}${scope} .tex-figure-placeholder{border:1px dashed #a5adbd;padding:18px;text-align:left}${scope} pre{white-space:pre-wrap;overflow-wrap:anywhere}${scope} .lesson-step{border-top:1px solid #a5adbd55;margin-top:16px;padding-top:12px}${scope} .tex-footnote{display:inline;color:inherit}${scope} .tex-footnote:before{content:'〔'}${scope} .tex-footnote:after{content:'〕'}`;
+    const base=`${scope}{line-height:1.8;overflow-wrap:anywhere}${scope} .tex-paragraph{margin:.8em 0;white-space:pre-line}${scope} .tex-display{overflow-x:auto;margin:1em 0}${scope} .tex-unresolved{white-space:pre-wrap;overflow-wrap:anywhere;background:#fff1ce;color:#7c3400;padding:3px 6px;border-radius:4px}${scope} .tex-math-warning{color:#b45309}${scope} .tex-framebox{display:inline-block;box-sizing:border-box;border:1px solid currentColor;padding:.25em .5em;vertical-align:middle;min-width:2em;text-align:center}${scope} .tex-size-tiny{font-size:.7em}${scope} .tex-size-scriptsize{font-size:.78em}${scope} .tex-size-footnotesize{font-size:.85em}${scope} .tex-size-small{font-size:.9em}${scope} .tex-size-normalsize{font-size:1em}${scope} .tex-size-large{font-size:1.15em}${scope} .tex-size-Large{font-size:1.3em}${scope} .tex-size-LARGE{font-size:1.5em}${scope} .tex-size-huge{font-size:1.8em}${scope} .tex-size-Huge{font-size:2.1em}${scope} .math-block{display:block;min-inline-size:0;margin:1.15em 0;border:0;padding:0}${scope} .math-block-heading{font-weight:700;line-height:1.45}${scope} fieldset.math-block>legend.math-block-heading{max-width:calc(100% - 2rem);margin-left:.3em;padding:0 .5em;white-space:normal;overflow-wrap:anywhere}${scope} details.math-block-framed>summary.math-block-heading{display:list-item;cursor:pointer;width:fit-content;max-width:calc(100% - 2rem);margin:-.55em 0 .6em .35em;padding:0 .5em;overflow-wrap:anywhere}${scope} .math-block-heading-name{white-space:nowrap}${scope} .math-block-label{font-weight:700}${scope} .math-block-number{display:none!important}${scope} .math-block-title{font-weight:500;white-space:normal}${scope} .math-block-body>:last-child{margin-bottom:0}${scope} .tex-figure,${scope} .tex-image{margin:1em 0;text-align:center;${config.figure.scroll?'overflow-x:auto;':''}}${scope} img{height:${config.figure.aspect?'auto':'300px'};max-width:${num(config.figure.maxWidth,10,200,100)}%}${scope} .tex-image img{max-width:${num(config.image.maxWidth,10,100,100)}%}${scope} .tex-figure-dark{display:none}${scope} .tex-center{text-align:center}${scope} .tex-figure-placeholder{border:1px dashed #a5adbd;padding:18px;text-align:left}${scope} pre{white-space:pre-wrap;overflow-wrap:anywhere}${scope} .lesson-step{border-top:1px solid #a5adbd55;margin-top:16px;padding-top:12px}${scope} .tex-footnote{display:inline;color:inherit}${scope} .tex-footnote:before{content:'〔'}${scope} .tex-footnote:after{content:'〕'}`;
      const rules=[`/* Base layout, text, formulas, images and inline TeX sizes */\n${formatCSS(base)}`];
      rules.push(`/* Inline layout helpers */\n${formatCSS(`${scope} .tex-makebox{display:inline-block;vertical-align:middle}${scope} .tex-gray{color:#6b7280}${scope} .tex-underdot{text-decoration:underline dotted;text-underline-offset:0.2em}${scope} .tex-caption{display:block;font-weight:600;text-align:center;margin:.4em 0}`)}`);
      rules.push(`/* TeX tables and hline rules */\n${formatCSS(`${scope} .tex-table{border-collapse:collapse;margin:1em auto;max-width:100%;overflow-x:auto}${scope} .tex-table td,${scope} .tex-table th{padding:.35em .75em;text-align:center;vertical-align:middle}${scope} .tex-table-hline tr:first-child td,${scope} .tex-table-hline tr+tr td{border-top:1px solid currentColor}${scope} .tex-table-hline tr:last-child td{border-bottom:1px solid currentColor}${scope} .tex-table-double-hline tr:first-child td,${scope} .tex-table-double-hline tr:last-child td{border-top:3px double currentColor}`)}`);
      const dark=`:is([data-theme="dark"],.dark) ${scope}`;
     rules.push(`/* Dark mode overrides */\n${formatCSS(`${dark} .tex-figure-light{display:none}${dark} .tex-figure-dark{display:inline}${dark} .tex-unresolved{background:#503414;color:#fde68a}`)}`);
-    for(const [name,e] of Object.entries(config.environments)){const selector=`${scope} .math-block-${safeName(name)}`,source=`${selector}{color:${color(e.light)};background:${color(e.background,'#eff6ff')};border-color:${color(e.border)};padding:${num(e.padding,0,60,16)}px;border-radius:${num(e.radius,0,40,10)}px;font-size:${num(e.bodySize,10,32,16)}px}${selector} .math-block-heading{font-size:${num(e.headingSize,12,36,17)}px}${dark} .math-block-${safeName(name)}{color:${color(e.dark)};background:${color(e.darkBackground)};border-color:${color(e.darkBorder)}}@media print{${selector}{${e.printBackground?'print-color-adjust:exact':'background:transparent!important;color:#111!important'}}}`;rules.push(`/* Math environment: ${name} */\n${formatCSS(source)}`);}
+    for(const [name,e] of Object.entries(config.environments)){const selector=`${scope} .math-block-${safeName(name)}`,darkSelector=`${dark} .math-block-${safeName(name)}`,presentation=e.presentation||'framed',proof=name!=='example'&&presentation==='proof',background=proof?'transparent':color(e.background,'#eff6ff'),darkBackground=proof?'transparent':color(e.darkBackground),padding=proof?'4px 14px':`${num(e.padding,0,60,16)}px`,radius=proof?0:num(e.radius,0,40,10),source=`${selector}{color:inherit;background:${background};border:${proof?'0':`1px solid ${color(e.border)}`};${proof?`border-left:2px solid ${color(e.darkBorder)};`:''}padding:${padding};border-radius:${radius}px;font-size:${num(e.bodySize,10,32,16)}px}${selector} .math-block-heading{font-size:${num(e.headingSize,12,36,17)}px;color:${color(e.light)};line-height:1.45;margin-bottom:.35em}${selector}.math-block-framed>summary.math-block-heading{background:${background}}${darkSelector}{background:${darkBackground};border-color:${color(e.darkBorder)}}${darkSelector}.math-block-framed>summary.math-block-heading{background:${darkBackground}}${darkSelector} .math-block-heading{color:${color(e.dark)}}@media print{${selector}{${e.printBackground&&!proof?'print-color-adjust:exact':'background:transparent!important'};color:inherit!important}${selector} .math-block-heading{color:#111!important}}`;rules.push(`/* Math environment: ${name} */\n${formatCSS(source)}`);}
     for(const [name,c] of Object.entries(config.colors)){if(c.mode==='color')rules.push(`/* TeX color command: ${name} */\n${formatCSS(`${scope} .tex-color-${safeName(name)}{color:${color(c.light)}}${dark} .tex-color-${safeName(name)}{color:${color(c.dark)}}`)}`);}
     return rules.join('\n\n');
   }
-  function pageConfig(model,page){return mergeConfig({...model.config,...page.rules});}
+  function ensureEnvironmentPaletteCSS(css,model) {
+    const retained=String(css||pageCSS(model.config)).replace(/\n{0,2}\/\* Environment palette compatibility \*\/[\s\S]*?\/\* End environment palette compatibility \*\//g,'');
+    const rules=[],add=(config,scope)=>{
+      for(const [name,e] of Object.entries(config.environments)){
+        const selector=scope+' .math-block-'+safeName(name),dark=':is([data-theme="dark"],.dark) '+selector,proof=name==='proof'||e.presentation==='proof'&&name!=='example';
+        rules.push(selector+'{background:'+ (proof?'transparent':color(e.background))+'!important;border:'+(proof?'0':'1px solid '+color(e.border))+'!important;'+(proof?'border-left:2px solid '+color(e.border)+'!important;':'')+'padding:'+(proof?'4px 14px':num(e.padding,0,60,16)+'px')+';border-radius:'+(proof?0:num(e.radius,0,40,10))+'px;min-inline-size:0}\n'+selector+' .math-block-heading{color:'+color(e.light)+'!important}\n'+dark+'{background:'+(proof?'transparent':color(e.darkBackground))+'!important;border-color:'+color(e.darkBorder)+'!important}\n'+dark+' .math-block-heading{color:'+color(e.dark)+'!important}\n'+selector+'>summary.math-block-heading{background:'+(proof?'transparent':color(e.background))+'!important}\n'+dark+'>summary.math-block-heading{background:'+(proof?'transparent':color(e.darkBackground))+'!important}\n@media print{'+selector+','+dark+'{'+(e.printBackground&&!proof?'print-color-adjust:exact;':'background:transparent!important;')+'}'+selector+' .math-block-heading,'+dark+' .math-block-heading{color:#111!important}}');
+      }
+    };
+    add(model.config,'.tex-converted');
+    for(const page of model.pages||[])if(page.rules?.environments)add(pageConfig(model,page),'.tex-converted.'+pageScope(page));
+    return retained+'\n\n/* Environment palette compatibility */\n.tex-converted .math-block-number{display:none!important}\n'+rules.join('\n')+'\n/* End environment palette compatibility */';
+  }
+  function ensureExampleFrameCSS(css,config) {
+    const e=config.environments.example,selector='.tex-converted .math-block-example',marker='/* Example frame compatibility */';
+    const retained=String(css||pageCSS(config)).replace(/\n{0,2}\/\* Example frame compatibility \*\/[\s\S]*?\/\* End example frame compatibility \*\//g,'');
+    return retained+'\n\n'+marker+'\n'+selector+'{border:1px solid '+color(e.border)+'!important;padding:'+num(e.padding,0,60,16)+'px;border-radius:'+num(e.radius,0,40,10)+'px}\n:is([data-theme="dark"],.dark) '+selector+'{border-color:'+color(e.darkBorder)+'!important}\n'+selector+'>legend{padding:0 .5em}\n/* End example frame compatibility */';
+  }
+  function pageConfig(model,page){return mergeConfig({...model.config,...page.rules,chapter:page.chapter??page.rules?.chapter??model.config.chapter});}
   function pageScope(page){return 'tex-page-'+safeName(page.number)+'-'+safeName(page.slug);}
   function indentHTML(html,prefix='  '){return String(html||'').trim().split('\n').map(line=>line.trim()?prefix+line:'').join('\n');}
   function renderPage(page,config) {
@@ -410,7 +570,7 @@
     const body=indentHTML(renderBlocks(page.blocks,config));
     return [
       '<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->',
-      `<div class="tex-converted ${scope}">`,
+      `<div class="tex-converted ${scope}" data-chapter="${esc(page.chapter??config.chapter)}"${page.chapterId?` data-chapter-id="${esc(page.chapterId)}"`:''}>`,
       header,
       '  <!-- 以下内容由所选 TeX frame 转换而来。 -->',
       body,
@@ -422,7 +582,7 @@
   function exportFiles(model) {
     refresh(model);
     const entries = [], config = model.config;
-    const chapter = 'chapter' + String(num(config.chapter, 1, 99, 1)).padStart(2, '0');
+
     const fallbackSection = num(config.section, 1, 99, 1);
     const seen = new Set();
     const add = (filePath, text, data) => {
@@ -431,8 +591,9 @@
         seen.add(filePath);
       }
     };
-    add('css/tex2html.css', model.cssText || pageCSS(config, '.tex-converted'));
+    add('css/tex2html.css', ensureExampleFrameCSS(ensureEnvironmentPaletteCSS(model.cssText,model),config));
     for (const page of model.pages) {
+      const chapter = 'chapter' + String(num(pageConfig(model,page).chapter, 0, 99, 1)).padStart(2, '0');
       const numberParts = String(page.number || '').split('.');
       const pageSectionNumber = num(page.subsectionIndex || numberParts[1] || fallbackSection, 1, 99, fallbackSection);
       const pageSection = 'section' + String(pageSectionNumber).padStart(2, '0');
@@ -463,5 +624,5 @@
     return {source,options};
   }
   function usages(files,name){const matches=[];for(const file of files){const s=uncomment(file.text);const re=new RegExp('\\\\'+name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![A-Za-z@])','g');for(const m of s.matchAll(re))matches.push({file:file.name,line:lineAt(file.text,m.index),offset:m.index});}return matches;}
-  return {defaults,mergeConfig,parseStyles,parse,convert,expand,uncomment,group,esc,safeName,safeAssetName,renderBlock,renderPage,pageCSS,pageConfig,pageScope,refresh,exportFiles,walkBlocks,usages,simpleTikz,figureKey,figureCompileRequest,clone,labels};
+  return {lectureChapter,chapterSections,toggleLectureSelection,toggleFrameSelection,selectLectureFiles,defaults,mergeConfig,applyEnvironmentStyleDefaults,applyEnvironmentPaletteDefaults,parseStyles,parse,convert,expand,uncomment,group,esc,safeName,safeAssetName,renderBlock,renderPage,pageCSS,ensureEnvironmentPaletteCSS,ensureExampleFrameCSS,pageConfig,pageScope,refresh,exportFiles,walkBlocks,usages,simpleTikz,figureNeedsBaselineRepair,figureKey,figureCacheKeys,figureCompileRequest,clone,labels};
 });

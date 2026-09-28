@@ -1,0 +1,28 @@
+\[
+\begin{tikzpicture}[scale=1]
+\tikzmath{\r=4;};
+\coordinate (O) at (0,0);
+\coordinate (A) at (1,2);
+\coordinate (B) at (1.5,-0.5);
+\coordinate (C) at (2.5,1.5);
+
+\coordinate (o) at (0+\r,0);
+\coordinate (a) at (1+\r,2);
+\coordinate (b) at (1.5+\r,-0.5);
+\coordinate (c) at (2.5+\r,1.5);
+
+\draw[->,thick,blue](O)--(A) node[pos=.5,sloped,above] {$\vec{a}$};
+\draw[->,thick,red](O)--(B) node[pos=.5,sloped,above] {$\vec{b}$};
+\pp
+\draw[dotted](A)--(C);
+\draw[dotted](B)--(C);
+\pp
+\draw[->,thick,purple](O)--(C) node[pos=.5,sloped,above] {$\vec{a}+\vec{b}$};
+\pp
+\draw[->,thick,blue](o)--(a) node[pos=.5,sloped,above] {$\vec{a}$};
+\pp
+\draw[->,thick,red](a)--(c) node[pos=.5,sloped,above] {$\vec{b}$};
+\pp
+\draw[->,thick,purple](o)--(c) node[pos=.5,sloped,above] {$\vec{a}+\vec{b}$};
+\end{tikzpicture}
+\]

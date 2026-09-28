@@ -34,8 +34,14 @@
 .lecture-code-preview{margin:0 15px 12px;border:1px solid var(--line);border-radius:6px;background:#fafbfd;overflow:visible}.lecture-code-title{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 9px;border-bottom:1px solid var(--line);font-size:10px;color:var(--muted)}.code-theme-toggle{display:flex;gap:2px}.code-theme-toggle button{border:0;border-radius:4px;padding:3px 6px;font-size:9px;color:var(--muted);background:transparent}.code-theme-toggle button[aria-pressed=true]{background:#e8eefc;color:var(--blue)}.lecture-code-preview pre{margin:0;padding:10px;max-height:none;overflow:visible;white-space:pre-wrap;overflow-wrap:anywhere;font:11px/1.65 Consolas,"Microsoft YaHei",monospace;color:#465b7a}.lecture-code-preview[data-code-theme=dark]{background:#182131;border-color:#334155}.lecture-code-preview[data-code-theme=dark] .lecture-code-title{border-color:#334155;color:#b9c7dd}.lecture-code-preview[data-code-theme=dark] pre{color:#d8e3f3}.lecture-code-preview[data-code-theme=dark] .code-theme-toggle button{color:#9fb0c8}.lecture-code-preview[data-code-theme=dark] .code-theme-toggle button[aria-pressed=true]{background:#2c3e5a;color:#dbeafe}.lecture-code-preview[data-code-theme=sepia]{background:#fbf5e8;border-color:#e6d7b8}.lecture-code-preview[data-code-theme=sepia] pre{color:#5f4b32}.lecture-code-preview[data-code-theme=sepia] .code-theme-toggle button[aria-pressed=true]{background:#ead9b5;color:#6b4f2a}
 .output-title-tools{display:flex;align-items:center;gap:18px}.output-title-tools .stats{display:flex;gap:16px}.output-title-tools .stats span{display:flex;flex-direction:column;gap:2px;font-size:9px;color:var(--muted)}.output-title-tools .stats b{font-size:17px;font-weight:500;color:var(--ink)}.output-title-tools .stats span:last-child b{color:#be8831}
 .input-title-actions{display:flex;gap:5px;align-items:center}.input-title-actions button{font-size:10px;padding:6px 7px;white-space:nowrap}
-/* This workspace selects source files and frames; source editing stays out of the UI. */
+/* The code box edits a separate extracted workspace document. */
 .input-panel .file-line,.input-panel .search-line,.input-panel .editor,.input-panel .editor-footer,.input-panel .source-actions,.input-panel .file-details{display:none!important}
+.lecture-code-preview .editor{display:none;min-height:420px;margin:0;border:0;border-radius:0;flex:1}
+.input-panel.source-editing #lecture-tex-preview{display:none}
+.input-panel.source-editing .lecture-code-preview .editor{display:flex!important}
+.lecture-code-preview[data-code-theme=dark] .editor textarea{color:#d8e3f3}
+.lecture-code-preview[data-code-theme=sepia] .editor{background:#fbf5e8}
+.code-theme-toggle #edit-tex-code[aria-pressed=true]{background:var(--pale);color:var(--blue)}
 .input-panel{height:auto!important;min-height:640px;overflow:visible!important}
 /* Keep the source and preview panels the same height as the source grows. */
 .workspace{align-items:stretch!important}
@@ -179,3 +185,22 @@
 :root[data-theme="dark"] .header-output-button:not(.primary):hover{background:var(--pale)}
 :root[data-theme="dark"] .output-content[data-theme="dark"]{background:#141d2c;color:#e2e8f0}
 :root[data-theme="dark"] ::selection{background:#395687;color:#fff}
+
+/* Batch selectors use readable, scrollable lists outside the compact toolbar. */
+.input-toolbar{overflow:visible;position:relative;z-index:5}
+.input-toolbar .frame-picker-body{right:10px;width:340px;max-width:80vw;white-space:normal}
+.input-toolbar .frame-picker-body details>summary{width:auto;height:auto;white-space:normal;overflow:visible;padding:8px}
+.input-toolbar .frame-picker-body .frame-choice{font-size:12px}
+.tex-source-line.source-target{background:#ffe69a;color:#362700;outline:2px solid #e2ad33;border-radius:2px}
+.input-panel.source-editing .lecture-code-preview{display:flex;flex-direction:column;overflow:hidden!important}
+.input-panel.source-editing .lecture-code-preview .lecture-code-title{flex:none}
+.input-panel.source-editing .lecture-code-preview .editor{flex:1;min-height:0;height:100%;overflow:hidden}
+.lecture-code-preview .editor textarea{overflow:auto;resize:none;min-height:0;white-space:pre}
+.lecture-code-preview .editor>pre{font:12px/1.85 Consolas,monospace;padding:15px 10px 15px 13px;overflow:hidden;white-space:pre;background:#f5f7fb;color:#b3bdcc;flex:none}
+.lecture-code-preview[data-code-theme=dark] .editor{background:#182131}
+.lecture-code-preview[data-code-theme=dark] .editor>pre{background:#172337;color:#8293ad}
+.lecture-code-preview[data-code-theme=sepia] .editor textarea{background:#fbf5e8;color:#5f4b32}
+.lecture-code-preview[data-code-theme=sepia] .editor>pre{background:#f4ead6;color:#9a8467}
+.input-panel .chapter-code-line{display:flex!important;flex:none;gap:8px;padding:8px 12px;margin:0;border-bottom:1px solid var(--line)}
+.chapter-code-line label{white-space:nowrap;color:var(--muted)}
+.chapter-code-line select{flex:1;min-width:0}
