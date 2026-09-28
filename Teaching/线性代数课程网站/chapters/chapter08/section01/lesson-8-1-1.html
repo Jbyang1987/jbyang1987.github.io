@@ -1,0 +1,66 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="欧氏空间的定义 · 第1页；内积空间及变换，线性代数课程。"><title>欧氏空间的定义 · 第1页 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter08" data-section="chapter08-section01" data-unit="chapter08-section01-lesson-8-1-1"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter08.html">第八章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第1节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第1小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§8.1.1</span><span>欧氏空间的定义 · 第1页</span></h1><p class="knowledge-goal">欧氏空间的定义 · 第1页</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-8-1-1-lesson-8-1-1">
+  <p class="tex-hierarchy">内积空间及变换 / 欧氏空间的定义</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">三维空间中有距离,夹角等概念 \(\overset{\text{坐标系}}{\Longrightarrow}\) 三维数组向量空间\({\mathbb R}\)上向量的模长和夹角.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">比较容易地推广到\({\mathbb R}^n\): \(|(x_1,\cdots,x_n)|:=\sqrt{x_1^2+\cdots+x_n^2}\).</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">问题: 如何推广到抽象的线性空间上呢?</div>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: table -->
+    <table class="tex-table tex-table-hline tex-table-double-hline"><tbody><tr><td><div class="tex-paragraph">线性空间</div></td><td><div class="tex-paragraph">\(\underset{1:1}{\overset{\text{基} \alpha_1,\cdots,\alpha_n}{\leftrightarrow}}\)</div></td><td><div class="tex-paragraph">\({\mathbb R}^n\)</div></td></tr><tr><td><div class="tex-paragraph">向量\(v\)</div></td><td><div class="tex-paragraph">\(\longleftrightarrow\)</div></td><td><div class="tex-paragraph">坐标</div></td></tr><tr><td><div class="tex-paragraph">线性变换\({\mathscr A}\)</div></td><td><div class="tex-paragraph">\(\longleftrightarrow\)</div></td><td><div class="tex-paragraph">A</div></td></tr><tr><td><div class="tex-paragraph">??</div></td><td><div class="tex-paragraph">\(\longleftrightarrow\)</div></td><td><div class="tex-paragraph">长度,夹角</div></td></tr><tr><td><div class="tex-paragraph">\({\mathscr A}\)(保持长度)</div></td><td><div class="tex-paragraph">\(\longleftrightarrow\)</div></td><td><div class="tex-paragraph">??</div></td></tr><tr><td><div class="tex-paragraph">\({\mathscr A}\)(??)</div></td><td><div class="tex-paragraph">\(\longleftrightarrow\)</div></td><td><div class="tex-paragraph">转置矩阵</div></td></tr><tr><td><div class="tex-paragraph">\({\mathscr A}\)(??)</div></td><td><div class="tex-paragraph">\(\longleftrightarrow\)</div></td><td><div class="tex-paragraph">对称矩阵</div></td></tr></tbody></table>
+  </div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">回顾\({\mathbb R}^3\)上的模长与夹角公式:</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  |a| &amp; = \sqrt{(a,a)}\\
+
+  \theta &amp; = \arccos\frac{(a,b)}{\sqrt{(a,a)(b,b)}}
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">容易看出模长和夹角可以由内积完全确定.
+
+  反之,内积可由模长唯一确定</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[(a,b)=\frac{|a+b|^2-|a|^2-|b|^2}{2}.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">总结 \({\mathbb R}^3\)上内积有如下基本性质:</div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">对称性</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">线性性</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">正定性</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">为了在一般的\({\mathbb R}\)-线性空间上定义度量,我们需要引入一般空间上的内积.</span></div>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="欧氏空间的定义 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter08-section01-lesson-8-1-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter08-section01-lesson-8-1-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter08-section01-lesson-8-1-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-8-1-2.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter08-section01-lesson-8-1-1" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter08-section01-lesson-8-1-1" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter08-section01-lesson-8-1-1" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

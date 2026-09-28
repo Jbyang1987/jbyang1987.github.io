@@ -1,0 +1,131 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="高斯消元法的计算效率；线性方程组，线性代数课程。"><title>高斯消元法的计算效率 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter02" data-section="chapter02-section04" data-unit="chapter02-section04-lesson-2-4-3"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter02.html">第二章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第4节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第3小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§2.4.3</span><span>高斯消元法的计算效率</span></h1><p class="knowledge-goal">高斯消元法的计算效率</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-2-4-3-lesson-2-4-3">
+  <p class="tex-hierarchy">线性方程组 / 一般线性方程组的Gauss消元法</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">解n元线性方程组需约\(\frac{2}{3}n^3\)次运算，<span class="tex-color-blue">算术复杂度\(O(n^3)\)</span></div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">除法：\(n(n+1)/2\)次</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">乘法：\(\frac{2n^3+3n^2-5n}{6}\)次</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">减法：\(\frac{2n^3+3n^2-5n}{6}\)次</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>系数类型影响</strong></div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">浮点数：算术复杂度主导（算术运算时间相近）</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">整数/有理数：中间值指数增长 → 空间复杂度\(O(n^5)\)（Bareiss算法）</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>应用范围</strong></div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">适用</span>：数千未知数的系统</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">瓶颈</span>：百万级系统耗时剧增（如i9-12900K大约需50天）</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">解决方案：大规模系统采用迭代法,或者特殊矩阵采用特殊办法</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>根源</strong>：主元趋零导致误差放大</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">消元时需除以极小主元 \(\rightarrow\) 计算误差呈指数级增长</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>稳定性条件</strong></div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">天然稳定</span>：对角占优矩阵、正定矩阵</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">条件稳定</span>：一般矩阵需配合部分选主元</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">例外情况</span>：存在特殊稳定矩阵仍可能失稳</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>工程应对</strong></div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">强制选主元策略（列/全主元）</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">条件数预检测：\(\kappa(A)&gt; 10^{10}\)时预警(病态矩阵)</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">混合方法：结合迭代修正（如Gauss-Jordan迭代精炼）</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph"><span class="tex-size-Large"></span>
+    <span class="tex-color-blue">感兴趣的同学,自行查阅相关文献.</span></div>
+  </div>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="高斯消元法的计算效率的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter02-section04-lesson-2-4-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter02-section04-lesson-2-4-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter02-section04-lesson-2-4-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-2-4-2.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="../section05/index.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter02-section04-lesson-2-4-3" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter02-section04-lesson-2-4-3" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter02-section04-lesson-2-4-3" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

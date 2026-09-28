@@ -1,0 +1,73 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-2-1-lesson-7-2-1">
+  <p class="tex-hierarchy">线性映射 / 线性映射与矩阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\({\mathscr A}\)为从\(n\)维\({\mathbb F}\)-向量空间\(V\)到\(m\)维\({\mathbb F}\)-向量空间的一个线性变换.分别取定\(V\)和\(W\)的一组基\(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\).
+
+  对任意\(j=1,2,\cdots,n\), 设\({\mathscr A}(\alpha_j)\in W\) 在基\(\beta_1,\cdots,\beta_m\)下的坐标为\((a_{1j},\cdots,a_{mj})^T\),
+
+  即</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\mathscr A}(\alpha_j) = a_{1j}\beta_1 + \cdots + a_{mj}\beta_m.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">则这一式子可改写为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{{\mathscr A}(\alpha_1,\cdots,\alpha_n)  := \Big({\mathscr A}(\alpha_1),\cdots,{\mathscr A}(\alpha_n)\Big) = (\beta_1,\cdots,\beta_m)A}},\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中 \(A:=(a_{ij})_{m\times n}\in F^{m\times n}\).
+
+  称 \(A\) 为<span class="tex-color-blue">线性映射 \({\mathscr A}\) 在基 \(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\)下的矩阵</span>.</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.7</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A \in{\mathbb F}^{m\times n}\). 定义从\({\mathbb F}^n\)到\({\mathbb F}^m\)的线性变换</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\mathscr A}(X) = AX.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则\({\mathscr A}\)在自然基下的矩阵为\(A\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证: 记\(e_1,\cdots,e_n\)为\({\mathbb F}^n\)的自然基, \(e&#39;_1,\cdots,e&#39;_m\)为\({\mathbb F}^m\)的自然基.则
+  \({\mathscr A}(e_1,\cdots,e_n):=({\mathscr A} e_1,\cdots,{\mathscr A} e_n)=(A e_1,\cdots,A e_n)=A(e_1,\cdots,e_n)=AI_n=A=I_mA=(e&#39;_1,\cdots,e&#39;_m)A\).</span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.8</span> <span class="math-block-title">从矩阵出发构造线性映射</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">分别取定\({\mathbb F}\)-线性空间\(V\)和\(W\)的一组基\(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\).
+
+      对于给定矩阵\(B=(b_{ij})_{m\times n}\in {\mathbb F}^{m\times n}\),如下给出一个从 \(V\)到 \(W\)的映射\({\mathscr B}\).
+
+      对任意的\(\lambda_1\alpha_1+\cdots+\lambda_n\alpha_n\in V\), 定义<small class="tex-footnote">这一定义也可改写为\({\mathscr B}\left((\alpha_1,\cdots,\alpha_n)\begin{pmatrix}\lambda_1\\\vdots\\\lambda_n\\\end{pmatrix}\right) = (\beta_1,\cdots,\beta_n)B\begin{pmatrix}\lambda_1\\\vdots\\\lambda_n\\\end{pmatrix}\).</small></div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\mathscr B}\left(\sum_{j=1}^n\lambda_j\alpha_j\right) := \sum_{i=1}^{m} \left(\sum_{j=1}^{n} b_{ij}\lambda_j\right) \beta_i.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则 \({\mathscr B}\)为从 \(V\)到 \(W\)的一个线性映射,且其在基\(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\)下的矩阵正好为\(B\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">从而,我们得到如下一一对应:</div>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph"><span>
+    \(\left\{\text{从$V$到$W$的}\atop \text{全体线性映射}\right\}\)   \(\underset{1:1 \atop {\mathscr A}(\alpha_1,\cdots,\alpha_n) = (\beta_1,\cdots,\beta_n)A}{\overset{\text{基} \alpha_1,\cdots,\alpha_n \atop \text{基} \beta_1,\cdots,\beta_m }{\leftrightarrow}}\)   \({\mathbb F}^{m\times n}\) </span></div>
+  </div>
+</div>

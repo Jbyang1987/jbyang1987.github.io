@@ -1,0 +1,81 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="线性变换与方阵的对应 · 第2页；线性映射，线性代数课程。"><title>线性变换与方阵的对应 · 第2页 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter07" data-section="chapter07-section03" data-unit="chapter07-section03-lesson-7-3-2"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter07.html">第七章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第3节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第2小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§7.3.2</span><span>线性变换与方阵的对应 · 第2页</span></h1><p class="knowledge-goal">线性变换与方阵的对应 · 第2页</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-3-2-lesson-7-3-2">
+  <p class="tex-hierarchy">线性映射 / 线性变换与方阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">向量\(x\)和\({\mathscr A} x\)在同一组基下坐标之间的关系.</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\colon V\rightarrow V\)在基\(\alpha_1,\cdots,\alpha_n\)下的矩阵为\(A\).
+
+      若向量\(x\in V\)在基\(\alpha_1,\cdots,\alpha_n\)下的坐标\(X\in {\mathbb F}^n\), 向量\({\mathscr A} x\)在基\(\alpha_1,\cdots,\alpha_n\)下的坐标为 \(Y\in {\mathbb F}^n\),
+
+      则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[Y=AX.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><code class="tex-unresolved" title="尚未实现此命令或环境">\xymatrix@C</code>=5cm@R=2cm
+  V
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[r]</code>^\(\text{基 }\)\(\alpha\)_1,\(\cdots\),\(\alpha\)_n_1:1 <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[d]</code>_-\(\mathscr\) A
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar@{}</code>[dr]|<span class="tex-size-tiny"></span> \(\mathscr\) A(\(\alpha\)_1,\(\cdots\),\(\alpha\)_n) = (\(\alpha\)_1,\(\cdots\),\(\alpha\)_n)A
+  &amp; \(\mathbb\) F^n
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[d]</code>^-A<br>
+  V <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[r]</code>^\(\text{基 }\)\(\alpha\)_1,\(\cdots\),\(\alpha\)_n_1:1 &amp; \(\mathbb\) F^n <br></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.10</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">记 \(\alpha_1=\begin{pmatrix}2\\3\\5\end{pmatrix}\), \(\alpha_2=\begin{pmatrix}0\\1\\2\end{pmatrix}\), \(\alpha_3=\begin{pmatrix}1\\0\\0\end{pmatrix}\),
+      \(\beta_1=\begin{pmatrix}1\\2\\0\end{pmatrix}\), \(\beta_2=\begin{pmatrix}2\\4\\-1\end{pmatrix}\), \(\beta_3=\begin{pmatrix}3\\0\\5\end{pmatrix}\).
+
+      设\({\mathscr A}\)为\({\mathbb F}^3\)上线性变换满足 \({\mathscr A}(\alpha_i)=\beta_i\) (\(i=1,2,3\)).
+
+      求</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\)在\(\alpha_1,\alpha_2,\alpha_3\)下的矩阵;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\)在自然基下的矩阵.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">解答:</span></div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(A=(\alpha_1,\alpha_2,\alpha_3)^{-1}(\beta_1,\beta_2,\beta_3)=\begin{pmatrix}
+      4&amp;9&amp;-5\\-10&amp;-23&amp;15\\-7&amp;-16&amp;13\\\end{pmatrix}\);</span></div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(B=(\beta_1,\beta_2,\beta_3)(\alpha_1,\alpha_2,\alpha_3)^{-1}=\begin{pmatrix}
+      3&amp;-20&amp;11\\0&amp;-16&amp;10\\5&amp;-15&amp;7\\\end{pmatrix}\).</span></div>
+    </li>
+  </ol>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性变换与方阵的对应 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section03-lesson-7-3-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section03-lesson-7-3-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section03-lesson-7-3-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-7-3-1.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="lesson-7-3-3.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section03-lesson-7-3-2" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter07-section03-lesson-7-3-2" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter07-section03-lesson-7-3-2" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

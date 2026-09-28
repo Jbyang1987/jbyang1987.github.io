@@ -1,0 +1,1912 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="第七章 线性映射；线性映射，线性代数课程。"><title>第七章 线性映射 | 线性代数</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/lessons.css"><link rel="stylesheet" href="../css/tex2html.css"><script defer src="../js/course.js"></script><script defer src="../js/progress.js"></script><script defer src="../js/main.js"></script><script defer src="../js/mathjax-config.js"></script><script defer src="../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="chapter" data-root="../" data-chapter="chapter07"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter">第七章</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-layout chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card" aria-label="线性映射简介、进度与目录"><header class="chapter-intro"><h1>第七章 线性映射</h1><p>映射与矩阵、相似关系、特征值、对角化与若当标准形。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-chapter-resume href="chapter07/section01/lesson-7-1-1.html"><span data-chapter-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-chapter-progress-percent>0%</strong></div><span data-chapter-progress-count>掌握 0 / 31</span></div><progress data-chapter-progress max="31" value="0" aria-label="线性映射掌握进度">0%</progress></div></div></header><nav class="chapter-outline" aria-label="线性映射学习目录"><h2>本章目录</h2><ul><li><a href="chapter07/section01/index.html">7.1 线性映射</a><span data-section-progress="chapter07-section01">掌握 0 / 3</span></li><li><a href="chapter07/section02/index.html">7.2 线性映射与矩阵的对应</a><span data-section-progress="chapter07-section02">掌握 0 / 3</span></li><li><a href="chapter07/section03/index.html">7.3 线性变换与方阵的对应</a><span data-section-progress="chapter07-section03">掌握 0 / 5</span></li><li><a href="chapter07/section04/index.html">7.4 线性函数与对偶空间*</a><span data-section-progress="chapter07-section04">掌握 0 / 3</span></li><li><a href="chapter07/section05/index.html">7.5 不同基下的矩阵与相抵（相似）关系</a><span data-section-progress="chapter07-section05">掌握 0 / 3</span></li><li><a href="chapter07/section06/index.html">7.6 特征值与特征向量</a><span data-section-progress="chapter07-section06">掌握 0 / 5</span></li><li><a href="chapter07/section07/index.html">7.7 相似不变量</a><span data-section-progress="chapter07-section07">掌握 0 / 2</span></li><li><a href="chapter07/section08/index.html">7.8 相似对角化</a><span data-section-progress="chapter07-section08">掌握 0 / 4</span></li><li><a href="chapter07/section09/index.html">7.9 相似上三角化与若当标准形</a><span data-section-progress="chapter07-section09">掌握 0 / 3</span></li></ul></nav></section><section class="chapter-full-reading" id="chapter-reading"><section class="lesson" id="chapter07-section01" aria-labelledby="title-chapter07-section01"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§7.1</span><h2 id="title-chapter07-section01"><a class="heading-link" href="chapter07/section01/index.html">线性映射</a></h2></div><section class="lesson knowledge-part" id="part-chapter07-section01-lesson-7-1-1" data-reading-unit="chapter07-section01-lesson-7-1-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.1.1</span><h2><a class="heading-link" href="chapter07/section01/lesson-7-1-1.html">线性映射 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-1-1-lesson-7-1-1">
+  <p class="tex-hierarchy">线性映射 / 线性映射</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">给定一个数组向量空间之间的映射\({\mathscr A}\colon {\mathbb F}^n\rightarrow {\mathbb F}^m\).
+
+  若\({\mathscr A}\)满足</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\label{equ:linearoperator}\tag{$*$}
+  \begin{split}
+  {\textcolor[rgb]{0,0,1}{\text{(保持加法)\quad }}} &amp;{\mathscr A}(\vec{a} + \vec{b}) = {\mathscr A}(\vec{a}) + {\mathscr A}(\vec{b});\\
+
+  {\textcolor[rgb]{0,0,1}{\text{(保持数乘)\quad }}} &amp;{\mathscr A}(\lambda\vec{a}) = \lambda{\mathscr A}(\vec{a})
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">则\({\mathscr A}\)称为从\({\mathbb F}^n\)到\({\mathbb F}^m\)的一个<span class="tex-color-blue">线性映射</span>.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">我们有如下一一对应:</div>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph"><span>
+    从\({\mathbb F}^n\)到\({\mathbb F}^m\)的全体线性映射   \(\underset{{\mathscr A}(\vec{x})=A\vec{x}}{\overset{\quad 1:1\quad }{\leftrightarrow}}\)   \({\mathbb F}^{m\times n}\) </span></div>
+  </div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.1</span> <span class="math-block-title">伸缩变换</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\begin{pmatrix} x\\y\\\end{pmatrix}\mapsto \begin{pmatrix} k_1x\\k_2y\\\end{pmatrix} = \begin{pmatrix} k_1&amp;\\&amp;k_2\\\end{pmatrix}\begin{pmatrix} x\\y\\\end{pmatrix}\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.2</span> <span class="math-block-title">旋转变换</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\begin{pmatrix} x\\y\\\end{pmatrix}\mapsto \begin{pmatrix} x\cos\theta-y\sin\theta\\x\sin\theta+y\cos\theta\\\end{pmatrix} = \begin{pmatrix} \cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\\\end{pmatrix}\begin{pmatrix} x\\y\\\end{pmatrix}\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\bullet\) \(\begin{pmatrix}1&amp;\\&amp;1\end{pmatrix}\) \(\leftrightarrow\) <span class="tex-color-blue">恒等变换</span>;
+
+            \(\bullet\) \(\begin{pmatrix}0&amp;\\&amp;0\end{pmatrix}\) \(\leftrightarrow\) <span class="tex-color-blue">零变换</span>;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\bullet\)  \(\begin{pmatrix}\lambda&amp;\\&amp;\mu\end{pmatrix}\) \(\leftrightarrow\) <span class="tex-color-blue">伸缩变换</span>;
+
+            \(\bullet\)  \(\begin{pmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{pmatrix}\) \(\leftrightarrow\) <span class="tex-color-blue">旋转变换</span>;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\bullet\)  \(\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\) \(\leftrightarrow\) <span class="tex-color-blue">反射变换</span>;
+
+            \(\bullet\)  \(\begin{pmatrix}1&amp;\\&amp;0\end{pmatrix}\) \(\leftrightarrow\) <span class="tex-color-blue">投射变换</span>;</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性映射 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section01-lesson-7-1-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section01-lesson-7-1-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section01-lesson-7-1-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section01-lesson-7-1-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section01-lesson-7-1-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section01-lesson-7-1-2" data-reading-unit="chapter07-section01-lesson-7-1-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.1.2</span><h2><a class="heading-link" href="chapter07/section01/lesson-7-1-2.html">线性映射 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-1-2-lesson-7-1-2">
+  <p class="tex-hierarchy">线性映射 / 线性映射</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">接下来将线性映射推广到一般的线性空间上.</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">7.1.1</span> <span class="math-block-title">线性映射,线性变换和同构</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(V\)和\(W\)为两个\({\mathbb F}\)-线性空间.<span class="tex-gray">(注意:这里\(V\)和\(W\)不再要求是数组向量空间,而只是一般的线性空间.)</span></div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若映射\({\mathscr A}\colon V\rightarrow W\)满足</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">\({\mathscr A}(P_1 + P_2) = {\mathscr A}( P_1) + {\mathscr A}(P_2)\);</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">\({\mathscr A}(\lambda P_1) = \lambda{\mathscr A}( P_1)\).</div>
+            </li>
+          </ul>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">则称\({\mathscr A}\)为从\(V\)到\(W\)的<span class="tex-color-blue">线性映射</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(V=W\),则称线性映射\({\mathscr A}\)为\(V\)上的一个<span class="tex-color-blue">线性变换</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若线性映射\({\mathscr A}\)为双射,则称\({\mathscr A}\)为线性空间\(V\)到\(W\)的一个<span class="tex-color-blue">同构映射</span>. 若两个线性空间之间存在同构映射,则称它们互相<span class="tex-color-blue">同构</span>.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.1</span> <span class="math-block-title">同构基本性质</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">同构映射的逆映射也是同构映射.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">同构为等价关系.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">(同一域上的)有限维线性空间同构当且仅当它们维数相同.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">单位变换(恒等变换)</span>: \(\varepsilon\colon V\rightarrow V\), \(x\mapsto x\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">零映射</span>: \(\varepsilon\colon V\rightarrow W\), \(x\mapsto 0\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">微分变换</span>:</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}\colon {\mathbb F}_n[x] \rightarrow {\mathbb F}_n[x],\quad p(x)\mapsto \frac{\mathrm{d}}{\mathrm{d}x}p(x).\]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">积分变换</span>:</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}\colon C[a,b]\rightarrow C[a,b],\quad f\mapsto \int_{a}^{b}K(x,t)f(t)\mathrm{d}t\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">其中 \(K(x,t)\)为\([a,b]\times[a,b]\)上的实值连续函数.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">线性化变换</span>: 记\(V\)为\([a,b]\)上的函数集合.</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}:V\rightarrow V,\quad f\mapsto (1-x)f(a)+xf(b).\]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">矩阵对应的线性映射</span>: \(A\in {\mathbb F}^{m\times n}\).</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}\colon {\mathbb F}^n\rightarrow {\mathbb F}^m,\quad x\mapsto Ax \text{(列向量)}.\]</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.5</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">投影映射</span>: \({\mathscr A}\colon {\mathbb F}^n\rightarrow {\mathbb F}^r\), \((x_1,\cdots,x_n)\mapsto (x_1,\cdots,x_r)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">嵌入映射</span>: \({\mathscr A}\colon {\mathbb F}^r\rightarrow {\mathbb F}^n\), \((x_1,\cdots,x_r)\mapsto (x_1,\cdots,x_r,0,\cdots,0)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\colon {\mathbb F}^n\rightarrow {\mathbb F}^n\), \((x_1,x_2,\cdots,x_n)\mapsto (x_n,x_{n-1},\cdots,x_1)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(A\in {\mathbb F}^{p\times m}\)以及\(B\in {\mathbb F}^{n\times q}\)为固定矩阵,</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}\colon {\mathbb F}^{m\times n}\rightarrow {\mathbb F}^{p\times q},\quad X\mapsto AXB.\]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(V\)为\({\mathbb F}\)上的线性空间, \(\alpha_1,\cdots,\alpha_n\)为 \(V\)中的任意 \(n\)个向量.</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}\colon {\mathbb F}^n \rightarrow V,\quad (x_1,\cdots,x_n) \mapsto x_1\alpha_1+\cdots+x_n\alpha_n.\]</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.6</span> <span class="math-block-title">反例</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\colon {\mathbb C}^3 \rightarrow {\mathbb C}^3\),  \((x,y,z)\mapsto (x^2,xy,z^2)\) 不是\({\mathbb C}\)-线性的.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\colon {\mathbb C} \rightarrow {\mathbb C}\), \(z\mapsto \overline{z}\) 是\({\mathbb R}\)-线性的但不是\({\mathbb C}\)-线性的.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性映射 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section01-lesson-7-1-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section01-lesson-7-1-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section01-lesson-7-1-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section01-lesson-7-1-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section01-lesson-7-1-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section01-lesson-7-1-3" data-reading-unit="chapter07-section01-lesson-7-1-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.1.3</span><h2><a class="heading-link" href="chapter07/section01/lesson-7-1-3.html">线性映射 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-1-3-lesson-7-1-3">
+  <p class="tex-hierarchy">线性映射 / 线性映射</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.2</span> <span class="math-block-title">线性映射的基本性质</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\)为从\({\mathbb F}\)-线性空间\(V\)到\({\mathbb F}\)-线性空间\(W\)的线性映射.
+
+      则</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}(0)=0\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}(-\alpha) = -{\mathscr A}(\alpha)\), (\(\forall \alpha\in V\));</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(\alpha_1,\cdots,\alpha_n\)为\(V\)的一组基. 若\(\alpha = \lambda_1\alpha_1 + \cdots + \lambda_n\alpha_n\),则</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}(\alpha) = \lambda_1{\mathscr A}(\alpha_1) + \cdots + \lambda_n{\mathscr A}(\alpha_n).\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-yang">即,线性映射\({\mathscr A}\)由\({\mathscr A}(\alpha_1),\cdots,{\mathscr A}(\alpha_n)\)这\(n\)个向量唯一确定.</span></div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(\beta_1,\cdots,\beta_m\)线性相关,则\({\mathscr A}{\beta_1},\cdots,{\mathscr A}{\beta_m}\)也线性相关.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\({\mathscr A}{\beta_1},\cdots,{\mathscr A}{\beta_m}\)线性无关,则\(\beta_1,\cdots,\beta_m\)也线性无关.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性映射 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section01-lesson-7-1-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section01-lesson-7-1-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section01-lesson-7-1-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section01-lesson-7-1-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section01-lesson-7-1-3" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter07-section02" aria-labelledby="title-chapter07-section02"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§7.2</span><h2 id="title-chapter07-section02"><a class="heading-link" href="chapter07/section02/index.html">线性映射与矩阵的对应</a></h2></div><section class="lesson knowledge-part" id="part-chapter07-section02-lesson-7-2-1" data-reading-unit="chapter07-section02-lesson-7-2-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.2.1</span><h2><a class="heading-link" href="chapter07/section02/lesson-7-2-1.html">线性映射与矩阵的对应 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-2-1-lesson-7-2-1">
+  <p class="tex-hierarchy">线性映射 / 线性映射与矩阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\({\mathscr A}\)为从\(n\)维\({\mathbb F}\)-向量空间\(V\)到\(m\)维\({\mathbb F}\)-向量空间的一个线性变换.分别取定\(V\)和\(W\)的一组基\(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\).
+
+  对任意\(j=1,2,\cdots,n\), 设\({\mathscr A}(\alpha_j)\in W\) 在基\(\beta_1,\cdots,\beta_m\)下的坐标为\((a_{1j},\cdots,a_{mj})^T\),
+
+  即</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\mathscr A}(\alpha_j) = a_{1j}\beta_1 + \cdots + a_{mj}\beta_m.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">则这一式子可改写为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{{\mathscr A}(\alpha_1,\cdots,\alpha_n)  := \Big({\mathscr A}(\alpha_1),\cdots,{\mathscr A}(\alpha_n)\Big) = (\beta_1,\cdots,\beta_m)A}},\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中 \(A:=(a_{ij})_{m\times n}\in F^{m\times n}\).
+
+  称 \(A\) 为<span class="tex-color-blue">线性映射 \({\mathscr A}\) 在基 \(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\)下的矩阵</span>.</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.7</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A \in{\mathbb F}^{m\times n}\). 定义从\({\mathbb F}^n\)到\({\mathbb F}^m\)的线性变换</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\mathscr A}(X) = AX.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则\({\mathscr A}\)在自然基下的矩阵为\(A\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证: 记\(e_1,\cdots,e_n\)为\({\mathbb F}^n\)的自然基, \(e&#39;_1,\cdots,e&#39;_m\)为\({\mathbb F}^m\)的自然基.则
+  \({\mathscr A}(e_1,\cdots,e_n):=({\mathscr A} e_1,\cdots,{\mathscr A} e_n)=(A e_1,\cdots,A e_n)=A(e_1,\cdots,e_n)=AI_n=A=I_mA=(e&#39;_1,\cdots,e&#39;_m)A\).</span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.8</span> <span class="math-block-title">从矩阵出发构造线性映射</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">分别取定\({\mathbb F}\)-线性空间\(V\)和\(W\)的一组基\(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\).
+
+      对于给定矩阵\(B=(b_{ij})_{m\times n}\in {\mathbb F}^{m\times n}\),如下给出一个从 \(V\)到 \(W\)的映射\({\mathscr B}\).
+
+      对任意的\(\lambda_1\alpha_1+\cdots+\lambda_n\alpha_n\in V\), 定义<small class="tex-footnote">这一定义也可改写为\({\mathscr B}\left((\alpha_1,\cdots,\alpha_n)\begin{pmatrix}\lambda_1\\\vdots\\\lambda_n\\\end{pmatrix}\right) = (\beta_1,\cdots,\beta_n)B\begin{pmatrix}\lambda_1\\\vdots\\\lambda_n\\\end{pmatrix}\).</small></div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\mathscr B}\left(\sum_{j=1}^n\lambda_j\alpha_j\right) := \sum_{i=1}^{m} \left(\sum_{j=1}^{n} b_{ij}\lambda_j\right) \beta_i.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则 \({\mathscr B}\)为从 \(V\)到 \(W\)的一个线性映射,且其在基\(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\)下的矩阵正好为\(B\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">从而,我们得到如下一一对应:</div>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph"><span>
+    \(\left\{\text{从$V$到$W$的}\atop \text{全体线性映射}\right\}\)   \(\underset{1:1 \atop {\mathscr A}(\alpha_1,\cdots,\alpha_n) = (\beta_1,\cdots,\beta_n)A}{\overset{\text{基} \alpha_1,\cdots,\alpha_n \atop \text{基} \beta_1,\cdots,\beta_m }{\leftrightarrow}}\)   \({\mathbb F}^{m\times n}\) </span></div>
+  </div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性映射与矩阵的对应 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section02-lesson-7-2-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section02-lesson-7-2-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section02-lesson-7-2-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section02-lesson-7-2-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section02-lesson-7-2-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section02-lesson-7-2-2" data-reading-unit="chapter07-section02-lesson-7-2-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.2.2</span><h2><a class="heading-link" href="chapter07/section02/lesson-7-2-2.html">线性映射与矩阵的对应 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-2-2-lesson-7-2-2">
+  <p class="tex-hierarchy">线性映射 / 线性映射与矩阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设 \(A\) 为线性映射 \({\mathscr A}\colon V\rightarrow W\) 在基 \(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\)下的矩阵. 
+      若\(X\)为向量\(v\in V\)在基\(\alpha_1,\cdots,\alpha_n\)下的坐标,以及\(Y\)为\({\mathscr A}(v)\)在基\(\beta_1,\cdots,\beta_m\)下的坐标, 则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[Y=AX.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">换言之,线性映射的作用可以通过对坐标左乘矩阵\(A\)实现.
+
+  即,下图交换</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><code class="tex-unresolved" title="尚未实现此命令或环境">\xymatrix@C</code>=5cm@R=2cm
+  V
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[r]</code>^\(\text{基 }\)\(\alpha\)_1,\(\cdots\),\(\alpha\)_n_1:1 <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[d]</code>^-\(\mathscr\) A_v\(\mapsto\) \(\mathscr\) A(v)
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar@{}</code>[dr]|<span class="tex-size-tiny"></span> <span class="tex-color-blue">\(\mathscr\) A(\(\alpha\)_1,\(\cdots\),\(\alpha\)_n) = (\(\beta\)_1,\(\cdots\),\(\beta\)_n)A</span>
+  &amp; \(\mathbb\) F^n
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[d]</code>_-A^X\(\mapsto\) AX<br>
+  W <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[r]</code>^\(\text{基 }\)\(\beta\)_1,\(\cdots\),\(\beta\)_n_1:1 &amp; \(\mathbb\) F^m <br></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路: \({\mathscr A}(v)={\mathscr A}((\alpha_1,\cdots,\alpha_n)X) = {\mathscr A}(\alpha_1,\cdots,\alpha_n)\cdot X=(\beta_1,\cdots,\beta_m)A \cdot X= (\beta_1,\cdots,\beta_m) \cdot AX\).</span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性映射与矩阵的对应 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section02-lesson-7-2-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section02-lesson-7-2-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section02-lesson-7-2-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section02-lesson-7-2-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section02-lesson-7-2-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section02-lesson-7-2-3" data-reading-unit="chapter07-section02-lesson-7-2-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.2.3</span><h2><a class="heading-link" href="chapter07/section02/lesson-7-2-3.html">线性映射与矩阵的对应 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-2-3-lesson-7-2-3">
+  <p class="tex-hierarchy">线性映射 / 线性映射与矩阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: table -->
+    <table class="tex-table"><tbody><tr><td><div class="tex-paragraph">\(\cline{1-2}\)
+    \(\multicolumn{2}{|c|}{几何 $\underset{\text{基}}{\overset{\text{坐标系}}{\leftrightarrow}}$ 代数}\)</div></td></tr><tr><td><div class="tex-paragraph">\(\cline{1-2}\)
+    \(\multicolumn{1}{|c|}{线性空间}\)</div></td><td><div class="tex-paragraph">数组空间</div></td></tr><tr><td><div class="tex-paragraph">\(\cline{1-2}\)
+    \(\multicolumn{1}{|c|}{向量}\)</div></td><td><div class="tex-paragraph">坐标</div></td></tr><tr><td><div class="tex-paragraph">\(\cline{1-2}\)
+    \(\multicolumn{1}{|c|}{\qquad 线性映射\qquad \qquad }\)</div></td><td><div class="tex-paragraph">基下矩阵</div></td></tr><tr><td><div class="tex-paragraph">\(\cline{1-2}\)
+    \(\multicolumn{1}{|c|}{内积}\)</div></td><td><div class="tex-paragraph">矩阵</div></td></tr><tr><td><div class="tex-paragraph">\(\cline{1-2}\)
+    \(\multicolumn{1}{|c|}{二次型}\)</div></td><td><div class="tex-paragraph">矩阵</div></td></tr><tr><td><div class="tex-paragraph">\(\cline{1-2}\)
+    \(\multicolumn{1}{|c|}{张量}\)</div></td><td><div class="tex-paragraph">由数组成的高维阵列</div></td></tr><tr><td><div class="tex-paragraph">\(\cline{1-2}\)
+    \(\multicolumn{1}{|c|}{...}\)</div></td><td><div class="tex-paragraph">...</div></td></tr><tr><td><div class="tex-paragraph">\(\cline{1-2}\)</div></td></tr></tbody></table>
+  </div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性映射与矩阵的对应 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section02-lesson-7-2-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section02-lesson-7-2-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section02-lesson-7-2-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section02-lesson-7-2-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section02-lesson-7-2-3" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter07-section03" aria-labelledby="title-chapter07-section03"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§7.3</span><h2 id="title-chapter07-section03"><a class="heading-link" href="chapter07/section03/index.html">线性变换与方阵的对应</a></h2></div><section class="lesson knowledge-part" id="part-chapter07-section03-lesson-7-3-1" data-reading-unit="chapter07-section03-lesson-7-3-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.3.1</span><h2><a class="heading-link" href="chapter07/section03/lesson-7-3-1.html">线性变换与方阵的对应 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-3-1-lesson-7-3-1">
+  <p class="tex-hierarchy">线性映射 / 线性变换与方阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">现在,我们考虑\(W\)等于\(V\)的情形.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\({\mathscr A}\)为\(V\)上的线性变换.固定\(V\)的一组基\(\alpha_1,\cdots,\alpha_n\). 则存在矩阵\(A:=(a_{ij})_{n\times n}\)使得</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\mathscr A}(\alpha_1,\cdots,\alpha_n) = (\alpha_1,\cdots,\alpha_n)A.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">称矩阵\(A\)为<span class="tex-color-blue">线性变换\({\mathscr A}\)在基\((\alpha_1,\cdots,\alpha_n)\)下的矩阵</span>.</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.9</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(V={\mathbb F}^{2\times 2}\).记\(A=\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}\in V\). 定义\(V\)上的线性变换\({\mathscr A}\)</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\mathscr A}(M):=AM.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求\({\mathscr A}\)在\(e_{11},e_{12},e_{21},e_{22}\)下的矩阵.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph"><span>
+    \(\left\{\text{从$V$到$V$的}\atop \text{全体线性变换}\right\}\)   \(\underset{1:1 \atop {\mathscr A}(\alpha_1,\cdots,\alpha_n) = (\alpha_1,\cdots,\alpha_n)A}{\overset{\text{基} \alpha_1,\cdots,\alpha_n}{\leftrightarrow}}\)   \({\mathbb F}^{n\times n}\) </span></div>
+  </div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性变换与方阵的对应 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section03-lesson-7-3-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section03-lesson-7-3-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section03-lesson-7-3-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section03-lesson-7-3-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section03-lesson-7-3-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section03-lesson-7-3-2" data-reading-unit="chapter07-section03-lesson-7-3-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.3.2</span><h2><a class="heading-link" href="chapter07/section03/lesson-7-3-2.html">线性变换与方阵的对应 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-3-2-lesson-7-3-2">
+  <p class="tex-hierarchy">线性映射 / 线性变换与方阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">向量\(x\)和\({\mathscr A} x\)在同一组基下坐标之间的关系.</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\colon V\rightarrow V\)在基\(\alpha_1,\cdots,\alpha_n\)下的矩阵为\(A\).
+
+      若向量\(x\in V\)在基\(\alpha_1,\cdots,\alpha_n\)下的坐标\(X\in {\mathbb F}^n\), 向量\({\mathscr A} x\)在基\(\alpha_1,\cdots,\alpha_n\)下的坐标为 \(Y\in {\mathbb F}^n\),
+
+      则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[Y=AX.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><code class="tex-unresolved" title="尚未实现此命令或环境">\xymatrix@C</code>=5cm@R=2cm
+  V
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[r]</code>^\(\text{基 }\)\(\alpha\)_1,\(\cdots\),\(\alpha\)_n_1:1 <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[d]</code>_-\(\mathscr\) A
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar@{}</code>[dr]|<span class="tex-size-tiny"></span> \(\mathscr\) A(\(\alpha\)_1,\(\cdots\),\(\alpha\)_n) = (\(\alpha\)_1,\(\cdots\),\(\alpha\)_n)A
+  &amp; \(\mathbb\) F^n
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[d]</code>^-A<br>
+  V <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[r]</code>^\(\text{基 }\)\(\alpha\)_1,\(\cdots\),\(\alpha\)_n_1:1 &amp; \(\mathbb\) F^n <br></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.10</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">记 \(\alpha_1=\begin{pmatrix}2\\3\\5\end{pmatrix}\), \(\alpha_2=\begin{pmatrix}0\\1\\2\end{pmatrix}\), \(\alpha_3=\begin{pmatrix}1\\0\\0\end{pmatrix}\),
+      \(\beta_1=\begin{pmatrix}1\\2\\0\end{pmatrix}\), \(\beta_2=\begin{pmatrix}2\\4\\-1\end{pmatrix}\), \(\beta_3=\begin{pmatrix}3\\0\\5\end{pmatrix}\).
+
+      设\({\mathscr A}\)为\({\mathbb F}^3\)上线性变换满足 \({\mathscr A}(\alpha_i)=\beta_i\) (\(i=1,2,3\)).
+
+      求</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\)在\(\alpha_1,\alpha_2,\alpha_3\)下的矩阵;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\)在自然基下的矩阵.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">解答:</span></div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(A=(\alpha_1,\alpha_2,\alpha_3)^{-1}(\beta_1,\beta_2,\beta_3)=\begin{pmatrix}
+      4&amp;9&amp;-5\\-10&amp;-23&amp;15\\-7&amp;-16&amp;13\\\end{pmatrix}\);</span></div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(B=(\beta_1,\beta_2,\beta_3)(\alpha_1,\alpha_2,\alpha_3)^{-1}=\begin{pmatrix}
+      3&amp;-20&amp;11\\0&amp;-16&amp;10\\5&amp;-15&amp;7\\\end{pmatrix}\).</span></div>
+    </li>
+  </ol>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性变换与方阵的对应 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section03-lesson-7-3-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section03-lesson-7-3-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section03-lesson-7-3-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section03-lesson-7-3-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section03-lesson-7-3-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section03-lesson-7-3-3" data-reading-unit="chapter07-section03-lesson-7-3-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.3.3</span><h2><a class="heading-link" href="chapter07/section03/lesson-7-3-3.html">线性变换与方阵的对应 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-3-3-lesson-7-3-3">
+  <p class="tex-hierarchy">线性映射 / 线性变换与方阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\(\alpha_1,\cdots,\alpha_n\)为\(n\)维\({\mathbb F}\)-线性空间\(V\)的一组基.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><code class="tex-unresolved" title="尚未实现此命令或环境">\xymatrix@C</code>=2cm@R=0cm
+  \(\text{$V$上的线性变换}\)
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[r]</code>^\(\alpha\)_1,\(\cdots\),\(\alpha\)_n_1:1	&amp; \(\mathbb\) F^n\(\times\) n <br>
+  \(\mathscr\) A <code class="tex-unresolved" title="尚未实现此命令或环境">\ar@{|-&gt;}</code>[r] &amp; \(\text{ ${\mathscr A}$在$\alpha_1,\cdots,\alpha_n$下的矩阵}\)<br>
+  ?? &amp; B <code class="tex-unresolved" title="尚未实现此命令或环境">\ar@{|-&gt;}</code>[l]<br></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">反之,给定\(n\)阶矩阵\(B=(b_{ij})_{n\times n}\),我们可以如下定义一个映射(对于任意\(\alpha=x_1\alpha_1+\cdots+x_n\alpha_n\in V\))</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\mathscr B}(\alpha):=\sum_{i=1}^n\left(\sum_{j=1}^n b_{ij}x_j\right)\alpha_i = (\alpha_1,\cdots,\alpha_n)B\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}\]</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">映射\({\mathscr B}\)为\(V\)上的线性变换,且其在\(\alpha_1,\cdots,\alpha_n\)下的矩阵为\(B\).</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性变换与方阵的对应 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section03-lesson-7-3-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section03-lesson-7-3-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section03-lesson-7-3-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section03-lesson-7-3-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section03-lesson-7-3-3" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section03-lesson-7-3-4" data-reading-unit="chapter07-section03-lesson-7-3-4"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.3.4</span><h2><a class="heading-link" href="chapter07/section03/lesson-7-3-4.html">线性变换与方阵的对应 · 第4页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-3-4-lesson-7-3-4">
+  <p class="tex-hierarchy">线性映射 / 线性变换与方阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\(U\), \(V\)和\(W\)为有限维\({\mathbb F}\)-线性空间.</div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">(加法)</span> 设\({\mathscr A}\)和\({\mathscr B}\)为从\(V\)到\(W\)的两线性映射. 对任意\(v\in V\),定义</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[({\mathscr A}+{\mathscr B})(v):={\mathscr A}(v)+{\mathscr B}(v);\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">(数乘)</span> 设\({\mathscr A}\)为从\(V\)到\(W\)的线性映射. 对于任意\(v\in V\),定义</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[(\lambda{\mathscr A})(v):=\lambda{\mathscr A}(v);\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">(合成)</span> 设\({\mathscr A}\)为从\(V\)到\(W\)的线性映射,\({\mathscr B}\)为从\(U\)到\(V\)的线性映射. 对于任意\(u \in U\),定义</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[({\mathscr A}\circ{\mathscr B})(u):={\mathscr A}\left({\mathscr B}(u)\right).\]</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">以上三者均为线性映射的运算.即, \({\mathscr A}+{\mathscr B}\), \(\lambda{\mathscr A}\)和\({\mathscr A}\circ{\mathscr B}\)仍为线性变换.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若各自取定\(U\), \(V\)和\(W\)的一组基, 设\({\mathscr A}\),\({\mathscr B}\)在这些基下的矩阵分别为\(A\),\(B\), 则\({\mathscr A}+{\mathscr B}\), \(\lambda{\mathscr A}\)和\({\mathscr A}\circ{\mathscr B}\)在这些基下的矩阵分别为 \(A+B\), \(\lambda A\) 和 \(AB\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">从\(V\)到\(W\)上的全体线性映射组成的集合,记为 \({\textcolor[rgb]{0,0,1}{\mathrm{Hom}(V,W)}}\), 在线性映射的加法和数乘下构成\({\mathbb F}\)-线性空间.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性变换与方阵的对应 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section03-lesson-7-3-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section03-lesson-7-3-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section03-lesson-7-3-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section03-lesson-7-3-4" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section03-lesson-7-3-4" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section03-lesson-7-3-5" data-reading-unit="chapter07-section03-lesson-7-3-5"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.3.5</span><h2><a class="heading-link" href="chapter07/section03/lesson-7-3-5.html">线性变换与方阵的对应 · 第5页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-3-5-lesson-7-3-5">
+  <p class="tex-hierarchy">线性映射 / 线性变换与方阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\({\mathscr A}\)和\({\mathscr B}\)为\({\mathbb F}\)-线性空间\(V\)上的线性变换.
+
+  记 \({\textcolor[rgb]{0,0,1}{{\mathscr A}^0}}:=\mathrm{id}(:=\varepsilon)\).
+
+  对任意正整数\(k\), 定义</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{{\mathscr A}^k}}:=\underbrace{{\mathscr A}\circ{\mathscr A}\circ\cdots\circ{\mathscr A}}_{k\text{次}}.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">对于\(f(x)=a_0+a_1x+\cdots+a_nx^n\in {\mathbb F}[x]\),定义</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{f({\mathscr A})}} := a_0\cdot\varepsilon + a_1{\mathscr A} + \cdots a_n{\mathscr A}^n.\]</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.11</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若\({\mathscr A}\)在\(V\)的某组基\(e_1,\cdots,e_n\)下的矩阵为\(A\).则 \(f({\mathscr A})\)在基\(e_1,\cdots,e_n\)下的矩阵为\(f(A)\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">更一般地, 记 \(\exp(x)=1+\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\).
+
+  定义</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\exp({\mathscr A})=\varepsilon +\frac{{\mathscr A}}{1!}+\frac{{\mathscr A}^2}{2!}+\frac{{\mathscr A}^3}{3!}+\cdots.\]</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.5</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若\({\mathscr A}{\mathscr B}={\mathscr B}{\mathscr A}\),则\(\exp({\mathscr A}+{\mathscr B}) = \exp({\mathscr A})\exp({\mathscr B})\).</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性变换与方阵的对应 · 第5页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section03-lesson-7-3-5" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section03-lesson-7-3-5" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section03-lesson-7-3-5" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section03-lesson-7-3-5" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section03-lesson-7-3-5" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter07-section04" aria-labelledby="title-chapter07-section04"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§7.4</span><h2 id="title-chapter07-section04"><a class="heading-link" href="chapter07/section04/index.html">线性函数与对偶空间*</a></h2></div><section class="lesson knowledge-part" id="part-chapter07-section04-lesson-7-4-1" data-reading-unit="chapter07-section04-lesson-7-4-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.4.1</span><h2><a class="heading-link" href="chapter07/section04/lesson-7-4-1.html">线性函数与对偶空间* · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-4-1-lesson-7-4-1">
+  <p class="tex-hierarchy">线性映射 / 线性函数与对偶空间*</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">我们考虑\(W={\mathbb F}\)的情形.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">称从\(V\)到\({\mathbb F}\)的线性映射为\(V\)上的<span class="tex-color-blue">线性函数</span>.
+
+  记</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{V^*}} = \mathrm{Hom}(V,{\mathbb F}) = \{f\colon V\rightarrow {\mathbb F}\mid f \text{为线性函数}\}.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">为\(V\)上全体线性函数组成的集合.
+
+  由线性映射的加法和数乘,我们有线性函数的加法和数乘</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  &amp; ({\textcolor[rgb]{0,0,1}{f+g}})(v) := f(v) + g(v) \\
+  &amp; ({\textcolor[rgb]{0,0,1}{\lambda f}})(v) := \lambda f(v) \\
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">在线性函数的加法和数乘下, \(V^*\)构成\({\mathbb F}\)-线性空间. 称之为\(V\)的<span class="tex-color-blue">对偶空间</span>.</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性函数与对偶空间* · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section04-lesson-7-4-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section04-lesson-7-4-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section04-lesson-7-4-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section04-lesson-7-4-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section04-lesson-7-4-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section04-lesson-7-4-2" data-reading-unit="chapter07-section04-lesson-7-4-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.4.2</span><h2><a class="heading-link" href="chapter07/section04/lesson-7-4-2.html">线性函数与对偶空间* · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-4-2-lesson-7-4-2">
+  <p class="tex-hierarchy">线性映射 / 线性函数与对偶空间*</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.7</span> <span class="math-block-title">对偶空间的维数与基</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">对偶空间\(V^*\)的维数与\(V\)的维数相同.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(e_1,\cdots,e_n\)为\(V\)的一组基,则\(V^*\)存在唯一的一组基\(f_1,\cdots,f_n\)满足</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[f_j(e_i)=\delta_{ij}=\left\{{1, \quad \text{若 }i=j;\atop 0,\quad \text{若 }i\neq j}\right..\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">称\(f_1,\cdots,f_n\)为\(e_1,\cdots,e_n\)的<span class="tex-color-blue">对偶基</span>.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">我们有如下自然的<span class="tex-color-blue">取值映射(evaluation map)</span>:</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[ev\colon V^*\times V\rightarrow {\mathbb F}; \quad (f,v)\mapsto f(v).\]</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.8</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[ V\cong V^{**} \quad v \mapsto ev(-,v) \]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">注: 若我们不要求\(V\)为有限维的,则映射\(V\rightarrow V^{**}\)仅为单射.</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性函数与对偶空间* · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section04-lesson-7-4-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section04-lesson-7-4-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section04-lesson-7-4-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section04-lesson-7-4-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section04-lesson-7-4-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section04-lesson-7-4-3" data-reading-unit="chapter07-section04-lesson-7-4-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.4.3</span><h2><a class="heading-link" href="chapter07/section04/lesson-7-4-3.html">线性函数与对偶空间* · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-4-3-lesson-7-4-3">
+  <p class="tex-hierarchy">线性映射 / 线性函数与对偶空间*</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.9</span> <span class="math-block-title">向量的逆变性与对偶向量的协变性</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(e_1,\cdots,e_n\)以及 \(e&#39;_1,\cdots,e&#39;_n\)为\(V\)为有限维\({\mathbb F}\)-线性空间的两组基.
+
+      设过渡矩阵为 \(A\),即</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[(e&#39;_1,\cdots,e&#39;_n) = (e_1,\cdots,e_n){\textcolor[rgb]{0,0,1}{A}}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">记这两组基的对偶基分别为\(f_1,\cdots,f_n\)和\(f&#39;_1,\cdots,f&#39;_n\).</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">(向量的逆变性) 设\(v\in V\)在两组基下坐标为\(X\)和\(X&#39;\). 即,</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[v = (e_1,\cdots,e_n)X = (e&#39;_1,\cdots,e&#39;_n)X&#39;.\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">则</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{X&#39; = A^{-1}X}} \quad \text{或} \quad {\textcolor[rgb]{0,0,1}{(x&#39;_1,\cdots,x&#39;_n) = (x_1,\cdots,x_n) (A^{-1})^T}}.\]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">(对偶向量协变性) 设对偶向量\(f\)在两组对偶基下坐标为\(Y\)和\(Y&#39;\).即,</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[f  = (f_1,\cdots,f_n)Y = (f&#39;_1,\cdots,f&#39;_n)Y&#39;.\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">则</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{Y&#39; = A^TY}}  \quad \text{或} \quad {\textcolor[rgb]{0,0,1}{(y&#39;_1,\cdots,y&#39;_n) = (y_1,\cdots,y_n)A}}.\]</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路:\[(f&#39;_1,\cdots,f&#39;_n) = (f_1,\cdots,f_n) (A^{-1})^T.\]</span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性函数与对偶空间* · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section04-lesson-7-4-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section04-lesson-7-4-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section04-lesson-7-4-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section04-lesson-7-4-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section04-lesson-7-4-3" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter07-section05" aria-labelledby="title-chapter07-section05"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§7.5</span><h2 id="title-chapter07-section05"><a class="heading-link" href="chapter07/section05/index.html">不同基下的矩阵与相抵（相似）关系</a></h2></div><section class="lesson knowledge-part" id="part-chapter07-section05-lesson-7-5-1" data-reading-unit="chapter07-section05-lesson-7-5-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.5.1</span><h2><a class="heading-link" href="chapter07/section05/lesson-7-5-1.html">不同基下的矩阵与相抵（相似）关系 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-5-1-lesson-7-5-1">
+  <p class="tex-hierarchy">线性映射 / 线性映射(变换)在不同基下的矩阵与相抵(相似)关系*</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\({\mathscr A}\)为从\(n\)维\({\mathbb F}\)-向量空间\(V\)到\(m\)维\({\mathbb F}\)-向量空间的一个线性映射.
+
+  设线性映射 \({\mathscr A}\) 在基 \(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\)下矩阵为\(A\). 即</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\mathscr A}(\alpha_1,\cdots,\alpha_n) = (\beta_1,\cdots,\beta_m)A.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设线性映射 \({\mathscr A}\) 在另外两组基 \(\alpha&#39;_1,\cdots,\alpha&#39;_n\)和\(\beta&#39;_1,\cdots,\beta&#39;_m\)下矩阵为\(B\). 即</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\mathscr A}(\alpha&#39;_1,\cdots,\alpha&#39;_n) = (\beta&#39;_1,\cdots,\beta&#39;_m)B. \]</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">记从线性空间\(V\)的基\(\alpha_1,\cdots,\alpha_n\)到基\(\alpha&#39;_1,\cdots,\alpha&#39;_n\)的过渡矩阵为\(Q\),
+
+      以及从线性空间\(W\)的基\(\beta_1,\cdots,\beta_m\)到基\(\beta&#39;_1,\cdots,\beta&#39;_m\)的过渡矩阵为\(P\).
+
+      则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[B = P^{-1}AQ.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">\({\mathscr A}(\alpha&#39;_1,\cdots,\alpha&#39;_n)={\mathscr A}(\alpha_1,\cdots,\alpha_n)Q = (\beta_1,\cdots,\beta_m)AQ=(\beta&#39;_1,\cdots,\beta&#39;_m)P^{-1}AQ\).</span></div>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">7.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">线性映射在不同基下的矩阵之间相抵.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">注: 反之亦然.即,相抵的矩阵是同一个线性映射在不同基下的矩阵.</span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">相抵标准形的几何意义？</span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="不同基下的矩阵与相抵（相似）关系 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section05-lesson-7-5-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section05-lesson-7-5-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section05-lesson-7-5-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section05-lesson-7-5-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section05-lesson-7-5-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section05-lesson-7-5-2" data-reading-unit="chapter07-section05-lesson-7-5-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.5.2</span><h2><a class="heading-link" href="chapter07/section05/lesson-7-5-2.html">不同基下的矩阵与相抵（相似）关系 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-5-2-lesson-7-5-2">
+  <p class="tex-hierarchy">线性映射 / 线性映射(变换)在不同基下的矩阵与相抵(相似)关系*</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设线性空间\(V\)上的线性变换\({\mathscr A}\)在两组基\(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_n\)下的矩阵为\(A\)和\(B\).
+
+      设\(\alpha_1,\cdots,\alpha_n\)到\(\beta_1,\cdots,\beta_n\)的过渡矩阵为\(T\).
+
+      则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[B = T^{-1}AT.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.12</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设线性变换\({\mathscr A}\colon {\mathbb F}^3\rightarrow {\mathbb F}^3\)满足</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\small {\mathscr A}\left(
+      \begin{pmatrix}2\\3\\5\end{pmatrix},
+      \begin{pmatrix}0\\1\\2\end{pmatrix},
+      \begin{pmatrix}1\\0\\0\end{pmatrix}
+      \right)
+      =
+      \left(
+      \begin{pmatrix}2\\3\\5\end{pmatrix},
+      \begin{pmatrix}0\\1\\2\end{pmatrix},
+      \begin{pmatrix}1\\0\\0\end{pmatrix}
+      \right)
+      \begin{pmatrix}4&amp;9&amp;-5\\-1&amp;-23&amp;15\\-7&amp;-16&amp;13\end{pmatrix}.
+      \]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求\({\mathscr A}\)在基\(\small \begin{pmatrix}1\\0\\1\end{pmatrix},
+      \begin{pmatrix}2\\1\\2\end{pmatrix},
+      \begin{pmatrix}-2\\0\\-1\end{pmatrix}\)下的矩阵.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">解:<span class="tex-size-tiny"></span>
+  \(T=\begin{pmatrix}2&amp;0&amp;1\\3&amp;1&amp;0\\5&amp;2&amp;0\end{pmatrix}^{-1}\begin{pmatrix}1&amp;2&amp;-2\\0&amp;1&amp;0\\1&amp;2&amp;-1\\\end{pmatrix}\).
+  \(C=T^{-1}\begin{pmatrix}4&amp;9&amp;-5\\-1&amp;-23&amp;15\\-7&amp;-16&amp;13\end{pmatrix}T = \begin{pmatrix}-10&amp;2&amp;3\\10&amp;4&amp;10\\-2&amp;1&amp;0\end{pmatrix}.\)</span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="不同基下的矩阵与相抵（相似）关系 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section05-lesson-7-5-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section05-lesson-7-5-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section05-lesson-7-5-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section05-lesson-7-5-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section05-lesson-7-5-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section05-lesson-7-5-3" data-reading-unit="chapter07-section05-lesson-7-5-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.5.3</span><h2><a class="heading-link" href="chapter07/section05/lesson-7-5-3.html">不同基下的矩阵与相抵（相似）关系 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-5-3-lesson-7-5-3">
+  <p class="tex-hierarchy">线性映射 / 线性映射(变换)在不同基下的矩阵与相抵(相似)关系*</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">7.1.2</span> <span class="math-block-title">相似</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A,B\in {\mathbb F}^{n\times n}\)为两个\(n\)阶方阵.
+
+      若存在可逆阵\(T\in {\mathbb F}^{n\times n}\)使得\(B=T^{-1}AT\),则称\(A\)与\(B\)<span class="tex-color-blue">相似</span>.
+
+      记为 \(A\sim B\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.10</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">相似为等价关系.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">根据相似关系,将全体\(n\)阶矩阵分为若干类. <span class="tex-color-blue">相似类,代表元.</span></div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.5</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">一个线性变换在不同基下矩阵相似.
+
+      反之任意属于该相似类的矩阵,均为该线性变换在某组基下的矩阵.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路:设\({\mathscr A}(\alpha_1,\cdots,\alpha_n)=(\alpha_1,\cdots,\alpha_n)A\). 若 \(B=T^{-1}AT\), 记\((\beta_1,\cdots,\beta_n)=(\alpha_1,\cdots,\alpha_n)T\),则 \({\mathscr A}(\beta_1,\cdots,\beta_n)=(\beta_1,\cdots,\beta_n)B\).</span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">相似不变量.e.g.行列式,秩.</span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">类比于相抵关系,对相似关系我们有如下基本问题:</div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">两个矩阵相似充要条件</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">相似等价类中的最简代表元</div>
+    </li>
+  </ol>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="不同基下的矩阵与相抵（相似）关系 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section05-lesson-7-5-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section05-lesson-7-5-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section05-lesson-7-5-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section05-lesson-7-5-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section05-lesson-7-5-3" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter07-section06" aria-labelledby="title-chapter07-section06"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§7.6</span><h2 id="title-chapter07-section06"><a class="heading-link" href="chapter07/section06/index.html">特征值与特征向量</a></h2></div><section class="lesson knowledge-part" id="part-chapter07-section06-lesson-7-6-1" data-reading-unit="chapter07-section06-lesson-7-6-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.6.1</span><h2><a class="heading-link" href="chapter07/section06/lesson-7-6-1.html">特征值与特征向量 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-6-1-lesson-7-6-1">
+  <p class="tex-hierarchy">线性映射 / 特征值与特征向量</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设线性变换\({\mathscr A}\)在基\({1 \choose 0}\),\({0 \choose 1}\)下的矩阵为\(\begin{pmatrix}\lambda&amp;\\&amp;\mu\end{pmatrix}\).</div>
+
+  <!-- TeX block: figure -->
+  <figure class="tex-figure"><div class="tex-figure-placeholder"><strong>tikz 图形待处理</strong><p>浏览器子集仅支持数值坐标的 \draw 折线；标签、计算、节点和其他命令需本地编译</p><details><summary>原始图形代码</summary><pre>\begin{tikzpicture}
+  \draw[-&gt;](-1.5,0)--(1.5,0)node[right]{$x$};
+  \draw[-&gt;](0,-1.5)--(0,1.5)node[above]{$y$};
+  \draw(0,0)circle(1);
+  \node at (1.1,1.3) {$\bullet (a,b)$};
+  \node at (3.5,0) {$\xRightarrow{\sA}$};
+  \draw[-&gt;](4.5,0)--(7.5,0)node[right]{$x$};
+  \draw[-&gt;](6,-1.5)--(6,1.5)node[above]{$y$};
+  \draw(6,0) ellipse [x radius=1.2, y radius=0.6];
+  \node at (7.32,0.78) {$\bullet (\lambda a,\mu b)$};
+  \end{tikzpicture}</pre></details></div><figcaption>TikZ 图形</figcaption></figure>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">问题:</span></div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">是否任意线性变换都由某组基下的各个方向伸缩给出?(答:错误.)</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">哪些线性变换可以由某组基下的伸缩给出? 即,哪些线性变换在合适的基下为对角阵?</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">为了研究回答这些问题,我们需要引入特征值和特征向量等概念.</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="特征值与特征向量 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section06-lesson-7-6-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section06-lesson-7-6-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section06-lesson-7-6-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section06-lesson-7-6-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section06-lesson-7-6-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section06-lesson-7-6-2" data-reading-unit="chapter07-section06-lesson-7-6-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.6.2</span><h2><a class="heading-link" href="chapter07/section06/lesson-7-6-2.html">特征值与特征向量 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-6-2-lesson-7-6-2">
+  <p class="tex-hierarchy">线性映射 / 特征值与特征向量</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">7.1.3</span> <span class="math-block-title">线性变换的特征值,特征向量以及特征子空间</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\)为\(n\)维\({\mathbb F}\)-向量空间\(V\)上的线性变换.
+
+      若存在\(\lambda\in F\)以及<span class="tex-underdot">非零</span>向量\(\alpha\in V\),使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\mathscr A}\alpha = \lambda\alpha,\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则称\(\lambda\)为\({\mathscr A}\)的一个<span class="tex-color-blue">特征值</span>,
+
+      称\(\alpha\)为属于特征值\(\lambda\)的一个<span class="tex-color-blue">特征向量</span>.
+
+      称</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{V_{\mathscr A}(\lambda)}} :=\ker({\mathscr A}-\lambda \varepsilon)=\{\alpha\in V\mid {\mathscr A}\alpha=\lambda\alpha\}\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">为属于\(\lambda\)的<span class="tex-color-blue">特征子空间</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: container -->
+  <div class="tex-container">
+    <!-- TeX block: image -->
+    <figure class="tex-image"><img src="../assets/chapter07/1e421ae12c6832e0ba34a69ad44cb6b.jpg" alt="1e421ae12c6832e0ba34a69ad44cb6b"><figcaption>1e421ae12c6832e0ba34a69ad44cb6b</figcaption></figure>
+
+    <!-- TeX block: text -->
+    <div class="tex-paragraph"><span class="tex-caption"></span>
+    <span class="tex-label" data-tex-label="fig:1e421ae12c6832e0ba34a69ad44cb6b"></span></div>
+  </div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="特征值与特征向量 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section06-lesson-7-6-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section06-lesson-7-6-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section06-lesson-7-6-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section06-lesson-7-6-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section06-lesson-7-6-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section06-lesson-7-6-3" data-reading-unit="chapter07-section06-lesson-7-6-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.6.3</span><h2><a class="heading-link" href="chapter07/section06/lesson-7-6-3.html">特征值与特征向量 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-6-3-lesson-7-6-3">
+  <p class="tex-hierarchy">线性映射 / 特征值与特征向量</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">思路:</span> 通过代数(矩阵)来解决几何问题(特征值,特征向量).</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\(\alpha_1,\cdots,\alpha_n\)为\({\mathbb F}\)-线性空间\(V\)的一组基.</div>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph"><span>
+    \(\left\{\text{$V$上的全体}\atop \text{线性变换}\right\}\)   \(\underset{1:1 \atop {\mathscr A}(\alpha_1,\cdots,\alpha_n) = (\alpha_1,\cdots,\alpha_n)A}{\overset{\text{基} \alpha_1,\cdots,\alpha_n}{\leftrightarrow}}\)   \({\mathbb F}^{n\times n}\) </span></div>
+  </div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">7.1.4</span> <span class="math-block-title">矩阵的特征值,特征向量以及特征子空间</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\)为\({\mathbb F}\)系数的\(n\)阶方阵.
+
+      若存在\(\lambda\in F\)及<span class="tex-underdot">非零</span>数组向量\(x\in {\mathbb F}^n\),使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[Ax = \lambda x,\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则称\(\lambda\)为方阵\(A\)的<span class="tex-color-blue">特征值</span>,
+
+      称\(x\)为属于特征值\(\lambda\)的一个<span class="tex-color-blue">特征向量</span>.
+
+      称</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[V_A(\lambda):=\{x\in {\mathbb F}^n\mid Ax=\lambda x\}\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">为属于\(\lambda\)的<span class="tex-color-blue">特征子空间</span>.</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="特征值与特征向量 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section06-lesson-7-6-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section06-lesson-7-6-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section06-lesson-7-6-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section06-lesson-7-6-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section06-lesson-7-6-3" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section06-lesson-7-6-4" data-reading-unit="chapter07-section06-lesson-7-6-4"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.6.4</span><h2><a class="heading-link" href="chapter07/section06/lesson-7-6-4.html">特征值与特征向量 · 第4页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-6-4-lesson-7-6-4">
+  <p class="tex-hierarchy">线性映射 / 特征值与特征向量</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">求\({\mathscr A}\)的特征值和特征向量可以转换为求\(A\)的特征值和特征向量.</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.11</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\alpha_1,\cdots,\alpha_n\)为\({\mathbb F}\)-线性空间\(V\)的一组基.
+
+      设\(V\)上的线性变换在基\(\alpha_1,\cdots,\alpha_n\)下矩阵为\(A\).
+
+      则</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\)与\(A\)有相同的特征值;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(\lambda\)为\({\mathscr A}\)的特征值,则 \(V_{\mathscr A}(\lambda)=\{(\alpha_1,\cdots,\alpha_n)x\mid x\in V_A(\lambda)\}\).</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang"><span class="tex-size-tiny"></span> 证明思路: \(x\in V_A(\lambda) \Leftrightarrow Ax=\lambda x \Leftrightarrow {\mathscr A}((\alpha_1,\cdots,\alpha_n)x)=\lambda (\alpha_1,\cdots,\alpha_n)x \Leftrightarrow (\alpha_1,\cdots,\alpha_n)x\in V_{{\mathscr A}}(\lambda)\).</span></div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.12</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\lambda\)为方阵\(A\)的特征值.
+
+      则</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(f(\lambda)\)为\(f(A)\)的特征值;
+
+          特别地, \(\lambda^k\)为方阵\(A^k\)的特征值;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\lambda\)为方阵\(A^T\)的特征值;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(\lambda\neq0\),则\(\frac1\lambda\det(A)\)为\(A^*\)的特征值.
+
+          特别地,若\(A\)可逆,则\(\frac1\lambda\)为\(A^{-1}\)的特征值.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(A\)为实矩阵且\(AA^T=1\),则\(|\lambda|=1\).</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">注:实矩阵的特征值不一定还是实数!</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="特征值与特征向量 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section06-lesson-7-6-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section06-lesson-7-6-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section06-lesson-7-6-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section06-lesson-7-6-4" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section06-lesson-7-6-4" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section06-lesson-7-6-5" data-reading-unit="chapter07-section06-lesson-7-6-5"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.6.5</span><h2><a class="heading-link" href="chapter07/section06/lesson-7-6-5.html">特征值与特征向量 · 第5页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-6-5-lesson-7-6-5">
+  <p class="tex-hierarchy">线性映射 / 特征值与特征向量</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.13</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求矩阵\(A=\begin{pmatrix}1&amp;1\\1&amp;3\end{pmatrix}\)的特征值和特征向量.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang"><span class="tex-size-tiny"></span> 解:
+  \(A\left({x\atop y}\right)=\lambda \left({x\atop y}\right)\)
+
+  \(\Rightarrow\) \(\begin{pmatrix}1-\lambda&amp;1\\1&amp;3-\lambda\\\end{pmatrix}\left({x\atop y}\right)=0\)
+
+  \(\Rightarrow\) \(\det \begin{pmatrix}1-\lambda&amp;1\\1&amp;3-\lambda\\\end{pmatrix}=0\)
+
+  \(\Rightarrow\)  \(\lambda=2\pm\sqrt{2}\).
+
+
+  解方程组: \(A\left({x\atop y}\right)= 2\pm\sqrt{2}\left({x\atop y}\right)\) 得 \(\left({x\atop y}\right)=t\left({1\atop 1\pm\sqrt{2}}\right)\).
+  </span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">对于方阵\(A\)的特征值的计算,我们有如下一般方法:</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  \text{$\lambda_0$为$A$的特征值}
+  &amp; \Leftrightarrow  \exists x\neq 0\quad s.t.\ Ax=\lambda_0x\\
+
+  &amp; \Leftrightarrow  \text{线性方程组} (\lambda_0I_n-A)X=0 \text{有非零解}\\
+
+  &amp; \Leftrightarrow  \det(\lambda_0I_n-A)=0\\
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">即,<span>\(\lambda_0\)为\(A\)的特征值当且仅当\(\lambda_0\)为多项式\(\det(\lambda I_n-A)\)的根.</span>
+
+  称行列式\(\det(\lambda I-A)\)为\(A\)的<span class="tex-color-blue">特征多项式</span>.记为<span class="tex-color-blue">\(P_A(\lambda)\)</span>.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">注:</span></div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">数域\({\mathbb F}\)上的多项式在\({\mathbb F}\)上不一定有根!</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">(代数基本定理) 复数域\({\mathbb C}\)上的非常值多项式在\({\mathbb C}\)上一定有根.</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">在计算特征值和特征向量时,总是假设\({\mathbb F}={\mathbb C}\).</span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\(A\)为\(n\)阶复矩阵.求解过程分为如下两步:</div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求 \(P_A(\lambda)=\det(\lambda I_n - A)\),并做分解</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[P_A(\lambda) = (\lambda-\lambda_1)^{n_1}\cdot(\lambda-\lambda_2)^{n_2}\cdot\cdots\cdot(\lambda-\lambda_s)^{n_s}\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中\(\lambda_i\in{\mathbb C}\), \(n_i\geq1\), \(n_1+n_2+\cdots+n_s=n\).
+
+      我们称\(n_i\)为特征值\(\lambda_i\)的<span class="tex-color-blue">重数</span>.</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">给定\(i=1,\cdots,s\).解齐次线性方程组 \((\lambda_iI_n-A)X=0\)得解空间\(V_A(\lambda_i)\)或者基础解系.</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.14</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求矩阵\(A=\begin{pmatrix}3&amp;-1&amp;-2\\2&amp;0&amp;-2\\2&amp;-1&amp;-1\end{pmatrix}\)的特征值和特征向量.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">答案: \(P_A(\lambda)=\lambda(\lambda-1)^2\).
+
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang"> \((0\cdot I - A) \vec{x}=0\) \(\Rightarrow\) \(\vec{x}=c_1\begin{pmatrix}
+      1\\1\\1\\\end{pmatrix}\);</span></div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\((1\cdot I - A) \vec{x}=0\) \(\Rightarrow\) \(\vec{x}=c_2\begin{pmatrix}
+      1\\2\\0\\\end{pmatrix} + c_3\begin{pmatrix}
+      0\\-2\\1\\\end{pmatrix}\).</span></div>
+    </li>
+  </ul>
+  </span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.15</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A=\begin{pmatrix}1&amp;1\\0&amp;2\end{pmatrix}\). 设\({\mathscr A}\)为\(V={\mathbb F}^{2\times 2}\)上的线性变换满足\({\mathscr A}(M)=AM\).
+
+      求\({\mathscr A}\)的特征值和特征向量.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">答案: \({\mathscr A}(E_{11},E_{12},E_{21},E_{22}) = (E_{11},E_{12},E_{21},E_{22})B\), 其中\(B=\begin{pmatrix}
+  1&amp;0&amp;1&amp;0\\0&amp;1&amp;0&amp;1\\0&amp;0&amp;2&amp;0\\0&amp;0&amp;0&amp;2\\\end{pmatrix}\).
+
+  \(\Rightarrow P_{{\mathscr A}}(\lambda) =  P_{B}(\lambda) =(\lambda-1)^2(\lambda-2)^2\).
+
+
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang"> \((I_4 - B) \vec{x}=0\) \(\Rightarrow\) 基础解系 \(\begin{pmatrix}
+      1\\0\\0\\0\\\end{pmatrix},\begin{pmatrix}
+      0\\1\\0\\0\\\end{pmatrix}\)
+
+      \(\Rightarrow\) 特征子空间 \(\langle E_{11},E_{12}\rangle\)</span></div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\((2I_4 - B) \vec{x}=0\) \(\Rightarrow\) 基础解系\(\begin{pmatrix}
+      1\\0\\1\\0\\\end{pmatrix},\begin{pmatrix}
+      0\\1\\0\\1\\\end{pmatrix}\)
+
+      \(\Rightarrow\) 特征子空间 \(\langle E_{11}+E_{21},E_{12}+E_{22}\rangle\).</span></div>
+    </li>
+  </ul>
+  </span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="特征值与特征向量 · 第5页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section06-lesson-7-6-5" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section06-lesson-7-6-5" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section06-lesson-7-6-5" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section06-lesson-7-6-5" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section06-lesson-7-6-5" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter07-section07" aria-labelledby="title-chapter07-section07"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§7.7</span><h2 id="title-chapter07-section07"><a class="heading-link" href="chapter07/section07/index.html">相似不变量</a></h2></div><section class="lesson knowledge-part" id="part-chapter07-section07-lesson-7-7-1" data-reading-unit="chapter07-section07-lesson-7-7-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.7.1</span><h2><a class="heading-link" href="chapter07/section07/lesson-7-7-1.html">相似不变量 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-7-1-lesson-7-7-1">
+  <p class="tex-hierarchy">线性映射 / 相似不变量</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">可以用矩阵来定义线性变换的哪些不变量(即,不依赖于基的选取的量).</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.13</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">相似的矩阵具有相同的特征多项式和特征值.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明:设 \(B=T^{-1}AT\).则
+  \[P_B(\lambda)=\det(\lambda I-T^{-1}AT)=\det(T^{-1})\det(\lambda I-A)\det(T)=P_A(\lambda).\]</span>
+
+  即,可以用矩阵来定义线性变换的特征多项式和特征值.
+
+  有没有其它相似不变量呢?</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\)为\(n\)阶复矩阵的\(n\)个特征值分别为\(\lambda_1,\cdots,\lambda_n\)(可能有重复的).
+
+      则</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\mathrm{tr}(A)=\sum_{i=1}^{n}\lambda_i\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\det(A)=\lambda_1\lambda_2\cdots\lambda_n\).</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路:展开\(P_A(\lambda)\)并使用根与系数之间的关系.</span></div>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">7.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">一个\(n\)阶方阵可逆当且仅当其\(n\)个特征值均不为零.</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="相似不变量 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section07-lesson-7-7-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section07-lesson-7-7-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section07-lesson-7-7-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section07-lesson-7-7-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section07-lesson-7-7-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section07-lesson-7-7-2" data-reading-unit="chapter07-section07-lesson-7-7-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.7.2</span><h2><a class="heading-link" href="chapter07/section07/lesson-7-7-2.html">相似不变量 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-7-2-lesson-7-7-2">
+  <p class="tex-hierarchy">线性映射 / 相似不变量</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.16</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(n\)阶方阵\(A\)的全体特征值为\(\lambda_1,\lambda_2,\cdots,\lambda_n\).</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">求\(I+A\)的全体特征值和行列式;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">更一般地,求矩阵\(f(A)\)的全体特征值.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">解题思路: \(P_{I+A}(\lambda)=P_A(\lambda-1)\).
+
+   设\(\lambda-f(x)=a_0\prod\limits_{i=1}^d (\alpha_i-x)\).
+
+  则
+  <div class="tex-display">\[ \tiny
+  \begin{split}
+  \det\left(\lambda I- f(A)\right) &amp; = \det\left(a_0\prod_{i=1}^d(\alpha_i I-A)\right)
+
+  = a_0^n\prod_{i=1}^d\det(\alpha_i I-A) \\
+
+  &amp; = a_0^n \prod_{i=1}^d \prod_{j=1}^n(\alpha_i-\lambda_j)
+
+  = \prod_{j=1}^n \left(a_0\prod_{i=1}^d (\alpha_i-\lambda_j)\right)
+
+  = \prod_{j=1}^n(\lambda - f(\lambda_j))\\
+  \end{split}
+  \]</div>
+  </span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.17</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若\(A=\begin{pmatrix}1&amp;0&amp;0\\0&amp;0&amp;1\\0&amp;1&amp;x\end{pmatrix}\)和\(B=\begin{pmatrix}y&amp;0&amp;0\\0&amp;-1&amp;1\\0&amp;0&amp;1\end{pmatrix}\)相似.求\(x,y\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">提示:相似不变量.</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="相似不变量 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section07-lesson-7-7-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section07-lesson-7-7-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section07-lesson-7-7-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section07-lesson-7-7-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section07-lesson-7-7-2" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter07-section08" aria-labelledby="title-chapter07-section08"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§7.8</span><h2 id="title-chapter07-section08"><a class="heading-link" href="chapter07/section08/index.html">相似对角化</a></h2></div><section class="lesson knowledge-part" id="part-chapter07-section08-lesson-7-8-1" data-reading-unit="chapter07-section08-lesson-7-8-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.8.1</span><h2><a class="heading-link" href="chapter07/section08/lesson-7-8-1.html">相似对角化 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-8-1-lesson-7-8-1">
+  <p class="tex-hierarchy">线性映射 / 相似对角化</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">现在我们回到原始问题: 哪些线性变换由伸缩给出?</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">7.1.5</span> <span class="math-block-title">可对角化</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">相似于对角矩阵的方阵称为<span class="tex-color-blue">可对角化</span>的.
+
+      我们称一个线性变换为<span class="tex-color-blue">可对角化</span>的,若它在某组基下的矩阵可对角化.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">问题:</span> 如何判断一个线性变换是否可对角化.</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.18</span> <span class="math-block-title">不是所有的线性变换和矩阵都可对角化</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(A=\begin{pmatrix}
+      2&amp;1\\0&amp;2\\\end{pmatrix}\).</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="相似对角化 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section08-lesson-7-8-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section08-lesson-7-8-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section08-lesson-7-8-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section08-lesson-7-8-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section08-lesson-7-8-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section08-lesson-7-8-2" data-reading-unit="chapter07-section08-lesson-7-8-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.8.2</span><h2><a class="heading-link" href="chapter07/section08/lesson-7-8-2.html">相似对角化 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-8-2-lesson-7-8-2">
+  <p class="tex-hierarchy">线性映射 / 相似对角化</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">若 \( A=T\mathrm{diag}(\lambda_1,\cdots,\lambda_n)T^{-1}\). 记\(T=(\eta_1,\cdots,\eta_n)\).
+
+  则</div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\eta_1,\cdots,\eta_n\)线性无关,</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(A\eta_i=\lambda_i\eta_i\).</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.7</span> <span class="math-block-title">利用特征向量来判定</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">方阵\(A\)可对角化 \(\Leftrightarrow\) \(A\)有\(n\)个线性无关的特征向量.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">有没有简单一点的办法来判断呢?
+
+
+  有时候,可以用相似不变量来判断.(不需要求特征向量!)</span></div>
+
+  <!-- TeX block: lemma -->
+  <section class="math-block math-block-lemma">
+    <div class="math-block-heading"><span class="math-block-label">引理</span> <span class="math-block-number">7.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">属于不同特征值的特征向量线性无关.
+       即,若\(\lambda_1,\cdots,\lambda_k\)为方阵\(A\)的两两不同的特征值,\(\eta_i\)为属于\(\lambda_i\)的特征向量,则\(\eta_1,\cdots,\eta_k\)线性无关.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路:范德姆行列式不为零!</span></div>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">7.1.3</span> <span class="math-block-title">利用特征值来判定</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若\(n\)阶方阵有\(n\)个两两不同的特征值,则\(A\)可对角化.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">优点:不需要求解特征向量; 缺点:不是充要条件,有重根咋办?</span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="相似对角化 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section08-lesson-7-8-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section08-lesson-7-8-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section08-lesson-7-8-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section08-lesson-7-8-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section08-lesson-7-8-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section08-lesson-7-8-3" data-reading-unit="chapter07-section08-lesson-7-8-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.8.3</span><h2><a class="heading-link" href="chapter07/section08/lesson-7-8-3.html">相似对角化 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-8-3-lesson-7-8-3">
+  <p class="tex-hierarchy">线性映射 / 相似对角化</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">一般地,我们可以用特征值的重数来判定是否可对角化.</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">7.1.6</span> <span class="math-block-title">代数重数,几何重数</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\)为\(n\)阶复矩阵的特征多项式有分解</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[P_A(\lambda) = (\lambda-\lambda_1)^{n_1}(\lambda-\lambda_2)^{n_2}\cdots(\lambda-\lambda_s)^{n_s}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">称\(n_i\)为\(\lambda_i\)的<span class="tex-color-blue">代数重数</span>,
+
+      称子空间\(V_A(\lambda_i)\)的维数为\(\lambda_i\)的<span class="tex-color-blue">几何重数</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.8</span> <span class="math-block-title">利用特征值的重数来判定</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(1\leq\) 几何重数 \(\leq\) 代数重数.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(A\)可对角化 \(\Leftrightarrow\) 每个特征值的几何重数与代数重数相等.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路:将\(V_A(\lambda_i)\)的一组基扩充为整个空间的一组基.</span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.19</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">什么时候\(A=\begin{pmatrix}0&amp;0&amp;x\\1&amp;1&amp;y\\1&amp;0&amp;0\end{pmatrix}\)可对角化?</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">
+  解题思路: \(P_A(\lambda)=(\lambda-1)(\lambda^2-x)\).
+
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(x\neq 0,1\) \(\Rightarrow\) 三个不同特征值.</span></div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(x=0\)  \(\Rightarrow\)  \(0\)的代数重数为\(2\)而几何重数为\(1\).</span></div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(x=1\)  \(\Rightarrow\)  \(-1\)的重数为\(1\). \(1\)的代数重数为\(2\),几何重数为\(2\)(\(y=-1\))或者\(1\)(\(y\neq-1\)).</span></div>
+    </li>
+  </ul>
+  </span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="相似对角化 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section08-lesson-7-8-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section08-lesson-7-8-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section08-lesson-7-8-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section08-lesson-7-8-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section08-lesson-7-8-3" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section08-lesson-7-8-4" data-reading-unit="chapter07-section08-lesson-7-8-4"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.8.4</span><h2><a class="heading-link" href="chapter07/section08/lesson-7-8-4.html">相似对角化 · 第4页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-8-4-lesson-7-8-4">
+  <p class="tex-hierarchy">线性映射 / 相似对角化</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.9</span> <span class="math-block-title">哈密尔顿-凯莱定理</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(P_A(A)=0\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">特别地,任意方阵\(A\)都存在零化多项式.称次数最小的首一零化多项式为\(A\)的<span class="tex-color-blue">极小多项式</span>.
+  (注:极小多项式为相似不变量.)</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.14</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">极小多项式整除其他任意零化多项式.特别地,极小多项式为特征多项式的因子.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">一个数为特征值当且仅当其为极小多项式的根.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.10</span> <span class="math-block-title">利用极小多项式</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">方阵可对角化当且仅当其极小多项式无重根.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">7.1.4</span> <span class="math-block-title">利用零化多项式</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">方阵可对角化当且仅当其存在无重根的零化多项式.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">例:</span> 设方阵 \(A\)满足 \(A^2=A\), \(A^2=I\) 或 \(A^3=A\) 等.则\(A\)可对角化.</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="相似对角化 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section08-lesson-7-8-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section08-lesson-7-8-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section08-lesson-7-8-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section08-lesson-7-8-4" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section08-lesson-7-8-4" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter07-section09" aria-labelledby="title-chapter07-section09"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§7.9</span><h2 id="title-chapter07-section09"><a class="heading-link" href="chapter07/section09/index.html">相似上三角化与若当标准形</a></h2></div><section class="lesson knowledge-part" id="part-chapter07-section09-lesson-7-9-1" data-reading-unit="chapter07-section09-lesson-7-9-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.9.1</span><h2><a class="heading-link" href="chapter07/section09/lesson-7-9-1.html">相似上三角化与若当标准形 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-9-1-lesson-7-9-1">
+  <p class="tex-hierarchy">线性映射 / 相似上三角化与若当标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">不是每个矩阵都可以对角化,但总是可上三角化!</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.11</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">任意\(n\)阶复方阵\(A\)都相似于一个上三角形矩阵\(J\),
+
+          且</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(J\)的对角线上的元素为\(A\)的全体特征值.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路:将\(A\)的一个特征向量\(\xi_1\)扩充为\({\mathbb C}^n\)的一组基\(\xi_1,\cdots,\xi_n\),并记组成的可逆矩阵\((\xi_1,\cdots,\xi_n)\)为\(P\).
+
+  则
+  \[AP=P\begin{pmatrix} \lambda &amp; * \\ &amp; A_{22}
+  \end{pmatrix}.\]
+
+  对矩阵阶数归纳,不妨设\(A_{22}=Q\begin{pmatrix}\lambda_2&amp;&amp;*\\&amp;\ddots&amp;\\&amp;&amp;\lambda_n\\\end{pmatrix}Q^{-1}\).
+
+  则
+  \[A= P\begin{pmatrix} 1 &amp;  \\ &amp; Q\end{pmatrix} \cdot \begin{pmatrix}\lambda_1&amp;&amp;*\\&amp;\ddots&amp;\\&amp;&amp;\lambda_n\\\end{pmatrix} \left(P\begin{pmatrix} 1 &amp;  \\ &amp; Q\end{pmatrix} \right)^{-1}.\]
+  </span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">注:</span> \(J\)的取法不唯一.(例:\({0\ 1\choose0\ 0}\)和\({0\ 2\choose0\ 0}\).)</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">例:</span> 若复二阶矩阵\(A\)满足\(A^2=0\),则\(A=0\)或者\(A\)相似于\({0\ 1\choose0\ 0}\).</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="相似上三角化与若当标准形 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section09-lesson-7-9-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section09-lesson-7-9-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section09-lesson-7-9-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section09-lesson-7-9-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section09-lesson-7-9-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section09-lesson-7-9-2" data-reading-unit="chapter07-section09-lesson-7-9-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.9.2</span><h2><a class="heading-link" href="chapter07/section09/lesson-7-9-2.html">相似上三角化与若当标准形 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-9-2-lesson-7-9-2">
+  <p class="tex-hierarchy">线性映射 / 相似上三角化与若当标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">相似等价类中的最简代表元是什么?
+
+  为了回答这一问题,我们需要引进:</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">7.1.7</span> <span class="math-block-title">若当块,若当矩阵</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">给定任意正整数\(m\)和复数\(\lambda\). 称矩阵 \(J_m(\lambda)=\begin{pmatrix}
+          \lambda&amp;1&amp;&amp;\\&amp;\lambda&amp;\ddots&amp;\\
+          &amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;\lambda\\\end{pmatrix}\)为<span class="tex-color-blue">若当块</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">称由若当块组成的对角分块矩阵 \(J=\begin{pmatrix}
+          J_{m_1}(\lambda_1)&amp;&amp;&amp;\\&amp;J_{m_2}(\lambda_2)&amp;&amp;\\
+          &amp;&amp;\ddots&amp;\\&amp;&amp;&amp;J_{m_s}(\lambda_s)\\\end{pmatrix}\)为<span class="tex-color-blue">若当矩阵</span>.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="相似上三角化与若当标准形 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section09-lesson-7-9-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section09-lesson-7-9-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section09-lesson-7-9-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section09-lesson-7-9-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section09-lesson-7-9-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter07-section09-lesson-7-9-3" data-reading-unit="chapter07-section09-lesson-7-9-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§7.9.3</span><h2><a class="heading-link" href="chapter07/section09/lesson-7-9-3.html">相似上三角化与若当标准形 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-9-3-lesson-7-9-3">
+  <p class="tex-hierarchy">线性映射 / 相似上三角化与若当标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.12</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">任意复方阵都与某若当矩阵相似,
+
+          并且</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">不计若当块排序下,这个若当矩阵取法唯一.
+
+          称之为给矩阵的<span class="tex-color-blue">若当标准形</span></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.20</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\lambda\)为\(5\)阶复矩阵\(A\)的\(5\)重特征值.请分析\(A\)的若当标准形.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.21</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求矩阵\(A=\begin{pmatrix}3&amp;-2&amp;1\\2&amp;-2&amp;2\\3&amp;-6&amp;5\end{pmatrix}\)的若当标准形.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">\[T^{-1}AT = \begin{pmatrix}2&amp;1&amp;\\&amp;2&amp;\\&amp;&amp;2\\\end{pmatrix}, \qquad T = \begin{pmatrix}
+  1 &amp; 1 &amp; -1 \\ 2 &amp; 0 &amp; 0 \\ 3 &amp; 0 &amp; 1 \\ \end{pmatrix}.\]</span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="相似上三角化与若当标准形 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section09-lesson-7-9-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section09-lesson-7-9-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section09-lesson-7-9-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section09-lesson-7-9-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter07-section09-lesson-7-9-3" role="status" aria-live="polite"></p></div></section></section></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

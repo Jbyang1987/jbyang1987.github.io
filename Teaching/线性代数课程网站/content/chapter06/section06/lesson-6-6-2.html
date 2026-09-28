@@ -1,0 +1,79 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-6-6-2-lesson-6-6-2">
+  <p class="tex-hierarchy">线性空间 / 坐标与坐标变换</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\(\vec{a}_1,\cdots,\vec{a}_r\)和\(\vec{b}_1,\cdots,\vec{b}_r\)为\(V\)的两组基. 设向量\(v\in V\)在两组基下的坐标分别为 \(X=\begin{pmatrix}x_1\\\vdots\\x_r\end{pmatrix}\) 和\(Y= \begin{pmatrix}y_1\\\vdots\\y_r\end{pmatrix}\). 即,</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[v=(\vec{a}_1,\cdots,\vec{a}_r)X
+  =(\vec{b}_1,\cdots,\vec{b}_r)Y.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">问题:</span> 如何确定\(X\)和\(Y\)之间的关系?</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">6.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\vec{a}_1,\cdots,\vec{a}_r\)和\(\vec{b}_1,\cdots,\vec{b}_r\)为\(V\)的两组基. 则</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">存在唯一\(r\)阶方阵\(T\)使得</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[(\vec{b}_1,\cdots,\vec{b}_r) = (\vec{a}_1,\cdots,\vec{a}_r)T.\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">矩阵\(T\)称为从基\(\vec{a}_1,\cdots,\vec{a}_r\)到基\(\vec{b}_1,\cdots,\vec{b}_r\)的<span class="tex-color-blue">过渡矩阵</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设向量\(v\in V\)在两组基下的坐标分别为 \(X=\begin{pmatrix}x_1,&amp;\cdots,&amp;x_r\end{pmatrix}^T\) 和\(Y= \begin{pmatrix}y_1,&amp;\cdots,&amp;y_r\end{pmatrix}^T\). 则</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[X=TY.\qquad\text{{\textcolor[rgb]{0,0,1}{(坐标变换公式)}}}\]</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">注:</span> 过渡矩阵\(T\)总是可逆的.</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.15</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">逆时针旋转平面直角坐标系\(\theta\)角.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: figure -->
+  <figure class="tex-figure"><img src="{{root}}assets/chapter06/figure-fig-217359f5.svg" class="tex-figure-light" alt="TikZ 图形" width="640"><img class="tex-figure-dark" src="{{root}}assets/chapter06/figure-fig-217359f5-dark.svg" alt="TikZ 图形" width="640"><figcaption>TikZ 图形</figcaption></figure>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">\(\Rightarrow (e_1&#39;,e_2&#39;) = (e_1,e_2)\begin{pmatrix}
+  \cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\\
+  \end{pmatrix}\)
+
+  \(\Rightarrow \begin{pmatrix} x\\y\\\end{pmatrix}= \begin{pmatrix}
+  \cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\\
+  \end{pmatrix}\begin{pmatrix} x&#39;\\y&#39;\\\end{pmatrix}.\)
+
+  \(\Rightarrow
+  \begin{pmatrix} x&#39;\\y&#39;\\\end{pmatrix}
+  = \begin{pmatrix}
+  \cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\\
+  \end{pmatrix}^{-1} \begin{pmatrix} x\\y\\\end{pmatrix}= \begin{pmatrix}
+  \cos\theta&amp;\sin\theta\\-\sin\theta&amp;\cos\theta\\
+  \end{pmatrix} \begin{pmatrix} x\\y\\\end{pmatrix}.\)</div>
+</div>

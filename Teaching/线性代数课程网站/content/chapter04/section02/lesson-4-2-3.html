@@ -1,0 +1,24 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-3-lesson-4-2-3">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[ M\left[{{i_1i_2}\atop {j_1j_2}}\right]:=\det\left(A\left({1,\cdots,i_1-1,i_1+1,\cdots,i_2-1,i_2+1,\cdots,n} \atop {1,\cdots,j_1-1,j_1+1,\cdots,j_2-1,j_2+1,\cdots,n}\right)\right).\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">对行列式的阶数\(n\)进行归纳。当\(n=1\),结论显然成立。假设结论对n-1阶行列式成立。 则</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  \det(A)
+  &amp; = \sum_{i=1}^{n}(-1)^{i+1}a_{i1}M_{i1} \\ 
+  &amp; = a_{11}M_{11} + \sum_{i=2}^{n}(-1)^{i+1}a_{i1} \left(\sum_{j=2}^{n} (-1)^{1+(j-1)} a_{1j}\cdot M\left[{1i}\atop{1j}\right]\right)\\ 
+  &amp; = a_{11}M_{11} + \sum_{j=2}^{n}(-1)^{1+j} a_{1j} \left(\sum_{i=2}^{n} (-1)^{(i-1)+1} a_{i1}\cdot M\left[{1i}\atop{1j}\right]\right)\\ 
+  &amp; = \sum_{j=1}^{n} (-1)^{1+j}a_{1j} M_{1j}   = \sum_{j=1}^{n} a_{1j}A_{1j} \\ 
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中第二个等式为对\(n-1\)阶行列式\(M_{i1}\)的第\(1\)行展开，第三个等式为交换求和号，第四个等式为对\(n-1\)阶行列式\(M_{1j}\)的第\(1\)列展开。</div>
+</div>

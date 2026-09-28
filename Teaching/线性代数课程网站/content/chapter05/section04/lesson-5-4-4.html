@@ -1,0 +1,53 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-5-4-4-lesson-5-4-4">
+  <p class="tex-hierarchy">矩阵(二) / 秩与相抵</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">按照相抵关系,我们将全体\(m\times n\)矩阵分成若干个两两不交的等价类.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">基本问题:</span></div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">如何判定两个矩阵是否相抵?</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">在每个等价类中有没有最简单的表达形式?</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">5.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">对于任意矩阵\(A\in F^{m\times n}\),存在\(m\)阶可逆矩阵\(P\)和\(n\)阶可逆矩阵\(Q\)使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[PAQ=\begin{pmatrix}I_r&amp;0\\0&amp;0\end{pmatrix}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中非负整数\(r\)<span class="tex-color-blue">不依赖</span>于\(P\)和\(Q\)的选取.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">假若不唯一，不妨设\(s&gt;r\) 且 \(P\begin{pmatrix}I_r&amp;0\\0&amp;0\end{pmatrix}Q = \begin{pmatrix}I_s&amp;0\\0&amp;0\end{pmatrix}\). 对\(P\)和\(Q\)进行分块：
+  \[P = \begin{pmatrix}(P_{11})_{s\times r}
+  &amp; (P_{12})_{s\times(m-r)}\\
+  (P_{21})_{(m-s)\times r}
+  &amp; (P_{22})_{(m-s)\times(m-r)}\\ \end{pmatrix}_{m\times m}\]
+  \[Q = \begin{pmatrix}(Q_{11})_{r\times s}
+  &amp; (Q_{12})_{r\times(n-s)}\\
+  (Q_{21})_{(n-r)\times s}
+  &amp; (Q_{22})_{(n-r)\times(n-s)}\\ \end{pmatrix}_{n\times n}.\]
+  则
+  \(P_{11}Q_{11}=I_s\)(矛盾！).</span></div>
+</div>

@@ -1,0 +1,94 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-2-2-1-lesson-2-2-1">
+  <p class="tex-hierarchy">线性方程组 / Gauss 消元法</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.3</span> <span class="math-block-title">鸡兔同笼</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求解 \(\left\{\begin{array}{rrrrrrr}
+      x&amp; +&amp; y &amp;= &amp; 35 &amp;&amp; (1) \\
+      2x&amp; + &amp; 4y&amp; = &amp; 94 &amp;&amp; (2)\\
+      \end{array}\right.\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">解：
+  第一步, 方程(2)减去两倍的方程(1)得</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\xrightarrow{{\textcolor[rgb]{0,0,1}{-2(1)\rightarrow(2)}}} \left\{\begin{array}{rrrrrrr}
+  x&amp; +&amp; y &amp;= &amp; 35 &amp;&amp; (3) \\
+  &amp;  &amp; {\textcolor[rgb]{1,0,0}{2}}y&amp; = &amp; 24 &amp;&amp; (4)\\
+  \end{array}\right.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">第二步, 方程(4)除以\(2\)</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\xrightarrow{{\textcolor[rgb]{0,0,1}{\frac12(4)}}}\left\{\begin{array}{rrrrrrr}
+  x&amp; {\textcolor[rgb]{1,0,0}{+}}&amp; y &amp;= &amp; 35 &amp;&amp; (5) \\
+  &amp;  &amp; y&amp; = &amp; 12 &amp;&amp; (6)\\
+  \end{array}\right.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">第三步. 方程(5)减去方程(6)</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\xrightarrow{-(6)\rightarrow(5)}\left\{\begin{array}{rrrrrrr}
+  x&amp; &amp; &amp;= &amp; 23 &amp;&amp; \\
+  &amp;  &amp; y&amp; = &amp; 12 &amp;&amp;\\
+  \end{array}\right.\]</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求解 \(\left\{\begin{array}{rrrrrrrrr}
+      3x_1 &amp; + &amp; 2x_2 &amp; - &amp; x_3 &amp; = &amp; 6 &amp;&amp; (1)\\
+      x_1 &amp; + &amp; 3x_2 &amp; + &amp; 2x_3 &amp; = &amp; 9 &amp;&amp; (2)\\
+      2x_1 &amp; - &amp; x_2 &amp; + &amp; 3x_3 &amp; = &amp; 3 &amp;&amp; (3)\\
+      \end{array}\right.\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">解：交换前两个方程的顺序<br> <br>
+
+   \(\xrightarrow[-2(4)\rightarrow (6)]{-3(4)\rightarrow(5)}\left\{\begin{array}{rrrrrr}
+  x_1 &amp; +3x_2 &amp; +2x_3 &amp; =&amp; 9 &amp; (7)\\
+  &amp; -7x_2 &amp; -7x_3 &amp; =&amp; -21 &amp; (8)\\
+  &amp; {\textcolor[rgb]{1,0,0}{-7}}x_2 &amp;  -x_3 &amp; =&amp; -15 &amp; (9)\\
+  \end{array}\right. \)<br>
+
+   \(\xrightarrow{-(8)\rightarrow(9)}\left\{\begin{array}{rrrrrr}
+  x_1 &amp; +3x_2 &amp; +2x_3 &amp; =&amp; 9 &amp; (10)\\
+  &amp; -7x_2 &amp; -7x_3 &amp; =&amp; -21 &amp; (11)\\
+  &amp;       &amp;  {\textcolor[rgb]{1,0,0}{6}}x_3 &amp; =&amp;   6 &amp; (12)\\
+  \end{array}\right. \)</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><br>
+
+   \(\xrightarrow{7(15)\rightarrow(14)}\left\{\begin{array}{rrrrrr}
+  x_1 &amp; +3x_2 &amp; +2x_3 &amp; =&amp;   9 &amp; (16)\\
+  &amp; {\textcolor[rgb]{1,0,0}{-7}}x_2 &amp;      &amp; =&amp; -14 &amp; (17)\\
+  &amp;       &amp;  x_3 &amp; =&amp;   1 &amp; (18)\\
+  \end{array}\right. \) <br>
+
+   \(\xrightarrow{-\frac17(14)}\left\{\begin{array}{rrrrrr}
+  x_1 &amp; {\textcolor[rgb]{1,0,0}{+3}}x_2 &amp; {\textcolor[rgb]{1,0,0}{+2}}x_3  &amp; =&amp;   9 &amp; (19)\\
+  &amp; x_2 &amp;         &amp;   =&amp; 2 &amp; (20)\\
+  &amp;       &amp;  x_3 &amp; =&amp;   1 &amp; (21)\\
+  \end{array}\right. \)<br>
+
+  \(\xrightarrow[-2(21)\rightarrow (19)]{-3(20)\rightarrow (19)}\left\{\begin{array}{rr}
+  x_1 =&amp;   1\\
+  x_2 =&amp; 2 \\
+  x_3 =&amp;   1\\
+  \end{array}\right. \) 
+  (代回验证，成立） \(\Rightarrow\) 解集为\(\{(1,2,1)\}\).</div>
+</div>

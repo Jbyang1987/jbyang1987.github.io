@@ -1,0 +1,62 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-1-4-lesson-3-1-4">
+  <p class="tex-hierarchy">矩阵(一) / 矩阵及其线性运算</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">图的邻接矩阵（更一般地，可加入箭向和长度）:</div>
+
+      <!-- TeX block: figure -->
+      <figure class="tex-figure"><img src="{{root}}assets/chapter03/figure-fig-dd6470d0.svg" class="tex-figure-light" alt="TikZ 图形" width="640"><img class="tex-figure-dark" src="{{root}}assets/chapter03/figure-fig-dd6470d0-dark.svg" alt="TikZ 图形" width="640"><figcaption>TikZ 图形</figcaption></figure>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">数字图像 \(3\)个\(m\times n\)取值在\(0,1,\cdots,255\)的矩阵.</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">DeepSeek-V4-Flash-0731 中的<span class="tex-color-blue">词嵌入矩阵</span></div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[E\in \mathbb R^{129280\times 4096}.\]</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{array}{cc}
+  0 &amp; \\
+  \vdots &amp; \vdots \\
+  320 &amp; \text{。} \\
+  \vdots &amp; \vdots \\
+  23775 &amp; \text{线性} \\
+  \vdots &amp;\vdots  \\
+  60147 &amp; \text{我爱} \\
+  \vdots &amp; \vdots \\
+  70889 &amp; \text{代数} \\
+  \vdots &amp; \vdots \\
+  129279 &amp; \\
+  \end{array}
+  \underbrace{\left(\begin{array}{rrrrrr}
+  \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots \\
+  \cdots &amp; \cdots &amp; \cdots &amp; \ddots &amp; \cdots \\
+  0.0074 &amp; -0.0134 &amp; 0.0194 &amp; \cdots &amp; -0.0045 \\
+  \cdots &amp; \cdots &amp; \cdots &amp; \ddots &amp; \cdots \\
+  0.0410 &amp; 0.0045 &amp; -0.1797 &amp; \cdots &amp; -0.0017\\
+  \cdots &amp; \cdots &amp; \cdots &amp; \ddots &amp; \cdots \\
+  0.1699 &amp; -0.0593 &amp; 0.2314 &amp; \cdots &amp; 0.0219\\
+  \cdots &amp; \cdots &amp; \cdots &amp; \ddots &amp; \cdots \\
+  0.0938 &amp; -0.0265 &amp; -0.1035 &amp; \cdots &amp; 0.1289\\
+  \cdots &amp; \cdots &amp; \cdots &amp; \ddots &amp; \cdots \\
+  \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots \\
+  \end{array}\right)}_{4096}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">保存精度采用 BF16(保存一个实数需要：符号1位+指数8位+尾数7位=16bit=2byte), 共需要
+  \(\frac{129280 \times 4096 \times 2}{10^9} \approx 1.06\ \mathrm{GB}\).</div>
+</div>

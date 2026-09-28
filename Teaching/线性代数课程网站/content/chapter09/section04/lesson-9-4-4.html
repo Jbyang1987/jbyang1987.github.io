@@ -1,0 +1,43 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-4-4-lesson-9-4-4">
+  <p class="tex-hierarchy">实二次型 / 正定二次型</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.8</span> <span class="math-block-title">矩阵的奇异值分解</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设 \(A \in \mathbb{R}^{m \times n}\)，则存在 \(m\) 阶正交阵 \(U\) 及 \(n\) 阶正交阵 \(V\) 使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[
+      A = U \begin{pmatrix}\Lambda &amp; O \\O &amp; O\end{pmatrix} V^T
+      \]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中 \(\Lambda = \text{diag}(\sigma_1, \ldots, \sigma_r)\)，\(\sigma_1 \geq \ldots \geq \sigma_r &gt; 0\) 称为矩阵 \(A\) 的<span class="tex-color-blue">奇异值</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">取正交阵\(U\)使得\(AA^T=U\mathrm{diag}(\sigma_1^2,\cdots,\sigma_r^2,0,\cdots,0)U^T\). 再将\(B=U^{-1}A\)的非零行向量施密特正交化后扩充得正交矩阵\(V\)的转置.</span></div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.9</span> <span class="math-block-title">多元函数的极值</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设 \(\Omega \subset \mathbb{R}^n\) 是有界区域, \(\mathbf{x}^0 \) 是 \(\Omega\) 内一点, \(f(\mathbf{x}) \in C^2(\Omega)\), 且 \(\dfrac{\partial f}{\partial x_i}(\mathbf{x}^0) = 0\), \(i = 1, \ldots, n\), \(H(\mathbf{x}^0) = \left( \dfrac{\partial^2 f}{\partial x_i \partial x_j}(\mathbf{x}^0) \right)_{n \times n} &gt; 0\). 则 \(f(\mathbf{x})\) 在 \(\mathbf{x}^0\) 取极小值.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang"> 设\(\lambda&gt;0\)为\(H(x^0)\)的最小特征值. 则
+  <div class="tex-display">\[
+  \begin{split}
+   f(x) &amp; = f(x^0)+\frac12(x-x^0)^TH(x^0)(x-x^0)+o(||x-x^0||^2)\\
+  &amp; \geq f(x^0)+\frac{\lambda}2||x-x^0||^2+o(||x-x^0||^2)
+  \end{split}
+  \]</div>
+  </span></div>
+</div>

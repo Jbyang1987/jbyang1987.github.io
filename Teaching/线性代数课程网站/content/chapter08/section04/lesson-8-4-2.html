@@ -1,0 +1,63 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-8-4-2-lesson-8-4-2">
+  <p class="tex-hierarchy">内积空间及变换 / 正交变换</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">8.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\)为欧氏空间\(V\)上的线性变换.则以下几条等价</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\) 正交;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\) 保持向量长度;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\) 将标准正交基变为标准正交基.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang"><span class="tex-size-tiny"></span> 证明思路:(1)\(\Leftrightarrow\)(2) &amp; (1)\(\Leftrightarrow\)(3)
+
+
+  (1)\(\Rightarrow\)(2): \(|{\mathscr A}(\alpha)|=\sqrt{({\mathscr A}(\alpha),{\mathscr A}(\alpha))}=\sqrt{(\alpha,\alpha)}=|\alpha|;\)
+
+
+  (2)\(\Rightarrow\)(1): \(({\mathscr A}(\alpha),{\mathscr A}(\beta)) = \frac{|{\mathscr A}(\alpha+\beta)|^2-|{\mathscr A}(\alpha)|^2-|{\mathscr A}(\beta)|^2}{2}\)
+  \[= \frac{|\alpha+\beta|^2-|\alpha|^2-|\beta|^2}{2}
+  =(\alpha,\beta)\]
+
+  (1)\(\Rightarrow\)(3):
+  \(e_1,\cdots,e_n\) = 标准正交基 \(\Rightarrow\) \(({\mathscr A}(e_i),sA(e_j))=(e_i,e_j)=\delta_{ij}\)
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph">\(\Rightarrow\) \({\mathscr A}(e_1),\cdots,{\mathscr A}(e_n)\) = 标准正交基.</div>
+  </div>
+
+  (3)\(\Rightarrow\)(1):设\({\mathscr A}\)将标准正交基\(e_1,\cdots,e_n\)映为另一组标准正交基\({\mathscr A}(e_1),\cdots,{\mathscr A}(e_n)\). 任取
+  \[\alpha = \sum_{i=1}^n a_ie_i\quad \text{和}\quad \beta = \sum_{i=1}^{n}b_ie_i.\]
+  则
+  <div class="tex-display">\[
+  \begin{split}
+  ({\mathscr A}(\alpha),{\mathscr A}(\beta)) &amp; = \left(\sum_{i=1}^n a_i{\mathscr A}(e_i),\sum_{i=1}^{n}b_j{\mathscr A}(e_j)\right) = \sum_{i=1}^n\sum_{j=1}^{n}a_ib_j\left({\mathscr A}(e_i),{\mathscr A}(e_j)\right)\\
+  &amp;= \sum_{i=1}^n\sum_{j=1}^{n}a_ib_j\delta_{ij}= \sum_{i=1}^n\sum_{j=1}^{n}a_ib_j(e_i,e_j)= (\alpha,\beta)\\
+  \end{split}
+  \]</div>
+  </span></div>
+</div>

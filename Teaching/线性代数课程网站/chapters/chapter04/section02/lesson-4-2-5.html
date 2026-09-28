@@ -1,0 +1,101 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="行列式性质 · 第5页；行列式，线性代数课程。"><title>行列式性质 · 第5页 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter04" data-section="chapter04-section02" data-unit="chapter04-section02-lesson-4-2-5"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter04.html">第四章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第2节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第5小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§4.2.5</span><span>行列式性质 · 第5页</span></h1><p class="knowledge-goal">行列式性质 · 第5页</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-5-lesson-4-2-5">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  \det(A)
+  &amp; = \det\left(
+  \sum_{j_1=1}^{n}a_{1j_1}\vec{e}_{j_1}, \sum_{j_2=1}^{n}a_{2j_2}\vec{e}_{j_2},\cdots, \sum_{j_n=1}^{n}a_{nj_n}\vec{e}_{j_n}
+  \right)\\ 
+  &amp; =\sum_{j_1=1}^{n}\sum_{j_2=1}^{n}\cdots \sum_{j_n=1}^{n} a_{1j_1}a_{2j_2}\cdots a_{nj_n}
+  \det\left(\vec{e}_{j_1}, \vec{e}_{j_2},\cdots, \vec{e}_{j_n}\right)\\ 
+  &amp; =\sum_{(j_1j_2\cdots j_n)\in S_n} a_{1j_1}a_{2j_2}\cdots a_{nj_n}
+  \underbrace{{\textcolor[rgb]{1,0,0}{\boxed{\det\left(\vec{e}_{j_1}, \vec{e}_{j_2},\cdots, \vec{e}_{j_n}\right)}}}}_{=??}\\
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中\(S_n\)为集合\(\{1,\cdots,n\}\)的全体排列集.</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">4.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">由\(n\)个两两不同的正整数组成的有序数组\((j_1,j_2,\cdots,j_n)\)称为一个<span class="tex-color-blue">\(n\)元排列</span>.   由\(1,2,\cdots,n\)组成的排列总数为\(n!\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">称\((1,2,\cdots,n)\)为<span class="tex-color-blue">标准排列</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">给定排列\((j_1,j_2,\cdots,j_n)\).若\(1\leq p&lt;q\leq n\)且\(j_p&gt;j_q\),则称二元组\((j_p,j_q)\)为排列\((j_1,j_2,\cdots,j_n)\)的一个<span class="tex-color-blue">逆序</span>.  例如: \((1,4,3,2)\)的有三个逆序\((4,3),(4,2),(3,2)\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">排列\((j_1,j_2,\cdots,j_n)\)的<span class="tex-color-blue">逆序总数</span>记为\(\tau(j_1,j_2,\cdots,j_n)\).   例如: \(\tau(1,4,3,2)=3\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(\tau(j_1,j_2,\cdots,j_n)\)为奇数,则称\((j_1,j_2,\cdots,j_n)\)为<span class="tex-color-blue">奇排列</span>.否则称之为<span class="tex-color-blue">偶排列</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">将一个排列中的两个元素互换位置,其余元素位置不变.这个过程称为一个<span class="tex-color-blue">对换</span>.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: lemma -->
+  <section class="math-block math-block-lemma">
+    <div class="math-block-heading"><span class="math-block-label">引理</span> <span class="math-block-number">4.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">对换改变奇偶性.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">排列\((j_1,j_2,\cdots,j_n)\)可经过\(\tau(j_1,j_2,\cdots,j_n)\)次相邻位置的对换变为标准排列.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.4</span> <span class="math-block-title">行列式显示表示</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A=(a_{ij})_{n\times n}\)为\(n\)阶方阵.则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[
+      \det(A) = \sum_{(j_1j_2\cdots j_n)\in S_n}(-1)^{\tau(j_1,j_2,\cdots,j_n)} a_{1j_1}a_{2j_2}\cdots a_{nj_n}
+      \]</div>
+    </div>
+  </section>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式性质 · 第5页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section02-lesson-4-2-5" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section02-lesson-4-2-5" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section02-lesson-4-2-5" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-4-2-4.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="lesson-4-2-6.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section02-lesson-4-2-5" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter04-section02-lesson-4-2-5" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter04-section02-lesson-4-2-5" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

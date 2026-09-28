@@ -1,0 +1,278 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="5.4 秩与相抵；矩阵(二)，线性代数课程。"><title>5.4 秩与相抵 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter05" data-section="chapter05-section04"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter05.html">第五章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第4节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="秩与相抵简介、进度与目录"><header class="chapter-intro"><h1>5.4 秩与相抵</h1><p>围绕秩与相抵展开定义、性质、计算与应用。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter05-section04" href="lesson-5-4-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 6</span></div><progress data-section-meter="chapter05-section04" max="6" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="秩与相抵知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-5-4-1.html">5.4.1 秩与相抵 · 第1页</a><span data-unit-status="chapter05-section04-lesson-5-4-1">未标记</span></li><li><a href="lesson-5-4-2.html">5.4.2 秩与相抵 · 第2页</a><span data-unit-status="chapter05-section04-lesson-5-4-2">未标记</span></li><li><a href="lesson-5-4-3.html">5.4.3 秩与相抵 · 第3页</a><span data-unit-status="chapter05-section04-lesson-5-4-3">未标记</span></li><li><a href="lesson-5-4-4.html">5.4.4 秩与相抵 · 第4页</a><span data-unit-status="chapter05-section04-lesson-5-4-4">未标记</span></li><li><a href="lesson-5-4-5.html">5.4.5 秩与相抵 · 第5页</a><span data-unit-status="chapter05-section04-lesson-5-4-5">未标记</span></li><li><a href="lesson-5-4-6.html">5.4.6 秩与相抵 · 第6页</a><span data-unit-status="chapter05-section04-lesson-5-4-6">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-5-4-1" data-reading-unit="chapter05-section04-lesson-5-4-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§5.4.1</span><h2><a class="heading-link" href="lesson-5-4-1.html">秩与相抵 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-5-4-1-lesson-5-4-1">
+  <p class="tex-hierarchy">矩阵(二) / 秩与相抵</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">5.1.3</span> <span class="math-block-title">相抵</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">称两矩阵\(A,B\) <span class="tex-color-blue">相抵</span>,若存在可逆矩阵\(P\)和\(Q\)使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[B=PAQ.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">注:因可逆矩阵为方阵,因此要使\(B=PAQ\)成立, \(B\)和\(A\)的行列数必须一致.</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">5.1.2</span> <span class="math-block-title">相抵的基本性质</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">任意矩阵与自身相抵;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(A\)与\(B\)相抵,则\(B\)与\(A\)也相抵;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(A\)与\(B\)相抵且\(B\)与\(C\)相抵,则\(A\)与\(C\)相抵.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">满足上述三条性质的关系称为<span class="tex-color-blue">等价关系</span>。换句话说，上述性质表明相抵为等价关系.</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="秩与相抵 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter05-section04-lesson-5-4-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter05-section04-lesson-5-4-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter05-section04-lesson-5-4-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter05-section04-lesson-5-4-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter05-section04-lesson-5-4-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-5-4-2" data-reading-unit="chapter05-section04-lesson-5-4-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§5.4.2</span><h2><a class="heading-link" href="lesson-5-4-2.html">秩与相抵 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-5-4-2-lesson-5-4-2">
+  <p class="tex-hierarchy">矩阵(二) / 秩与相抵</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">5.1.4</span> <span class="math-block-title">等价关系严谨定义</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">给定集合\(X\),我们称\(X\times X\)的一个子集为\(X\)上的一个<span class="tex-color-blue">关系</span>.  设 \(R\) 为 \(X\) 上的一个关系, 即</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[R\subseteq X\times X.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">我们称 \(R\)是<span class="tex-color-blue">等价关系</span>, 若 \(R\) 满足如下三条性质</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">(<span class="tex-color-blue">自反性</span>) 对任意 \(x\in X\), 我们有 \((x,x)\in R\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">(<span class="tex-color-blue">对称性</span>) 对任意 \(x,y\in X\), \((x,y)\in R\) 当且仅当 \((y,x)\in R\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">(<span class="tex-color-blue">传递性</span>) 对任意 \(x,y,z\in X\), 若 \((x,y)\in R\), \((y,z)\in R\) 则 \((x,z)\in R\).</div>
+        </li>
+      </ul>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">此时,对任意\(x,y\in X\), 若\((x,y)\in R\), 则称<span class="tex-color-blue">\(x\)等价于\(y\)</span>; 否则,称<span class="tex-color-blue">\(x\)不等价于\(y\)</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">5.1.7</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">例子：老乡；同号；同余等价关系；</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">反例：朋友；父子；异号</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="秩与相抵 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter05-section04-lesson-5-4-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter05-section04-lesson-5-4-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter05-section04-lesson-5-4-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter05-section04-lesson-5-4-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter05-section04-lesson-5-4-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-5-4-3" data-reading-unit="chapter05-section04-lesson-5-4-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§5.4.3</span><h2><a class="heading-link" href="lesson-5-4-3.html">秩与相抵 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-5-4-3-lesson-5-4-3">
+  <p class="tex-hierarchy">矩阵(二) / 秩与相抵</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">对等价关系,我们有如下通俗理解:</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">5.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">给定集合某上的一个等价关系等价于给定这集合上的一个拆分.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">证明思路：</div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">给定\(X\)上一个等价关系 \(R\). 我们称\(X\)的子集</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[[x]:=\{y\in X\mid (x,y)\in R\} \subseteq X\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">为\(x\)在等价关系\(R\)下的<span class="tex-color-blue">等价类</span>.</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">对任意\(x,y\in X\), \([x]\cap[y]\neq\emptyset\) 当且仅当 \([x]=[y]\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">集合\(X\) 为一些等价类的无交并.</div>
+        </li>
+      </ul>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">反之, 给定集合\(X\)的一个拆分 \(X\). 我们如下定义一个等价关系\(R\): 对于任意\(x,y\in X\), \((x,y)\in R\)当且仅当\(x,y\)落入同一个拆分子集中.</div>
+    </li>
+  </ul>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="秩与相抵 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter05-section04-lesson-5-4-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter05-section04-lesson-5-4-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter05-section04-lesson-5-4-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter05-section04-lesson-5-4-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter05-section04-lesson-5-4-3" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-5-4-4" data-reading-unit="chapter05-section04-lesson-5-4-4"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§5.4.4</span><h2><a class="heading-link" href="lesson-5-4-4.html">秩与相抵 · 第4页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-5-4-4-lesson-5-4-4">
+  <p class="tex-hierarchy">矩阵(二) / 秩与相抵</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">按照相抵关系,我们将全体\(m\times n\)矩阵分成若干个两两不交的等价类.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">基本问题:</span></div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">如何判定两个矩阵是否相抵?</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">在每个等价类中有没有最简单的表达形式?</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">5.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">对于任意矩阵\(A\in F^{m\times n}\),存在\(m\)阶可逆矩阵\(P\)和\(n\)阶可逆矩阵\(Q\)使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[PAQ=\begin{pmatrix}I_r&amp;0\\0&amp;0\end{pmatrix}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中非负整数\(r\)<span class="tex-color-blue">不依赖</span>于\(P\)和\(Q\)的选取.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">假若不唯一，不妨设\(s&gt;r\) 且 \(P\begin{pmatrix}I_r&amp;0\\0&amp;0\end{pmatrix}Q = \begin{pmatrix}I_s&amp;0\\0&amp;0\end{pmatrix}\). 对\(P\)和\(Q\)进行分块：
+  \[P = \begin{pmatrix}(P_{11})_{s\times r}
+  &amp; (P_{12})_{s\times(m-r)}\\
+  (P_{21})_{(m-s)\times r}
+  &amp; (P_{22})_{(m-s)\times(m-r)}\\ \end{pmatrix}_{m\times m}\]
+  \[Q = \begin{pmatrix}(Q_{11})_{r\times s}
+  &amp; (Q_{12})_{r\times(n-s)}\\
+  (Q_{21})_{(n-r)\times s}
+  &amp; (Q_{22})_{(n-r)\times(n-s)}\\ \end{pmatrix}_{n\times n}.\]
+  则
+  \(P_{11}Q_{11}=I_s\)(矛盾！).</span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="秩与相抵 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter05-section04-lesson-5-4-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter05-section04-lesson-5-4-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter05-section04-lesson-5-4-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter05-section04-lesson-5-4-4" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter05-section04-lesson-5-4-4" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-5-4-5" data-reading-unit="chapter05-section04-lesson-5-4-5"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§5.4.5</span><h2><a class="heading-link" href="lesson-5-4-5.html">秩与相抵 · 第5页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-5-4-5-lesson-5-4-5">
+  <p class="tex-hierarchy">矩阵(二) / 秩与相抵</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">5.1.5</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">定理中的\(\begin{pmatrix}I_r&amp;0\\0&amp;0\end{pmatrix}\)称为\(A\)的<span class="tex-color-blue">相抵标准形</span>. 非负整数\(r\)称为\(A\)的<span class="tex-color-blue">秩</span>, 记为<span class="tex-color-blue">\(\operatorname{rank}(A)\)</span>或<span class="tex-color-blue">\(r(A)\)</span>. 若\(r=m\),则称\(A\)为<span class="tex-color-blue">行满秩</span>.
+      若\(r=n\),则称\(A\)为<span class="tex-color-blue">列满秩</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">5.1.3</span> <span class="math-block-title">相抵判定</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">给定两矩阵\(A,B\in F^{m\times n}\),则\(A\)与\(B\)相抵当且仅当\(\operatorname{rank}(A)=\operatorname{rank}(B)\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">5.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若\(P,Q\)可逆,则\(\operatorname{rank}(PAQ)=\operatorname{rank}(A)\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">5.1.8</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\operatorname{rank}(A^T)=\operatorname{rank}(A).\]</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\operatorname{rank}\begin{pmatrix}A&amp;0\\0&amp;B\end{pmatrix}=\operatorname{rank}(A)+\operatorname{rank}(B).\]</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="秩与相抵 · 第5页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter05-section04-lesson-5-4-5" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter05-section04-lesson-5-4-5" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter05-section04-lesson-5-4-5" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter05-section04-lesson-5-4-5" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter05-section04-lesson-5-4-5" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-5-4-6" data-reading-unit="chapter05-section04-lesson-5-4-6"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§5.4.6</span><h2><a class="heading-link" href="lesson-5-4-6.html">秩与相抵 · 第6页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-5-4-6-lesson-5-4-6">
+  <p class="tex-hierarchy">矩阵(二) / 秩与相抵</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">5.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\in F^{m\times n}\), \(P\), \(Q\)分别为\(m\), \(n\)阶初等方阵.若\(A\)的\(k\)阶子式全为零,则\(PA\)和\(AQ\)的所有\(k\)阶子式全为零.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">5.1.4</span> <span class="math-block-title">通过子式定义秩</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若矩阵\(A\)至少有一个\(r\)阶非零子式,且\(A\)的所有\(r+1\)阶子式都为零,则\(\operatorname{rank}(A)=r\).</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="秩与相抵 · 第6页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter05-section04-lesson-5-4-6" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter05-section04-lesson-5-4-6" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter05-section04-lesson-5-4-6" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter05-section04-lesson-5-4-6" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter05-section04-lesson-5-4-6" role="status" aria-live="polite"></p></div></section><nav class="lesson-navigation" aria-label="子节导航"><a href="../../../index.html">返回课程首页</a><a href="../section03/index.html">上一节 · 5.3 分块矩阵的初等变换及应用</a><a href="index.html#main">回顾本节</a><a href="../section05/index.html">下一节 · 5.5 相关例题</a></nav></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

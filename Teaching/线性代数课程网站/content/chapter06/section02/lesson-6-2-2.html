@@ -1,0 +1,129 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-6-2-2-lesson-6-2-2">
+  <p class="tex-hierarchy">线性空间 / 线性相关性</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">给定一组(列)向量 \(\vec{a}_1\), \(\vec{a}_2\), \(\cdots\), \(\vec{a}_m\). 则以下几条相互等价:</div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\vec{a}_1\), \(\vec{a}_2\), \(\cdots\), \(\vec{a}_m\) 线性无关;</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">任取\(i\in\{1,\cdots,m\}\)以及\(\lambda_1\cdots\lambda_{i-1},\lambda_{i+1},\cdots,\lambda_m\in {\mathbb F}\),</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\vec{a}_i\neq\lambda_1\vec{a}_1 + \cdots+ \lambda_{i-1}\vec{a}_{i-1}  +\lambda_{i+1}\vec{a}_{i+1} + \cdots + \lambda_m\vec{a}_m;\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">任意\(i\in\{1,\cdots,m\}\),</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\vec{a}_i \notin \langle \vec{a}_1,\cdots,\vec{a}_{i-1},\vec{a}_{i+1},\cdots,\vec{a}_m\rangle;\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">任意\(i\in\{1,\cdots,m\}\),</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\langle \vec{a}_1,\vec{a}_{2},\cdots,\vec{a}_m\rangle \neq \langle \vec{a}_1,\cdots,\vec{a}_{i-1},\vec{a}_{i+1},\cdots,\vec{a}_m\rangle;\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">线性方程组 \(AX=0\)无非平凡解, 其中 \(A=(\vec{a}_1,\vec{a}_{2},\cdots,\vec{a}_m)\);</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(A\)为列满秩;</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\det(A)\neq 0\) (当\(m=n\)时).</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.7</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">包含零向量的任意向量组线性相关.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.8</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(S_1,S\)为\({\mathbb F}^n\)的两个有限子集满足 \(S_1\subseteq S\).
+
+      则</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(S_1\)线性相关 \(\Rightarrow\) \(S\)线性相关;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(S\)线性无关 \(\Rightarrow\) \(S_1\)线性无关;</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.9</span> <span class="math-block-title">判定下列向量组的线性相关性</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\vec{e}_1,\vec{e}_2,\cdots,\vec{e}_n\)单位坐标向量.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\vec{a}_1=(1,0,0,\cdots,0)^T\), \(\vec{a}_2=(1,1,0,\cdots,0)^T\), \(\cdots\), \(\vec{a}_n=(1,1,1,\cdots,1)^T\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\vec{a}_1+\vec{a}_2\), \(\vec{a}_2+\vec{a}_3\), \(\vec{a}_3+\vec{a}_1\),其中 \(\vec{a}_1,\vec{a}_2,\vec{a}_3\)线性无关.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\vec{a}_1=(3,4,-2,5)^T\), \(\vec{a}_2=(2,-5,0,-3)^T\), \(\vec{a}_3=(5,0,-1,2)^T\), \(\vec{a}_4=(3,3,-3,5)^T\).</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</div>

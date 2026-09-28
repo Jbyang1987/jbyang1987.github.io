@@ -1,0 +1,213 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-1-2-lesson-7-1-2">
+  <p class="tex-hierarchy">线性映射 / 线性映射</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">接下来将线性映射推广到一般的线性空间上.</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">7.1.1</span> <span class="math-block-title">线性映射,线性变换和同构</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(V\)和\(W\)为两个\({\mathbb F}\)-线性空间.<span class="tex-gray">(注意:这里\(V\)和\(W\)不再要求是数组向量空间,而只是一般的线性空间.)</span></div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若映射\({\mathscr A}\colon V\rightarrow W\)满足</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">\({\mathscr A}(P_1 + P_2) = {\mathscr A}( P_1) + {\mathscr A}(P_2)\);</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">\({\mathscr A}(\lambda P_1) = \lambda{\mathscr A}( P_1)\).</div>
+            </li>
+          </ul>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">则称\({\mathscr A}\)为从\(V\)到\(W\)的<span class="tex-color-blue">线性映射</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(V=W\),则称线性映射\({\mathscr A}\)为\(V\)上的一个<span class="tex-color-blue">线性变换</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若线性映射\({\mathscr A}\)为双射,则称\({\mathscr A}\)为线性空间\(V\)到\(W\)的一个<span class="tex-color-blue">同构映射</span>. 若两个线性空间之间存在同构映射,则称它们互相<span class="tex-color-blue">同构</span>.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">7.1.1</span> <span class="math-block-title">同构基本性质</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">同构映射的逆映射也是同构映射.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">同构为等价关系.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">(同一域上的)有限维线性空间同构当且仅当它们维数相同.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">单位变换(恒等变换)</span>: \(\varepsilon\colon V\rightarrow V\), \(x\mapsto x\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">零映射</span>: \(\varepsilon\colon V\rightarrow W\), \(x\mapsto 0\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">微分变换</span>:</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}\colon {\mathbb F}_n[x] \rightarrow {\mathbb F}_n[x],\quad p(x)\mapsto \frac{\mathrm{d}}{\mathrm{d}x}p(x).\]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">积分变换</span>:</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}\colon C[a,b]\rightarrow C[a,b],\quad f\mapsto \int_{a}^{b}K(x,t)f(t)\mathrm{d}t\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">其中 \(K(x,t)\)为\([a,b]\times[a,b]\)上的实值连续函数.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">线性化变换</span>: 记\(V\)为\([a,b]\)上的函数集合.</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}:V\rightarrow V,\quad f\mapsto (1-x)f(a)+xf(b).\]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">矩阵对应的线性映射</span>: \(A\in {\mathbb F}^{m\times n}\).</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}\colon {\mathbb F}^n\rightarrow {\mathbb F}^m,\quad x\mapsto Ax \text{(列向量)}.\]</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.5</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">投影映射</span>: \({\mathscr A}\colon {\mathbb F}^n\rightarrow {\mathbb F}^r\), \((x_1,\cdots,x_n)\mapsto (x_1,\cdots,x_r)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">嵌入映射</span>: \({\mathscr A}\colon {\mathbb F}^r\rightarrow {\mathbb F}^n\), \((x_1,\cdots,x_r)\mapsto (x_1,\cdots,x_r,0,\cdots,0)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\colon {\mathbb F}^n\rightarrow {\mathbb F}^n\), \((x_1,x_2,\cdots,x_n)\mapsto (x_n,x_{n-1},\cdots,x_1)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(A\in {\mathbb F}^{p\times m}\)以及\(B\in {\mathbb F}^{n\times q}\)为固定矩阵,</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}\colon {\mathbb F}^{m\times n}\rightarrow {\mathbb F}^{p\times q},\quad X\mapsto AXB.\]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(V\)为\({\mathbb F}\)上的线性空间, \(\alpha_1,\cdots,\alpha_n\)为 \(V\)中的任意 \(n\)个向量.</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\mathscr A}\colon {\mathbb F}^n \rightarrow V,\quad (x_1,\cdots,x_n) \mapsto x_1\alpha_1+\cdots+x_n\alpha_n.\]</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.6</span> <span class="math-block-title">反例</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\colon {\mathbb C}^3 \rightarrow {\mathbb C}^3\),  \((x,y,z)\mapsto (x^2,xy,z^2)\) 不是\({\mathbb C}\)-线性的.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\colon {\mathbb C} \rightarrow {\mathbb C}\), \(z\mapsto \overline{z}\) 是\({\mathbb R}\)-线性的但不是\({\mathbb C}\)-线性的.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</div>

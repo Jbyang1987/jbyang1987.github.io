@@ -1,0 +1,38 @@
+\begin{tikzpicture}[scale=0.5]
+  \usetikzlibrary{decorations.markings} 
+  
+  \tikzset{
+ midarrow/.style={
+  postaction={decorate},
+  decoration={
+ markings,
+ mark=at position 0.5 with {\arrow{>}}
+  }
+ }
+  }
+  
+  \foreach \i [evaluate=\i as \angle using 90+72*\i] in {0,...,4} {
+ \coordinate (V\i) at (\angle:2cm);
+  }
+  
+  \draw[midarrow] (V0) -- (V1);
+  \draw[midarrow] (V1) -- (V2);
+  \draw[midarrow] (V2) -- (V3);
+  \draw[midarrow] (V3) -- (V4);
+  \draw[midarrow] (V4) -- (V0);
+  \draw[midarrow] (V3) -- (V0);
+  \draw[midarrow] (V0) -- (V2);
+  
+  \foreach \i [evaluate=\i as \label using int(\i+1),
+   evaluate=\i as \angle using 90+72*\i] in {0,...,4} {
+ \node[anchor=\angle+180] at (\angle:2cm) {$V_{\label}$};
+  }
+  
+  \node at (8,0) {$\Rightarrow\quad A = \begin{pmatrix}
+  0&1&1&0&0\\
+  0&0&1&0&0\\
+  0&0&0&1&0\\
+  1&0&0&0&1\\
+  1&0&0&0&0\\
+  \end{pmatrix}$};
+\end{tikzpicture}

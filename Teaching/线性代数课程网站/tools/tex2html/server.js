@@ -8,7 +8,7 @@ function lecturePath(relative){const clean=String(relative||'').replaceAll('\\',
 function run(command,args,cwd,timeout=35000){return new Promise((resolve,reject)=>{const child=spawn(command,args,{cwd,windowsHide:true,shell:false,env:{...process.env,openin_any:'p',openout_any:'p',shell_escape:'f',max_print_line:'120'}});let log='',settled=false;const timer=setTimeout(()=>{child.kill();finish(Error(`${command} 超时（${timeout/1000} 秒）`));},timeout);function finish(error){if(settled)return;settled=true;clearTimeout(timer);if(error){error.log=log.slice(-18000);reject(error);}else resolve(log);}const output=data=>{log+=data.toString();if(log.length>1500000){child.kill();finish(Error('编译日志超过限制'));}};child.stdout.on('data',output);child.stderr.on('data',output);child.on('error',finish);child.on('close',code=>finish(code===0?null:Error(`${command} 退出码 ${code}`)));});}
 function validate(source,options){if(typeof source!=='string'||source.length>180000)throw Error('图形代码必须是文本且小于 180 KB');const text=source+'\n'+(options.preamble||'');const banned=new Set(['input','include','includegraphics','openin','openout','read','write','immediate','catcode','csname','endcsname','special','directlua','luaexec','shellescape','documentclass']);if(/\^\^|\\(?:begin|end)\s*\{document\}|\\usepackage(?:\[[^\]]*\])?\s*\{(?:shellesc|catchfile)/i.test(text)||[...text.matchAll(/\\([A-Za-z@]+)/g)].some(m=>banned.has(m[1].toLowerCase())))throw Error('图形接口不接受文件操作、动态控制序列、原始 special 或完整文档；请使用独立图形代码');if((options.preamble||'').length>20000)throw Error('前导代码过长');if(!/^[\w., -]*$/.test(options.libraries||''))throw Error('TikZ library 名称无效');}
 function hex(value,fallback){return /^#[a-f\d]{6}$/i.test(value||'')?value.slice(1):fallback;}
-function wrap(source,kind,options,dark){const libraries=options.libraries||'arrows.meta,calc';const colors=dark?'\\definecolor{blue}{HTML}{93C5FD}\n\\definecolor{red}{HTML}{FCA5A5}\n\\definecolor{green}{HTML}{86EFAC}\n\\definecolor{purple}{HTML}{D8B4FE}\n\\definecolor{black}{HTML}{E2E8F0}':'';let body=source.trim();if(kind==='xypic'&&!/^\s*(?:\$|\\\[|\\\()/.test(body))body='$'+body+'$';return String.raw`\documentclass[border=4pt]{standalone}
+function wrap(source,kind,options,dark){const libraries=options.libraries||'math,shapes.geometric,quotes,angles,calc,decorations.pathreplacing,arrows.meta';const colors=dark?'\\definecolor{blue}{HTML}{93C5FD}\n\\definecolor{red}{HTML}{FCA5A5}\n\\definecolor{green}{HTML}{86EFAC}\n\\definecolor{purple}{HTML}{D8B4FE}\n\\definecolor{black}{HTML}{E2E8F0}':'';let body=source.trim();if(kind==='xypic'){if(!/^\s*(?:\$|\\\[|\\\()/.test(body))body='$'+body+'$';}return String.raw`\documentclass[border=4pt]{standalone}
 \usepackage[UTF8,fontset=fandol]{ctex}
 \usepackage{amsmath,amssymb,mathrsfs}
 \usepackage[dvisvgm]{graphicx}
@@ -16,6 +16,7 @@ function wrap(source,kind,options,dark){const libraries=options.libraries||'arro
 \def\pgfsysdriver{pgfsys-dvisvgm.def}
 \usepackage{tikz}
 \usetikzlibrary{${libraries}}
+\usepackage{tkz-euclide}
 \usepackage[all]{xy}
 \newcommand{\pp}{}
 \providecommand{\pause}{}

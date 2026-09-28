@@ -12,6 +12,12 @@ node tools/tex2html/server.js
 
 打开 [本地转换器](http://127.0.0.1:4174/tools/tex2html/)。无需 npm 安装。服务器仅监听 `127.0.0.1`；关闭运行它的终端可停止服务。默认端口为 4174，可通过 `TEX2HTML_PORT` 环境变量修改。
 
+也可以双击网站根目录的 `启动 TeX 转换器.bat`，它会启动本地服务并自动打开转换网页。
+
+启动文件使用纯 ASCII 内容和 Windows CRLF 换行，实际启动与检查由 `tools/tex2html/launch.js` 完成。已有服务时直接复用；没有服务时在后台启动，确认网页可访问后再打开浏览器。启动失败会保留窗口显示原因，服务日志位于 `%TEMP%\tex2html-launch\server-*.log`。修改 `server.js` 后需先关闭旧服务再启动；重复双击不会自动重启正在使用的服务。
+
+如需验证启动后的真实图形编译链路，可运行 `node tools/tex2html/tests/launch-compile-smoke.js`：它会读取第一章和实际样式文件，在已保存 SVG 超过 260 KB 的配置下，通过 HTTP 编译 7 幅图形（含 `tikzmath`、`tkzMarkRightAngle` 和嵌套数学文字的 XY-pic），并检查每幅图的明亮、暗色 SVG。编译请求只携带当前图形源码和必要参数，不包含已保存的 SVG。
+
 也可以直接双击本目录 `index.html`；正文、示例、样式、JSON 和 ZIP 导出不需要服务器。部分浏览器会限制 `file://` 下的剪贴板、目录写入或本地编译请求，遇到限制时使用上述 localhost 入口。若内嵌浏览器没有保存下载文件，请用 Edge / Chrome 打开同一工具页面。
 
 1. 导入一个或多个 `.tex`，再导入所依赖的 `.sty` 和图片。输入框可以切换查看和编辑 TeX、sty。
@@ -19,7 +25,7 @@ node tools/tex2html/server.js
 3. 右栏选择页面，检查公式、证明、图形和警告。警告附文件、行号、原代码和跳转按钮。
 4. 在页面目录中多选合并、使用箭头或拖动排序。在内容块下使用“从此处拆分”、编辑、移动、删除、恢复。
 5. “保存方案”包含输入文件、导入图片、规则、当前页面编排和编辑结果。仅导出“转换配置”则只保存规则。
-6. 导出 ZIP，检查 `conversion-report.json` 后再将结果接入课程网站。
+6. 导出 ZIP，将其中的 `content/`、`css/` 和 `assets/` 合并到课程网站根目录。
 
 这是电脑端工具，工作区始终保持输入与预览并排、转换规则位于下一行的桌面布局。桌面内容块操作在鼠标悬停或键盘聚焦时显示。
 
@@ -30,6 +36,8 @@ node tools/tex2html/server.js
 在“TeX 输入”面板中，从“讲稿 sections 中的 TeX 文件”下拉框选择章节，系统会自动读取 TeX、默认样式和图片。选择 frame 后，操作行下方只显示所选 frame 的 TeX 代码；未选择时不显示正文代码。加载后，“选择 frames”会列出该文件中的 frame；连续选择时点击起点和终点即可选中范围，取消选择的 frame 不会进入本次转换。浏览器仍可使用“导入 .tex/.sty/图片”处理临时文件。
 
 打开转换器时默认加载 `01 vectors.tex`，默认选中全部 frame 并自动转换；切换其他 TeX 文件时也会自动全选并转换。
+
+文件名以两位数字开头时会自动识别章节编号，例如 `02 linear equations.tex` 会把“章节编号”设为 `2`，并按第 2 章重新编号。通过“导入 .tex”导入的文件也使用同一规则；没有数字前缀的文件不会覆盖当前章节编号。
 
 TeX 代码审阅区提供浅色、深色和护眼三种主题，并对命令、注释、数学分隔符和括号进行语法高亮；切换只影响代码展示区。
 
@@ -215,25 +223,21 @@ ZIP 默认结构：
 ```text
 converted/
   content/chapter01/section01/lesson-1-1-1.html
-  assets/generated/figure-fig-xxxx.svg
-  assets/generated/figure-fig-xxxx-dark.svg
-  assets/generated/figure-fig-yyyy.tex  # 未转换图形的原始代码
-  assets/imported/图片.jpg
-  manifest.json
-  course-pages.json
-  conversion-report.json
-  conversion-config.json
+  css/tex2html.css
+  assets/chapter01/figure-fig-xxxx.svg
+  assets/chapter01/figure-fig-xxxx-dark.svg
+  assets/chapter01/figure-fig-xxxx.tex  # 对应图形的 TeX 源码
 ```
 
-HTML 只含正文片段及作用域样式，不含 `html/head/body`、网站页眉页脚或学习按钮。图片路径使用 `{{root}}assets/...`，现有 `build-lessons.js` 会替换成正确的相对路径。
+HTML 只含正文片段及作用域样式，不含 `html/head/body`、网站页眉页脚或学习按钮。共享 CSS 写入网站的 `css/tex2html.css`，生成页面时由 `build-lessons.js` 在 `<head>` 中按相对路径加载。图片路径使用 `{{root}}assets/...`，现有 `build-lessons.js` 会替换成正确的相对路径。
 
 **现有构建器按 `js/course.js` 中的目录生成页面，并不会自动扫描新增 HTML。**
 
 - 更新已有知识页：在“编辑本页”中使用该页已有 slug，将生成的对应 HTML 和资源复制到网站后运行 `node scripts/build-lessons.js`。
-- 增加知识页：先按 `course-pages.json` 的条目登记到 `js/course.js` 对应小节的 `pages` 数组，再运行构建。工具不自动重写已有学习记录 ID 或整个课程目录。
+- 增加知识页：先将页面 slug、标题和说明登记到 `js/course.js` 对应小节的 `pages` 数组，再运行构建。工具不自动重写已有学习记录 ID 或整个课程目录。
 - 新章节：正文可按配置导出到 `chapterXX`；当前网站构建器本身仅覆盖第一章，因此第二章以后的整站构建仍需扩展原构建器。
-- 页面标题和说明写入 manifest／course-pages；独立网页的页头由网站构建器负责，默认正文不重复输出它们。
-- 单独下载 HTML 不含图片资源；含图页面应下载完整 ZIP。选择目录写入时，浏览器会要求目录权限，已有同名文件会列出后再覆盖。
+- 页面标题和说明由 `js/course.js` 的课程目录提供；独立网页的页头由网站构建器负责，默认正文不重复输出它们。
+- TeX 引用的课程图片沿用网站现有的 `assets/chapterXX/` 路径，不重复打包或写入图片文件。图形 SVG 和对应 TeX 源码也按当前章节放在 `assets/chapterXX/`。选择目录写入时，若目标网站已有 `css/tex2html.css`，该文件会自动保留；其他同名 HTML、SVG 或 TeX 文件会列出并在确认后覆盖。ZIP 包含共享 CSS，供尚未安装该样式的目标网站使用。
 
 ## 9. 测试 TeX 与验证
 
@@ -275,4 +279,4 @@ Remove-Item Env:TEX2HTML_LATEX_TEST
 第二阶段可以继续扩展图形依赖与分页编辑；第三阶段可以完善多栏、表格、脚注、overlay 语义和课程目录的自动登记。当前提供的第一阶段功能、附加编辑／导出功能和局限均以上述说明为准。
 ### 共享 CSS
 
-“结果预览”中的 CSS 标签显示当前工作区的共享样式。首次转换时自动生成一次；之后不会随 TeX 文件切换或重复转换而覆盖。可以直接编辑并点击“保存 CSS”，导出 ZIP 和目录写入会使用已保存的 `assets/tex2html.css`。点击“恢复自动生成”才会根据当前转换规则重新生成。
+“结果预览”中的 CSS 标签显示当前工作区的共享样式。首次转换时自动生成一次；之后不会随 TeX 文件切换或重复转换而覆盖。可以直接编辑并点击“保存 CSS”，导出 ZIP 和目录写入会使用已保存的 `css/tex2html.css`。点击“恢复自动生成”才会根据当前转换规则重新生成。

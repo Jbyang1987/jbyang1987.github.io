@@ -1,0 +1,345 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="4.1 行列式定义；行列式，线性代数课程。"><title>4.1 行列式定义 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter04" data-section="chapter04-section01"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter04.html">第四章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第1节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="行列式定义简介、进度与目录"><header class="chapter-intro"><h1>4.1 行列式定义</h1><p>围绕行列式定义展开定义、性质、计算与应用。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter04-section01" href="lesson-4-1-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 6</span></div><progress data-section-meter="chapter04-section01" max="6" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="行列式定义知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-4-1-1.html">4.1.1 行列式定义 · 第1页</a><span data-unit-status="chapter04-section01-lesson-4-1-1">未标记</span></li><li><a href="lesson-4-1-2.html">4.1.2 行列式定义 · 第2页</a><span data-unit-status="chapter04-section01-lesson-4-1-2">未标记</span></li><li><a href="lesson-4-1-3.html">4.1.3 行列式定义 · 第3页</a><span data-unit-status="chapter04-section01-lesson-4-1-3">未标记</span></li><li><a href="lesson-4-1-4.html">4.1.4 行列式定义 · 第4页</a><span data-unit-status="chapter04-section01-lesson-4-1-4">未标记</span></li><li><a href="lesson-4-1-5.html">4.1.5 行列式定义 · 第5页</a><span data-unit-status="chapter04-section01-lesson-4-1-5">未标记</span></li><li><a href="lesson-4-1-6.html">4.1.6 行列式定义 · 第6页</a><span data-unit-status="chapter04-section01-lesson-4-1-6">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-4-1-1" data-reading-unit="chapter04-section01-lesson-4-1-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.1.1</span><h2><a class="heading-link" href="lesson-4-1-1.html">行列式定义 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-1-1-lesson-4-1-1">
+  <p class="tex-hierarchy">行列式 / 行列式定义</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">考察线性方程组</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[ \tag{$*$}
+  \left\{\begin{array}{ccccccccc}
+  a_{11}x_1&amp; +&amp; a_{12}x_2 &amp; + &amp; \cdots &amp; + &amp; a_{1n}x_n &amp;= &amp; b_1\\
+  a_{21}x_1&amp; +&amp; a_{22}x_2 &amp; + &amp; \cdots &amp; + &amp; a_{2n}x_n &amp;= &amp; b_2\\
+  \vdots &amp;&amp;  \vdots &amp;&amp;  \ddots &amp;&amp;  \vdots &amp;&amp;  \vdots \\
+  a_{m1}x_1&amp; +&amp; a_{m2}x_2 &amp; + &amp; \cdots &amp; + &amp; a_{mn}x_n &amp;= &amp; b_m\\
+  \end{array}\right.
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">当\(n=2\)时,若\(a_{11}a_{22}-a_{12}a_{21}\neq0\), 则通过消元法可证明方程组有唯一解</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \left\{\begin{array}{ccccccccc}
+  x_1 &amp;=&amp; \frac{b_1a_{22}-b_2a_{12}}{a_{11}a_{22}-a_{12}a_{21}} \\
+  x_2 &amp;=&amp; \frac{b_2a_{11}-b_1a_{21}}{a_{11}a_{22}-a_{12}a_{21}} \\
+  \end{array}\right.
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">对任意四个数 \(a,b,c,d\), 引入记号</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\det\begin{pmatrix}a&amp;b\\c&amp;d\\\end{pmatrix} := \begin{vmatrix}a&amp;b\\c&amp;d\\\end{vmatrix} := ad - bc,\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">则方程的公式解可简洁地表示为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[x_1 = \frac{\begin{vmatrix}b_1&amp;a_{12}\\b_2&amp;a_{22}\\\end{vmatrix}}{\begin{vmatrix}a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}\\\end{vmatrix}}, \quad x_2 = \frac{\begin{vmatrix}a_{11}&amp;b_{1}\\a_{21}&amp;b_{2}\\\end{vmatrix}}{\begin{vmatrix}a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}\\\end{vmatrix}}.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">当\(n=3\)时, 方程组为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \left\{\begin{array}{ccccccc}
+  a_{11}x_1&amp; +&amp; a_{12}x_2 &amp; +  &amp; a_{13}x_3 &amp;= &amp; b_1\\
+  a_{21}x_1&amp; +&amp; a_{22}x_2 &amp; +  &amp; a_{23}x_3 &amp;= &amp; b_2\\
+  a_{31}x_1&amp; +&amp; a_{32}x_2 &amp; +  &amp; a_{33}x_3 &amp;= &amp; b_3\\
+  \end{array}\right.
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">若方程组有唯一解,通过消元法(见课本p64-65)可得</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\left\{
+  \begin{aligned}
+  x_1 &amp;= \frac{
+  b_1\begin{vmatrix}a_{22}&amp;a_{23}\\a_{32}&amp;a_{33}\\\end{vmatrix}
+  -b_2\begin{vmatrix}a_{12}&amp;a_{13}\\a_{32}&amp;a_{33}\\\end{vmatrix}
+  +b_3\begin{vmatrix}a_{12}&amp;a_{13}\\a_{22}&amp;a_{23}\\\end{vmatrix}
+  }{
+  a_{11}\begin{vmatrix}a_{22}&amp;a_{23}\\a_{32}&amp;a_{33}\\\end{vmatrix}
+  -a_{21}\begin{vmatrix}a_{12}&amp;a_{13}\\a_{32}&amp;a_{33}\\\end{vmatrix}
+  +a_{31}\begin{vmatrix}a_{12}&amp;a_{13}\\a_{22}&amp;a_{23}\\\end{vmatrix}} \\[1mm]
+  x_2 &amp;= \frac{
+  -b_1\begin{vmatrix}a_{21}&amp;a_{23}\\a_{31}&amp;a_{33}\\\end{vmatrix}
+  +b_2\begin{vmatrix}a_{11}&amp;a_{13}\\a_{31}&amp;a_{33}\\\end{vmatrix}
+  -b_3\begin{vmatrix}a_{11}&amp;a_{13}\\a_{21}&amp;a_{23}\\\end{vmatrix}
+  }{
+  a_{11}\begin{vmatrix}a_{22}&amp;a_{23}\\a_{32}&amp;a_{33}\\\end{vmatrix}
+  -a_{21}\begin{vmatrix}a_{12}&amp;a_{13}\\a_{32}&amp;a_{33}\\\end{vmatrix}
+  +a_{31}\begin{vmatrix}a_{12}&amp;a_{13}\\a_{22}&amp;a_{23}\\\end{vmatrix}} \\[1mm]
+  x_3 &amp;= \frac{
+  b_1\begin{vmatrix}a_{21}&amp;a_{22}\\a_{31}&amp;a_{32}\\\end{vmatrix}
+  -b_2\begin{vmatrix}a_{11}&amp;a_{12}\\a_{31}&amp;a_{32}\\\end{vmatrix}
+  +b_3\begin{vmatrix}a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}\\\end{vmatrix}
+  }{
+  a_{11}\begin{vmatrix}a_{22}&amp;a_{23}\\a_{32}&amp;a_{33}\\\end{vmatrix}
+  -a_{21}\begin{vmatrix}a_{12}&amp;a_{13}\\a_{32}&amp;a_{33}\\\end{vmatrix}
+  +a_{31}\begin{vmatrix}a_{12}&amp;a_{13}\\a_{22}&amp;a_{23}\\\end{vmatrix}}
+  \end{aligned}\right.
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">引入记号</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{aligned}
+  \det&amp;\begin{pmatrix}a_{11}&amp;a_{12}&amp;a_{13}\\a_{21}&amp;a_{22}&amp;a_{23}\\a_{31}&amp;a_{32}&amp;a_{33}\\\end{pmatrix}
+     := \begin{vmatrix}a_{11}&amp;a_{12}&amp;a_{13}\\a_{21}&amp;a_{22}&amp;a_{23}\\a_{31}&amp;a_{32}&amp;a_{33}\\\end{vmatrix}\\
+   &amp; := a_{11}\begin{vmatrix}a_{22}&amp;a_{23}\\a_{32}&amp;a_{33}\\\end{vmatrix}
+       -a_{21}\begin{vmatrix}a_{12}&amp;a_{13}\\a_{32}&amp;a_{33}\\\end{vmatrix}
+       +a_{31}\begin{vmatrix}a_{12}&amp;a_{13}\\a_{22}&amp;a_{23}\\\end{vmatrix}.\\
+  \end{aligned}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">则方程的公式解可简化为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  x_1 = \frac{
+  \begin{vmatrix}b_{1}&amp;a_{12}&amp;a_{13}\\b_{2}&amp;a_{22}&amp;a_{23}\\b_{3}&amp;a_{32}&amp;a_{33}\\\end{vmatrix}
+  }{
+  \begin{vmatrix}a_{11}&amp;a_{12}&amp;a_{13}\\a_{21}&amp;a_{22}&amp;a_{23}\\a_{31}&amp;a_{32}&amp;a_{33}\\\end{vmatrix}}
+  \quad x_2 = \frac{
+  \begin{vmatrix}a_{11}&amp;b_{1}&amp;a_{13}\\a_{21}&amp;b_{2}&amp;a_{23}\\a_{31}&amp;b_{3}&amp;a_{33}\\\end{vmatrix}
+  }{
+  \begin{vmatrix}a_{11}&amp;a_{12}&amp;a_{13}\\a_{21}&amp;a_{22}&amp;a_{23}\\a_{31}&amp;a_{32}&amp;a_{33}\\\end{vmatrix}}
+  \quad x_3 = \frac{
+  \begin{vmatrix}a_{11}&amp;a_{12}&amp;b_{1}\\a_{21}&amp;a_{22}&amp;b_{2}\\a_{31}&amp;a_{32}&amp;b_{3}\\\end{vmatrix}
+  }{
+  \begin{vmatrix}a_{11}&amp;a_{12}&amp;a_{13}\\a_{21}&amp;a_{22}&amp;a_{23}\\a_{31}&amp;a_{32}&amp;a_{33}\\\end{vmatrix}}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">利用归纳法, 我们可以引入\(n\)-阶行列式, 将其定义为\(n\)个\(n-1\)行列式的某个组合. 从而将一般的\(n\)-元线性方程组的公式解表示为两个 \(n\)-阶行列式的比值.</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式定义 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section01-lesson-4-1-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section01-lesson-4-1-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section01-lesson-4-1-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section01-lesson-4-1-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section01-lesson-4-1-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-4-1-2" data-reading-unit="chapter04-section01-lesson-4-1-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.1.2</span><h2><a class="heading-link" href="lesson-4-1-2.html">行列式定义 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-1-2-lesson-4-1-2">
+  <p class="tex-hierarchy">行列式 / 行列式定义</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: figure -->
+  <figure class="tex-figure"><img src="../../../assets/chapter04/figure-fig-4268fe1b.svg" class="tex-figure-light" alt="TikZ 图形" width="640"><img class="tex-figure-dark" src="../../../assets/chapter04/figure-fig-4268fe1b-dark.svg" alt="TikZ 图形" width="640"><figcaption>TikZ 图形</figcaption></figure>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">给定两个二维数组向量\((a,b)\)和\((c,d)\).如图我们有平行四边形. 
+      这时平行四边形的(有向)面积为 \(S=ad-bc=:\begin{vmatrix} a &amp; b\\ c &amp; d \\\end{vmatrix}\).</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">给定三个三维数组向量\((a_{11},a_{12},a_{13})\),\((a_{21},a_{22},a_{23})\)和\((a_{31},a_{32},a_{33})\).如图我们可构造一个平行六面体.  其(有向)体积正好为</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\Delta= a_{11}\begin{vmatrix} a_{22} &amp; a_{23} \\ a_{32} &amp; a_{33} \end{vmatrix}
+      - a_{12}\begin{vmatrix} a_{21} &amp; a_{23} \\ a_{31} &amp; a_{33} \end{vmatrix}
+      + a_{13}\begin{vmatrix} a_{21} &amp; a_{22} \\ a_{31} &amp; a_{32} \end{vmatrix}.
+      \]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若给定\(n\)个\(n\)维数组向量呢？</div>
+    </li>
+  </ul>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式定义 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section01-lesson-4-1-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section01-lesson-4-1-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section01-lesson-4-1-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section01-lesson-4-1-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section01-lesson-4-1-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-4-1-3" data-reading-unit="chapter04-section01-lesson-4-1-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.1.3</span><h2><a class="heading-link" href="lesson-4-1-3.html">行列式定义 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-1-3-lesson-4-1-3">
+  <p class="tex-hierarchy">行列式 / 行列式定义</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">4.1.1</span> <span class="math-block-title">行列式</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">方阵\(A=(a_{ij})_{n\times n}\)的<span class="tex-color-blue">行列式</span>记为</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(A) \quad \text{或} \quad
+      \begin{vmatrix}
+      a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\
+      a_{21}&amp;a_{22}&amp;\cdots&amp;a_{2n}\\
+      \cdots&amp;\cdots&amp;\cdots&amp;\cdots\\
+      a_{n1}&amp;a_{n2}&amp;\cdots&amp;a_{nn}\\
+      \end{vmatrix}_.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">当\(n=1\)时,</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(A):=a_{11}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">当\(n\geq2\)时, \(\det(A)\)递归地定义为</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(A):=\sum_{k=1}^n(-1)^{k+1}a_{k1}\cdot
+      \begin{vmatrix}
+      a_{12}&amp;a_{13}&amp;\cdots&amp;a_{1n}\\
+      \cdots&amp;\cdots&amp;\cdots&amp;\cdots\\
+      a_{k-1,2}&amp;a_{k-1,3}&amp;\cdots&amp;a_{k-1,n}\\
+      a_{k+1,2}&amp;a_{k+1,3}&amp;\cdots&amp;a_{k+1,n}\\
+      \cdots&amp;\cdots&amp;\cdots&amp;\cdots\\
+      a_{n2}&amp;a_{n,3}&amp;\cdots&amp;a_{nn}\\
+      \end{vmatrix} \]</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式定义 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section01-lesson-4-1-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section01-lesson-4-1-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section01-lesson-4-1-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section01-lesson-4-1-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section01-lesson-4-1-3" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-4-1-4" data-reading-unit="chapter04-section01-lesson-4-1-4"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.1.4</span><h2><a class="heading-link" href="lesson-4-1-4.html">行列式定义 · 第4页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-1-4-lesson-4-1-4">
+  <p class="tex-hierarchy">行列式 / 行列式定义</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\begin{vmatrix}a&amp;b\\c&amp;d\end{vmatrix}=ad-bc\),
+
+      \(\begin{vmatrix}a_1&amp;a_2&amp;a_3\\b_1&amp;b_2&amp;b_3\\c_1&amp;c_2&amp;c_3\end{vmatrix}=a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_1b_3c_2-a_2b_1c_3-a_3b_2c_1\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: question -->
+  <section class="math-block math-block-question">
+    <div class="math-block-heading"><span class="math-block-label">思考</span> <span class="math-block-number">4.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">用定义计算\(n\)阶行列式需要计算多少个乘法?</div>
+    </div>
+  </section>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[10 \text{ 阶行列式} \ \rightsquigarrow \ 10!\times 9 \text{ 个乘法} \ \rightsquigarrow \ \frac{10!\times 9}{24\times60\times60}=378\text{天}.\]</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式定义 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section01-lesson-4-1-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section01-lesson-4-1-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section01-lesson-4-1-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section01-lesson-4-1-4" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section01-lesson-4-1-4" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-4-1-5" data-reading-unit="chapter04-section01-lesson-4-1-5"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.1.5</span><h2><a class="heading-link" href="lesson-4-1-5.html">行列式定义 · 第5页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-1-5-lesson-4-1-5">
+  <p class="tex-hierarchy">行列式 / 行列式定义</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">4.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">由矩阵\(A=(a_{ij})_{m\times n}\)的第\(i_1,i_2,\cdots,i_r\)行和第\(j_1,j_2,\cdots,j_s\)列上的元素依次排列组成的\(r\times s\)矩阵称为\(A\)的<span class="tex-color-blue">子矩阵</span>,记作</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[A\left({i_1i_2\cdots i_r\atop j_1j_2\cdots j_s}\right) = \begin{pmatrix}
+      a_{i_1j_1}&amp;a_{i_1j_2}&amp;\cdots&amp;a_{i_1j_s}\\
+      a_{i_2j_1}&amp;a_{i_2j_2}&amp;\cdots&amp;a_{i_2j_s}\\
+      \cdots&amp;\cdots&amp;\cdots&amp;\cdots\\
+      a_{i_rj_1}&amp;a_{i_rj_2}&amp;\cdots&amp;a_{i_rj_s}\\
+      \end{pmatrix}\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若 \(A=\left(\begin{array}{cccc}
+      11 &amp; 12 &amp; 13 &amp; 14\\
+      21 &amp; 22 &amp; 23 &amp; 24\\
+      31 &amp; 32 &amp; 33 &amp; 34\\
+      41 &amp; 42 &amp; 43 &amp; 44\\
+      \end{array}\right)\),
+
+      则 \(A\left({{1 3}\atop {1 3}}\right)  =  \left(\begin{array}{cccc}
+      11 &amp; 13 \\
+      31 &amp; 33 \\
+      \end{array}\right)\);
+
+      \(A\left({{412}\atop {13}}\right) =  \left(\begin{array}{cccc}
+      41 &amp; 43\\
+      11 &amp; 13\\
+      21 &amp; 23\\
+      \end{array}\right)\);</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式定义 · 第5页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section01-lesson-4-1-5" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section01-lesson-4-1-5" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section01-lesson-4-1-5" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section01-lesson-4-1-5" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section01-lesson-4-1-5" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-4-1-6" data-reading-unit="chapter04-section01-lesson-4-1-6"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.1.6</span><h2><a class="heading-link" href="lesson-4-1-6.html">行列式定义 · 第6页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-1-6-lesson-4-1-6">
+  <p class="tex-hierarchy">行列式 / 行列式定义</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">4.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">给定一个\(n\)阶矩阵\(A=(a_{ij})_{n\times n}\).</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">称 \(M_{ij}:=\det\left(A\left({{1,\cdots,i-1,i+1,\cdots,n}\atop{1,\cdots,j-1,j+1,\cdots,n}}\right)\right)\)为元素\(a_{ij}\)的<span class="tex-color-blue">余子式</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">称\(A_{ij}:=(-1)^{i+j}M_{ij}\)为\(a_{ij}\)的<span class="tex-color-blue">代数余子式</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">更一般地,称\(A\)的某个\(k\)阶子矩阵的行列式为\(A\)的<span class="tex-color-blue">\(k\)阶子式</span>,删去子式所在的行列所得的矩阵的行列式称为该子式的<span class="tex-color-blue">余子式</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">特别地,我们称\(\det\left(A\left({{1,2,\cdots,k}\atop{1,2,\cdots,k}}\right)\right)\)为\(A\)的<span class="tex-color-blue">\(k\)阶主子式</span>.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">根据这个定义,我们可以将行列式的定义式简写为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\boxed{\det(A) := \sum_{i=1}^na_{i1}A_{i1} = \sum_{i=1}^{n}(-1)^{i+1}a_{i1}M_{i1}.}\]</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\begin{vmatrix}
+      a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\
+        &amp;a_{22}&amp;\ddots&amp;\vdots\\
+        &amp;      &amp;\ddots&amp;a_{n2}\\
+        &amp;      &amp;      &amp;a_{nn}\\
+      \end{vmatrix}=a_{11}a_{22}\cdots a_{nn}.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\begin{vmatrix}
+        &amp;      &amp;      &amp;a_{1n}\\
+        &amp;      &amp;\iddots&amp;a_{2n}\\
+        &amp; a_{n-1,2}&amp;\iddots&amp;\vdots\\
+      a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\\
+      \end{vmatrix}=(-1)^{\frac{n(n-1)}{2}}a_{n1}a_{n-1,2}\cdots a_{1n}.\]</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式定义 · 第6页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section01-lesson-4-1-6" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section01-lesson-4-1-6" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section01-lesson-4-1-6" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section01-lesson-4-1-6" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section01-lesson-4-1-6" role="status" aria-live="polite"></p></div></section><nav class="lesson-navigation" aria-label="子节导航"><a href="../../../index.html">返回课程首页</a><a href="index.html#main">回顾本节</a><a href="../section02/index.html">下一节 · 4.2 行列式性质</a></nav></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

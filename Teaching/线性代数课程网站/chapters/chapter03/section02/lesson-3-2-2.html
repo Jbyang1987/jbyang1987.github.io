@@ -1,0 +1,71 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="矩阵与线性映射；矩阵(一)，线性代数课程。"><title>矩阵与线性映射 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter03" data-section="chapter03-section02" data-unit="chapter03-section02-lesson-3-2-2"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter03.html">第三章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第2节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第2小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§3.2.2</span><span>矩阵与线性映射</span></h1><p class="knowledge-goal">矩阵与线性映射</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-2-2-lesson-3-2-2">
+  <p class="tex-hierarchy">矩阵(一) / 矩阵乘法</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">给定线性映射 \({\mathscr A}\colon {\mathbb F}^n\rightarrow {\mathbb F}^m\). 考虑基本向量\(\vec{e}_j\)在这个映射下的像</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\mathscr A}(\vec{e}_j)={\mathscr A}\left(\begin{pmatrix}0\\\vdots\\1\\\vdots\\0\end{pmatrix}\right)=:\begin{pmatrix}a_{1j}\\a_{2j}\\\vdots\\a_{mj}\end{pmatrix}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">因此,通过线性映射\({\mathscr A}\),可以得到一个矩阵 \(A=(a_{ij})_{m\times n}\).</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">根据\({\mathscr A}\)为线性映射,对于任意 \(y_1,\cdots,y_n\in {\mathbb F}\),我们有</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\label{equ:linearmap} \tag{$*$}
+      {\mathscr A}\left(\begin{pmatrix}y_1\\y_2\\\vdots\\y_n\end{pmatrix}\right)
+      =\begin{pmatrix} a_{11}y_1+a_{12}y_2+\cdots+a_{1n}y_n\\ \\ a_{21}y_1+a_{22}y_2+\cdots+a_{2n}y_n\\ \\ \vdots\\ a_{m1}y_1+a_{m2}y_2+\cdots+a_{mn}y_n\end{pmatrix}.
+      \]</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">注：</span> 线性映射 \(\mathscr{A}\) 由其在基本向量处的值唯一确定。</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">反之, 给定矩阵\(A\)我们可以通过\(\eqref{equ:linearmap}\), 确定一个线性映射\({\mathscr A}\).</div>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph"><span>
+    \({\mathbb F}^{m\times n}\) \(\quad\) \(\overset{\quad 1:1\quad }{\leftrightarrow}\)  
+    从\({\mathbb F}^n\)到\({\mathbb F}^m\)的全体线性映射.</span></div>
+  </div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">注：</span> 一个从\({\mathbb F}^m\)到\({\mathbb F}^n\) 的映射是线性的，当且仅当其每个分量都为一次齐次函数.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">思考：前面定义的各种矩阵在几何中对应哪些线性映射？</span>
+
+  例如：<span class="tex-color-blue">零矩阵</span>、\(n\)阶<span class="tex-color-blue">方阵</span>、<span class="tex-color-blue">单位阵</span>、<span class="tex-color-blue">数量矩阵</span>、<span class="tex-color-blue">对角矩阵</span>.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">类似于函数的加法和数乘；线性映射也可考虑加法和数乘。</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">思考：用矩阵的语言，线性映射的加法和数乘是如何描述的？</span></div>
+
+  <!-- TeX block: lemma -->
+  <section class="math-block math-block-lemma">
+    <div class="math-block-heading"><span class="math-block-label">引理</span> <span class="math-block-number">3.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">线性映射的合成仍然是线性映射.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">思考：用矩阵的语言，线性映射的合成是如何描述的？</span></div>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="矩阵与线性映射的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section02-lesson-3-2-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section02-lesson-3-2-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section02-lesson-3-2-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-3-2-1.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="lesson-3-2-3.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section02-lesson-3-2-2" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter03-section02-lesson-3-2-2" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter03-section02-lesson-3-2-2" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

@@ -1,0 +1,63 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-1-lesson-4-2-1">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.1</span> <span class="math-block-title">行列式列展开</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A=(a_{ij})_{n\times n}\)为\(n\)阶方阵.则对任意\(1\leq j \leq n\)</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\boxed{\det(A)=\sum_{i=1}^na_{ij}A_{ij} = \sum_{i=1}^{n}(-1)^{i+j}a_{ij}M_{ij}.}\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">思路: 根据对行列式阶数的归纳, 将行列式
+  \[\det(A):=\sum_{i&#39;=1}^{n}(-1)^{i&#39;+1}a_{i&#39;1}M_{i&#39;1}\]
+  中的\(M_{i&#39;1}\) 按第 \(j-1\)列(即,原行列式的第\(j\)行)再次展开. 同时右式
+  \[\sum_{i=1}^{n}(-1)^{i+j}a_{ij}M_{ij}\]
+  中的 \(M_{ij}\) 按第一列展开. 然后比较两式是否相等即可.</span></div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[ \tiny
+  \begin{split}
+  \det(A)
+  &amp; = \sum_{i&#39; =1}^{n} (-1)^{i&#39; +1}a_{i&#39; 1}M_{i&#39; 1} \\ 
+  &amp; = \sum_{i&#39; =1}^{n} (-1)^{i&#39; +1}a_{i&#39; 1} \left(\sum_{i =1}^{i&#39; -1} (-1)^{(j-1)+i } a_{i j}  \cdot M\left[{i&#39; ,i }\atop{1,j}\right] + \sum_{i =i&#39; +1}^{n}(-1)^{(i -1)+(j-1)} a_{i j} \cdot M\left[{i&#39; ,i }\atop{1,j}\right] \right)\\ 
+  &amp; = \sum_{i =1}^{n} (-1)^{i +j}a_{i j}\left(\sum_{i&#39; =1}^{i -1} (-1)^{i&#39; +1} a_{i&#39; 1} M\left[{i&#39; ,i }\atop{1,j}\right] + \sum_{i&#39; =i +1}^{n}(-1)^{(i&#39; -1)+1} a_{i&#39; 1}  \cdot  M\left[{i&#39; ,i }\atop{1,j}\right] \right)\\ 
+  &amp; = \sum_{i =1}^{n} (-1)^{i +j}a_{i j} M_{i j} \\  
+  &amp; = \sum_{i=1}^{n} a_{ij}A_{ij} \\ 
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.5</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\begin{vmatrix}
+      a_{11}&amp;&amp;&amp;\\
+       a_{21} &amp;a_{22}&amp;&amp;\\
+       \vdots &amp;    \ddots  &amp;\ddots&amp;\\
+        a_{n1}&amp;    \cdots   &amp; a_{n,n-1}    &amp;a_{nn}\\
+      \end{vmatrix}=a_{11}a_{22}\cdots a_{nn}.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\begin{vmatrix}
+      a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\
+      a_{21}&amp; \iddots &amp;\iddots&amp;\\
+      \vdots&amp;a_{n-1,2}&amp; &amp; \\
+      a_{n1}&amp; &amp; &amp;\\
+      \end{vmatrix}=(-1)^{\frac{n(n-1)}{2}}a_{n1}a_{n-1,2}\cdots a_{1n}.\]</div>
+    </div>
+  </section>
+</div>

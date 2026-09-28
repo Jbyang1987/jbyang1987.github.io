@@ -1,0 +1,197 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="线性方程组解空间定性分析；线性方程组，线性代数课程。"><title>线性方程组解空间定性分析 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter02" data-section="chapter02-section04" data-unit="chapter02-section04-lesson-2-4-2"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter02.html">第二章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第4节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第2小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§2.4.2</span><span>线性方程组解空间定性分析</span></h1><p class="knowledge-goal">线性方程组解空间定性分析</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-2-4-2-lesson-2-4-2">
+  <p class="tex-hierarchy">线性方程组 / 一般线性方程组的Gauss消元法</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">2.1.2</span> <span class="math-block-title">解集大小判定</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">方程组\(\eqref{system_of_linear_equations}\)的解有如下性质：</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(d_{r+1}\neq0\), 则无解；</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(d_{r+1}=0\)且\(r=n\), 则解唯一；</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(d_{r+1}=0\)且\(r&lt;n\), 则有多解.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.13</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\tiny \left(\begin{array}{rrrrr}3&amp;-2&amp;5&amp;4&amp;2\\0&amp;-3&amp;-6&amp;-5&amp;-1\\0&amp;0&amp;0&amp;0&amp;{\textcolor[rgb]{1,0,0}{-6}}\\\end{array}\right)\qquad \left(\begin{array}{rrrr}1&amp;0&amp;0&amp;1\\0&amp;1&amp;0&amp;2\\0&amp;0&amp;1&amp;1\\\end{array}\right) \qquad \left(\begin{array}{rrrrr}1&amp;0&amp;-1&amp;-1&amp;-5\\0&amp;1&amp;2&amp;2&amp;6\\0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0\\\end{array}\right)\)</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">显然\((0,\dots,0)\)为齐次线性方程的一组解，我们称之为<span class="tex-color-blue">零解</span>或<span class="tex-color-blue">平凡解</span>. 齐次线性方程组的非零解称为<span class="tex-color-blue">非平凡解</span>.</div>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">2.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">齐次线性方程组有非平凡解当且仅当\(r&lt;n\). 特别地，若齐次方程个数小于变量个数, 即 \(m&lt;n\)，则其一定有非平凡解.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">注： 数量\(r\)代表独立方程的个数，它决定了解集的“大小”.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">\(\bullet\) 若\(d_{r+1}\neq0\)，则最后一个非零行代表 \(0=d_{r+1}\)。显然矛盾。因此原方程无解。</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">\(\bullet\) 若\(d_{r+1}=0\)且\(r=n\), 则</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \setlength{\arraycolsep}{2pt}
+  \text{标准形式}=
+  \left(\begin{array}{ccccc}
+  c_{11} &amp; c_{12} &amp; \cdots &amp; c_{1,n} &amp;    d_1\\
+  &amp; c_{22} &amp; \cdots &amp; c_{2,n} &amp;    d_2\\
+  &amp;        &amp; \ddots &amp;  \vdots &amp; \vdots\\
+  &amp;        &amp;        &amp; c_{n,n} &amp;    d_n\\
+  &amp;        &amp;        &amp;      0  &amp;      0\\
+  \end{array}\right)
+  \xrightarrow{\text{初等变换}}
+  \left(\begin{array}{ccccc}
+  c_{11} &amp; &amp; &amp; &amp;    \widetilde{d_1}\\
+  &amp; c_{22} &amp; &amp;  &amp;    \widetilde{d_2}\\
+  &amp;        &amp; \ddots &amp;  &amp; \vdots\\
+  &amp;        &amp;        &amp; c_{n,n} &amp;    \widetilde{d_n}\\
+  &amp;        &amp;        &amp;      0   &amp;      0\\
+  \end{array}\right)
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">\(\Rightarrow\) \(\left(\frac{\widetilde{d_1}}{c_{11}},\cdots,\frac{\widetilde{d_n}}{c_{nn}}\right)\) 为原方程的唯一解。</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">\(\bullet\) 若\(d_{r+1}=0\)且\(r&lt;n\), 则标准形式可通过初等变换化为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[ \small
+  \setlength{\arraycolsep}{2pt}
+  \left(\begin{array}{cccccccccccccccccc}
+  0 \cdots  0 &amp; 1 &amp; e_{1,j_1+1}  \cdots  e_{1,j_2-1} &amp; 0 &amp; e_{1,j_2+1} &amp; \cdots &amp;\cdots &amp;\cdots &amp; e_{1,j_r-1}&amp; 0 &amp; e_{1,j_r+1} \cdots  e_{1n} &amp; f_{1} \\
+  &amp;  &amp;  &amp; 1  &amp; e_{2,j_2+1} &amp; \cdots &amp;\cdots &amp;\cdots &amp; e_{2,j_r-1}&amp; 0 &amp; e_{2,j_r+1} \cdots  e_{2n} &amp; f_{2} \\
+  &amp;  &amp; &amp;  &amp;&amp; &amp;\ddots&amp;\cdots &amp;\cdots &amp;\vdots &amp;\vdots &amp;\vdots \\
+  &amp; &amp; &amp;  &amp; &amp;&amp; &amp; &amp;&amp; 1 &amp; e_{r,j_r+1} \cdots  e_{rn} &amp; f_{r}\\
+  \end{array}\right)
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">因此，我们有</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \left\{
+  \begin{array}{ll}
+  x_{j_1} &amp;=f_1 -e_{1,j_1+1}x_{j_1+1}-\cdots-e_{1,j_2-1}x_{j_2-1}-e_{1,j_2+1}x_{j_2+1}-\cdots-e_{1,n}x_{n}\\
+  x_{j_2} &amp;=f_2 -e_{2,j_2+1}x_{j_2+1}-\cdots-e_{2,j_3-1}x_{j_3-1}-e_{2,j_3+1}x_{j_3+1}-\cdots-e_{2,n}x_{n}\\
+  &amp;\vdots\\
+  x_{j_r} &amp;=f_r -e_{r,j_r+1}x_{j_r+1}-\cdots-e_{r,n}x_{n}\\
+  \end{array}
+  \right.
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">显然，其中\(n-r\)变元\(x_{1},\cdots,x_{j_1-1},x_{j_1+1},\cdots,x_{j_r-1},x_{j_r+1},\cdots,x_n\)可取任意值，且任意给定的取值可以唯一确定剩下的变元\(x_{j_1},\cdots,x_{j_r}\)的取值。</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">从而我们可以将方程组\(\eqref{system_of_linear_equations}\)的解集表示为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\label{tong_jie}\tag{$**$}
+  \left\{
+  \begin{array}{ccccccccc}
+  x_1 &amp;=&amp; \alpha_{11}t_1 &amp;+&amp; \cdots &amp;+&amp; \alpha_{1,n-r}t_{n-r} &amp;+&amp; \beta_1,\\
+  x_2 &amp;=&amp; \alpha_{21}t_1 &amp;+&amp; \cdots &amp;+&amp; \alpha_{2,n-r}t_{n-r} &amp;+&amp; \beta_2,\\
+  \cdots  &amp;&amp; \cdots &amp;&amp;&amp;&amp;\cdots &amp;&amp; \cdots\\
+  x_n &amp;=&amp; \alpha_{n1}t_1 &amp;+&amp; \cdots &amp;+&amp; \alpha_{n,n-r}t_{n-r} &amp;+&amp; \beta_n,\\
+  \end{array}\right.
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中 \(t_1,\cdots,t_{n-r}\in \mathbb F\).   我们称\(\eqref{tong_jie}\)为方程组\(\eqref{system_of_linear_equations}\)的<span class="tex-color-blue">通解</span>.  当参数 \(t_1,\cdots,t_{n-r}\) 取一组值带入\(\eqref{tong_jie}\)得到的解成为一个<span class="tex-color-blue">特解</span>.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">\(\arraycolsep\)2pt</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.14</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求解\(\left\{\begin{array}{rrrrrrrrr}
+      2x_1 &amp; - &amp;  x_2 &amp; + &amp;  x_3 &amp; + &amp;  x_4 &amp; = &amp; 1 \\
+      x_1 &amp; + &amp; 2x_2 &amp; - &amp;  x_3 &amp; + &amp; 4x_4 &amp; = &amp; 2 \\
+      x_1 &amp; + &amp; 7x_2 &amp; - &amp; 4x_3 &amp; + &amp; 11x_4 &amp; = &amp; \lambda. \\
+      \end{array}\right.\)</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">解：\(\left(\begin{array}{rrrrr}2&amp;-1&amp;1&amp;1&amp;1\\1&amp;2&amp;-1&amp;4&amp;2\\1&amp;7&amp;-4&amp;11&amp;\lambda\\\end{array}\right)\)	 
+  \(\xrightarrow{r_1\leftrightarrow r_2}\)
+  \(\left(\begin{array}{rrrrr}1&amp;2&amp;-1&amp;4&amp;2\\2&amp;-1&amp;1&amp;1&amp;1\\1&amp;7&amp;-4&amp;11&amp;\lambda\\\end{array}\right)\)</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">\(\xrightarrow[-r_1\rightarrow r_3]{-2r_1\rightarrow r_2}\)
+  \(\left(\begin{array}{rrrrr}1&amp;2&amp;-1&amp;4&amp;2\\0&amp;-5&amp;3&amp;-7&amp;-3\\0&amp;5&amp;-3&amp;7&amp;\lambda-2\\\end{array}\right)\)	 
+  \(\xrightarrow[r_2\rightarrow r_3]{\frac25r_2\rightarrow r_1\atop -\frac15r_2}\)
+  \(\left(\begin{array}{rrrrr}1&amp;0&amp;\frac15&amp;\frac65&amp;\frac45\\0&amp;1&amp;-\frac35&amp;\frac75&amp;\frac35\\0&amp;0&amp;0&amp;0&amp;\lambda-5\\\end{array}\right)\).</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">因此，原方程有解当且仅当\(\lambda=5\).   当\(\lambda=5\)时，原方程通解为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\left\{\begin{array}{rl}
+  x_1 &amp; = -\frac15t_1 -\frac65t_2 + \frac45\\
+  x_2 &amp; = \frac35t_1 -\frac75t_2 + \frac35\\
+  x_3 &amp; = t_1\\
+  x_4 &amp; = t_2\\
+  \end{array}\right. \qquad t_1,t_2\in \mathbb F.\]</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">2.1.15</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">当a为何值时，下列线性方程组有解？有解时求出它的通解.</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\left\{\begin{array}{l}
+      3x_1 + 2x_2 + x_3 = 2 \\
+      x_1 - x_2 - 2x_3 = -3 \\
+      ax_1 - 2x_2 + 2x_3 = 6
+      \end{array}\right.\]</div>
+    </div>
+  </section>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性方程组解空间定性分析的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter02-section04-lesson-2-4-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter02-section04-lesson-2-4-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter02-section04-lesson-2-4-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-2-4-1.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="lesson-2-4-3.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter02-section04-lesson-2-4-2" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter02-section04-lesson-2-4-2" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter02-section04-lesson-2-4-2" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

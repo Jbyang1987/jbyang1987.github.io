@@ -1,0 +1,49 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="相似上三角化与若当标准形 · 第1页；线性映射，线性代数课程。"><title>相似上三角化与若当标准形 · 第1页 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter07" data-section="chapter07-section09" data-unit="chapter07-section09-lesson-7-9-1"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter07.html">第七章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第9节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第1小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§7.9.1</span><span>相似上三角化与若当标准形 · 第1页</span></h1><p class="knowledge-goal">相似上三角化与若当标准形 · 第1页</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-9-1-lesson-7-9-1">
+  <p class="tex-hierarchy">线性映射 / 相似上三角化与若当标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">不是每个矩阵都可以对角化,但总是可上三角化!</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.11</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">任意\(n\)阶复方阵\(A\)都相似于一个上三角形矩阵\(J\),
+
+          且</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(J\)的对角线上的元素为\(A\)的全体特征值.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路:将\(A\)的一个特征向量\(\xi_1\)扩充为\({\mathbb C}^n\)的一组基\(\xi_1,\cdots,\xi_n\),并记组成的可逆矩阵\((\xi_1,\cdots,\xi_n)\)为\(P\).
+
+  则
+  \[AP=P\begin{pmatrix} \lambda &amp; * \\ &amp; A_{22}
+  \end{pmatrix}.\]
+
+  对矩阵阶数归纳,不妨设\(A_{22}=Q\begin{pmatrix}\lambda_2&amp;&amp;*\\&amp;\ddots&amp;\\&amp;&amp;\lambda_n\\\end{pmatrix}Q^{-1}\).
+
+  则
+  \[A= P\begin{pmatrix} 1 &amp;  \\ &amp; Q\end{pmatrix} \cdot \begin{pmatrix}\lambda_1&amp;&amp;*\\&amp;\ddots&amp;\\&amp;&amp;\lambda_n\\\end{pmatrix} \left(P\begin{pmatrix} 1 &amp;  \\ &amp; Q\end{pmatrix} \right)^{-1}.\]
+  </span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">注:</span> \(J\)的取法不唯一.(例:\({0\ 1\choose0\ 0}\)和\({0\ 2\choose0\ 0}\).)</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">例:</span> 若复二阶矩阵\(A\)满足\(A^2=0\),则\(A=0\)或者\(A\)相似于\({0\ 1\choose0\ 0}\).</div>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="相似上三角化与若当标准形 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section09-lesson-7-9-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section09-lesson-7-9-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section09-lesson-7-9-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-7-9-2.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section09-lesson-7-9-1" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter07-section09-lesson-7-9-1" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter07-section09-lesson-7-9-1" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

@@ -1,0 +1,73 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="线性映射与矩阵的对应 · 第1页；线性映射，线性代数课程。"><title>线性映射与矩阵的对应 · 第1页 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter07" data-section="chapter07-section02" data-unit="chapter07-section02-lesson-7-2-1"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter07.html">第七章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第2节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第1小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§7.2.1</span><span>线性映射与矩阵的对应 · 第1页</span></h1><p class="knowledge-goal">线性映射与矩阵的对应 · 第1页</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-2-1-lesson-7-2-1">
+  <p class="tex-hierarchy">线性映射 / 线性映射与矩阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\({\mathscr A}\)为从\(n\)维\({\mathbb F}\)-向量空间\(V\)到\(m\)维\({\mathbb F}\)-向量空间的一个线性变换.分别取定\(V\)和\(W\)的一组基\(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\).
+
+  对任意\(j=1,2,\cdots,n\), 设\({\mathscr A}(\alpha_j)\in W\) 在基\(\beta_1,\cdots,\beta_m\)下的坐标为\((a_{1j},\cdots,a_{mj})^T\),
+
+  即</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\mathscr A}(\alpha_j) = a_{1j}\beta_1 + \cdots + a_{mj}\beta_m.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">则这一式子可改写为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{{\mathscr A}(\alpha_1,\cdots,\alpha_n)  := \Big({\mathscr A}(\alpha_1),\cdots,{\mathscr A}(\alpha_n)\Big) = (\beta_1,\cdots,\beta_m)A}},\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中 \(A:=(a_{ij})_{m\times n}\in F^{m\times n}\).
+
+  称 \(A\) 为<span class="tex-color-blue">线性映射 \({\mathscr A}\) 在基 \(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\)下的矩阵</span>.</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.7</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A \in{\mathbb F}^{m\times n}\). 定义从\({\mathbb F}^n\)到\({\mathbb F}^m\)的线性变换</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\mathscr A}(X) = AX.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则\({\mathscr A}\)在自然基下的矩阵为\(A\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证: 记\(e_1,\cdots,e_n\)为\({\mathbb F}^n\)的自然基, \(e&#39;_1,\cdots,e&#39;_m\)为\({\mathbb F}^m\)的自然基.则
+  \({\mathscr A}(e_1,\cdots,e_n):=({\mathscr A} e_1,\cdots,{\mathscr A} e_n)=(A e_1,\cdots,A e_n)=A(e_1,\cdots,e_n)=AI_n=A=I_mA=(e&#39;_1,\cdots,e&#39;_m)A\).</span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.8</span> <span class="math-block-title">从矩阵出发构造线性映射</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">分别取定\({\mathbb F}\)-线性空间\(V\)和\(W\)的一组基\(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\).
+
+      对于给定矩阵\(B=(b_{ij})_{m\times n}\in {\mathbb F}^{m\times n}\),如下给出一个从 \(V\)到 \(W\)的映射\({\mathscr B}\).
+
+      对任意的\(\lambda_1\alpha_1+\cdots+\lambda_n\alpha_n\in V\), 定义<small class="tex-footnote">这一定义也可改写为\({\mathscr B}\left((\alpha_1,\cdots,\alpha_n)\begin{pmatrix}\lambda_1\\\vdots\\\lambda_n\\\end{pmatrix}\right) = (\beta_1,\cdots,\beta_n)B\begin{pmatrix}\lambda_1\\\vdots\\\lambda_n\\\end{pmatrix}\).</small></div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\mathscr B}\left(\sum_{j=1}^n\lambda_j\alpha_j\right) := \sum_{i=1}^{m} \left(\sum_{j=1}^{n} b_{ij}\lambda_j\right) \beta_i.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则 \({\mathscr B}\)为从 \(V\)到 \(W\)的一个线性映射,且其在基\(\alpha_1,\cdots,\alpha_n\)和\(\beta_1,\cdots,\beta_m\)下的矩阵正好为\(B\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">从而,我们得到如下一一对应:</div>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph"><span>
+    \(\left\{\text{从$V$到$W$的}\atop \text{全体线性映射}\right\}\)   \(\underset{1:1 \atop {\mathscr A}(\alpha_1,\cdots,\alpha_n) = (\beta_1,\cdots,\beta_n)A}{\overset{\text{基} \alpha_1,\cdots,\alpha_n \atop \text{基} \beta_1,\cdots,\beta_m }{\leftrightarrow}}\)   \({\mathbb F}^{m\times n}\) </span></div>
+  </div>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="线性映射与矩阵的对应 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter07-section02-lesson-7-2-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter07-section02-lesson-7-2-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter07-section02-lesson-7-2-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-7-2-2.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter07-section02-lesson-7-2-1" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter07-section02-lesson-7-2-1" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter07-section02-lesson-7-2-1" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

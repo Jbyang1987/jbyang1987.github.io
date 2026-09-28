@@ -1,0 +1,33 @@
+\begin{tikzpicture}[scale=0.5]
+\tikzmath{\r=8;};
+\coordinate (O) at (0,0);
+\coordinate (A) at (1,2);
+\coordinate (B) at (1.5,-0.5);
+\coordinate (C) at (2.5,1.5);
+\draw[->,thick,blue](O)--(A);
+\node [above] at (A) {$(c,d)$};
+\draw[->,thick,blue](O)--(B);
+\node [right] at (B) {$(a,b)$};
+\draw[dotted](A)--(C);
+\draw[dotted](B)--(C);
+\coordinate (o) at (\r+0,0);
+\coordinate (a) at (\r+1,-1);
+\coordinate (b) at (\r+1,1);
+\coordinate (c) at (\r+1,2);
+\coordinate (ab) at (\r+2,0);
+\coordinate (ac) at (\r+2,1);
+\coordinate (bc) at (\r+2,3);
+\coordinate (abc) at (\r+3,2);
+\draw[->,thick,blue](o)--(a);\node [below] at (a) {\tiny $(a_{11},a_{12},a_{13})$};
+\draw[->,dotted,thick,blue](o)--(b);\node [left] at (b) {\tiny $(a_{21},a_{22},a_{23})$};
+\draw[->,thick,blue](o)--(c);\node [above left] at (c) {\tiny $(a_{31},a_{32},a_{33})$};
+\draw[thick,blue](a)--(ab);
+\draw[thick,blue](a)--(ac);
+\draw[dotted,thick,blue](b)--(ab);
+\draw[dotted,thick,blue](b)--(bc);
+\draw[thick,blue](c)--(ac);
+\draw[thick,blue](c)--(bc);
+\draw[thick,blue](ab)--(abc);
+\draw[thick,blue](ac)--(abc);
+\draw[thick,blue](bc)--(abc);
+\end{tikzpicture}

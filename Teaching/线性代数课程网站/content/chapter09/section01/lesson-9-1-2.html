@@ -1,0 +1,54 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-1-2-lesson-9-1-2">
+  <p class="tex-hierarchy">实二次型 / 正交相合标准形与相合规范形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">实对称矩阵的特征值分为三类:正,负,零.</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.1</span> <span class="math-block-title">相合规范形</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\)为实对称矩阵,则存在可逆阵\(P\)使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[P^TAP = \mathrm{diag}(I_r,-I_s,0). \qquad \text{($A$的{\textcolor[rgb]{0,0,1}{相合规范形}})}\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中\(r,s\)由\(A\)唯一确定不依赖于\(P\)的选取,且满足</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[r+s=\operatorname{rank}(A)\leq n.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">称\(r\)为\(A\)的<span class="tex-color-blue">正惯性指数</span>,称\(s\)为\(A\)的<span class="tex-color-blue">负惯性指数</span>,称\(r-s\)为\(A\)的<span class="tex-color-blue">符号差</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang"><span class="tex-size-tiny"></span> 证明思路:存在性,显然.
+   反证唯一性:若\(\mathrm{diag}(I_r,-I_s,0)\)与\(\mathrm{diag}(I_{r&#39;},-I_{s&#39;},0)\)相合,设\(P^T\mathrm{diag}(I_{r&#39;},-I_{s&#39;},0)P = \mathrm{diag}(I_{r},-I_{s},0)\),则\(r+s=r&#39;+s&#39;\).
+
+  不妨设\(r&lt;r&#39;\)(则\(s&gt;s&#39;\)). 记\(y=Px\). 则齐次方程组
+  \(x_1=\cdots=x_r=y_{r&#39;+1}=\cdots=y_{n}=0\) 有非零解\(x_0=(0,\cdots,0,a_{r+1},\cdots,a_n)^T\neq0\).
+
+  令\(y_0=Px_0=(b_1,\cdots,b_{r&#39;},0,\cdots,0)^T\).则
+  <div class="tex-display">\[
+  \begin{split}
+  0 &lt; b_1^2+\cdots+b_{r&#39;}^2 &amp; =(Px_0)^T\mathrm{diag}(I_{r&#39;},-I_{s&#39;},0)(Px_0) \\ &amp; =x_0^T\mathrm{diag}(I_{r},-I_{s},0)x_0=-a_{r+1}^2-\cdots-a_{r+s}^2\leq0. \\
+  \end{split}
+  \]</div>
+  </span>
+
+  注:规范形唯一.其中\(r\), \(s\)分别为\(A\)的正特征值和负特征值的个数.</div>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">9.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(n\)阶实对称矩阵\(A\)正定当且仅当其正惯性指数为\(n\).</div>
+    </div>
+  </section>
+</div>

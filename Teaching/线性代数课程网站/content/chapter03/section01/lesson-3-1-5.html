@@ -1,0 +1,173 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-1-5-lesson-3-1-5">
+  <p class="tex-hierarchy">矩阵(一) / 矩阵及其线性运算</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">3.1.2</span> <span class="math-block-title">加法与数乘</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\lambda\)为数域\({\mathbb F}\)中的数. 取两个\({\mathbb F}\)系数的\(m\times n\)矩阵 \(A=(a_{ij})_{m\times n}\in {\mathbb F}^{m\times n}\), \(B=(b_{ij})_{m\times n}\in {\mathbb F}^{m\times n}\).   定义</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-size-footnotesize"></span></div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">加法</span></div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{A + B}} :=(a_{ij}+b_{ij})_{m\times n}:=\begin{pmatrix}
+          a_{11}+b_{11} &amp; a_{12}+b_{12} &amp; \cdots &amp; a_{1 n}+b_{1n}\\
+          a_{21}+b_{21} &amp; a_{22}+b_{22} &amp; \cdots &amp; a_{2 n}+b_{2n}\\
+          \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+          a_{m 1}+b_{m1} &amp; a_{m 2}+b_{m2} &amp; \cdots &amp; a_{mn}+b_{mn}
+          \end{pmatrix}_,\]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">数乘</span></div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{\lambda A}} :=(\lambda a_{ij})_{m\times n}:=\begin{pmatrix}
+          \lambda a_{11} &amp; \lambda a_{12} &amp; \cdots &amp; \lambda a_{1 n}\\
+          \lambda a_{21} &amp; \lambda a_{22} &amp; \cdots &amp; \lambda a_{2 n}\\
+          \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+          \lambda a_{m 1} &amp; \lambda a_{m 2} &amp; \cdots &amp; \lambda a_{mn}
+          \end{pmatrix}_.\]</div>
+        </li>
+      </ul>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">类似地定义<span class="tex-color-blue">负矩阵</span>和矩阵的<span class="tex-color-blue">减法</span>运算:</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{-A}}:=(-a_{ij})_{m\times n}, \quad {\textcolor[rgb]{0,0,1}{A-B}}:=A+(-B) = (a_{ij}-b_{ij})_{m\times n}.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>注</strong>: 只有行数和列数相同的矩阵才可以相加减. 否则无意义.</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(A = \left(\begin{array}{ccc}
+          1 &amp; 3 &amp; 5\\
+          - 1 &amp; 2 &amp; 4
+          \end{array}\right)\), \(B = \left(\begin{array}{ccc}
+          2 &amp; - 1 &amp; 3\\
+          7 &amp; 3 &amp; 1
+          \end{array}\right)\)，求\(A+B\)和\(A-B\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(A = \left(\begin{array}{ccc}
+          1 &amp; 3 &amp; 5\\
+          - 1 &amp; 2 &amp; 4
+          \end{array}\right)\), 求\(2A\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(A=\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}\), \(B=\begin{pmatrix}3&amp;5\\7&amp;6\end{pmatrix}\), \(C=\begin{pmatrix}0&amp;-1\\9&amp;3\end{pmatrix}\).</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">求 \(3A+2B-4C\).</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">若\(5A+3X =B\). 求\(X\).</div>
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">类似于向量的线性运算,矩阵的线性运算也满足如下八条基本性质:</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">3.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">加法交换律: \(A+B=B+A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">加法结合律: \(A+(B+C)=(A+B)+C\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">有零矩阵: \(A+0=A=0+A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">有负矩阵: \(A+(-A)=0=(-A)+A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">数乘单位元: \(1A = A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">数乘结合律: \(\lambda(\mu A)=(\lambda \mu)A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">左分配律: \((\lambda+\mu)A=\lambda A + \mu A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">右分配律: \(\lambda (A+B) =\lambda A + \lambda B\);</div>
+        </li>
+      </ol>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中 \(A,B,C\) 为使得运算有有意义的矩阵, \(\lambda,\mu\)为数.</div>
+    </div>
+  </section>
+</div>

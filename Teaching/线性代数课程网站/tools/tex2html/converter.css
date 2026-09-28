@@ -48,3 +48,134 @@
 .tex-token-command{color:#8b3fb5;font-weight:600}.tex-token-comment{color:#8a96a9;font-style:italic}.tex-token-math{color:#c2410c}.tex-token-brace{color:#2563eb}.lecture-code-preview[data-code-theme=dark] .tex-token-command{color:#d8b4fe}.lecture-code-preview[data-code-theme=dark] .tex-token-comment{color:#8293ad}.lecture-code-preview[data-code-theme=dark] .tex-token-math{color:#fdba74}.lecture-code-preview[data-code-theme=dark] .tex-token-brace{color:#93c5fd}.lecture-code-preview[data-code-theme=sepia] .tex-token-command{color:#7c3aed}.lecture-code-preview[data-code-theme=sepia] .tex-token-comment{color:#9a8468}.lecture-code-preview[data-code-theme=sepia] .tex-token-math{color:#b45309}.lecture-code-preview[data-code-theme=sepia] .tex-token-brace{color:#1d4ed8}
 
 .css-editor-wrap{display:flex;flex-direction:column;gap:12px;height:100%;min-height:520px}.css-editor{width:100%;flex:1;min-height:460px;box-sizing:border-box;resize:vertical;background:#0f172a;color:#dbeafe;border:1px solid #334155;border-radius:8px;padding:14px;font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:2}.css-editor:focus{outline:2px solid #60a5fa;outline-offset:1px}
+.input-panel,.output-panel{height:calc(100vh - 240px)!important;min-height:0!important;overflow:hidden!important}
+.input-panel,.output-panel{height:calc(100vh - 130px)!important}
+.lecture-code-preview{flex:1 1 auto;min-height:calc((100vh - 240px)*.72)!important;overflow-y:scroll!important;overflow-x:hidden;scrollbar-gutter:stable;overscroll-behavior:contain;scroll-margin-top:8px}
+.lecture-code-preview pre{max-height:none;overflow:visible}
+.lecture-code-preview.source-linked{box-shadow:0 0 0 2px var(--blue),0 0 0 5px #386ce933}
+.output-content{min-height:0!important;overflow-y:scroll!important;overflow-x:hidden;scrollbar-gutter:stable;overscroll-behavior:contain}
+.command-reference-panel{grid-column:1/-1!important;grid-row:3!important;height:auto!important;min-height:0!important;max-height:none!important}.command-reference-toolbar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}.command-reference-toolbar input{flex:1;font-size:11px;background:#fafbfd}.command-reference-content{padding:0 16px 18px}.command-reference-group{border-bottom:1px solid var(--line);padding:12px 0}.command-reference-group:last-child{border-bottom:0}.command-reference-group summary{cursor:pointer;font-size:12px;font-weight:600}.command-reference-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 14px;margin-top:10px}.command-reference-item{display:grid;grid-template-columns:minmax(105px,.8fr) minmax(0,1.5fr);gap:8px;align-items:start;font-size:10px;line-height:1.5;padding:5px 0;border-bottom:1px dashed #edf0f5}.command-reference-item code{color:var(--blue);overflow-wrap:anywhere}.command-reference-item span{color:var(--muted);overflow-wrap:anywhere}
+.rules-panel{grid-column:1!important;grid-row:2!important;align-self:start}
+.command-reference-panel{grid-column:2!important;grid-row:2!important;align-self:start}
+.command-reference-panel .command-reference-list{grid-template-columns:1fr}
+.command-reference-title-actions{display:flex;align-items:center;gap:6px}.command-reference-title-actions button{font-size:10px;padding:5px 7px}.command-reference-collapsed{min-height:0!important;height:auto!important}.command-reference-collapsed .command-reference-toolbar,.command-reference-collapsed .command-reference-content{display:none}
+.output-title-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.page-toolbar{display:flex;align-items:center;gap:5px;padding:0}.page-toolbar select{width:150px;max-width:18vw;flex:1;font-size:10px;padding:6px}.page-toolbar button{font-size:10px;padding:6px 8px}
+.input-toolbar .source-frame-row .lecture-source{flex:0 1 84px}.input-toolbar .source-frame-row .frame-picker{flex:0 1 84px;min-width:70px}
+.input-toolbar .source-frame-row .lecture-source{flex:0 0 58px}.input-toolbar .source-frame-row .lecture-source select{appearance:none;-webkit-appearance:none;width:58px;height:28px;padding:4px 6px;border-radius:5px;overflow:hidden;text-overflow:ellipsis}.input-toolbar .source-frame-row .frame-picker{flex:0 0 62px;min-width:62px}.input-toolbar .source-frame-row .frame-picker summary{display:block;width:62px;height:28px;padding:6px 5px;border:1px solid var(--line);border-radius:5px;background:#fff;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;list-style:none}.input-toolbar .source-frame-row .frame-picker summary::-webkit-details-marker,.input-toolbar .source-frame-row .frame-picker summary::marker{display:none}
+.input-panel .lecture-code-preview{width:100%;margin:0;border-left:0;border-right:0;border-bottom:0;border-radius:0}
+/* Keep the compact button label separate from the real file options. */
+.input-toolbar .lecture-source .field{position:relative}
+.input-toolbar .lecture-source .field::after{content:'ppt';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;color:var(--ink);font-size:10px}
+.input-toolbar .lecture-source select{color:transparent;text-shadow:none;cursor:pointer}
+.input-toolbar .lecture-source select option{color:var(--ink);background:var(--surface)}
+.input-toolbar{align-items:center;flex-wrap:nowrap;gap:5px;padding:8px 10px;white-space:nowrap;overflow:hidden}.input-toolbar h2{flex:0 0 auto}.input-toolbar .input-title-actions{display:flex;gap:3px;flex:0 0 auto}.input-toolbar .input-title-actions button{font-size:9px;padding:5px 6px}.input-toolbar .source-frame-row{display:flex;align-items:center;gap:4px;flex:1 1 auto;min-width:0}.input-toolbar .source-frame-row .lecture-source{flex:0 1 58px;min-width:0}.input-toolbar .source-frame-row .field{margin:0}.input-toolbar .source-frame-row select{font-size:9px;padding:5px;width:58px}.input-toolbar .source-frame-row .frame-picker{flex:0 1 62px;min-width:62px}.input-toolbar .source-frame-row .source-convert{font-size:9px;padding:5px 8px;margin:0}.input-toolbar .frame-picker-body{position:absolute;z-index:4;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:8px;min-width:240px;max-height:300px;overflow:auto;box-shadow:0 8px 20px #172b481f}
+@media(max-width:900px){.command-reference-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* The file and frame selectors use the same compact appearance as +tex. */
+.input-toolbar .input-title-actions button,
+.input-toolbar .source-frame-row .lecture-source select,
+.input-toolbar .source-frame-row .frame-picker summary{
+  height:25px;
+  margin:0;
+  padding:5px 6px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:#fff;
+  font:9px/1.4 Inter,"Segoe UI","Microsoft YaHei",sans-serif;
+  cursor:pointer;
+  transition:background .15s;
+}
+.input-toolbar .source-frame-row .lecture-source,
+.input-toolbar .source-frame-row .frame-picker{
+  flex:0 0 auto;
+  width:auto;
+  min-width:0;
+  padding:0;
+  border:0;
+}
+.input-toolbar .source-frame-row .lecture-source select{width:calc(3ch + 14px)}
+.input-toolbar .source-frame-row .frame-picker summary{width:auto;color:var(--ink)}
+.input-toolbar .lecture-source .field::after{font-size:9px}
+.app-header .brand,.app-header .header-actions{flex-shrink:0}
+.header-status{flex:1;min-width:0;color:var(--muted);font-size:11px;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app-header{padding:6px 14px;gap:12px}
+.app-header .brand{font-size:16px;gap:8px}
+.app-header .brand-icon{width:28px;height:28px;border-radius:6px;font-size:22px}
+.app-header .brand-icon span{font-size:12px;right:2px}
+.app-header .header-actions{gap:6px}
+.app-header .header-actions button{padding:5px 8px;font-size:11px}
+.header-output-group{display:flex;align-items:center;gap:6px;padding-left:9px;border-left:1px solid var(--line)}
+.header-output-label{color:var(--muted);font-size:10px;white-space:nowrap}
+.header-output-buttons{display:flex;gap:5px;align-items:stretch}
+.header-output-button{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:4px 8px!important;text-align:left;line-height:1.15}
+.header-output-button>span:last-child{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.header-output-button strong{font-size:11px;font-weight:600;white-space:nowrap}
+.header-output-button small{font-size:9px;font-weight:400;opacity:.72;white-space:nowrap}
+.header-output-mark{display:grid;place-items:center;min-width:25px;height:23px;padding:0 3px;border:1px solid currentColor;border-radius:4px;font-size:8px;font-weight:700;letter-spacing:.2px}
+.header-output-button.primary .header-output-mark{border-color:#ffffff99}
+.workspace{gap:8px;padding:6px 12px 10px}
+.panel-toggle{cursor:pointer;user-select:none}
+.panel-toggle:hover{background:var(--pale)}
+.panel-toggle:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+.input-panel,.output-panel{grid-row:1!important}
+.input-toolbar .input-title-actions{margin-left:auto}
+.input-toolbar .source-frame-row{flex:0 0 auto;width:auto}
+.input-toolbar .source-frame-row .frame-picker summary::after{content:none}
+.input-toolbar .source-frame-row .lecture-source select:hover,
+.input-toolbar .source-frame-row .frame-picker summary:hover{
+  background:var(--pale);
+  border-color:#bacbf5;
+}
+
+/* Global page theme. The result preview keeps its existing theme styles, while
+   these rules extend the same palette to the header and every workspace card. */
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ink:#e5edf8;
+  --muted:#9aaac0;
+  --line:#334258;
+  --blue:#82a9ff;
+  --pale:#243653;
+  --surface:#182334;
+  --bg:#0e1624;
+}
+:root[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
+:root[data-theme="dark"] .app-header,
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] dialog{background:var(--surface);color:var(--ink)}
+:root[data-theme="dark"] button,
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea{background:#202d42;color:var(--ink);border-color:var(--line)}
+:root[data-theme="dark"] button:hover,
+:root[data-theme="dark"] .input-toolbar .source-frame-row .lecture-source select:hover,
+:root[data-theme="dark"] .input-toolbar .source-frame-row .frame-picker summary:hover{background:var(--pale);border-color:#5878b5}
+:root[data-theme="dark"] .primary{background:var(--blue);border-color:var(--blue);color:#10203a}
+:root[data-theme="dark"] .primary:hover{background:#a5c1ff;color:#10203a}
+:root[data-theme="dark"] .quiet{background:transparent;color:var(--muted);border-color:transparent}
+:root[data-theme="dark"] .input-panel .lecture-source select,
+:root[data-theme="dark"] .input-panel .frame-picker summary{background:#202d42}
+:root[data-theme="dark"] .input-toolbar .lecture-source .field::after{color:var(--ink)}
+:root[data-theme="dark"] .input-toolbar .lecture-source select option{background:#202d42;color:var(--ink)}
+:root[data-theme="dark"] .editor{background:#111b2b;border-color:#26364d}
+:root[data-theme="dark"] .editor pre{background:#172337;color:#8293ad}
+:root[data-theme="dark"] .editor textarea{color:#c9d7ea}
+:root[data-theme="dark"] .file-line select,
+:root[data-theme="dark"] .search-line input,
+:root[data-theme="dark"] .command-reference-toolbar input{background:#202d42}
+:root[data-theme="dark"] .lecture-code-preview[data-code-theme="light"]{background:#182334;border-color:#334258}
+:root[data-theme="dark"] .lecture-code-preview[data-code-theme="light"] pre{color:#c9d7ea}
+:root[data-theme="dark"] .lecture-code-preview[data-code-theme="light"] .code-theme-toggle button[aria-pressed="true"]{background:#2c3e5a;color:#dbeafe}
+:root[data-theme="dark"] .output-content{background:#141d2c}
+:root[data-theme="dark"] .page-row{background:#202d42}
+:root[data-theme="dark"] .compile-state{background:#1e3150;color:#b9c7dd}
+:root[data-theme="dark"] .warning-card{background:#302a20;border-color:#665334;color:#ead9b8}
+:root[data-theme="dark"] .warning-card.info{background:#1b2a42;border-color:#354e76;color:#b9c7dd}
+:root[data-theme="dark"] .output-tabs span{background:#3e3423;color:#f0c477}
+:root[data-theme="dark"] .rules-panel .sticky-search{background:var(--surface)}
+:root[data-theme="dark"] .theme-toggle [aria-pressed="true"]{background:#2c3e5a;color:#dbeafe}
+:root[data-theme="dark"] .header-output-group{border-left-color:var(--line)}
+:root[data-theme="dark"] .header-output-button:not(.primary){background:#202d42;color:var(--ink)}
+:root[data-theme="dark"] .header-output-button:not(.primary):hover{background:var(--pale)}
+:root[data-theme="dark"] .output-content[data-theme="dark"]{background:#141d2c;color:#e2e8f0}
+:root[data-theme="dark"] ::selection{background:#395687;color:#fff}

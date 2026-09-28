@@ -1,0 +1,141 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-8-2-1-lesson-8-2-1">
+  <p class="tex-hierarchy">内积空间及变换 / 度量矩阵(内积的矩阵表示)</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\(\alpha_1,\cdots,\alpha_n\)为欧氏空间\(V\)的一组基.
+
+  任取\(\alpha = a_1\alpha_1+\cdots+a_n\alpha_n\), \(\beta = b_1\alpha_1+\cdots+b_n\alpha_n\in V\),则</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\label{equ:innerprod}
+  (\alpha,\beta)=\sum_{i=1}^n\sum_{j=1}^n a_ib_j(\alpha_i,\alpha_j).
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">因此内积\((-,-)\)由值\(g_{ij}:=(\alpha_i,\alpha_j)\)(\(1\leq ij\leq n\))唯一确定.
+
+  记</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[G:=(g_{ij})_{n\times n}.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">称\(G\)为内积\((-,-)\)在基\(\alpha_1,\cdots,\alpha_n\)下的<span class="tex-color-blue">度量矩阵</span>.
+
+  记</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[x=\begin{pmatrix}a_1\\\vdots\\a_n\end{pmatrix},y=\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix}\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">则\(\eqref{equ:innerprod}\)可简写为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{(\alpha,\beta)=x^TGy.}}\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">通过度量矩阵我们有如下映射</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><code class="tex-unresolved" title="尚未实现此命令或环境">\xymatrix@C</code>=2cm@R=0cm
+  \(\text{$V$上的内积}\)
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[r]</code>^-\(\text{基}\)\(\alpha\)_1,\(\cdots\),\(\alpha\)_n	&amp; \(\mathbb\) R\(\text{上的$n$阶矩阵}\) <br>
+  (-,-) <code class="tex-unresolved" title="尚未实现此命令或环境">\ar@{|-&gt;}</code>[r] &amp; G=\(\Big\)((\(\alpha\)_i,\(\alpha\)_j)\(\Big\))_n\(\times\) n <br></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">问题: 哪些矩阵落在这个映射的像集里面?即,哪些矩阵能够成为某个内积的度量矩阵?</span></div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">8.1.3</span> <span class="math-block-title">度量矩阵的基本性质</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(G\)为\(V\)上某内积\((-,-)\)在基\(\alpha_1,\cdots,\alpha_n\)下的度量矩阵.
+
+          则</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">\(G\)为实对称矩阵;</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">对任意\(x\in{\mathbb R}^n\),都有\(x^TGx\geq0\),且等号成立当且仅当\(x=0\).</div>
+            </li>
+          </ul>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">称满足如上性质的矩阵为<span class="tex-color-blue">正定矩阵</span>.
+
+          因此内积的度量矩阵为正定矩阵.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">反之,对于任意给定的正定矩阵\(G\), 通过</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[(\alpha,\beta):=x^TGy\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">可以构造出\(V\)上的一个内积,其中\(x,y\)为\(\alpha\)和\(\beta\)的坐标.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">问题:
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">不同基下度量矩阵之间的关系?</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">度量矩阵的最简形式,在哪组基下度量矩阵为最简单形式?</div>
+    </li>
+  </ol>
+  </span></div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">8.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(P\)为欧氏空间的两组基\(\alpha_1,\cdots,\alpha_n\)和\(\eta_1,\cdots,\eta_n\)为之间的过渡矩阵</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[(\eta_1,\cdots,\eta_n) = (\alpha_1,\cdots,\alpha_n)P.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设内积在\(\alpha_1,\cdots,\alpha_n\)和\(\eta_1,\cdots,\eta_n\)下的度量矩阵为\(G\)和\(\overline{G}\). 即,</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[G=\Big((\alpha_i,\alpha_j)\Big)_{n\times n},\quad \overline{G}=\Big((\eta_i,\eta_j)\Big)_{n\times n}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\overline{G}=P^TGP.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路: \(\overline{G}_{(i,j)}=(\eta_i,\eta_j)=\left(\sum\limits_{s=1}^{n}p_{si}\alpha_s,\sum\limits_{t=1}^{n}p_{tj}\alpha_t\right)=\sum\limits_{s=1}^n\sum\limits_{t=1}^n p_{si}G_{(s,t)} p_{tj} = (P^TGP)_{(i,j)}\).</span></div>
+</div>

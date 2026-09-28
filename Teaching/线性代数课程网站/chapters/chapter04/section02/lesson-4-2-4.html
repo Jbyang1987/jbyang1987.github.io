@@ -1,0 +1,182 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="行列式性质 · 第4页；行列式，线性代数课程。"><title>行列式性质 · 第4页 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter04" data-section="chapter04-section02" data-unit="chapter04-section02-lesson-4-2-4"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter04.html">第四章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第2节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第4小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§4.2.4</span><span>行列式性质 · 第4页</span></h1><p class="knowledge-goal">行列式性质 · 第4页</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-4-lesson-4-2-4">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">方阵\(A\)的行列式具有下列性质:</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">交换\(A\)某两行(列)得\(B\),则\(\det(B)=-\det(A)\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">将\(A\)的某一行(列)乘\(\lambda\)得\(B\),则\(\det(B)=\lambda\det(A)\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(A\)的某一行(列)是两个向量之和,则\(\det(A)\)可拆成两个行列式之和.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">证明思路：将\(\det(A)\)按第\(p，q\)两行展开得</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\det(A) = \sum_{i=1}^n \sum_{j=1}^{i-1} (-1)^{p+q+i+j-1}(a_{pi}a_{qj}-a_{pj}a_{qi}) M\left[{p,q}\atop{i,j}\right].\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">几何解释？</span></div>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">4.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(A\)的某两行(列)成比例,则\(\det(A)=0\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">将\(A\)的某一行(列)\(\lambda\)倍加到另一行(列)得\(B\),则\(\det(B)=\det(A)\).</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">几何解释？</span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设 \(A=(a_{ij})_{n\times n} = \begin{pmatrix}\alpha_1\\\alpha_2\\\vdots\\\alpha_n\end{pmatrix}\).则\(\det\)可以看成\(\alpha_1,\cdots,\alpha_n\)的函数.   这一函数满足如下性质:
+  <span class="tex-size-small"></span>
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">反对称性: \(\det(\cdots,\alpha_i,\cdots,\alpha_j\cdots)=-\det(\cdots,\alpha_j,\cdots,\alpha_i\cdots)\);</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">多重线性:  <br>
+      \(\det(\cdots,\lambda\alpha_i+\mu\beta_i,\cdots) = \lambda\det(\cdots,\alpha_i,\cdots) + \mu\det(\cdots,\beta_i,\cdots)\);</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">规范性: \(\det(\vec{e}_1,\vec{e}_2,\cdots,\vec{e}_n)=1\).</div>
+    </li>
+  </ol>
+
+
+  <span class="tex-color-blue">注:</span> 这三条性质唯一地确定了函数\(\det\). (几何意义！！)</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">例:</span> \(\det(\alpha+\beta,\beta+\gamma,\gamma+\alpha)=2\det(\alpha,\beta,\gamma)\).</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.5</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(A)=\det(A^T).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">证明：比较两边显示展开.(或，对阶数归纳，并利用展开式。)</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(AB)=\det(A)\det(B).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">几何解释？</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.10</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(m&gt;n\), \(A\in F^{m\times n}\), \(B\in F^{n\times m}\). 则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(AB)=0.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.11</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\in F^{n\times n}\), \(B\in F^{n\times m}\), \(C\in F^{m\times n}\), \(D\in F^{m\times m}\). 若\(A\)可逆,则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det\begin{pmatrix} A&amp;B\\C&amp;D\\\end{pmatrix}=\det(A)\cdot\det(D-CA^{-1}B).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.12</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求
+      \(\begin{vmatrix}
+      3&amp; x + y + z &amp; x^2 + y^2 + z^2 \\
+      x + y + z &amp; x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 \\
+      x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 &amp; x^4 + y^4 + z^4 \\
+      \end{vmatrix}\)</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">
+  \[\begin{pmatrix}
+  3&amp; x + y + z &amp; x^2 + y^2 + z^2 \\
+  x + y + z &amp; x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 \\
+  x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 &amp; x^4 + y^4 + z^4 \\
+  \end{pmatrix} =
+  \begin{pmatrix}
+  1 &amp; 1 &amp; 1 \\
+  x &amp; y &amp; z \\
+  x^2 &amp; y^2 &amp; z^2 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+  1 &amp; x &amp; x^2 \\
+  1 &amp; y &amp; y^2 \\
+  1 &amp; z &amp; z^2 \\
+  \end{pmatrix}\]</span></div>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式性质 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section02-lesson-4-2-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section02-lesson-4-2-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section02-lesson-4-2-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-4-2-3.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="lesson-4-2-5.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section02-lesson-4-2-4" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter04-section02-lesson-4-2-4" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter04-section02-lesson-4-2-4" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

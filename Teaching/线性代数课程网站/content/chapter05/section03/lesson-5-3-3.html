@@ -1,0 +1,28 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-5-3-3-lesson-5-3-3">
+  <p class="tex-hierarchy">矩阵(二) / 分块矩阵的初等变换及应用</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">5.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A,B,I\)为\(n\)阶方阵满足\(BA=0\).则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\small \begin{pmatrix}I&amp;A\\B&amp;I\end{pmatrix}^{-1}=\begin{pmatrix}I+AB&amp;-A\\-B&amp;I\end{pmatrix}\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  \begin{pmatrix}I&amp;A&amp;I&amp;0\\B&amp;I&amp;0&amp;I\end{pmatrix}
+  &amp; \xrightarrow[\text{第一行左乘$B$}]{\text{第二行减去}}
+  \begin{pmatrix}I&amp;A&amp;I&amp;0\\0&amp;I&amp;-B&amp;I\end{pmatrix} \\ 
+  &amp;\\
+  &amp; \xrightarrow[\text{第二行左乘$A$}]{\text{第一行减去}}
+  \begin{pmatrix}I&amp;0&amp;I+AB&amp;-A\\0&amp;I&amp;-B&amp;I\end{pmatrix} \\
+  \end{split}
+  \]</div>
+</div>

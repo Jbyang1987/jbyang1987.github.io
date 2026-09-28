@@ -114,7 +114,8 @@ window.CourseProgress = (function () {
   }
   function getResumeUnit() {
     const state = readState();
-    return (state.lastVisited && course.getUnit(state.lastVisited.unitId)) || course.getUnits().find(function (unit) { return !state.units[unit.id] || !state.units[unit.id].completed; }) || course.getUnits()[0];
+    const all = course.getAllUnits ? course.getAllUnits() : course.getUnits();
+    return (state.lastVisited && course.getUnit(state.lastVisited.unitId)) || all.find(function (unit) { return !state.units[unit.id] || !state.units[unit.id].completed; }) || all[0];
   }
   function getLastVisitedUnit() {
     const recent = readState().lastVisited;
@@ -152,7 +153,7 @@ window.CourseProgress = (function () {
       return { success: false, message: "备份格式不正确或版本不受支持。" };
     }
     const state = emptyState(), chapterIds = new Set(course.chapters.map(function (chapter) { return chapter.id; }));
-    const units = new Set(course.getUnits().map(function (unit) { return unit.id; }));
+    const units = new Set((course.getAllUnits ? course.getAllUnits() : course.getUnits()).map(function (unit) { return unit.id; }));
     for (const id of Object.keys(backup.records.units)) {
       const record = backup.records.units[id];
       if (!isObject(record) || typeof record.completed !== "boolean") return { success: false, message: "备份中的学习标记内容有误，未恢复任何记录。" };
@@ -171,7 +172,7 @@ window.CourseProgress = (function () {
     return saved ? { success: true, message: "学习记录已恢复。" } : { success: false, message: storageIssue || "学习记录未能保存到浏览器。" };
   }
   function getSummary() {
-    const state = readState(), summary = summaryFor(course.getUnits(), state);
+    const state = readState(), summary = summaryFor(course.getAllUnits ? course.getAllUnits() : course.getUnits(), state);
     const available = course.chapters.filter(function (chapter) { return chapter.path; });
     summary.chaptersCompleted = available.filter(function (chapter) {
       const units = course.getUnits(chapter.id); return units.length && summaryFor(units, state).completed === units.length;

@@ -1,0 +1,112 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="6.6 坐标与坐标变换；线性空间，线性代数课程。"><title>6.6 坐标与坐标变换 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter06" data-section="chapter06-section06"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter06.html">第六章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第6节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="坐标与坐标变换简介、进度与目录"><header class="chapter-intro"><h1>6.6 坐标与坐标变换</h1><p>围绕坐标与坐标变换展开定义、性质、计算与应用。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter06-section06" href="lesson-6-6-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 2</span></div><progress data-section-meter="chapter06-section06" max="2" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="坐标与坐标变换知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-6-6-1.html">6.6.1 坐标与坐标变换 · 第1页</a><span data-unit-status="chapter06-section06-lesson-6-6-1">未标记</span></li><li><a href="lesson-6-6-2.html">6.6.2 坐标与坐标变换 · 第2页</a><span data-unit-status="chapter06-section06-lesson-6-6-2">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-6-6-1" data-reading-unit="chapter06-section06-lesson-6-6-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§6.6.1</span><h2><a class="heading-link" href="lesson-6-6-1.html">坐标与坐标变换 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-6-6-1-lesson-6-6-1">
+  <p class="tex-hierarchy">线性空间 / 坐标与坐标变换</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.14</span> <span class="math-block-title">自然基</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">称\(\vec{e}_1,\cdots,\vec{e}_n\)为\({\mathbb F}^n\)的自然基. 任意向量在自然基下的向量为自身,即</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[
+      \begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix}=(\vec{e}_1,\cdots,\vec{e}_n)\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix}.
+      \]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-math-warning" title="存在未解析数学命令">⚠</span>\(\boxed{\xymatrix@R=2mm{
+  \text{空间} \ar@{-&gt;}[r]^-{\text{坐标系}}_-{1:1} &amp; {\mathbb R}^3\\
+  \text{点} \ar@{|-&gt;}[r] &amp; \text{点在坐标系下的坐标}\\
+  }}\)</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">推广</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-math-warning" title="存在未解析数学命令">⚠</span>\(\boxed{\xymatrix@R=2mm{
+  \text{${\mathbb F}^n$的$r$维子空间} \ar@{-&gt;}[r]^-{\text{\quad 基 \quad}}_-{1:1} &amp; {\mathbb F}^r\\
+  \text{向量} \ar@{|-&gt;}[r] &amp; \text{向量在基下的坐标}\\
+  }}\)</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="坐标与坐标变换 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter06-section06-lesson-6-6-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter06-section06-lesson-6-6-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter06-section06-lesson-6-6-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter06-section06-lesson-6-6-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter06-section06-lesson-6-6-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-6-6-2" data-reading-unit="chapter06-section06-lesson-6-6-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§6.6.2</span><h2><a class="heading-link" href="lesson-6-6-2.html">坐标与坐标变换 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-6-6-2-lesson-6-6-2">
+  <p class="tex-hierarchy">线性空间 / 坐标与坐标变换</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设\(\vec{a}_1,\cdots,\vec{a}_r\)和\(\vec{b}_1,\cdots,\vec{b}_r\)为\(V\)的两组基. 设向量\(v\in V\)在两组基下的坐标分别为 \(X=\begin{pmatrix}x_1\\\vdots\\x_r\end{pmatrix}\) 和\(Y= \begin{pmatrix}y_1\\\vdots\\y_r\end{pmatrix}\). 即,</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[v=(\vec{a}_1,\cdots,\vec{a}_r)X
+  =(\vec{b}_1,\cdots,\vec{b}_r)Y.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">问题:</span> 如何确定\(X\)和\(Y\)之间的关系?</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">6.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\vec{a}_1,\cdots,\vec{a}_r\)和\(\vec{b}_1,\cdots,\vec{b}_r\)为\(V\)的两组基. 则</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">存在唯一\(r\)阶方阵\(T\)使得</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[(\vec{b}_1,\cdots,\vec{b}_r) = (\vec{a}_1,\cdots,\vec{a}_r)T.\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">矩阵\(T\)称为从基\(\vec{a}_1,\cdots,\vec{a}_r\)到基\(\vec{b}_1,\cdots,\vec{b}_r\)的<span class="tex-color-blue">过渡矩阵</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设向量\(v\in V\)在两组基下的坐标分别为 \(X=\begin{pmatrix}x_1,&amp;\cdots,&amp;x_r\end{pmatrix}^T\) 和\(Y= \begin{pmatrix}y_1,&amp;\cdots,&amp;y_r\end{pmatrix}^T\). 则</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[X=TY.\qquad\text{{\textcolor[rgb]{0,0,1}{(坐标变换公式)}}}\]</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">注:</span> 过渡矩阵\(T\)总是可逆的.</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.15</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">逆时针旋转平面直角坐标系\(\theta\)角.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: figure -->
+  <figure class="tex-figure"><img src="../../../assets/chapter06/figure-fig-217359f5.svg" class="tex-figure-light" alt="TikZ 图形" width="640"><img class="tex-figure-dark" src="../../../assets/chapter06/figure-fig-217359f5-dark.svg" alt="TikZ 图形" width="640"><figcaption>TikZ 图形</figcaption></figure>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">\(\Rightarrow (e_1&#39;,e_2&#39;) = (e_1,e_2)\begin{pmatrix}
+  \cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\\
+  \end{pmatrix}\)
+
+  \(\Rightarrow \begin{pmatrix} x\\y\\\end{pmatrix}= \begin{pmatrix}
+  \cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\\
+  \end{pmatrix}\begin{pmatrix} x&#39;\\y&#39;\\\end{pmatrix}.\)
+
+  \(\Rightarrow
+  \begin{pmatrix} x&#39;\\y&#39;\\\end{pmatrix}
+  = \begin{pmatrix}
+  \cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\\
+  \end{pmatrix}^{-1} \begin{pmatrix} x\\y\\\end{pmatrix}= \begin{pmatrix}
+  \cos\theta&amp;\sin\theta\\-\sin\theta&amp;\cos\theta\\
+  \end{pmatrix} \begin{pmatrix} x\\y\\\end{pmatrix}.\)</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="坐标与坐标变换 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter06-section06-lesson-6-6-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter06-section06-lesson-6-6-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter06-section06-lesson-6-6-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter06-section06-lesson-6-6-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter06-section06-lesson-6-6-2" role="status" aria-live="polite"></p></div></section><nav class="lesson-navigation" aria-label="子节导航"><a href="../../../index.html">返回课程首页</a><a href="../section05/index.html">上一节 · 6.5 基与维数</a><a href="index.html#main">回顾本节</a><a href="../section07/index.html">下一节 · 6.7 线性方程组解集的结构</a></nav></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

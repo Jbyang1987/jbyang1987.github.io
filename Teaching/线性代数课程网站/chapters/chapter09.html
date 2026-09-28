@@ -1,0 +1,1328 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="第九章 实二次型；实二次型，线性代数课程。"><title>第九章 实二次型 | 线性代数</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/lessons.css"><link rel="stylesheet" href="../css/tex2html.css"><script defer src="../js/course.js"></script><script defer src="../js/progress.js"></script><script defer src="../js/main.js"></script><script defer src="../js/mathjax-config.js"></script><script defer src="../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="chapter" data-root="../" data-chapter="chapter09"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter">第九章</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-layout chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card" aria-label="实二次型简介、进度与目录"><header class="chapter-intro"><h1>第九章 实二次型</h1><p>二次型的标准形、规范形与正定性，二次曲线和曲面。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-chapter-resume href="chapter09/section01/lesson-9-1-1.html"><span data-chapter-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-chapter-progress-percent>0%</strong></div><span data-chapter-progress-count>掌握 0 / 17</span></div><progress data-chapter-progress max="17" value="0" aria-label="实二次型掌握进度">0%</progress></div></div></header><nav class="chapter-outline" aria-label="实二次型学习目录"><h2>本章目录</h2><ul><li><a href="chapter09/section01/index.html">9.1 正交相合标准形与相合规范形</a><span data-section-progress="chapter09-section01">掌握 0 / 2</span></li><li><a href="chapter09/section02/index.html">9.2 二次型</a><span data-section-progress="chapter09-section02">掌握 0 / 2</span></li><li><a href="chapter09/section03/index.html">9.3 二次型的标准形</a><span data-section-progress="chapter09-section03">掌握 0 / 6</span></li><li><a href="chapter09/section04/index.html">9.4 正定二次型</a><span data-section-progress="chapter09-section04">掌握 0 / 5</span></li><li><a href="chapter09/section05/index.html">9.5 二次曲线与二次曲面的分类</a><span data-section-progress="chapter09-section05">掌握 0 / 2</span></li></ul></nav></section><section class="chapter-full-reading" id="chapter-reading"><section class="lesson" id="chapter09-section01" aria-labelledby="title-chapter09-section01"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§9.1</span><h2 id="title-chapter09-section01"><a class="heading-link" href="chapter09/section01/index.html">正交相合标准形与相合规范形</a></h2></div><section class="lesson knowledge-part" id="part-chapter09-section01-lesson-9-1-1" data-reading-unit="chapter09-section01-lesson-9-1-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.1.1</span><h2><a class="heading-link" href="chapter09/section01/lesson-9-1-1.html">正交相合标准形与相合规范形 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-1-1-lesson-9-1-1">
+  <p class="tex-hierarchy">实二次型 / 正交相合标准形与相合规范形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">遗留问题:相合等价关系的标准形.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">下面我们仅考虑实对称矩阵的相合标准形<small class="tex-footnote">注:若矩阵\(A,B\)相合,则\(A\)对称当且仅当\(B\)对称.</small>.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">由于任意实对称矩阵正交相似于对角阵,因此我们有如下结论.</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">9.1.1</span> <span class="math-block-title">正交相合标准形</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(n\)阶实对称矩阵\(A\)的全体特征值为\(\lambda_1,\cdots,\lambda_n\).则存在正交矩阵\(P\)使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[P^TAP=\mathrm{diag}(\lambda_1,\cdots,\lambda_n).\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">从而矩阵\(A\)相合于对角矩阵\(\mathrm{diag}(\lambda_1,\cdots,\lambda_n)\).
+
+      称这个对角阵为\(A\)的<span class="tex-color-blue">正交相合标准形</span>.</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="正交相合标准形与相合规范形 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section01-lesson-9-1-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section01-lesson-9-1-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section01-lesson-9-1-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section01-lesson-9-1-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section01-lesson-9-1-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section01-lesson-9-1-2" data-reading-unit="chapter09-section01-lesson-9-1-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.1.2</span><h2><a class="heading-link" href="chapter09/section01/lesson-9-1-2.html">正交相合标准形与相合规范形 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-1-2-lesson-9-1-2">
+  <p class="tex-hierarchy">实二次型 / 正交相合标准形与相合规范形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">实对称矩阵的特征值分为三类:正,负,零.</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.1</span> <span class="math-block-title">相合规范形</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\)为实对称矩阵,则存在可逆阵\(P\)使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[P^TAP = \mathrm{diag}(I_r,-I_s,0). \qquad \text{($A$的{\textcolor[rgb]{0,0,1}{相合规范形}})}\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中\(r,s\)由\(A\)唯一确定不依赖于\(P\)的选取,且满足</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[r+s=\operatorname{rank}(A)\leq n.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">称\(r\)为\(A\)的<span class="tex-color-blue">正惯性指数</span>,称\(s\)为\(A\)的<span class="tex-color-blue">负惯性指数</span>,称\(r-s\)为\(A\)的<span class="tex-color-blue">符号差</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang"><span class="tex-size-tiny"></span> 证明思路:存在性,显然.
+   反证唯一性:若\(\mathrm{diag}(I_r,-I_s,0)\)与\(\mathrm{diag}(I_{r&#39;},-I_{s&#39;},0)\)相合,设\(P^T\mathrm{diag}(I_{r&#39;},-I_{s&#39;},0)P = \mathrm{diag}(I_{r},-I_{s},0)\),则\(r+s=r&#39;+s&#39;\).
+
+  不妨设\(r&lt;r&#39;\)(则\(s&gt;s&#39;\)). 记\(y=Px\). 则齐次方程组
+  \(x_1=\cdots=x_r=y_{r&#39;+1}=\cdots=y_{n}=0\) 有非零解\(x_0=(0,\cdots,0,a_{r+1},\cdots,a_n)^T\neq0\).
+
+  令\(y_0=Px_0=(b_1,\cdots,b_{r&#39;},0,\cdots,0)^T\).则
+  <div class="tex-display">\[
+  \begin{split}
+  0 &lt; b_1^2+\cdots+b_{r&#39;}^2 &amp; =(Px_0)^T\mathrm{diag}(I_{r&#39;},-I_{s&#39;},0)(Px_0) \\ &amp; =x_0^T\mathrm{diag}(I_{r},-I_{s},0)x_0=-a_{r+1}^2-\cdots-a_{r+s}^2\leq0. \\
+  \end{split}
+  \]</div>
+  </span>
+
+  注:规范形唯一.其中\(r\), \(s\)分别为\(A\)的正特征值和负特征值的个数.</div>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">9.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(n\)阶实对称矩阵\(A\)正定当且仅当其正惯性指数为\(n\).</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="正交相合标准形与相合规范形 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section01-lesson-9-1-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section01-lesson-9-1-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section01-lesson-9-1-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section01-lesson-9-1-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section01-lesson-9-1-2" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter09-section02" aria-labelledby="title-chapter09-section02"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§9.2</span><h2 id="title-chapter09-section02"><a class="heading-link" href="chapter09/section02/index.html">二次型</a></h2></div><section class="lesson knowledge-part" id="part-chapter09-section02-lesson-9-2-1" data-reading-unit="chapter09-section02-lesson-9-2-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.2.1</span><h2><a class="heading-link" href="chapter09/section02/lesson-9-2-1.html">二次型 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-2-1-lesson-9-2-1">
+  <p class="tex-hierarchy">实二次型 / 二次型</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">在各个领域我们会碰到很多二次齐次多项式.
+
+  例如,三维空间和四维时空中点到原点的距离.</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">9.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">空间距离公式</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[d^2=x^2+y^2+z^2=(x,y,z)\begin{pmatrix}x\\y\\z\end{pmatrix};\]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">时空(<span class="tex-color-blue">Lorentz空间</span>)中的距离公式 \(d^2=x^2+y^2+z^2-c^2t^2=(x,y,z,t)\begin{pmatrix}1&amp;&amp;&amp;\\&amp;1&amp;&amp;\\&amp;&amp;1&amp;\\&amp;&amp;&amp;-c^2\end{pmatrix}\begin{pmatrix}x\\y\\z\\t\end{pmatrix}\);</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">注:保持时空距离(Lorentz内积)的变换称为<span class="tex-color-blue">Lorentz变换</span>.</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">9.1.1</span> <span class="math-block-title">(实)二次型</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">称实数域<small class="tex-footnote">这门课程仅考虑实数域上的二次型.更一般地,可类似的定义任意数域上的二次型.</small>上的二次齐次多项式为<span class="tex-color-blue">(实)二次型</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">9.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(Q(x_1,x_2,x_3)=x_1x_2+x_2x_3+x_3x_1\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(Q(x_1,x_2,\cdots,x_n)=\lambda_1x_1^2+\lambda_2x_2^2+\cdots+\lambda_nx_n^2\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">欧氏度量 \(Q(x,y,z)=x^2+y^2+z^2\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">时空度量 \(Q(x,y,z,t)=x^2+y^2+z^2-c^2t^2\).</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="二次型 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section02-lesson-9-2-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section02-lesson-9-2-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section02-lesson-9-2-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section02-lesson-9-2-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section02-lesson-9-2-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section02-lesson-9-2-2" data-reading-unit="chapter09-section02-lesson-9-2-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.2.2</span><h2><a class="heading-link" href="chapter09/section02/lesson-9-2-2.html">二次型 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-2-2-lesson-9-2-2">
+  <p class="tex-hierarchy">实二次型 / 二次型</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">由于\(n\)个变元\(x_1,x_2,\cdots,x_n\)的二次单项式全体集为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[x_1^2,x_1x_2,\cdots,x_1x_n,\quad x_2^2,\cdots,x_2x_n,\quad x_3^2, \cdots, \quad x_n^2,\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">因此一般的二次型可表示为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\small
+  \begin{array}{rrrrrrrr}
+  Q(x_1,\cdots,x_n)=
+  &amp;a_{11}x_1^2 &amp;+&amp; {\textcolor[rgb]{1,0,0}{2a_{12}x_1x_2}} &amp;+&amp; \cdots &amp;+&amp; {\textcolor[rgb]{0,0,1}{2a_{1n}x_1x_n}}\\
+  &amp;            &amp;+&amp; a_{22}x_2^2  &amp;+&amp; \cdots &amp;+&amp; {\textcolor[rgb]{0,1,0}{2a_{2n}x_2x_n}}\\
+  &amp;            &amp; &amp;               &amp; &amp; \ddots &amp; &amp; \vdots\quad \\
+  &amp;            &amp; &amp;               &amp; &amp;        &amp;+&amp; a_{nn}x_n^2\\
+  \end{array}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中\(a_{ij}\)全部为实数.
+
+  根据\(x_ix_j=x_jx_i\),我们也可将上式改写为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\small
+  \begin{array}{rrrrrrrr}
+  Q(x_1,\cdots,x_n)=
+  &amp;  a_{11}x_1x_1 &amp;+&amp;  {\textcolor[rgb]{1,0,0}{a_{12}x_1x_2}} &amp;+&amp; \cdots &amp;+&amp; {\textcolor[rgb]{0,0,1}{a_{1n}x_1x_n}}\\
+  &amp; +{\textcolor[rgb]{1,0,0}{a_{12}x_2x_1}} &amp;+&amp;  a_{22}x_2x_2 &amp;+&amp; \cdots &amp;+&amp; {\textcolor[rgb]{0,1,0}{a_{2n}x_2x_n}}\\
+  &amp;   \vdots\quad &amp; &amp;   \vdots\quad &amp; &amp; \ddots &amp; &amp;   \vdots\quad\\
+  &amp; +{\textcolor[rgb]{0,0,1}{a_{1n}x_nx_1}} &amp; &amp;  {\textcolor[rgb]{0,1,0}{a_{2n}x_nx_2}} &amp;+&amp; \cdots &amp;+&amp; a_{nn}x_nx_n\\
+  \end{array}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">利用矩阵的乘法,可进一步的将二次型改写为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[ \label{QuadFormSymMatr}
+  Q(x_1,\cdots,x_n)=x^TAx,
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中\(A=(a_{ij})_{n\times n}\)<span class="tex-underdot">实对称</span>, \(x=(x_1,x_2,\cdots,x_n)^T\)为变元组成的列向量.</div>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">9.1.2</span> <span class="math-block-title">二次型的矩阵</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">式\(\eqref{QuadFormSymMatr}\)中的实对称矩阵\(A\)由二次型\(Q(x_1,\cdots,x_n)\)唯一确定,称\(A\)为<span class="tex-color-blue">二次型\(Q\)的矩阵</span>.
+
+          此外,称\(A\)的秩为<span class="tex-color-blue">二次型\(Q\)的秩</span>,
+
+          称\(A\)的特征值为<span class="tex-color-blue">二次型\(Q\)的特征值</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">反之,对于任意实对称矩阵,通过式\(\eqref{QuadFormSymMatr}\),可以构造一个二次型.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">简言之,我们有如下一一对应:</div>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph"><span class="tex-color-blue">二次型 \(\underset{1:1}{\overset{\qquad Q=x^TAx\qquad}{\leftrightarrow}}\) 实对称矩阵</span><small class="tex-footnote">若我们不要求式\(\eqref{QuadFormSymMatr}\)中的矩阵\(A\)对称,则\(A\)的选取不唯一.<br>例如,给定任意反对称矩阵\(A\),二次型\(x^TAx\)都为零二次型.</small></div>
+  </div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">9.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求下列二次型对应的矩阵.</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(Q(x_1,x_2,x_3)=x_1x_2+x_2x_3+x_3x_1\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(Q(x_1,x_2,\cdots,x_n)=\lambda_1x_1^2+\lambda_2x_2^2+\cdots+\lambda_nx_n^2\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">欧氏度量 \(Q(x,y,z)=x^2+y^2+z^2\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">时空度量 \(Q(x,y,z,t)=x^2+y^2+z^2-c^2t^2\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(Q(x_1,\cdots,x_n)=x^TAx\),其中\(A\)为\(n\)阶实方阵.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="二次型 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section02-lesson-9-2-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section02-lesson-9-2-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section02-lesson-9-2-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section02-lesson-9-2-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section02-lesson-9-2-2" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter09-section03" aria-labelledby="title-chapter09-section03"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§9.3</span><h2 id="title-chapter09-section03"><a class="heading-link" href="chapter09/section03/index.html">二次型的标准形</a></h2></div><section class="lesson knowledge-part" id="part-chapter09-section03-lesson-9-3-1" data-reading-unit="chapter09-section03-lesson-9-3-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.3.1</span><h2><a class="heading-link" href="chapter09/section03/lesson-9-3-1.html">二次型的标准形 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-3-1-lesson-9-3-1">
+  <p class="tex-hierarchy">实二次型 / 二次型的标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">给定二次型</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[Q=Q(x_1,\cdots,x_n) = x^TAx. \qquad(A^T=A),\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">对变量\(x_1,\cdots,x_n\)做一个可逆(非退化)的线性变换</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\left\{\begin{array}{c}
+  x_1=p_{11}y_1 + p_{12}y_2 + \cdots + p_{1n}y_n,\\
+  x_2=p_{21}y_1 + p_{22}y_2 + \cdots + p_{2n}y_n,\\
+  \cdots\cdots\cdots\\
+  x_n=p_{n1}y_1 + p_{n2}y_2 + \cdots + p_{nn}y_n,\\
+  \end{array}\right.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中系数矩阵\(P=(p_{ij})_{n\times n}\)可逆.
+
+  则</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[Q=x^TAx = (y^TP^T)A(Py) = y^T(P^TAP)y,\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中\(x=(x_1,\cdots,x_n)^T\),\(y=(y_1,\cdots,y_n)^T\).
+
+  因此,二次型\(Q\)关于新变元\(y_1,\cdots,y_n\)的矩阵为\(P^TAP\).</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="二次型的标准形 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section03-lesson-9-3-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section03-lesson-9-3-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section03-lesson-9-3-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section03-lesson-9-3-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section03-lesson-9-3-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section03-lesson-9-3-2" data-reading-unit="chapter09-section03-lesson-9-3-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.3.2</span><h2><a class="heading-link" href="chapter09/section03/lesson-9-3-2.html">二次型的标准形 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-3-2-lesson-9-3-2">
+  <p class="tex-hierarchy">实二次型 / 二次型的标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">通过变元的线性替换,实对称矩阵的相合标准形可以用来化简二次型.</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">9.1.2</span> <span class="math-block-title">(有理)标准形</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若二次型经过非退化的线性变换\(x=Py\)化为</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\widetilde{Q}(y_1,\cdots,y_n) = \lambda_1y_1^2+\cdots+\lambda_ny^2_n,\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则称\(\widetilde{Q}\)为\(Q\)的一个<span class="tex-color-blue">(有理)标准形</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">下面通过对称矩阵的正交合同标准形和规范形,给出两个特殊的(有理)标准形:</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.2</span> <span class="math-block-title">正交标准形</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">任意给定实二次型\(Q=x^TAx\),存在正交变换\(x=Py\)将\(Q\)化为</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\widetilde{Q}(y_1,\cdots,y_n) = \lambda_1y_1^2+\cdots+\lambda_ny_n^2,\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">这里的\(\lambda_1,\cdots,\lambda_n\)为\(A\)的特征值.称\(\widetilde{Q}\)为\(Q\)的<span class="tex-color-blue">正交标准形</span>.</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="二次型的标准形 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section03-lesson-9-3-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section03-lesson-9-3-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section03-lesson-9-3-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section03-lesson-9-3-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section03-lesson-9-3-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section03-lesson-9-3-3" data-reading-unit="chapter09-section03-lesson-9-3-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.3.3</span><h2><a class="heading-link" href="chapter09/section03/lesson-9-3-3.html">二次型的标准形 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-3-3-lesson-9-3-3">
+  <p class="tex-hierarchy">实二次型 / 二次型的标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.3</span> <span class="math-block-title">规范形(实标准形)</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">任意给定二次型\(Q\),存在线性变换\(x=Py\)使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[Q=y_1^2+\cdots+y_r^2-y_{r+1}^2-\cdots-y_{r+s}^2,\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中\(r\)和\(s\)不依赖于\(P\)的选取. 我们称</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(y_1^2+\cdots+y_r^2-y_{r+1}^2-\cdots-y_{r+s}^2\)为\(Q\)的<span class="tex-color-blue">规范形</span>(或<span class="tex-color-blue">实标准形</span>);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(r\)和\(s\)为\(Q\)的<span class="tex-color-blue">正负惯性指数</span>.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">问题:</div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">如何寻找二次型的标准形?</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">如何寻找二次型的规范形?</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">如何寻找二次型的正交标准形?</div>
+    </li>
+  </ol>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="二次型的标准形 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section03-lesson-9-3-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section03-lesson-9-3-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section03-lesson-9-3-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section03-lesson-9-3-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section03-lesson-9-3-3" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section03-lesson-9-3-4" data-reading-unit="chapter09-section03-lesson-9-3-4"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.3.4</span><h2><a class="heading-link" href="chapter09/section03/lesson-9-3-4.html">二次型的标准形 · 第4页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-3-4-lesson-9-3-4">
+  <p class="tex-hierarchy">实二次型 / 二次型的标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">9.1.4</span> <span class="math-block-title">含平方项</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(Q(x_1,x_2,x_3)=2x_1^2+x_1x_2+x_3^2\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">9.1.5</span> <span class="math-block-title">无平方项</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(Q(x_1,x_2,x_3)=2x_1x_2-6x_2x_3+2x_1x_3\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">任意二次型都可由配方法化为标准形.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang"> <span class="tex-size-tiny"></span>
+  证明思路:
+  情形一: \(a_{11}\neq0\);
+
+  情形二: \(a_{11}=0\) 但对某个指标\(i\)有\(a_{ii}\neq0\);
+
+  情形三: 对角元\(a_{ii}\)全为零, 但\(a_{ij}\neq0\);
+
+  情形四: \(A=0\).
+  </span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">类似于求解线性方程组的Gauss消元法可以用矩阵的初等变换表示,在这里二次型的配方法也可以用矩阵的初等变换来表示.</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.5</span> <span class="math-block-title">配方法能用矩阵实现的理论依据</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">对于任意给定的实对称矩阵\(A\)都存在初等矩阵\(P_1,\cdots,P_r\)使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[P_r^T\cdots P_1^TAP_1\cdots P_r=\mathrm{diag}(\mu_1,\mu_2,\cdots,\mu_n).\]</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="二次型的标准形 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section03-lesson-9-3-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section03-lesson-9-3-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section03-lesson-9-3-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section03-lesson-9-3-4" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section03-lesson-9-3-4" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section03-lesson-9-3-5" data-reading-unit="chapter09-section03-lesson-9-3-5"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.3.5</span><h2><a class="heading-link" href="chapter09/section03/lesson-9-3-5.html">二次型的标准形 · 第5页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-3-5-lesson-9-3-5">
+  <p class="tex-hierarchy">实二次型 / 二次型的标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">第一步:：</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若 \(a_{11}\neq 0\),</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">将第\(1\)列的\(-a_{i1}a_{11}^{-1}\)倍加到第\(i\)列;</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">将第\(1\)行的\(-a_{1i}a_{11}^{-1}\)倍加到第\(i\)行.</div>
+            </li>
+          </ul>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\Rightarrow\)可逆阵\(P_1\)使得 \(P_1^TAP_1=\begin{pmatrix}a_{11}&amp;\\&amp;A_{n-1}\end{pmatrix}\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(a_{11}=0\),且存在对角元\(a_{ii}\neq0\).</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">交换第\(1\)列与第\(i\)列;</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">交换第\(1\)行与第\(i\)行;</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">回到第一步.</div>
+            </li>
+          </ul>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若对角线全为零且第一行(第一列)不为零.即,存在\(i=2,\cdots,n\)使得\(a_{i1}=a_{1i}\neq0\).</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">将第\(i\)行加到第一行;</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">将第\(i\)列加到第一列;</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">回到第一步.</div>
+            </li>
+          </ul>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若对角线全为零且第一行和第一列全为零.则 \(A=\begin{pmatrix}0&amp;\\&amp;A_{n-1}\end{pmatrix}\).</div>
+        </li>
+      </ol>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">第二步:： 递归下去,对\(n-1\)阶矩阵\(A_{n-1}\)重复第一步.</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">第一步:：</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若 \(a_{11}\neq 0\),</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">将第\(1\)列的\(-a_{i1}a_{11}^{-1}\)倍加到第\(i\)列;</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">将第\(1\)行的\(-a_{1i}a_{11}^{-1}\)倍加到第\(i\)行.</div>
+            </li>
+          </ul>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\Rightarrow\)可逆阵\(P_1\)使得 \(P_1^TAP_1=\begin{pmatrix}a_{11}&amp;\\&amp;A_{n-1}\end{pmatrix}\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(a_{11}=0\),且存在对角元\(a_{ii}\neq0\).</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">交换第\(1\)列与第\(i\)列;</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">交换第\(1\)行与第\(i\)行;</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">回到第一步.</div>
+            </li>
+          </ul>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若对角线全为零且第一行(第一列)不为零.即,存在\(i=2,\cdots,n\)使得\(a_{i1}=a_{1i}\neq0\).</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">将第\(i\)行加到第一行;</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">将第\(i\)列加到第一列;</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">回到第一步.</div>
+            </li>
+          </ul>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若对角线全为零且第一行和第一列全为零.则 \(A=\begin{pmatrix}0&amp;\\&amp;A_{n-1}\end{pmatrix}\).</div>
+        </li>
+      </ol>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">第二步:： 递归下去,对\(n-1\)阶矩阵\(A_{n-1}\)重复第一步.</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  {A \choose I} \xrightarrow[\text{对$I$做初等{\textcolor[rgb]{0,0,1}{列}}变换}]{\text{对$A$做{\textcolor[rgb]{0,0,1}{成对}}的{\textcolor[rgb]{0,0,1}{行列}}初等变换}} {P^TAP\choose P}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">类似的</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  (A,I) \xrightarrow[\text{对$I$做初等{\textcolor[rgb]{0,0,1}{行}}变换}]{\text{对$A$做{\textcolor[rgb]{0,0,1}{成对}}的{\textcolor[rgb]{0,0,1}{行列}}初等变换}} (P^TAP,P^T)
+  \]</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">9.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(Q(x_1,x_2,x_3)=x_1^2-x_2^2+x_3^2+4x_1x_3+2x_2x_3\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">解：
+  <span class="tex-size-tiny">
+  \(\setlength{\arraycolsep}{2pt} \left(A\atop I\right) = \left(\begin{array}{rrr}{\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{2}}\\{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-1}}&amp;{\textcolor[rgb]{0,0,1}{1}}\\{\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{1}}\\1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\\\end{array}\right)\)
+  \({\textcolor[rgb]{1,0,0}{\xrightarrow{-2C_1\rightarrow C_3}}}\)
+  \(\setlength{\arraycolsep}{2pt} \left(\begin{array}{rrr}1&amp;0&amp;0\\0&amp;-1&amp;1\\2&amp;1&amp;-3\\1&amp;0&amp;-2\\0&amp;1&amp;0\\0&amp;0&amp;1\\\end{array}\right)\)
+  \({\textcolor[rgb]{1,0,0}{\xrightarrow{-2r_1\rightarrow r_3}}}\)
+  \(\setlength{\arraycolsep}{2pt} \left(\begin{array}{rrr}{\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}\\{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-1}}&amp;{\textcolor[rgb]{0,0,1}{1}}\\{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{-3}}\\1&amp;0&amp;-2\\0&amp;1&amp;0\\0&amp;0&amp;1\\\end{array}\right)\)
+
+  <span class="tex-makebox" style="min-width:3cm;display:inline-block"> </span> \({\textcolor[rgb]{1,0,0}{\xrightarrow{C_2\rightarrow C_3}}}\)
+  \(\setlength{\arraycolsep}{2pt} \left(\begin{array}{rrr}1&amp;0&amp;0\\0&amp;-1&amp;0\\0&amp;1&amp;-2\\1&amp;0&amp;-2\\0&amp;1&amp;1\\0&amp;0&amp;1\\\end{array}\right)\)
+  \({\textcolor[rgb]{1,0,0}{\xrightarrow{r_2\rightarrow r_3}}}\)
+  \(\setlength{\arraycolsep}{2pt} \left(\begin{array}{rrr}{\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}\\{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-1}}&amp;{\textcolor[rgb]{0,0,1}{0}}\\{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-2}}\\1&amp;0&amp;-2\\0&amp;1&amp;1\\0&amp;0&amp;1\\\end{array}\right)\) 
+
+  从而得标准形\(\widetilde{Q}(y_1,y_2,y_3)=y_1^2-y_2^2-2y_3^2\), 其中
+  \(P = \left(\begin{array}{rrr}1&amp;0&amp;-2\\0&amp;1&amp;1\\0&amp;0&amp;1\\\end{array}\right)\).
+  </span></span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="二次型的标准形 · 第5页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section03-lesson-9-3-5" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section03-lesson-9-3-5" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section03-lesson-9-3-5" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section03-lesson-9-3-5" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section03-lesson-9-3-5" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section03-lesson-9-3-6" data-reading-unit="chapter09-section03-lesson-9-3-6"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.3.6</span><h2><a class="heading-link" href="chapter09/section03/lesson-9-3-6.html">二次型的标准形 · 第6页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-3-6-lesson-9-3-6">
+  <p class="tex-hierarchy">实二次型 / 二次型的标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">9.1.7</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(Q(x_1,x_2,x_3)=2x_1x_2+4x_1x_3\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">解：<span class="tex-size-tiny">
+  \(\left(A,I\right) = \left(\begin{array}{rrrrrr}
+  {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{2}}&amp;1&amp;0&amp;0\\
+  {\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;1&amp;0\\
+  {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;0&amp;1\\
+  \end{array}\right)\) 
+
+  \({\textcolor[rgb]{1,0,0}{\xrightarrow{r_2\rightarrow r_1}}}\)
+  \(\left(\begin{array}{rrrrrr}
+  1&amp;1&amp;2&amp;1&amp;1&amp;0\\
+  1&amp;0&amp;0&amp;0&amp;1&amp;0\\
+  2&amp;0&amp;0&amp;0&amp;0&amp;1\\
+  \end{array}\right)\)
+  \({\textcolor[rgb]{1,0,0}{\xrightarrow{C_2\rightarrow C_1}}}\)
+  \(\left(\begin{array}{rrrrrr}
+  {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{2}}&amp;1&amp;1&amp;0\\
+  {\textcolor[rgb]{0,0,1}{1}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;1&amp;0\\
+  {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;0&amp;1\\
+  \end{array}\right)\) 
+
+  \({\textcolor[rgb]{1,0,0}{\xrightarrow[-C_1\rightarrow C_3]{-\frac12C_1\rightarrow C_2}}}\)
+  \(\left(\begin{array}{rrrrrr}
+  2&amp;0&amp;0&amp;1&amp;1&amp;0\\
+  1&amp;-\frac12&amp;-1&amp;0&amp;1&amp;0\\
+  2&amp;-1&amp;-2&amp;0&amp;0&amp;1\\
+  \end{array}\right)\)
+  \({\textcolor[rgb]{1,0,0}{\xrightarrow[-r_1\rightarrow r_3]{-\frac12r_1\rightarrow r_2}}}\)
+  \(\left(\begin{array}{rrrrrr}
+  {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;1&amp;1&amp;0\\
+  {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-\frac12}}&amp;{\textcolor[rgb]{0,0,1}{-1}}&amp;-\frac12&amp;\frac12&amp;0\\
+  {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-1}}&amp;{\textcolor[rgb]{0,0,1}{-2}}&amp;-1&amp;-1&amp;1\\
+  \end{array}\right)\) 
+
+  \({\textcolor[rgb]{1,0,0}{\xrightarrow{-2r_1\rightarrow r_3}}}\)
+  \(\setlength{\arraycolsep}{2pt}\left(\begin{array}{rrrrrr}
+  2&amp;0&amp;0&amp;1&amp;1&amp;0\\
+  1&amp;-\frac12&amp;-1&amp;-\frac12&amp;\frac12&amp;0\\
+  0&amp;0&amp;0&amp;0&amp;-2&amp;1\\
+  \end{array}\right)\)
+  \(\setlength{\arraycolsep}{2pt}{\textcolor[rgb]{1,0,0}{\xrightarrow{-2C_1\rightarrow C_3}}}\)
+  \(\left(\begin{array}{rrrrrr}
+  {\textcolor[rgb]{0,0,1}{2}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;1&amp;1&amp;0\\
+  {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{-\frac12}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;-\frac12&amp;\frac12&amp;0\\
+  {\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;{\textcolor[rgb]{0,0,1}{0}}&amp;0&amp;-2&amp;1\\
+  \end{array}\right)\) 
+
+  从而得到标准形
+  \[\widetilde{Q}(y_1,y_2,y_3)=2y_1^2-\frac12y_2^2.\]
+  其中
+  \[P = \left(\begin{array}{rrr} 1&amp;1&amp;0\\-\frac12&amp;\frac12&amp;0\\ 0&amp;-2&amp;1\\
+  \end{array}\right)^T = \left(\begin{array}{rrr} 1&amp;-\frac12&amp;0\\1&amp;\frac12&amp;-2\\ 0&amp;0&amp;1\\
+  \end{array}\right).\]
+  </span></span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="二次型的标准形 · 第6页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section03-lesson-9-3-6" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section03-lesson-9-3-6" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section03-lesson-9-3-6" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section03-lesson-9-3-6" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section03-lesson-9-3-6" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter09-section04" aria-labelledby="title-chapter09-section04"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§9.4</span><h2 id="title-chapter09-section04"><a class="heading-link" href="chapter09/section04/index.html">正定二次型</a></h2></div><section class="lesson knowledge-part" id="part-chapter09-section04-lesson-9-4-1" data-reading-unit="chapter09-section04-lesson-9-4-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.4.1</span><h2><a class="heading-link" href="chapter09/section04/lesson-9-4-1.html">正定二次型 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-4-1-lesson-9-4-1">
+  <p class="tex-hierarchy">实二次型 / 正定二次型</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">9.1.3</span> <span class="math-block-title">正定二次型</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">称一个\(n\)元二次型\(Q(x_1,\cdots,x_n)=x^TAx\)(\(A^T=A\))为<span class="tex-color-blue">正定二次型</span>,如果对于任意向量\(x\in{\mathbb R}^n\setminus\{0\}\)都有\(Q(x_1,\cdots,x_n)&gt;0\)成立.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[
+      \begin{split}
+      \text{$Q$正定}
+
+      &amp; \Leftrightarrow \text{$A$正定}  \Leftrightarrow \text{$A$相合于单位阵} \\
+
+      &amp; \Leftrightarrow \text{$Q$的(或$A$的)正惯性指数为$n$} \\
+      \end{split}
+      \]</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="正定二次型 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section04-lesson-9-4-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section04-lesson-9-4-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section04-lesson-9-4-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section04-lesson-9-4-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section04-lesson-9-4-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section04-lesson-9-4-2" data-reading-unit="chapter09-section04-lesson-9-4-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.4.2</span><h2><a class="heading-link" href="chapter09/section04/lesson-9-4-2.html">正定二次型 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-4-2-lesson-9-4-2">
+  <p class="tex-hierarchy">实二次型 / 正定二次型</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">9.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\)为\(n\)阶实对称方阵.</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(P\)可逆,则\(P^TAP&gt;0\)当且仅当\(A&gt;0\).  <span class="tex-color-blue">相合不变性</span></div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(A&gt;0\) 当且仅当存在可逆阵\(P\)使得 \(A=P^TP\).  <span class="tex-color-blue">相合标准形</span></div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(A&gt;0\),则\(\det(A)&gt;0\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(A&gt;0\) 当且仅当\(A\)的特征值全为正.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.7</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A=(a_{ij})_{n\times n}\)为\(n\)阶实对称方阵.
+
+      则\(A\)正定当且仅当\(A\)的各阶顺序主子式均大于零.
+
+      即, \(A\)正定当且仅当</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[a_{11}&gt;0,\quad \begin{vmatrix}a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}\end{vmatrix}&gt;0,\cdots,\begin{vmatrix}a_{11}&amp;\cdots&amp;a_{1n}\\\cdots&amp;\cdots&amp;\cdots&amp;\\a_{n1}&amp;\cdots&amp;a_{nn}\end{vmatrix}=\det{A}&gt;0,\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang"><span class="tex-size-footnotesize"></span> 证明思路:对阶数归纳.
+
+  由归纳假设\(A\)可写为\(A=\begin{pmatrix} (P^{-1})^TP^{-1} &amp; C\\ C^T &amp; a_{nn}\\\end{pmatrix}\).
+
+  记 \(R=\begin{pmatrix} P &amp; -PP^TC\\ 0&amp; 1\\\end{pmatrix}\).
+
+  则
+  \(R^TAR = \begin{pmatrix} I_{n-1} &amp;\\ &amp; a_{nn}-C^TPP^TC\\\end{pmatrix}\).</span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">9.1.8</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">证明: 对任意实数 \(x, y\), \(f(x, y) = x^2 + 2xy + 2y^2 + 2x + 6y + 6 &gt; 0\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">给定实二次型 \(Q(x, y, z) = \lambda (x^2 + y^2 + z^2) - 2xy - 2yz - 2zx\).
+           \(\lambda\) 为何值时，\(Q(x, y, z)\) 正定？</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设向量组 \(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_m \in \mathbb{R}^n\). 则方阵 \(G = ((\mathbf{a}_i, \mathbf{a}_j)_{m \times m})\) 正定当且仅当 \(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_m\) 线性无关.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设 \(A\)为实对称矩阵，记\(Q(x_1,\cdots,x_n)=x^TAx\)为\(A\)对应的二次型.</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">9.1.4</span> <span class="math-block-title">半正定二次型</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">称\(Q(x_1,\cdots,x_n)\)为<span class="tex-color-blue">半正定二次型</span>,如果对于任意向量\(x\in{\mathbb R}^n\setminus\{0\}\) 都有 \(Q(x_1,\cdots,x_n)\geq0\)成立. 此时, 称矩阵\(A\)为<span class="tex-color-blue">半正定矩阵</span>，简记为<span class="tex-color-blue">\(A\geq0\)</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">9.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[
+      \begin{split}
+      \text{$Q$半正定}
+      &amp; \Leftrightarrow \text{$A$半正定} \\
+      &amp;  \Leftrightarrow \text{$A$相合于$\mathrm{diag}(I_r,0)$} \quad {\textcolor[rgb]{0,0,1}{\text{(相合不变性)}}} \\
+      &amp;  \Leftrightarrow \text{存在实矩阵$P$使得$A=P^TP$} \\
+      &amp;  \Leftrightarrow \text{$A$的负惯性指数为$0$} \\
+      &amp;  \Leftrightarrow \text{$A$的特征值均非负} \quad (\Rightarrow \det(A)\geq 0)\\
+      &amp;  \Leftrightarrow \text{$A$的{\textcolor[rgb]{0,0,1}{各阶}}主子式均非负} \\
+      \end{split}
+      \]</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="正定二次型 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section04-lesson-9-4-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section04-lesson-9-4-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section04-lesson-9-4-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section04-lesson-9-4-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section04-lesson-9-4-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section04-lesson-9-4-3" data-reading-unit="chapter09-section04-lesson-9-4-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.4.3</span><h2><a class="heading-link" href="chapter09/section04/lesson-9-4-3.html">正定二次型 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-4-3-lesson-9-4-3">
+  <p class="tex-hierarchy">实二次型 / 正定二次型</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">9.1.9</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(A, B, C\)为三角形\(ABC\)的三个内角. 证明: 对任意实数\(x, y, z\),</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[x^2 + y^2 + z^2 \geq 2xy\cos(A) + 2yz\cos(B) + 2zx\cos(C).\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-yang">提示：\(\det=0\).</span></div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">三维欧氏空间\(\mathbb{R}^3\)中，是否存在向量\(\mathbf{a}_1\), \(\mathbf{a}_2\), \(\mathbf{a}_3\)满足</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[\begin{align*}
+          (\mathbf{a}_1, \mathbf{a}_1) &amp;= 4, &amp; (\mathbf{a}_2, \mathbf{a}_2) &amp;= 9, &amp; (\mathbf{a}_3, \mathbf{a}_3) &amp;= 4, \\
+          (\mathbf{a}_1, \mathbf{a}_2) &amp;= \frac{9}{2}, &amp; (\mathbf{a}_1, \mathbf{a}_3) &amp;= -\frac{1}{2}, &amp; (\mathbf{a}_2, \mathbf{a}_3) &amp;= \frac{9}{2}.
+          \end{align*}\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-yang">提示：\(\det=-81/2\).</span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="正定二次型 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section04-lesson-9-4-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section04-lesson-9-4-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section04-lesson-9-4-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section04-lesson-9-4-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section04-lesson-9-4-3" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section04-lesson-9-4-4" data-reading-unit="chapter09-section04-lesson-9-4-4"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.4.4</span><h2><a class="heading-link" href="chapter09/section04/lesson-9-4-4.html">正定二次型 · 第4页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-4-4-lesson-9-4-4">
+  <p class="tex-hierarchy">实二次型 / 正定二次型</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.8</span> <span class="math-block-title">矩阵的奇异值分解</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设 \(A \in \mathbb{R}^{m \times n}\)，则存在 \(m\) 阶正交阵 \(U\) 及 \(n\) 阶正交阵 \(V\) 使得</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[
+      A = U \begin{pmatrix}\Lambda &amp; O \\O &amp; O\end{pmatrix} V^T
+      \]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中 \(\Lambda = \text{diag}(\sigma_1, \ldots, \sigma_r)\)，\(\sigma_1 \geq \ldots \geq \sigma_r &gt; 0\) 称为矩阵 \(A\) 的<span class="tex-color-blue">奇异值</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">取正交阵\(U\)使得\(AA^T=U\mathrm{diag}(\sigma_1^2,\cdots,\sigma_r^2,0,\cdots,0)U^T\). 再将\(B=U^{-1}A\)的非零行向量施密特正交化后扩充得正交矩阵\(V\)的转置.</span></div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.9</span> <span class="math-block-title">多元函数的极值</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设 \(\Omega \subset \mathbb{R}^n\) 是有界区域, \(\mathbf{x}^0 \) 是 \(\Omega\) 内一点, \(f(\mathbf{x}) \in C^2(\Omega)\), 且 \(\dfrac{\partial f}{\partial x_i}(\mathbf{x}^0) = 0\), \(i = 1, \ldots, n\), \(H(\mathbf{x}^0) = \left( \dfrac{\partial^2 f}{\partial x_i \partial x_j}(\mathbf{x}^0) \right)_{n \times n} &gt; 0\). 则 \(f(\mathbf{x})\) 在 \(\mathbf{x}^0\) 取极小值.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang"> 设\(\lambda&gt;0\)为\(H(x^0)\)的最小特征值. 则
+  <div class="tex-display">\[
+  \begin{split}
+   f(x) &amp; = f(x^0)+\frac12(x-x^0)^TH(x^0)(x-x^0)+o(||x-x^0||^2)\\
+  &amp; \geq f(x^0)+\frac{\lambda}2||x-x^0||^2+o(||x-x^0||^2)
+  \end{split}
+  \]</div>
+  </span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="正定二次型 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section04-lesson-9-4-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section04-lesson-9-4-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section04-lesson-9-4-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section04-lesson-9-4-4" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section04-lesson-9-4-4" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section04-lesson-9-4-5" data-reading-unit="chapter09-section04-lesson-9-4-5"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.4.5</span><h2><a class="heading-link" href="chapter09/section04/lesson-9-4-5.html">正定二次型 · 第5页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-4-5-lesson-9-4-5">
+  <p class="tex-hierarchy">实二次型 / 正定二次型</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">正  定 \(\Leftrightarrow\) \(r=n\) (\(\Rightarrow s=0\));</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">半正定 \(\Leftrightarrow\) \(s=0\);</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">负  定 \(\Leftrightarrow\) \(s=n\) (\(\Rightarrow r=0\));</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">半负定 \(\Leftrightarrow\) \(r=0\);</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">不  定 \(\Leftrightarrow\) \(r\geq1\)且\(s\geq1\).</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">部分关于正定的结论可以平移到半正定,负定,半负定的二次型上.</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="正定二次型 · 第5页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section04-lesson-9-4-5" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section04-lesson-9-4-5" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section04-lesson-9-4-5" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section04-lesson-9-4-5" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section04-lesson-9-4-5" role="status" aria-live="polite"></p></div></section></section>
+<section class="lesson" id="chapter09-section05" aria-labelledby="title-chapter09-section05"><div class="lesson-heading"><span class="lesson-number chapter-section-index">§9.5</span><h2 id="title-chapter09-section05"><a class="heading-link" href="chapter09/section05/index.html">二次曲线与二次曲面的分类</a></h2></div><section class="lesson knowledge-part" id="part-chapter09-section05-lesson-9-5-1" data-reading-unit="chapter09-section05-lesson-9-5-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.5.1</span><h2><a class="heading-link" href="chapter09/section05/lesson-9-5-1.html">二次曲线与二次曲面的分类 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-5-1-lesson-9-5-1">
+  <p class="tex-hierarchy">实二次型 / 二次曲线与二次曲面的分类</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">二次曲线的标准形式</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \left\{
+  \begin{array}{ll}
+  \text{椭\quad 圆:}   &amp; \frac{x^2}{a^2}+\frac{y^2}{b^2}=1 \\
+  \text{双曲线:} &amp; \frac{x^2}{a^2}-\frac{y^2}{b^2}=1 \\
+  \text{抛物线:} &amp; y=ax^2 \\
+  \text{退\quad 化:} &amp; x^2=\frac{y^2}{a^2} \text{ 或 } \frac{x^2}{a^2}=1 \text{ 或 } x^2=0\\
+  \end{array}
+  \right.
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">平面二次曲线方程:</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[a_{11}x^2+2a_{12}xy+a_{22}y^2+2b_1x+2b_2y+c=0.\]</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.10</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">任意平面二次曲线均可经过选定合适的直角坐标系变为标准形式.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路: 通过正交变换化简为(其中\(\lambda_1,\lambda_2\)不全为零) \[\lambda_1x&#39;^2+\lambda_2y&#39;^2+2b_1x&#39;+2b_2&#39;y&#39;+c&#39;=0.\]
+
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\lambda_1\lambda_2&gt;0\) 椭圆型</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\lambda_1\lambda_2&lt;0\) 双曲型 或 退化</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\lambda_1\lambda_2=0\) 抛物型 或 退化</div>
+    </li>
+  </ol>
+  </span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="二次曲线与二次曲面的分类 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section05-lesson-9-5-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section05-lesson-9-5-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section05-lesson-9-5-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section05-lesson-9-5-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section05-lesson-9-5-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-chapter09-section05-lesson-9-5-2" data-reading-unit="chapter09-section05-lesson-9-5-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§9.5.2</span><h2><a class="heading-link" href="chapter09/section05/lesson-9-5-2.html">二次曲线与二次曲面的分类 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-5-2-lesson-9-5-2">
+  <p class="tex-hierarchy">实二次型 / 二次曲线与二次曲面的分类</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">椭圆面</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1;\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">单叶双曲面</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=1;\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">双叶双曲面</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\frac{x^2}{a^2}-\frac{y^2}{b^2}-\frac{z^2}{c^2}=1;\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">二次锥面</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\frac{x^2}{a^2}+\frac{y^2}{b^2}=\frac{z^2}{c^2};\]</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">椭圆抛物面</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[z=\frac{x^2}{a^2}+\frac{y^2}{b^2};\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">双曲抛物面(马鞍面)</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[z=\frac{x^2}{a^2}-\frac{y^2}{b^2};\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">二次柱面(方程中不含第三个变量)</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">椭圆柱面   \(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">双曲柱面   \(\frac{x^2}{a^2}-\frac{y^2}{b^2}=1\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">抛物柱面   \(y=ax^2\);</div>
+        </li>
+      </ul>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">退化二次曲面</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">两个相交平面 \(x^2=\frac{y^2}{a^2}\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">两个平行平面 \(\frac{x^2}{a^2}=1\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">两个重合平面 \(x^2=0\).</div>
+        </li>
+      </ul>
+    </li>
+  </ol>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">二次曲面方程:</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  a_{11}x^2+a_{22}y^2+a_{33}z^2+&amp; 2a_{12}xy+2a_{13}xz+2a_{23}yz\\
+  &amp;+2b_1x+2b_2y+2b_3z+c=0
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.11</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">任意二次曲面可经过选择合适的直角坐标系变为标准形式.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路: 二次曲面通过正交变换可化简为(其中\(\lambda_1,\lambda_2,\lambda_3\)不全为零) \[\lambda_1x&#39;^2+\lambda_2y&#39;^2+\lambda_3z&#39;^2+2b&#39;_1x&#39;+2b&#39;_2y&#39;+2b&#39;_3z&#39;+c&#39;=0.\]
+
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\lambda_1\lambda_2\lambda_3\neq 0\) \(\overset{\text{化简}}{\Longrightarrow}\) \(\lambda_1\widetilde{x}^2+\lambda_2\widetilde{y}^2+\lambda_3\widetilde{z}^2=\lambda_4\)</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\lambda_4\neq 0\) \(\Rightarrow\) 椭圆型或双曲型</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\lambda_4 = 0\) \(\Rightarrow\) 二次锥面</div>
+        </li>
+      </ul>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(\lambda_1,\lambda_2,\lambda_3\)中两个非零(不妨设\(\lambda_1\lambda_2\neq0\)且\(\lambda_3=0\)) \(\overset{\text{化简}}{\Longrightarrow}\) \(\lambda_1\widetilde{x}^2+\lambda_2\widetilde{y}^2=\widetilde{b}_3\widetilde{z}+\widetilde{c}\).</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\widetilde{b}_3\neq0\) (可设\(\widetilde{c}=0\)) \(\Rightarrow\) 抛物面</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\widetilde{b}_3=0\) 且 \(\widetilde{c}\neq0\) \(\Rightarrow\) 椭圆柱面 或 双曲柱面</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\widetilde{b}_3=0=\widetilde{c}\) \(\Rightarrow\) 两相交平面</div>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  </span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="二次曲线与二次曲面的分类 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section05-lesson-9-5-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section05-lesson-9-5-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section05-lesson-9-5-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section05-lesson-9-5-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter09-section05-lesson-9-5-2" role="status" aria-live="polite"></p></div></section></section></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

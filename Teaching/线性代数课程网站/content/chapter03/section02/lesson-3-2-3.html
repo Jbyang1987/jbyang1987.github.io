@@ -1,0 +1,18 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-2-3-lesson-3-2-3">
+  <p class="tex-hierarchy">矩阵(一) / 矩阵乘法</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设矩阵\(A=(a_{ik})_{m\times n}\in {\mathbb F}^{m\times n}\),\(B=(b_{kj})_{n\times p}\in {\mathbb F}^{n\times p}\) 对应线性映射\({\mathscr A}\)和\({\mathscr B}\).  即,
+  <span class="tex-size-small"></span>\[{\mathscr A}\colon {\mathbb F}^n \rightarrow {\mathbb F}^m, \quad (y_1,\cdots,y_n)^T \mapsto \left(\sum_{k=1}^{n} a_{1k}y_k,\sum_{k=1}^{n} a_{2k}y_k,\cdots,\sum_{k=1}^{n} a_{mk}y_k\right)^T.\]
+  \[{\mathscr B}\colon {\mathbb F}^p\rightarrow {\mathbb F}^n, \quad (z_1,\cdots,z_p)^T \mapsto \left(\sum_{j=1}^{p} b_{1j}z_j,\sum_{j=1}^{p} b_{2j}z_j,\cdots,\sum_{j=1}^{p} b_{nj}z_j\right)^T.\]
+
+  因此</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\mathscr A}\circ {\mathscr B}(z_1,\cdots,z_p)^T = \left(\sum\limits_{j=1}^{p}\left(\sum\limits_{k=1}^{n}a_{1k}b_{kj}\right)z_j,\cdots,\sum\limits_{j=1}^{p}\left(\sum\limits_{k=1}^{n}a_{mk}b_{kj}\right)z_j\right)^T.\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">记 \(C=(c_{ij})_{m\times p}\in {\mathbb F}^{m\times p}\), 其中 \(c_{ij}=\sum_{k=1}^{n}a_{ik}b_{kj}\). 则\({\mathscr A}\circ {\mathscr B}\)为矩阵\(C\)对应的线性变换.<br> 
+  <span class="tex-color-blue">注</span>: 下面我们将这个矩阵\(C\)定义为矩阵\(A\)和\(B\)的乘积.</div>
+</div>

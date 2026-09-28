@@ -1,0 +1,74 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-1-6-lesson-4-1-6">
+  <p class="tex-hierarchy">行列式 / 行列式定义</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">4.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">给定一个\(n\)阶矩阵\(A=(a_{ij})_{n\times n}\).</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">称 \(M_{ij}:=\det\left(A\left({{1,\cdots,i-1,i+1,\cdots,n}\atop{1,\cdots,j-1,j+1,\cdots,n}}\right)\right)\)为元素\(a_{ij}\)的<span class="tex-color-blue">余子式</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">称\(A_{ij}:=(-1)^{i+j}M_{ij}\)为\(a_{ij}\)的<span class="tex-color-blue">代数余子式</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">更一般地,称\(A\)的某个\(k\)阶子矩阵的行列式为\(A\)的<span class="tex-color-blue">\(k\)阶子式</span>,删去子式所在的行列所得的矩阵的行列式称为该子式的<span class="tex-color-blue">余子式</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">特别地,我们称\(\det\left(A\left({{1,2,\cdots,k}\atop{1,2,\cdots,k}}\right)\right)\)为\(A\)的<span class="tex-color-blue">\(k\)阶主子式</span>.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">根据这个定义,我们可以将行列式的定义式简写为</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\boxed{\det(A) := \sum_{i=1}^na_{i1}A_{i1} = \sum_{i=1}^{n}(-1)^{i+1}a_{i1}M_{i1}.}\]</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\begin{vmatrix}
+      a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\
+        &amp;a_{22}&amp;\ddots&amp;\vdots\\
+        &amp;      &amp;\ddots&amp;a_{n2}\\
+        &amp;      &amp;      &amp;a_{nn}\\
+      \end{vmatrix}=a_{11}a_{22}\cdots a_{nn}.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\begin{vmatrix}
+        &amp;      &amp;      &amp;a_{1n}\\
+        &amp;      &amp;\iddots&amp;a_{2n}\\
+        &amp; a_{n-1,2}&amp;\iddots&amp;\vdots\\
+      a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\\
+      \end{vmatrix}=(-1)^{\frac{n(n-1)}{2}}a_{n1}a_{n-1,2}\cdots a_{1n}.\]</div>
+    </div>
+  </section>
+</div>

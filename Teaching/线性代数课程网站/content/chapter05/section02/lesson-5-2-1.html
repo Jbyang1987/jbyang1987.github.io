@@ -1,0 +1,36 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-5-2-1-lesson-5-2-1">
+  <p class="tex-hierarchy">矩阵(二) / 初等矩阵的应用</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">由高斯消元法,对任意矩阵\(A\)可通过初等行变换将其变为阶梯矩阵.
+
+  用初等矩阵,这过程可描述为: 存在初等方阵\(P_1,P_2,\cdots,P_s\)使得</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[P_s\cdots P_2P_1A =: J\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">为阶梯矩阵.</div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若 \(A\) 可逆，则\(J\)为可逆上三角矩阵.</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若 \(P_1\), \(P_2\), \(\cdots\), \(P_s\) 仅出现下三角初等矩阵 \(T_{ij}(\lambda)\)(\(j&lt;i\)). 则记 \(L:=P_1^{-1}P_2^{-1}\cdots P_s^{-1}\) 以及 \(U:=J\), 称 \(A=LU\)<small class="tex-footnote">注：\(L\)的\((i,j)\)元素正好为依次将\(A\)的\((i,j)\)元素化为\(0\)所需减去的\((j,j)\)元素的倍数.</small>为\(A\)的<span class="tex-color-blue">\(LU\)分解</span>.</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若可逆阵\(A\)的\(LU\)分解存在，则将解方程组 \(Ax=b\)可转化为两个简单方程组\(Ly=b\), \(Ux=y\) (这两个方程都可通过带入法求解).</div>
+    </li>
+  </ul>
+</div>

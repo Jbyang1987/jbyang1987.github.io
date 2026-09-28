@@ -1,0 +1,49 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-9-1-lesson-7-9-1">
+  <p class="tex-hierarchy">线性映射 / 相似上三角化与若当标准形</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">不是每个矩阵都可以对角化,但总是可上三角化!</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.11</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">任意\(n\)阶复方阵\(A\)都相似于一个上三角形矩阵\(J\),
+
+          且</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(J\)的对角线上的元素为\(A\)的全体特征值.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路:将\(A\)的一个特征向量\(\xi_1\)扩充为\({\mathbb C}^n\)的一组基\(\xi_1,\cdots,\xi_n\),并记组成的可逆矩阵\((\xi_1,\cdots,\xi_n)\)为\(P\).
+
+  则
+  \[AP=P\begin{pmatrix} \lambda &amp; * \\ &amp; A_{22}
+  \end{pmatrix}.\]
+
+  对矩阵阶数归纳,不妨设\(A_{22}=Q\begin{pmatrix}\lambda_2&amp;&amp;*\\&amp;\ddots&amp;\\&amp;&amp;\lambda_n\\\end{pmatrix}Q^{-1}\).
+
+  则
+  \[A= P\begin{pmatrix} 1 &amp;  \\ &amp; Q\end{pmatrix} \cdot \begin{pmatrix}\lambda_1&amp;&amp;*\\&amp;\ddots&amp;\\&amp;&amp;\lambda_n\\\end{pmatrix} \left(P\begin{pmatrix} 1 &amp;  \\ &amp; Q\end{pmatrix} \right)^{-1}.\]
+  </span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">注:</span> \(J\)的取法不唯一.(例:\({0\ 1\choose0\ 0}\)和\({0\ 2\choose0\ 0}\).)</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">例:</span> 若复二阶矩阵\(A\)满足\(A^2=0\),则\(A=0\)或者\(A\)相似于\({0\ 1\choose0\ 0}\).</div>
+</div>

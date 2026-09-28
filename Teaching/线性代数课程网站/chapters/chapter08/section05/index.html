@@ -1,0 +1,158 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="8.5 伴随变换；内积空间及变换，线性代数课程。"><title>8.5 伴随变换 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter08" data-section="chapter08-section05"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter08.html">第八章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第5节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="伴随变换简介、进度与目录"><header class="chapter-intro"><h1>8.5 伴随变换</h1><p>围绕伴随变换展开定义、性质、计算与应用。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter08-section05" href="lesson-8-5-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 3</span></div><progress data-section-meter="chapter08-section05" max="3" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="伴随变换知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-8-5-1.html">8.5.1 伴随变换 · 第1页</a><span data-unit-status="chapter08-section05-lesson-8-5-1">未标记</span></li><li><a href="lesson-8-5-2.html">8.5.2 伴随变换 · 第2页</a><span data-unit-status="chapter08-section05-lesson-8-5-2">未标记</span></li><li><a href="lesson-8-5-3.html">8.5.3 伴随变换 · 第3页</a><span data-unit-status="chapter08-section05-lesson-8-5-3">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-8-5-1" data-reading-unit="chapter08-section05-lesson-8-5-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§8.5.1</span><h2><a class="heading-link" href="lesson-8-5-1.html">伴随变换 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-8-5-1-lesson-8-5-1">
+  <p class="tex-hierarchy">内积空间及变换 / 伴随变换</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: table -->
+    <table class="tex-table tex-table-hline tex-table-double-hline"><tbody><tr><td><div class="tex-paragraph">\(n\)维欧氏空间</div></td><td><div class="tex-paragraph">\(\underset{1:1}{\overset{\text{标准正交基基} \alpha_1,\cdots,\alpha_n}{\leftrightarrow}}\)</div></td><td><div class="tex-paragraph">\({\mathbb R}^n\)(带标准内积)</div></td></tr><tr><td><div class="tex-paragraph">线性变换\({\mathscr A}\)</div></td><td><div class="tex-paragraph">\(\underset{1:1}{\overset{{\mathscr A}(\alpha_1,\cdots,\alpha_n)=(\alpha_1,\cdots,\alpha_n)A}{\leftrightarrow}}\)</div></td><td><div class="tex-paragraph">矩阵\(A\)</div></td></tr><tr><td><div class="tex-paragraph">正交变换\({\mathscr A}\)</div></td><td><div class="tex-paragraph">\(\underset{1:1}{\overset{{\mathscr A}(\alpha_1,\cdots,\alpha_n)=(\alpha_1,\cdots,\alpha_n)A}{\leftrightarrow}}\)</div></td><td><div class="tex-paragraph">正交矩阵\(A\)</div></td></tr><tr><td><div class="tex-paragraph">??</div></td><td><div class="tex-paragraph">\(\longleftrightarrow\)</div></td><td><div class="tex-paragraph">转置矩阵 \(A^T\)</div></td></tr></tbody></table>
+  </div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">8.1.7</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\)为欧氏空间\(V\)上的线性变换.
+      设\({\mathscr A}\)在标准正交基\(e_1,\cdots,e_n\)下的矩阵为\(A\).
+
+      则</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">存在唯一</span>的\(V\)上的线性变换,记为\({\mathscr A}^*\),满足</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[({\mathscr A} \alpha,\beta) =(\alpha,{\mathscr A}^*\beta), \quad(\forall \alpha,\beta\in V).
+          \]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">线性变换\({\mathscr A}^*\)在基\(e_1,\cdots,e_n\)下的矩阵为\(A^T\).</div>
+        </li>
+      </ol>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">称\({\mathscr A}^*\)为\({\mathscr A}\)的<span class="tex-color-blue">伴随变换</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">
+  证明思路: 存在性: 证明矩阵\(A^T\)对应的线性变换满足性质. 唯一性: 若\({\mathscr B}\)也满足条件,则仅需证明 \(|({\mathscr A}^*-{\mathscr B})(\beta)|=0\) 对所有的\(\beta\)成立.
+  </span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="伴随变换 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter08-section05-lesson-8-5-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter08-section05-lesson-8-5-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter08-section05-lesson-8-5-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter08-section05-lesson-8-5-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter08-section05-lesson-8-5-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-8-5-2" data-reading-unit="chapter08-section05-lesson-8-5-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§8.5.2</span><h2><a class="heading-link" href="lesson-8-5-2.html">伴随变换 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-8-5-2-lesson-8-5-2">
+  <p class="tex-hierarchy">内积空间及变换 / 伴随变换</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">8.1.8</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(({\mathscr A}^*)^*={\mathscr A}\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(({\mathscr A}+{\mathscr B})^*={\mathscr A}^*+{\mathscr B}^*\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\((\lambda {\mathscr A})^* = \lambda {\mathscr A}^*\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(({\mathscr A}\circ{\mathscr B})^* = {\mathscr B}^*\circ{\mathscr A}^*\);</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">8.1.9</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\)为欧氏空间上的线性变换.则</div>
+
+      <!-- TeX block: container -->
+      <div class="tex-container tex-center">
+        <!-- TeX block: text -->
+        <div class="tex-paragraph">\({\mathscr A}\) 正交   \(\Leftrightarrow\)   \({\mathscr A}^*{\mathscr A}=\varepsilon\)   \(\Leftrightarrow\)   \({\mathscr A}^*\) 正交.</div>
+      </div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="伴随变换 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter08-section05-lesson-8-5-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter08-section05-lesson-8-5-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter08-section05-lesson-8-5-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter08-section05-lesson-8-5-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter08-section05-lesson-8-5-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-8-5-3" data-reading-unit="chapter08-section05-lesson-8-5-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§8.5.3</span><h2><a class="heading-link" href="lesson-8-5-3.html">伴随变换 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-8-5-3-lesson-8-5-3">
+  <p class="tex-hierarchy">内积空间及变换 / 伴随变换</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">8.1.9</span> <span class="math-block-title">对称变换,自伴随变换</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\)为欧氏空间\(V\)上的线性变换.
+
+      若\({\mathscr A}={\mathscr A}^*\),则称\({\mathscr A}\)为\(V\)上的<span class="tex-color-blue">对称变换</span>(或<span class="tex-color-blue">自伴随变换</span>).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">注: \({\mathscr A}\)对称 \(\Leftrightarrow\) \(({\mathscr A} a,b)=(a,{\mathscr A} b)\) \(\forall a,b\in V\).</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">8.1.8</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\)为某欧氏空间上的线性变换\({\mathscr A}\)在某组标准正交基下的矩阵.则</div>
+
+      <!-- TeX block: container -->
+      <div class="tex-container tex-center">
+        <!-- TeX block: text -->
+        <div class="tex-paragraph">\({\mathscr A}\) 为对称变换 \(\Leftrightarrow\) \(A\)为实对称矩阵.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明: \({\mathscr A}\)对称 \(\Leftrightarrow\) \({\mathscr A}^*={\mathscr A}\) \(\Leftrightarrow\) \(A^T=A\) \(\Leftrightarrow\) \(A\)对称.</span></div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">8.1.9</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">对称变换的不同特征值对应的特征向量正交.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路: \(({\mathscr A}(\xi_1),\xi_2) = (\xi_1,{\mathscr A}(\xi_2))\) \(\Rightarrow\) \((\lambda_1-\lambda_2)\cdot(\xi_1,\xi_2)=0\).</span></div>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">8.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">实对称矩阵\(A\)的属于不同特征值的特征向量正交.</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="伴随变换 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter08-section05-lesson-8-5-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter08-section05-lesson-8-5-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter08-section05-lesson-8-5-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter08-section05-lesson-8-5-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter08-section05-lesson-8-5-3" role="status" aria-live="polite"></p></div></section><nav class="lesson-navigation" aria-label="子节导航"><a href="../../../index.html">返回课程首页</a><a href="../section04/index.html">上一节 · 8.4 正交变换</a><a href="index.html#main">回顾本节</a><a href="../section06/index.html">下一节 · 8.6 实对称矩阵的对角化</a></nav></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

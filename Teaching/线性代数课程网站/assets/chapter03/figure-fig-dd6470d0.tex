@@ -1,0 +1,17 @@
+\begin{tikzpicture}[scale=0.5]
+  
+  \foreach \i [evaluate=\i as \angle using 90+72*\i] in {0,...,4} {
+ \coordinate (V\i) at (\angle:2cm); 
+  }
+  
+  \draw (V0) -- (V1) -- (V2) -- (V3) -- (V4) -- cycle;
+  \draw (V3) -- (V0) -- (V2);
+  
+  \foreach \i [evaluate=\i as \label using int(\i+1),
+   evaluate=\i as \angle using 90+72*\i] in {0,...,4} {
+ \node[anchor=\angle+180] at (\angle:2cm) {$V_{\label}$}; 
+  }
+\node at (8,0) {$\Rightarrow\qquad \begin{pmatrix}
+0&1&1&1&1\\1&0&1&0&0\\1&1&0&1&0\\1&0&1&0&1\\1&0&0&1&0\\
+\end{pmatrix}$};
+\end{tikzpicture}

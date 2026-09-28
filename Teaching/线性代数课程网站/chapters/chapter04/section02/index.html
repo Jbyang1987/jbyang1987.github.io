@@ -1,0 +1,513 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="4.2 行列式性质；行列式，线性代数课程。"><title>4.2 行列式性质 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter04" data-section="chapter04-section02"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter04.html">第四章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第2节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="行列式性质简介、进度与目录"><header class="chapter-intro"><h1>4.2 行列式性质</h1><p>围绕行列式性质展开定义、性质、计算与应用。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter04-section02" href="lesson-4-2-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 7</span></div><progress data-section-meter="chapter04-section02" max="7" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="行列式性质知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-4-2-1.html">4.2.1 行列式性质 · 第1页</a><span data-unit-status="chapter04-section02-lesson-4-2-1">未标记</span></li><li><a href="lesson-4-2-2.html">4.2.2 行列式性质 · 第2页</a><span data-unit-status="chapter04-section02-lesson-4-2-2">未标记</span></li><li><a href="lesson-4-2-3.html">4.2.3 行列式性质 · 第3页</a><span data-unit-status="chapter04-section02-lesson-4-2-3">未标记</span></li><li><a href="lesson-4-2-4.html">4.2.4 行列式性质 · 第4页</a><span data-unit-status="chapter04-section02-lesson-4-2-4">未标记</span></li><li><a href="lesson-4-2-5.html">4.2.5 行列式性质 · 第5页</a><span data-unit-status="chapter04-section02-lesson-4-2-5">未标记</span></li><li><a href="lesson-4-2-6.html">4.2.6 行列式性质 · 第6页</a><span data-unit-status="chapter04-section02-lesson-4-2-6">未标记</span></li><li><a href="lesson-4-2-7.html">4.2.7 行列式性质 · 第7页</a><span data-unit-status="chapter04-section02-lesson-4-2-7">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-4-2-1" data-reading-unit="chapter04-section02-lesson-4-2-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.2.1</span><h2><a class="heading-link" href="lesson-4-2-1.html">行列式性质 · 第1页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-1-lesson-4-2-1">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.1</span> <span class="math-block-title">行列式列展开</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A=(a_{ij})_{n\times n}\)为\(n\)阶方阵.则对任意\(1\leq j \leq n\)</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\boxed{\det(A)=\sum_{i=1}^na_{ij}A_{ij} = \sum_{i=1}^{n}(-1)^{i+j}a_{ij}M_{ij}.}\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">思路: 根据对行列式阶数的归纳, 将行列式
+  \[\det(A):=\sum_{i&#39;=1}^{n}(-1)^{i&#39;+1}a_{i&#39;1}M_{i&#39;1}\]
+  中的\(M_{i&#39;1}\) 按第 \(j-1\)列(即,原行列式的第\(j\)行)再次展开. 同时右式
+  \[\sum_{i=1}^{n}(-1)^{i+j}a_{ij}M_{ij}\]
+  中的 \(M_{ij}\) 按第一列展开. 然后比较两式是否相等即可.</span></div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[ \tiny
+  \begin{split}
+  \det(A)
+  &amp; = \sum_{i&#39; =1}^{n} (-1)^{i&#39; +1}a_{i&#39; 1}M_{i&#39; 1} \\ 
+  &amp; = \sum_{i&#39; =1}^{n} (-1)^{i&#39; +1}a_{i&#39; 1} \left(\sum_{i =1}^{i&#39; -1} (-1)^{(j-1)+i } a_{i j}  \cdot M\left[{i&#39; ,i }\atop{1,j}\right] + \sum_{i =i&#39; +1}^{n}(-1)^{(i -1)+(j-1)} a_{i j} \cdot M\left[{i&#39; ,i }\atop{1,j}\right] \right)\\ 
+  &amp; = \sum_{i =1}^{n} (-1)^{i +j}a_{i j}\left(\sum_{i&#39; =1}^{i -1} (-1)^{i&#39; +1} a_{i&#39; 1} M\left[{i&#39; ,i }\atop{1,j}\right] + \sum_{i&#39; =i +1}^{n}(-1)^{(i&#39; -1)+1} a_{i&#39; 1}  \cdot  M\left[{i&#39; ,i }\atop{1,j}\right] \right)\\ 
+  &amp; = \sum_{i =1}^{n} (-1)^{i +j}a_{i j} M_{i j} \\  
+  &amp; = \sum_{i=1}^{n} a_{ij}A_{ij} \\ 
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.5</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\begin{vmatrix}
+      a_{11}&amp;&amp;&amp;\\
+       a_{21} &amp;a_{22}&amp;&amp;\\
+       \vdots &amp;    \ddots  &amp;\ddots&amp;\\
+        a_{n1}&amp;    \cdots   &amp; a_{n,n-1}    &amp;a_{nn}\\
+      \end{vmatrix}=a_{11}a_{22}\cdots a_{nn}.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\begin{vmatrix}
+      a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\
+      a_{21}&amp; \iddots &amp;\iddots&amp;\\
+      \vdots&amp;a_{n-1,2}&amp; &amp; \\
+      a_{n1}&amp; &amp; &amp;\\
+      \end{vmatrix}=(-1)^{\frac{n(n-1)}{2}}a_{n1}a_{n-1,2}\cdots a_{1n}.\]</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式性质 · 第1页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section02-lesson-4-2-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section02-lesson-4-2-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section02-lesson-4-2-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section02-lesson-4-2-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section02-lesson-4-2-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-4-2-2" data-reading-unit="chapter04-section02-lesson-4-2-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.2.2</span><h2><a class="heading-link" href="lesson-4-2-2.html">行列式性质 · 第2页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-2-lesson-4-2-2">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.2</span> <span class="math-block-title">行列式行展开</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A=(a_{ij})_{n\times n}\)为\(n\)阶方阵.则对任意\(1\leq k \leq n\)</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\boxed{\det(A)=\sum_{j=1}^na_{kj}A_{kj} = \sum_{j=1}^{n}(-1)^{k+j}a_{kj}M_{kj}.}\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">思路: 不妨设\(k=1\). 根据对行列式阶数的归纳, 将行列式
+  \[\det(A):=\sum_{i=1}^{n}(-1)^{i+1}a_{i1}M_{i1}\]
+  中除\(M_{11}\)以外的\(M_{i1}\)按第一行展开.  同时右式
+  \[\sum_{i=1}^{n}(-1)^{i+j}a_{ij}M_{ij}\]
+  中除\(M_{11}\)以外的 \(M_{1j}\) 按第一列展开. 然后比较两式是否相等即可.</span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式性质 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section02-lesson-4-2-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section02-lesson-4-2-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section02-lesson-4-2-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section02-lesson-4-2-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section02-lesson-4-2-2" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-4-2-3" data-reading-unit="chapter04-section02-lesson-4-2-3"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.2.3</span><h2><a class="heading-link" href="lesson-4-2-3.html">行列式性质 · 第3页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-3-lesson-4-2-3">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[ M\left[{{i_1i_2}\atop {j_1j_2}}\right]:=\det\left(A\left({1,\cdots,i_1-1,i_1+1,\cdots,i_2-1,i_2+1,\cdots,n} \atop {1,\cdots,j_1-1,j_1+1,\cdots,j_2-1,j_2+1,\cdots,n}\right)\right).\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">对行列式的阶数\(n\)进行归纳。当\(n=1\),结论显然成立。假设结论对n-1阶行列式成立。 则</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  \det(A)
+  &amp; = \sum_{i=1}^{n}(-1)^{i+1}a_{i1}M_{i1} \\ 
+  &amp; = a_{11}M_{11} + \sum_{i=2}^{n}(-1)^{i+1}a_{i1} \left(\sum_{j=2}^{n} (-1)^{1+(j-1)} a_{1j}\cdot M\left[{1i}\atop{1j}\right]\right)\\ 
+  &amp; = a_{11}M_{11} + \sum_{j=2}^{n}(-1)^{1+j} a_{1j} \left(\sum_{i=2}^{n} (-1)^{(i-1)+1} a_{i1}\cdot M\left[{1i}\atop{1j}\right]\right)\\ 
+  &amp; = \sum_{j=1}^{n} (-1)^{1+j}a_{1j} M_{1j}   = \sum_{j=1}^{n} a_{1j}A_{1j} \\ 
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中第二个等式为对\(n-1\)阶行列式\(M_{i1}\)的第\(1\)行展开，第三个等式为交换求和号，第四个等式为对\(n-1\)阶行列式\(M_{1j}\)的第\(1\)列展开。</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式性质 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section02-lesson-4-2-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section02-lesson-4-2-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section02-lesson-4-2-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section02-lesson-4-2-3" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section02-lesson-4-2-3" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-4-2-4" data-reading-unit="chapter04-section02-lesson-4-2-4"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.2.4</span><h2><a class="heading-link" href="lesson-4-2-4.html">行列式性质 · 第4页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-4-lesson-4-2-4">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">方阵\(A\)的行列式具有下列性质:</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">交换\(A\)某两行(列)得\(B\),则\(\det(B)=-\det(A)\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">将\(A\)的某一行(列)乘\(\lambda\)得\(B\),则\(\det(B)=\lambda\det(A)\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(A\)的某一行(列)是两个向量之和,则\(\det(A)\)可拆成两个行列式之和.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">证明思路：将\(\det(A)\)按第\(p，q\)两行展开得</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\det(A) = \sum_{i=1}^n \sum_{j=1}^{i-1} (-1)^{p+q+i+j-1}(a_{pi}a_{qj}-a_{pj}a_{qi}) M\left[{p,q}\atop{i,j}\right].\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">几何解释？</span></div>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">4.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(A\)的某两行(列)成比例,则\(\det(A)=0\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">将\(A\)的某一行(列)\(\lambda\)倍加到另一行(列)得\(B\),则\(\det(B)=\det(A)\).</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">几何解释？</span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设 \(A=(a_{ij})_{n\times n} = \begin{pmatrix}\alpha_1\\\alpha_2\\\vdots\\\alpha_n\end{pmatrix}\).则\(\det\)可以看成\(\alpha_1,\cdots,\alpha_n\)的函数.   这一函数满足如下性质:
+  <span class="tex-size-small"></span>
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">反对称性: \(\det(\cdots,\alpha_i,\cdots,\alpha_j\cdots)=-\det(\cdots,\alpha_j,\cdots,\alpha_i\cdots)\);</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">多重线性:  <br>
+      \(\det(\cdots,\lambda\alpha_i+\mu\beta_i,\cdots) = \lambda\det(\cdots,\alpha_i,\cdots) + \mu\det(\cdots,\beta_i,\cdots)\);</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">规范性: \(\det(\vec{e}_1,\vec{e}_2,\cdots,\vec{e}_n)=1\).</div>
+    </li>
+  </ol>
+
+
+  <span class="tex-color-blue">注:</span> 这三条性质唯一地确定了函数\(\det\). (几何意义！！)</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">例:</span> \(\det(\alpha+\beta,\beta+\gamma,\gamma+\alpha)=2\det(\alpha,\beta,\gamma)\).</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.5</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(A)=\det(A^T).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">证明：比较两边显示展开.(或，对阶数归纳，并利用展开式。)</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(AB)=\det(A)\det(B).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">几何解释？</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.10</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(m&gt;n\), \(A\in F^{m\times n}\), \(B\in F^{n\times m}\). 则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(AB)=0.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.11</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\in F^{n\times n}\), \(B\in F^{n\times m}\), \(C\in F^{m\times n}\), \(D\in F^{m\times m}\). 若\(A\)可逆,则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det\begin{pmatrix} A&amp;B\\C&amp;D\\\end{pmatrix}=\det(A)\cdot\det(D-CA^{-1}B).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.12</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求
+      \(\begin{vmatrix}
+      3&amp; x + y + z &amp; x^2 + y^2 + z^2 \\
+      x + y + z &amp; x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 \\
+      x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 &amp; x^4 + y^4 + z^4 \\
+      \end{vmatrix}\)</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">
+  \[\begin{pmatrix}
+  3&amp; x + y + z &amp; x^2 + y^2 + z^2 \\
+  x + y + z &amp; x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 \\
+  x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 &amp; x^4 + y^4 + z^4 \\
+  \end{pmatrix} =
+  \begin{pmatrix}
+  1 &amp; 1 &amp; 1 \\
+  x &amp; y &amp; z \\
+  x^2 &amp; y^2 &amp; z^2 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+  1 &amp; x &amp; x^2 \\
+  1 &amp; y &amp; y^2 \\
+  1 &amp; z &amp; z^2 \\
+  \end{pmatrix}\]</span></div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式性质 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section02-lesson-4-2-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section02-lesson-4-2-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section02-lesson-4-2-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section02-lesson-4-2-4" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section02-lesson-4-2-4" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-4-2-5" data-reading-unit="chapter04-section02-lesson-4-2-5"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.2.5</span><h2><a class="heading-link" href="lesson-4-2-5.html">行列式性质 · 第5页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-5-lesson-4-2-5">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  \det(A)
+  &amp; = \det\left(
+  \sum_{j_1=1}^{n}a_{1j_1}\vec{e}_{j_1}, \sum_{j_2=1}^{n}a_{2j_2}\vec{e}_{j_2},\cdots, \sum_{j_n=1}^{n}a_{nj_n}\vec{e}_{j_n}
+  \right)\\ 
+  &amp; =\sum_{j_1=1}^{n}\sum_{j_2=1}^{n}\cdots \sum_{j_n=1}^{n} a_{1j_1}a_{2j_2}\cdots a_{nj_n}
+  \det\left(\vec{e}_{j_1}, \vec{e}_{j_2},\cdots, \vec{e}_{j_n}\right)\\ 
+  &amp; =\sum_{(j_1j_2\cdots j_n)\in S_n} a_{1j_1}a_{2j_2}\cdots a_{nj_n}
+  \underbrace{{\textcolor[rgb]{1,0,0}{\boxed{\det\left(\vec{e}_{j_1}, \vec{e}_{j_2},\cdots, \vec{e}_{j_n}\right)}}}}_{=??}\\
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">其中\(S_n\)为集合\(\{1,\cdots,n\}\)的全体排列集.</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">4.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">由\(n\)个两两不同的正整数组成的有序数组\((j_1,j_2,\cdots,j_n)\)称为一个<span class="tex-color-blue">\(n\)元排列</span>.   由\(1,2,\cdots,n\)组成的排列总数为\(n!\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">称\((1,2,\cdots,n)\)为<span class="tex-color-blue">标准排列</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">给定排列\((j_1,j_2,\cdots,j_n)\).若\(1\leq p&lt;q\leq n\)且\(j_p&gt;j_q\),则称二元组\((j_p,j_q)\)为排列\((j_1,j_2,\cdots,j_n)\)的一个<span class="tex-color-blue">逆序</span>.  例如: \((1,4,3,2)\)的有三个逆序\((4,3),(4,2),(3,2)\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">排列\((j_1,j_2,\cdots,j_n)\)的<span class="tex-color-blue">逆序总数</span>记为\(\tau(j_1,j_2,\cdots,j_n)\).   例如: \(\tau(1,4,3,2)=3\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(\tau(j_1,j_2,\cdots,j_n)\)为奇数,则称\((j_1,j_2,\cdots,j_n)\)为<span class="tex-color-blue">奇排列</span>.否则称之为<span class="tex-color-blue">偶排列</span>.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">将一个排列中的两个元素互换位置,其余元素位置不变.这个过程称为一个<span class="tex-color-blue">对换</span>.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: lemma -->
+  <section class="math-block math-block-lemma">
+    <div class="math-block-heading"><span class="math-block-label">引理</span> <span class="math-block-number">4.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">对换改变奇偶性.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">排列\((j_1,j_2,\cdots,j_n)\)可经过\(\tau(j_1,j_2,\cdots,j_n)\)次相邻位置的对换变为标准排列.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.4</span> <span class="math-block-title">行列式显示表示</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A=(a_{ij})_{n\times n}\)为\(n\)阶方阵.则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[
+      \det(A) = \sum_{(j_1j_2\cdots j_n)\in S_n}(-1)^{\tau(j_1,j_2,\cdots,j_n)} a_{1j_1}a_{2j_2}\cdots a_{nj_n}
+      \]</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式性质 · 第5页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section02-lesson-4-2-5" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section02-lesson-4-2-5" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section02-lesson-4-2-5" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section02-lesson-4-2-5" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section02-lesson-4-2-5" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-4-2-6" data-reading-unit="chapter04-section02-lesson-4-2-6"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.2.6</span><h2><a class="heading-link" href="lesson-4-2-6.html">行列式性质 · 第6页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-6-lesson-4-2-6">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.7</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(S_2=\{(12),(21)\}\),  \(\tau(12)=0\), \(\tau(21)=1\)</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[\Rightarrow \begin{vmatrix}a&amp;b\\c&amp;d\end{vmatrix}=ad-bc.\]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(S_3=\{(123),(231),(312),(132),(213),(321)\}\),  \(\tau(123)=0\), \(\tau(231)=\tau(312)=2\), \(\tau(213)=\tau(132)=1\), \(\tau(321)=3\),</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">\(\begin{vmatrix}
+              {\textcolor[rgb]{1,0,0}{a_{11}}}&amp;{\textcolor[rgb]{0,0,1}{a_{12}}}&amp;{\textcolor[rgb]{0,1,0}{a_{13}}}\\
+              {\textcolor[rgb]{0,1,0}{a_{21}}}&amp;{\textcolor[rgb]{1,0,0}{a_{22}}}&amp;{\textcolor[rgb]{0,0,1}{a_{23}}}\\
+              {\textcolor[rgb]{0,0,1}{a_{31}}}&amp;{\textcolor[rgb]{0,1,0}{a_{32}}}&amp;{\textcolor[rgb]{1,0,0}{a_{33}}}\\
+              \end{vmatrix}
+              {={\textcolor[rgb]{1,0,0}{+a_{11}a_{22}a_{33}}} {\textcolor[rgb]{0,0,1}{+a_{12}a_{23}a_{31}}} {\textcolor[rgb]{0,1,0}{+a_{13}a_{21}a_{32}}} \atop \qquad -a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}-a_{13}a_{22}a_{31}}\)</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">\(\begin{vmatrix}
+              {\textcolor[rgb]{1,0,0}{a_{11}}}&amp;{\textcolor[rgb]{0,0,1}{a_{12}}}&amp;{\textcolor[rgb]{0,1,0}{a_{13}}}\\
+              {\textcolor[rgb]{0,0,1}{a_{21}}}&amp;{\textcolor[rgb]{0,1,0}{a_{22}}}&amp;{\textcolor[rgb]{1,0,0}{a_{23}}}\\
+              {\textcolor[rgb]{0,1,0}{a_{31}}}&amp;{\textcolor[rgb]{1,0,0}{a_{32}}}&amp;{\textcolor[rgb]{0,0,1}{a_{33}}}\\
+              \end{vmatrix}
+              {=+a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}\atop \qquad {\textcolor[rgb]{1,0,0}{-a_{11}a_{23}a_{32}}} {\textcolor[rgb]{0,0,1}{-a_{12}a_{21}a_{33}}} {\textcolor[rgb]{0,1,0}{-a_{13}a_{22}a_{31}}}}\)</div>
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.8</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-size-footnotesize"></span></div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\begin{vmatrix}
+      &amp; &amp; &amp;a_{1}\\
+      &amp; &amp;\iddots&amp;\\
+      &amp;a_{n-1}&amp; &amp; \\
+      a_{n}&amp; &amp; &amp;\\
+      \end{vmatrix}=(-1)^{\frac{(n)(n-1)}{2}}a_{1}a_{2}\cdots a_{n}.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.9</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求下列三阶行列式: \(\begin{vmatrix}
+      1 &amp; 2 &amp; 3\\
+      8 &amp; 0 &amp; 4\\
+      7 &amp; 6 &amp; 5
+      \end{vmatrix} \quad
+      \text{和}\quad \begin{vmatrix}
+      1 &amp; 2 &amp; 0\\
+      0 &amp; 1 &amp; 3\\
+      2 &amp; 7 &amp; 8
+      \end{vmatrix}\).</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式性质 · 第6页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section02-lesson-4-2-6" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section02-lesson-4-2-6" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section02-lesson-4-2-6" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section02-lesson-4-2-6" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section02-lesson-4-2-6" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-4-2-7" data-reading-unit="chapter04-section02-lesson-4-2-7"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§4.2.7</span><h2><a class="heading-link" href="lesson-4-2-7.html">行列式性质 · 第7页</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-7-lesson-4-2-7">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">4.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\small A=
+      \begin{pmatrix}
+      A_{11}&amp;A_{12}&amp;\cdots&amp;A_{1k}\\
+        &amp;A_{22}&amp;\cdots&amp;A_{2k}\\
+        &amp;      &amp;\ddots&amp;\vdots\\
+        &amp;      &amp;      &amp;A_{kk}\\
+      \end{pmatrix}\)为分块矩阵,其中\(A_{ii}\)均为方阵.则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(A)=\prod_{i=1}^k \det(A_{ii}).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[ \tiny
+  \begin{split}
+  \det(A) &amp;= \sum_{(j_1,j_2,\cdots,j_n)\in S_n} (-1)^{\tau(j_1,\cdots,j_n)}a_{1j_1}a_{2j_2}\cdots a_{nj_n}\\ 
+  &amp;=\sum_{(j_1,j_2,\cdots,j_r)\in S_r \leq r \atop(j_{r+1},\cdots,j_n)\in S_{n-r}(r+1,\cdots,n)} \left((-1)^{\tau(j_1,\cdots,j_r)}a_{1j_1}\cdots a_{r,j_r}\right) \cdot \left( (-1)^{\tau(j_{r+1},\cdots,j_n)}a_{r+1,j_{r+1}}\cdots a_{nj_n}\right)\\ 
+
+  &amp;=\det(A_{11})\det(A_{22})\\
+  \end{split}
+  \]</div>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="行列式性质 · 第7页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter04-section02-lesson-4-2-7" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter04-section02-lesson-4-2-7" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter04-section02-lesson-4-2-7" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter04-section02-lesson-4-2-7" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter04-section02-lesson-4-2-7" role="status" aria-live="polite"></p></div></section><nav class="lesson-navigation" aria-label="子节导航"><a href="../../../index.html">返回课程首页</a><a href="../section01/index.html">上一节 · 4.1 行列式定义</a><a href="index.html#main">回顾本节</a><a href="../section03/index.html">下一节 · 4.3 可逆判定</a></nav></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

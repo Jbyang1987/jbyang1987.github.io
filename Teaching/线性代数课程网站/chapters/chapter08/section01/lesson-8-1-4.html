@@ -1,0 +1,105 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="欧氏空间的定义 · 第4页；内积空间及变换，线性代数课程。"><title>欧氏空间的定义 · 第4页 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter08" data-section="chapter08-section01" data-unit="chapter08-section01-lesson-8-1-4"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter08.html">第八章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第1节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第4小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§8.1.4</span><span>欧氏空间的定义 · 第4页</span></h1><p class="knowledge-goal">欧氏空间的定义 · 第4页</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-8-1-4-lesson-8-1-4">
+  <p class="tex-hierarchy">内积空间及变换 / 欧氏空间的定义</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">8.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">对称性: \(d(a,b)=d(b,a)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">正定性: \(d(a,b)\geq0\), 等号成立当且仅当\(a=b\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">三角不等式: \(d(a,c)\leq d(a,b)+ d(b,c)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">勾股定理: \(a\perp b\) 当且仅当 \(|a|^2+|b|^2=|a+b|^2\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">菱形定理: 若\(|a|=|b|\),则\((a+b)\perp(a-b)\).</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">8.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(V={\mathbb R}^n\),对于任意两向量 \(a=(a_1,\cdots,a_n)\)和 \(b=(b_1,\cdots,b_n)\), 定义</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[(a,b)=a_1b_1+\cdots+a_nb_n.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则\((-,-)\)为\(V\)上的一个内积.这一内积给出通常的模长和夹角.
+
+      此时Cauchy-Schwarz公式为</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\left(\sum_{i=1}^n a_ib_i\right)^2 \leq \left(\sum_{i=1}^n a_i^2\right)\cdot\left(\sum_{i=1}^n b_i^2\right).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">8.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">类似的\((a,b)=a_1b_1+2a_2b_2+\cdots+na_nb_n\)也可以定义\(V={\mathbb R}^n\)上的一个内积.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">构造一个内积使得给定的一组基均为单位向量且两两垂直.</span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">8.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\alpha_1,\cdots,\alpha_n\)为\(n\)维\({\mathbb R}\)-线性空间\(V\)上的一组基.
+
+      对于任意向量\(\alpha,\beta\in V\),定义</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[(\alpha,\beta)=a_1b_1+a_2b_2+\cdots+a_nb_n,\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中\((a_1,a_2,\cdots,a_n)\)和\((b_1,b_2,\cdots,b_n)\)分别为\(\alpha\)和\(\beta\)在基\(\alpha_1,\cdots,\alpha_n\)下的坐标.
+
+      则\((-,-)\)为\(V\)上的内积.在此内积下\(\alpha_1,\cdots,\alpha_n\)均为单位向量且两两垂直.
+
+      即,</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[(\alpha_i,\alpha_j)=\delta_{ij}=\left\{\begin{array}{ll}
+      1,&amp; i=j;\\
+      0,&amp; i\neq j.\\
+      \end{array}\right.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">任意有限维实线性空间一定存在内积. 注:任意内积均为这一形式!</span></div>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="欧氏空间的定义 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter08-section01-lesson-8-1-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter08-section01-lesson-8-1-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter08-section01-lesson-8-1-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-8-1-3.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="lesson-8-1-5.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter08-section01-lesson-8-1-4" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter08-section01-lesson-8-1-4" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter08-section01-lesson-8-1-4" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

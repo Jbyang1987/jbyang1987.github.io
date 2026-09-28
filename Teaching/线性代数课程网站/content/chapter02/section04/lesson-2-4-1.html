@@ -1,0 +1,95 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-2-4-1-lesson-2-4-1">
+  <p class="tex-hierarchy">线性方程组 / 一般线性方程组的Gauss消元法</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">按照 \(a_{11}\), \(a_{21}\), \(\cdots\), \(a_{m1}\), \(a_{12}\), \(\cdots\), \(a_{m2}\), \(\cdots\), \(a_{mn}\), \(b_1\), \(\cdots\), \(b_m\) 的顺序找到第一个非零元. 不妨设其为 \(a_{i_1j_1}\).  即，矩阵前\(j_1-1\)列全为零，第\(j_1\)列的前\(i_1-1\)个元素全为零且 \(a_{i_1j_1}\neq0\).</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \setlength{\arraycolsep}{0.7pt}
+  \left(\begin{array}{ccccc}
+  a_{11} &amp; \cdots &amp; a_{1n} &amp; b_1 \\
+  a_{21} &amp; \cdots &amp; a_{2n} &amp; b_2 \\
+  \vdots &amp;  \ddots &amp; \vdots &amp; \vdots\\
+  a_{m1} &amp; \cdots &amp; a_{mn} &amp; b_m \\
+  \end{array}\right) =
+  \left(\begin{array}{cccccccc}
+  0 &amp; \cdots &amp;0 &amp; 0 &amp; a_{1j_1+1} &amp; \cdots &amp; a_{1n} &amp; b_{1} \\
+  0 &amp; \cdots &amp;0 &amp; 0 &amp;a_{2j_1+1} &amp; \cdots &amp; a_{2n} &amp; b_{2} \\
+  \vdots &amp;\ddots &amp;\vdots &amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots &amp;\vdots \\
+  0 &amp; \cdots &amp;0 &amp; 0 &amp; a_{i_1-1j_1+1} &amp; \cdots &amp; a_{i_1-1n} &amp; b_{i_1-1} \\
+  0 &amp; \cdots &amp;0 &amp; {\textcolor[rgb]{0,0,1}{a_{i_1j_1}}} &amp; a_{i_1j_1+1} &amp; \cdots &amp; a_{i_1n} &amp; b_{i_1} \\
+  0 &amp; \cdots &amp;0 &amp; {\textcolor[rgb]{1,0,0}{a_{i_1+1j_1}}} &amp; a_{i_1+1j_1+1} &amp; \cdots &amp; a_{i_1+1n} &amp; b_{i_1+1} \\
+  \vdots &amp;\ddots &amp;\vdots &amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots &amp;\vdots \\
+  0 &amp; \cdots &amp;0 &amp; {\textcolor[rgb]{1,0,0}{a_{mj_1}}} &amp; a_{mj_1+1} &amp; \cdots &amp; a_{mn} &amp; b_{m} \\
+  \end{array}\right)
+  \]</div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">将第 \(i_1+1\)至\(m\)行减去第\(i_1\)行的合适倍数，使得第\(j_1\)列除第\(i_1\)行外全为零;</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">将矩阵的第\(1\)行与第\(i_1\)行交换.  从而我们得到如下形式的矩阵</div>
+    </li>
+  </ol>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \left(\begin{array}{ccc|cccc}
+  0 &amp; \cdots &amp; a_{1,j_1}^{(1)} &amp; a_{1,j_1+1}^{(1)} &amp; \cdots &amp; a_{1n}^{(1)} &amp; b_{1}^{(1)} \\ \hline
+  &amp;  &amp;   &amp; a_{2,j_1+1}^{(1)} &amp; \cdots &amp; a_{2n}^{(1)} &amp; b_{2}^{(1)} \\
+  &amp; &amp;   &amp; a_{3,j_1+1}^{(1)} &amp; \cdots &amp; a_{3n}^{(1)} &amp; b_{3}^{(1)} \\
+  &amp; &amp;  &amp;\vdots &amp;\ddots &amp;\vdots &amp;\vdots \\
+  &amp;   &amp;  &amp; a_{m,j_1+1}^{(1)} &amp; \cdots &amp; a_{mn}^{(1)} &amp; b_{m}^{(1)} \\
+  \end{array}\right)
+  \]</div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">对\(2\)中得到的矩阵的右下角矩阵重复1和2得
+      <span class="tex-size-small"></span>	<div class="tex-display">\[
+      \left(\begin{array}{ccccc|ccccc}
+      0 &amp; \cdots  &amp; a_{1,j_1}^{(1)} &amp; \cdots &amp; a_{1,j_2}^{(1)} &amp; a_{1,j_2+1}^{(1)} &amp; \cdots &amp; a_{1n}^{(1)} &amp; b_{1}^{(1)} \\
+      &amp;  &amp;  &amp;  &amp; a_{2,j_2}^{(2)}&amp; a_{2,j_2+1}^{(2)} &amp; \cdots &amp; a_{2n}^{(2)} &amp; b_{2}^{(2)} \\ \hline
+      &amp; &amp; &amp;&amp; &amp; a_{3,j_1+1}^{(2)} &amp; \cdots &amp; a_{3n}^{(2)} &amp; b_{3}^{(2)} \\
+      &amp; &amp; &amp; &amp; &amp;\ddots &amp;\vdots &amp;\vdots&amp;\vdots \\
+      &amp; &amp; &amp; &amp; &amp; a_{m,j_1+1}^{(2)} &amp; \cdots &amp; a_{mn}^{(2)} &amp; b_{m}^{(2)} \\
+      \end{array}\right)
+      \]</div></div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">继续重复上述步骤最终得到矩阵(<span class="tex-color-blue">最简形式、标准形式</span>)如下(\(r\leq n\))
+      <span class="tex-size-small"></span>	<div class="tex-display">\[
+      \setlength{\arraycolsep}{3pt}
+      \left(\begin{array}{cccccccccccc}
+      0 &amp; \cdots  &amp; c_{1,j_1} &amp; \cdots  &amp; c_{1,j_2} &amp; \cdots &amp;\cdots &amp;\cdots &amp; c_{1,j_r} &amp;\cdots &amp; c_{1n} &amp; d_{1} \\
+      &amp;  &amp;  &amp; &amp; c_{2,j_2}&amp; \cdots &amp;\cdots &amp;\cdots  &amp; c_{2,j_r} &amp; \cdots &amp; c_{2n} &amp; d_{2} \\
+      &amp;  &amp; &amp;  &amp;&amp; &amp;\ddots&amp;\cdots &amp;\vdots &amp;\ddots &amp;\vdots &amp;\vdots \\
+      &amp; &amp; &amp;  &amp; &amp;&amp; &amp;  &amp; c_{r,j_r} &amp;\cdots&amp; c_{rn} &amp; d_r \\
+      &amp;  &amp; &amp;  &amp;  &amp;&amp;&amp;  &amp;  &amp;&amp;  &amp; d_{r+1} \\
+      &amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;\vdots \\
+      &amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;0 \\
+      \end{array}\right)
+      \]</div></div>
+    </li>
+  </ol>
+</div>

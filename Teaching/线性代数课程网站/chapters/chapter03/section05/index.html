@@ -1,0 +1,170 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="3.5 转置、共轭与迹；矩阵(一)，线性代数课程。"><title>3.5 转置、共轭与迹 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="section-index" data-root="../../../" data-chapter="chapter03" data-section="chapter03-section05"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter03.html">第三章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第5节</span></span><button class="header-print-button" type="button" data-print-page title="在打印窗口中选择另存为 PDF">PDF</button><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><section class="chapter-top-card section-top-card" aria-label="转置、共轭与迹简介、进度与目录"><header class="chapter-intro"><h1>3.5 转置、共轭与迹</h1><p>学习矩阵的转置、共轭和迹及其性质。</p><div class="chapter-hero-actions"><div class="chapter-resume"><a class="button button-primary" data-section-resume="chapter03-section05" href="lesson-3-5-1.html"><span data-section-resume-action>开始学习</span></a></div><div class="chapter-progress"><div class="chapter-progress-heading"><div class="chapter-progress-heading-main"><span>进度</span><strong data-section-progress-percent>0%</strong></div><span data-section-progress-count>掌握 0 / 2</span></div><progress data-section-meter="chapter03-section05" max="2" value="0">0%</progress></div></div></header><nav class="chapter-outline" aria-label="转置、共轭与迹知识页目录"><h2>本节目录</h2><ul><li><a href="lesson-3-5-1.html">3.5.1 转置、共轭与迹</a><span data-unit-status="chapter03-section05-lesson-3-5-1">未标记</span></li><li><a href="lesson-3-5-2.html">3.5.2 转置和共轭的基本性质</a><span data-unit-status="chapter03-section05-lesson-3-5-2">未标记</span></li></ul></nav></section><section class="section-full-reading" id="full-reading"><section class="lesson knowledge-part" id="part-lesson-3-5-1" data-reading-unit="chapter03-section05-lesson-3-5-1"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.5.1</span><h2><a class="heading-link" href="lesson-3-5-1.html">转置、共轭与迹</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-5-1-lesson-3-5-1">
+  <p class="tex-hierarchy">矩阵(一) / 转置,共轭与迹</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">3.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(A=(a_{ij})_{m\times n}\)为数域\({\mathbb F}\)上的矩阵. 我们称矩阵</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[\tiny \begin{pmatrix} a_{11}&amp; a_{21}&amp;\cdots&amp;a_{m1}\\a_{12}&amp; a_{22}&amp;\cdots&amp;a_{m2}\\\cdots&amp;\cdots&amp;\cdots&amp;\cdots\\a_{1n}&amp; a_{2n}&amp;\cdots&amp;a_{mn}\\
+          \end{pmatrix}\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">为\(A\)的<span class="tex-color-blue">转置矩阵</span>,记为\(A^T\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(A=(a_{ij})_{m\times n}\)为复数域\(\mathbb C\)上的矩阵. 我们称矩阵</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[\tiny \begin{pmatrix}
+          \overline{a_{11}}&amp;\overline{a_{12}}&amp;\cdots&amp;\overline{a_{1n}}\\
+          \overline{a_{21}}&amp;\overline{a_{22}}&amp;\cdots&amp;\overline{a_{2n}}\\
+          \cdots&amp;\cdots&amp;\cdots&amp;\cdots\\
+          \overline{a_{m1}}&amp;\overline{a_{m2}}&amp;\cdots&amp;\overline{a_{mn}}\\
+          \end{pmatrix}\]</div>
+
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">为\(A\)的<span class="tex-color-blue">共轭矩阵</span>,记为\(\overline{A}\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(A=(a_{ij})_{n\times n}\)为数域\({\mathbb F}\)上的方阵.我们称对角线元素之和为矩阵\(A\)的<span class="tex-color-blue">迹</span>, 记为</div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[\mathrm{tr}(A):=a_{11}+\cdots+a_{nn}.\]</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.13</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">已知 \(A=\begin{pmatrix}1+i&amp;2-i\\3-i&amp;4+i\\\end{pmatrix}\).求\(A^T\), \(\overline{A}\)和\(\mathrm{tr}(A)\).</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="转置、共轭与迹的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section05-lesson-3-5-1" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section05-lesson-3-5-1" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section05-lesson-3-5-1" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section05-lesson-3-5-1" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter03-section05-lesson-3-5-1" role="status" aria-live="polite"></p></div></section>
+<section class="lesson knowledge-part" id="part-lesson-3-5-2" data-reading-unit="chapter03-section05-lesson-3-5-2"><div class="lesson-heading"><span class="lesson-number knowledge-index-number">§3.5.2</span><h2><a class="heading-link" href="lesson-3-5-2.html">转置和共轭的基本性质</a></h2></div><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-5-2-lesson-3-5-2">
+  <p class="tex-hierarchy">矩阵(一) / 转置,共轭与迹</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: lemma -->
+  <section class="math-block math-block-lemma">
+    <div class="math-block-heading"><span class="math-block-label">引理</span> <span class="math-block-number">3.1.5</span> <span class="math-block-title">转置和共轭的基本性质</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: container -->
+      <div class="tex-container">
+        <!-- TeX block: list -->
+        <ul>
+          <!-- TeX block: list-item -->
+          <li>
+            <!-- TeX block: text -->
+            <div class="tex-paragraph">\((A+B)^T=A^T+B^T\);</div>
+          </li>
+
+          <!-- TeX block: list-item -->
+          <li>
+            <!-- TeX block: text -->
+            <div class="tex-paragraph">\((\lambda A)^T=\lambda A^T\);</div>
+          </li>
+
+          <!-- TeX block: list-item -->
+          <li>
+            <!-- TeX block: text -->
+            <div class="tex-paragraph">\((AB)^T=B^TA^T\);</div>
+          </li>
+
+          <!-- TeX block: list-item -->
+          <li>
+            <!-- TeX block: text -->
+            <div class="tex-paragraph">\((A^{-1})^T=(A^T)^{-1}\).</div>
+          </li>
+        </ul>
+
+        <!-- TeX block: list -->
+        <ul>
+          <!-- TeX block: list-item -->
+          <li>
+            <!-- TeX block: text -->
+            <div class="tex-paragraph">\(\overline{A+B}=\overline{A}+\overline{B}\);</div>
+          </li>
+
+          <!-- TeX block: list-item -->
+          <li>
+            <!-- TeX block: text -->
+            <div class="tex-paragraph">\(\overline{\lambda A}=\overline{\lambda}\,\overline{A}\);</div>
+          </li>
+
+          <!-- TeX block: list-item -->
+          <li>
+            <!-- TeX block: text -->
+            <div class="tex-paragraph">\(\overline{A\cdot B}=\overline{A}\cdot\overline{B}\);</div>
+          </li>
+
+          <!-- TeX block: list-item -->
+          <li>
+            <!-- TeX block: text -->
+            <div class="tex-paragraph">\(\overline{A^{-1}}=\overline{A}^{-1}\).</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TeX block: lemma -->
+  <section class="math-block math-block-lemma">
+    <div class="math-block-heading"><span class="math-block-label">引理</span> <span class="math-block-number">3.1.6</span> <span class="math-block-title">迹的基本性质</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\mathrm{tr}(A+B)=\mathrm{tr}(A)+\mathrm{tr}(B)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\mathrm{tr}(\lambda A)=\lambda\mathrm{tr}(A)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\mathrm{tr}(A^T)=\mathrm{tr}(A)\),     \(\mathrm{tr}(\overline{A})=\overline{\mathrm{tr}(A)}\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\mathrm{tr}(AB)=\mathrm{tr}(BA)\).</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.14</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\)为复矩阵.证明若\(\mathrm{tr}(A\overline{A}^T)=0\),则\(A=0\).</div>
+    </div>
+  </section>
+</div><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="转置和共轭的基本性质的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section05-lesson-3-5-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section05-lesson-3-5-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section05-lesson-3-5-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section05-lesson-3-5-2" data-unit-label="本页" disabled>标记为已学会</button></div></div><p class="completion-message" data-unit-message="chapter03-section05-lesson-3-5-2" role="status" aria-live="polite"></p></div></section><nav class="lesson-navigation" aria-label="子节导航"><a href="../../../index.html">返回课程首页</a><a href="../section04/index.html">上一节 · 3.4 逆矩阵</a><a href="index.html#main">回顾本节</a><a href="../section06/index.html">下一节 · 3.6 分块矩阵</a></nav></section></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

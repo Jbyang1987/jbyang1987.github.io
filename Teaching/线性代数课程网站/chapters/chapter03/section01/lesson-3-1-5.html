@@ -1,0 +1,173 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="矩阵的线性运算；矩阵(一)，线性代数课程。"><title>矩阵的线性运算 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter03" data-section="chapter03-section01" data-unit="chapter03-section01-lesson-3-1-5"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter03.html">第三章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第1节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第5小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§3.1.5</span><span>矩阵的线性运算</span></h1><p class="knowledge-goal">矩阵的线性运算</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-1-5-lesson-3-1-5">
+  <p class="tex-hierarchy">矩阵(一) / 矩阵及其线性运算</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">3.1.2</span> <span class="math-block-title">加法与数乘</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\lambda\)为数域\({\mathbb F}\)中的数. 取两个\({\mathbb F}\)系数的\(m\times n\)矩阵 \(A=(a_{ij})_{m\times n}\in {\mathbb F}^{m\times n}\), \(B=(b_{ij})_{m\times n}\in {\mathbb F}^{m\times n}\).   定义</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-size-footnotesize"></span></div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">加法</span></div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{A + B}} :=(a_{ij}+b_{ij})_{m\times n}:=\begin{pmatrix}
+          a_{11}+b_{11} &amp; a_{12}+b_{12} &amp; \cdots &amp; a_{1 n}+b_{1n}\\
+          a_{21}+b_{21} &amp; a_{22}+b_{22} &amp; \cdots &amp; a_{2 n}+b_{2n}\\
+          \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+          a_{m 1}+b_{m1} &amp; a_{m 2}+b_{m2} &amp; \cdots &amp; a_{mn}+b_{mn}
+          \end{pmatrix}_,\]</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph"><span class="tex-color-blue">数乘</span></div>
+
+          <!-- TeX block: formula -->
+          <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{\lambda A}} :=(\lambda a_{ij})_{m\times n}:=\begin{pmatrix}
+          \lambda a_{11} &amp; \lambda a_{12} &amp; \cdots &amp; \lambda a_{1 n}\\
+          \lambda a_{21} &amp; \lambda a_{22} &amp; \cdots &amp; \lambda a_{2 n}\\
+          \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+          \lambda a_{m 1} &amp; \lambda a_{m 2} &amp; \cdots &amp; \lambda a_{mn}
+          \end{pmatrix}_.\]</div>
+        </li>
+      </ul>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">类似地定义<span class="tex-color-blue">负矩阵</span>和矩阵的<span class="tex-color-blue">减法</span>运算:</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{-A}}:=(-a_{ij})_{m\times n}, \quad {\textcolor[rgb]{0,0,1}{A-B}}:=A+(-B) = (a_{ij}-b_{ij})_{m\times n}.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>注</strong>: 只有行数和列数相同的矩阵才可以相加减. 否则无意义.</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(A = \left(\begin{array}{ccc}
+          1 &amp; 3 &amp; 5\\
+          - 1 &amp; 2 &amp; 4
+          \end{array}\right)\), \(B = \left(\begin{array}{ccc}
+          2 &amp; - 1 &amp; 3\\
+          7 &amp; 3 &amp; 1
+          \end{array}\right)\)，求\(A+B\)和\(A-B\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(A = \left(\begin{array}{ccc}
+          1 &amp; 3 &amp; 5\\
+          - 1 &amp; 2 &amp; 4
+          \end{array}\right)\), 求\(2A\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设\(A=\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}\), \(B=\begin{pmatrix}3&amp;5\\7&amp;6\end{pmatrix}\), \(C=\begin{pmatrix}0&amp;-1\\9&amp;3\end{pmatrix}\).</div>
+
+          <!-- TeX block: list -->
+          <ul>
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">求 \(3A+2B-4C\).</div>
+            </li>
+
+            <!-- TeX block: list-item -->
+            <li>
+              <!-- TeX block: text -->
+              <div class="tex-paragraph">若\(5A+3X =B\). 求\(X\).</div>
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">类似于向量的线性运算,矩阵的线性运算也满足如下八条基本性质:</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">3.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">加法交换律: \(A+B=B+A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">加法结合律: \(A+(B+C)=(A+B)+C\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">有零矩阵: \(A+0=A=0+A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">有负矩阵: \(A+(-A)=0=(-A)+A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">数乘单位元: \(1A = A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">数乘结合律: \(\lambda(\mu A)=(\lambda \mu)A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">左分配律: \((\lambda+\mu)A=\lambda A + \mu A\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">右分配律: \(\lambda (A+B) =\lambda A + \lambda B\);</div>
+        </li>
+      </ol>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中 \(A,B,C\) 为使得运算有有意义的矩阵, \(\lambda,\mu\)为数.</div>
+    </div>
+  </section>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="矩阵的线性运算的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter03-section01-lesson-3-1-5" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter03-section01-lesson-3-1-5" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter03-section01-lesson-3-1-5" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-3-1-4.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="lesson-3-1-6.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter03-section01-lesson-3-1-5" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter03-section01-lesson-3-1-5" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter03-section01-lesson-3-1-5" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

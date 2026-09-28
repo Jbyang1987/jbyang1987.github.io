@@ -1,0 +1,182 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-4-2-4-lesson-4-2-4">
+  <p class="tex-hierarchy">行列式 / 行列式性质</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">方阵\(A\)的行列式具有下列性质:</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">交换\(A\)某两行(列)得\(B\),则\(\det(B)=-\det(A)\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">将\(A\)的某一行(列)乘\(\lambda\)得\(B\),则\(\det(B)=\lambda\det(A)\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(A\)的某一行(列)是两个向量之和,则\(\det(A)\)可拆成两个行列式之和.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">证明思路：将\(\det(A)\)按第\(p，q\)两行展开得</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[\det(A) = \sum_{i=1}^n \sum_{j=1}^{i-1} (-1)^{p+q+i+j-1}(a_{pi}a_{qj}-a_{pj}a_{qi}) M\left[{p,q}\atop{i,j}\right].\]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">几何解释？</span></div>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">4.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(A\)的某两行(列)成比例,则\(\det(A)=0\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">将\(A\)的某一行(列)\(\lambda\)倍加到另一行(列)得\(B\),则\(\det(B)=\det(A)\).</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">几何解释？</span></div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设 \(A=(a_{ij})_{n\times n} = \begin{pmatrix}\alpha_1\\\alpha_2\\\vdots\\\alpha_n\end{pmatrix}\).则\(\det\)可以看成\(\alpha_1,\cdots,\alpha_n\)的函数.   这一函数满足如下性质:
+  <span class="tex-size-small"></span>
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">反对称性: \(\det(\cdots,\alpha_i,\cdots,\alpha_j\cdots)=-\det(\cdots,\alpha_j,\cdots,\alpha_i\cdots)\);</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">多重线性:  <br>
+      \(\det(\cdots,\lambda\alpha_i+\mu\beta_i,\cdots) = \lambda\det(\cdots,\alpha_i,\cdots) + \mu\det(\cdots,\beta_i,\cdots)\);</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">规范性: \(\det(\vec{e}_1,\vec{e}_2,\cdots,\vec{e}_n)=1\).</div>
+    </li>
+  </ol>
+
+
+  <span class="tex-color-blue">注:</span> 这三条性质唯一地确定了函数\(\det\). (几何意义！！)</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">例:</span> \(\det(\alpha+\beta,\beta+\gamma,\gamma+\alpha)=2\det(\alpha,\beta,\gamma)\).</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.5</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(A)=\det(A^T).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">证明：比较两边显示展开.(或，对阶数归纳，并利用展开式。)</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">4.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(AB)=\det(A)\det(B).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">几何解释？</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.10</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(m&gt;n\), \(A\in F^{m\times n}\), \(B\in F^{n\times m}\). 则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det(AB)=0.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.11</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\in F^{n\times n}\), \(B\in F^{n\times m}\), \(C\in F^{m\times n}\), \(D\in F^{m\times m}\). 若\(A\)可逆,则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\det\begin{pmatrix} A&amp;B\\C&amp;D\\\end{pmatrix}=\det(A)\cdot\det(D-CA^{-1}B).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">4.1.12</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求
+      \(\begin{vmatrix}
+      3&amp; x + y + z &amp; x^2 + y^2 + z^2 \\
+      x + y + z &amp; x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 \\
+      x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 &amp; x^4 + y^4 + z^4 \\
+      \end{vmatrix}\)</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">
+  \[\begin{pmatrix}
+  3&amp; x + y + z &amp; x^2 + y^2 + z^2 \\
+  x + y + z &amp; x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 \\
+  x^2 + y^2 + z^2 &amp; x^3 + y^3 + z^3 &amp; x^4 + y^4 + z^4 \\
+  \end{pmatrix} =
+  \begin{pmatrix}
+  1 &amp; 1 &amp; 1 \\
+  x &amp; y &amp; z \\
+  x^2 &amp; y^2 &amp; z^2 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+  1 &amp; x &amp; x^2 \\
+  1 &amp; y &amp; y^2 \\
+  1 &amp; z &amp; z^2 \\
+  \end{pmatrix}\]</span></div>
+</div>

@@ -1,0 +1,61 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-7-2-lesson-7-7-2">
+  <p class="tex-hierarchy">线性映射 / 相似不变量</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.16</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(n\)阶方阵\(A\)的全体特征值为\(\lambda_1,\lambda_2,\cdots,\lambda_n\).</div>
+
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">求\(I+A\)的全体特征值和行列式;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">更一般地,求矩阵\(f(A)\)的全体特征值.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">解题思路: \(P_{I+A}(\lambda)=P_A(\lambda-1)\).
+
+   设\(\lambda-f(x)=a_0\prod\limits_{i=1}^d (\alpha_i-x)\).
+
+  则
+  <div class="tex-display">\[ \tiny
+  \begin{split}
+  \det\left(\lambda I- f(A)\right) &amp; = \det\left(a_0\prod_{i=1}^d(\alpha_i I-A)\right)
+
+  = a_0^n\prod_{i=1}^d\det(\alpha_i I-A) \\
+
+  &amp; = a_0^n \prod_{i=1}^d \prod_{j=1}^n(\alpha_i-\lambda_j)
+
+  = \prod_{j=1}^n \left(a_0\prod_{i=1}^d (\alpha_i-\lambda_j)\right)
+
+  = \prod_{j=1}^n(\lambda - f(\lambda_j))\\
+  \end{split}
+  \]</div>
+  </span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.17</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若\(A=\begin{pmatrix}1&amp;0&amp;0\\0&amp;0&amp;1\\0&amp;1&amp;x\end{pmatrix}\)和\(B=\begin{pmatrix}y&amp;0&amp;0\\0&amp;-1&amp;1\\0&amp;0&amp;1\end{pmatrix}\)相似.求\(x,y\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">提示:相似不变量.</div>
+</div>

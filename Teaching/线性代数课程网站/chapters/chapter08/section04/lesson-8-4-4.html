@@ -1,0 +1,130 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="正交变换 · 第4页；内积空间及变换，线性代数课程。"><title>正交变换 · 第4页 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter08" data-section="chapter08-section04" data-unit="chapter08-section04-lesson-8-4-4"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter08.html">第八章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第4节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第4小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§8.4.4</span><span>正交变换 · 第4页</span></h1><p class="knowledge-goal">正交变换 · 第4页</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-8-4-4-lesson-8-4-4">
+  <p class="tex-hierarchy">内积空间及变换 / 正交变换</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设正交变换\({\mathscr A}\)在标准正交基\(e_1,\cdots,e_n\)下的矩阵为\(A\).</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">这个矩阵\(A\)满足什么特别的性质?</span></div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  {\mathscr A}\text{正交}
+  &amp; \Leftrightarrow {\mathscr A} e_1,\cdots,{\mathscr A} e_n \text{为标准正交基}\\
+
+  &amp; \Leftrightarrow ({\mathscr A} e_i,{\mathscr A} e_j)=\delta_{ij} (\text{对任意的}1\leq i,j\leq n)\\
+
+  &amp; \Leftrightarrow \left(\sum_{\ell=1}^{n} a_{\ell i}e_\ell,\sum_{k=1}^na_{kj} e_k\right)=\delta_{ij} (\text{对任意的}1\leq i,j\leq n)\\
+
+  &amp; \Leftrightarrow \sum_{k=1}^{n} a_{ki}a_{kj}=\delta_{ij} (\text{对任意的}1\leq i,j\leq n)\\
+
+  &amp; \Leftrightarrow A^TA=I_n\\
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">8.1.7</span> <span class="math-block-title">正交矩阵</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">若\(n\)阶实方阵\(A\)满足\(A^TA=I_n\)(或\(A^{-1}=A^T\)),则称\(A\)为<span class="tex-color-blue">正交矩阵</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">注:正交矩阵的行向量(或列向量)构成\({\mathbb R}^n\)的标准正交基(在标准内积下).</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">8.1.6</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\)为欧氏空间\(V\)上的线性变换,则\({\mathscr A}\)为正交变换当且仅当\({\mathscr A}\)在标准正交基下的矩阵\(A\)为正交矩阵.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph">正交变换\({\mathscr A}\) \(\underset{1:1}{\overset{\text{标准正交基}}{\leftrightarrow}}\) 正交矩阵\(A\)</div>
+  </div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">8.1.8</span> <span class="math-block-title">第一类变换,第二类变换</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\)为正交矩阵.则 \(A^TA=I\).
+
+      因此\(\det(A)=\pm1\).</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(\det(A)=1\),则称\({\mathscr A}\)为<span class="tex-color-blue">第一类变换</span>;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(\det(A)=-1\),则称\({\mathscr A}\)为<span class="tex-color-blue">第二类变换</span>.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">8.1.8</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">三维空间或在二维空间的旋转为第一类变换,而镜面反射为第二类变换.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">8.1.7</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\)为欧氏空间\(V\)上的正交变换.</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">则\({\mathscr A}\)的特征值模长都为\(1\).特别地,实特征值只可能为\(\pm1\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(V\)的维数为奇数且\({\mathscr A}\)为第一类正交变换,则\(1\)为\({\mathscr A}\)的特征值.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路: (1). 设\(A\)为\({\mathscr A}\)在某组标准正交基下的矩阵.设\(A(\xi)=\lambda\xi\),则
+  \[\overline{\xi}^T\xi = \overline{\xi}^T\overline{A}^TA\xi=\overline{\lambda}\lambda \overline{\xi}^T\xi.\]
+  因此 \(|\lambda|=1\).
+
+
+  (2).多项式\(\varphi_{{\mathscr A}}(\lambda)\)为实系数,其复根共轭成对出现.而实根仅取\(\pm1\). 若\(1\)不为特征值,则\(-1\)出现奇数次,因此行列式为\(-1\).矛盾!
+  </span></div>
+
+  <!-- TeX block: corollary -->
+  <section class="math-block math-block-corollary">
+    <div class="math-block-heading"><span class="math-block-label">推论</span> <span class="math-block-number">8.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">三维空间中的第一类正交变换保持一个向量不变,从而一定为旋转变换.</div>
+    </div>
+  </section>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="正交变换 · 第4页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter08-section04-lesson-8-4-4" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter08-section04-lesson-8-4-4" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter08-section04-lesson-8-4-4" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-8-4-3.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="../section05/index.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter08-section04-lesson-8-4-4" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter08-section04-lesson-8-4-4" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter08-section04-lesson-8-4-4" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

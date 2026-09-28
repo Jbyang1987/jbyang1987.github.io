@@ -8,6 +8,71 @@
   function textElement(tag, className, text) {
     const element = document.createElement(tag); element.className = className; element.textContent = text; return element;
   }
+  function renderCourseMenu() {
+    const menu = document.querySelector("[data-course-menu]");
+    if (!menu) return;
+    const panel = menu.querySelector(".course-menu-panel");
+    const toggle = menu.querySelector(".course-menu-toggle");
+    if (!panel || !toggle) return;
+    panel.replaceChildren();
+    function makeGroup(node, level) {
+      const item = textElement("li", "course-menu-item", "");
+      const row = textElement("div", "course-menu-row", "");
+      const target = node.path ? document.createElement("a") : document.createElement("span");
+      target.className = "course-menu-link";
+      target.textContent = (node.number ? (level === 0 ? chapterOrdinal(node.number) : node.number) + "　" : "") + node.title;
+      if (node.path) target.href = url(node.path);
+      row.append(target);
+      const children = level === 0 ? (node.lessons || []) : (node.pages || []);
+      if (children.length) {
+        const childToggle = textElement("button", "course-menu-expand", "▸");
+        childToggle.type = "button";
+        childToggle.setAttribute("aria-expanded", "false");
+        childToggle.setAttribute("aria-label", "展开 " + node.title);
+        row.append(childToggle);
+        const childList = textElement("ul", "course-menu-submenu", "");
+        children.forEach(function (child) { childList.append(makeGroup(child, level + 1)); });
+        item.append(row, childList);
+        function adjustSubmenuSide() {
+          window.requestAnimationFrame(function () {
+            item.classList.remove("opens-left");
+            const parentItem = item.parentElement && item.parentElement.closest(".course-menu-item");
+            if (parentItem && parentItem.classList.contains("opens-left")) item.classList.add("opens-left");
+            let rect = childList.getBoundingClientRect();
+            if (!item.classList.contains("opens-left") && rect.right > window.innerWidth - 10) {
+              item.classList.add("opens-left");
+              rect = childList.getBoundingClientRect();
+            }
+            if (item.classList.contains("opens-left") && rect.left < 10) item.classList.remove("opens-left");
+          });
+        }
+        item.addEventListener("mouseenter", adjustSubmenuSide);
+        item.addEventListener("focusin", adjustSubmenuSide);
+        childToggle.addEventListener("click", function (event) {
+          event.preventDefault(); event.stopPropagation();
+          const open = item.classList.toggle("is-open");
+          childToggle.setAttribute("aria-expanded", String(open));
+          childToggle.textContent = open ? "▾" : "▸";
+        });
+      } else {
+        item.append(row);
+      }
+      return item;
+    }
+    const list = textElement("ul", "course-menu-list", "");
+    chapters.forEach(function (chapter) { list.append(makeGroup(chapter, 0)); });
+    panel.append(list);
+    toggle.addEventListener("click", function () {
+      const open = menu.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+    document.addEventListener("click", function (event) {
+      if (!menu.contains(event.target)) {
+        menu.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
   function celebrate(button, large = false) {
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const rect = button.getBoundingClientRect(), burst = document.createElement("span");
@@ -37,7 +102,7 @@
     return number + " · " + unit.title;
   }
   function nextUnlearnedUnit(currentId) {
-    const units = course.getUnits(), currentIndex = units.findIndex(function (unit) { return unit.id === currentId; });
+    const units = course.getAllUnits ? course.getAllUnits() : course.getUnits(), currentIndex = units.findIndex(function (unit) { return unit.id === currentId; });
     if (!units.length) return null;
     for (let offset = 1; offset <= units.length; offset++) {
       const unit = units[(Math.max(currentIndex, -1) + offset) % units.length];
@@ -72,6 +137,7 @@
     chapters.forEach(function (chapter) {
       const completed = progress.isCompleted(chapter.id), item = document.createElement("li");
       const row = document.createElement(chapter.path ? "a" : "div");
+      item.className = "chapter-list-item" + (chapter.path ? " is-available" : " is-upcoming");
       row.className = "chapter-row" + (chapter.path ? " is-available" : " is-upcoming");
       if (chapter.path) row.href = url(chapter.path);
       const content = textElement("div", "chapter-row-content", "");
@@ -80,8 +146,8 @@
       content.append(heading, textElement("p", "", chapter.description)); row.append(content);
       const summary = chapter.path ? progress.getChapterSummary(chapter.id) : null;
       const status = completed ? "✓ 已完成" : summary ? "掌握 " + summary.completed + " / " + summary.total : "即将开放";
-      row.append(textElement("span", "chapter-status" + (completed ? " is-complete" : ""), status));
-      item.append(row); list.append(item);
+      item.append(row, textElement("span", "chapter-status" + (completed ? " is-complete" : ""), status));
+      list.append(item);
     });
   }
   function updateHome() {
@@ -280,7 +346,7 @@
       document.querySelector("[data-records-last-visited]").textContent = "上次阅读：" + lastLabel;
       const list = document.querySelector("[data-records-sections]");
       list.replaceChildren();
-      course.getSections().forEach(function (section) {
+      course.getSections(true).forEach(function (section) {
         const sectionSummary = progress.getSectionSummary(section.id);
         list.append(textElement("li", "", section.number + " · " + section.title + "：掌握 " + sectionSummary.completed + " / " + sectionSummary.total));
       });
@@ -323,5 +389,6 @@
   window.addEventListener("pageshow", function () { refreshProgress(); trackReading(true); });
   document.addEventListener("visibilitychange", function () { trackReading(true); });
   window.addEventListener("storage", refreshProgress);
+  renderCourseMenu();
   refreshProgress(); trackReading(true);
 }());

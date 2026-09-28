@@ -9,15 +9,16 @@
   const clone = value => JSON.parse(JSON.stringify(value));
   const esc = value => String(value ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   const safeName = value => String(value || '').normalize('NFKC').replace(/[^\p{L}\p{N}_-]+/gu,'-').replace(/^-+|-+$/g,'').slice(0,100) || 'page';
+  const assetURLName = name => encodeURIComponent(String(name||'').replace(/\\/g,'/').split('/').pop());
   const color = (value, fallback='#2563eb') => /^#[a-f\d]{3,8}$/i.test(value || '') ? value : fallback;
   const num = (value,min,max,fallback) => Number.isFinite(+value) ? Math.min(max,Math.max(min,+value)) : fallback;
   const declarations = new Set(['newcommand','renewcommand','providecommand','def','DeclareMathOperator','newtheorem','definecolor']);
   const mathEnvs = new Set(['equation','equation*','align','align*','aligned','gather','gather*','gathered','multline','multline*','displaymath','math','eqnarray','eqnarray*']);
   const modes = ['onlyppt','onlyhandout','onlysummary','forppt','forhandout','forsummary'];
   const standardMath = new Set(('begin end frac dfrac tfrac cfrac sqrt vec overrightarrow overleftarrow overline underline widehat hat bar tilde widetilde dot ddot dots ldots cdots vdots ddots mathbb mathcal mathrm mathbf mathit mathsf mathtt mathfrak mathscr boldsymbol pmb operatorname text textrm textbf textit mbox left right middle big Big bigg Bigg bigl bigr Bigl Bigr biggl biggr Biggl Biggr alpha beta gamma delta epsilon varepsilon zeta eta theta vartheta iota kappa lambda mu nu xi pi varpi rho varrho sigma varsigma tau upsilon phi varphi chi psi omega Gamma Delta Theta Lambda Xi Pi Sigma Upsilon Phi Psi Omega sum prod coprod int iint iiint oint lim limsup liminf min max inf sup det dim ker hom log ln exp sin cos tan cot sec csc arcsin arccos arctan sinh cosh tanh gcd lcm Pr deg arg to mapsto longmapsto rightarrow leftarrow leftrightarrow Rightarrow Leftarrow Leftrightarrow longrightarrow longleftarrow longleftrightarrow Longrightarrow Longleftarrow Longleftrightarrow xrightarrow xleftarrow implies iff in notin ni subset supset subseteq supseteq subsetneq supsetneq cup cap bigcup bigcap setminus emptyset varnothing forall exists nexists neg land lor wedge vee oplus otimes bigoplus bigotimes times cdot div pm mp ast star circ bullet le leq ge geq neq ne equiv sim simeq approx cong propto ll gg prec succ preceq succeq parallel perp mid nmid infty partial nabla ell hbar imath jmath Re Im aleph angle triangle triangleleft triangleright prime top bot vert Vert lvert rvert lVert rVert langle rangle lceil rceil lfloor rfloor lbrace rbrace backslash colon quad qquad enspace thinspace hspace vspace smallskip medskip bigskip limits nolimits displaystyle textstyle scriptstyle scriptscriptstyle overset underset stackrel underbrace overbrace phantom hphantom vphantom smash rule strut boxed tag tag* notag nonumber label ref eqref substack cases matrix pmatrix bmatrix Bmatrix vmatrix Vmatrix array hline cline cr color textcolor bf rm cal it sf tt char unicode space').split(/\s+/));
-  ['xleftrightarrow','xLeftrightarrow','xRightarrow','xmapsto','xrightleftharpoons','bigwedge','odot','downarrow','uparrow','nparallel','iddots','rightsquigarrow','choose','atop','makebox','fbox','arraycolsep','not'].forEach(name=>standardMath.add(name));
+  ['xleftrightarrow','xLeftrightarrow','xRightarrow','xmapsto','xrightleftharpoons','bigwedge','odot','downarrow','uparrow','nparallel','iddots','rightsquigarrow','choose','atop','makebox','fbox','arraycolsep','setlength','setcounter','footnote','tiny','small','footnotesize','multicolumn','not'].forEach(name=>standardMath.add(name));
   function defaults() {
-    return {chapter:1,section:1,start:1,autoNumber:true,sectionSign:true,bodyNumber:false,bodyTitle:false,htmlTitleNumber:false,slugMode:'number',cleanTitle:true,subtitle:'framesubtitle',description:'empty',pp:'ignore',pause:'ignore',splitEnvironment:'none',separator:'\\lessonbreak',keepFrameTitles:false,warningLevel:'all',pretty:true,theme:'light',macros:{},environments:Object.fromEntries(Object.entries(labels).map(([key,label])=>[key,{label,light:'#2563eb',dark:'#93c5fd',background:'#eff6ff',darkBackground:'#17253b',border:'#3b82f6',darkBorder:'#60a5fa',numbered:!['proof','remark'].includes(key),collapsed:key==='proof',icon:false,headingSize:17,bodySize:16,padding:16,radius:10,printBackground:false}])),colors:Object.fromEntries(Object.entries({blue:['#2563eb','#93c5fd'],red:['#dc2626','#fca5a5'],green:['#15803d','#86efac'],yang:['#0e7490','#67e8f9'],rev:['#a21caf','#f0abfc']}).map(([k,v])=>[k,{light:v[0],dark:v[1],mode:'color'}])),beamer:Object.fromEntries(['frame','frametitle','framesubtitle','title','author','institute','date','titlepage','section','subsection','subsubsection','columns','column','only','uncover','visible','alt','onslide',...modes].map(k=>[k,['author','institute','date','section','subsection','subsubsection'].includes(k)?'hide':'show'])),figure:{tikz:true,xypic:true,engine:'browser',directory:'assets/generated',prefix:'figure',width:640,maxWidth:100,transparent:true,background:'#ffffff',darkBackground:'#182131',crop:true,textMode:'path',light:true,dark:true,caption:true,scroll:true,aspect:true,service:'http://127.0.0.1:4174',preamble:'',libraries:'arrows.meta,calc',replacements:{}},image:{maxWidth:100,caption:true},unknown:{}};
+    return {chapter:1,section:1,start:1,autoNumber:true,sectionSign:true,bodyNumber:false,bodyTitle:false,htmlTitleNumber:false,slugMode:'number',cleanTitle:true,subtitle:'framesubtitle',description:'empty',pp:'ignore',pause:'ignore',splitEnvironment:'none',separator:'\\lessonbreak',keepFrameTitles:false,warningLevel:'all',pretty:true,theme:'light',macros:{},environments:Object.fromEntries(Object.entries(labels).map(([key,label])=>[key,{label,light:'#2563eb',dark:'#93c5fd',background:'#eff6ff',darkBackground:'#17253b',border:'#3b82f6',darkBorder:'#60a5fa',numbered:!['proof','remark'].includes(key),collapsed:key==='proof',icon:false,headingSize:17,bodySize:16,padding:16,radius:10,printBackground:false}])),colors:Object.fromEntries(Object.entries({blue:['#2563eb','#93c5fd'],red:['#dc2626','#fca5a5'],green:['#15803d','#86efac'],yang:['#0e7490','#67e8f9'],rev:['#a21caf','#f0abfc']}).map(([k,v])=>[k,{light:v[0],dark:v[1],mode:'color'}])),beamer:Object.fromEntries(['frame','frametitle','framesubtitle','title','author','institute','date','titlepage','section','subsection','subsubsection','columns','column','only','uncover','visible','alt','onslide',...modes].map(k=>[k,['author','institute','date','section','subsection','subsubsection'].includes(k)?'hide':'show'])),figure:{tikz:true,xypic:true,engine:'browser',directory:'assets/generated',prefix:'figure',width:640,maxWidth:100,transparent:true,background:'#ffffff',darkBackground:'#182131',crop:true,textMode:'path',light:true,dark:true,caption:true,scroll:true,aspect:true,service:'http://127.0.0.1:4174',preamble:'',libraries:'math,shapes.geometric,quotes,angles,calc,decorations.pathreplacing,arrows.meta',replacements:{}},image:{maxWidth:100,caption:true},unknown:{}};
   }
   function mergeConfig(input={}) {
     function merge(a,b) {for(const [k,v] of Object.entries(b || {})) {if(['__proto__','constructor','prototype'].includes(k))continue; a[k]=v && typeof v==='object' && !Array.isArray(v)?merge(a[k] && typeof a[k]==='object'?a[k]:{},v):v;}return a;}
@@ -38,18 +39,89 @@
     return {value:s.slice(p+1),start:p,inner:p+1,end:s.length,closed:false};
   }
   function command(s,p) {const m=/^\\([A-Za-z@]+|[^\r\n])/.exec(s.slice(p));return m?{name:m[1],start:p,end:p+m[0].length}:null;}
+  // Scan commands with the same tokenization used by the parser. A global
+  // /\\([A-Za-z@]+)/ expression would start at the second slash of `\\a`
+  // and falsely report `a` as an unknown command; in TeX that sequence is a
+  // row break (`\\`) followed by the ordinary letter `a`.
+  function mathCommandNames(value) {
+    const names=[];
+    for(let i=0;i<value.length;) {
+      if(value[i]!=='\\'){i++;continue;}
+      const c=command(value,i);
+      if(!c){i++;continue;}
+      if(/^[A-Za-z@]+$/.test(c.name)&&!standardMath.has(c.name))names.push(c.name);
+      i=c.end;
+    }
+    return [...new Set(names)];
+  }
+  function explicitColor(model,value) {
+    const kind=String(model).trim(),raw=String(value).trim();
+    if(kind.toUpperCase()==='HTML')return /^#?[0-9a-f]{6}$/i.test(raw)?'#'+raw.replace(/^#/,'').toLowerCase():null;
+    if(!['rgb','RGB','gray'].includes(kind))return null;
+    const parts=raw.split(',').map(v=>v.trim()),max=kind==='RGB'?255:1;
+    if(parts.length!==(kind==='gray'?1:3)||parts.some(v=>!v||!Number.isFinite(+v)||+v<0||+v>max))return null;
+    const values=kind==='gray'?[parts[0],parts[0],parts[0]]:parts;
+    return '#'+values.map(v=>Math.round(+v/max*255).toString(16).padStart(2,'0')).join('');
+  }
+  function normalizeMathColors(value) {
+    // MathJax color supports rgb/RGB/gray natively; xcolor's HTML model needs
+    // a CSS hex color argument. Keep textcolor (and its scope) intact.
+    let out='';
+    for(let i=0;i<value.length;) {
+      const c=value[i]==='\\'?command(value,i):null;
+      if(!c){out+=value[i++];continue;}
+      if(['color','textcolor'].includes(c.name)) {
+        const model=group(value,c.end,'[',']'),spec=model&&group(value,model.end);
+        const hex=model&&spec&&model.value.trim().toUpperCase()==='HTML'?explicitColor('HTML',spec.value):null;
+        if(hex){out+='\\'+c.name+'{'+hex+'}';i=spec.end;continue;}
+      }
+      out+=value.slice(i,c.end);i=c.end;
+    }
+    return out;
+  }
   const lineAt = (s,p) => 1+(s.slice(0,p).match(/\n/g)||[]).length;
+  // Package-loading directives are handled by the local style loader and do
+  // not represent content that needs review in the browser converter.
+  const isIgnoredWarning = item => item && !/^(?:usepage|usepackage)$/i.test(String(item.command||''));
   function warning(file,source,start,commandName,raw,reason,suggestion='在规则管理器中添加展开规则，或编辑原始 TeX。',severity='warning') {
     return {file,line:lineAt(source,start),offset:start,command:commandName,raw,reason,suggestion,severity};
   }
   function parseStyles(files) {
     const macros=Object.create(null),environments=Object.create(null),colors=Object.create(null),warnings=[],definitions=[];
+    // These commands configure the local XeLaTeX/Beamer environment. They do
+    // not contribute browser content and should not appear as unresolved
+    // conversion warnings. Keep actual declaration errors (for example an
+    // unsupported \newenvironment) visible to the author.
+    const styleSilentCommands=new Set([
+      'usepage','usepackage','xeCJKsetup','newfontfamily','setCJKsansfont',
+      'setCJKmonofont','setsansfont','setmonofont','usetikzlibrary',
+      'setbeamerfont','ttfamily','setbeamertemplate','makeatletter',
+      'makeatother','renewrobustcmd','beamer@@pause','unless','ifmeasuring@',
+      'ifblank','stepcounter','setcounter','onslide','value','relax','fi',
+      'setbeamercolor','leavevmode','paperwidth','usebeamerfont','qquad',
+      'begin','end','insertframenumber','inserttotalframenumber','vskip',
+      'newif','ifppt','ifhandout','setmode','onlyppt','onlyhandout',
+      'onlysummary','forhandout','forsummary','forppt','tikzpicture',
+      'formula','ar@','ar','filldraw','draw','node','xymatrix@R','columns'
+    ]);
     for(const file of files) {
       const source=file.text || '',s=uncomment(source);let i=0;
       while(i<s.length) {
         if(s[i]!=='\\'){i++;continue;}const c=command(s,i);if(!c){i++;continue;}let kind=c.name;
         if(macros[kind] && /^(?:\{\s*)?\\(?:newcommand|renewcommand|providecommand)(?:\s*\})?$/.test(macros[kind].body))kind=macros[kind].body.match(/\\(\w+)/)[1];
-        if(!declarations.has(kind)){if(/\.sty$/i.test(file.name))warnings.push(warning(file.name,source,c.start,kind,s.slice(c.start,Math.min(s.indexOf('\n',c.start)<0?s.length:s.indexOf('\n',c.start),c.start+240)),'此样式命令未在浏览器执行','正文中引用的未知命令会另外标记；本地编译所需设置可填入前导代码。',/^newenvironment|^renewenvironment|^newif|^if/.test(kind)?'warning':'info'));i=c.end;continue;}
+        if(!declarations.has(kind)){
+          if(/\.sty$/i.test(file.name) && styleSilentCommands.has(kind)){
+            // \newfontfamily defines a named font command (for example
+            // \kaisu). Mark that generated command silent as well.
+            if(kind==='newfontfamily'){
+              const q=command(s,skip(s,c.end));
+              if(q)styleSilentCommands.add(q.name);
+            }
+            i=c.end;continue;
+          }
+          if(/\.sty$/i.test(file.name))warnings.push(warning(file.name,source,c.start,kind,s.slice(c.start,Math.min(s.indexOf('\n',c.start)<0?s.length:s.indexOf('\n',c.start),c.start+240)),'此样式命令未在浏览器执行','正文中引用的未知命令会另外标记；本地编译所需设置可填入前导代码。',/^newenvironment|^renewenvironment|^newif|^if/.test(kind)?'warning':'info'));
+          i=c.end;continue;
+        }
         let p=c.end;if(s[p]==='*')p++; let name,body,args=0,optional=null,unsafe='';
         const take=(open='{',close='}')=>{const g=group(s,p,open,close);if(g)p=g.end;return g;};
         if(['newcommand','renewcommand','providecommand','DeclareMathOperator','def'].includes(kind)) {
@@ -76,18 +148,18 @@
       const start=i;
       if(s[i]==='$'||s.startsWith('\\[',i)||s.startsWith('\\(',i)) {
         const open=s[i]==='$'?(s[i+1]==='$'?'$$':'$'):s.slice(i,i+2),close=open==='\\['?'\\]':open==='\\('?'\\)':open;
-        let p=i+open.length;while(p<s.length){if(s.startsWith(close,p))break;if(s[p]==='\\')p+=2;else p++;}const closed=p<s.length;
+        let p=i+open.length;while(p<s.length){if(s.startsWith(close,p))break;if(s[p]==='\\'&&s.startsWith('\\text',p)){const textGroup=group(s,p+5);if(textGroup){p=textGroup.end;continue;}}if(s[p]==='\\')p+=2;else p++;}const closed=p<s.length;
         i=closed?p+close.length:s.length;add('formula',start,i,{tex:s.slice(start+open.length,p),display:['$$','\\['].includes(open),closed});
         if(!closed)issues.push(warning(file,fullSource,base+start,open,source.slice(start,i),'数学公式未闭合'));continue;
       }
       if(s[i]==='\\') {
         const c=command(s,i);if(!c){add('text',i,++i);continue;}i=c.end;
         if(c.name==='begin') {
-          const name=group(s,i);if(!name){add('unknown',start,i,{name:'begin'});continue;}i=name.end;
+          const name=group(s,i);if(!name){add('unknown',start,i,{name:'begin'});continue;}const envName=name.value.replace(/\\\*/g,'*');i=name.end;
           let p=i,depth=1,ending=null;
-          while(p<s.length){if(s[p]!=='\\'){p++;continue;}const q=command(s,p);if(!q){p++;continue;}if(q.name==='begin'||q.name==='end'){const g=group(s,q.end);if(g && g.value===name.value){depth+=q.name==='begin'?1:-1;if(!depth){ending={start:p,end:g.end};break;}}}p=q.end;}
+           while(p<s.length){if(s[p]!=='\\'){p++;continue;}const q=command(s,p);if(!q){p++;continue;}if(q.name==='begin'||q.name==='end'){const g=group(s,q.end);if(g && g.value.replace(/\\\*/g,'*')===envName){depth+=q.name==='begin'?1:-1;if(!depth){ending={start:p,end:g.end};break;}}}p=q.end;}
           const innerEnd=ending?ending.start:s.length;i=ending?ending.end:s.length;
-          add('environment',start,i,{name:name.value,inner:s.slice(name.end,innerEnd),innerStart:base+name.end,closed:!!ending});
+           add('environment',start,i,{name:envName,inner:s.slice(name.end,innerEnd),innerStart:base+name.end,closed:!!ending});
           if(!ending)issues.push(warning(file,fullSource,base+start,name.value,source.slice(start,i),'环境未闭合'));continue;
         }
         if(c.name==='xy') {const end=s.indexOf('\\endxy',i);i=end<0?s.length:end+6;add('diagram',start,i,{name:'xypic'});if(end<0)issues.push(warning(file,fullSource,base+start,'xy',source.slice(start,i),'XY-pic 未闭合'));continue;}
@@ -158,7 +230,7 @@
           frames.push({nodes:body,title:metadata.subsubsection||title||metadata.subsection||metadata.title||'未命名页面',frameTitle:title,subtitle,sectionTitle:metadata.section||'',subsectionTitle:metadata.subsection||'',subsectionIndex:metadata.subsectionIndex||0,subsubsectionTitle:metadata.subsubsection||'',start:n.start,raw:n.raw});continue;
         }
         if(n.type==='command'&&['title','author','institute','date','section','subsection','subsubsection'].includes(n.name)) {metadata[n.name]=n.args.at(-1)?.value||'';if(n.name==='subsection'){metadata.subsectionIndex=++subsectionCounter;metadata.subsubsection='';}if(['section','subsection','subsubsection'].includes(n.name)&&config.beamer[n.name]!=='hide')outside.push(n);continue;}
-        if(n.type==='command'&&['documentclass','usepackage','RequirePackage','ProvidesPackage','usetikzlibrary','setbeamertemplate','usetheme','setcounter','setmode'].includes(n.name)){model.globalWarnings.push(warning(file.name,source,n.start,n.name,n.raw,'此设置不在正文执行；已保留在转换报告中。','图形依赖可填入本地编译前导代码。','info'));continue;}
+        if(n.type==='command'&&['documentclass','usepackage','RequirePackage','ProvidesPackage','usetikzlibrary','setbeamertemplate','usetheme','setmode'].includes(n.name)){model.globalWarnings.push(warning(file.name,source,n.start,n.name,n.raw,'此设置不在正文执行；已保留在转换报告中。','图形依赖可填入本地编译前导代码。','info'));continue;}
         outside.push(n);
       }};scan(top.nodes);if(hasRenderableOutside(outside))frames.push({nodes:outside,title:metadata.title||'未分帧内容',start:outside[0]?.start||0});
        if(!frames.length&&source.trim())frames=[{nodes:[],title:metadata.title||'空白页面',start:0}];
@@ -168,8 +240,10 @@
       for(const frame of frames) {
         const frameId=++frameCount,warnings=[];
         const warn=(n,reason,suggestion,severity)=>{const w=warning(file.name,source,n.start,n.name||n.type,n.raw,reason,suggestion,severity);warnings.push(w);return w;};
-        const nested=(text,base)=>{const p=parse(text,file.name,base,source);warnings.push(...p.warnings);return p.nodes;};
-        const reserved=new Set(['pp','pause',...modes,...Object.keys(config.colors)]),inlineAssets=[];
+         const nested=(text,base)=>{const p=parse(text,file.name,base,source);warnings.push(...p.warnings);return p.nodes;};
+         function splitTableRows(text,base){const rows=[];let start=0,depth=0,mathMode=false,escaped=false;for(let i=0;i<text.length;i++){const ch=text[i];if(escaped){escaped=false;continue;}if(ch==='\\'){if(text[i+1]==='\\'&&!depth&&!mathMode){rows.push({text:text.slice(start,i),start:base+start});i++;start=i+1;continue;}escaped=true;continue;}if(ch==='$'&&!depth)mathMode=!mathMode;else if(ch==='{')depth++;else if(ch==='}'&&depth)depth--;else if(ch==='&'&&!depth&&!mathMode){} }if(start<text.length||rows.length)rows.push({text:text.slice(start),start:base+start});return rows;}
+         function renderTabular(n){let inner=n.inner,base=n.innerStart;const columns=group(inner,0);if(columns){inner=inner.slice(columns.end);base+=columns.end;}const hasHline=/\\hline\b/.test(inner),doubleHline=/\\hline\s*\\hline\b/.test(inner);inner=inner.replace(/\\hline\b/g,'');const rows=splitTableRows(inner,base).map(row=>{const cells=[];let start=0,depth=0,mathMode=false,escaped=false;for(let i=0;i<row.text.length;i++){const ch=row.text[i];if(escaped){escaped=false;continue;}if(ch==='\\'){escaped=true;continue;}if(ch==='$'&&!depth)mathMode=!mathMode;else if(ch==='{')depth++;else if(ch==='}'&&depth)depth--;else if(ch==='&'&&!depth&&!mathMode){cells.push({text:row.text.slice(start,i),start:row.start+start});start=i+1;}}cells.push({text:row.text.slice(start),start:row.start+start});return cells;}).filter(cells=>cells.some(cell=>cell.text.trim()));const body=rows.map(cells=>`<tr>${cells.map(cell=>{const rendered=blocks(nested(cell.text,cell.start)).map(block=>renderBlock(block,config)).join('');return `<td>${rendered}</td>`;}).join('')}</tr>`).join('');return `<table class="tex-table${hasHline?' tex-table-hline':''}${doubleHline?' tex-table-double-hline':''}"><tbody>${body}</tbody></table>`;}
+         const reserved=new Set(['pp','pause',...modes,...Object.keys(config.colors)]),inlineAssets=[];
         const inlineAsset=block=>{inlineAssets.push(block);return `<!--tex2html-slot:${block.id}-->`;};
         function unknown(n,reason='尚未实现此命令或环境') {
           const rule=config.unknown[n.name];
@@ -179,8 +253,11 @@
         }
         function math(tex,n,display=false) {
           const cleanPauses=value=>{let out='';for(let i=0;i<value.length;){const c=value[i]==='\\'?command(value,i):null;if(!c){out+=value[i++];continue;}if(['pp','pause'].includes(c.name)&&config[c.name]==='ignore'){i=group(value,c.end,'[',']')?.end||c.end;}else {out+=value.slice(i,c.end);i=c.end;}}return out;};
-          const expanded=cleanPauses(expand(cleanPauses(tex),macros,'math',(name,raw,reason)=>warn({...n,name,raw},reason)));
-          const unsupported=[...new Set([...expanded.matchAll(/\\([A-Za-z@]+)/g)].map(m=>m[1]).filter(name=>!standardMath.has(name)))];
+          const arrowFallback=value=>{let out='',i=0;const targets={xRightarrow:'Longrightarrow',xLeftrightarrow:'Leftrightarrow',xleftrightarrow:'leftrightarrow',xmapsto:'mapsto',xrightleftharpoons:'rightleftharpoons'};while(i<value.length){if(value[i]!=='\\'){out+=value[i++];continue;}const c=command(value,i),target=targets[c?.name];if(!target){out+=value[i++];continue;}let p=c.end,below=group(value,p,'[',']');if(below)p=below.end;const above=group(value,p);if(!above){out+=value.slice(i,c.end);i=c.end;continue;}const label=above.value,wrapped=below?`\\underset{${below.value}}{\\overset{${label}}{\\${target}}}`:`\\overset{${label}}{\\${target}}`;out+=wrapped;i=above.end;}return out;};
+          // MathJax's local color extension understands the original xcolor arguments
+          // and limits textcolor to its content, including nested colors.
+          const expanded=normalizeMathColors(arrowFallback(cleanPauses(expand(cleanPauses(tex),macros,'math',(name,raw,reason)=>warn({...n,name,raw},reason)))));
+           const unsupported=mathCommandNames(expanded);
           unsupported.forEach(name=>warn({...n,name,raw:tex},`数学命令 \\${name} 未转换；原公式完整保留。`));
           return `${unsupported.length?'<span class="tex-math-warning" title="存在未解析数学命令">⚠</span>':''}${display?'\\[':'\\('}${esc(expanded)}${display?'\\]':'\\)'}`;
         }
@@ -204,7 +281,8 @@
           const a=n.args||[],arg=index=>a[index]?inlineNodes(nested(a[index].value,a[index].inner)):'',name=n.name;
           if(name==='pp'||name==='pause') {if(config[name]==='ignore')return '';if(config[name]==='preserve')return unknown(n,'用户选择保留停顿命令');warn(n,'嵌套内容中的停顿不能安全分页，请在外层插入分隔线。','顶层停顿可按当前规则拆分。');return '<span class="tex-break-note">〔内容分界〕</span>';}
           if(macros[name]&&!reserved.has(name)&&macros[name].enabled!==false&&macros[name].scope!=='math'&&macros[name].scope!=='preserve') {let failed=false;const expanded=expand(n.raw,macros,'text',(name,raw,reason)=>{failed=true;warn({...n,name,raw},reason);});if(failed||expanded===n.raw)return unknown(n,'宏不能安全展开，保留原文');return inlineNodes(nested(expanded,n.start));}
-          if(config.colors[name]||name==='textcolor') {const key=name==='textcolor'?a[0]?.value:name,rule=config.colors[key]||{mode:'color'},content=arg(name==='textcolor'?1:0);if(!config.colors[key])warn(n,'颜色未定义，正文已保留','在颜色管理器中添加此名称。');const tag=rule.mode==='bold'?'strong':rule.mode==='mark'?'mark':'span';return rule.mode==='plain'?content:`<${tag} class="tex-color-${safeName(key)}">${content}</${tag}>`;}
+           if(name==='textcolor'&&n.optional){const hex=explicitColor(n.optional,a[0]?.value||'');if(hex)return `<span style="color:${hex}">${arg(1)}</span>`;warn(n,'textcolor 的颜色模型或数值无法识别','使用 \\textcolor[rgb]{0,0,1}{文字} 或颜色管理器中的命名颜色。');return arg(1);}
+           if(config.colors[name]||name==='textcolor') {const key=name==='textcolor'?a[0]?.value:name,rule=config.colors[key]||{mode:'color'},content=arg(name==='textcolor'?1:0);if(!config.colors[key])warn(n,'颜色未定义，正文已保留','在颜色管理器中添加此名称。');const tag=rule.mode==='bold'?'strong':rule.mode==='mark'?'mark':'span';return rule.mode==='plain'?content:`<${tag} class="tex-color-${safeName(key)}">${content}</${tag}>`;}
            if(name==='framebox'){const content=arg(0),size=String(n.frameboxSize||n.optional||'').split(',').map(v=>v.trim()),width=/^\d+(?:\.\d+)?$/.test(size[0]||'')?`${Number(size[0])}px`:'';return `<span class="tex-framebox"${width?` style="width:${width}"`:''}>${content}</span>`;}
            if(name==='makebox'){const width=String(n.optional||'').match(/^\s*([\d.]+)\s*(cm|mm|pt|em)?/i),style=width?` style="min-width:${width[1]}${width[2]||'px'};display:inline-block"`:'';return `<span class="tex-makebox"${style}>${arg(0)}</span>`;}
           const tags={textbf:'strong',emph:'em',textit:'em',underline:'u',alert:'strong',texttt:'code',textrm:'span',textnormal:'span',mbox:'span',fbox:'span',footnote:'small'};
@@ -222,10 +300,12 @@
           if(name==='par')return '<br><br>';
           const texSizes={tiny:'0.7em',scriptsize:'0.78em',footnotesize:'0.85em',small:'0.9em',normalsize:'1em',large:'1.15em',Large:'1.3em',LARGE:'1.5em',huge:'1.8em',Huge:'2.1em'};
           if(texSizes[name])return `<span class="tex-size-${name}">${a.length?arg(0):''}</span>`;
-           if(['centering','raggedright','noindent','hfill','vfill','hspace','vspace','medskip','bigskip','smallskip','setlength','setcounter'].includes(name)){return a.filter((_,i)=>!['hspace','vspace'].includes(name)||i>0).map((_,i)=>arg(i)).join('');}
+           if(name==='setcounter')return '';
+           if(['centering','raggedright','noindent','hfill','vfill','hspace','vspace','medskip','bigskip','smallskip','setlength'].includes(name)){return a.filter((_,i)=>!['hspace','vspace'].includes(name)||i>0).map((_,i)=>arg(i)).join('');}
            if(name==='gray')return `<span class="tex-gray">${arg(0)}</span>`;
            if(name==='CJKunderdot')return `<span class="tex-underdot">${arg(0)}</span>`;
-          if(name==='label')return `<span class="tex-label" data-tex-label="${esc(a[0]?.value)}"></span>`;
+           if(name==='label')return `<span class="tex-label" data-tex-label="${esc(a[0]?.value)}"></span>`;
+           if(name==='caption')return `<span class="tex-caption">${arg(0)}</span>`;
           if(standardMath.has(name))return math(n.raw,n);
           return unknown(n);
         }
@@ -254,11 +334,13 @@
             if(n.type!=='environment'){pending.push(n);continue;}flush();const name=n.name;
             if(name==='tikzpicture'||name==='xy'){result.push(makeFigure(n,name==='tikzpicture'?'tikz':'xypic'));continue;}
             if(mathEnvs.has(name)) {if(/\\(?:begin\{tikzpicture\}|xymatrix|xy\b)/.test(n.inner)){result.push(...blocks(nested(n.inner,n.innerStart)));}else {const tex=['equation','equation*','displaymath','math'].includes(name)?n.inner:`\\begin{${name}}${n.inner}\\end{${name}}`;result.push(create('formula',n,{tex,html:`<div class="tex-display">${math(tex,n,true)}</div>`}));}continue;}
-            if(Object.hasOwn(config.environments,name)||['block','alertblock','exampleblock'].includes(name)) {
+             if(Object.hasOwn(config.environments,name)||['block','alertblock','exampleblock'].includes(name)) {
               let title='',p=0;const option=group(n.inner,0,['block','alertblock','exampleblock'].includes(name)?'{':'[',['block','alertblock','exampleblock'].includes(name)?'}':']');if(option){title=titleText(option.value);p=option.end;}
               const environment=config.environments[name]?name:name==='exampleblock'?'example':'remark',style=config.environments[environment];envCounts[environment]=(envCounts[environment]||0)+1;
-              const children=blocks(nested(n.inner.slice(p),n.innerStart+p));result.push(create(environment,n,{environment,title,label:style.label,number:`${model.section}.${envCounts[environment]}`,children}));continue;
-            }
+               const children=blocks(nested(n.inner.slice(p),n.innerStart+p));result.push(create(environment,n,{environment,title,label:style.label,number:`${model.section}.${envCounts[environment]}`,children}));continue;
+             }
+             if(name==='tabular'){result.push(create('table',n,{html:renderTabular(n)}));continue;}
+             if(name==='table') {let tableInner=n.inner,tableBase=n.innerStart;const tableOption=group(tableInner,0,'[',']');if(tableOption){tableInner=tableInner.slice(tableOption.end);tableBase+=tableOption.end;}const children=blocks(nested(tableInner,tableBase));result.push(create('container',n,{center:true,children}));continue;}
             if(['itemize','enumerate','description'].includes(name)) {
               const children=nested(n.inner,n.innerStart);const items=[];let curr=[];for(const child of children){if(child.type==='command'&&child.name==='item'){if(curr.length)items.push(curr);curr=[];if(child.optional)curr.push({type:'text',value:child.optional+'：',raw:child.optional,start:child.start,end:child.end});for(const a of child.args)curr.push(...nested(a.value,a.inner));}else curr.push(child);}if(curr.length)items.push(curr);
               const tag=name==='enumerate'?'ol':'ul';result.push(create('list',n,{tag,children:items.filter(list=>list.some(n=>n.type!=='text'||n.value.trim())).map(list=>create('list-item',list[0],{children:blocks(list)}))}));continue;
@@ -281,6 +363,8 @@
         for(const [part,blocks] of groups.filter(g=>g.length).entries()){const knowledgeKey=frame.subsubsectionTitle?`${file.name}::${frame.sectionTitle||''}::${frame.subsectionTitle||''}::${frame.subsubsectionTitle}`:'';const existing=knowledgeKey&&part===0?model.pages.find(p=>p.knowledgeKey===knowledgeKey):null;if(existing){existing.blocks.push(...blocks);existing.sourceFrames.push(frameId);existing.warnings.push(...clone(warnings));continue;}const index=model.pages.length+Number(config.start),subsectionNo=frame.subsectionIndex||0,pageOrdinal=subsectionNo?model.pages.filter(p=>p.subsectionIndex===subsectionNo).length+1:index,number=subsectionNo?`${config.chapter}.${subsectionNo}.${pageOrdinal}`:`${model.section}.${index}`,pageTitle=frame.subsubsectionTitle||title+(part?' · '+(part+1):'');model.pages.push({id:'p'+frameId+'-'+part,knowledgeKey,number,subsectionIndex:subsectionNo,slug:config.slugMode==='chinese'?safeName(pageTitle):`lesson-${number.replace(/\./g,'-')}`,title:pageTitle,subtitle,sectionTitle:frame.sectionTitle||'',subsectionTitle:frame.subsectionTitle||'',knowledgeTitle:frame.subsubsectionTitle||title,description:config.description==='title'?pageTitle:'',sourceFrames:[frameId],blocks,figures:[],warnings:clone(warnings),rules:{}});}
       }
     }
+    model.globalWarnings=model.globalWarnings.filter(isIgnoredWarning);
+    for(const page of model.pages)page.warnings=page.warnings.filter(isIgnoredWarning);
     model.log.push(`读取 ${files.length} 个 TeX、${styleFiles.length} 个样式文件`,`识别 ${Object.keys(macros).length} 个自定义命令、${model.frames.length} 个 frame`,`生成 ${model.pages.length} 个正文片段`);
     model.registry.macros=macros;refresh(model);return model;
   }
@@ -288,27 +372,29 @@
   function renderBlock(b,config) {
     if(b.deleted)return '';
     if(b.type==='boundary')return '';
-    if(b.children&&!b.environment){const body=renderBlocks(b.children,config);if(b.type==='list')return `<${b.tag==='ol'?'ol':'ul'}>${body}</${b.tag==='ol'?'ol':'ul'}>`;if(b.type==='list-item')return `<li>${body}</li>`;if(b.mode==='collapse')return `<details><summary>显示补充内容</summary>${body}</details>`;return `<div class="tex-container${b.center?' tex-center':''}${b.mode==='supplement'?' tex-supplement':''}">${body}</div>`;}
+    if(b.children&&!b.environment){const body=indentHTML(renderBlocks(b.children,config));if(b.type==='list')return `<${b.tag==='ol'?'ol':'ul'}>\n${body}\n</${b.tag==='ol'?'ol':'ul'}>`;if(b.type==='list-item')return `<li>\n${body}\n</li>`;if(b.mode==='collapse')return `<details>\n  <summary>显示补充内容</summary>\n${body}\n</details>`;return `<div class="tex-container${b.center?' tex-center':''}${b.mode==='supplement'?' tex-supplement':''}">\n${body}\n</div>`;}
     if(b.type==='figure') {
-      const opts=config.figure,directory=String(opts.directory).split('/').map(safeName).join('/'),stem=safeName(opts.prefix)+'-'+b.figureId;
+      const opts=config.figure,directory='assets/chapter'+String(num(config.chapter,1,99,1)).padStart(2,'0'),stem=safeName(opts.prefix)+'-'+b.figureId;
       const light=b.svg&&opts.light!==false,dark=b.darkSvg&&opts.dark!==false,path=b.path||((light||dark)?`{{root}}${directory}/${stem}${!light&&dark?'-dark':''}.svg`:'');
       const image=path?`<img src="${esc(path)}"${dark&&light?` class="tex-figure-light"`:''} alt="${esc(b.caption)}" width="${num(b.width,80,3000,640)}">${dark&&light?`<img class="tex-figure-dark" src="{{root}}${directory}/${stem}-dark.svg" alt="${esc(b.caption)}" width="${num(b.width,80,3000,640)}">`:''}`:`<div class="tex-figure-placeholder"><strong>${esc(b.kind)} 图形待处理</strong><p>${esc(b.error||'未提供 SVG')}</p><details><summary>原始图形代码</summary><pre>${esc(b.raw)}</pre></details></div>`;
       return `<figure class="tex-figure">${image}${opts.caption?`<figcaption>${esc(b.caption)}</figcaption>`:''}</figure>`;
     }
-    if(b.type==='image'){const path=b.asset?`{{root}}assets/imported/${safeAssetName(b.asset.name)}`:b.path;return `<figure class="tex-image">${path?`<img src="${esc(path)}" alt="${esc(b.caption)}">`:`<div class="tex-figure-placeholder">图片未导入：<code>${esc(b.imagePath)}</code></div>`}${config.image.caption?`<figcaption>${esc(b.caption)}</figcaption>`:''}</figure>`;}
+    if(b.type==='image'){const name=b.asset?.name||String(b.imagePath||'').replace(/\\/g,'/').split('/').pop(),sitePath=name?`{{root}}assets/chapter${String(num(config.chapter,1,99,1)).padStart(2,'0')}/${assetURLName(name)}`:'',path=b.path||sitePath;return `<figure class="tex-image">${path?`<img src="${esc(path)}" alt="${esc(b.caption)}">`:`<div class="tex-figure-placeholder">图片未找到：<code>${esc(b.imagePath)}</code></div>`}${config.image.caption?`<figcaption>${esc(b.caption)}</figcaption>`:''}</figure>`;}
     if(b.environment){const style=config.environments[b.environment]||config.environments.theorem,collapsed=b.collapsed??style.collapsed;const heading=`${style.icon?'◆ ':''}<span class="math-block-label">${esc(style.label)}</span>${style.numbered?` <span class="math-block-number">${esc(b.number)}</span>`:''}${b.title?` <span class="math-block-title">${esc(b.title)}</span>`:''}`;const body=renderBlocks(b.children||[],config),cls=`math-block math-block-${safeName(b.environment)}`;
-      if(collapsed||b.environment==='proof')return `<details class="${cls}${b.environment==='proof'?' lecture-proof':''}"${!collapsed?' open':''}><summary class="math-block-heading">${heading}</summary><div class="math-block-body">${body}</div></details>`;
-      return `<section class="${cls}"><div class="math-block-heading">${heading}</div><div class="math-block-body">${body}</div></section>`;
+      const nested=indentHTML(body,'    ');
+      if(collapsed||b.environment==='proof')return `<details class="${cls}${b.environment==='proof'?' lecture-proof':''}"${!collapsed?' open':''}>\n  <summary class="math-block-heading">${heading}</summary>\n  <div class="math-block-body">\n${nested}\n  </div>\n</details>`;
+      return `<section class="${cls}">\n  <div class="math-block-heading">${heading}</div>\n  <div class="math-block-body">\n${nested}\n  </div>\n</section>`;
     }
     let html=b.html||'';for(const item of b.attachments||[])html=html.replace(`<!--tex2html-slot:${item.id}-->`,renderBlock(item,config));return html;
   }
-  function renderBlocks(blocks,config){let html='',pending='',policy=blocks.some(b=>b.type==='boundary'&&b.policy==='block')?'block':null;const flush=()=>{if(pending){html+=policy==='collapse'?`<details class="lesson-step"><summary>显示补充内容</summary>${pending}</details>`:policy==='block'?`<div class="lesson-step">${pending}</div>`:pending;pending='';}};for(const b of blocks){if(b.type==='boundary'){flush();policy=b.policy;}else pending+=renderBlock(b,config);}flush();return html;}
+  function renderBlocks(blocks,config){let html='',pending='',policy=blocks.some(b=>b.type==='boundary'&&b.policy==='block')?'block':null;const blockComment=b=>String(b.type||'TeX block').replace(/--+/g,'-');const flush=()=>{if(pending){const wrapped=policy==='collapse'?`<details class="lesson-step"><summary>显示补充内容</summary>${pending}</details>`:policy==='block'?`<div class="lesson-step">${pending}</div>`:pending;html+=(html?'\n\n':'')+wrapped;pending='';}};for(const b of blocks){if(b.type==='boundary'){flush();policy=b.policy;}else{const rendered=renderBlock(b,config);if(rendered)pending+=(pending?'\n\n':'')+`<!-- TeX block: ${blockComment(b)} -->\n${rendered}`;}}flush();return html;}
   function pageCSS(config,scope='.tex-converted') {
     const formatCSS=source=>{let out='',depth=0,quote='';for(const ch of source){if(quote){out+=ch;if(ch===quote)quote='';continue;}if(ch==='"'||ch==="'"){quote=ch;out+=ch;continue;}if(ch==='{'){out=out.trimEnd()+' {\n'+'  '.repeat(++depth);continue;}if(ch==='}'){out=out.trimEnd()+'\n'+'  '.repeat(Math.max(0,--depth))+'}\n'+'  '.repeat(depth);continue;}if(ch===';'){out=out.trimEnd()+';\n'+'  '.repeat(depth);continue;}out+=ch;}return out.replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();};
     const base=`${scope}{line-height:1.8;overflow-wrap:anywhere}${scope} .tex-paragraph{margin:.8em 0;white-space:pre-line}${scope} .tex-display{overflow-x:auto;margin:1em 0}${scope} .tex-unresolved{white-space:pre-wrap;overflow-wrap:anywhere;background:#fff1ce;color:#7c3400;padding:3px 6px;border-radius:4px}${scope} .tex-math-warning{color:#b45309}${scope} .tex-framebox{display:inline-block;box-sizing:border-box;border:1px solid currentColor;padding:.25em .5em;vertical-align:middle;min-width:2em;text-align:center}${scope} .tex-size-tiny{font-size:.7em}${scope} .tex-size-scriptsize{font-size:.78em}${scope} .tex-size-footnotesize{font-size:.85em}${scope} .tex-size-small{font-size:.9em}${scope} .tex-size-normalsize{font-size:1em}${scope} .tex-size-large{font-size:1.15em}${scope} .tex-size-Large{font-size:1.3em}${scope} .tex-size-LARGE{font-size:1.5em}${scope} .tex-size-huge{font-size:1.8em}${scope} .tex-size-Huge{font-size:2.1em}${scope} .math-block{margin:1.1em 0;border-left:4px solid}${scope} .math-block-heading{font-weight:700;cursor:pointer}${scope} .math-block-body>:last-child{margin-bottom:0}${scope} .tex-figure,${scope} .tex-image{margin:1em 0;text-align:center;${config.figure.scroll?'overflow-x:auto;':''}}${scope} img{height:${config.figure.aspect?'auto':'300px'};max-width:${num(config.figure.maxWidth,10,200,100)}%}${scope} .tex-image img{max-width:${num(config.image.maxWidth,10,100,100)}%}${scope} .tex-figure-dark{display:none}${scope} .tex-center{text-align:center}${scope} .tex-figure-placeholder{border:1px dashed #a5adbd;padding:18px;text-align:left}${scope} pre{white-space:pre-wrap;overflow-wrap:anywhere}${scope} .lesson-step{border-top:1px solid #a5adbd55;margin-top:16px;padding-top:12px}${scope} .tex-footnote{display:inline;color:inherit}${scope} .tex-footnote:before{content:'〔'}${scope} .tex-footnote:after{content:'〕'}`;
-    const rules=[`/* Base layout, text, formulas, images and inline TeX sizes */\n${formatCSS(base)}`];
-    rules.push(`/* Inline layout helpers */\n${formatCSS(`${scope} .tex-makebox{display:inline-block;vertical-align:middle}${scope} .tex-gray{color:#6b7280}${scope} .tex-underdot{text-decoration:underline dotted;text-underline-offset:0.2em}`)}`);
-    const dark=`:is([data-theme="dark"],.dark) ${scope}`;
+     const rules=[`/* Base layout, text, formulas, images and inline TeX sizes */\n${formatCSS(base)}`];
+     rules.push(`/* Inline layout helpers */\n${formatCSS(`${scope} .tex-makebox{display:inline-block;vertical-align:middle}${scope} .tex-gray{color:#6b7280}${scope} .tex-underdot{text-decoration:underline dotted;text-underline-offset:0.2em}${scope} .tex-caption{display:block;font-weight:600;text-align:center;margin:.4em 0}`)}`);
+     rules.push(`/* TeX tables and hline rules */\n${formatCSS(`${scope} .tex-table{border-collapse:collapse;margin:1em auto;max-width:100%;overflow-x:auto}${scope} .tex-table td,${scope} .tex-table th{padding:.35em .75em;text-align:center;vertical-align:middle}${scope} .tex-table-hline tr:first-child td,${scope} .tex-table-hline tr+tr td{border-top:1px solid currentColor}${scope} .tex-table-hline tr:last-child td{border-bottom:1px solid currentColor}${scope} .tex-table-double-hline tr:first-child td,${scope} .tex-table-double-hline tr:last-child td{border-top:3px double currentColor}`)}`);
+     const dark=`:is([data-theme="dark"],.dark) ${scope}`;
     rules.push(`/* Dark mode overrides */\n${formatCSS(`${dark} .tex-figure-light{display:none}${dark} .tex-figure-dark{display:inline}${dark} .tex-unresolved{background:#503414;color:#fde68a}`)}`);
     for(const [name,e] of Object.entries(config.environments)){const selector=`${scope} .math-block-${safeName(name)}`,source=`${selector}{color:${color(e.light)};background:${color(e.background,'#eff6ff')};border-color:${color(e.border)};padding:${num(e.padding,0,60,16)}px;border-radius:${num(e.radius,0,40,10)}px;font-size:${num(e.bodySize,10,32,16)}px}${selector} .math-block-heading{font-size:${num(e.headingSize,12,36,17)}px}${dark} .math-block-${safeName(name)}{color:${color(e.dark)};background:${color(e.darkBackground)};border-color:${color(e.darkBorder)}}@media print{${selector}{${e.printBackground?'print-color-adjust:exact':'background:transparent!important;color:#111!important'}}}`;rules.push(`/* Math environment: ${name} */\n${formatCSS(source)}`);}
     for(const [name,c] of Object.entries(config.colors)){if(c.mode==='color')rules.push(`/* TeX color command: ${name} */\n${formatCSS(`${scope} .tex-color-${safeName(name)}{color:${color(c.light)}}${dark} .tex-color-${safeName(name)}{color:${color(c.dark)}}`)}`);}
@@ -316,22 +402,66 @@
   }
   function pageConfig(model,page){return mergeConfig({...model.config,...page.rules});}
   function pageScope(page){return 'tex-page-'+safeName(page.number)+'-'+safeName(page.slug);}
-  function compactHTML(html){return String(html||'').replace(/<!--[^]*?-->/g,'').replace(/>\s+</g,'><').trim();}
+  function indentHTML(html,prefix='  '){return String(html||'').trim().split('\n').map(line=>line.trim()?prefix+line:'').join('\n');}
   function renderPage(page,config) {
     const scope=pageScope(page),number=config.bodyNumber?`${config.sectionSign?'§':''}${page.number} `:'',hierarchy=[page.sectionTitle,page.subsectionTitle].filter(Boolean).join(' / '),hierarchyHtml=hierarchy?`<p class="tex-hierarchy">${esc(hierarchy)}</p>`:'';
     const heading=config.bodyTitle?`<h2>${esc(number+page.title)}</h2>`:config.bodyNumber?`<p class="tex-page-number">${esc(number)}</p>`:'';
-    return compactHTML(`<link rel="stylesheet" href="/assets/tex2html.css">\n<div class="tex-converted ${scope}">\n${hierarchyHtml}${heading}${page.subtitle?`<p class="tex-subtitle">${esc(page.subtitle)}</p>`:''}${renderBlocks(page.blocks,config)}\n</div>`);
+    const header=[hierarchyHtml,heading,page.subtitle?`<p class="tex-subtitle">${esc(page.subtitle)}</p>`:''].filter(Boolean).map(part=>indentHTML(part)).join('\n');
+    const body=indentHTML(renderBlocks(page.blocks,config));
+    return [
+      '<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->',
+      `<div class="tex-converted ${scope}">`,
+      header,
+      '  <!-- 以下内容由所选 TeX frame 转换而来。 -->',
+      body,
+      '</div>'
+    ].filter(Boolean).join('\n');
   }
   function refresh(model) {const used=new Set();for(const page of model.pages){const base=safeName(page.slug);let slug=base,n=2;while(used.has(slug))slug=base+'-'+n++;used.add(slug);page.slug=slug;page.figures=[];walkBlocks(page.blocks,b=>{if(b.type==='figure')page.figures.push(b);});page.html=renderPage(page,pageConfig(model,page));}return model;}
   const safeAssetName = name => {const pos=name.lastIndexOf('.');return pos<0?safeName(name):safeName(name.slice(0,pos))+'.'+name.slice(pos+1).replace(/[^a-z0-9]/gi,'').toLowerCase();};
   function exportFiles(model) {
-    refresh(model);const entries=[],config=model.config,chapter='chapter'+String(num(config.chapter,1,99,1)).padStart(2,'0'),section='section'+String(num(config.section,1,99,1)).padStart(2,'0'),seen=new Set();
-    const add=(path,text,data)=>{if(!seen.has(path)){entries.push({path,text,data});seen.add(path);}};
-    const manifest={version:1,chapter,section,number:model.section,pages:[]};
-    add('assets/tex2html.css',model.cssText||pageCSS(config,'.tex-converted'));
-    for(const page of model.pages){const path=`content/${chapter}/${section}/${page.slug}.html`;add(path,page.html);manifest.pages.push({number:page.number,slug:page.slug,title:page.title,htmlTitle:config.htmlTitleNumber?page.number+' '+page.title:page.title,description:page.description,subtitle:page.subtitle,sourceFrames:page.sourceFrames,path});walkBlocks(page.blocks,b=>{if(b.type==='figure'){const c=pageConfig(model,page).figure,dir=c.directory.split('/').map(safeName).join('/'),stem=safeName(c.prefix)+'-'+b.figureId;if(b.svg&&c.light!==false)add(`${dir}/${stem}.svg`,b.svg);if(b.darkSvg&&c.dark!==false)add(`${dir}/${stem}-dark.svg`,b.darkSvg);if(!b.svg&&!b.path)add(`${dir}/${stem}.tex`,b.raw);}if(b.type==='image'&&b.asset)add('assets/imported/'+safeAssetName(b.asset.name),null,b.asset.data);});}
-    add('manifest.json',JSON.stringify(manifest,null,2));add('course-pages.json',JSON.stringify(manifest.pages.map(p=>({slug:p.slug,title:p.title,description:p.description})),null,2));add('conversion-report.json',JSON.stringify({globalWarnings:model.globalWarnings,pages:model.pages.map(p=>({slug:p.slug,warnings:p.warnings})),log:model.log},null,2));add('conversion-config.json',JSON.stringify(model.config,null,2));return entries;
+    refresh(model);
+    const entries = [], config = model.config;
+    const chapter = 'chapter' + String(num(config.chapter, 1, 99, 1)).padStart(2, '0');
+    const fallbackSection = num(config.section, 1, 99, 1);
+    const seen = new Set();
+    const add = (filePath, text, data) => {
+      if (!seen.has(filePath)) {
+        entries.push({path: filePath, text, data});
+        seen.add(filePath);
+      }
+    };
+    add('css/tex2html.css', model.cssText || pageCSS(config, '.tex-converted'));
+    for (const page of model.pages) {
+      const numberParts = String(page.number || '').split('.');
+      const pageSectionNumber = num(page.subsectionIndex || numberParts[1] || fallbackSection, 1, 99, fallbackSection);
+      const pageSection = 'section' + String(pageSectionNumber).padStart(2, '0');
+      const pagePath = 'content/' + chapter + '/' + pageSection + '/' + page.slug + '.html';
+      add(pagePath, page.html);
+      walkBlocks(page.blocks, b => {
+        if (b.type === 'figure') {
+          const c = pageConfig(model, page).figure;
+          const dir = 'assets/' + chapter;
+          const stem = safeName(c.prefix) + '-' + b.figureId;
+          if (b.svg && c.light !== false) add(dir + '/' + stem + '.svg', b.svg);
+          if (b.darkSvg && c.dark !== false) add(dir + '/' + stem + '-dark.svg', b.darkSvg);
+          if (b.raw) add(dir + '/' + stem + '.tex', b.raw);
+        }
+        if (b.type === 'image' && b.asset) add('assets/' + chapter + '/' + assetURLName(b.asset.name), null, b.asset.data);
+      });
+    }
+    return entries;
+  }
+  // Compilation needs one source and compiler settings, never cached SVG replacements.
+  // Keeping an allowlist also prevents new workspace fields from inflating requests.
+  function figureCompileRequest(raw,macros,figureConfig) {
+    const options={};
+    for(const key of ['libraries','preamble','width','crop','transparent','background','darkBackground','textMode','dark']) {
+      if(figureConfig[key]!==undefined)options[key]=figureConfig[key];
+    }
+    const source=expand(raw,macros,'math',()=>{}).replace(/\\(?:pp|pause)\b/g,'');
+    return {source,options};
   }
   function usages(files,name){const matches=[];for(const file of files){const s=uncomment(file.text);const re=new RegExp('\\\\'+name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![A-Za-z@])','g');for(const m of s.matchAll(re))matches.push({file:file.name,line:lineAt(file.text,m.index),offset:m.index});}return matches;}
-  return {defaults,mergeConfig,parseStyles,parse,convert,expand,uncomment,group,esc,safeName,safeAssetName,renderBlock,renderPage,pageCSS,pageConfig,pageScope,refresh,exportFiles,walkBlocks,usages,simpleTikz,figureKey,clone,labels};
+  return {defaults,mergeConfig,parseStyles,parse,convert,expand,uncomment,group,esc,safeName,safeAssetName,renderBlock,renderPage,pageCSS,pageConfig,pageScope,refresh,exportFiles,walkBlocks,usages,simpleTikz,figureKey,figureCompileRequest,clone,labels};
 });

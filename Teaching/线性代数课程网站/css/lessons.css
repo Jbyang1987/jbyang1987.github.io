@@ -19,6 +19,7 @@
 .unit-completion { margin-top: .75rem; }
 .unit-action-row { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: .5rem; }
 .knowledge-completion-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; }
+.knowledge-completion-row > .unit-action-row:last-child { margin-left: auto; }
 .knowledge-step-actions { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: .4rem; }
 .knowledge-action-button { white-space: nowrap; }
 .knowledge-step-actions .knowledge-action-button { min-height: 0; padding: .25rem .65rem; border: var(--border); border-radius: 999px; background: transparent; color: var(--color-muted); font-size: var(--text-xs); font-weight: 400; line-height: 1.5; }

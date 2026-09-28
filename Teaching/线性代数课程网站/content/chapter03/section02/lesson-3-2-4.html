@@ -1,0 +1,90 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-2-4-lesson-3-2-4">
+  <p class="tex-hierarchy">矩阵(一) / 矩阵乘法</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">3.1.4</span> <span class="math-block-title">矩阵乘法</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设 \(A=(a_{ik})_{m\times n}\in {\mathbb F}^{m\times n}\),\(B=(b_{kj})_{n\times p}\in {\mathbb F}^{n\times p}\). 定义</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{AB}}:=\left(\sum_{k=1}^{n}a_{ik}b_{kj}\right)_{m\times p}\in {\mathbb F}^{m\times p}.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">\( \small \begin{pmatrix}
+  a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\\hline
+  a_{21}&amp;a_{22}&amp;\cdots&amp;a_{2n}\\\hline
+  \cdots&amp;\cdots&amp;\cdots&amp;\cdots\\
+  a_{m1}&amp;a_{m2}&amp;\cdots&amp;a_{mn}\\\hline
+  \end{pmatrix}
+  \left(\begin{array}{c|c|cc|}
+  b_{11}&amp;b_{12}&amp;\cdots&amp;b_{1p}\\
+  b_{21}&amp;b_{22}&amp;\cdots&amp;b_{2p}\\
+  \vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+  b_{n1}&amp;b_{n2}&amp;\cdots&amp;b_{np}\\
+  \end{array}\right) \)</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+
+  \footnotesize:=
+  \begin{pmatrix}
+  \boxed{a_{11}b_{11}+a_{12}b_{21}+\cdots +a_{1n}b_{n1}} &amp;\cdots&amp;\boxed{a_{11}b_{1p}+a_{12}b_{2p}+\cdots +a_{1n}b_{np}}\\
+  \vdots&amp; &amp;\vdots\\
+  \boxed{a_{m1}b_{11}+a_{m2}b_{21}+\cdots +a_{mn}b_{n1}} &amp;\cdots&amp;\boxed{a_{m1}b_{1p}+a_{m2}b_{2p}+\cdots +a_{mn}b_{np}}\\
+  \end{pmatrix}
+
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">注</span>: 并非任意两矩阵都可以相乘.只有在\(A\)的列数等\(B\)的行数时, \(A\)与\(B\)才可以相乘．</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">特别地,若\(A\)为方阵,我们可以定义\(A\)的方幂. 规定\({\textcolor[rgb]{0,0,1}{A^0}}:=I\)并定义(\(k&gt;0\)):</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[{\textcolor[rgb]{0,0,1}{A^k}}:=\underbrace{AA\cdots A}_{\text{$k$个$A$}}\]</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">已知\(A=\begin{pmatrix}1&amp;2&amp;3\\4&amp;5&amp;6\\\end{pmatrix}\), \(B=\begin{pmatrix}1&amp;2\\3&amp;4\\5&amp;6\\\end{pmatrix}\), \(C=\begin{pmatrix}0&amp;1\\0&amp;0\\\end{pmatrix}\)以及\(D=\begin{pmatrix}
+      0&amp;0\\1&amp;0\\\end{pmatrix}\). 求 \(AB\), \(BA\), \(CD\), \(DC\), \(C^2\), \(D^2\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">从这个例子,你发现了什么现象?
+
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(AB\neq BA\);</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">\(AB=0 \not\Rightarrow A=0\)或\(B=0\).</div>
+    </li>
+  </ul></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">3.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">已知 \(A=(a_{ij})_{m\times n}\), \(B=\mathrm{diag}(b_1,\cdots,b_m)\), \(C=\mathrm{diag}(c_1,\cdots,c_n)\). 求\(BA\)和\(AC\).</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">你发现了什么规律?</div>
+</div>

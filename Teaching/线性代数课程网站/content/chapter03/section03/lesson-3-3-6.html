@@ -1,0 +1,56 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-3-3-6-lesson-3-3-6">
+  <p class="tex-hierarchy">矩阵(一) / 矩阵乘法的应用</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">以 ``我爱线性代数。&#39;&#39; 为例。 输入嵌入 \(X \in \mathbb R^{4\times 4096}\).   通过注意力机制输出另一个矩阵记为 \(X_1\)：</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[X \mapsto \{Q,K,V\}  \mapsto X_1 \in \mathbb R^{4\times 4096}.\]</div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">计算 \(Q\) 所需的内部参数矩阵 \(W_{q_a}\in \mathbb R^{4096\times 1024}\), \(W_{q_b}\in \mathbb R^{1024 \times 32768}\), \(W_q:=W_{q_a}W_{q_b}\).</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[X      \overset{W_{q_a} \text{ :压缩}}{\mapsto}
+      XW_{q_a}  \overset{W_{q_a} \text{ :恢复}}{\mapsto}
+      Q         \overset{\text{拆分}}{\mapsto}
+      (Q_1,Q_2\cdots,Q_{64}) \]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">计算 \(K,V\) 所需的内部参数矩阵 \(W_K,W_V \in \mathbb R^{4096\times 512}\)</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[ X \overset{W_K}{\mapsto} K \in \mathbb R^{4\times 512}\]</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[ X \overset{W_V}{\mapsto} V \in \mathbb R^{4\times 512}\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">注意力分头归一化</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[O_i = \mathrm{Softmax}\left(\frac{Q_iK^T}{\sqrt{512}}\right) V \in \mathbb R^{4\times 512}.\]</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">输出所需的内部参数矩阵 \(W_{o_a} \in \mathbb R^{32768 \times 1024}\),
+                             \(W_{o_b} \in \mathbb R^{1024 \times 4096}\)</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[ (O_1,O_2\cdots,O_{64}) \overset{\text{合并}}{\mapsto} O \overset{W_{o_a}}{\mapsto} OW_{o_a}   \overset{W_{o_b}}{\mapsto} X_1.\]</div>
+    </li>
+  </ul>
+</div>

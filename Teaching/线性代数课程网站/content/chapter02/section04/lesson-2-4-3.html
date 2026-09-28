@@ -1,0 +1,131 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-2-4-3-lesson-2-4-3">
+  <p class="tex-hierarchy">线性方程组 / 一般线性方程组的Gauss消元法</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">解n元线性方程组需约\(\frac{2}{3}n^3\)次运算，<span class="tex-color-blue">算术复杂度\(O(n^3)\)</span></div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">除法：\(n(n+1)/2\)次</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">乘法：\(\frac{2n^3+3n^2-5n}{6}\)次</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">减法：\(\frac{2n^3+3n^2-5n}{6}\)次</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>系数类型影响</strong></div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">浮点数：算术复杂度主导（算术运算时间相近）</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">整数/有理数：中间值指数增长 → 空间复杂度\(O(n^5)\)（Bareiss算法）</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>应用范围</strong></div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">适用</span>：数千未知数的系统</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">瓶颈</span>：百万级系统耗时剧增（如i9-12900K大约需50天）</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">解决方案：大规模系统采用迭代法,或者特殊矩阵采用特殊办法</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>根源</strong>：主元趋零导致误差放大</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">消元时需除以极小主元 \(\rightarrow\) 计算误差呈指数级增长</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>稳定性条件</strong></div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">天然稳定</span>：对角占优矩阵、正定矩阵</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">条件稳定</span>：一般矩阵需配合部分选主元</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-blue">例外情况</span>：存在特殊稳定矩阵仍可能失稳</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><strong>工程应对</strong></div>
+
+  <!-- TeX block: list -->
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">强制选主元策略（列/全主元）</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">条件数预检测：\(\kappa(A)&gt; 10^{10}\)时预警(病态矩阵)</div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">混合方法：结合迭代修正（如Gauss-Jordan迭代精炼）</div>
+    </li>
+  </ul>
+
+  <!-- TeX block: container -->
+  <div class="tex-container tex-center">
+    <!-- TeX block: text -->
+    <div class="tex-paragraph"><span class="tex-size-Large"></span>
+    <span class="tex-color-blue">感兴趣的同学,自行查阅相关文献.</span></div>
+  </div>
+</div>

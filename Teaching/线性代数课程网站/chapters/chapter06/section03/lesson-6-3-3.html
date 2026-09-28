@@ -1,0 +1,103 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="极大无关组 · 第3页；线性空间，线性代数课程。"><title>极大无关组 · 第3页 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter06" data-section="chapter06-section03" data-unit="chapter06-section03-lesson-6-3-3"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter06.html">第六章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第3节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第3小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§6.3.3</span><span>极大无关组 · 第3页</span></h1><p class="knowledge-goal">极大无关组 · 第3页</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-6-3-3-lesson-6-3-3">
+  <p class="tex-hierarchy">线性空间 / 极大无关组</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">原理:初等行变换不改变列向量的线性相关性.</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">6.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\vec{a}_1\), \(\vec{a}_2\), \(\cdots\), \(\vec{a}_m\)为一组<span class="tex-color-blue">列</span>向量.  对矩阵</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[A=(\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m)\in {\mathbb F}^{n\times m}\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">做一系列<span class="tex-color-blue">行</span>初等变换得到</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[B=(\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_m)\in {\mathbb F}^{n\times m}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则对于任意 \(i_1,i_2,\cdots,i_r\in \{1,2,\cdots,m\}\),</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\vec{a}_{i_1}\), \(\vec{a}_{i_2}\), \(\cdots\), \(\vec{a}_{i_r}\)线性相关(无关) \(\Leftrightarrow\) \(\vec{b}_{i_1}\), \(\vec{b}_{i_2}\), \(\cdots\), \(\vec{b}_{i_r}\)线性相关(无关);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\vec{a}_{i_1}\), \(\vec{a}_{i_2}\), \(\cdots\), \(\vec{a}_{i_r}\)极大无关 \(\Leftrightarrow\) \(\vec{b}_{i_1}\), \(\vec{b}_{i_2}\), \(\cdots\), \(\vec{b}_{i_r}\)极大无关;</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">注：这个定理保证了行变换不改变列秩!</span></div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  (1) \qquad LHS \qquad \Leftrightarrow &amp; AX=0 \text{ 有非零解} \\ 
+  \underset{P\text{可逆}}{\overset{B=PA}{\Leftrightarrow}} &amp; BX=0 \text{ 有非零解} \\ 
+  \Leftrightarrow &amp; RHS.\\
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  (2) \qquad LHS \qquad \Leftrightarrow
+  &amp; \left\{ { a_{i_1},\cdots, a_{i_r} \text{ 线性无关} \atop a_{i_1},\cdots, a_{i_r}, a_j\text{线性相关 $\forall$ $j$}}\right.\\ 
+  \overset{(1)}{\Leftrightarrow} &amp; \left\{ { b_{i_1},\cdots, b_{i_r} \text{ 线性无关} \atop b_{i_1},\cdots, b_{i_r}, b_j\text{线性相关 $\forall$ $j$}}\right.\\ 
+  \Leftrightarrow &amp; RHS.
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.12</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求向量组\(\vec{a}_1=(-1,5,3,-2)\), \(\vec{a}_2=(4,1,-2,9)\), \(\vec{a}_3=(2,0,-1,4)\), \(\vec{a}_4=(0,3,4,-5)\)</div>
+    </div>
+  </section>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{pmatrix}
+  -1&amp; 4&amp; 2&amp; 0\\
+  5&amp; 1&amp; 0&amp; 3\\
+  3&amp; -2&amp; -1&amp; 4\\
+  -2&amp; 9&amp; 4&amp; -5\\
+  \end{pmatrix}
+
+  \longrightarrow
+  \begin{pmatrix}
+  -1&amp; 4&amp; 2&amp; 0\\
+  0&amp; 1&amp; 0&amp; -5\\
+  0&amp; 0&amp; 5&amp; 24\\
+  0&amp; 0&amp; 0&amp; 0\\
+  \end{pmatrix}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">\(\overset{\text{行变换}}{\Longrightarrow}\) \(\{\vec{b}_1,\vec{b}_2,\vec{b}_3\}\),\(\{\vec{b}_1,\vec{b}_2,\vec{b}_4\}\)极大无关.<br>
+
+  \(\Rightarrow\) \(\{\vec{a}_1,\vec{a}_2,\vec{a}_3\}\),\(\{\vec{a}_1,\vec{a}_2,\vec{a}_4\}\)极大无关.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">问题:</span> 两个极大无关组的个数是否相等?</div>
+
+  <!-- TeX block: figure -->
+  <figure class="tex-figure"><img src="../../../assets/chapter06/figure-fig-de74483e.svg" class="tex-figure-light" alt="XY-pic 图形" width="640"><img class="tex-figure-dark" src="../../../assets/chapter06/figure-fig-de74483e-dark.svg" alt="XY-pic 图形" width="640"><figcaption>XY-pic 图形</figcaption></figure>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="极大无关组 · 第3页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter06-section03-lesson-6-3-3" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter06-section03-lesson-6-3-3" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter06-section03-lesson-6-3-3" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-6-3-2.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="../section04/index.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter06-section03-lesson-6-3-3" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter06-section03-lesson-6-3-3" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter06-section03-lesson-6-3-3" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

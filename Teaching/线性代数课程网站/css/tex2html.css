@@ -1,0 +1,480 @@
+/* Base layout, text, formulas, images and inline TeX sizes */
+.tex-converted {
+  line-height:1.8;
+  overflow-wrap:anywhere
+}
+.tex-converted .tex-paragraph {
+  margin:.8em 0;
+  white-space:pre-line
+}
+.tex-converted .tex-display {
+  overflow-x:auto;
+  margin:1em 0
+}
+.tex-converted .tex-unresolved {
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  background:#fff1ce;
+  color:#7c3400;
+  padding:3px 6px;
+  border-radius:4px
+}
+.tex-converted .tex-math-warning {
+  color:#b45309
+}
+.tex-converted .tex-framebox {
+  display:inline-block;
+  box-sizing:border-box;
+  border:1px solid currentColor;
+  padding:.25em .5em;
+  vertical-align:middle;
+  min-width:2em;
+  text-align:center
+}
+.tex-converted .tex-size-tiny {
+  font-size:.7em
+}
+.tex-converted .tex-size-scriptsize {
+  font-size:.78em
+}
+.tex-converted .tex-size-footnotesize {
+  font-size:.85em
+}
+.tex-converted .tex-size-small {
+  font-size:.9em
+}
+.tex-converted .tex-size-normalsize {
+  font-size:1em
+}
+.tex-converted .tex-size-large {
+  font-size:1.15em
+}
+.tex-converted .tex-size-Large {
+  font-size:1.3em
+}
+.tex-converted .tex-size-LARGE {
+  font-size:1.5em
+}
+.tex-converted .tex-size-huge {
+  font-size:1.8em
+}
+.tex-converted .tex-size-Huge {
+  font-size:2.1em
+}
+.tex-converted .math-block {
+  margin:1.1em 0;
+  border-left:4px solid
+}
+.tex-converted .math-block-heading {
+  font-weight:700;
+  cursor:pointer
+}
+.tex-converted .math-block-body>:last-child {
+  margin-bottom:0
+}
+.tex-converted .tex-figure,.tex-converted .tex-image {
+  margin:1em 0;
+  text-align:center;
+  overflow-x:auto;
+}
+.tex-converted img {
+  height:auto;
+  max-width:100%
+}
+.tex-converted .tex-image img {
+  max-width:100%
+}
+.tex-converted .tex-figure-dark {
+  display:none
+}
+.tex-converted .tex-center {
+  text-align:center
+}
+.tex-converted .tex-figure-placeholder {
+  border:1px dashed #a5adbd;
+  padding:18px;
+  text-align:left
+}
+.tex-converted pre {
+  white-space:pre-wrap;
+  overflow-wrap:anywhere
+}
+.tex-converted .lesson-step {
+  border-top:1px solid #a5adbd55;
+  margin-top:16px;
+  padding-top:12px
+}
+.tex-converted .tex-footnote {
+  display:inline;
+  color:inherit
+}
+.tex-converted .tex-footnote:before {
+  content:'〔'
+}
+.tex-converted .tex-footnote:after {
+  content:'〕'
+}
+
+/* Dark mode overrides */
+:is([data-theme="dark"],.dark) .tex-converted .tex-figure-light {
+  display:none
+}
+:is([data-theme="dark"],.dark) .tex-converted .tex-figure-dark {
+  display:inline
+}
+:is([data-theme="dark"],.dark) .tex-converted .tex-unresolved {
+  background:#503414;
+  color:#fde68a
+}
+
+/* Math environment: theorem */
+.tex-converted .math-block-theorem {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-theorem .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-theorem {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-theorem {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* Math environment: proposition */
+.tex-converted .math-block-proposition {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-proposition .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-proposition {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-proposition {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* Math environment: lemma */
+.tex-converted .math-block-lemma {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-lemma .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-lemma {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-lemma {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* Math environment: corollary */
+.tex-converted .math-block-corollary {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-corollary .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-corollary {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-corollary {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* Math environment: definition */
+.tex-converted .math-block-definition {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-definition .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-definition {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-definition {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* Math environment: example */
+.tex-converted .math-block-example {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-example .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-example {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-example {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* Math environment: problem */
+.tex-converted .math-block-problem {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-problem .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-problem {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-problem {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* Math environment: question */
+.tex-converted .math-block-question {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-question .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-question {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-question {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* Math environment: fact */
+.tex-converted .math-block-fact {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-fact .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-fact {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-fact {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* Math environment: proof */
+.tex-converted .math-block-proof {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-proof .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-proof {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-proof {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* Math environment: remark */
+.tex-converted .math-block-remark {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-remark .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-remark {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-remark {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* Math environment: observation */
+.tex-converted .math-block-observation {
+  color:#2563eb;
+  background:#eff6ff;
+  border-color:#3b82f6;
+  padding:16px;
+  border-radius:10px;
+  font-size:16px
+}
+.tex-converted .math-block-observation .math-block-heading {
+  font-size:17px
+}
+:is([data-theme="dark"],.dark) .tex-converted .math-block-observation {
+  color:#93c5fd;
+  background:#17253b;
+  border-color:#60a5fa
+}
+@media print {
+  .tex-converted .math-block-observation {
+    background:transparent!important;
+    color:#111!important
+  }
+}
+
+/* TeX color command: blue */
+.tex-converted .tex-color-blue {
+  color:#2563eb
+}
+:is([data-theme="dark"],.dark) .tex-converted .tex-color-blue {
+  color:#93c5fd
+}
+
+/* TeX color command: red */
+.tex-converted .tex-color-red {
+  color:#dc2626
+}
+:is([data-theme="dark"],.dark) .tex-converted .tex-color-red {
+  color:#fca5a5
+}
+
+/* TeX color command: green */
+.tex-converted .tex-color-green {
+  color:#15803d
+}
+:is([data-theme="dark"],.dark) .tex-converted .tex-color-green {
+  color:#86efac
+}
+
+/* TeX color command: yang */
+.tex-converted .tex-color-yang {
+  color:#0e7490
+}
+:is([data-theme="dark"],.dark) .tex-converted .tex-color-yang {
+  color:#67e8f9
+}
+
+/* TeX color command: rev */
+.tex-converted .tex-color-rev {
+  color:#a21caf
+}
+:is([data-theme="dark"],.dark) .tex-converted .tex-color-rev {
+  color:#f0abfc
+}
+
+/* TeX color command: courseblue */
+.tex-converted .tex-color-courseblue {
+  color:#2563EB
+}
+:is([data-theme="dark"],.dark) .tex-converted .tex-color-courseblue {
+  color:#2563EB
+}
+
+/* TeX color command: bluefootlinecolor */
+.tex-converted .tex-color-bluefootlinecolor {
+  color:#3232c8
+}
+:is([data-theme="dark"],.dark) .tex-converted .tex-color-bluefootlinecolor {
+  color:#3232c8
+}
+
+/* TeX color command: blackfootlinecolor */
+.tex-converted .tex-color-blackfootlinecolor {
+  color:#000000
+}
+:is([data-theme="dark"],.dark) .tex-converted .tex-color-blackfootlinecolor {
+  color:#000000
+}

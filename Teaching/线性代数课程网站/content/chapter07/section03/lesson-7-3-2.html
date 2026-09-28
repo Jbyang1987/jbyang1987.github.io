@@ -1,0 +1,81 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-3-2-lesson-7-3-2">
+  <p class="tex-hierarchy">线性映射 / 线性变换与方阵的对应</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">向量\(x\)和\({\mathscr A} x\)在同一组基下坐标之间的关系.</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\({\mathscr A}\colon V\rightarrow V\)在基\(\alpha_1,\cdots,\alpha_n\)下的矩阵为\(A\).
+
+      若向量\(x\in V\)在基\(\alpha_1,\cdots,\alpha_n\)下的坐标\(X\in {\mathbb F}^n\), 向量\({\mathscr A} x\)在基\(\alpha_1,\cdots,\alpha_n\)下的坐标为 \(Y\in {\mathbb F}^n\),
+
+      则</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[Y=AX.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><code class="tex-unresolved" title="尚未实现此命令或环境">\xymatrix@C</code>=5cm@R=2cm
+  V
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[r]</code>^\(\text{基 }\)\(\alpha\)_1,\(\cdots\),\(\alpha\)_n_1:1 <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[d]</code>_-\(\mathscr\) A
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar@{}</code>[dr]|<span class="tex-size-tiny"></span> \(\mathscr\) A(\(\alpha\)_1,\(\cdots\),\(\alpha\)_n) = (\(\alpha\)_1,\(\cdots\),\(\alpha\)_n)A
+  &amp; \(\mathbb\) F^n
+  <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[d]</code>^-A<br>
+  V <code class="tex-unresolved" title="尚未实现此命令或环境">\ar[r]</code>^\(\text{基 }\)\(\alpha\)_1,\(\cdots\),\(\alpha\)_n_1:1 &amp; \(\mathbb\) F^n <br></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.10</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">记 \(\alpha_1=\begin{pmatrix}2\\3\\5\end{pmatrix}\), \(\alpha_2=\begin{pmatrix}0\\1\\2\end{pmatrix}\), \(\alpha_3=\begin{pmatrix}1\\0\\0\end{pmatrix}\),
+      \(\beta_1=\begin{pmatrix}1\\2\\0\end{pmatrix}\), \(\beta_2=\begin{pmatrix}2\\4\\-1\end{pmatrix}\), \(\beta_3=\begin{pmatrix}3\\0\\5\end{pmatrix}\).
+
+      设\({\mathscr A}\)为\({\mathbb F}^3\)上线性变换满足 \({\mathscr A}(\alpha_i)=\beta_i\) (\(i=1,2,3\)).
+
+      求</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\)在\(\alpha_1,\alpha_2,\alpha_3\)下的矩阵;</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\({\mathscr A}\)在自然基下的矩阵.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">解答:</span></div>
+
+  <!-- TeX block: list -->
+  <ol>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(A=(\alpha_1,\alpha_2,\alpha_3)^{-1}(\beta_1,\beta_2,\beta_3)=\begin{pmatrix}
+      4&amp;9&amp;-5\\-10&amp;-23&amp;15\\-7&amp;-16&amp;13\\\end{pmatrix}\);</span></div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(B=(\beta_1,\beta_2,\beta_3)(\alpha_1,\alpha_2,\alpha_3)^{-1}=\begin{pmatrix}
+      3&amp;-20&amp;11\\0&amp;-16&amp;10\\5&amp;-15&amp;7\\\end{pmatrix}\).</span></div>
+    </li>
+  </ol>
+</div>

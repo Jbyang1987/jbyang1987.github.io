@@ -1,0 +1,125 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="正定二次型 · 第2页；实二次型，线性代数课程。"><title>正定二次型 · 第2页 | 线性代数</title><link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/style.css"><link rel="stylesheet" href="../../../css/lessons.css"><link rel="stylesheet" href="../../../css/tex2html.css"><script defer src="../../../js/course.js"></script><script defer src="../../../js/progress.js"></script><script defer src="../../../js/main.js"></script><script defer src="../../../js/mathjax-config.js"></script><script defer src="../../../assets/vendor/mathjax/tex-svg.js"></script></head><body data-page="knowledge" data-root="../../../" data-chapter="chapter09" data-section="chapter09-section04" data-unit="chapter09-section04-lesson-9-4-2"><a class="skip-link" href="#main">跳到正文</a><header class="site-header page-width"><div class="brand-menu"><a class="brand" href="../../../index.html" aria-label="线性代数课程首页"><img class="brand-mark" src="../../../assets/favicon.svg" width="36" height="36" alt=""><span>线性代数</span></a><div class="course-menu" data-course-menu><button class="course-menu-toggle" type="button" aria-expanded="false" aria-controls="course-menu-panel" aria-label="展开课程菜单"></button><div class="course-menu-panel" id="course-menu-panel"></div></div></div><nav class="header-nav breadcrumb-header-nav" aria-label="当前位置"><span class="header-home"><a href="../../../index.html">课程首页</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-path"><span class="header-chapter"><a href="../../chapter09.html">第九章</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-section"><a href="index.html">第4节</a></span><span class="header-separator" aria-hidden="true">/</span><span class="header-current">第2小节</span></span><button class="header-print-button theme-toggle-button" type="button" data-theme-toggle aria-pressed="false">暗色</button></nav></header><div class="chapter-home-layout page-width"><main id="main" class="chapter-content"><p class="storage-notice" data-storage-notice role="status" hidden></p><noscript><p class="notice">正文、目录和翻页需要浏览器启用脚本。</p></noscript><header class="knowledge-intro"><h1 class="knowledge-page-title"><span class="knowledge-page-number">§9.4.2</span><span>正定二次型 · 第2页</span></h1><p class="knowledge-goal">正定二次型 · 第2页</p></header><article class="lesson knowledge-lesson"><!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-9-4-2-lesson-9-4-2">
+  <p class="tex-hierarchy">实二次型 / 正定二次型</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">9.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\)为\(n\)阶实对称方阵.</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(P\)可逆,则\(P^TAP&gt;0\)当且仅当\(A&gt;0\).  <span class="tex-color-blue">相合不变性</span></div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(A&gt;0\) 当且仅当存在可逆阵\(P\)使得 \(A=P^TP\).  <span class="tex-color-blue">相合标准形</span></div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">若\(A&gt;0\),则\(\det(A)&gt;0\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(A&gt;0\) 当且仅当\(A\)的特征值全为正.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">9.1.7</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A=(a_{ij})_{n\times n}\)为\(n\)阶实对称方阵.
+
+      则\(A\)正定当且仅当\(A\)的各阶顺序主子式均大于零.
+
+      即, \(A\)正定当且仅当</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[a_{11}&gt;0,\quad \begin{vmatrix}a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}\end{vmatrix}&gt;0,\cdots,\begin{vmatrix}a_{11}&amp;\cdots&amp;a_{1n}\\\cdots&amp;\cdots&amp;\cdots&amp;\\a_{n1}&amp;\cdots&amp;a_{nn}\end{vmatrix}=\det{A}&gt;0,\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang"><span class="tex-size-footnotesize"></span> 证明思路:对阶数归纳.
+
+  由归纳假设\(A\)可写为\(A=\begin{pmatrix} (P^{-1})^TP^{-1} &amp; C\\ C^T &amp; a_{nn}\\\end{pmatrix}\).
+
+  记 \(R=\begin{pmatrix} P &amp; -PP^TC\\ 0&amp; 1\\\end{pmatrix}\).
+
+  则
+  \(R^TAR = \begin{pmatrix} I_{n-1} &amp;\\ &amp; a_{nn}-C^TPP^TC\\\end{pmatrix}\).</span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">9.1.8</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ul>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">证明: 对任意实数 \(x, y\), \(f(x, y) = x^2 + 2xy + 2y^2 + 2x + 6y + 6 &gt; 0\).</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">给定实二次型 \(Q(x, y, z) = \lambda (x^2 + y^2 + z^2) - 2xy - 2yz - 2zx\).
+           \(\lambda\) 为何值时，\(Q(x, y, z)\) 正定？</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">设向量组 \(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_m \in \mathbb{R}^n\). 则方阵 \(G = ((\mathbf{a}_i, \mathbf{a}_j)_{m \times m})\) 正定当且仅当 \(\mathbf{a}_1, \mathbf{a}_2, \ldots, \mathbf{a}_m\) 线性无关.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">设 \(A\)为实对称矩阵，记\(Q(x_1,\cdots,x_n)=x^TAx\)为\(A\)对应的二次型.</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">9.1.4</span> <span class="math-block-title">半正定二次型</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">称\(Q(x_1,\cdots,x_n)\)为<span class="tex-color-blue">半正定二次型</span>,如果对于任意向量\(x\in{\mathbb R}^n\setminus\{0\}\) 都有 \(Q(x_1,\cdots,x_n)\geq0\)成立. 此时, 称矩阵\(A\)为<span class="tex-color-blue">半正定矩阵</span>，简记为<span class="tex-color-blue">\(A\geq0\)</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">9.1.4</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[
+      \begin{split}
+      \text{$Q$半正定}
+      &amp; \Leftrightarrow \text{$A$半正定} \\
+      &amp;  \Leftrightarrow \text{$A$相合于$\mathrm{diag}(I_r,0)$} \quad {\textcolor[rgb]{0,0,1}{\text{(相合不变性)}}} \\
+      &amp;  \Leftrightarrow \text{存在实矩阵$P$使得$A=P^TP$} \\
+      &amp;  \Leftrightarrow \text{$A$的负惯性指数为$0$} \\
+      &amp;  \Leftrightarrow \text{$A$的特征值均非负} \quad (\Rightarrow \det(A)\geq 0)\\
+      &amp;  \Leftrightarrow \text{$A$的{\textcolor[rgb]{0,0,1}{各阶}}主子式均非负} \\
+      \end{split}
+      \]</div>
+    </div>
+  </section>
+</div></article><div class="unit-completion"><div class="unit-difficulty"><span class="unit-difficulty-label">这页感觉如何？</span><div class="unit-difficulty-options" role="group" aria-label="正定二次型 · 第2页的难度评价（可选）"><button type="button" class="difficulty-button" data-unit-difficulty="easy" data-difficulty-unit="chapter09-section04-lesson-9-4-2" aria-pressed="false">很轻松</button><button type="button" class="difficulty-button" data-unit-difficulty="okay" data-difficulty-unit="chapter09-section04-lesson-9-4-2" aria-pressed="false">正合适</button><button type="button" class="difficulty-button" data-unit-difficulty="hard" data-difficulty-unit="chapter09-section04-lesson-9-4-2" aria-pressed="false">有点难</button></div></div><div class="knowledge-completion-row"><div class="knowledge-step-actions"><a href="lesson-9-4-1.html" class="button button-primary knowledge-action-button previous-knowledge-button">上一知识点</a><a href="lesson-9-4-3.html" class="button button-primary knowledge-action-button next-knowledge-button">下一知识点</a></div><div class="unit-action-row"><button class="button button-primary complete-knowledge-button" type="button" data-unit-complete="chapter09-section04-lesson-9-4-2" data-unit-label="本页" disabled>标记为已学会</button><a class="button button-primary knowledge-action-button continue-learning" data-next-unlearned-link="chapter09-section04-lesson-9-4-2" hidden>继续学习</a></div></div><p class="completion-message" data-unit-message="chapter09-section04-lesson-9-4-2" role="status" aria-live="polite"></p></div></main></div><footer class="site-footer page-width"><span>版权所有 © 线性代数课程</span></footer></body></html>

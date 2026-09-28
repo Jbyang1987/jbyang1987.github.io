@@ -1,0 +1,82 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-7-8-3-lesson-7-8-3">
+  <p class="tex-hierarchy">线性映射 / 相似对角化</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">一般地,我们可以用特征值的重数来判定是否可对角化.</div>
+
+  <!-- TeX block: definition -->
+  <section class="math-block math-block-definition">
+    <div class="math-block-heading"><span class="math-block-label">定义</span> <span class="math-block-number">7.1.6</span> <span class="math-block-title">代数重数,几何重数</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(A\)为\(n\)阶复矩阵的特征多项式有分解</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[P_A(\lambda) = (\lambda-\lambda_1)^{n_1}(\lambda-\lambda_2)^{n_2}\cdots(\lambda-\lambda_s)^{n_s}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">称\(n_i\)为\(\lambda_i\)的<span class="tex-color-blue">代数重数</span>,
+
+      称子空间\(V_A(\lambda_i)\)的维数为\(\lambda_i\)的<span class="tex-color-blue">几何重数</span>.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">7.1.8</span> <span class="math-block-title">利用特征值的重数来判定</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(1\leq\) 几何重数 \(\leq\) 代数重数.</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(A\)可对角化 \(\Leftrightarrow\) 每个特征值的几何重数与代数重数相等.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">证明思路:将\(V_A(\lambda_i)\)的一组基扩充为整个空间的一组基.</span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">7.1.19</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">什么时候\(A=\begin{pmatrix}0&amp;0&amp;x\\1&amp;1&amp;y\\1&amp;0&amp;0\end{pmatrix}\)可对角化?</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">
+  解题思路: \(P_A(\lambda)=(\lambda-1)(\lambda^2-x)\).
+
+  <ul>
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(x\neq 0,1\) \(\Rightarrow\) 三个不同特征值.</span></div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(x=0\)  \(\Rightarrow\)  \(0\)的代数重数为\(2\)而几何重数为\(1\).</span></div>
+    </li>
+
+    <!-- TeX block: list-item -->
+    <li>
+      <!-- TeX block: text -->
+      <div class="tex-paragraph"><span class="tex-color-yang">\(x=1\)  \(\Rightarrow\)  \(-1\)的重数为\(1\). \(1\)的代数重数为\(2\),几何重数为\(2\)(\(y=-1\))或者\(1\)(\(y\neq-1\)).</span></div>
+    </li>
+  </ul>
+  </span></div>
+</div>

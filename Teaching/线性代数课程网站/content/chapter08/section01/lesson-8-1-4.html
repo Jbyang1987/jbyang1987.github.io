@@ -1,0 +1,105 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-8-1-4-lesson-8-1-4">
+  <p class="tex-hierarchy">内积空间及变换 / 欧氏空间的定义</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: proposition -->
+  <section class="math-block math-block-proposition">
+    <div class="math-block-heading"><span class="math-block-label">性质</span> <span class="math-block-number">8.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">对称性: \(d(a,b)=d(b,a)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">正定性: \(d(a,b)\geq0\), 等号成立当且仅当\(a=b\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">三角不等式: \(d(a,c)\leq d(a,b)+ d(b,c)\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">勾股定理: \(a\perp b\) 当且仅当 \(|a|^2+|b|^2=|a+b|^2\);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">菱形定理: 若\(|a|=|b|\),则\((a+b)\perp(a-b)\).</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">8.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(V={\mathbb R}^n\),对于任意两向量 \(a=(a_1,\cdots,a_n)\)和 \(b=(b_1,\cdots,b_n)\), 定义</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[(a,b)=a_1b_1+\cdots+a_nb_n.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则\((-,-)\)为\(V\)上的一个内积.这一内积给出通常的模长和夹角.
+
+      此时Cauchy-Schwarz公式为</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[\left(\sum_{i=1}^n a_ib_i\right)^2 \leq \left(\sum_{i=1}^n a_i^2\right)\cdot\left(\sum_{i=1}^n b_i^2\right).\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">8.1.2</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">类似的\((a,b)=a_1b_1+2a_2b_2+\cdots+na_nb_n\)也可以定义\(V={\mathbb R}^n\)上的一个内积.</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">构造一个内积使得给定的一组基均为单位向量且两两垂直.</span></div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">8.1.3</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\alpha_1,\cdots,\alpha_n\)为\(n\)维\({\mathbb R}\)-线性空间\(V\)上的一组基.
+
+      对于任意向量\(\alpha,\beta\in V\),定义</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[(\alpha,\beta)=a_1b_1+a_2b_2+\cdots+a_nb_n,\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">其中\((a_1,a_2,\cdots,a_n)\)和\((b_1,b_2,\cdots,b_n)\)分别为\(\alpha\)和\(\beta\)在基\(\alpha_1,\cdots,\alpha_n\)下的坐标.
+
+      则\((-,-)\)为\(V\)上的内积.在此内积下\(\alpha_1,\cdots,\alpha_n\)均为单位向量且两两垂直.
+
+      即,</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[(\alpha_i,\alpha_j)=\delta_{ij}=\left\{\begin{array}{ll}
+      1,&amp; i=j;\\
+      0,&amp; i\neq j.\\
+      \end{array}\right.\]</div>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">任意有限维实线性空间一定存在内积. 注:任意内积均为这一形式!</span></div>
+</div>

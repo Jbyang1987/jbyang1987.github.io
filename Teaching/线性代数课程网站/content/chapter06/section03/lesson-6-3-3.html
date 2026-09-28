@@ -1,0 +1,103 @@
+<!-- TeX2HTML 页面片段：共享 CSS 由 build-lessons.js 生成的页面 head 加载。 -->
+<div class="tex-converted tex-page-6-3-3-lesson-6-3-3">
+  <p class="tex-hierarchy">线性空间 / 极大无关组</p>
+  <!-- 以下内容由所选 TeX frame 转换而来。 -->
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">原理:初等行变换不改变列向量的线性相关性.</div>
+
+  <!-- TeX block: theorem -->
+  <section class="math-block math-block-theorem">
+    <div class="math-block-heading"><span class="math-block-label">定理</span> <span class="math-block-number">6.1.1</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">设\(\vec{a}_1\), \(\vec{a}_2\), \(\cdots\), \(\vec{a}_m\)为一组<span class="tex-color-blue">列</span>向量.  对矩阵</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[A=(\vec{a}_1,\vec{a}_2,\cdots,\vec{a}_m)\in {\mathbb F}^{n\times m}\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">做一系列<span class="tex-color-blue">行</span>初等变换得到</div>
+
+      <!-- TeX block: formula -->
+      <div class="tex-display">\[B=(\vec{b}_1,\vec{b}_2,\cdots,\vec{b}_m)\in {\mathbb F}^{n\times m}.\]</div>
+
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">则对于任意 \(i_1,i_2,\cdots,i_r\in \{1,2,\cdots,m\}\),</div>
+
+      <!-- TeX block: list -->
+      <ol>
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\vec{a}_{i_1}\), \(\vec{a}_{i_2}\), \(\cdots\), \(\vec{a}_{i_r}\)线性相关(无关) \(\Leftrightarrow\) \(\vec{b}_{i_1}\), \(\vec{b}_{i_2}\), \(\cdots\), \(\vec{b}_{i_r}\)线性相关(无关);</div>
+        </li>
+
+        <!-- TeX block: list-item -->
+        <li>
+          <!-- TeX block: text -->
+          <div class="tex-paragraph">\(\vec{a}_{i_1}\), \(\vec{a}_{i_2}\), \(\cdots\), \(\vec{a}_{i_r}\)极大无关 \(\Leftrightarrow\) \(\vec{b}_{i_1}\), \(\vec{b}_{i_2}\), \(\cdots\), \(\vec{b}_{i_r}\)极大无关;</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-yang">注：这个定理保证了行变换不改变列秩!</span></div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  (1) \qquad LHS \qquad \Leftrightarrow &amp; AX=0 \text{ 有非零解} \\ 
+  \underset{P\text{可逆}}{\overset{B=PA}{\Leftrightarrow}} &amp; BX=0 \text{ 有非零解} \\ 
+  \Leftrightarrow &amp; RHS.\\
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{split}
+  (2) \qquad LHS \qquad \Leftrightarrow
+  &amp; \left\{ { a_{i_1},\cdots, a_{i_r} \text{ 线性无关} \atop a_{i_1},\cdots, a_{i_r}, a_j\text{线性相关 $\forall$ $j$}}\right.\\ 
+  \overset{(1)}{\Leftrightarrow} &amp; \left\{ { b_{i_1},\cdots, b_{i_r} \text{ 线性无关} \atop b_{i_1},\cdots, b_{i_r}, b_j\text{线性相关 $\forall$ $j$}}\right.\\ 
+  \Leftrightarrow &amp; RHS.
+  \end{split}
+  \]</div>
+
+  <!-- TeX block: example -->
+  <section class="math-block math-block-example">
+    <div class="math-block-heading"><span class="math-block-label">例题</span> <span class="math-block-number">6.1.12</span></div>
+    <div class="math-block-body">
+      <!-- TeX block: text -->
+      <div class="tex-paragraph">求向量组\(\vec{a}_1=(-1,5,3,-2)\), \(\vec{a}_2=(4,1,-2,9)\), \(\vec{a}_3=(2,0,-1,4)\), \(\vec{a}_4=(0,3,4,-5)\)</div>
+    </div>
+  </section>
+
+  <!-- TeX block: formula -->
+  <div class="tex-display">\[
+  \begin{pmatrix}
+  -1&amp; 4&amp; 2&amp; 0\\
+  5&amp; 1&amp; 0&amp; 3\\
+  3&amp; -2&amp; -1&amp; 4\\
+  -2&amp; 9&amp; 4&amp; -5\\
+  \end{pmatrix}
+
+  \longrightarrow
+  \begin{pmatrix}
+  -1&amp; 4&amp; 2&amp; 0\\
+  0&amp; 1&amp; 0&amp; -5\\
+  0&amp; 0&amp; 5&amp; 24\\
+  0&amp; 0&amp; 0&amp; 0\\
+  \end{pmatrix}
+  \]</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph">\(\overset{\text{行变换}}{\Longrightarrow}\) \(\{\vec{b}_1,\vec{b}_2,\vec{b}_3\}\),\(\{\vec{b}_1,\vec{b}_2,\vec{b}_4\}\)极大无关.<br>
+
+  \(\Rightarrow\) \(\{\vec{a}_1,\vec{a}_2,\vec{a}_3\}\),\(\{\vec{a}_1,\vec{a}_2,\vec{a}_4\}\)极大无关.</div>
+
+  <!-- TeX block: text -->
+  <div class="tex-paragraph"><span class="tex-color-blue">问题:</span> 两个极大无关组的个数是否相等?</div>
+
+  <!-- TeX block: figure -->
+  <figure class="tex-figure"><img src="{{root}}assets/chapter06/figure-fig-de74483e.svg" class="tex-figure-light" alt="XY-pic 图形" width="640"><img class="tex-figure-dark" src="{{root}}assets/chapter06/figure-fig-de74483e-dark.svg" alt="XY-pic 图形" width="640"><figcaption>XY-pic 图形</figcaption></figure>
+</div>
